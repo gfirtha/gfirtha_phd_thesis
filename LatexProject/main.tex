@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage{palatino}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+%\usepackage{listings}
+\usepackage{graphicx,overpic,subfigure}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows}
+
+\usepackage{booktabs} 			% Nice tables
+\usepackage{csquotes}			% Quotation
+\usepackage{multirow} 			% Multirow cells in tables
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage[small,bf]{caption}
+\usepackage{ae,aecompl}
+\usepackage{url}
+
+\newcommand{\dint}{\int\!\!\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\td}{\mathrm{d}}
+\newcommand{\te}{\mathrm{e}}
+\newcommand{\ti}{\mathrm{j}}
+\newcommand{\sinfi}{\sin\varphi}
+\newcommand{\cosfi}{\cos\varphi}
+\newcommand{\sinteta}{\sin\theta}
+\newcommand{\costeta}{\cos\theta}
+\newcommand{\yref}{y_{\mathrm{ref}}}
+
+\usepackage[american]{babel}
+\usepackage{hyperref}
+
+\title{ Dissertation draft}
+\date{\today \\
+Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
+\author{Firtha Gergely}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction}
+
+\chapter{Theory of Sound Field Reconstruction}
+\label{sec:theory}
+\input{theory}
+
+\chapter{Stochastic SFS}
+\label{sec:stochastic}
+\input{stochastic}
+
+\chapter{Moving source SFS}
+\label{sec:moving_source}
+\input{moving_source}
+
+\chapter{Conclusion}
+
+\bibliographystyle{plain}
+%\bibliography{wp1_report}
+
+\end{document}
+
