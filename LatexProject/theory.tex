@@ -1,4 +1,150 @@
+In the following chapter the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with an overview on the applied mathematical apparatus.
+Afterwards the physics of sound propagation and radiation is discussed by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
+%
+\section{Mathematical Preliminaries}
+%
+\subsection{Functions and distributions}
+\subsection{Definition and properties of Fourier-transforms}
+
+The temporal Fourier transform (or frequency content) of a function $f(t)$ is defined in the same manner as in the related literature e.g. \cite{Ahrens2012, Ahrens2010a}:
+%
+\begin{align}
+\mathcal{F}_{t} \left\{  f(t) \right\}  = F(\omega) = \int_{-\infty}^{\infty} f(t) \, \te^{-\ti \,\omega \, t} \, \td t, \\
+\mathcal{F}^{-1}_{t} \left\{  F(\omega) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega)\, \te^{\ti\, \omega\, t} \, \td \omega.
+\label{Eq:Math:Temp_Fourier}
+\end{align}
+%
+Similarly, the spatial Fourier transform (or wavenumber content) is defined as
+%
+\begin{align}
+\mathcal{F}_{x} \left\{  f(x) \right\}  = \tilde{f}(k_x) = \int_{-\infty}^{\infty} f(x)\, \te^{\ti\, k_x\, x}\, \td x, \\
+\mathcal{F}^{-1}_{x} \left\{  \tilde{f}(k_x) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{f}(k_x)\, \te^{-\ti\, k_x\, x}\, \td k_x.
+\end{align}
+
+Several important properties of Fourier-transform, used frequently trough the thesis are:
+\begin{itemize}
+\item Shift theorem
+%
+\item Convolution theorem
+%
+\item Differentiation theorem
+\begin{equation}
+\mathcal{F}_{t} \left\{ \frac{\partial}{\partial t} f(t) \right\}  = \ti \omega F(\omega).
+\label{Eq:Math:Fourier_tr_diff}
+\end{equation}
+%
+\item Similarity theorem
+\begin{equation}
+\mathcal{F}_{t} \left\{ f(a t) \right\}  = \frac{1}{|a|} F(\frac{\omega}{a}).
+\label{Eq:Math:Fourier_tr_similarity}
+\end{equation}
+\end{itemize}
+  
+
+\subsection{Stochastic signal theory basics}
+
+\newpage
 \section{Theory of wave propagation and radiation problems}
+
+Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure and in the displacement of the medium's particles. The propagation of the disturbance is described fully by the acoustic wave equation. First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. For a detailed treatise on the derivation please refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
+
+\subsection{The homogeneous wave equation and its solution}
+
+Consider a homogeneous, elastic medium, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation only in air at room temperature. 
+
+%
+The domain of investigation ie. where sound waves propagate is termed as \emph{sound field} from now on.
+The acoustical quantities of the the sound field is described by \emph{dynamic field variables} in each point $\mathbf{x}$ at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\mathbf{x},t)$ and the scalar \emph{instantaneous sound pressure} $p(\mathbf{x},t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
+The medium is quiescent, meaning on average each particle is at rest with zero particle displacement --thus zero particle velocity-- and with the static pressure $P_0$. 
+The presence of sound wave causes incremental change in the instantaneous pressure and the particle velocity (and also in the fluid density and particle displacement).
+%
+
+In order to apply a linear model for sound propagation two assumptions are made.
+Since the speed of travel of thermal diffusion is small compared to the speed of sound and the acoustical wave length in the audible frequency range, it is feasible to assume, that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
+Furthermore the alternation of the instantaneous sound pressure must be small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around the static pressure. 
+%
+
+The linear wave equation may be derived by utilizing two fundamental physical principles.
+\begin{itemize}
+\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of gas we obtain the connection between the particle velocity vector and the pressure field at each point at each time instant. The resulting \emph{Euler's equation} states that the force acting on the volume, which is proportional to the pressure on the surface causes an acceleration, which is given by the time derivative of the particle velocity:
+\begin{equation}
+\nabla p(\mathbf{x},t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\mathbf{x},t),
+\label{Eq:Theory:Eulers_equation}
+\end{equation}
+\nomenclature[2]{$\nabla$}{Gradient operator}%
+%
+where $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
+\item \emph{The gas law:} For adiabatic state changes the change of state follows the following equation
+\begin{equation}
+P V^{\gamma} = \mathrm{constant},
+\label{Eq:Theory:Adiabatic_change}
+\end{equation}
+where $\gamma = c_P/c_V$ is the ratio of specific heat of the fluid in constant pressure and constant volume. For air $\gamma = 1.4$. Linerization of \eqref{Eq:Theory:Adiabatic_change} and expressing the change in pressure equaling the instantaneous pressure one obtains
+\begin{equation}
+\Delta P = p(\mathbf{x},t) = -\gamma P_0 \frac{\Delta V}{V_0},
+\end{equation}
+where $V_0$ is the undisturbed volume. The relative change of volume may be expressed as the sum of particle displacement over the boundary surface. Applying the definition of divergence and expressing the equation in terms of particle velocity yields
+\begin{equation}
+\frac{\partial}{\partial t} p(\mathbf{x},t) = -\gamma P_0 \nabla \cdot \mathbf{v}(\mathbf{x},t),
+\label{Eq:Theory:Second_eq}
+\end{equation}
+where $\nabla \cdot$ is the \emph{divergence operator}.
+\end{itemize}
+%
+Taking the derivative wrt. time of equation \ref{Eq:Theory:Second_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the linear homogeneous wave equation is obtained for the sound pressure
+\begin{equation}
+\nabla^2 p(\mathbf{x},t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\mathbf{x},t) = 0,
+\label{Eq:Theory:Scalar_wave_equation}
+\end{equation}
+\nomenclature[1]{$c$}{Speed of sound}%
+where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of the sound wave in the medium. For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
+
+The instantaneous pressure may be also eliminated. In this case the vector wave equation is obtained for the particle velocity, valid for curl-free medium
+\begin{equation}
+\nabla^2 \mathbf{v}(\mathbf{x},t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \mathbf{v}(\mathbf{x},t) = 0,
+\label{Eq:Theory:Vector_wave_equation}
+\end{equation}
+where $\nabla^2 = \nabla \left( \nabla \cdot \right)$.
+%
+The wave equations fully describe the properties of acoustic wave propagation as long as the the assumptions are fulfilled.
+%
+\vspace{3mm}
+%
+Equation \eqref{Eq:Theory:Scalar_wave_equation} can be transformed into the frequency domain by performing a temporal Fourier-transform according to \eqref{Eq:Math:Temp_Fourier}. By using the differentiation property of Fourier-transform given in \eqref{Eq:Math:Fourier_tr_diff} the \emph{homogeneous Helmholtz-equation is obtained}:
+\begin{equation}
+\nabla^2 P(\mathbf{x},\omega) + k^2 P(\mathbf{x},\omega) = 0,
+\label{Eq:Theory:Homog_Helmholtz}
+\end{equation}
+where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency trough the \emph{dispersion relation}:
+\begin{equation}
+k = \frac{\omega}{c}.
+\end{equation}
+
+
+\newpage
+\subsection{The inhomogeneous wave equation and the Green's function}
+
+\subsection{Representation of sound fields}
+
+\begin{itemize}
+\item Homogenous wave equation
+	\begin{itemize}
+	\item Time domain
+	\item Helmholtz equation
+	\item Solutions (plane wave, etc)
+	\end{itemize}
+\item Inhomogenous wave equation
+\begin{itemize}
+	\item Solution with Green's function (Green's theory)
+	\item Field of a point source 
+\end{itemize}
+\item Representation of sound fields (radiation problems)
+\begin{itemize}
+	\item Spectral representation: plane wave, cylindrical and spherical harmonics
+	\item Kirchhoff-Helmholtz integral and Rayleigh integrals: latter either from spectral representation or from KH-integral
+\end{itemize}
+\end{itemize}
+
 
 \section{Explicit solution of sound field synthesis problem}
 
