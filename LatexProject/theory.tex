@@ -1,67 +1,24 @@
-In the following chapter the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with an overview on the applied mathematical apparatus.
-Afterwards the physics of sound propagation and radiation is discussed by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
+In the following chapter the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
 %
-\section{Mathematical Preliminaries}
-%
-\subsection{Functions and distributions}
-\subsection{Definition and properties of Fourier-transforms}
 
-The temporal Fourier transform (or frequency content) of a function $f(t)$ is defined in the same manner as in the related literature e.g. \cite{Ahrens2012, Ahrens2010a}:
-%
-\begin{align}
-\mathcal{F}_{t} \left\{  f(t) \right\}  = F(\omega) = \int_{-\infty}^{\infty} f(t) \, \te^{-\ti \,\omega \, t} \, \td t, \\
-\mathcal{F}^{-1}_{t} \left\{  F(\omega) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega)\, \te^{\ti\, \omega\, t} \, \td \omega.
-\label{Eq:Math:Temp_Fourier}
-\end{align}
-%
-Similarly, the spatial Fourier transform (or wavenumber content) is defined as
-%
-\begin{align}
-\mathcal{F}_{x} \left\{  f(x) \right\}  = \tilde{f}(k_x) = \int_{-\infty}^{\infty} f(x)\, \te^{\ti\, k_x\, x}\, \td x, \\
-\mathcal{F}^{-1}_{x} \left\{  \tilde{f}(k_x) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{f}(k_x)\, \te^{-\ti\, k_x\, x}\, \td k_x.
-\end{align}
-
-Several important properties of Fourier-transform, used frequently trough the thesis are:
-\begin{itemize}
-\item Shift theorem
-%
-\item Convolution theorem
-%
-\item Differentiation theorem
-\begin{equation}
-\mathcal{F}_{t} \left\{ \frac{\partial}{\partial t} f(t) \right\}  = \ti \omega F(\omega).
-\label{Eq:Math:Fourier_tr_diff}
-\end{equation}
-%
-\item Similarity theorem
-\begin{equation}
-\mathcal{F}_{t} \left\{ f(a t) \right\}  = \frac{1}{|a|} F(\frac{\omega}{a}).
-\label{Eq:Math:Fourier_tr_similarity}
-\end{equation}
-\end{itemize}
-  
-
-\subsection{Stochastic signal theory basics}
-
-\newpage
 \section{Theory of wave propagation and radiation problems}
 
-Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure and in the displacement of the medium's particles. The propagation of the disturbance is described fully by the acoustic wave equation. First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. For a detailed treatise on the derivation please refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
+Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure (along with density) and in the displacement of the medium's particles. The propagation of the disturbance is described fully by the acoustic wave equation. First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. For a detailed treatise on the derivation please refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
 
-\subsection{The homogeneous wave equation and its solution}
+\subsection{The homogeneous wave equation}
 
-Consider a homogeneous, elastic medium, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation only in air at room temperature. 
+Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation solely in air at room temperature. 
 
 %
-The domain of investigation ie. where sound waves propagate is termed as \emph{sound field} from now on.
+The domain of investigation ie. where sound waves propagate is termed as \emph{sound field} hereinafter.
 The acoustical quantities of the the sound field is described by \emph{dynamic field variables} in each point $\mathbf{x}$ at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\mathbf{x},t)$ and the scalar \emph{instantaneous sound pressure} $p(\mathbf{x},t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
 The medium is quiescent, meaning on average each particle is at rest with zero particle displacement --thus zero particle velocity-- and with the static pressure $P_0$. 
-The presence of sound wave causes incremental change in the instantaneous pressure and the particle velocity (and also in the fluid density and particle displacement).
+The presence of a sound wave causes incremental change in the instantaneous pressure and the particle velocity.
 %
 
 In order to apply a linear model for sound propagation two assumptions are made.
-Since the speed of travel of thermal diffusion is small compared to the speed of sound and the acoustical wave length in the audible frequency range, it is feasible to assume, that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
-Furthermore the alternation of the instantaneous sound pressure must be small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around the static pressure. 
+Since the traveling speed of thermal diffusion is small compared to the speed of sound and the acoustical wave length in the audible frequency range, it is feasible to assume, that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
+Furthermore the alternation of the instantaneous sound pressure must be small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around $P_0$. This later assumption is also fulfilled for pressure magnitudes below the threshold of pain of the human auditory system, as it was pointed out in \cite{Gumerov2004, Ahrens2012}.
 %
 
 The linear wave equation may be derived by utilizing two fundamental physical principles.
@@ -71,15 +28,15 @@ The linear wave equation may be derived by utilizing two fundamental physical pr
 \nabla p(\mathbf{x},t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\mathbf{x},t),
 \label{Eq:Theory:Eulers_equation}
 \end{equation}
-\nomenclature[2]{$\nabla$}{Gradient operator}%
+\nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}.
 %
-where $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
-\item \emph{The gas law:} For adiabatic state changes the change of state follows the following equation
+where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
+\item \emph{The gas law:} For adiabatic processes the change of state is governed by the following equation
 \begin{equation}
 P V^{\gamma} = \mathrm{constant},
 \label{Eq:Theory:Adiabatic_change}
 \end{equation}
-where $\gamma = c_P/c_V$ is the ratio of specific heat of the fluid in constant pressure and constant volume. For air $\gamma = 1.4$. Linerization of \eqref{Eq:Theory:Adiabatic_change} and expressing the change in pressure equaling the instantaneous pressure one obtains
+where $\gamma = c_P/c_V$ is the ratio of specific heat of the fluid in constant pressure and with constant volume. For air $\gamma = 1.4$. Linerization of \eqref{Eq:Theory:Adiabatic_change} and expressing the change in pressure --equaling the instantaneous pressure-- one obtains
 \begin{equation}
 \Delta P = p(\mathbf{x},t) = -\gamma P_0 \frac{\Delta V}{V_0},
 \end{equation}
@@ -91,15 +48,16 @@ where $V_0$ is the undisturbed volume. The relative change of volume may be expr
 where $\nabla \cdot$ is the \emph{divergence operator}.
 \end{itemize}
 %
-Taking the derivative wrt. time of equation \ref{Eq:Theory:Second_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the linear homogeneous wave equation is obtained for the sound pressure
+Taking the derivative wrt. time of equation \ref{Eq:Theory:Second_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the scalar linear homogeneous wave equation is obtained for the sound pressure
 \begin{equation}
 \nabla^2 p(\mathbf{x},t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\mathbf{x},t) = 0,
 \label{Eq:Theory:Scalar_wave_equation}
 \end{equation}
 \nomenclature[1]{$c$}{Speed of sound}%
+\nomenclature[3]{$\nabla^2$}{Laplacian operator. In Descartes-coordinates: $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}$}%
 where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of the sound wave in the medium. For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
 
-The instantaneous pressure may be also eliminated. In this case the vector wave equation is obtained for the particle velocity, valid for curl-free medium
+The instantaneous pressure may be also eliminated. In this case the vector wave equation is obtained for the particle velocity, valid for curl-free media
 \begin{equation}
 \nabla^2 \mathbf{v}(\mathbf{x},t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \mathbf{v}(\mathbf{x},t) = 0,
 \label{Eq:Theory:Vector_wave_equation}
@@ -108,6 +66,7 @@ where $\nabla^2 = \nabla \left( \nabla \cdot \right)$.
 %
 The wave equations fully describe the properties of acoustic wave propagation as long as the the assumptions are fulfilled.
 %
+
 \vspace{3mm}
 %
 Equation \eqref{Eq:Theory:Scalar_wave_equation} can be transformed into the frequency domain by performing a temporal Fourier-transform according to \eqref{Eq:Math:Temp_Fourier}. By using the differentiation property of Fourier-transform given in \eqref{Eq:Math:Fourier_tr_diff} the \emph{homogeneous Helmholtz-equation is obtained}:
@@ -119,7 +78,49 @@ where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal fr
 \begin{equation}
 k = \frac{\omega}{c}.
 \end{equation}
+%
+Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with harmonic time-dependence for a source-free volume (which latter is indicated with the zero load term on the right side). In the aspect of the present thesis the time-domain wave equation is rarely solved, therefore in the followings the general solution for the Helmholtz-equation is presented.
 
+\subsection{Solution of the homogeneous wave equation}
+
+Since understanding plane wave theory is of major importance in the aspect of the present thesis we will focus our interest to the free-field solution of the homogeneous Helmholtz-equation in Cartesian coordinate system.
+
+The Descartes coordinate form of the Laplace-operator is given by
+\begin{equation}
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}.
+\end{equation}
+The general solution for the Helmholtz-equation is obtained by the separation of variables: let's try to find the solution in the form
+\begin{equation}
+P(\mathbf{x},\omega) = \hat{P}(\omega) X(x)Y(y)Z(z).
+\label{Eq:Theory:Seperated_variables}
+\end{equation}
+Let's substitute it into \eqref{Eq:Theory:Homog_Helmholtz} and divide both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$!
+\begin{equation}
+\underbrace{\frac{\partial^2 X(x)}{\partial x^2}\frac{1}{X(x)}}_{-k_x^2} + 
+\underbrace{\frac{\partial^2 Y(y)}{\partial y^2}\frac{1}{Y(y)}}_{-k_y^2} + 
+\underbrace{\frac{\partial^2 Z(z)}{\partial z^2}\frac{1}{Z(z)}}_{-k_z^2}
+= - k^2.
+\label{Eq:Theory:Seperated_variables_expanded}
+\end{equation}
+Since in the equation each term contains a total derivative --independent from any other variable-- equality may hold only if each term is constant. These constant are denoted by $k_x-k_y-k_z$. Consequently each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is well-known. Given eg. for $x$-variable it reads
+\begin{equation}
+\frac{\partial^2 X(x)}{\partial x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
+\end{equation}
+The solutions may substituted back to equation \eqref{Eq:Theory:Seperated_variables}. In order to include every possible solution the general solution for the free-field homogeneous Helmholtz-equation is yielded by summating over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants:
+\begin{equation}
+P(\mathbf{x},\omega) = \iiint_{-\infty}^{\infty} \hat{P}(k_x,k_y,k_z, \omega)  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+\td k_x \td k_y \td k_z.
+\end{equation}
+as long as the dispersion relation holds (resulting from \eqref{Eq:Theory:Seperated_variables_expanded}):
+\begin{equation}
+k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2.
+\end{equation}
+
+And one separated solution from the integral is in the form of:
+\begin{equation}
+P(\mathbf{x},\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \mathbf{k}^{\mathrm{T}} \mathbf{x} },
+\end{equation}
+where $\mathbf{k}^{\mathrm{T}} = [k_x\, k_y\, k_z]$ is the wavenumber vector, with the length equaling the acoustic wavenumber $k = \sqrt{ \mathbf{k}^{\mathrm{T}}  \mathbf{k}}$.
 
 \newpage
 \subsection{The inhomogeneous wave equation and the Green's function}
