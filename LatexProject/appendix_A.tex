@@ -1,0 +1,33 @@
+\section{Derivation of Green's theorem}
+
+The Gauss, or divergence theorem states, that if a vector space, described by vector-vector function $\mathbf{u}(\mathbf{x})$ is non-singular and differentiable over a bounded region $\Omega$, then the integral of the divergence of the vector-space over the whole region equals to the total flux, measured on the boundary surface (refer to figure \ref{Fig:Theory:bounday_condition} for the problem geometry):
+\begin{equation}
+\int_{\Omega} \nabla \cdot \mathbf{u}(\mathbf{x}) \td \Omega = \int_{\partial \Omega} \mathbf{u}(\mathbf{x}) \mathbf{n}_{\mathrm{o}} \td \partial\Omega,
+\end{equation}
+where $\mathbf{n}_{\mathrm{o}} $ is the outward-pointing unit normal vector on the boundary.
+
+Let's express the arbitrary vector-vector function $\mathbf{u}(\mathbf{x})$ as the combination of vector-scalar functions:
+\begin{equation}
+\mathbf{u}(\mathbf{x}) = v(\mathbf{x})\nabla w(\mathbf{x}) - \nabla v(\mathbf{x}) w(\mathbf{x}).
+\end{equation}
+Using the chain rule the divergence of these terms are
+\begin{equation}
+\nabla \cdot ( v(\mathbf{x}) w(\mathbf{x}) ) = \nabla u(\mathbf{x})\cdot \nabla w(\mathbf{x}) + u(\mathbf{x}) \nabla^2 w(\mathbf{x})
+\end{equation}
+\begin{equation}
+\nabla \cdot( \mathbf{x} v(\mathbf{x}) w(\mathbf{x}) ) = \nabla v(\mathbf{x}) \cdot w(\mathbf{x}) + \mathbf{x}^2 v(\mathbf{x}) w(\mathbf{x}),
+\end{equation}
+thus
+\begin{equation}
+\int_{\Omega} \left\{ u(\mathbf{x}) \nabla^2w(\mathbf{x}) - \nabla^2 v(\mathbf{x}) w(\mathbf{x}) \right\} \td \Omega = \int_{\partial \Omega}
+\left\{ v(\mathbf{x})w(\mathbf{x}) - \nabla v(\mathbf{x}) w(\mathbf{x})  \right\} \mathbf{n}_{\mathrm{o}}
+ \td \partial\Omega.
+\end{equation}
+
+By replacing the outward-pointing normal vector with the inward normal: $\mathbf{n}_{\mathrm{i}} = -\mathbf{n}_{\mathrm{o}}$ we obtain the  \emph{Green's theorem}:
+\begin{equation}
+\int_{\Omega} \left\{ u(\mathbf{x}) \nabla^2w(\mathbf{x}) - \nabla^2 v(\mathbf{x}) w(\mathbf{x}) \right\} \td \Omega = \int_{\partial \Omega}
+\left\{  \nabla v(\mathbf{x}) w(\mathbf{x})  - v(\mathbf{x})w(\mathbf{x})  \right\} \mathbf{n}_{\mathrm{i}}
+ \td \partial\Omega.
+\label{Eq:App:Green_theorem}
+\end{equation}

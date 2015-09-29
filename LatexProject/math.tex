@@ -1,0 +1,39 @@
+\subsection{Functions and distributions}
+\subsection{Definition and properties of Fourier-transforms}
+
+The temporal Fourier transform (or frequency content) of a function $f(t)$ is defined in the same manner as in the related literature e.g. \cite{Ahrens2012, Ahrens2010a}:
+%
+\begin{align}
+\mathcal{F}_{t} \left\{  f(t) \right\}  = F(\omega) = \int_{-\infty}^{\infty} f(t) \, \te^{-\ti \,\omega \, t} \, \td t, \\
+\mathcal{F}^{-1}_{t} \left\{  F(\omega) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega)\, \te^{\ti\, \omega\, t} \, \td \omega.
+\label{Eq:Math:Temp_Fourier}
+\end{align}
+%
+Similarly, the spatial Fourier transform (or wavenumber content) is defined as
+%
+\begin{align}
+\mathcal{F}_{x} \left\{  f(x) \right\}  = \tilde{f}(k_x) = \int_{-\infty}^{\infty} f(x)\, \te^{\ti\, k_x\, x}\, \td x, \\
+\mathcal{F}^{-1}_{x} \left\{  \tilde{f}(k_x) \right\}  = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{f}(k_x)\, \te^{-\ti\, k_x\, x}\, \td k_x.
+\end{align}
+
+Several important properties of Fourier-transform, used frequently trough the thesis are:
+\begin{itemize}
+\item Shift theorem
+%
+\item Convolution theorem
+%
+\item Differentiation theorem
+\begin{equation}
+\mathcal{F}_{t} \left\{ \frac{\partial}{\partial t} f(t) \right\}  = \ti \omega F(\omega).
+\label{Eq:Math:Fourier_tr_diff}
+\end{equation}
+%
+\item Similarity theorem
+\begin{equation}
+\mathcal{F}_{t} \left\{ f(a t) \right\}  = \frac{1}{|a|} F(\frac{\omega}{a}).
+\label{Eq:Math:Fourier_tr_similarity}
+\end{equation}
+\end{itemize}
+  
+
+\subsection{Stochastic signal theory basics}

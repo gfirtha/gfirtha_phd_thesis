@@ -220,6 +220,18 @@ please refer to \cite{Williams1999, Zotter2009, Ahrens2012}
 
 \subsubsection{Boundary conditions}
 
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .5\columnwidth]{Figures/Theory/boundary_conditions.png}
+	\put(20,14){$\mathbf{n}$}
+	\put(45,30){$\Omega_i$}
+	\put(80,55){$\Omega_e$}
+	\put(10,44){$\Gamma$}
+	\end{overpic}
+	\caption{Boundary conditions}
+	\label{Fig:Theory:bounday_condition}
+\end{figure}
+
 So far we considered wave propagation in free-field, ie. no boundaries are present. In order to be able to solve the wave equation both inital conditions and boundary must be known. As initial conditions trough the present thesis we suppose  \emph{Cauchy initial conditions}, by setting $p(\mathbf{x},0) = 0$, $\frac{\partial}{\partial t}p(\mathbf{x},t)|_{t=0} = 0$.
 
 In the presence of boundaries --eg. in finite domain-- the wave field must satisfy prescribed boundary conditions also.
@@ -271,14 +283,14 @@ Term $q(\mathbf{x},t)$ is referred as the \emph{load term}, and it describes the
 
 It should be noted, that the solution of the inhomogeneous wave equation is not unique, since any solution for the homogeneous wave equation may be added to the solution, the inhomogeneous wave equation is still satisfied. In order to obtain a unique solution again, we impose \emph{Cauchy initial conditions}.
 
-Note, that since the free-field solution is considered no boundary conditions are assumed except for the Sommerfeld-radiation condition, which ensures that no reflected wave are present: the sound field consist of only outgoing waves. Mathematically it is ensured by implying boundary conditions at infinity:
+Note, that since the free-field solution is considered no boundary conditions are assumed except for the \emph{Sommerfeld-radiation condition}, which ensures that no reflected wave are present: the sound field consist of only outgoing waves. Mathematically it is ensured by implying boundary conditions at infinity:
 \begin{equation}
 \lim_{r \rightarrow \infty} r \left( \frac{\partial}{\partial r}P(\mathbf{x},\omega) +\ti \frac{\omega}{c}P(\mathbf{x},\omega) \right) = 0.
 \label{Eq:Theory:Sommerfeld_radiation_condition}
 \end{equation}
 
 \vspace{3mm}
-A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. We define the \emph{3D free-field Green's function} as the solution for the following equation
+A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. We define the \emph{3D free-field Green's function} as the solution for the following equation \cite{Gumerov2004, Williams1999}
 \begin{equation}
 \nabla^2 g(\mathbf{x}|\mathbf{x}_0,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} g(\mathbf{x}|\mathbf{x}_0,t) = -\delta\left( \mathbf{x} - \mathbf{x}_0 \right)\delta\left( t - t_0 \right),
 \label{Eq:Theory:Green_function_def}
@@ -319,6 +331,7 @@ The Green's function is usually obtained by eigenfunction expansion. For the pre
 Thus the Green's function in the wavenumber space reads
 \begin{equation}
 G(\mathbf{k},\omega) = \frac{1}{\left( \frac{\omega}{c}\right)^2 - \mathbf{k}^{\mathrm{T}} \mathbf{k}}.
+\label{Eq:Theory:3D_kxkykzw_Green}
 \end{equation}
 Using the convolution theorem the wavenumber representation of the solution using the Green's function reads
 \begin{equation}
@@ -329,9 +342,17 @@ and the solution in the spatio-temporal domain is yielded by the inverse Fourier
 p(\mathbf{x},t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} \frac{F(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  \mathbf{k}^{\mathrm{T}} \mathbf{k} } \te^{-\ti \left( \mathbf{k}^{\mathrm{T}}\mathbf{x} - \omega t \right) } \td k_x \td k_y \td k_z \td \omega.
 \end{equation}
 
-The different representations of the 3D free-field Green's function may be obtained by the proper inverse Fourier-transform (setting $\mathbf{x_0} = 0$, ie. the point source is played at the origin) \cite{Devaney2012, Ahrens2010a, Ahrens2012}
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Theory/point_source.png}
+	\end{overpic}
+	\caption{3D point source}
+	\label{Fig:Theory:point_source}
+\end{figure}
+
+The different representations of the 3D free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, ie. the point source is placed at the origin) \cite{Devaney2012, Ahrens2010a, Ahrens2012}
 \begin{equation}
-G(k_x,y,k_z) = -\frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }}|y|}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }} ,
+G(k_x,y,k_z,\omega ) = -\frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }}|y|}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }} ,
 \label{Eq:Theory:3D_kxykzw_Green}
 \end{equation}
 \begin{equation}
@@ -348,24 +369,25 @@ g(\mathbf{x},t) = \frac{1}{4\pi} \frac{\delta \left( t - \frac{|\mathbf{x}|}{c} 
 \end{equation}
 The solution for the inhomogeneous wave equation is then yielded by convolving \eqref{Eq:Theory:3D_xyzt_Green} over the extension and time history of the source term.
 
+In the field of Sound Field Synthesis the application of 2-dimensional Green's function is frequent. The 2D Green's function is the particular solution of the 2D inhomogeneous Helmhotz-equation with a spatial impulse load term, and it reads \cite{Gibson2008}
+\begin{equation}
+G_{2\mathrm{D}}(\mathbf{x},\omega) = -\frac{\ti}{4}H_0^{2}\left( \frac{\omega}{c} \sqrt{x^2 + y^2} \right),
+\end{equation}
+which is the transfer function of a 2-dimensional point source.
+In 3-dimensions the 2D Green's function can be interpreted as the field of an infinite vertical line source.
+
+\vspace{3mm}
 For the solution of the wave equation in enclosures the Green's function must satisfy the imposed boundary conditions. In these cases the Green's function --except for special cases-- varies with $\mathbf{x}_0$, therefore it is translation variant.
 For an more general treatment please refer to \cite{Spors2005}. 
 When the Green's function satisfies Neumann-boundary conditions (ie. $G(\mathbf{x}_{S},\omega) = 0$) it is called \emph{Neumann Green's function}, while if it satisfies Dirichlet boundary conditions it is termed as \emph{Dirichlet Green's function}.
 For special geometries the Neumann and Dirichlet Green's functions may be expressed analytically, as we will see in the following section.
 
 \newpage
-\begin{itemize}
-	\item Solution with Green's function (Green's theory)
-	\item Field of a point source 
-\end{itemize}
-
-\subsection{Representation of sound fields}
-\begin{itemize}
-	\item Spectral representation: plane wave, cylindrical and spherical harmonics
-	\item Kirchhoff-Helmholtz integral and Rayleigh integrals: latter either from spectral representation or from KH-integral
-\end{itemize}
+\subsection{The Kirchhoff-Helmholtz integral and the Rayleigh-integrals}
 
 
+
+\newpage
 \section{Explicit solution of sound field synthesis problem}
 
 \section{Implicit solution of sound field synthesis problem}
