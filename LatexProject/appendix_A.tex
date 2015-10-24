@@ -1,33 +1,115 @@
 \section{Derivation of Green's theorem}
+\label{App:Green_theorem}
 
-The Gauss, or divergence theorem states, that if a vector space, described by vector-vector function $\mathbf{u}(\mathbf{x})$ is non-singular and differentiable over a bounded region $\Omega$, then the integral of the divergence of the vector-space over the whole region equals to the total flux, measured on the boundary surface (refer to figure \ref{Fig:Theory:bounday_condition} for the problem geometry):
+The Gauss, or divergence theorem states, that if a vector space, described by vector-vector function $\mathbf{u}(\vx)$ is non-singular and differentiable over a bounded region $\Omega$, with a boundary denoted by $\partial \Omega$, then the integral of the divergence of the vector-space over the whole region equals to the total flux, measured on the boundary surface (refer to figure \ref{Fig:Theory:bounday_condition} for the problem geometry):
 \begin{equation}
-\int_{\Omega} \nabla \cdot \mathbf{u}(\mathbf{x}) \td \Omega = \int_{\partial \Omega} \mathbf{u}(\mathbf{x}) \mathbf{n}_{\mathrm{o}} \td \partial\Omega,
+\int_{\Omega} \nabla \cdot \mathbf{u}(\vx) \td \Omega = \int_{\partial \Omega} \langle \mathbf{u}(\vx),  \mathbf{n}_{\mathrm{o}} \rangle \td \partial\Omega,
 \end{equation}
 where $\mathbf{n}_{\mathrm{o}} $ is the outward-pointing unit normal vector on the boundary.
 
-Let's express the arbitrary vector-vector function $\mathbf{u}(\mathbf{x})$ as the combination of vector-scalar functions:
+Let's express the arbitrary vector-vector function $\mathbf{u}(\vx)$ as the combination of two twice continuously differentiable vector-scalar functions:
 \begin{equation}
-\mathbf{u}(\mathbf{x}) = v(\mathbf{x})\nabla w(\mathbf{x}) - \nabla v(\mathbf{x}) w(\mathbf{x}).
+\mathbf{u}(\vx) = \Phi(\vx)\nabla \Psi(\vx) - \nabla \Phi(\vx) \Psi(\vx).
 \end{equation}
-Using the chain rule the divergence of these terms are
+Using the chain rule the divergence of these terms are obtained as
 \begin{equation}
-\nabla \cdot ( v(\mathbf{x}) w(\mathbf{x}) ) = \nabla u(\mathbf{x})\cdot \nabla w(\mathbf{x}) + u(\mathbf{x}) \nabla^2 w(\mathbf{x})
+\nabla \cdot ( \Phi(\vx)\nabla \Psi(\vx) ) = \nabla \Phi(\vx)\cdot \nabla \Psi(\vx) + \Phi(\vx) \nabla^2 \Psi(\vx)
 \end{equation}
 \begin{equation}
-\nabla \cdot( \mathbf{x} v(\mathbf{x}) w(\mathbf{x}) ) = \nabla v(\mathbf{x}) \cdot w(\mathbf{x}) + \mathbf{x}^2 v(\mathbf{x}) w(\mathbf{x}),
+\nabla \cdot( \nabla \Phi(\vx) \Psi(\vx) ) = \nabla \Phi(\vx) \cdot  \nabla  \Psi(\vx) +  \nabla ^2 \Phi(\vx) \Psi(\vx),
 \end{equation}
 thus
 \begin{equation}
-\int_{\Omega} \left\{ u(\mathbf{x}) \nabla^2w(\mathbf{x}) - \nabla^2 v(\mathbf{x}) w(\mathbf{x}) \right\} \td \Omega = \int_{\partial \Omega}
-\left\{ v(\mathbf{x})w(\mathbf{x}) - \nabla v(\mathbf{x}) w(\mathbf{x})  \right\} \mathbf{n}_{\mathrm{o}}
+\int_{\Omega} \left\{ \Phi(\vx) \nabla^2 \Psi(\vx) - \nabla^2 \Phi(\vx) \Psi(\vx) \right\} \td \Omega = \int_{\partial \Omega} \langle
+ \Phi(\vx) \nabla \Psi(\vx) - \nabla \Phi(\vx) \Psi(\vx) , \mathbf{n}_{\mathrm{o}} \rangle
  \td \partial\Omega.
 \end{equation}
 
-By replacing the outward-pointing normal vector with the inward normal: $\mathbf{n}_{\mathrm{i}} = -\mathbf{n}_{\mathrm{o}}$ we obtain the  \emph{Green's theorem}:
+By replacing the outward-pointing normal vector with the inward normal: $\mathbf{n}_{\mathrm{i}} = -\mathbf{n}_{\mathrm{o}}$, and denoting the normal derivative on the surface by $\frac{\partial}{\partial n}$ we obtain the  \emph{Green's theorem}:
 \begin{equation}
-\int_{\Omega} \left\{ u(\mathbf{x}) \nabla^2w(\mathbf{x}) - \nabla^2 v(\mathbf{x}) w(\mathbf{x}) \right\} \td \Omega = \int_{\partial \Omega}
-\left\{  \nabla v(\mathbf{x}) w(\mathbf{x})  - v(\mathbf{x})w(\mathbf{x})  \right\} \mathbf{n}_{\mathrm{i}}
+\int_{\Omega} \left\{ \Phi(\vx) \nabla^2 \Psi(\vx) - \nabla^2 \Phi(\vx) \Psi(\vx) \right\} \td \Omega = \int_{\partial \Omega}
+\frac{\partial \Phi(\vx)}{\partial n} \Psi(\vx)  - \Phi(\vx) \frac{\partial \Psi(\vx)}{\partial n}
  \td \partial\Omega.
 \label{Eq:App:Green_theorem}
+\end{equation}
+
+\section{Direct solution of the inhomogeneous wave equation for 3D SFS}
+
+Let's assume a distribution of point sources at $y = 0$, with assuming Neumann boudary conditions for $p(\vx,t)$ given by: $\frac{\partial}{\partial y} p(\vx, t)|_{y = 0} = 0$. The time domain inhomogeneous wave equation for this scenario is given by
+\begin{equation}
+\nabla^2 p(\vx,t) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} p(\vx,t) = - d(x,z,t)\delta(y).
+\end{equation}
+Let's take the Fourier-transform of both sides wrt time and $x,y$:
+\begin{equation}
+\left( \left( \frac{\omega}{c}  \right)^2 -  k_x^2 - k_z^2 \right) \tilde{P}(k_x,y,k_z,\omega) + \frac{\partial^2}{\partial y^2}  \tilde{P}(k_x,y,k_z,\omega) = - \tilde{D}(k_x,k_z,\omega)\delta(y).
+\end{equation}
+Let's evaluate the definite integral of both sides of the equation from $-\infty$ to 0. The equation becomes
+\begin{equation}
+\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y + \frac{\partial}{\partial y}  \left. \tilde{P}(k_x,y,k_z,\omega)\right|_{y = 0} = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
+\end{equation}
+Due to the prescribed boundary conditions the derivative on $y=0$ vanishes
+\begin{equation}
+\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 + k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y  = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
+\end{equation}
+and the driving function spectrum reads
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+= -2 \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y .
+\label{App:3D_driving_function}
+\end{equation}
+The equation states that by letting the normal derivative of the synthesized sound field vanish on the SSD the target pressure field can be synthesized perfectly by the driving function given by \eqref{App:3D_driving_function}.
+ 
+\begin{equation}
+\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y 
+=
+\frac{\tilde{P}(k_x,0,k_z,\omega)}{\ti \sqrt{\left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 } }
+.
+\label{App:3D_driving_function}
+\end{equation}
+
+\begin{equation}
+\int_{-\infty}^{t} f(\tau) \td \tau = \frac{\int_{-\infty}^{\infty} f(t) \te^{-\ti \omega t} \td t}{\ti \omega}
+\end{equation}
+
+\paragraph{Planar driving functions for a virtual point source \\}
+Now let's assume a virtual point source, located at $\mathbf{x}_s = [ 0,\ y_s,\ 0]^{\mathrm{T}}$. 
+For sake of simplicity only propagating waves (i.e. $k_x^2 + k_z^2 < \left( \frac{\omega}{c} \right)^2$) are considered.
+Using the definition of the Green's function in the wavenumber space the field of the point source is described by 
+\begin{multline}
+\tilde{P}(k_x,y,k_z,\omega ) = \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y - y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }} 
+= \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }|y|} \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }|y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }} 
+,
+\end{multline}
+thus the driving function reads
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+= -\ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2  } \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} 
+ \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y|}  \td y .
+\end{equation}
+Due to the symmetry to the $y = 0$ plane 
+\begin{equation}
+\int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
+\int_{0}^{\infty}  \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
+\frac{1}{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }}.
+\end{equation}
+And the driving function is given in the spectral domain as
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+= \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} .
+\end{equation}
+
+\paragraph{Planar driving functions for a virtual plane wave \\} 
+As a following example consider a plane wave, whose spectrum is given by
+\begin{equation}
+\tilde{P}(k_x,k_z,\omega) = 4\pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \te^{-\ti k_{y0} |y|}.
+\end{equation}
+by denoting $k_{y0} =\sqrt{\left( \frac{\omega}{c}  \right)^2 - \left( k_{x_0}^2 + k_{z_0}^2 \right) } $ The driving function will read
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+= - 8 \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2   \right) \int_{-\infty}^{0} \te^{-\ti k_{y0} |y|} \td y .
+\end{equation}
+Again, by carrying out the integration and exploiting the sifting property of the Dirac-delta function:
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+= 8 \ti \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) k_{y0} .
 \end{equation}
