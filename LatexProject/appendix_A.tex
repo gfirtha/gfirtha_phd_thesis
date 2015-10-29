@@ -55,61 +55,77 @@ and the driving function spectrum reads
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega)
 = -2 \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y .
-\label{App:3D_driving_function}
+\label{App:3D_driving_function_a}
 \end{equation}
 The equation states that by letting the normal derivative of the synthesized sound field vanish on the SSD the target pressure field can be synthesized perfectly by the driving function given by \eqref{App:3D_driving_function}.
- 
+
+Assuming that the target sound field $P(\vx,\omega)$ satisfies the homogeneous wave equation in the $y<0$ region from equation
+\eqref{Eq:Theory:Wave_field_extrapolation} the target angular spectrum of the sound field may be written for arbitrary $y$ as
 \begin{equation}
-\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y 
-=
-\frac{\tilde{P}(k_x,0,k_z,\omega)}{\ti \sqrt{\left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 } }
-.
+\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega)\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y }.
+\end{equation}
+Integrating both sides from $-\infty$ to $0$ wrt. $y$ 
+\begin{equation}
+\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = \tilde{P}(k_x,0,k_z,\omega) \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y } \td y.
+\end{equation}
+It is known, that
+\begin{equation}
+\int_{-\infty}^{0}\te^{a x} = \frac{1}{-a}, \hspace{3mm} (\mathcal{R}(a)<0),
+\end{equation}
+thus
+\begin{equation}
+\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = 
+\frac{\tilde{P}(k_x,0,k_z,\omega) }{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } }.
+\end{equation}
+Substituting back to equation \eqref{App:3D_driving_function_a} the angular spectrum of the driving function reads
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega)
+=  2 \ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 }
+\tilde{P}(k_x,0,k_z,\omega) .
 \label{App:3D_driving_function}
 \end{equation}
+Comparison with equation \eqref{Eq:Theory:Planar_explicit_driv_fun} reveals that the same driving function is obtained as the result stemming from the single layer potential integral.
 
-\begin{equation}
-\int_{-\infty}^{t} f(\tau) \td \tau = \frac{\int_{-\infty}^{\infty} f(t) \te^{-\ti \omega t} \td t}{\ti \omega}
-\end{equation}
-
-\paragraph{Planar driving functions for a virtual point source \\}
-Now let's assume a virtual point source, located at $\mathbf{x}_s = [ 0,\ y_s,\ 0]^{\mathrm{T}}$. 
-For sake of simplicity only propagating waves (i.e. $k_x^2 + k_z^2 < \left( \frac{\omega}{c} \right)^2$) are considered.
-Using the definition of the Green's function in the wavenumber space the field of the point source is described by 
-\begin{multline}
-\tilde{P}(k_x,y,k_z,\omega ) = \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y - y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }} 
-= \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }|y|} \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }|y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }} 
-,
-\end{multline}
-thus the driving function reads
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-= -\ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2  } \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} 
- \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y|}  \td y .
-\end{equation}
-Due to the symmetry to the $y = 0$ plane 
-\begin{equation}
-\int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
-\int_{0}^{\infty}  \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
-\frac{1}{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }}.
-\end{equation}
-And the driving function is given in the spectral domain as
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-= \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} .
-\end{equation}
-
-\paragraph{Planar driving functions for a virtual plane wave \\} 
-As a following example consider a plane wave, whose spectrum is given by
-\begin{equation}
-\tilde{P}(k_x,k_z,\omega) = 4\pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \te^{-\ti k_{y0} |y|}.
-\end{equation}
-by denoting $k_{y0} =\sqrt{\left( \frac{\omega}{c}  \right)^2 - \left( k_{x_0}^2 + k_{z_0}^2 \right) } $ The driving function will read
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-= - 8 \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2   \right) \int_{-\infty}^{0} \te^{-\ti k_{y0} |y|} \td y .
-\end{equation}
-Again, by carrying out the integration and exploiting the sifting property of the Dirac-delta function:
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-= 8 \ti \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) k_{y0} .
-\end{equation}
+%
+%\paragraph{Planar driving functions for a virtual point source \\}
+%Now let's assume a virtual point source, located at $\mathbf{x}_s = [ 0,\ y_s,\ 0]^{\mathrm{T}}$. 
+%For sake of simplicity only propagating waves (i.e. $k_x^2 + k_z^2 < \left( \frac{\omega}{c} \right)^2$) are considered.
+%Using the definition of the Green's function in the wavenumber space the field of the point source is described by 
+%\begin{multline}
+%\tilde{P}(k_x,y,k_z,\omega ) = \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y - y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }} 
+%= \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }|y|} \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }|y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }} 
+%,
+%\end{multline}
+%thus the driving function reads
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%= -\ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2  } \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} 
+% \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y|}  \td y .
+%\end{equation}
+%Due to the symmetry to the $y = 0$ plane 
+%\begin{equation}
+%\int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
+%\int_{0}^{\infty}  \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
+%\frac{1}{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }}.
+%\end{equation}
+%And the driving function is given in the spectral domain as
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%= \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} .
+%\end{equation}
+%
+%\paragraph{Planar driving functions for a virtual plane wave \\} 
+%As a following example consider a plane wave, whose spectrum is given by
+%\begin{equation}
+%\tilde{P}(k_x,k_z,\omega) = 4\pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \te^{-\ti k_{y0} |y|}.
+%\end{equation}
+%by denoting $k_{y0} =\sqrt{\left( \frac{\omega}{c}  \right)^2 - \left( k_{x_0}^2 + k_{z_0}^2 \right) } $ The driving function will read
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%= - 8 \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2   \right) \int_{-\infty}^{0} \te^{-\ti k_{y0} |y|} \td y .
+%\end{equation}
+%Again, by carrying out the integration and exploiting the sifting property of the Dirac-delta function:
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%= 8 \ti \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) k_{y0} .
+%\end{equation}
