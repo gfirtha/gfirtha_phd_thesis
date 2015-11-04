@@ -217,7 +217,7 @@ The importance of these statements will be further investigated in the latter se
 
 \vspace{3mm}
 Similarly to the Cartesian-solution the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate system. The results are given also in the form of an infinite series of spherical and cylindrical harmonics.These functions connect the radiated sound at an arbitrary point, and the sound field, measured on a spherical or infinite cylindrical surface. These solutions are of great importance when spherical, or circular secondary source distributions are applied for sound field reconstruction. Since the present thesis deal exclusively with planar and linear loudspeaker arrays, there the presentation of the spherical and cylindrical solutions are omitted. For a detailed investigation
-please refer to \cite{Williams1999, Zotter2009, Ahrens2012}
+please refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}
 
 \subsubsection{Boundary conditions}
 
@@ -600,36 +600,67 @@ Note, that since the Rayleigh integral describes the field of an ensemble of poi
 \section{Theory of Sound Field Synthesis}
 
 \subsection{The problem formulation}
+\begin{figure}[b!]
+	\centering
+	\begin{overpic}[width = .8\columnwidth]{Figures/Theory/general_sfs.png}
+	\scriptsize
+	\put(0,26){virtual source}
+	\put(45,0.5){$\mathbf{0}$}
+	\put(71,31){$\vx$}
+	\put(43,15){$\vxo$}
+	\begin{turn}{27}
+	\put(57,-3){$|\vx - \vxo|$}
+	\end{turn}
+	\put(50,35){$\Omega$}
+	\put(80,20.5){$\partial \Omega$}
+	\end{overpic}
+	\caption{General SFS geometry}
+	\label{Fig:Theory:general_sfs_geometry}
+\end{figure}
 
-Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the surface $\partial \Omega$. The enclosing source ensemble is termed as the \emph{secondary source distribution (SSD)}.
-For sake of simplicity we assume, that the secondary sources are acoustic point sources, i.e. monopoles, described by the $n$-dimensional Green's function $G(\vx,\omega)$. Since dynamical loudspeakers can be modeled as monopoles in the low-frequency region, this assumption is feasible. The incorporation of non-ideal secondary source elements in the generalized SFS theory will be discussed in the next chapter.
 
-With these assumptions the pressure at any $\vx \in \Omega$ is given by the sum of the individual SSD elements, written as a single layer potential:
+Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the surface $\partial \Omega$.
+The enclosing source ensemble is termed as the \emph{secondary source distribution (SSD)}.
+For the general geometry see Figure \ref{Fig:Theory:general_sfs_geometry}.
+For sake of simplicity we assume, that the secondary sources are acoustic point sources, i.e. monopoles, described by the $n$-dimensional Green's function $G(\vx,\omega)$. Since dynamical loudspeakers can be modeled as 3D monopoles in the low-frequency region, this assumption is feasible. The incorporation of non-ideal secondary source elements in the generalized SFS theory will be discussed in the next chapter.
+
+With these assumptions the pressure at any $\vx \in \Omega$ is given by the sum of the individual SSD elements, written as a single layer potential \cite{Ahrens2012,Ahrens2010phd,Wierstorf2014,Schultz2014:Comparing_approaches}:
 \begin{equation}
 P(\vx,\omega) = \oint_{\partial \Omega} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td \partial \Omega ( \vxo ).
 \label{Eq:Theory:3D_SFS}
 \end{equation}
 The weighting factor $D(\vxo,\omega)$ is termed as the \emph{driving function} for the given SSD. 
 The Sound Field Synthesis problem can be formulated as the following: given a \emph{target sound field}, or the sound field of a \emph{virtual source} $P(\vx,\omega)$. Our aim is to solve the integral equation for $D(\vxo,\omega)$, so that the weighted sum of the SSD's sound field --i.e. the \emph{synthesized field}-- equals to the target sound field. 
+The problem is therefore an inverse problem and has a unique solution for general enclosures.
 
-In the present thesis exclusively planar and linear SSD geometries are considered.
-In this case for a planar geometry along the $y = 0$ plane the general SFS equation takes the form of a surface integral 
+Comparing with the Kirchhoff-Helmholtz integral formulation \eqref{Eq:Theory:Kirchhoff-Helmholtz} it becomes clear, that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure. Practically speaking the removal of the double layer result in that no dipoles are present on the surface which would extinguish the field of the monopoles outside the volume.
+In the present thesis free-field conditions are assumed, the exterior sound field satisfies the Sommerfeld radiation condition, thus the effect of the listening environment in practical applications is not included.
+
+In the present thesis exclusively planar and linear SSD geometries are considered employing 3-dimensional secondary sources.
+
+\paragraph{Planar SSD geometry:}
+The geometry for the planar case may be derived in the same manner as the geometry for the Rayleigh-integral: we assume that the boundary surface consists of a simply connected disc and hemisphere. Refer to \cite[p.~84,p.~275]{Ahrens2012, Williams1999} for the geometry. For sake of convenience the disk is located in the plane $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$. By increasing the radius of the hemisphere to infinity and by invoking the Sommerfeld-radiation condition the reproduced field is written as an integral over an infinite plane $\vxo$:
 \begin{equation}
-P(\vx,\omega) = \iint_{\partial \Omega} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td x_0 \td z_0.
+P(\vx,\omega) = \iint_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td x_0 \td z_0,
 \label{Eq:Theory:3D_planar_SFS}
 \end{equation}
+and $\Omega$ becomes the half-space $y>0$, often termed as \emph{target half-space}.
 $p(\vx,t)$ therefore satisfies the inhomogeneous wave equation with homogeneous Neumann boundary condition
 \begin{equation}
 \nabla^2 p(\vx,t) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} p(\vx,t) = - d(x,z,t)\delta(y).
 \label{Eq:Theory:3D_planar_SFS_time}
 \end{equation}
+The planar SSD geometry is depicted in Figure \ref{Fig:Theory:planar_linear_geometry} (a).
+
+
+\paragraph{Linear SSD geometry:}
 From the practical point of view the application of planar loudspeaker geometry is unfeasible. Instead, in practical arrangements linear SSDs are applied.
-For a linear SSD positioned at $\vxo = [x,\ 0,\ 0]^{\mathrm{T}}$ the synthesized field reads
+For a linear SSD positioned at $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$ the synthesized field reads
 \begin{equation}
 P(\vx,\omega) = \int_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td x_0.
 \label{Eq:Theory:Linear_SFS}
 \end{equation}
-
+%
 \begin{figure} 
 	\centering
 	\begin{overpic}[width = .8\columnwidth]{Figures/Theory/planar_linear_geometry.png}
@@ -647,37 +678,36 @@ P(\vx,\omega) = \int_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \
 	\caption{Planar and linear SSD geometry}
 	\label{Fig:Theory:planar_linear_geometry}
 \end{figure}
+It is clear, that equation \eqref{Eq:Theory:Linear_SFS} describes a cylindrically symmetric sound field with the symmetry axis being the SSD. In practice we restrict the investigation of the synthesized field to the horizontal half-plane containing the SSD $z = 0, y>0$, termed as the \emph{synthesis-plane}.
+Furthermore, even the explicit solution for the linear problem allows us the ensure theoretically perfect synthesis only along a line parallel to the SSD, termed as the \emph{reference line}. 
+Refer to Figure \ref{Fig:Theory:planar_linear_geometry} for the linear SFS geometry.
 
-
-There are several approaches to solve the problem including physics based and merely mathematical solutions. For special geometries -- planar, linear, spherical, circular or cylindrical SSDs -- analytical expressions are available. In the following these approaches are shortly introduced focusing on planar and linear SSD arrays.
+There are several approaches to solve the problem including physics based implicit and merely mathematical explicit solutions. For special geometries -- planar, linear, spherical, circular or cylindrical SSDs -- analytical expressions are available. In the following these approaches are shortly introduced focusing on planar and linear SSD arrays.
 
 \subsection{Explicit solution: The Spectral Division Method}
 
-The mathematically motivated explicit solution for the general SFS problem exploits the fact, that the solution of equation \eqref{Eq:Theory:3D_SFS} with respect to $D(\vxo, \omega)$ constitutes a Fredholm integral equation of the first kind, with the \emph{integral kernel} being the Green's function.
-These types of equations may be solved for the case of special geometries with known set of orthogonal basis functions.  
-If the involved wave fields ( both the acoustic transfer function $G(\vx - \vxo , \omega )$ and the target sound field $P(\vx,\omega)$ ) are expanded into the series of the basis functions then the inverse problem may be solved as a comparison of expansion coefficients:
-\begin{eqnarray}
-G(\vx - \vxo , \omega ) = \sum_n \tilde{G_n}(\omega) \psi_{n}(\vx) \psi_{n}^{*}(\vxo)
-\\
-P(\vx,\omega) = \sum_n \tilde{P_n}(\omega)\psi_n(\vx)
-\\
-D(\vxo,\omega) = \sum_n \tilde{D_n}(\omega)\psi_n(\vxo)
-\end{eqnarray}
-then
-\begin{equation}
-\tilde{D_n}(\omega) = \frac{\tilde{P_n}(\omega)}{\tilde{G_n}(\omega)}.
-\end{equation}
-For special geometries the orthogonal basis functions are given: circular, helical and spherical harmonics for circular, cylindrical and spherical SSD geometries, and exponential functions for the planar and linear case.
-In the present thesis only the planar and linear geometries are investigated in details. For a rigorous treatment on the explicit solution for circular and spherical SSDs applying compact operator theory refer to ....
+The explicit solution for the general SFS problem utilizes compact operator theory by exploiting the fact, that integral \ref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the operator kernel being the Green's function $G(\vx - \vxo , \omega )$ \cite{Ahrens2012,MorseFeshbach1953}.
+Such an operator, and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on the boundary surface $\partial \Omega$, that form a complete basis of the solution. The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficient of the operator kernel is zero. Otherwise the problem is termed \emph{ill-conditioned}. 
+Finally an explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
+The method is often refered as \emph{mode-matching} solutions, since the eigenfunctions of the given geometry are termed the \emph{modes}.
+
+This solution utilizing the single layer potential is unique for general enclosures and also for the non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively. In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure, or cavity due to resonance phenomena.
+
+The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
+For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS}
+In the present thesis only the planar and linear geometries are investigated in details.
 
 \subsubsection{Planar SSD geometry}
 
-For a planar SSD geometry the orthogonal, Dirac-normalized set of basis functions is given by 
+For the planar geometry Equation \eqref{Eq:Theory:3D_planar_SFS} is termed a Fredholm-integral of the first kind. Due to the infinite integration limit such integrals are called \emph{singular integrals} thus not form a compact operator \cite[p.~921.]{MorseFeshbach1953}. 
+In this case the infinite, non-denumerable eigenvalues of the problem form a continuous function \cite{MorseFeshbach1953,Schultz2014:Comparing_approaches}.
+However, due to the reciprocity of the integration kernel the inverse problem can be solved applying the convolution theorem, utilizing that basically \eqref{Eq:Theory:3D_planar_SFS} describes a continuous convolution along the $y=0$ plane:
 \begin{equation}
-\psi(k_x,k_y,\vx) = \te^{-\ti (k_x x + k_z z)}, \hspace{2cm} \psi^*(\vx) = \te^{\ti (k_x x + k_z z)}.
+P(\vx,\omega) = D(x,z,\omega)\ast_{x} \ast_{z} G(x,y,z,\omega).
 \end{equation}
-The basis functions therefore describe plane waves.
-For the planar case the integration limits in \eqref{Eq:Theory:3D_planar_SFS} are infinite, resulting up in a continuous function of expansion coefficients -- opposed to the circular and spherical discrete spectra of the involved sound fields --, and the expanded sound fields are written as a double integral
+Here $G(x,y,z,\omega)$ denotes the sound field of a secondary source element placed at the origin.
+
+For the infinite planar geometry the orthogonal basis is given by the continuous set of exponentials, therefore the expansion of the involved quantities is given by a double inverse Fourier-transform \cite{Ahrens2012, Arfken2005,Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition:
 \begin{equation}
 G(\vx - \vxo,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{G}(k_x,y,k_z, \omega)  \te^{\ti (k_x x_0 + k_z z_0)} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
 \label{Eq:Theory:G_x_inverse_fourier}
@@ -685,142 +715,119 @@ G(\vx - \vxo,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{G}(k_x,y
 \begin{equation}
 P(\vx,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{P}(k_x,y,k_z, \omega) \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
 \end{equation}
+In \eqref{Eq:Theory:G_x_inverse_fourier} the translation property of the Fourier-transform is applied.
+The expansion coefficients i.e. the angular spectrum of the involved sound fields may be obtained by a forward Fourier-transform.
+
+The series expansions --along with the expansion of driving function-- may be substituted into Equation \eqref{Eq:Theory:3D_planar_SFS}. By changing the order of integration, utilizing the orthogonality of the exponental functions and exploiting the sifting property of the Dirac-delta one finally obtains
 \begin{equation}
-D(\vxo,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,0,k_z, \omega) \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+\tilde{P}(k_x,y,k_z, \omega) = \tilde{D}(k_x,k_z, \omega)  \tilde{G}(k_x,y,k_z, \omega),
 \end{equation}
-The series expansion --or plane wave expansion-- therefore constitutes an inverse spatial Fourier-transform wrt. $x$ and $z$ dimension, while the expansion coefficients are given by the angular spectra of the involved sound fields. Note, that for equation \eqref{Eq:Theory:G_x_inverse_fourier} the translation property of Fourier-transform was applied, thus $ \tilde{G}(k_x,y,k_z, \omega)$ describes the spatial Fourier-transform of the field of a point source, placed at the origin, measured on arbitrary $y > 0$ plane.
-The basic SFS integral for the geometry under discussion reads
-\begin{multline}
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{P}(k_x,y,k_z, \omega) \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-= 
-\\
-\iint_{x_0,z_0}
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,0,k_z, \omega) \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z
-\\
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{G}(k_x',y,k_z', \omega)  \te^{\ti (k_x' x_0 + k_z' z_0)} \te^{-\ti (k_x' x + k_z' z)} \td k_x' \td k_z'
-\td x_0 \td z_0
-\end{multline}
-By interchanging the order of integration and exploiting the orthogonal property of exponentials $\iint \te^{-\ti (k_x x_0 + k_z z_0)}  \te^{\ti (k_x' x_0 + k_z' z_0)} \td x_0 \td z_0 = 4\pi^2 \delta(k_x' - k_x) \delta(k_z' - k_z)$:
-\begin{multline}
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{P}(k_x,y,k_z, \omega) \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-= 
-\\
-\frac{1}{4\pi^2}  \iint_{-\infty}^{\infty} \tilde{D}(k_x,0,k_z, \omega)\td k_x \td k_z
-\iint_{-\infty}^{\infty} \delta(k_x' - k_x) \delta(k_z' - k_z) \tilde{G}(k_x',y,k_z', \omega)  \te^{-\ti (k_x' x + k_z' z)} \td k_x' \td k_z'.
-\end{multline}
-By exploiting the sifting property of the Dirac-delta one finally obtains
-\begin{multline}
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{P}(k_x,y,k_z, \omega) \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-= 
-\\
-\frac{1}{4\pi^2}  \iint_{-\infty}^{\infty} \tilde{D}(k_x,0,k_z, \omega)
- \tilde{G}(k_x,y,k_z, \omega)  \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z,
-\end{multline}
-thus
-\begin{equation}
-\tilde{P}(k_x,y,k_z, \omega) = \tilde{D}(k_x,0,k_z, \omega)  \tilde{G}(k_x,y,k_z, \omega) 
-\end{equation}
-The expansion coefficient are therefore obtained by a comparision of spectral coefficients and the driving function takes the form:
+thus the convolution theorem for the Fourier-transform holds \cite{Girod2001}.
+
+The expansion coefficient are therefore obtained by a comparison of spectral coefficients and the driving function takes the form:
 \begin{equation}
 D(k_x,k_z,\omega) = \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} = 
 \frac{\mathcal{F}\left\{ P(\vx,\omega) \right\} }
 {  \mathcal{F}\left\{ G(\vx,\omega) \right\} },
 \end{equation}
 \begin{equation}
-D(\vxo,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,k_z, \omega) \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,k_z, \omega) \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
 \label{Eq:Theory:Dkx_inverse_Fourier}
 \end{equation}
+Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed as the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear}.
+
+It is shall be noticed, that this method does not give a constraint on the integral kernel. Theoretically an arbitrary transfer function may be assigned for the SSD elements: as long the problem is well-conditioned --i.e. the spectrum of the transfer function does not exhibit zeros-- unique driving functions may be derived applying the foregoing.
 
 \vspace{3mm}
-The same result may be deduced from realizing, that integral \eqref{Eq:Theory:3D_planar_SFS} constitutes a 2-dimensional convolution of functions $G(\vx,\omega)$ and $P(\vx,\omega)$ above the $y = 0$ plane. Here $G(\vx,\omega)$ denotes the sound field of a secondary source element placed at the origin:
+For general 3D SFS problems the elements of the SSD are described by the 3D Green's function. The plane wave expansion of the 3D free field Green's function is termed as the Weyl's integral representation \cite{Williams1999, Lalor1969}:
 \begin{equation}
-P(\vx,\omega) = D(x,0,z,\omega)\ast_{x} \ast_{z} G(x,y,z,\omega).
+G(\vx - \vxo,\omega ) = \frac{1}{4\pi} \iint_{-\infty}^{\infty} -\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y }
+\te^{\ti (k_x x_0 + k_z z_0)} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
+\label{Eq:Theory:Weyls_integra}
 \end{equation}
-Applying the Fourier-transform convolution theorem the convolution is transformed into a multiplication by performing a spatial Fourier transform on a fixed $y = \mathrm{const}$ plane.
+with $k_y = \sqrt{ \left( \frac{\omega}{c} \right )^2 - k_x^2 - k_z^2 }$, thus the angular spectrum of the Green's function at $\vxo = [0,\ 0,\ 0]^{\mathrm{T}}$ measured at a fixed $y$ is given as:
 \begin{equation}
-\tilde{P}(k_x,y,k_z,\omega) = \tilde{D}(k_x,k_z,\omega) \tilde{G}(k_x,y,k_z,\omega)
+\tilde{G}(k_x,y,k_z,\omega) =-\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y }.
 \end{equation}
- thus the spectrum of the driving function is given by a spectral division. In the related literature the method is often termed as 	the \emph{Spectral Division Method (SDM)}. 
-
-\vspace{3mm}
-For general 3D SFS problems the elements of the SSD are described by the 3D Green's function. The spatial Fourier-transform of the Green's function is termed as the Weyl's integral representation, and the spectral coefficients are well-known:
+With the angular spectrum representation the target sound field on a fixed, arbitrary $(y=\mathrm{const})$ plane may be expressed from the field measured on $y=0$ using equation \eqref{Eq:Theory:Wave_field_extrapolation}:
 \begin{equation}
-\tilde{G}(k_x,y,k_z,\omega) = -\frac{\ti}{2} \frac{\te^{-\sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  } |y| }}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  } }.
+\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{- k_y y}.
 \end{equation}
-With the angular spectrum representation the target sound field on a fixed, arbitrary $y=\mathrm{const}$ plane may be expressed from the field measured on $y=0$ using equation \eqref{Eq:Theory:Wave_field_extrapolation}:
-\begin{equation}
-\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{-\sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  } y}.
-\end{equation}
-By carrying out the division for the planar case the driving function becomes independent from the $y$-coordinate and the spectral representation reads
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega) = 2\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  } \tilde{P}(k_x,0,k_z,\omega),
-\label{Eq:Theory:Planar_explicit_driv_fun}
-\end{equation}
-or by denoting $k_y  = \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }$
+By carrying out the division for the planar case the exponential pressure propagators cancel out, and the driving function becomes independent from the $y$-coordinate and the spectral representation reads
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega) = 2\ti k_y \tilde{P}(k_x,0,k_z,\omega).
+\label{Eq:Theory:Planar_explicit_driv_fun}
 \end{equation}
-
 Straightforwardly, the explicit expression of the driving function is obtained by the proper inverse Fourier-transform according to \eqref{Eq:Theory:Dkx_inverse_Fourier}.
-
-\vspace{3mm}
-It is important to notice, that this method do not give a constraint on the the sound field of a single secondary source elements, described by $G(\vx,\omega)$. Theoretically an arbitrary transfer function may be assigned for the SSD elements: as long as its Fourier-transform is known and the problem is well-conditioned (i.e. the spectrum of the transfer function does not exhibit zeros) unique driving functions may be derived applying the foregoing.
-
 
 \subsubsection{Linear SSD geometry}
 
-Similarly to the planar case the basis functions for a linear SSD the basis functions are given by exponentials
-\begin{equation}
-\psi(k_x,x) = \te^{-\ti k_x x}, \hspace{2cm} \psi^*(k_x,x) = \te^{\ti k_x x}.
-\end{equation}
-The expansion of the involved function in this case therefore means spatial inverse Fourier transform with respect to $x$-dimension:
-\begin{equation}
-G(\vx - \vxo,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{G}(k_x,y,z, \omega)  \te^{\ti k_x x_0} \te^{-\ti k_x x} \td k_x,
-\end{equation}
-\begin{equation}
-P(\vx,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{P}(k_x,y,z, \omega) \te^{-\ti k_x x} \td k_x,
-\end{equation}
-\begin{equation}
-D(\vxo,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{D}(k_x, \omega) \te^{-\ti k_x x_0 } \td k_x.
-\end{equation} 
-
-Again, the same derivation may be carried out as for the planar case, or by realizing that equation \eqref{Eq:Theory:Linear_SFS} can be regarded as a convolution integral along $x$, 
+Similarly to the planar case the basis functions for a linear SSD is given by exponentials.
+By realizing that equation \eqref{Eq:Theory:Linear_SFS} can be regarded as a convolution integral along the $x$-axis,
+the convolution is transformed into a multiplication vby means of a forward Fourier-transform
 \begin{equation}
 \tilde{P}(k_x,y,z, \omega) = \tilde{D}(k_x,\omega)\tilde{G}(k_x,y,z, \omega).
 \end{equation}
-The driving function spectra is obtained as a spectral ratio
+The driving function spectra is then obtained as a spectral ratio
 \begin{equation}
-\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = \frac{\mathcal{F}_x\left\{ P(\vx,\omega) \right\}}{\mathcal{F}_x\left\{ G(\vx,\omega) \right\}}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = \frac{\mathcal{F}_x\left\{ P(\vx,\omega) \right\}}{\mathcal{F}_x\left\{ G(\vx,\omega) \right\}},
 \end{equation}
-The frequency domain driving function therefore reads
+and the frequency domain driving function therefore reads
 \begin{equation}
 D(\vxo,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,z, \omega) }{\tilde{G}(k_x,y,z, \omega)} \te^{-\ti k_x x_0} \td k_x.
+\label{Eq:Theory:LinearSDM1}
 \end{equation}
-
-\vspace{3mm}
-For 3D problems applying point sources as SSD elements the Fourier-transform coefficients are given as
+In order to kepp the problem well-conditioned the transfer function $\tilde{G}(k_x,y,z, \omega)$ may not exhibit zeros.
+For 3D problems applying point sources as SSD elements the Fourier-transform coefficients of the Green's function is given as \cite{Ahrens2010a}
 \begin{equation}
 \tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 } \sqrt{ y^2 + z^2 } \right).
 \end{equation}
 
-Note, that here, unlike for the planar case $y$ dependency does not cancel out in the spectral division, thus the driving function is dependent upon the listener $y$ position.
-In practical applications driving functions are calculated for a fixed $y = \yref$ position, called the \emph{reference line}. Along this line theoretically the SDM ensures perfect synthesis of the target sound field. In any other listener positions amplitude errors are present.
+\vspace{3mm}
+Note, that unlike the planar case here the driving function contains both $y$ and $z$ position thus the driving function is dependent upon the listener position: Equation \eqref{Eq:Theory:LinearSDM1} may be solved only for positions on the surface of a cylinder for fixed $d = \sqrt{y^2 + z^2}$ \cite[p.~60.]{Ahrens2010phd}.
+Also since an infinite line source --i.e. the SSD-- can only radiate wavefronts with cylindrical symmetry the following  dispersion relation must hold:
+\begin{equation}
+\left( \frac{\omega} {c}\right)^2 - k_x^2 = k_y^2 + k_z^2 = k_{\rho}^2,
+\end{equation}
+with $k_{\rho}$ being the radial wavenumber. That suggest, that on a fixed temporal frequency only component $k_x$ can be controlled individually using a linear SSD .
+
+These restrictions will have the following consequence:
+Since for a fixed $k_x$ the radial wavenumber and the propagation direction of the synthesized field is determined, perfect synthesis may be assured only along a straight line, parallel with the SSD: where the distance from the SSD determined by $d = \sqrt{x^2 + y^2}$, and on which the radial wavenumber of the target sound field corresponds to that of the synthesized field, determined by $\left( \frac{\omega} {c}\right)^2 - k_x^2$.
+
+For practical applications we choose the horizontal plane $z=0$ for the plane of synthesis, and reference the driving functions to the \emph{reference line}, by setting $y = \yref$.
+See Figure \ref{Fig:Theory:planar_linear_geometry} (b) for an illustration. The driving function thus reads
+\begin{equation}
+D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \te^{-\ti k_x x_0} \td k_x.
+\label{Eq:Theory:Linear_SDM}
+\end{equation}
+In this geometry amplitude correct synthesis is restricted to the reference line, furthermore the propagation direction can be reconstructed for those sound fields, for that $k_z = 0$ in the $z=0$ plane. Practically that means plane waves propagating along the horizontal plane or point sources located in the plane of synthesis.
+
+\vspace{3mm}
+It's worth noting that the analytic Fourier-transform cofficients of the target sound field is available only for limited cases. In any other cases numerical transforms are needed.
+For a practical and optimized implementation of the SDM for an arbitrary target sound field refer to \cite{ahrens2013a:efficientSDM}
+
+% To check: SDM w linear sources from the helical spectrum representation (eg. single layer potential, or scattering from a rigid line source)
 %
-%\subsubsection{Approximation of linear SSD driving functions}
-%
-%%In order to show, how the driving function depends on $y$ position and to show the analogies with equation \eqref{Eq:Theory:Planar_explicit_driv_fun} one may approximate the linear driving functions for point sources as SSD elements with 2-dimensional driving functions as the following: assume a purely 2-dimensional SFS problem. In this scenario both wave field extrapolation and driving function calculation may be written from the 3D case by setting $k_z = 0$. This may be proven by 
-%
-%Think over:
-%\begin{equation}
-%G_{3D}(\vx,\omega) = -\frac{1}{2\pi} \iint \frac{\te^{-\ti k_y y} }{k_y}\te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-%\end{equation}
-%\begin{equation}
-%\frac{\partial}{\partial y} G_{3D}(\vx,\omega) = -\frac{1}{2\pi} \iint \te^{-\ti k_y y} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-%\end{equation}
-%\begin{equation}
-%G_{2D}(\vx,\omega) = -\frac{1}{2\pi} \iint \frac{\te^{-\ti k_y y} }{k_y}\te^{-\ti (k_x x + k_z z)} \td k_x \td k_z
-%\end{equation}
+% To check: Approximation of explicit linear SSD driving functions to by reduce it to the wavefield on the SSD
+
+% To check: why Frank writes, that no solution is known for (A12) in Schultz,Spors Analytical SFS... It is given is Fourier Acoustics (2.65)
 
 \subsection{Implicit solution of sound field synthesis problem}
 
+The implicit solution for the general SFS problem aims at the reduction of the Kirchhoff-Helmholtz Integral (\emph{KHIE}) equation to a single layer potential instead of the explicit solution of the inverse problem, as treated in the previous subsection. Naturally this will result in a non-zero field outside the enclosure.
+
+As we could see the using the KHIE describes the sound field inside the enclosure in the form of a double layer potential:
+\begin{equation}
+P(\vx,\omega) = 
+\iint_{\partial \Omega}  \left( 
+P(\vxo,\omega)  \frac{\partial G(\vx|\vxo,\omega)}{\partial n}  -  
+G(\vx|\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial n} 
+\right)   \td \partial \Omega ( \vxo),
+\end{equation}
+with $\vx \in \Omega$.
+In order to let the double layer vanish two different approaches exist:
+\begin{itemize}
+\item Impose homogeneous Dirichlet boundary conditions on the total field in an equivalent scattering problem. This 
+\item findig 
+\end{itemize}
 \subsubsection{•}
