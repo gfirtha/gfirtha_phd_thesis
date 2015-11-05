@@ -509,6 +509,7 @@ This can be done by modifying the Green's function in order to satisfy Dirichlet
 In the following section the former approach is applied for planar boundaries resulting in the Rayleigh integral theorem.
 
 \subsection{The Rayleigh-integrals}
+\label{Section:Theory:Rayleigh}
 
 The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
 
@@ -812,7 +813,8 @@ For a practical and optimized implementation of the SDM for an arbitrary target 
 
 % To check: why Frank writes, that no solution is known for (A12) in Schultz,Spors Analytical SFS... It is given is Fourier Acoustics (2.65)
 
-\subsection{Implicit solution of sound field synthesis problem}
+\newpage
+\subsection{Implicit solution of the SFS equation}
 
 The implicit solution for the general SFS problem aims at the reduction of the Kirchhoff-Helmholtz Integral (\emph{KHIE}) equation to a single layer potential instead of the explicit solution of the inverse problem, as treated in the previous subsection. Naturally this will result in a non-zero field outside the enclosure.
 
@@ -827,7 +829,58 @@ G(\vx|\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial n}
 with $\vx \in \Omega$.
 In order to let the double layer vanish two different approaches exist:
 \begin{itemize}
-\item Impose homogeneous Dirichlet boundary conditions on the total field in an equivalent scattering problem. This 
-\item findig 
+\item Imposing homogeneous Dirichlet boundary conditions on the total field --which in the interior equals to the target sound field-- in an equivalent scattering problem: 
+\begin{equation}
+P(\vxo,\omega) = 0.
+\end{equation}
+The resulting single layer potential is termed as the \emph{simple source formulation}.
+\item Deriving the Neumann Green's function for the geometry, that's normal derivative vanishes on the boundary:
+\begin{equation}
+\frac{\partial G(\vx|\vxo,\omega)}{\partial n}  = 0.
+\end{equation}
 \end{itemize}
-\subsubsection{•}
+In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation could be used directly for SFS applying planar SSD. 
+This property however can not be generalized: in general geometries the resulting Neumann Green's function can not be expressed in terms of the the free field Green's function, therefore the obtained formulation --although being a single layer potential-- can not be realized in practice with real life sound sources \cite{Schultz2014:Comparing_approaches}.
+
+For sake of completeness here it is shown, that the simple source formulation theoretically ensures the realizable driving functions for an arbitrary geometry, leading to the same result for the planar case as the Neumann Green's function approach.
+
+\paragraph{Simple Source Formulation/Equivalent Scattering Problem:\\}
+
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with describing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$.
+
+Assume that we have an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, $\vx \in \Omega_{\mathrm{e}}$, satisfying the homogeneous Helmholtz equation, meaning that all sources are located within the enclosure. The exterior wave field is the sum of  radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, emerging from a sound field located outside the volume of investigation, thus also satisfying the homogeneous Helmholtz equation. The sound field is described by a set of incoming or converging waves.
+The two spatial disjunct problems are connected through the following boundary condition written onto the boundary surface
+\begin{equation}
+P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \partial \Omega
+\end{equation}
+Both fields may be expressed in terms of an exterior and an interior KHIE respectively.
+By subtracting the exterior from the interior KHIE due to the coupled boundary condition terms containing the pressure on the boundary vanishes and the following integral expression is obtained
+
+\begin{equation}
+\iint_{\partial \Omega} 
+G(\vx|\vxo,\omega) 
+\left(
+\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial n} 
+\right)
+\td \partial \Omega ( \vxo)
+= 
+\begin{cases} 
+P_{\mathrm{e}}(\vxo,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_e  	   \\
+P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \partial \Omega  \\
+P_{\mathrm{i}}(\vxo,\omega) 			& \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_i.
+\end{cases}
+\end{equation}
+The minus sign from $P_{\mathrm{i}}$ vanishes since $\mathbf{n}_{\mathrm{e}}(\vxo) = -\mathbf{n}_{\mathrm{i}}(\vxo), \hspace{1mm} {\vxo}\in \partial \Omega$. The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be determined using as a single layer potential, by constructing the corresponding exterior or interior problem respectively. The single layer strength function is given by 
+\begin{equation}
+D(\vxo,\omega) = 
+\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial n}.
+\label{Eq:Theory:Jump_relation}
+\end{equation}
+Equation \eqref{Eq:Theory:Jump_relation} is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential exhibits a continuous pressure in the boundary $\partial \Omega$, while the velocity shows a discontinuity (\emph{jump}).
+
+In terms of sound field synthesis the interior sound field is the target sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
+\begin{equation}
+D(\vxo,\omega) = 
+\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P(\vxo,\omega)}{\partial n},
+\end{equation}
+where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field.
