@@ -220,6 +220,7 @@ Similarly to the Cartesian-solution the general solution for the free-field homo
 please refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}
 
 \subsubsection{Boundary conditions}
+\label{Section:Theory:Boundary_conditions}
 
 \begin{figure}
 	\centering
@@ -563,7 +564,7 @@ G_N(\vx|\vxo, \omega)|_{y = 0} =
 2G(\vx|\vxo, \omega)|_{y = 0} = 
 \frac{1}{2\pi} \frac{\te^{-\ti \frac{\omega}{c} |\vx-\vxo|}}{ |\vx-\vxo| }
 \end{equation}
-and the HIE is simplfied into the \emph{Rayleigh's first integral}
+and the HIE is simplfied into the \emph{Rayleigh's first integral} \cite{Berkhout1984}
 \begin{multline}
 P(\vx,\omega) =
 - 2 \iint_{\partial \Omega_S} \frac{\partial P(\vxo)}{\partial n} G(\vxo|\vx) \td \vxo 
@@ -683,7 +684,14 @@ It is clear, that equation \eqref{Eq:Theory:Linear_SFS} describes a cylindricall
 Furthermore, even the explicit solution for the linear problem allows us the ensure theoretically perfect synthesis only along a line parallel to the SSD, termed as the \emph{reference line}. 
 Refer to Figure \ref{Fig:Theory:planar_linear_geometry} for the linear SFS geometry.
 
-There are several approaches to solve the problem including physics based implicit and merely mathematical explicit solutions. For special geometries -- planar, linear, spherical, circular or cylindrical SSDs -- analytical expressions are available. In the following these approaches are shortly introduced focusing on planar and linear SSD arrays.
+There are several approaches to solve the problem including physics based implicit and merely mathematical explicit solutions. 
+Explicit solutions aim to solve the inverse problem, while implicit approaches transform the KHIE to the form of \eqref{Eq:Theory:3D_SFS} with taking the SSD geometry into consideration, ie. the obtained single layer potential implicitly contains the driving functions.
+For special geometries -- planar, linear, spherical, circular or cylindrical SSDs -- analytical expressions are available. In the following these approaches are outlined focusing on planar and linear SSD arrays.
+
+%\subsubsection{Virtual Source Models}
+%Regarding the target sound field two approaches exist: \emph{data-based rendering} and \emph{model-based rendering}. The first is applied for the resynthesis of a wave field, captured by a microphone array. In the second is the target sound field is 
+
+% no 3D monopole can be synthesized with 2D arrays
 
 \subsection{Explicit solution: The Spectral Division Method}
 
@@ -752,7 +760,8 @@ with $k_y = \sqrt{ \left( \frac{\omega}{c} \right )^2 - k_x^2 - k_z^2 }$, thus t
 \end{equation}
 With the angular spectrum representation the target sound field on a fixed, arbitrary $(y=\mathrm{const})$ plane may be expressed from the field measured on $y=0$ using equation \eqref{Eq:Theory:Wave_field_extrapolation}:
 \begin{equation}
-\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{- k_y y}.
+\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{- \ti k_y y}.
+\label{Eq:Theory:Wave_field_extrapolation_2}
 \end{equation}
 By carrying out the division for the planar case the exponential pressure propagators cancel out, and the driving function becomes independent from the $y$-coordinate and the spectral representation reads
 \begin{equation}
@@ -821,7 +830,7 @@ The implicit solution for the general SFS problem aims at the reduction of the K
 As we could see the using the KHIE describes the sound field inside the enclosure in the form of a double layer potential:
 \begin{equation}
 P(\vx,\omega) = 
-\iint_{\partial \Omega}  \left( 
+\oint_{\partial \Omega}  \left( 
 P(\vxo,\omega)  \frac{\partial G(\vx|\vxo,\omega)}{\partial n}  -  
 G(\vx|\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial n} 
 \right)   \td \partial \Omega ( \vxo),
@@ -839,48 +848,136 @@ The resulting single layer potential is termed as the \emph{simple source formul
 \frac{\partial G(\vx|\vxo,\omega)}{\partial n}  = 0.
 \end{equation}
 \end{itemize}
-In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation could be used directly for SFS applying planar SSD. 
+In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach following \cite{Berkhout1984}. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation could be used directly for SFS applying planar SSD. 
 This property however can not be generalized: in general geometries the resulting Neumann Green's function can not be expressed in terms of the the free field Green's function, therefore the obtained formulation --although being a single layer potential-- can not be realized in practice with real life sound sources \cite{Schultz2014:Comparing_approaches}.
 
 For sake of completeness here it is shown, that the simple source formulation theoretically ensures the realizable driving functions for an arbitrary geometry, leading to the same result for the planar case as the Neumann Green's function approach.
 
-\paragraph{Simple Source Formulation/Equivalent Scattering Problem:\\}
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Theory/simple_source_formulation.png}
+	\put(0, 50){(a)}
+	\put(50,50){(b)}
+	\put(0,  0){(c)}
+	\put(50, 0){(d)}
+	%\put(22,70){$P_i$}
+	\put(33, 92){$P(\vx,\omega)$}
+	\put(83, 92){$P_e(\vx,\omega)$}
+	\put(33, 42){$P_{\mathrm{synth}}$}
+	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
+	\put(27,80){$\Omega_i$}
+	\put(33,72){$\partial \Omega$}
+	%\put(60,60){$P_e$}
+	\put(85,87){$\Omega_e$}
+	\put(83,72){$\partial \Omega$}
+	\end{overpic}
+\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$) with a circular SSD at $R_0 = 1~\mathrm{m}$: The incident field, to be synthesized is the field of a 2D point source, described by $G_{\mathrm{2D}}(\vx-\vxo,\omega)$, $\vxo = [-1.5,\ 1.5]^{\mathrm{T}}~\mathrm{m}$, depicted in (a). For a circular SSD contour the interior and exterior fields may be calculated analytically using \cite[Eq.~4.57]{Williams1999} with $k_z=0$, and using $J_n()$ for the interior problem. The resulting exterior field is depicted in (b), while the interior solution is the target field in $\Omega_i$ in (a). Due to the separated variables normal derivatives in equation \eqref{Eq:Theory:Simple_source_HIE} --which means radial derivative in the present setup-- are calculated analytically. The obtained strength function is $D(\varphi,\omega) = \sum_{n = 0}^{k} \te^{\ti n \phi} k C_n(\omega) \left( \frac{J'_n(k R_0)}{J_n(k R_0)} - \frac{H_n^{'(2)}(k R_0)}{H_n^{(2)}(k R_0)} \right),$ with $C_n(\omega)$ being the incident pressure spectrum on $\partial \Omega$. The synthesized field, depicted in (c), is calculated by evaluating \eqref{Eq:Theory:3D_SFS}. In $\Omega_i$ the synthesized field equals to the target sound field. The solution of the equivalent scattering problem is depicted in (d) constructed from the simple source approach.}
+	\label{Fig:Theory:simple_source_formulation}
+\end{figure}
 
-The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with describing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$.
+\subsubsection{Source Formulation/Equivalent Scattering Problem}
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with describing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$ \cite{Ahrens2012}.
 
-Assume that we have an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, $\vx \in \Omega_{\mathrm{e}}$, satisfying the homogeneous Helmholtz equation, meaning that all sources are located within the enclosure. The exterior wave field is the sum of  radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, emerging from a sound field located outside the volume of investigation, thus also satisfying the homogeneous Helmholtz equation. The sound field is described by a set of incoming or converging waves.
+Assume that we have an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, $\vx \in \Omega_{\mathrm{e}}$, satisfying the homogeneous Helmholtz equation, meaning that all sources are located within the enclosure. The exterior wave field is the sum of  radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation. The sound field is described by a set of incoming or converging waves.
 The two spatial disjunct problems are connected through the following boundary condition written onto the boundary surface
 \begin{equation}
 P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \partial \Omega
 \end{equation}
 Both fields may be expressed in terms of an exterior and an interior KHIE respectively.
-By subtracting the exterior from the interior KHIE due to the coupled boundary condition terms containing the pressure on the boundary vanishes and the following integral expression is obtained
-
+By subtracting the exterior from the interior KHIE due to the coupled boundary condition terms containing the pressure on the boundary vanish and the following integral expression is obtained \cite[p.~268.]{Williams1999}
 \begin{equation}
-\iint_{\partial \Omega} 
+\oint_{\partial \Omega} 
 G(\vx|\vxo,\omega) 
 \left(
-\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial n} 
+\frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} 
 \right)
 \td \partial \Omega ( \vxo)
 = 
 \begin{cases} 
-P_{\mathrm{e}}(\vxo,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_e  	   \\
-P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \partial \Omega  \\
-P_{\mathrm{i}}(\vxo,\omega) 			& \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_i.
+P_{\mathrm{e}}(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e  	   \\
+P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
+P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i.
 \end{cases}
+\label{Eq:Theory:Simple_source_HIE}
 \end{equation}
-The minus sign from $P_{\mathrm{i}}$ vanishes since $\mathbf{n}_{\mathrm{e}}(\vxo) = -\mathbf{n}_{\mathrm{i}}(\vxo), \hspace{1mm} {\vxo}\in \partial \Omega$. The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be determined using as a single layer potential, by constructing the corresponding exterior or interior problem respectively. The single layer strength function is given by 
-\begin{equation}
-D(\vxo,\omega) = 
-\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial n}.
-\label{Eq:Theory:Jump_relation}
-\end{equation}
-Equation \eqref{Eq:Theory:Jump_relation} is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential exhibits a continuous pressure in the boundary $\partial \Omega$, while the velocity shows a discontinuity (\emph{jump}).
+The minus sign from $P_{\mathrm{i}}$ vanishes since $\mathbf{n}_{\mathrm{e}}(\vxo) = -\mathbf{n}_{\mathrm{i}}(\vxo), \hspace{1mm} {\vxo}\in \partial \Omega$. The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be determined using as a single layer potential, by constructing the corresponding exterior or interior problem respectively. The single layer strength function is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
+The discontinuity in the pressure gradient --giving the monopole \emph{strength function}-- is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential exhibits a continuous pressure in the boundary $\partial \Omega$, while the velocity shows a discontinuity, i.e. \emph{jumps}.
 
-In terms of sound field synthesis the interior sound field is the target sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
+In terms of sound field synthesis the interior sound field is the desired sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
 \begin{equation}
 D(\vxo,\omega) = 
-\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n} - \frac{\partial P(\vxo,\omega)}{\partial n},
+\frac{\partial P(\vxo,\omega)}{\partial n} - \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial n},
+\label{Eq:Theory:Source_strength}
 \end{equation}
-where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field.
+where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field, needed to be calculated in order to solve the SFS problem.
+
+\vspace{3mm}
+As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: we assume that the surface $\partial \Omega$ represents no longer an SSD, but the boundary of a sound soft scattering object. In acoustic scattering problems we have an \emph{incident sound field} $P(\vx,\omega)$ known a-priori, which is scattered by the scattering object, generating the \emph{scattered field} $P_s(\vx,\omega)$. The field, measured in the presence of the obstacle is the \emph{total field} $P_T(\vx,\omega)$, given by the sum of the incident and scattered fields. For a sound soft scatterer homogeneous Dirichlet boundary conditions are prescribed on the obstacle surface (see section \ref{Section:Theory:Boundary_conditions}):
+\begin{equation}
+P_T(\vx,\omega) = P(\vx,\omega) + P_s(\vx,\omega) = 0, \hspace{1cm} \vx \in \partial \Omega.
+\end{equation}
+In the aspect of SFS the scattered field is the solution of the exterior radiation problem, while inside the enclosure the incident field is the solution of an interior problem, which stands for the sound field to be synthesized. The two problems are coupled on the surface by $P_s(\vx,\omega) = -P(\vx,\omega)$.
+Comparing this result with the simple source formulation it is clear, that the single layer driving function is the derivative of the total field on the SSD
+\begin{equation}
+D(\vxo,\omega) = \frac{\partial P_T(\vxo,\omega)}{\partial n}
+=
+\frac{\partial P(\vxo,\omega)}{\partial n} + \frac{\partial P_s(\vxo,\omega)}{\partial n}.
+\label{Eq:Theory:Equivalent_scattering_driv_fun}
+\end{equation}
+
+Simple source approach --and equivalent scattering interpretation-- gives the analytical driving function for an arbitrary SSD geometry implicitly. Unfortunately the exterior scattering solution is scarcely available analytically except for simple geometries. The general application therefore would require numerical computation method, eg. BEM. Further drawbacks are that the SSD must be enclosing surfaces consisting exclusively monopoles.
+
+\subsubsection{Planar SSD geometry: 3D Wave Field Synthesis}
+
+Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} it is revealed, that Rayleigh-integral implicitly contains the driving functions for a planar SSD and the driving function is given by
+\begin{equation}
+D_{\mathrm{3D}}(\vxo,\omega) = -2\frac{\partial}{\partial y} P(\vxo,\omega) = - 2 \ti \rho_0 c k V_{\mathrm{n}}(\vxo,\omega).
+\label{Eq:Theory:3D_WFS_driv_fun}
+\end{equation}
+This forms the basic equation of traditional \emph{Wave Field Synthesis}, thus equation \eqref{Eq:Theory:3D_WFS_driv_fun} is referred as \emph{3D WFS driving function}.
+
+Due to the geometry here the simple source formulation can be used analytically, with simple physical considerations.
+In the case of an infinite plane in the equivalent scattering problem the incident wave field is simply reflected from a pressure release plane, with unchanged amplitude, undergoing a phase change of $180^{\circ}$.
+% Citation goes here
+The scattered field therefore equals to the incident field with a minus sign. Obviously, the propagation direction is inverted, thus $y$-derivative also changes sign, resulting in that from \eqref{Eq:Theory:Equivalent_scattering_driv_fun} the driving function reads
+\begin{equation}
+D(\vxo,\omega) = \frac{\partial P_T(\vxo,\omega)}{\partial n}
+=
+2\frac{\partial}{\partial y} P(\vxo,\omega).
+\end{equation}
+
+The results may be compared with the explicit solution, derived in the previous section. From \eqref{Eq:Theory:Wave_field_extrapolation_2} it is clear, that
+\begin{equation}
+\frac{\partial}{\partial \mathbf{y}} \tilde{P}(k_x,y,k_z,\omega) = -\ti k_y \tilde{P}(k_x,0,k_z,\omega) \te^{- \ti k_y y}.
+\end{equation}
+Taking the derivative on $y=0$, and comparing with \eqref{Eq:Theory:Planar_explicit_driv_fun} it is revealed, that the driving function spectrum is
+\begin{equation}
+\tilde{D}(k_x,k_z,\omega) = -2\frac{\partial}{\partial y} P(k_x,0,k_z,\omega).
+\end{equation}
+
+The equivalence of the explicit approach and the simple source formulation follows the uniqueness of the solution of the inverse problem for a planar geometry \cite{Fazi2010}. Although the traditional derivation of the Rayleigh-integral follows the Neumann Green's function approach, the equivalence of this formulation is however accidental.
+
+All three different approaches therefore lead to the very same SFS result for the planar SSD geometry: an arbitrary source free sound field may be perfectly synthesized by a set of point sources distributed along an infinite plane by driving the monopoles with $(-2)$-times the normal derivative of the target sound field, measured on this plane.
+
+\subsubsection{Linear SSD geometry: $2\, \frac{1}{2}$D Wave Field Synthesis}
+
+For a linear SSD the solutions outlined here can not be applied, since the the synthesis domain is not enclosed by the secondary array. In this case the implicit solution may be found be approximating the integral \eqref{Eq:Theory:3D_planar_SFS} to cast it to the form of \eqref{Eq:Theory:Linear_SFS}, thus it implicitly contains the linear driving function. The technique is termed as 
+$2\, \frac{1}{2}$D Wave Field Synthesis referring to the fact, that 3D secondary sources are applied in a basically 2D synthesis geometry.
+
+Two similar approaches exist for the solution of the problem, that differ fundamentally in the target sound field model: the traditional virtual source specific and a unified, generalized WFS formulation.
+
+\paragraph{Traditional $2\, \frac{1}{2}$D WFS:\\}
+
+The basics of traditional WFS theory has its roots in \cite{Berkhout1993:Acoustic_control_by_WFS,Berkhout1988:Holographic_approach} and further described in \cite{Vogel1993:phd, Start1997:phd, Verheijen1997:phd}. 
+The derivation of driving functions relies on the Rayleigh I integral formulation of the synthesized sound field
+\begin{equation}
+P_{\mathrm{synth}}(\vx,\omega) = \iint_{-\infty}^{\infty} -2\frac{\partial}{\partial y} P(\vxo,\omega) G(\vx-\vxo,\omega) \td x_0 \td z_0.
+\label{Eq:Theory:Planar_Synth_field}
+\end{equation}
+Our aim is to approximate the integral along the vertical dimension, in such a way that the remaining horizontal integral still contains the Green's function at $[x_0,\ 0,\ 0]^{\mathrm{T}}$. 
+
+This may be done using the \emph{stationary phase approximation}. The method approximates the integral of rapidly oscillating functions with a slowly varying envelope. Since in the frequency domain of interest the Green's function is a rapidly oscillating function itself, the approach gives a high-frequency approximation of \eqref{Eq:Theory:Planar_Synth_field} for an arbitrary target sound field.
+
+Since constant amplitude oscillation 
+
+\paragraph{Generalized $2\, \frac{1}{2}$D WFS:\\}
