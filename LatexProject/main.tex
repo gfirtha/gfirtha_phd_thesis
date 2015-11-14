@@ -25,6 +25,7 @@
 \usepackage[toc,page]{appendix}
 \usepackage{amssymb}
 %
+\setcounter{secnumdepth}{3}
 
 \newcommand{\dint}{\int\!\!\!\!\!\int}
 \newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
@@ -39,6 +40,7 @@
 \newcommand{\yref}{y_{\mathrm{ref}}}
 \newcommand{\vx}{\mathbf{x}}
 \newcommand{\vxo}{\mathbf{x}_0}
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
 %
 \title{ Dissertation draft}
 \date{\today \\
@@ -58,9 +60,13 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 \label{sec:math}
 \input{math}
 %
-\chapter{Theoretical Basics}
+\chapter{Theory of wave propagation and radiation problems}
 \label{sec:theory}
 \input{theory}
+
+\chapter{Theory of Sound Field Synthesis}
+\label{sec:SFS_theory}
+\input{SFS_theory}
 %%
 %\chapter{Stochastic SFS}
 %\label{sec:stochastic}
@@ -72,10 +78,12 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 %%
 %\chapter{Conclusion}
 
-%\begin{appendices}
-%\chapter{Appendix A}
-%\input{appendix_A}
-%\end{appendices}
+\begin{appendices}
+\chapter{Appendix A}
+\input{appendix_A}
+\chapter{Appendix B}
+\input{appendix_B}
+\end{appendices}
 
 %\the\textwidth
 %\\
