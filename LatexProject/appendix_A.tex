@@ -33,58 +33,58 @@ By replacing the outward-pointing normal vector with the inward normal: $\mathbf
 \label{Eq:App:Green_theorem}
 \end{equation}
 
-\section{Direct solution of the inhomogeneous wave equation for 3D SFS}
-
-Let's assume a distribution of point sources at $y = 0$, with assuming Neumann boudary conditions for $p(\vx,t)$ given by: $\frac{\partial}{\partial y} p(\vx, t)|_{y = 0} = 0$. The time domain inhomogeneous wave equation for this scenario is given by
-\begin{equation}
-\nabla^2 p(\vx,t) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} p(\vx,t) = - d(x,z,t)\delta(y).
-\end{equation}
-Let's take the Fourier-transform of both sides wrt time and $x,y$:
-\begin{equation}
-\left( \left( \frac{\omega}{c}  \right)^2 -  k_x^2 - k_z^2 \right) \tilde{P}(k_x,y,k_z,\omega) + \frac{\partial^2}{\partial y^2}  \tilde{P}(k_x,y,k_z,\omega) = - \tilde{D}(k_x,k_z,\omega)\delta(y).
-\end{equation}
-Let's evaluate the definite integral of both sides of the equation from $-\infty$ to 0. The equation becomes
-\begin{equation}
-\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y + \frac{\partial}{\partial y}  \left. \tilde{P}(k_x,y,k_z,\omega)\right|_{y = 0} = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
-\end{equation}
-Due to the prescribed boundary conditions the derivative on $y=0$ vanishes
-\begin{equation}
-\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 + k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y  = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
-\end{equation}
-and the driving function spectrum reads
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-= -2 \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y .
-\label{App:3D_driving_function_a}
-\end{equation}
-The equation states that by letting the normal derivative of the synthesized sound field vanish on the SSD the target pressure field can be synthesized perfectly by the driving function given by \eqref{App:3D_driving_function}.
-
-Assuming that the target sound field $P(\vx,\omega)$ satisfies the homogeneous wave equation in the $y<0$ region from equation
-\eqref{Eq:Theory:Wave_field_extrapolation} the target angular spectrum of the sound field may be written for arbitrary $y$ as
-\begin{equation}
-\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega)\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y }.
-\end{equation}
-Integrating both sides from $-\infty$ to $0$ wrt. $y$ 
-\begin{equation}
-\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = \tilde{P}(k_x,0,k_z,\omega) \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y } \td y.
-\end{equation}
-It is known, that
-\begin{equation}
-\int_{-\infty}^{0}\te^{a x} = \frac{1}{-a}, \hspace{3mm} (\mathcal{R}(a)<0),
-\end{equation}
-thus
-\begin{equation}
-\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = 
-\frac{\tilde{P}(k_x,0,k_z,\omega) }{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } }.
-\end{equation}
-Substituting back to equation \eqref{App:3D_driving_function_a} the angular spectrum of the driving function reads
-\begin{equation}
-\tilde{D}(k_x,k_z,\omega)
-=  2 \ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 }
-\tilde{P}(k_x,0,k_z,\omega) .
-\label{App:3D_driving_function}
-\end{equation}
-Comparison with equation \eqref{Eq:Theory:Planar_explicit_driv_fun} reveals that the same driving function is obtained as the result stemming from the single layer potential integral.
+%\section{Direct solution of the inhomogeneous wave equation for 3D SFS}
+%
+%Let's assume a distribution of point sources at $y = 0$, with assuming Neumann boudary conditions for $p(\vx,t)$ given by: $\frac{\partial}{\partial y} p(\vx, t)|_{y = 0} = 0$. The time domain inhomogeneous wave equation for this scenario is given by
+%\begin{equation}
+%\nabla^2 p(\vx,t) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} p(\vx,t) = - d(x,z,t)\delta(y).
+%\end{equation}
+%Let's take the Fourier-transform of both sides wrt time and $x,y$:
+%\begin{equation}
+%\left( \left( \frac{\omega}{c}  \right)^2 -  k_x^2 - k_z^2 \right) \tilde{P}(k_x,y,k_z,\omega) + \frac{\partial^2}{\partial y^2}  \tilde{P}(k_x,y,k_z,\omega) = - \tilde{D}(k_x,k_z,\omega)\delta(y).
+%\end{equation}
+%Let's evaluate the definite integral of both sides of the equation from $-\infty$ to 0. The equation becomes
+%\begin{equation}
+%\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y + \frac{\partial}{\partial y}  \left. \tilde{P}(k_x,y,k_z,\omega)\right|_{y = 0} = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
+%\end{equation}
+%Due to the prescribed boundary conditions the derivative on $y=0$ vanishes
+%\begin{equation}
+%\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 + k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y  = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
+%\end{equation}
+%and the driving function spectrum reads
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%= -2 \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y .
+%\label{App:3D_driving_function_a}
+%\end{equation}
+%The equation states that by letting the normal derivative of the synthesized sound field vanish on the SSD the target pressure field can be synthesized perfectly by the driving function given by \eqref{App:3D_driving_function}.
+%
+%Assuming that the target sound field $P(\vx,\omega)$ satisfies the homogeneous wave equation in the $y<0$ region from equation
+%\eqref{Eq:Theory:Wave_field_extrapolation} the target angular spectrum of the sound field may be written for arbitrary $y$ as
+%\begin{equation}
+%\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega)\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y }.
+%\end{equation}
+%Integrating both sides from $-\infty$ to $0$ wrt. $y$ 
+%\begin{equation}
+%\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = \tilde{P}(k_x,0,k_z,\omega) \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y } \td y.
+%\end{equation}
+%It is known, that
+%\begin{equation}
+%\int_{-\infty}^{0}\te^{a x} = \frac{1}{-a}, \hspace{3mm} (\mathcal{R}(a)<0),
+%\end{equation}
+%thus
+%\begin{equation}
+%\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = 
+%\frac{\tilde{P}(k_x,0,k_z,\omega) }{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } }.
+%\end{equation}
+%Substituting back to equation \eqref{App:3D_driving_function_a} the angular spectrum of the driving function reads
+%\begin{equation}
+%\tilde{D}(k_x,k_z,\omega)
+%=  2 \ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 }
+%\tilde{P}(k_x,0,k_z,\omega) .
+%\label{App:3D_driving_function}
+%\end{equation}
+%Comparison with equation \eqref{Eq:Theory:Planar_explicit_driv_fun} reveals that the same driving function is obtained as the result stemming from the single layer potential integral.
 
 %
 %\paragraph{Planar driving functions for a virtual point source \\}

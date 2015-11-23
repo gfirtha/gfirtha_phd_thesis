@@ -471,10 +471,9 @@ D(x_0,\omega) = -y_s\sqrt{\frac{\ti k}{2 \pi}}
 \paragraph{Traditional $2\, \frac{1}{2}$D driving function for a virtual plane wave:\\}
 
 As already stated with a linear SSD only plane waves with $k_z = 0$, ie. with a propagation direction parallel to the synthesis plane are feasible. In the derivation therefore $k_z = 0$ is assumed a-priori, and the plane wave is described by $\mathbf{k} = [k_x,\ k_y,\ 0]^{\mathrm{T}}$, with $k^2 = k_x^2 + k_y^2$. The field of such a plane wave is invariant in $z$-direction, the Rayleigh-integral therefore reads
-\begin{eqnarray}
-P_{\mathrm{synth}}(\vx,\omega) = \int_{-\infty}^{\infty} -2\frac{\partial}{\partial y} P(x_0,y_0,\omega) \int_{-\infty}^{\infty} G(\vx-\vxo,\omega) \td z_0 \td x_0 \\
+\begin{equation}
 P_{\mathrm{synth}}(\vx,\omega) = \int_{-\infty}^{\infty} -2\frac{\partial}{\partial y} \te^{-\ti \left( k_x x_0 + k_y y \right) } \int_{-\infty}^{\infty} G(\vx-\vxo,\omega) \td z_0 \td x_0 .
-\end{eqnarray}
+\end{equation}
 The differentation may be carried out easily, since $\frac{\partial}{\partial y} \te^{-\ti \left( k_x x_0 + k_y y \right) } = -\ti k_y \te^{-\ti k_x x_0}$. Applying the stationary phase approximation for the Green's function one obtains
 \begin{equation}
 \int_{-\infty}^{\infty} G(\vx-\vxo,\omega)
@@ -535,7 +534,8 @@ In this case $y/|\vx-\vxo| = \sinfi$ holds, therefore $|\vx - \vxo| \approx \fra
 
 Substituting the result into the driving function \eqref{Eq:Theory:PW_driv_fun_1} and setting the listener line to $y = \yref$ as a final result we obtain (by applying that $k_y = k \sinfi$)
 \begin{equation}
-D(x_0,\omega) = 2 \ti k_y \te^{-\ti  k_x x_0} \sqrt{\frac{2\pi \yref}{ \ti k \sinfi }} = \sqrt{8\pi \yref \ti} \sqrt{k_y} \te^{-\ti  k_x x_0} .
+D(x_0,\omega) = 2 \ti k_y \te^{-\ti  k_x x_0} \sqrt{\frac{2\pi \yref}{ \ti k \sinfi }} = \sqrt{8\pi \yref \ti} \sqrt{k_y} \te^{-\ti  k_x x_0}.
+\label{Eq:Theory:Trad_pw_driv_fun}
 \end{equation}
 This driving functions optimizes the synthesis of an arbitrary plane wave on the reference line.
 
@@ -611,18 +611,60 @@ D_{2.5D}(x_0,\omega) =  -2\sqrt{\frac{2\pi}{\ti k}}\sqrt{|\vx-\vxo|} \frac{\part
 It is obvious, that this solution is analogous to the traditional WFS derivation, with supposing virtual sound fields, invariant in the vertical dimension. These driving function are therefore also valid only for 2D sound fields.
 
 The driving functions are still dependent on the listener position. 
-In \cite{Spors2008:WFSrevisited} it us suggested, that this correctional factor should be referenced to one point on the reference line, by setting $|\vx - \vxo| = |\vx_{\mathrm{ref}}- \vxo|$. This will ensure a both amplitude and phase correct synthesis of 2D sound field at one point, $\vx_{\mathrm{ref}}$.
+In \cite{Spors2008:WFSrevisited} it is suggested, that this correctional factor should be referenced to one point on the reference line, by setting $|\vx - \vxo| = |\vx_{\mathrm{ref}}- \vxo|$. This will ensure a both amplitude and phase correct synthesis of 2D sound field at one point, $\vx_{\mathrm{ref}}$.
 
-Another approach is to fix the distance to a reference distance, thus $|\vx - \vxo| = d_{\mathrm{ref}}$ \cite{Ahrens2012, Ahrens2010phd}. Comparing this referencing type with the traditional WFS driving functions for a plane wave it becomes obvious, that setting fixed $d_{\mathrm{ref}}$ will ensure amplitude correct synthesis only for plane waves with $k_z = 0$, traveling perpendicular to the SSD, ie. $\sinfi = 1$. A further discussion on the validity of this referencing approach is given in \cite[Sect.~3.9.4]{Ahrens2012}
+Another approach is to fix the distance to a reference distance, thus $|\vx - \vxo| = d_{\mathrm{ref}}$ \cite{Ahrens2012, Ahrens2010phd}, and the final driving function reads
+\begin{equation}
+D_{2.5D}(x_0,\omega) =  -\sqrt{\frac{8\pi}{\ti k}}\sqrt{d_{\mathrm{ref}}} \frac{\partial}{\partial y} P(\vxo,\omega)
+\label{Eq:Theory:WFS_Ahrens_driv_fun}
+\end{equation}
+Comparing this referencing type with the traditional WFS driving functions for a plane wave it becomes obvious, that setting fixed $d_{\mathrm{ref}}$ will ensure amplitude correct synthesis only for plane waves with $k_z = 0$, traveling perpendicular to the SSD, ie. $\sinfi = 1$. A further discussion on the validity of this referencing approach is given in \cite[Sect.~3.9.4]{Ahrens2012}
 
-\vspace{3mm}
+\subsubsection{Comparison of $2~\frac{1}{2}$-D WFS techniques}
 We could see that both traditional and generalized WFS driving functions include both temporal frequency and spatial corrections.
 
+\vspace{3mm}
+\paragraph{Frequency response compensation:}
 Regarding the temporal correction: when a flat frequency is required both traditional and generalized driving functions are corrected by the same filter, with a transfer function $H(\omega) \sim \frac{1}{\ti \omega}$ (with the resultant transfer function being $\sim \sqrt{\ti \omega}$ due to spatial derivatives). This result is obvious, since the linear SSD forms an infinite line source, having a frequency response, proportional with $\sqrt{\omega}$. This transfer function has to be compensated. 
 
 The correctional filter constitutes only an approximation, due to the high-frequency validity of the approximations applied. In practice the pre-correctional filter is highly dependent on the virtual source position --as it is indicated by the explicit solution, serving as a reference--, and the synthesized sound field may differ highly from the flat frequency response for virtual sources close to the SSD. For a detailed investigation on these effects see \cite{Spors10ahrens:analysis}. Also the practical implementation of the derived WFS pre-filters are not straightforward. For an investigation of different implementations refer to \cite{Schultz2013:IIR_prefilters}. 
 
 \vspace{3mm}
-The main difference between the different techniques lies in the spatial correction, aiming to reproduce the spatial characteristics of the target sound field. A comparison on these techniques is shown in Figure xy.
+\paragraph{Spatial compensation:}
+The main difference between the different techniques lies in the spatial correction, aiming to reproduce the spatial characteristics of the target sound field. The amplitude deviations present in traditional WFS compared to the reference solution is investigated in details in \cite{Spors10ahrens:analysis}. It is shown, that traditional WFS suffers from increasing amplitude errors when assumptions for the stationary phase approximation do not hold, eg. a virtual source close to the SSD.
 
-\subsection{WFS extension for arbitrary geometries}
+A comparison on the traditional and generalized WFS is shown in Figure xy.
+
+Traditional WFS derivation ensures amplitude correct synthesis of an arbitrary sound field on a fixed reference line. In other parts of the synthesis plane amplitude errors are present due to the attenuation factor of $1/\sqrt(r)$ of the linear SSD. This amplitude deviations are well-studied \cite{Spors10ahrens:analysis, Verheijen1997}.
+
+\vspace{3mm}
+For the case of the driving functions given by \eqref{Eq:Theory:WFS_Ahrens_driv_fun} two sources of amplitude error are present: the virtual source dimensional mismatch, and the secondary source dimensional mismatch.
+\begin{itemize}
+\item
+The effect of virtual source mismatch is investigated in \ref{App: Trad_WFS_rep_field}. It is verified, that for the case of a virtual 3D point source a constant amplitude error is present, given by $
+\sqrt{\frac{|y_s| + |\yref|}{|y_s|}}$, with $y_s$ being the distance of the virtual source from the SSD. Obviously, this amplitude error may be compensated in the driving function, if the virtual source model is known a-priori.
+\item 
+The second deviation stems from the lack of the stationary phase approximation in $x$-direction as it is also stated in \cite[3.9.4]{Ahrens2012}. Instead referencing the synthesis to a line, the correction factor is fixed to a reference distance $d_{\mathrm{ref}}$, which means referencing the individual SSD elements to a a fixed circle around them. From the traditional plane wave driving function \eqref{Eq:Theory:Trad_pw_driv_fun} it is obvious that fixing $\frac{\yref}{\sinfi} = d_{\mathrm{ref}}$ will result, that only plane waves with $k_x = 0$ are synthesized correctly on the reference line. This will mean that eg. synthesis of a 2D point source will result an amplitude correct synthesis on the reference line in front of the virtual source, where the synthesized field is dominated by the plane wave, $k_x = 0$ locally. On other parts of the reference line amplitude errors are present, proportional to $\sqrt{\sinfi }= \sqrt{\frac{k_y}{k}} = \sqrt{\frac{\sqrt{k^2-k_x^2}}{k}}<1$, ie. the synthesized sound field attenuates faster, than the target sound field. This observation may be used to give an analytical examination of these errors based on the plane wave expansion of the target sound field: The synthesized sound field may be written on the reference line as a convolution of the target sound field and this error factor, describing a spatial low-pass filter :
+\begin{equation}
+P_{\mathrm{synth}}(x,\yref,0,\omega) \sim \mathcal{F}^{-1}_{k_x} \left\{ \sqrt[2]{k^2-k_x^2} \right\} \ast_x P_{\mathrm{target}}(x,\yref,0,\omega).
+\end{equation}
+\end{itemize}
+
+Actually, the direction of a synthesized plane wave assigns the position where it is synthesized correctly: the $y$-coordinate of the amplitude correct synthesis is given by $\yref(x)= d_{\mathrm{ref}}\sinfi$. This again, gives us an insight, where an arbitrary sound field can be synthesized correctly based on its plane wave expansion. Note, that obviously, the position of correct synthesis is $x$-dependent.
+Without any analytical derivation however a rough --but still quiet correct-- intuitive approximation we may be used to show the position of correct synthesis.
+
+Assume the synthesis of a 2D point source. The choice is made in order to avoid amplitude deviation due to virtual source dimensionality mismatch. As an approximation it is assumed, that each point on the target wave front represents a local plane wave, with the direction given by the normal of the wave front, ie. the wave number vector of the plane wave and the cylindrical wave coincide. For such a plane wave the position of correct synthesis is known. With these assumption a plane wave is assigned to every radial direction converging from the virtual source: the position of correct synthesis is determined by the actual plane wave component. 
+The geometry is shown in figure xy.
+With the definition of angle $\varphi$ shown in the figure, the position of correct synthesis is then given by $\yref(x) = d_{\mathrm{ref}} \sinfi$. The solution is depicted in the figure for 3 different directions.
+Exploiting the similarity of triangles the following equation describes the position of correct synthesis
+\begin{equation}
+\yref(x)^2 = d_{\mathrm{ref}}^2\frac{( \yref(x) + y_s )^2}{x^2 + ( \yref(x) + y_s )^2}.
+\label{Eq:Theory:Gen_WFS_validity}
+\end{equation}
+The solution is an implicit one, unfortunately no explicit formulation has been found so far.
+See figure xy depicting the deviation of the synthesized fields with different WFS techniques from the target sound field. The results verify that generalized WFS indeed, references amplitude correct synthesis to positions, satisfying \eqref{Eq:Theory:Gen_WFS_validity}.
+
+As a conclusion: Both traditional and generalized WFS techniques are able to reconstruct the wavefronts and frequency response of virtual sources. Traditional WFS references the synthesis to a straight line, termed as the reference line, where amplitude correct synthesis is possible. 
+Generalized WFS suffers from larger errors in the spatial characteristic of the virtual source, emphasized in case of a virtual 3D point source, and even for 2D sound field, synthesis is referenced to positions, satisfying \eqref{Eq:Theory:Gen_WFS_validity}. Still, simplicity and generality is a great advantage of the unified approach.
+
+\section{WFS extension for arbitrary geometries}
