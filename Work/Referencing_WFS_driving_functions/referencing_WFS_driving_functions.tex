@@ -717,9 +717,14 @@ The validity of the referencing functions are demonstrated in Figure \ref{Fig:Th
 
 \section{Conclusion}
 
-Moving source with fixed referencing: uncontrollable amplitude errors!! Solution: synthesis of a moving line source with flattened frequency response or fixed referencing with virtual source dimensional mismatch compensation
+The referencing types of classic WFS techniques was revisited in the present treatise. The backbone of WFS is formed by the stationary phase approximation. It was shown, that SPA explicitly finds the stationary point on the SSD, that's wavenumber vector coincides with the target sound field in an arbitrary listener position. By controlling the individual SSD elements amplitude factor based on the SPA, synthesis can be optimized on an arbitrary listener curve with an arbitrary loudspeaker ensemble. This is demonstrated via different referencing schemes for both linear and circular SSDs.
 
-\newpage
+Also, by using the SPA the traditional referencing schemes are revisited, by an analytical investigation of their validity. It is verified, that using a constant, target field independent referencing function synthesis of 2D sound fields is feasible. For the case of a 3D virtual sound field, eg. a 3D point source a virtual source dimensional mismatch appears besides the well-studied secondary source dimensional mismatch. Unless a compensation factor is introduced to the amplitude factor --which results in the traditional 2.5D WFS driving functions-- the positions of correct synthesis --and thus the amplitude error in a fixed listener position-- is highly virtual source position dependent. For sources close to the SSD the may cause great amplitude deviations. Also if the virtual source is closer to the SSD than the reference distance no position of amplitude correct synthesis is found. 
+
+This phenomenon may cause great perceptual artifacts when the virtual field is eg. the field of a moving source: the apparent amplitude of the virtual source would change rapidly during the motion.
+
+In order to compensate this amplitude error, one should include the simple amplitude correction factor, when a 3D field is to be synthesized, or if constant referencing function is referred one should consider applying truly 2D virtual source models: eg. a pre-equalized line source having a flat frequency response instead of the 3D point source (obviously resulting up in a attenuation factor $\sim 1/\sqrt{r}$). 
+
 \bibliographystyle{plain}
 \bibliography{dissertation}
 
