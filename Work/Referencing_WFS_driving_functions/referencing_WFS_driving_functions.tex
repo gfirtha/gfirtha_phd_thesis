@@ -473,7 +473,7 @@ D(x_0,\omega) =
 \label{Eq:2_5D_point_source_implicit_df}
 \end{equation}
 Comparing this result with Equation \eqref{Eq:2_5D_driv_fun_implicit} it is revealed, that the virtual source mismatch can be compensated with a simple correction factor $\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$. This result has a very expressive geometrical meaning, since 2D WFS would assume a point source with an attenuation factor of $1/\sqrt{r}$. In the correction factor therefore the numerator stands for the attenuation correction from the point source to the SSD, and the denominator for the correction from the point source to the listener position. Alternatively: multiplication by $\sqrt{| \vxo - \mathbf{x}_s |}$ approximates the source strength at the source position, while correction with $\frac{1}{\sqrt{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$ corrects the $1/\sqrt{r}$ attenuation to $1/r$ at the synthesized point source.
-The 3D point source driving function therefore consist of the following parts:
+The 3D point source driving function therefore consist of the following terms:
 \begin{equation}
 D(x_0,\omega) = 
 \underbrace{\sqrt{\frac{2\pi}{\ti k}}}_{\substack{\text{SSD freq.}\\\text{compensation}}} 
@@ -667,7 +667,7 @@ In each case it should be noted, that the position of amplitude correct synthesi
 	\centering
 	\begin{overpic}[width = 1\columnwidth]{figs/fixed_referencing_circular_ps.png}
 	\end{overpic}
-\caption{ Positions of amplitude correct synthesis using circular SSD for a virtual point source with the virtual source positioned at $\mathbf{x}_s = [-2,\ 0,\ 0]^{\mathrm{T}}$ (a) and $\mathbf{x}_s = [-3,\ 0,\ 0]^{\mathrm{T}}$ (b). The referencing function is set to $\dref = 0.75~\mathrm{m}$. In (a) in front of the virtual source is $0.5~\mathrm{m}$, with $r_0< \dref$, therefore no position for correct synthesis can be found. As the virtual source gets further from the SSD (b), $r_0> \dref$ is satisfied, and the position of correct synthesis in front of the virtual source becomes $x_c = x_s + r_0\frac{r_0}{r_0-\dref} = 0$. }
+\caption{ Positions of amplitude correct synthesis using circular SSD with radius of $R_0 = 1.5~\mathrm{m}$ for a virtual point source with the virtual source positioned at $\mathbf{x}_s = [-2,\ 0,\ 0]^{\mathrm{T}}$ (a) and $\mathbf{x}_s = [-3,\ 0,\ 0]^{\mathrm{T}}$ (b). The referencing function is set to $\dref = 0.75~\mathrm{m}$. In (a) in front of the virtual source is $0.5~\mathrm{m}$, with $r_0< \dref$, therefore no position for correct synthesis can be found. As the virtual source gets further from the SSD (b), $r_0> \dref$ is satisfied, and the position of correct synthesis in front of the virtual source becomes $x_c = x_s + r_0\frac{r_0}{r_0-\dref} = 0$. }
 	\label{Fig:Theory:fixed_referencing_circular_ps}
 \end{figure}
 \paragraph{Virtual point source:\\}
@@ -721,7 +721,7 @@ The validity of the referencing functions are demonstrated in Figure \ref{Fig:Th
 	\centering
 	\begin{overpic}[width = 1\columnwidth]{figs/pw_to_circle_ps_to_line.png}
 	\end{overpic}
-\caption{ Result of referencing the synthesis of a plane wave to a circle (a) and a 3D point source to a line. The source frequency was set to $\omega_0 = 2\cdot 2~\mathrm{krad/s}$, the plane wave propagates to the $x$-axis and the point source is located at $\mathbf{x}_s = [-3,\ 0,\ 0]^{}\mathrm{T}$. The radius of the reference circle is $R_{\mathrm{ref}} = 1~\mathrm{m}$ at (a) and the line of referencing is located at $x_0 = -0.5~\mathrm{m}$ in (b).}
+\caption{ Result of referencing the synthesis of a plane wave to a circle (a) and a 3D point source to a line. The source frequency was set to $\omega_0 = 2 \pi\cdot 2~\mathrm{krad/s}$, the plane wave propagates parallel to the $x$-axis and the point source is located at $\mathbf{x}_s = [-3,\ 0,\ 0]^{}\mathrm{T}$. The radius of the reference circle is $R_{\mathrm{ref}} = 1~\mathrm{m}$ at (a) and the line of referencing is located at $x_0 = -0.5~\mathrm{m}$ in (b).}
 	\label{Fig:Theory:pw_to_circle_ps_to_line}
 \end{figure}
 
@@ -729,7 +729,7 @@ The validity of the referencing functions are demonstrated in Figure \ref{Fig:Th
 
 The referencing types of classic WFS techniques was revisited in the present treatise. The backbone of WFS is formed by the stationary phase approximation. It was shown, that SPA explicitly finds the stationary point on the SSD, that's wavenumber vector coincides with the target sound field in an arbitrary listener position. By controlling the individual SSD elements amplitude factor in the stationary position, synthesis can be optimized on an arbitrary listener curve with an arbitrary loudspeaker ensemble. This is demonstrated via different referencing schemes for both linear and circular SSDs.
 
-Also, by using the SPA the traditional referencing schemes are revisited, by investigating the region of their validity in an analytical manner. It is verified, that using a constant, target field independent referencing function the synthesis of 2D sound fields is feasible and well-behaved. For the case of a 3D virtual sound field, eg. a 3D point source a virtual source dimensional mismatch appears besides the well-studied secondary source dimensional mismatch. Unless a compensation term is introduced to the amplitude factor --resulting in the traditional 2.5D WFS driving functions for a linear SSD and receiver curve-- the positions of correct synthesis --and thus the amplitude error in a fixed listener position-- is highly virtual source position dependent. For sources close to the SSD the may cause great amplitude deviations. Also if the virtual source is closer to the SSD than the reference distance no position of amplitude correct synthesis is found. 
+Also, by using the SPA the traditional referencing schemes are revisited, by investigating the region of their validity in an analytical manner. It is verified, that using a constant, target field independent referencing function the synthesis of 2D sound fields is feasible and well-behaved. For the case of a 3D virtual sound field, eg. a 3D point source a virtual source dimensional mismatch appears besides the well-studied secondary source dimensional mismatch. Unless a compensation term is introduced to the amplitude factor --resulting in the traditional 2.5D WFS driving functions for a linear SSD and receiver curve-- the positions of correct synthesis --and thus the amplitude error in a fixed listener position-- is highly virtual source position dependent. For sources close to the SSD this may cause great amplitude deviations. Also if the virtual source is closer to the SSD than the reference distance no position of amplitude correct synthesis is found. 
 
 This phenomenon may cause great perceptual artifacts when the virtual field is eg. the field of a moving source: the apparent amplitude of the virtual source would change rapidly during the motion.
 
