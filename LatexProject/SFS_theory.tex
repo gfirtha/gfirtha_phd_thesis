@@ -13,15 +13,16 @@
 	\put(50,35){$\Omega$}
 	\put(80,20.5){$\partial \Omega$}
 	\end{overpic}
-	\caption{General SFS geometry}
+	\caption{Geometry for the general Sound Field Synthesis problem}
 	\label{Fig:Theory:general_sfs_geometry}
 \end{figure}
 
 
-Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the surface $\partial \Omega$.
+Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the boundary surface $\partial \Omega$.
 The enclosing source ensemble is termed as the \emph{secondary source distribution (SSD)}.
-For the general geometry see Figure \ref{Fig:Theory:general_sfs_geometry}.
-For sake of simplicity we assume, that the secondary sources are acoustic point sources, i.e. monopoles, described by the $n$-dimensional Green's function $G(\vx,\omega)$. Since dynamical loudspeakers can be modeled as 3D monopoles in the low-frequency region, this assumption is feasible. The incorporation of non-ideal secondary source elements in the generalized SFS theory will be discussed in the next chapter.
+The general geometry is depicted in Figure \ref{Fig:Theory:general_sfs_geometry}.
+For the sake of simplicity we assume, that the boundary is acoustically transparent and the secondary sources are acoustic point sources, i.e. described by the $n$-dimensional free field Green's function $G_n(\vx,\omega)$. Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
+%Since dynamic loudspeakers can be modeled as 3D monopoles in the low-frequency region, this assumption is feasible for $n = 3$. The incorporation of non-ideal secondary source elements in the generalized SFS theory will be discussed in the next chapter.
 
 With these assumptions the pressure at any $\vx \in \Omega$ is given by the sum of the individual SSD elements, written as a single layer potential \cite{Ahrens2012,Ahrens2010phd,Wierstorf2014,Schultz2014:Comparing_approaches}:
 \begin{equation}
@@ -32,13 +33,15 @@ The weighting factor $D(\vxo,\omega)$ is termed as the \emph{driving function} f
 The Sound Field Synthesis problem can be formulated as the following: given a \emph{target sound field}, or the sound field of a \emph{virtual source} $P(\vx,\omega)$. Our aim is to solve the integral equation for $D(\vxo,\omega)$, so that the weighted sum of the SSD's sound field --i.e. the \emph{synthesized field}-- equals to the target sound field. 
 The problem is therefore an inverse problem and has a unique solution for general enclosures.
 
-Comparing with the Kirchhoff-Helmholtz integral formulation \eqref{Eq:Theory:Kirchhoff-Helmholtz} it becomes clear, that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure. Practically speaking the removal of the double layer result in that no dipoles are present on the surface which would extinguish the field of the monopoles outside the volume.
-In the present thesis free-field conditions are assumed, the exterior sound field satisfies the Sommerfeld radiation condition, thus the effect of the listening environment in practical applications is not included.
+Comparing with the Kirchhoff-Helmholtz integral formulation \eqref{Eq:Theory:Kirchhoff-Helmholtz} it becomes clear, that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure. Practically speaking the removal of the double layer results in that no dipoles are present on the surface which would cancel the field of the monopoles outside the volume.
+In the present thesis free-field conditions are assumed: the exterior sound field satisfies the Sommerfeld radiation condition, thus the effect of the listening environment in practical applications is not considered. For the inclusion of room effects to the SFS problem refer to \cite{Spors2005}.
 
-In the present thesis exclusively planar and linear SSD geometries are considered employing 3-dimensional secondary sources.
+In the followings mainly planar and linear SSD geometries are considered employing 3-dimensional secondary sources. Since dynamic loudspeakers can be modeled as 3D monopoles in the low-frequency region, this choice of SSD elements is feasible. %\footnote{Dynamic loudspeakers actually can be modeled as point source with respect to the velocity potential, forming a pulsating point source. Due to the virtual source and secondary source interchangeability this means, that when the target sound field is that of a point source, the virtual source model will be a point source with respect to the velocity potential in practical applications.}.
+
+% Note: Morse-Ingard formulates static and moving sources via the velocity potential. Ahrens also gives the basic SFS equations wrt. the velocity potential. However KHIE is valid for pressure, not the velocity potential: so here we should note that we model our sources as eg. point sources of pressure which has less phsyical meaning than a velocity potential point source, since the latter would model a more phsyical pulsating singularity.
 
 \paragraph{Planar SSD geometry:}
-The geometry for the planar case may be derived in the same manner as the geometry for the Rayleigh-integral: we assume that the boundary surface consists of a simply connected disc and hemisphere. Refer to \cite[p.~84,p.~275]{Ahrens2012, Williams1999} for the geometry. For sake of convenience the disk is located in the plane $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$. By increasing the radius of the hemisphere to infinity and by invoking the Sommerfeld-radiation condition the reproduced field is written as an integral over an infinite plane $\vxo$:
+The geometry for the planar case may be derived in the same manner as the geometry for the Rayleigh-integral: consider an enclosure of $\Omega \subset \mathbb{R}^3$, bounded by surfaces, consist of a simply connected disc and a hemisphere. Refer to \cite[p.~84,p.~275]{Ahrens2012, Williams1999} for the geometry. For sake of convenience the disk is located in the plane $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$. By increasing the radius of the hemisphere to infinity and by invoking the Sommerfeld-radiation condition the reproduced field is written as an integral over an infinite plane $\vxo$:
 \begin{equation}
 P(\vx,\omega) = \iint_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td x_0 \td z_0,
 \label{Eq:Theory:3D_planar_SFS}
@@ -52,7 +55,7 @@ $p(\vx,t)$ therefore satisfies the inhomogeneous wave equation with homogeneous 
 The planar SSD geometry is depicted in Figure \ref{Fig:Theory:planar_linear_geometry} (a).
 
 \paragraph{Linear SSD geometry:}
-From the practical point of view the application of planar loudspeaker geometry is unfeasible. Instead, in practical arrangements linear SSDs are applied.
+From the practical point of view the application of a planar loudspeaker geometry is unfeasible. Instead, in practical arrangements a linear ensemble of 3D point. Obviously, the SSD is no longer an enclosing surface, resulting in severe restrictions on the nature of the target sound field.
 For a linear SSD positioned at $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$ the synthesized field reads
 \begin{equation}
 P(\vx,\omega) = \int_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td x_0.
@@ -62,6 +65,8 @@ P(\vx,\omega) = \int_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \
 \begin{figure} 
 	\centering
 	\begin{overpic}[width = .8\columnwidth]{Figures/Theory/planar_linear_geometry.png}
+	\put(-10,5){(a)}
+	\put(45,5){(b)}
 	\footnotesize
 	\put(34.5,41){$x$}
 	\put(40,26){$y$}
@@ -73,15 +78,16 @@ P(\vx,\omega) = \int_{-\infty}^{\infty} D(\vxo,\omega) G(\vx - \vxo , \omega ) \
 	\put(62,26){$-\yref$}
 	\put(72,54){$z$}
 	\end{overpic}
-	\caption{Planar and linear SSD geometry}
+	\caption{Geometry for the SFS problem applying a planar (a) and linear (b) set of 3D point sources}
 	\label{Fig:Theory:planar_linear_geometry}
 \end{figure}
-It is clear, that equation \eqref{Eq:Theory:Linear_SFS} describes a cylindrically symmetric sound field with the symmetry axis being the SSD. In practice we restrict the investigation of the synthesized field to the horizontal half-plane containing the SSD $z = 0, y>0$, termed as the \emph{synthesis-plane}.
+Equation \eqref{Eq:Theory:Linear_SFS} describes a cylindrically symmetric sound field with the symmetry axis being the SSD. In practice we restrict the investigation of the synthesized field to the horizontal half-plane containing the SSD, ie. $z = 0, y>0$, termed as the \emph{synthesis-plane}.
 Furthermore, even the explicit solution for the linear problem allows us the ensure theoretically perfect synthesis only along a line parallel to the SSD, termed as the \emph{reference line}. 
 Refer to Figure \ref{Fig:Theory:planar_linear_geometry} for the linear SFS geometry.
 
-There are several approaches to solve the problem including physics based implicit and merely mathematical explicit solutions. 
-Explicit solutions aim to solve the inverse problem, while implicit approaches transform the KHIE to the form of \eqref{Eq:Theory:3D_SFS} with taking the SSD geometry into consideration, ie. the obtained single layer potential implicitly contains the driving functions.
+\vspace{3mm}
+There are several approaches to solve the problem including physically based implicit and particularly  mathematical explicit solutions. 
+Explicit solutions aim to solve the inverse problem directly, while implicit approaches transform the KHIE to the form of \eqref{Eq:Theory:3D_SFS} with taking the SSD geometry into consideration, thus the obtained single layer potential implicitly contains the driving functions.
 For special geometries -- planar, linear, spherical, circular or cylindrical SSDs -- analytical expressions are available. In the following these approaches are outlined focusing on planar and linear SSD arrays.
 
 %\subsubsection{Virtual Source Models}
@@ -89,6 +95,7 @@ For special geometries -- planar, linear, spherical, circular or cylindrical SSD
 
 % no 3D monopole can be synthesized with 2D arrays
 
+\newpage
 \section{Explicit solution: The Spectral Division Method}
 
 The explicit solution for the general SFS problem utilizes compact operator theory by exploiting the fact, that integral \ref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the operator kernel being the Green's function $G(\vx - \vxo , \omega )$ \cite{Ahrens2012,MorseFeshbach1953}.
@@ -96,7 +103,7 @@ Such an operator, and the involved acoustic fields can by expanded into the seri
 Finally an explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
 The method is often refered as \emph{mode-matching} solutions, since the eigenfunctions of the given geometry are termed the \emph{modes}.
 
-This solution utilizing the single layer potential is unique for general enclosures and also for the non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively. In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure, or cavity due to resonance phenomena.
+This solution utilizing the single layer potential is unique for general enclosures and also for the --strictly speaking-- non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively. In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure due to resonance phenomena.
 
 The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
 For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS}
@@ -104,7 +111,7 @@ In the present thesis only the planar and linear geometries are investigated in 
 
 \subsection{Planar SSD geometry}
 
-For the planar geometry Equation \eqref{Eq:Theory:3D_planar_SFS} is termed a Fredholm-integral of the first kind. Due to the infinite integration limit such integrals are called \emph{singular integrals} thus not form a compact operator \cite[p.~921.]{MorseFeshbach1953}. 
+For the planar geometry Equation \eqref{Eq:Theory:3D_planar_SFS} is termed a Fredholm-integral of the first kind. Due to the infinite integration limit such integrals are called \emph{singular integrals}, thus not forming a compact operator \cite[p.~921.]{MorseFeshbach1953}. 
 In this case the infinite, non-denumerable eigenvalues of the problem form a continuous function \cite{MorseFeshbach1953,Schultz2014:Comparing_approaches}.
 However, due to the reciprocity of the integration kernel the inverse problem can be solved applying the convolution theorem, utilizing that basically \eqref{Eq:Theory:3D_planar_SFS} describes a continuous convolution along the $y=0$ plane:
 \begin{equation}
@@ -131,7 +138,7 @@ thus the convolution theorem for the Fourier-transform holds \cite{Girod2001}.
 
 The expansion coefficient are therefore obtained by a comparison of spectral coefficients and the driving function takes the form:
 \begin{equation}
-D(k_x,k_z,\omega) = \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} = 
+\tilde{D}(k_x,k_z,\omega) = \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} = 
 \frac{\mathcal{F}\left\{ P(\vx,\omega) \right\} }
 {  \mathcal{F}\left\{ G(\vx,\omega) \right\} },
 \end{equation}
@@ -144,7 +151,7 @@ Since the driving function spectrum is yielded by a division in the spectral dom
 It is shall be noticed, that this method does not give a constraint on the integral kernel. Theoretically an arbitrary transfer function may be assigned for the SSD elements: as long the problem is well-conditioned --i.e. the spectrum of the transfer function does not exhibit zeros-- unique driving functions may be derived applying the foregoing.
 
 \vspace{3mm}
-For general 3D SFS problems the elements of the SSD are described by the 3D Green's function. The plane wave expansion of the 3D free field Green's function is termed as the Weyl's integral representation \cite{Williams1999, Lalor1969}:
+For the general 3D SFS problems the elements of the SSD are described by the 3D Green's function. The plane wave expansion of the 3D free field Green's function is termed as the Weyl's integral representation \cite{Williams1999, Lalor1969}:
 \begin{equation}
 G(\vx - \vxo,\omega ) = \frac{1}{4\pi} \iint_{-\infty}^{\infty} -\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y }
 \te^{\ti (k_x x_0 + k_z z_0)} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
@@ -170,7 +177,7 @@ Straightforwardly, the explicit expression of the driving function is obtained b
 
 Similarly to the planar case the basis functions for a linear SSD is given by exponentials.
 By realizing that equation \eqref{Eq:Theory:Linear_SFS} can be regarded as a convolution integral along the $x$-axis,
-the convolution is transformed into a multiplication vby means of a forward Fourier-transform
+the convolution is transformed into a multiplication by means of a forward Fourier-transform
 \begin{equation}
 \tilde{P}(k_x,y,z, \omega) = \tilde{D}(k_x,\omega)\tilde{G}(k_x,y,z, \omega).
 \end{equation}
