@@ -363,7 +363,7 @@ Obviously, as an analytical solution one may deduce the same result from evaluat
 \left. \frac{\partial}{\partial y} \right|_{y = 0} 
 \\[0.3em]    \end{bmatrix} 
 k\sqrt{(x-x_0^2) + (y-y_0)^2} = 
-\begin{bmatrix} 
+k\begin{bmatrix} 
 \frac{x_0- x_s}{r_0}
 \\[0.3em] 
 \frac{y_s}{r_0}
@@ -437,9 +437,9 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \sqrt{8\pi \ti \yref k_y}
 \end{equation}
 Alternatively the same formulation can be given by utilizing the high-frequency approximation, that $\frac{\partial}{\partial y} P(x,y,\omega) \approx \ti \frac{\partial}{\partial y}  \phi(x,y,\omega) P(x,y,\omega) = \ti k_y(x,y) P(x,y,\omega)$, and that the general referencing function for a reference line is given by $d(x_0) = \yref \frac{k}{k_y(x_0)}$, substituted back into the general driving function \eqref{Eq:Gen_rayleigh_dx0} one obtains
 \begin{equation}
-D(x_0,\omega) = 
-- \sqrt{8\pi\ti \yref k_y(x_0)} P(x_0,0,\omega).
+D(x_0,\omega) = \sqrt{8\pi\ti \yref k_y(x_0)} P(x_0,0,\omega).
 \end{equation} 
+This formulation requires only the pressure and the $y$-derivative of the phase of the virtual sound field, and ensures amplitude correct synthesis on a reference line.
 
 \begin{figure}
 	\centering
