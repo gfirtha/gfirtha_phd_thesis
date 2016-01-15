@@ -157,7 +157,27 @@ and the stationary position on the SSD is found, where
 \begin{equation}
 \frac{ \partial }{\partial x_0} \phase{G_{\mathrm{3D}}(|\vxo-\vx|,\omega)} = - \frac{ \partial }{\partial x_0} \phase{ P'(x_0,0,\omega) }
 \end{equation}
-is satisfied. Note, that here the reciprocity of the Green's function was used. The SPA therefore compares the $k_x(x_0)$ --thus the propagation direction-- of the virtual field and the Green's function along the SSD. The stationary position is then found, where these two directions coincide. See Figure \ref{Fig:Physical interpretation of the stationary position} for an illustration, with the example of a virtual point source. Obviously, by placing back the 3D Green's function at $x_0$, its wave number vector will equal at $\vx$ to the virtual sound field's wave number vector. 
+is satisfied. Note, that here the reciprocity of the Green's function was used. In order to find the connection between the stationary point of $P'(x_0,0,\omega)$ and $P(x_0,0,\omega)$ consider an arbitrary steady state sound field, written in a general form:
+\begin{equation}
+P(x,y,\omega) = A(x,y,\omega)\te^{\ti \phi(x,y,\omega)},
+\end{equation}
+for which the $y$-derivative reads
+\begin{equation}
+P'(x,y,\omega) = \left( \frac{A'(x,y,\omega)}{A(x,y,\omega)} + \ti \phi'(x,y,\omega) \right) A(x,y,\omega)\te^{\ti \phi(x,y,\omega)}.
+\end{equation}
+A standard prerequisition for the application of the SPA was that the phase function is a rapidly changing function of space compared to the envelope of the oscillation, thus $\phi'(x,y,\omega) \gg \frac{A'(x,y,\omega)}{A(x,y,\omega)}$ and the derivative is approximated as
+\begin{equation}
+P'(x,y,\omega) \approx \ti \phi'(x,y,\omega) A(x,y,\omega)\te^{\ti \phi(x,y,\omega)} = \ti \phi'(x,y,\omega) P(x,y,\omega).
+\end{equation}
+Differentiation introduces a constant phase shift to the phase of the original wave field, which vanishes after a differentiation with respect to $x_0$:
+\begin{equation}
+\phase{ P'(x_0,0,\omega) } \approx \phase{ P(x_0,0,\omega) } + \pi/2,
+\end{equation}
+\begin{equation}
+\frac{ \partial }{\partial x_0} \phase{ P'(x_0,0,\omega) } \approx  \frac{ \partial }{\partial x_0}\phase{ P(x_0,0,\omega) }.
+\end{equation}
+
+The SPA therefore compares the $k_x(x_0)$ --thus the propagation direction-- of the virtual field and the Green's function along the SSD. The stationary position is then found, where these two directions coincide. See Figure \ref{Fig:Physical interpretation of the stationary position} for an illustration, with the example of a virtual point source. Obviously, by placing back the 3D Green's function at $x_0$, its wave number vector will equal at $\vx$ to the virtual sound field's wave number vector. 
 
 \vspace{3mm}
 This principle is demonstrated via the example of the synthesis of a plane wave. Let's assume an incident plane wave to be resynthesized, propagating parallel to $z=0$, ie. with $k_z = 0$. The wave number vector pointing in the propagation direction include an angle $\varphi$ with the $x$-axis. The $y$-derivative of such a sound field is given by
@@ -415,6 +435,12 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \sqrt{8\pi \ti \yref k_y}
 \hat{P}(k_x,0,\omega) \te^{-\ti k_x x_0 }
  \td k_x.
 \end{equation}
+Alternatively the same formulation can be given by utilizing the high-frequency approximation, that $\frac{\partial}{\partial y} P(x,y,\omega) \approx \ti \frac{\partial}{\partial y}  \phi(x,y,\omega) P(x,y,\omega) = \ti k_y(x,y) P(x,y,\omega)$, and that the general referencing function for a reference line is given by $d(x_0) = \yref \frac{k}{k_y(x_0)}$, substituted back into the general driving function \eqref{Eq:Gen_rayleigh_dx0} one obtains
+\begin{equation}
+D(x_0,\omega) = 
+- \sqrt{8\pi\ti \yref k_y(x_0)} P(x_0,0,\omega).
+\end{equation} 
+
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .5\columnwidth]{figs/circular_referencing.png}
