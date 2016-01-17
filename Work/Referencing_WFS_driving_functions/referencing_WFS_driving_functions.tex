@@ -49,28 +49,28 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 
 Wave field synthesis is a well established \emph{Sound Field Synthesis (SFS)} technique for the reproduction of an arbitrary sound field with a set of a loudspeaker array termed as the \emph{secondary source distribution (SSD)}, driven with a properly derived weighting function, termed as the \emph{driving functions}. 
 
-Traditional WFS theory --applying linear SSDs-- ensures an amplitude correct synthesis of a sound field along a line parallel to the SSD, termed as the \emph{reference line} in a plane containing both the SSD and the reference line \cite{Berkhout1993:Acoustic_control_by_WFS, Berkhout1988, Verheijen1997:phd, Vogel1993:phd, Start1997:phd}. The synthesis is thus \emph{referenced} to a straight line. Recently a unified WFS formulation was presented by Spors \cite{Spors2008:WFSrevisited}, and later further simplified by Ahrens \cite{Ahrens2010phd, Ahrens2012}, giving a target field independent driving function. The positions of amplitude correct synthesis however has not been investigated in details so far. Without taking the target field characteristics into consideration the approach utilizes a constant referencing scheme.
+Traditional WFS theory---applying linear SSDs---ensures an amplitude correct synthesis of a sound field along a line parallel to the SSD, termed as the \emph{reference line} in a plane containing both the SSD and the reference line \cite{Berkhout1993:Acoustic_control_by_WFS, Berkhout1988, Verheijen1997:phd, Vogel1993:phd, Start1997:phd}. The synthesis is thus \emph{referenced} to a straight line. Recently a unified WFS formulation was presented by Spors \cite{Spors2008:WFSrevisited}, and later further simplified by Ahrens \cite{Ahrens2010phd, Ahrens2012}, yielding target-field-independent driving functions. The position of amplitude correct synthesis, however, has not been investigated in details so far. Without taking the target field characteristics into consideration the approach utilizes a constant referencing scheme.
 
 Besides traditional WFS for a linear SSD with a straight reference line an explicit solution is known, based on mode-matching, or more explicitly: based on matching the corresponding wavenumber components of the SSD field and the target sound field both in amplitude and phase \cite{Ahrens2010a, Ahrens2010:Ambisonics_w_planar_linear}. The relation of the two techniques is well-studied for the synthesis of a 3D point source \cite{Spors2010:analysis_and_improvement}. For a circular SSD similar mode-matching solutions exist, known as Near-Field Compensated Higher-Order Ambisonics \cite{Ahrens2008:Analytical_Circ_Spherical_SFS}.
 
-In recent researches it was verified, that besides linear SSD geometries WFS constitutes a high-frequency approximation for the general sound field synthesis problem with an arbitrary SSD curve \cite{Fazi2013:Equivalent_scattering, Zotter2013:uniqueness}.
+It was verified recently, that besides linear SSD geometries WFS constitutes a high-frequency approximation for the general sound field synthesis problem with an arbitrary SSD curve \cite{Fazi2013:Equivalent_scattering, Zotter2013:uniqueness}.
 
 In the present treatise it is verified, that synthesis using an SSD with arbitrary curvature may be referenced on an arbitrary curve with properly chosen frequency independent referencing function. Several referencing schemes are presented in order to demonstrate the validity of the approach. It is revealed, that traditional WFS formulation is a particular case of the unified theory, applying a linear SSD referencing on a parallel straight line, with taking the \emph{virtual source dimensional mismatch} into consideration.
 Also the validity of the unified WFS formulation is revisited.
-Finally, it is verified, the the presented approach holds without change for non-linear secondary source distributions, allowing the comparison of WFS with other sound field synthesis techniques employing non-linear SSDs.
+Finally, it is verified, that the presented approach holds without change for non-linear secondary source distributions, allowing the comparison of WFS with other sound field synthesis techniques employing non-linear SSDs.
 
 \section{General WFS theory}
-The starting point of the unified WFS theory is the Rayleigh-integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh-plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, ie. to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ 0]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
+The starting point of the unified WFS theory is the Rayleigh integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, ie. to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ z]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
 \begin{equation}
-P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0 \td z_0,
+P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx = \vxo} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0 \td z_0,
 \label{Eq:Theory:3D_Rayleigh}
 \end{equation}
 with $G_{3\mathrm{D}}(\vx - \vxo,\omega) = \frac{1}{4\pi} \frac{\te^{-\ti k |\vx-\vxo| }}{|\vx-\vxo|}$ being the 3D Green's function, describing a 3D point source as SSD element.
 
 % 
-Unified WFS formulation assumes a virtual sound field, being independent from the $z$-coordinate, ie. a 2D virtual sound field. In this case the synthesized field is given by the 2D Rayleigh-integral \cite{Spors2008:WFSrevisited}:
+Unified WFS formulation assumes a virtual sound field, being independent from the $z$-coordinate, ie. a 2D virtual sound field. In this case the synthesized field is given by the 2D Rayleigh integral \cite{Spors2008:WFSrevisited}:
 \begin{multline}
-P(\vx,\omega) = -2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0} 
+P(\vx,\omega) = -2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx=\vxo} 
 \int_{-\infty}^{\infty} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td z_0 \td x_0 = \\
 -2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0} G_{2\mathrm{D}}(\vx - \vxo,\omega) \td x_0.
 \label{Eq:2D_Rayleigh}
@@ -104,7 +104,7 @@ WFS theory relies heavily on the \emph{stationary phase approximation} (SPA). Fi
 
 \section{The stationary phase approximation}
 
-The SPA is a basic tool of asymptotic analysis, able to approximate the integral of rapidly oscillating functions with a slowly varying envelope, used widely for estimating Fourier-transforms.
+The SPA is a basic tool of asymptotic analysis, able to approximate the integral of rapidly oscillating functions with a slowly varying envelope, used widely for estimating Fourier transforms.
 Since in the frequency domain of interest the Green's function is a rapidly oscillating function, the approach gives a high-frequency approximation of \eqref{Eq:2D_Rayleigh} and \eqref{Eq:Theory:3D_Rayleigh} for an arbitrary target sound field.
 
 The method is used to approximate integrals of the following form
@@ -478,7 +478,7 @@ For the result of this type of referencing see Figure \ref{Fig:Theory:circle_ref
 
 All the foregoing were true for 2D sound field, invariant in the vertical direction. In many practical cases the virtual source model is a virtual point source with a flat frequency response and an attenuation factor of $1/r$ opposed to a line source. The different attenuation factor will result that --although the stationary point remains in the same position in the horizontal direction as for a line source due to the same phase functions in the plane of the synthesis-- using the same referencing function the synthesis will not be amplitude correct in a $\dref$ distance measured from a stationary SSD element. This phenomenon is referred as \emph{virtual source dimension mismatch}.
 
-In order to find the the position of correct synthesis with the incorporation of the 3D nature of a point source the 3D Rayleigh integral is used as given by \eqref{Eq:Theory:3D_Rayleigh}. By using the high-frequency approximation of the derivative of a 3D point source field the Rayleigh integral reads
+In order to find the position of correct synthesis with the incorporation of the 3D nature of a point source the 3D Rayleigh integral is used as given by \eqref{Eq:Theory:3D_Rayleigh}. By using the high-frequency approximation of the derivative of a 3D point source field the Rayleigh integral reads
 \begin{equation}
 P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\ti k y_s}{4\pi} \frac{\te^{-\ti k | \vxo - \mathbf{x}_s | }}{|\vxo - \mathbf{x}_s|} \frac{1}{4\pi} \frac{\te^{-\ti k | \vx - \vxo| }}{ | \vx - \vxo| } \td x_0 \td z_0.
 \end{equation}
