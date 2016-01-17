@@ -60,7 +60,7 @@ Also the validity of the unified WFS formulation is revisited.
 Finally, it is verified, that the presented approach holds without change for non-linear secondary source distributions, allowing the comparison of WFS with other sound field synthesis techniques employing non-linear SSDs.
 
 \section{General WFS theory}
-The starting point of the unified WFS theory is the Rayleigh integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, ie. to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ z]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
+The starting point of the unified WFS theory is the Rayleigh integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, i.e., to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ z]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
 \begin{equation}
 P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx = \vxo} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0 \td z_0,
 \label{Eq:Theory:3D_Rayleigh}
@@ -68,7 +68,7 @@ P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P
 with $G_{3\mathrm{D}}(\vx - \vxo,\omega) = \frac{1}{4\pi} \frac{\te^{-\ti k |\vx-\vxo| }}{|\vx-\vxo|}$ being the 3D Green's function, describing a 3D point source as SSD element.
 
 % 
-Unified WFS formulation assumes a virtual sound field, being independent from the $z$-coordinate, ie. a 2D virtual sound field. In this case the synthesized field is given by the 2D Rayleigh integral \cite{Spors2008:WFSrevisited}:
+Unified WFS formulation assumes a virtual sound field, being independent from the $z$-coordinate, i.e., a 2D virtual sound field. In this case the synthesized field is given by the 2D Rayleigh integral \cite{Spors2008:WFSrevisited}:
 \begin{multline}
 P(\vx,\omega) = -2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx=\vxo} 
 \int_{-\infty}^{\infty} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td z_0 \td x_0 = \\
@@ -88,7 +88,7 @@ with $\vx = [x,\ y,\ 0]^{\mathrm{T}}$ and $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$. T
 The 2.5D Rayleigh integral implicitly contains the driving functions for a linear set of 3D point sources given by 
 \begin{equation}
 D(x_0,\omega) = 
-- \sqrt{\frac{8\pi}{\ti k}} \sqrt{|\vx-\vxo|} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0}
+- \sqrt{\frac{8\pi}{\ti k}} \sqrt{|\vx-\vxo|} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0}.
 \label{Eq:2_5D_driv_fun_implicit}
 \end{equation}
 These driving functions still depend on the receiver position $\vx$. In the followings it is verified, that by choosing a proper referencing function the driving functions can be made independent from the receiver position, still ensuring amplitude correct synthesis on an arbitrary convex curve in front of the SSD.
@@ -97,10 +97,10 @@ These driving functions still depend on the receiver position $\vx$. In the foll
 It is important to note here, that the 2D Rayleigh integral stems from the 2D Kirchhoff-Helmholtz integral equation: from the integral description of 2D sound fields. That means, that no 3D virtual sound field can be described by means of equation \eqref{Eq:2D_Rayleigh}, since it does not satisfies the 2D wave equation. Even by applying infinite line sources, the synthesis of a 3D monopole is not possible, in the synthesized field amplitude errors would be present. This phenomena is referred as \emph{virtual source dimensional mismatch}, and has to be accounted for, when the target virtual sound field is a 3D one.
 
 \vspace{3mm}
-Three types virtual sound field models are considered in the present treatise: virtual plane waves, propagating in the $z=0$ plane(ie. with $k_z = 0$), parallel to the synthesis field, and 2D and 3D monopoles, ie. virtual line and point sources.
+Three types virtual sound field models are considered in the present treatise: virtual plane waves, propagating in the $z=0$ plane( i.e., with $k_z = 0$), parallel to the synthesis field, and 2D and 3D monopoles, i.e., virtual line and point sources.
 
 \vspace{3mm}
-WFS theory relies heavily on the \emph{stationary phase approximation} (SPA). First the physical interpretation of SPA is presented, serving as a very simple and useful tool, for referencing the WFS driving functions on an arbitrary curve.
+WFS theory relies heavily on the \emph{stationary phase approximation} (SPA). First the physical interpretation of SPA is presented, serving as a very simple and useful tool for referencing the WFS driving functions on an arbitrary curve.
 
 \section{The stationary phase approximation}
 
@@ -115,14 +115,14 @@ A rigorous derivation based on integration by parts is given in \cite{Bleistein1
 \begin{equation}
 \phi(z) \approx \phi(z_s) + \frac{1}{2}\phi''(z_s)(z-z_s)^2.
 \end{equation}
-Point $z_s$ is termed as the \emph{stationary point}. Supposing that $F(z)$ is a slowly varying smooth function, compared to $\phi(z)$ it is assumed, that where the phase changes ie. $\phi'(z_s) \neq 0$ the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral has the immediate surroundings of the stationary point. Moreover in the proximity of the stationary point $F(z)$ can be regarded constant with the value $F(z_s)$ (or equivalently to approximate $F(z)$ also with its first non-vanishing term in its Taylor-series expansion). With these considerations the integral becomes
+Point $z_s$ is termed as the \emph{stationary point}. Supposing that $F(z)$ is a slowly varying smooth function, compared to $\phi(z)$ it is assumed, that where the phase changes i.e., $\phi'(z_s) \neq 0$ the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral has the immediate surroundings of the stationary point. Moreover in the proximity of the stationary point $F(z)$ can be regarded constant with the value $F(z_s)$ (or equivalently $F(z)$ is also approximated with its first non-vanishing term in its Taylor-series expansion). With these considerations the integral becomes
 \begin{equation}
 \int_{\infty}^{\infty} F(z) \te^{\ti \Phi(z)} \td z \approx
 F(z_s)\te^{-\phi(z_s)} \int_{-\infty}^{\infty} \te^{-\ti \frac{1}{2}\phi''(z_s)(z-z_s)^2} \td z.
 \end{equation}
-This integral can be evaluated explicitly and as a final result
+This integral can be evaluated analytically and as a final result
 \begin{equation}
-I \approx \sqrt{\frac{2\pi}{| \phi''(z_s) |}} F(z_s) \te^{-\ti \phi(z_s) - \ti \mathrm{sgn}\left(  \phi''(z_s) \right)\frac{\pi}{4}}. 
+I \approx \sqrt{\frac{2\pi}{| \phi''(z_s) |}} F(z_s) \te^{-\ti \phi(z_s) - \ti \mathrm{sgn}\left(  \phi''(z_s) \right)\frac{\pi}{4}} 
 \end{equation}
 is obtained.
 %
@@ -146,7 +146,7 @@ in the space-frequency domain the propagation direction/wave number vector of a 
 \begin{equation}
 \mathbf{k}(x,y) = \begin{bmatrix} k_x(x,y) \\[0.3em] k_y(x,y)\\[0.3em]    \end{bmatrix} = \nabla \phase{P(x,y)} = \begin{bmatrix} \frac{\partial}{\partial x} \\[0.3em] \frac{\partial}{\partial y}\\[0.3em] \end{bmatrix}   \phase{P(x,y)},
 \end{equation}
-with $\phase{f}$ denoting the phase of an arbitrary function.
+with $\phase{f}$ denoting the phase of an arbitrary function. This vector is perpendicular in each position to the wave front.
 Since we are dealing with a 2D sound field, along with the dispersion relation $k = \omega/c$, $k_x$ completely determines the propagation direction at an arbitrary point.
 Using the SPA for the Rayleigh integral with a virtual sound field $P(x,y,\omega)$ with a fixed $\vx$ receiver position the phase function under consideration is 
 \begin{equation}
@@ -177,7 +177,7 @@ Differentiation introduces a constant phase shift to the phase of the original w
 \frac{ \partial }{\partial x_0} \phase{ P'(x_0,0,\omega) } \approx  \frac{ \partial }{\partial x_0}\phase{ P(x_0,0,\omega) }.
 \end{equation}
 
-The SPA therefore compares the $k_x(x_0)$ --thus the propagation direction-- of the virtual field and the Green's function along the SSD. The stationary position is then found, where these two directions coincide. See Figure \ref{Fig:Physical interpretation of the stationary position} for an illustration, with the example of a virtual point source. Obviously, by placing back the 3D Green's function at $x_0$, its wave number vector will equal at $\vx$ to the virtual sound field's wave number vector. 
+The SPA therefore compares the $k_x(x_0)$ --thus the propagation direction/wave front-- of the virtual field and the Green's function along the SSD. The stationary position is then found, where these two directions coincide. See Figure \ref{Fig:Physical interpretation of the stationary position} for an illustration, with the example of a virtual point source. Obviously, by placing back the 3D Green's function at $x_0$, its wave number vector will equal at $\vx$ to the virtual sound field's wave number vector. The SPA therefore performs a wave front matching in the spatial domain between the target sound field and the SSD.
 
 \vspace{3mm}
 This principle is demonstrated via the example of the synthesis of a plane wave. Let's assume an incident plane wave to be resynthesized, propagating parallel to $z=0$, ie. with $k_z = 0$. The wave number vector pointing in the propagation direction include an angle $\varphi$ with the $x$-axis. The $y$-derivative of such a sound field is given by
