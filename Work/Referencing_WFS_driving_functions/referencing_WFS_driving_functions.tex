@@ -62,7 +62,7 @@ Finally, it is verified, that the presented approach holds without change for no
 \section{General WFS theory}
 The starting point of the unified WFS theory is the Rayleigh integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, i.e., to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ z]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
 \begin{equation}
-P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx = \vxo} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0 \td z_0,
+P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx = \vxo} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0 \td z_0,
 \label{Eq:Theory:3D_Rayleigh}
 \end{equation}
 with $G_{3\mathrm{D}}(\vx - \vxo,\omega) = \frac{1}{4\pi} \frac{\te^{-\ti k |\vx-\vxo| }}{|\vx-\vxo|}$ being the 3D Green's function, describing a 3D point source as SSD element.
@@ -70,9 +70,9 @@ with $G_{3\mathrm{D}}(\vx - \vxo,\omega) = \frac{1}{4\pi} \frac{\te^{-\ti k |\vx
 % 
 Unified WFS formulation assumes a virtual sound field, being independent from the $z$-coordinate, i.e., a 2D virtual sound field. In this case the synthesized field is given by the 2D Rayleigh integral \cite{Spors2008:WFSrevisited}:
 \begin{multline}
-P(\vx,\omega) = -2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx=\vxo} 
+P(\vx,\omega) = -2 \int_{-\infty}^{\infty} \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx=\vxo} 
 \int_{-\infty}^{\infty} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td z_0 \td x_0 = \\
--2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{y = 0} G_{2\mathrm{D}}(\vx - \vxo,\omega) \td x_0.
+-2 \int_{-\infty}^{\infty} \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0} G_{2\mathrm{D}}(\vx - \vxo,\omega) \td x_0.
 \label{Eq:2D_Rayleigh}
 \end{multline}
 In 3-dimension the integral represents synthesis applying a linear set of infinite vertical line sources, described by the 2D Green's function $G_{2\mathrm{D}}(\vx - \vxo,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( k |\vx-\vxo| \right)$.
@@ -81,7 +81,7 @@ In practical applications utilizing infinite line sources as SSD elements is not
 In the synthesis plane at high-frequency and in the far-field region the 2D Green's function may be approximated with its asymptotic expansion for large arguments, and the synthesized field reads
 \begin{equation}
 P(\vx,\omega) = 
--2 \int_{-\infty}^{\infty} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx = \vxo} \sqrt{\frac{2\pi |\vx-\vxo|}{\ti k}} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0.
+-2 \int_{-\infty}^{\infty} \left. \frac{\partial}{\partial y}  P(\vx,\omega) \right|_{\vx = \vxo} \sqrt{\frac{2\pi |\vx-\vxo|}{\ti k}} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td x_0.
 \label{Eq:2.5D_Rayleigh}
 \end{equation}
 with $\vx = [x,\ y,\ 0]^{\mathrm{T}}$ and $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$. This equation is termed as the general 2.5D Rayleigh integral. From the next section it becomes obvious, that the approximation of the 2D Green's function is a simple stationary phase approximation of $\int_{-\infty}^{\infty} G_{3\mathrm{D}}(\vx - \vxo,\omega) \td z_0$  for an arbitrary receiver position in the synthesis plane, and the stationary position $z_0 = 0$.
@@ -91,7 +91,7 @@ The 2.5D Rayleigh integral \eqref{Eq:2D_Rayleigh} implicitly contains the drivin
 %
 \begin{equation}
 D(x_0,\omega) = 
-- \sqrt{\frac{8\pi}{\ti k}} \sqrt{|\vx-\vxo|} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx=\vxo}
+- \sqrt{\frac{8\pi}{\ti k}} \sqrt{|\vx-\vxo|} \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx=\vxo}
 \label{Eq:2_5D_driv_fun_implicit}
 \end{equation}
 These driving functions still depend on the receiver position $\vx$. In the followings it is verified, that by choosing a proper referencing function the driving functions can be made independent from the receiver position, still ensuring amplitude correct synthesis on an arbitrary convex curve in front of the SSD.
@@ -186,7 +186,7 @@ The SPA therefore compares the propagation direction/wave fronts ($k_x(x_0)$) of
 \vspace{3mm}
 This principle is demonstrated via the example of the synthesis of a plane wave. Let's assume an incident virtual plane wave, propagating parallel to $z=0$ ($k_z = 0$). The wave number vector pointing in the propagation direction intersects the $x$-axis under an angle $\varphi$. The $y$-derivative of such a sound field is given by
 \begin{equation}
-\frac{\partial}{\partial y} \left. \te^{-\ti k ( \cosfi x_0 + \sinfi y )} \right|_{ y = 0 } = -\ti k \sinfi \te^{-\ti k \cosfi x_0}.
+\left. \frac{\partial}{\partial y} \te^{-\ti k ( \cosfi x_0 + \sinfi y )} \right|_{ y = 0 } = -\ti k \sinfi \te^{-\ti k \cosfi x_0}.
 \end{equation}
 Substituting this back into \eqref{Eq:2.5D_Rayleigh} at a fixed receiver position the synthesized field reads
 \begin{equation}
@@ -253,7 +253,7 @@ Therefore, one may control the amplitude of the synthesized field along an arbit
 Let's define a \emph{referencing function} $d(x_0)$ for each SSD element, so that the driving functions become
 \begin{equation}
 D(x_0,\omega) = 
-- \sqrt{\frac{8\pi}{\ti k}} \sqrt{d(x_0)} \frac{\partial}{\partial y} \left. P(\vx,\omega) \right|_{\vx = \vxo}.
+- \sqrt{\frac{8\pi}{\ti k}} \sqrt{d(x_0)} \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx = \vxo}.
 \label{Eq:Gen_rayleigh_dx0}
 \end{equation}
 In the followings it is shown how this referencing function should be chosen in order to reference the synthesized field on an arbitrary receiver curve, and where the synthesis is referenced in case of typical virtual source models with traditional choice of the referencing function.
@@ -413,7 +413,7 @@ d_{ls,line}(x_0) = \frac{\yref}{y_s} r_0.
 By substituting back to the WFS driving function, it is obtained, that the driving functions, that reference the synthesis of a plane wave and a cylindrical wave to a reference line is given by
 \begin{multline}
 D_{pw,line}(x_0,\omega) = 
-- \sqrt{\frac{8\pi}{\ti k}}\sqrt{\frac{\yref}{\sinfi}} \frac{\partial}{\partial y} \left. \te^{-\ti k (\cosfi x_0 + \sinfi y)} \right|_{y = 0} = 
+- \sqrt{\frac{8\pi}{\ti k}}\sqrt{\frac{\yref}{\sinfi}} \left. \frac{\partial}{\partial y} \te^{-\ti k (\cosfi x_0 + \sinfi y)} \right|_{y = 0} = 
 \sqrt{8\pi \ti \yref k \sinfi}\te^{-\ti k \cosfi x_0 } =\\ 
 \sqrt{8\pi \ti \yref k_y }\te^{-\ti k_x x_0 }
 \label{Eq:Plane_wave_ref_line}
@@ -421,7 +421,7 @@ D_{pw,line}(x_0,\omega) =
 and
 \begin{multline}
 D_{ls,line}(x_0,\omega) = 
-- \sqrt{\frac{8\pi}{\ti k}}\sqrt{\frac{\yref}{y_s} r_0} \frac{\partial}{\partial y} \left. G_{2D}(\vxo -  \mathbf{x}_s,\omega) \right|_{y = 0} =
+- \sqrt{\frac{8\pi}{\ti k}}\sqrt{\frac{\yref}{y_s} r_0} \left. \frac{\partial}{\partial y} G_{2D}(\vxo -  \mathbf{x}_s,\omega) \right|_{y = 0} =
 - \sqrt{\frac{\ti k \pi \yref y_s}{2 r_0}}  H_0^{(1)}( k r ).
 \end{multline}
 respectively. For the case of a virtual plane wave it is a well-known result, perfectly equivalent with the explicit solution \cite{Ahrens2012}.
@@ -593,7 +593,7 @@ In the context of WFS this windowing is termed as \emph{secondary source selecti
 
 With all these approximations the general WFS driving functions for an arbitrary SSD contour reads
 \begin{equation}
-D(\vxo,\omega) = -2 \sqrt{\frac{2\pi}{\ti k}} w(\vxo) \frac{\partial}{\partial \mathbf{n}_i} \left. P(\vx,\omega) \right|_{\vx = \vxo}.
+D(\vxo,\omega) = -2 \sqrt{\frac{2\pi}{\ti k}} w(\vxo) \left. \frac{\partial}{\partial \mathbf{n}_i} P(\vx,\omega) \right|_{\vx = \vxo}.
 \end{equation}
 
 \vspace{3mm}
@@ -614,7 +614,7 @@ The validity of the referencing schemes are demonstrated via the example of a ci
 %respectively, with $\alpha$ being the incident angle of the plane wave measured from the $x$-axis, while the line/point source is located at $\mathbf{x}_s = [x_s,\ y_s,\ 0]^{\mathrm{T}}$. The 
 and the WFS driving function reads
 \begin{equation}
-D(\varphi,\omega) = - \sqrt{\frac{8\pi}{\ti k}}\sqrt{d(\varphi)} \frac{\partial}{\partial r} \left. P(r,\varphi) \right|_{r = R_0}.
+D(\varphi,\omega) = - \sqrt{\frac{8\pi}{\ti k}}\sqrt{d(\varphi)} \left. \frac{\partial}{\partial r} P(r,\varphi) \right|_{r = R_0}.
 \end{equation}
 
 \vspace{3mm}
