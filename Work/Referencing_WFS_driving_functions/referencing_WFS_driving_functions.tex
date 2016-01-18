@@ -59,6 +59,8 @@ In the present treatise it is verified, that synthesis using an SSD with arbitra
 Also the validity of the unified WFS formulation is revisited.
 Finally, it is verified, that the presented approach holds without change for non-linear secondary source distributions, allowing the comparison of WFS with other sound field synthesis techniques employing non-linear SSDs.
 
+Note, that the reference position is often termed as the position of amplitude correct synthesis. Obviously, due to the several approximations introduced, no position of amplitude correct synthesis exist. These positions are rather the curve at which synthesis is optimized within the validity of the stationary phase method.
+
 \section{General WFS theory}
 The starting point of the unified WFS theory is the Rayleigh integral formulation of an arbitrary sound field, written on an infinite plane. For sake of convenience the Rayleigh plane is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, and for practical reasons the listener position is restricted to $z=0$, i.e., to the synthesis plane. At an arbitrary $\vx = [x,\ y,\ z]^{\mathrm{T}}$, with $y>0$ the synthesized pressure field reads
 \begin{equation}
@@ -258,7 +260,7 @@ D(x_0,\omega) =
 \end{equation}
 In the followings it is shown how this referencing function should be chosen in order to reference the synthesized field on an arbitrary receiver curve, and where the synthesis is referenced in case of typical virtual source models with traditional choice of the referencing function.
 
-Unified WFS theory supposes fixing the referencing function to constant, with setting $d(x_0) = \dref$ \cite{Ahrens2012}.
+Unified WFS theory supposes fixing the referencing function constant, by setting $d(x_0) = \dref$ \cite{Ahrens2012}.
 An advantage of this type of referencing is independence from the virtual sound field characteristics, therefore provides a generalized, easy-to-implement approach. On the other hand, the validity of these driving functions is highly virtual field dependent.
 
 %As virtual source models plane, cylindrical and spherical waves are presented.
@@ -580,7 +582,14 @@ The performance of this referencing type is demonstrated in Figure \ref{Fig:Theo
 
 \section{Application of non-linear secondary source distributions}
 
-As it was pointed out in several recent study \cite{Ahrens2012, Fazi2013:Equivalent_scattering, Zotter2013:uniqueness} the general WFS driving functions may be extended easily for the application of non-linear SSDs. The mathematical basis stems from considering the SFS problem as an equivalent scattering problem (valid for enclosing SSDs, or planar 3D and linear 2D SFS problems) from a sound soft obstacle \cite{Fazi2013:Equivalent_scattering}. In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Tangent Plane/Physical Optics approximation} is frequently used, which approximates the scattered field as a single layer potential. The approximation relies on the reflection of plane waves from planar surfaces. If the SSD is convex (i.e. the scattering of the synthesized field is avoided) and the SSD dimensions are much higher, than the physical wavelength of the synthesized field (i.e. both the SSD elements can be considered locally plane and the incident field to be locally plane wave) the Kirchhoff approximation may be applied to WFS and the general WFS driving functions hold for an arbitrary SSD contour.
+As it was pointed out in several recent study \cite{Ahrens2012, Fazi2013:Equivalent_scattering, Zotter2013:uniqueness} the general WFS driving functions may be extended easily for the application of non-linear SSDs. The mathematical basis stems from considering the SFS problem as an equivalent scattering problem: the scattering of the target wave field from 
+a sound soft obstacle \cite{Fazi2013:Equivalent_scattering} with the boundary surface being the SSD. The driving functions are then obtained as the difference between the normal gradient of the target and the scattered wave fields measured on the SSD.
+This approximation is valid for enclosing SSDs, or planar 3D and linear 2D SFS problems.
+
+In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Tangent Plane/Physical Optics approximation} is frequently used. 
+The approximation relies on the reflection of plane waves from planar surfaces. 
+If the reflecting boundary/SSD is convex (i.e. the scattering of the synthesized field is avoided) and the its dimensions are much larger, than the physical wavelength of the incident/target wave field the surface may be considered locally planar, and scattering may be modeled as the reflection of plane waves from planar/linear surfaces, for which an analytical formula is known. Since the synthesis from arbitrary geometries is thus approximated with that from planar/linear surfaces, the general driving function takes the same form as the driving functions using planar or linear SSDs (based on the problem dimensionality). Obviously, we restrict the discussion to linear SSDs in the followings.
+
 To the synthesis however only those SSD elements contribute, which are \emph{illuminated} by the incident sound field, i.e. those SSD elements, whose sound field propagate into the same direction in the synthesis plane as the target sound field. Mathematically this requirement is formulated by
 \begin{equation}
 w(\vxo) = \begin{cases}
@@ -588,7 +597,7 @@ w(\vxo) = \begin{cases}
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector as defined in the foregoing, $ \mathbf{n}_i(\vxo)$ is the inward normal of the SSD elements. This window function is a further approximation of the Kirchhoff's diffraction formula, giving a good approximations for plane waves with small angles of incidence to the actual SSD element.
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector as defined in the foregoing, $ \mathbf{n}_i(\vxo)$ is the inward normal of the SSD elements. %This window function is a further approximation of the Kirchhoff's diffraction formula, giving a good approximations for plane waves with small angles of incidence to the actual SSD element.
 In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}.
 
 With all these approximations the general WFS driving functions for an arbitrary SSD contour reads
@@ -624,7 +633,7 @@ The referencing function $d(\varphi)$ for an arbitrary curve can be found in the
 %
 Two referencing approaches are presented in order to demonstrate the validity of the presented approach: referencing the synthesis on a straight line, and to a concentric circle inside the SSD. %This latter is of special importance, since \emph{Near-Field Compensated Higher Order Ambisonics (NFC-HOA)} provides an explicit, mode-matching solution for the synthesis using a circular SSD, referencing the synthesis on a concentric circle.
 
-Again, the effects of choosing a constant referencing function is also examined.
+%Again, the effects of choosing a constant referencing function is also examined.
 
 \begin{figure}
 	\centering
@@ -634,7 +643,7 @@ Again, the effects of choosing a constant referencing function is also examined.
 	\label{Fig:Theory:real_part_circular}
 \end{figure}
 
-\subsection{Effects of fixed referencing}
+\subsection{Effects of constant referencing}
 
 First, the effect of a constant referencing function is investigated. For both a plane wave and a line source the position of correct synthesis can be found easily based on the problem geometry.
 
@@ -664,7 +673,7 @@ First, the effect of a constant referencing function is investigated. For both a
 \end{figure}
 
 \paragraph{Virtual plane wave:\\}
-For the case of the synthesis of a plane wave it is obvious, that the points from each SSD element at a distance of $\dref$ describe a circle with the same radius as the SSD, translated in the direction of the plane wave by $\dref$. The points of amplitude correct synthesis are therefore given by
+For the case of the synthesis of a plane wave it is obvious, that the points from each SSD element at a distance of $\dref$ describe a circle with the same radius as the SSD, translated in the direction of the plane wave by $\dref$. See Figure \ref{Fig:Theory:fixed_referencing_circle} (a). The points of amplitude correct synthesis are therefore given by
 \begin{eqnarray}
 \mathbf{x}_{\mathrm{pw,ref}}(x_0) =  \begin{bmatrix}  \cosfi R_0 + \cos\alpha \dref \\[0.3em] \sinfi R_0 + \sin \alpha \dref \\[0.3em]    \end{bmatrix} \\,
 \label{Eq:Fixed_referencing_pw_circle}
@@ -684,14 +693,14 @@ For a virtual line source the parametric curve can be given by the problem geome
 In this case the curve is given by
 \begin{eqnarray}
 \mathbf{x}_{\mathrm{ls,ref}}(x_0) =  \begin{bmatrix} x_s + \cos\alpha (\dref + r_0)\\[0.3em] y_s + \sin\alpha (\dref+r_0) \\[0.3em]    \end{bmatrix} \\,
-\label{Eq:Fixed_referencing_ls_circle}
+\label{Eq:Fixed_referencing_ls_circle}.
 \end{eqnarray}
-with $\alpha$ being the angle, shown in Figure \ref{Fig:Theory:fixed_referencing_circle} (b).
-This curve is rather hard to examine analytically, however two limiting curves can be described easily purely from the problem geometry: as the virtual source approaches the SSD the curve describes a circle around the virtual source with a radius of $\dref$. If the virtual source is far from the SSD the incident field becomes a plane wave and the curve describes a circle with a radius same as the SSD, translated by $\dref$ into the direction, defined by the position vector of the virtual source. In other virtual source position the curve is a mixture of these two circles. Also, it is ensured in each case, that in front of the virtual source, the distance of correct synthesis from the corresponding SSD element is $\dref$. This fact is in analogy with the linear SSD case.
+This curve is rather hard to investigate analytically, however two limiting curves can be described easily purely from the problem geometry: as the virtual source approaches the SSD the curve describes a circle around the virtual source with a radius of $\dref$. If the virtual source is far from the SSD the incident field becomes a plane wave and the curve describes a circle with a radius same as the SSD, translated by $\dref$ into the direction, defined by the position vector of the virtual source. %In other virtual source position the curve is a mixture of these two circles. 
+It is also ensured, that in front of the virtual source, the distance of amplitude correct synthesis from the corresponding SSD element is $\dref$. %This fact is in analogy with the linear SSD case.
 
-Numeric simulation results using these referencing schemes are depicted in Figure \ref{Fig:Theory:fixed_referencing_circular}.
+Results of numeric simulation, using these referencing schemes are depicted in Figure \ref{Fig:Theory:fixed_referencing_circular}.
 
-In each case it should be noted, that the position of amplitude correct synthesis can be defined only inside the SSD. Moreover, due to the high-frequency approximations used for the application of WFS driving function for a circular array the curve of correct synthesis is shorter, than it would be allowed by the previous limitation (i.e. does not limited by the intersections with the SSD). This is because in the ending of the curves the corresponding stationary SSD elements can not be modeled as flat surfaces in order to apply the Kirchhoff-approximation due to the great local angle of inclination of the incident field. This phenomenon can be observed in both Figure \ref{Fig:Theory:fixed_referencing_circular} (a) and (b).
+In each case it should be noted, that the position of amplitude correct synthesis can be defined only inside the SSD. Moreover, due to high-frequency approximations for the arbitrary SSD extension the curve of correct synthesis is shorter, than it would be allowed by the previous limitation (i.e. does not limited by the intersections with the SSD). This is because in the ending of the curves the corresponding stationary SSD elements can not be modeled as flat surfaces in order to apply the Kirchhoff-approximation due to the great local angle of inclination of the incident field. This phenomenon can be observed in both Figure \ref{Fig:Theory:fixed_referencing_circular} (a) and (b).
 
 \begin{figure}
 	\centering
@@ -703,7 +712,7 @@ In each case it should be noted, that the position of amplitude correct synthesi
 \paragraph{Virtual point source:\\}
 Similarly to the linear case, the synthesis of a virtual point source may be considered in the same manner as a line source, with a substitution of $\dref \rightarrow \dref \frac{r_0}{r_0 - \dref}$ . By using this substitution in \eqref{Eq:Fixed_referencing_ls_circle} the positions of correct synthesis becomes
 \begin{eqnarray}
-\mathbf{x}_{\mathrm{ps, ref}} =  \begin{bmatrix} x_s + \cos\alpha r_0 \frac{r_0}{r_0 - d}  \\[0.3em] y_s + \sin\alpha r_0 \frac{r_0}{r_0 - d} \\[0.3em]    \end{bmatrix} \\
+\mathbf{x}_{\mathrm{ps, ref}} =  \begin{bmatrix} x_s + \cos\alpha r_0 \frac{r_0}{r_0 - d}  \\[0.3em] y_s + \sin\alpha r_0 \frac{r_0}{r_0 - d} \\[0.3em]    \end{bmatrix}. \\
 \label{Eq:Fixed_referencing_ps_circle}
 \end{eqnarray}
 Similarly to the linear case that means, that in front of the virtual source the position of correct synthesis measured from the SSD becomes $\dref \frac{r_0}{r_0- \dref}$, therefore if the point source is closer to the SSD than the reference distance, no position for amplitude correct synthesis can be found. This can be observed in Figure \ref{Fig:Theory:fixed_referencing_circular_ps}.
@@ -757,11 +766,11 @@ The validity of the referencing functions are demonstrated in Figure \ref{Fig:Th
 
 \section{Conclusion}
 
-The referencing types of classic WFS techniques was revisited in the present treatise. The backbone of WFS is formed by the stationary phase approximation. It was shown, that SPA explicitly finds the stationary point on the SSD, that's wavenumber vector coincides with the target sound field in an arbitrary listener position. By controlling the individual SSD elements amplitude factor in the stationary position, synthesis can be optimized on an arbitrary listener curve with an arbitrary loudspeaker ensemble. This is demonstrated via different referencing schemes for both linear and circular SSDs.
+The possibility of referencing the amplitude distribution of the synthesized field to various reference curves was revisited in the present treatise by using classic WFS techniques. The backbone of WFS is formed by the stationary phase approximation. It was shown, that SPA explicitly finds the stationary point on the SSD, where its emitted wavefront coincides with the target sound field's wave front in an arbitrary listener position. By controlling individually the  SSD elements' amplitude factor in the stationary position, synthesis can be optimized on an arbitrary listener curve with an arbitrary loudspeaker ensemble. This is demonstrated via different referencing schemes for both linear and circular SSDs.
 
-Also, by using the SPA the traditional referencing schemes are revisited, by investigating the region of their validity in an analytical manner. It is verified, that using a constant, target field independent referencing function the synthesis of 2D sound fields is feasible and well-behaved. For the case of a 3D virtual sound field, eg. a 3D point source a virtual source dimensional mismatch appears besides the well-studied secondary source dimensional mismatch. Unless a compensation term is introduced to the amplitude factor --resulting in the traditional 2.5D WFS driving functions for a linear SSD and receiver curve-- the positions of correct synthesis --and thus the amplitude error in a fixed listener position-- is highly virtual source position dependent. For sources close to the SSD this may cause great amplitude deviations. Also if the virtual source is closer to the SSD than the reference distance no position of amplitude correct synthesis is found. 
+Also, by using the SPA the traditional referencing schemes are revisited, by investigating the region of their validity in an analytical manner. It is verified, that using a constant, target field independent referencing function the synthesis of 2D sound fields is feasible and well-behaved. For the case of a 3D virtual sound field, e.g. a 3D point source a virtual source dimensional mismatch appears besides the well-studied secondary source dimensional mismatch. Unless a compensation term is introduced to the amplitude factor --resulting in the traditional 2.5D WFS driving functions for a linear SSD and linear receiver curve-- the position of correct synthesis is highly virtual source position dependent. For sources close to the SSD this may cause great amplitude deviations. Also if the virtual source is closer to the SSD than the reference distance no position of amplitude correct synthesis is found within the listening area. 
 
-This phenomenon may cause great perceptual artifacts when the virtual field is eg. the field of a moving source: the apparent amplitude of the virtual source would change rapidly during the motion.
+This phenomenon may cause great perceptual artifacts when the virtual field is e.g. the field of a moving source: the apparent amplitude of the virtual source would change rapidly during the motion.
 
 In order to compensate this amplitude error, one should include the simple amplitude correction factor, when a 3D field is to be synthesized, or if constant referencing function is preferred one should consider applying truly 2D virtual source models: eg. a pre-equalized line source having a flat frequency response instead of the 3D point source (obviously resulting up in a attenuation factor $\sim 1/\sqrt{r}$). 
 
