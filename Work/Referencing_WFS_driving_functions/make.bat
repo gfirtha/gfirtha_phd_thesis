@@ -1,4 +1,3 @@
 pdflatex referencing_WFS_driving_functions
 bibtex referencing_WFS_driving_functions
 pdflatex referencing_WFS_driving_functions.tex
-referencing_WFS_driving_functions.pdf
