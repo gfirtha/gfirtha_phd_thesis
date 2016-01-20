@@ -146,8 +146,8 @@ I \approx \sqrt{\frac{2\pi}{| \phi''(z_s) |}} F(z_s) \te^{-\ti \phi(z_s) - \ti \
 	\label{Fig:Physical interpretation of the stationary position}
 \end{figure}
 	
-When the SPA is applied for the 2D Rayleigh integral (SURELY 2D? Reference here), a very expressive physical interpretation can be given for the solution of the stationary position:
-in the space-frequency domain the propagation direction/wave number vector of a wave field is given by the direction of maximum phase advance, i.e. the gradient of the phase of the wave field. Given an arbitrary 2D wave field $P(x,y,\omega)$, the wave number vector at an arbitrary point is given by
+When the SPA is applied for the Rayleigh integral, a very expressive physical interpretation can be given for the solution of the stationary position:
+in the space-frequency domain the propagation direction/wave number vector of a wave field is given by the direction of maximum phase advance, i.e. the gradient of the phase of the wave field. Given an arbitrary (for the sake of simplicity) 2D wave field $P(x,y,\omega)$, the wave number vector at an arbitrary point is given by
 \begin{equation}
 \mathbf{k}(x,y) = \begin{bmatrix} k_x(x,y) \\[0.3em] k_y(x,y)\\[0.3em]    \end{bmatrix} = \nabla \phase{P(x,y)} = \begin{bmatrix} \frac{\partial}{\partial x} \\[0.3em] \frac{\partial}{\partial y}\\[0.3em] \end{bmatrix}   \phase{P(x,y)},
 \end{equation}
@@ -320,7 +320,7 @@ An advantage of this type of referencing is independence from the virtual sound 
 \subsection{Referencing 2D sound fields}
 
 First purely 2D virtual sound fields are considered, i.e. plane waves with $k_z=0$ and cylindrical waves. Such a sound field could be perfectly synthesized by a set of vertical line sources.
-For a 2D virtual sound field the referencing type is very simple, since by comparing equations \ref{Eq:Gen_rayleigh_x_x0} and \eqref{Eq:Gen_rayleigh_dx0} it is clear, that $d(x_0) = |\vx-\vxo|$, i.e. the referencing function equals to the distance from the stationary secondary source to the reference position: for each SSD element at $x_0$ the field is referenced to a distance $d(x_0)$ from it, towards the direction of the wave number vector of the virtual field taken at $x_0$.
+For a 2D virtual sound field the referencing type is very simple, since by comparing equations \ref{Eq:2_5D_driv_fun_implicit} and \eqref{Eq:Gen_rayleigh_dx0} it is clear, that $d(x_0) = |\vx-\vxo|$, i.e. the referencing function equals to the distance from the stationary secondary source to the reference position: for each SSD element at $x_0$ the field is referenced to a distance $d(x_0)$ from it, towards the direction of the wave number vector of the virtual field taken at $x_0$.
 
 Mathematically speaking, if the wave number vector of the virtual source is given on the SSD by $\mathbf{k}(x_0) = [k_x(x_0),\ k_y(x_0),\ 0]^{\mathrm{T}}$, then the positions of amplitude correct synthesis lies $d(x_0)$ far from position, $x_0$ in the direction of $\mathbf{k}(x_0)$. Its coordinates are thus given by $\mathbf{x}_{\mathrm{ref}}(x_0)$:
 \begin{eqnarray}
@@ -400,6 +400,17 @@ for a plane wave and a line source, respectively. This means, that a plane wave 
 \caption{Effects of referencing on a line, parallel to the SSD: The absolute value of the error measured between the synthesized sound field and the target sound field for a virtual plane wave with $\varphi = 45^{\circ}$ (a) and line source at $\mathbf{x}_s = [0,\ -1]^{\mathrm{T}}$ (b). The referencing function is set to $d_{pw,line}(x_0) = 2 / \sinfi ~\mathrm{m}$ for the plane wave, and $d_{ls,line}(x_0) = 2 r_0/y_s ~\mathrm{m}$ for the line source, resulting in an amplitude correct synthesis at $\yref = 2~\mathrm{m}$.}
 	\label{Fig:Theory:line_referencing}
 \end{figure}
+
+\vspace{3mm}
+The result of synthesis using constant referencing is often investigated along a line, parallel with the SSD at $y=\yref$, i.e. on a reference line. In the next section it is revealed, that the constant referencing function differs from that, referencing the synthesis on this reference line in a factor of $\sqrt{\sinfi}$. This fact is also pointed out in \cite[3.9.4]{Ahrens2012}. From this, it is clear, that using constant referencing the synthesized field on the reference line will read
+\begin{equation}
+P_{\mathrm{synth,pw}}(x,\yref,\omega) = \sqrt{\sinfi} P_{\mathrm{ideal,pw}}(x,\yref,\omega) 
+\end{equation}
+for a virtual plane wave. Using the SPA the error distribution can be approximated on the reference for a virtual line source located at $\mathbf{x}_s = [x_s,\ y_s,\ 0]$, reading
+\begin{equation}
+P_{\mathrm{synth,ls}}(x,\yref,\omega) = \sqrt{\cosfi_0(x)} P_{\mathrm{ideal,ls}}(x,\yref,\omega) ,
+\end{equation}
+where $\cosfi_0(x) = \langle\, (\mathbf{x}_s - \vx) \cdot \mathbf{n}_{ssd}\rangle$.
 
 \paragraph{Referencing on a line:\\}
 Based on the foregoing it is clear, that it is possible to reference the amplitude of the synthesis to an arbitrary curve by the proper choice of the referencing function. 
@@ -607,7 +618,9 @@ D(\vxo,\omega) = -2 \sqrt{\frac{2\pi}{\ti k}} w(\vxo) \left. \frac{\partial}{\pa
 \end{equation}
 
 \vspace{3mm}
-(EZT NEM ÉRTEM.)In the followings it is demonstrated, that involving the SPA in order to refer the synthesis to an arbitrary curve may be applied without any modification for arbitrary SSD contours. Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required.
+%(EZT NEM ÉRTEM.)In the followings it is demonstrated, that involving the SPA in order to refer the synthesis to an arbitrary curve may be applied without any modification for arbitrary SSD contours. 
+In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
+Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required.
 
 The validity of the referencing schemes are demonstrated via the example of a circular SSD with a radius of $R_0$. For such an SSD ensemble the normal derivative is given by the radial derivative
 %. The radial derivatives of the virtual source models are given in polar coordinates by
