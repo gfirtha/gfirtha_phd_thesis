@@ -401,17 +401,6 @@ for a plane wave and a line source, respectively. This means, that a plane wave 
 	\label{Fig:Theory:line_referencing}
 \end{figure}
 
-\vspace{3mm}
-The result of synthesis using constant referencing is often investigated along a line, parallel with the SSD at $y=\yref$, i.e. on a reference line. In the next section it is revealed, that the constant referencing function differs from that, referencing the synthesis on this reference line in a factor of $\sqrt{\sinfi}$. This fact is also pointed out in \cite[3.9.4]{Ahrens2012}. From this, it is clear, that using constant referencing the synthesized field on the reference line will read
-\begin{equation}
-P_{\mathrm{synth,pw}}(x,\yref,\omega) = \sqrt{\sinfi} P_{\mathrm{ideal,pw}}(x,\yref,\omega) 
-\end{equation}
-for a virtual plane wave. Using the SPA the error distribution can be approximated on the reference for a virtual line source located at $\mathbf{x}_s = [x_s,\ y_s,\ 0]$, reading
-\begin{equation}
-P_{\mathrm{synth,ls}}(x,\yref,\omega) = \sqrt{\cosfi_0(x)} P_{\mathrm{ideal,ls}}(x,\yref,\omega) ,
-\end{equation}
-where $\cosfi_0(x) = \langle\, (\mathbf{x}_s - \vx) \cdot \mathbf{n}_{ssd}\rangle$.
-
 \paragraph{Referencing on a line:\\}
 Based on the foregoing it is clear, that it is possible to reference the amplitude of the synthesis to an arbitrary curve by the proper choice of the referencing function. 
 One feasible choice is to reference the synthesis to a line, parallel to the SSD at $y=\yref$. This can be done, by setting the $y$-coordinate of the parametric curve to a constant value.
@@ -562,6 +551,24 @@ This is an important result of the present treatise. The curve, described by \eq
 The $y$-coordinate has a maximum in front of the virtual source, where $r_0 = y_s$. In any other position the position of correct synthesis is closer to the SSD, therefore $r_0 = y_s$ is the critical point of the curve. One may see, that a position of correct synthesis therefore can be found in the listening area only if $y_s > \dref$, thus the virtual source must be further from the SSD than the fixed reference distance. Actually, the synthesis gives a fair result close to the SSD only in case, $y_s \gg \dref$. As the virtual source approaches the SSD the position of correct synthesis tends to infinity.
 
 This type of referencing therefore may suffer from serious amplitude errors in the vicinity of the SSD.
+
+\vspace{3mm}
+The result of synthesis using constant referencing is often investigated along a line, parallel with the SSD at $y=\yref$, i.e. on the reference line. In the previous section it was revealed, that for a virtual plane wave  the constant referencing function differs from that, referencing the synthesis on the reference line in a factor of $\sqrt{\sinfi}$. This fact is also pointed out in \cite[3.9.4]{Ahrens2012}. From this, it is clear, that using constant referencing the synthesized field on the reference line will read
+\begin{equation}
+P_{\mathrm{synth,pw}}(x,\yref,\omega) = \sqrt{\sinfi} P_{\mathrm{ideal,pw}}(x,\yref,\omega) 
+\end{equation}
+for a virtual plane wave. Using the SPA the error distribution can be approximated on the reference line for a virtual line source located at $\mathbf{x}_s = [x_s,\ y_s,\ 0]$:
+\begin{equation}
+P_{\mathrm{synth,ls}}(x,\yref,\omega) = \sqrt{\cosfi_0(x)} P_{\mathrm{ideal,ls}}(x,\yref,\omega),
+\end{equation}
+where $\cosfi_0(x) = \langle\, ( \vx- \mathbf{x}_s ) \cdot \mathbf{n}_{ssd}\rangle$ with $\mathbf{n}_{ssd} = [0,\ 1,\ 0]^{|\mathrm{T}}$ for the present setup.
+For a virtual point source the error stemming from the virtual source dimensional mismatch is also present, therefore the synthesized field with constant referencing will read
+\begin{equation}
+P_{\mathrm{synth,ps}}(x,\yref,\omega) = \sqrt{\cosfi_0(x)} 
+\sqrt{\frac{ | \vxo - \mathbf{x}_s | + | \vx - \vxo| }{ | \vxo - \mathbf{x}_s |}} 
+P_{\mathrm{ideal,ps}}(x,\yref,\omega).
+\end{equation}
+This type of error can be examined on \cite[Fig.5.13.]{Ahrens2012} with normalized amplitudes (i.e. the constant error factor from the virtual source dimensional mismatch is not shown on the Figure.).
 
 \paragraph{Referencing on a line:\\}
 One feasible choice of the reference curve is a line, parallel to the SSD at $\yref$. Such a referencing function may be derived by setting the $y$-coordinate of \eqref{Eq:3D_curve} to
