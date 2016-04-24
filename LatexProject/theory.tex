@@ -1,16 +1,17 @@
-In the following chapters the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
+In the following chapters the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. %After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
 %
 
-Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure (along with density) and in the displacement of the medium's particles. The propagation of the disturbance is described fully by the acoustic wave equation. First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. For a detailed treatise on the derivation please refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
+\vspace{3mm}
+Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure (along with density) and in the displacement of the medium's particles. The propagation of the disturbance is described fully by the acoustic wave equation. First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. For a detailed treatise on the derivation refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
 
 \section{The homogeneous wave equation}
 
 Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation solely in air at room temperature. 
 
 %
-The domain of investigation ie. where sound waves propagate is termed as \emph{sound field} hereinafter.
-The acoustical quantities of the the sound field is described by \emph{dynamic field variables} in each point $\vx$ at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
-The medium is quiescent, meaning on average each particle is at rest with zero particle displacement --thus zero particle velocity-- and with the static pressure $P_0$. 
+The domain of investigation i.e. where sound waves propagate is termed as \emph{sound field} hereinafter.
+The acoustical quantities of the the sound field is described by \emph{dynamic field variables} in each point $\vx$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
+The medium is quiescent, meaning on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
 The presence of a sound wave causes incremental change in the instantaneous pressure and the particle velocity.
 %
 
@@ -26,12 +27,11 @@ The linear wave equation may be derived by utilizing two fundamental physical pr
 \nabla p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\vx,t),
 \label{Eq:Theory:Eulers_equation}
 \end{equation}
-\nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}.
-%
+\nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}
 where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
-Equation \eqref{Eq:Theory:Eulers_equation} may be transformed wrt. time into the angular frequency domain, supposing steady-state harmonic wave solutions. Using the differentiation theorem the frequency domain Euler's equation reads
+Equation \eqref{Eq:Theory:Eulers_equation} may be transformed with respect to time into the angular frequency domain, supposing steady-state harmonic wave solutions. Using the Fourier differentiation theorem the frequency domain Euler's equation reads
 \begin{equation}
-\nabla P(\vx,\omega) = \ti \omega \rho_0 \mathbf{V}(\vx,\omega),
+\nabla P(\vx,\omega) = \ti \omega \rho_0 \mathbf{V}(\vx,\omega).
 \label{Eq:Theory:Freq_Eulers_equation}
 \end{equation}
 
@@ -51,8 +51,9 @@ where $V_0$ is the undisturbed volume. The relative change of volume may be expr
 \end{equation}
 where $\nabla \cdot$ is the \emph{divergence operator}.
 \end{itemize}
+
 %
-Taking the derivative wrt. time of equation \ref{Eq:Theory:Second_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the scalar linear homogeneous wave equation is obtained for the sound pressure
+Taking the time derivative of equation \ref{Eq:Theory:Second_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the scalar linear homogeneous wave equation is obtained for the sound pressure
 \begin{equation}
 \nabla^2 p(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\vx,t) = 0,
 \label{Eq:Theory:Scalar_wave_equation}
@@ -61,14 +62,14 @@ Taking the derivative wrt. time of equation \ref{Eq:Theory:Second_eq} and the di
 \nomenclature[3]{$\nabla^2$}{Laplacian operator. In Descartes-coordinates: $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}$}%
 where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of the sound wave in the medium. For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
 
-The instantaneous pressure may be also eliminated. In this case the vector wave equation is obtained for the particle velocity, valid for curl-free media
+The instantaneous pressure may be also eliminated in a similar way. In this case the vector wave equation is obtained for the particle velocity, valid for curl-free media
 \begin{equation}
 \nabla^2 \mathbf{v}(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \mathbf{v}(\vx,t) = 0,
 \label{Eq:Theory:Vector_wave_equation}
 \end{equation}
 where $\nabla^2 = \nabla \left( \nabla \cdot \right)$.
 %
-The wave equations fully describe the properties of acoustic wave propagation as long as the the assumptions are fulfilled.
+The wave equations fully describe the properties of acoustic wave propagation as long as the above made assumptions are fulfilled.
 %
 
 \vspace{3mm}
@@ -465,9 +466,9 @@ G(\vx|\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial n}
 with
 \begin{equation*}
 \alpha = \begin{cases} 
-1           & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_i  	   \\
-\frac{1}{2} & \hspace{1mm} \forall \hspace{5mm}  \vxo \in \partial \Omega  \\
-0 			& \hspace{1mm} \forall \hspace{5mm}  \vxo \in \Omega_e.
+1           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_i  	   \\
+\frac{1}{2} & \hspace{1mm} \forall \hspace{5mm}  \vx \in \partial \Omega  \\
+0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e.
 \end{cases}
 \end{equation*}
 Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. Utilizing the Euler's equation \eqref{Eq:Theory:Eulers_equation}
