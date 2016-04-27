@@ -31,7 +31,7 @@ The linear wave equation may be derived by utilizing two fundamental physical pr
 where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
 Equation \eqref{Eq:Theory:Eulers_equation} may be transformed with respect to time into the angular frequency domain, supposing steady-state harmonic wave solutions. Using the Fourier differentiation theorem the frequency domain Euler's equation reads
 \begin{equation}
-\nabla P(\vx,\omega) = \ti \omega \rho_0 \mathbf{V}(\vx,\omega).
+\nabla P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega).
 \label{Eq:Theory:Freq_Eulers_equation}
 \end{equation}
 
@@ -70,6 +70,7 @@ The instantaneous pressure may be also eliminated in a similar way. In this case
 where $\nabla^2 = \nabla \left( \nabla \cdot \right)$.
 %
 The wave equations fully describe the properties of acoustic wave propagation as long as the above made assumptions are fulfilled.
+Besides the pressure and the velocity, acoustic fields are often expressed via the scalar \emph{velocity potential} $\Phi(\vx,t)$, for which the acoustic wave equation also holds, and is related to the other field variables as $\mathbf{v}(\vx,t) = \nabla \Phi(\vx,t)$ and $p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \Phi(\vx,t)$.
 %
 
 \vspace{3mm}
@@ -126,14 +127,14 @@ P(\vx,\omega) = \frac{1}{(2\pi)^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,k_z, \o
 \td k_x\td k_z.
 \label{Eq:Theory:Helmholtz_Inverse_Fourier}
 \end{equation}
-Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier-transform normalization term.
+Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier-transform normalization term\footnote{The same result can be obtained by performing a forward Fourier transform to the Helmholtz equation along all spatial dimensions resulting in $\left(-k_x^2 -k_y^2 -k_z^2 + \left(\frac{\omega}{c}\right)^2 \right)\tilde{P}(k_x,k_y,k_z,\omega) = 0$, which is satisfied for any $\tilde{P}$ as long as the dispersion relation holds. In the inverse transform for $P(\vx,\omega)$ the latter can be taken into consideration by multiplication with $\delta(k_y - \sqrt{k^2-k_x^2-k_z^2})$, and by exploiting the sifting property of the Dirac function integration with respect to $k_y$ can be carried out.}.
 
 \vspace{3mm}
 One separated solution from the integral is in the form of \cite{Williams1999}
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \mathbf{k}^{\mathrm{T}} \vx },
 \end{equation}
-where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of maximum phase advance, given by the gradient of the phase function.
+where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of the maximum phase advance, given by the gradient of the phase function.
 The solution represents a \emph{plane wave} component traveling in the direction $\mathbf{k}$ with the acoustic wavelength of $\lambda = 2\pi/k$. The terminology indicates that the surface of constant phase points are lying along an infinite plane, perpendicular to $\mathbf{k}$. Refer to figure \ref{Fig:Theory:plane_wave} (a) for the illustration of a traveling plane wave.
 
 \begin{figure}[!h]
@@ -160,61 +161,49 @@ The expressed wave describes plane waves, propagating perpendicular to the $y$-a
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
 \end{equation}
-In those cases when on wave-length component is shorter, then the acoustic wave-length the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves} opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+In those cases when on wave-length component is shorter, then the acoustic wave-length the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
 
 Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in air. As a consequence in case of e.g. a vibrating solid surface important higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.
 
-As evanescent waves are of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wave lengths.
+The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wave lengths.
 
 
 \subsubsection{The Angular Spectrum and Wave Field Extrapolation}
-
-Loosely speaking an arbitrary 3-dimensional function could be expanded into exponential function via a spatial Fourier-transformation, for which a Fourier-transform exist. The dispersion relation sifts the solutions of the Helmoltz-equation. This process could be treated mathematically by multiplying the 3-dimensional inverse Fourier-transform by $\delta(k_y - \sqrt{k^2-k_x^2-k_z^2})$ and integrating wrt. $k_y$.
-As stated in the foregoing an arbitrary free-field sound field can be therefore written in the form of equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
+We could see, that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
-By expressing the pressure at the infinite plane $y=0$ the interpretation of $\hat{P}(k_x,k_y, \omega)$ is revealed
+Expressing the pressure at the infinite plane $y=0$ reveals, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_y, \omega)\right\}$,
+and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.%: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
+In the followings, the domain characterized by $k_x$,$k_z$ is termed as the \emph{wavenumber domain}.
+
+Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore constitutes a connection between the pressure distribution of an arbitrary sound field measured an arbitrary point and at the plane $y=0$. In the wavenumber domain the equation reads:
 \begin{equation}
-P(x,0,z,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \hat{P}(k_x,k_z, \omega)  \te^{- \ti k_x x} \te^{- \ti k_z z  }
-\td k_x\td k_z.
-\label{Eq:Theory:P_x0z}
-\end{equation}
-It is clear, that \eqref{Eq:Theory:P_x0z} expresses a double inverse Fourier-transform wrt. $k_x-k_z$-variables. 
-The \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\hat{P}(k_x,k_z, \omega)$ can be therefore expressed as the forward Fourier-transform of the pressure distribution at $y=0$
-\begin{equation}
-\hat{P}(k_x,k_z, \omega) = \iint_{-\infty}^{\infty} P(x,0,z,\omega)  \te^{ \ti k_x x} \te^{ \ti k_z z  }\td x \td z.
-\end{equation}
-From now on the domain, denoted by $k_x$,$k_z$ is termed as the \emph{wavenumber domain}.
-Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore constitutes a connection between the pressure distribution of an arbitrary sound field measured an arbitrary point and at the plane $y=0$. In the wave-number domain the equation reads:
-\begin{equation}
-\mathcal{F}_x\mathcal{F}_z \left\{ P(\vx,\omega) \right\} = \hat{P}(k_x,y,k_z,\omega) = \hat{P}(k_x,0,k_z,\omega) \te^{-\ti k_y y}.
+\mathcal{F}_x\mathcal{F}_z \left\{ P(\vx,\omega) \right\} = \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{-\ti k_y y}.
 \label{Eq:Theory:Wave_field_extrapolation}
 \end{equation}
 Note, that wave propagation is determined by the phase change of the plane wave expansion's $y$-component, therefore generally speaking the following equation holds:
 \begin{equation}
-\hat{P}(k_x,y,k_z,\omega) = \hat{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }.
+\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }.
 \end{equation}
 
-By taking the inverse Fourier transform of both sides:
+\vspace{3mm}
+This statement leads to two important formulations:
+the above equation written in the spatial domain yields
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \hat{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
-\td k_x\td k_z.
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+\td k_x\td k_z,
 \label{Eq:Theory:Pressure_propagated}
 \end{equation}
-Taking the normal derivative of $\hat{P}(k_x,y',k_z,\omega)$ using the Fourier-transformation differentiation theorem \eqref{Eq:Math:Fourier_tr_diff} and using the Euler's equation \eqref{Eq:Theory:Eulers_equation} to relate the pressure and the normal velocity the following expression is obtained
+Expressing $\tilde{P}(k_x,y',k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y',k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ---i.e. $y$---derivative at $y = y'$ calculated by applying the differentiation theorem to \eqref{Eq:Theory:Wave_field_extrapolation} one obtains
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k\hat{V}_{\mathrm{n}}(k_x,y',k_z,\omega) \frac{\te^{-\ti k_y ( y - y' ) } }{k_y} \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y',k_z,\omega) \frac{\te^{-\ti k_y ( y - y' ) } }{k_y} \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
 \td k_x\td k_z.
 \label{Eq:Theory:Velocity_propagated}
 \end{equation}
-
-These formulations are extremely important, and plays a leading role in the field of Fourier-acoustics. They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred as the propagators: from \eqref{Eq:Theory:Pressure_propagated} term $\te^{-\ti k_y ( y - y' ) }$ is referred as the \emph{pressure propagator} and from \eqref{Eq:Theory:Velocity_propagated} term $\frac{\te^{-\ti k_y ( y - y' ) } }{k_y}$ is called the \emph{velocity propagator}.
-
-These statements are completely equivalent with the \emph{Ralyeigh-integral} formulations of sound fields, and these integral formulations could be derived directly from equations \eqref{Eq:Theory:Pressure_propagated}-\eqref{Eq:Theory:Vector_wave_equation}. In the present thesis however the Rayleigh-integrals will be derived from the Kirchhoff-Helmholtz integral formulation.
-The importance of these statements will be further investigated in the latter sections, dealing with Sound Field Synthesis using a planar secondary source distribution.
+These formulations are of central importance in the field of Fourier-acoustics. They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred as the propagators: from \eqref{Eq:Theory:Pressure_propagated} term $\te^{-\ti k_y ( y - y' ) }$ is referred as the \emph{pressure propagator} and from \eqref{Eq:Theory:Velocity_propagated} term $\frac{\te^{-\ti k_y ( y - y' ) } }{k_y}$ is called the \emph{velocity propagator}.
+The importance of these statements---which are the wavenumber expression of the Rayleigh I. and II. integrals---will be further investigated in the latter sections, dealing with Sound Field Synthesis using a planar secondary source distribution.
 
 \vspace{3mm}
-Similarly to the Cartesian-solution the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate system. The results are given also in the form of an infinite series of spherical and cylindrical harmonics.These functions connect the radiated sound at an arbitrary point, and the sound field, measured on a spherical or infinite cylindrical surface. These solutions are of great importance when spherical, or circular secondary source distributions are applied for sound field reconstruction. Since the present thesis deal exclusively with planar and linear loudspeaker arrays, there the presentation of the spherical and cylindrical solutions are omitted. For a detailed investigation
-please refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}
+Similarly to the presented Cartesian-solution, the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. The representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, connecting the radiated sound at an arbitrary point, and the sound field measured on a spherical or an infinite cylindrical surface. These solutions are of great importance when spherical, or circular secondary source distributions are applied for sound field reconstruction. Since the present thesis does not include the spectral solution of the reconstruction problem for these geometries, the presentation of the spherical and cylindrical solutions are omitted. For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}.
 
 \subsubsection{Boundary conditions}
 \label{Section:Theory:Boundary_conditions}
@@ -231,12 +220,12 @@ please refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}
 	\label{Fig:Theory:bounday_condition}
 \end{figure}
 
-So far we considered wave propagation in free-field, ie. no boundaries are present. In order to be able to solve the wave equation both inital conditions and boundary must be known. As initial conditions trough the present thesis we suppose  \emph{Cauchy initial conditions}, by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$.
+So far we considered wave propagation in free-field, i.e. no boundaries were present. In order to obtain a particular solution for the wave equation both initial conditions and boundary must be known. As initial conditions trough the present thesis we suppose \emph{Cauchy initial conditions} by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$, i.e. all sources of sound are turned on at $t\geq0$, and in the time regime $t\leq0$ no sound waves are present in the domain of investigation, that would case the non-uniqueness of the particular solution.
 
 In the presence of boundaries the wave field must satisfy prescribed boundary conditions.
-If the domain of interest is the exterior of the enclosing boundary, while the sources of radiation is inside the volume --or it is the vibrating boundary surface itself-- the problem to be solved is termed as an \emph{exterior radiation problem}. On the other hand, if we want to determine the sound field inside a source-free volume we are facing an \emph{interior problem}.
+If the domain of interest is the exterior of the enclosing boundary, while the sources of radiation are inside the volume---or it is the vibrating boundary surface itself--- the problem to be solved is termed as an \emph{exterior radiation problem}. On the other hand, if the aim is to determine the sound field inside a source-free volume an \emph{interior problem} must be solved.
 
-The boundary conditions are typically continuous pressure or particle velocity. By supposing zero pressure or velocity on the boundary surface \emph{homogeneous boundary conditions} are considered. Non-zero field variables on the other hand represent a vibrating surface and are termed \emph{inhomogeneous bondary conditions}.
+The boundary conditions are typically continuous pressure or particle velocity. By assuming zero pressure or velocity on the boundary surface \emph{homogeneous boundary conditions} are considered. Non-zero field variables on the other hand represent a vibrating surface and are termed \emph{inhomogeneous bondary conditions}.
 
 In the aspect of this thesis two important types of boundary conditions are of interest:
 \begin{itemize}
@@ -407,7 +396,7 @@ G_d(\vx|\vxo,\omega) =
 The sound field of this dipole is depicted in figure \ref{Fig:Theory:dipole_source}.
 
 \newpage
-\section{Integral representation of sound fields}
+\section{Boundary integral representation of sound fields}
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
 In the foregoing of this chapter we were dealing with the free-space solutions of the wave equation. In the following the presence of enclosures will be investigated.
