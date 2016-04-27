@@ -1,4 +1,4 @@
-In the following chapters the theoretical basis of sound radiation and sound field reproduction is introduced. The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representation of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral. %After formulating the basic sound field synthesis problem, the explicit (Spectral Division Method) and implicit (Wave Field Synthesis) solutions are discussed for a linear loudspeaker distribution.
+In this chapter the theoretical basis of sound radiation is introduced. The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. Various integral representations of sound fields are presented including wave-number domain representation and the Kirchhoff-Helmholtz integral.
 %
 
 \vspace{3mm}
@@ -6,7 +6,7 @@ Sound is a mechanical disturbance propagating in an elastic fluid, causing an al
 
 \section{The homogeneous wave equation}
 
-Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation solely in air at room temperature. 
+Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. In the aspect of the present thesis it is feasible to investigate sound propagation solely in air at room temperature.
 
 %
 The domain of investigation i.e. where sound waves propagate is termed as \emph{sound field} hereinafter.
@@ -88,7 +88,7 @@ Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possib
 
 \subsection{Solution of the homogeneous wave equation}
 
-Since understanding plane wave theory is of major importance in the aspect of the present thesis we will focus our interest to the free-field solution of the homogeneous Helmholtz-equation in Cartesian coordinate system.
+First the solution of the homogeneous wave equation is considered in Cartesian coordinate system, leading to the plane wave theory.
 
 The Descartes coordinate form of the Laplace-operator is given by
 \begin{equation}
@@ -99,15 +99,15 @@ The general solution for the Helmholtz-equation is obtained by the separation of
 P(\vx,\omega) = \hat{P}(\omega) X(x)Y(y)Z(z).
 \label{Eq:Theory:Seperated_variables}
 \end{equation}
-Let's substitute it into \eqref{Eq:Theory:Homog_Helmholtz} and divide both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$!
+Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$ yields
 \begin{equation}
-\underbrace{\frac{\partial^2 X(x)}{\partial x^2}\frac{1}{X(x)}}_{-k_x^2} + 
-\underbrace{\frac{\partial^2 Y(y)}{\partial y^2}\frac{1}{Y(y)}}_{-k_y^2} + 
-\underbrace{\frac{\partial^2 Z(z)}{\partial z^2}\frac{1}{Z(z)}}_{-k_z^2}
+\underbrace{\frac{\td^2 X(x)}{\td x^2}\frac{1}{X(x)}}_{-k_x^2} + 
+\underbrace{\frac{\td^2 Y(y)}{\td y^2}\frac{1}{Y(y)}}_{-k_y^2} + 
+\underbrace{\frac{\td^2 Z(z)}{\td z^2}\frac{1}{Z(z)}}_{-k_z^2}
 = - k^2.
 \label{Eq:Theory:Seperated_variables_expanded}
 \end{equation}
-Since in the equation each term contains a total derivative --independent from any other variable-- equality may hold only if each term is constant. These constant are denoted by $k_x-k_y-k_z$. Consequently each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is well-known. Given eg. for $x$-variable it reads
+Since each term contains a total derivative---independent from any other variable-- equality may hold only if each term is constant. These constant are denoted by $k_x-k_y-k_z$. Consequently each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is well-known. Given e.g. for $x$-variable:
 \begin{equation}
 \frac{\partial^2 X(x)}{\partial x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
 \end{equation}
@@ -120,53 +120,51 @@ As a dependent variable we will use $k_y$ trough this treatise so that
 \begin{equation}
 k_y = \sqrt{ k^2 - k_x^2 - k_z^2 }.
 \end{equation}
-Using this and by denoting the arbitrary constant by $\hat{P}(k_x,k_z, \omega)$ the general solution reads
+Using this and by denoting the arbitrary constant by $\tilde{P}(k_x,k_z, \omega)$ the general solution reads
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \hat{P}(k_x,k_z, \omega)  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+P(\vx,\omega) = \frac{1}{(2\pi)^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,k_z, \omega)  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
 \td k_x\td k_z.
 \label{Eq:Theory:Helmholtz_Inverse_Fourier}
 \end{equation}
-Constant $\frac{1}{4\pi^2}$ is introduced due to proper Fourier-transform normalization as we will see later.
+Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier-transform normalization term.
 
 \vspace{3mm}
 One separated solution from the integral is in the form of \cite{Williams1999}
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \mathbf{k}^{\mathrm{T}} \vx },
 \end{equation}
-where $\mathbf{k}^{\mathrm{T}} = [k_x,\ k_y,\ k_z]$ is the wavenumber vector, with the length equaling the acoustic wavenumber $k = \sqrt{ \mathbf{k}^{\mathrm{T}}  \mathbf{k}}$.
-The solution represents a \emph{plane wave} component traveling in the direction $\mathbf{k}$ with the acoustic wavelength of $\lambda = 2\pi/k$. The terminology indicates that the surface of constant phase points are lying along an infinite plane. Refer to figure xy for the illustration of a traveling plane wave.
+where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of maximum phase advance, given by the gradient of the phase function.
+The solution represents a \emph{plane wave} component traveling in the direction $\mathbf{k}$ with the acoustic wavelength of $\lambda = 2\pi/k$. The terminology indicates that the surface of constant phase points are lying along an infinite plane, perpendicular to $\mathbf{k}$. Refer to figure \ref{Fig:Theory:plane_wave} (a) for the illustration of a traveling plane wave.
 
 \begin{figure}[!h]
 	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/Theory/plane_wave.png}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/Wave_theory/plane_wave_illustration.png}
+	\put(2,1){(a)}
+	\put(52,1){(b)}
 	\end{overpic}
-\caption{Plane Wave}
+\caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\omega = 2\pi \cdot 1000 ~\mathrm{rad/s}$. In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. Variables $k_x = \cos \varphi, \hspace{2mm} k_y = \sin \varphi$ give the wavenumber components along the $x$ and $y$ directions. For the case of the evanescent wave $k_y<\frac{\omega}{c}$, resulting in exponential decay along the $y$-coordinate.}
 	\label{Fig:Theory:plane_wave}
 \end{figure}
-
-As it is indicated in the figure $k_x-k_y-k_z$ variables are the $x-y-z$ directional components of the wavenumber vector. For the sake of simplicity assume that $k_z = 0$, thus the propagation direction of the plane wave is parallel with the $z=0$ plane. In this case the wavenumber components are expressed as
-\begin{eqnarray}
-k_x = k \sin \theta , \\
-k_y = k \cos \theta .
-\end{eqnarray}
-  
-\subsubsection{Evanescent waves}
-It is important to note, that there is no constraint on the values of $k_x^2$ and $k_z^2$ as long as they are real, their value may span from $-\infty$ to $\infty$. The plane wave equation is satisfied also when $k_x>k$ or $k_z>k$. Resulting from the dispersion relation in these cases $k_y$ becomes complex, reading
-\begin{equation}
-k_y = -\ti \sqrt{ k_x^2 + k_z^2 - k^2 }=-\ti k_y',
-\end{equation}
+\vspace{2mm}
+%As it is indicated in the figure $k_x-k_y-k_z$ variables are the $x-y-z$ directional components of the wavenumber vector. For the sake of simplicity assume that $k_z = 0$, thus the propagation direction of the plane wave is parallel with the $z=0$ plane. In this case the wavenumber components are expressed as
+%\begin{eqnarray}
+%k_x = k \sin \theta , \\
+%k_y = k \cos \theta .
+%\end{eqnarray}
+%  
+%\subsubsection{Evanescent waves}
+Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x>k$ or $k_z>k$. Resulting from the dispersion relation in these cases $k_y$ becomes complex, reading
+$k_y = -\ti \sqrt{ k_x^2 + k_z^2 - k^2 }=-\ti k_y'$,
 by ignoring the non-physical positive sign solution.
-The expressed waves describe plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponential decaying amplitude along $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
+The expressed wave describes plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponentially decaying amplitude along $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
 \end{equation}
+In those cases when on wave-length component is shorter, then the acoustic wave-length the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves} opposed to \emph{propagating waves}, when all wavenumber components are real valued.
 
-In these cases component of the wave-length is shorter, then the acoustic wave-length. As a consequence the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves} opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in air. As a consequence in case of e.g. a vibrating solid surface important higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.
 
-Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in the air. As a consequence in case of e.g. a vibrating solid surface important higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.
-
-Due to the foregoing the presence of evanescent waves is of central importance in the aspect of \emph{Nearfield Acoustic Holography}, when one needs a high-resolution image from the velocity distribution on the vibrating object's surface.
-However plane wave contribution is often neglected in the aspect of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array.
+As evanescent waves are of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wave lengths.
 
 
 \subsubsection{The Angular Spectrum and Wave Field Extrapolation}
