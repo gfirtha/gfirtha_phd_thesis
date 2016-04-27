@@ -1,1 +1,47 @@
-	
+\section{Reproduced field using traditional WFS}
+\label{App: Trad_WFS_rep_field}
+
+The utilization of driving functions given by \eqref{Eq:Theory:Trad_WFS_general} is shown for the case of a virtual 3D monopole, positioned at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$.
+The spectrum of the driving function is 
+given by
+\begin{equation}
+D(k_x,\omega) = -\frac{\ti}{4}\sqrt{8\pi\ti \yref}\sqrt{k_y} H_0^{(2)} \left( k_y |y_s| \right),
+\end{equation}
+and the reproduced pressure field is given by
+\begin{equation}
+P(x,\yref,0,\omega) = \mathcal{F}^{-1}_{k_x} \left\{ -\frac{\ti}{4} D(k_x,\omega)  H_0^{(2)} \left( k_y |\yref| \right) \right\}.
+\end{equation}
+\begin{equation}
+P(k_x,\yref,0,\omega) = \left( -\frac{\ti}{4} \right) 
+\sqrt{8\pi\ti \yref}\sqrt{k_y} H_0^{(2)} \left( k_y |y_s| \right)H_0^{(2)} \left( k_y |\yref| \right).
+\end{equation}
+As a high-frequency/far-field approximation we may use the asymptotic approximation of the Hankel-function, resulting in
+\begin{equation}
+P(k_x,\yref,0,\omega) = -\frac{\ti}{4}
+\sqrt{\yref}\sqrt{\frac{2\ti }{\pi}}\frac{\te^{-\ti k_y \left( |y_s| + |y_ref| \right) }}{\sqrt{k_y} \sqrt{|y_s| | \yref|}}.
+\end{equation}
+By manipulating the equation the following can be written:
+\begin{multline}
+P(k_x,\yref,0,\omega) = -\frac{\ti}{4}
+\sqrt{\frac{|y_s| + |\yref|}{|y_s|}}
+\sqrt{\frac{2\ti }{\pi}}\frac{\te^{-\ti k_y \left( |y_s| + |y_ref| \right) }}{\sqrt{k_y} \sqrt{|y_s| + |\yref|}}
+\approx \\
+\approx
+ -\frac{\ti}{4}
+\sqrt{\frac{|y_s| + |\yref|}{|y_s|}}
+H_0^{(2)}\left( k_y (|y_s| + |\yref|) \right).
+\end{multline}
+And finally the synthesized field reads
+\begin{equation}
+P(x,\yref,0,\omega) = 
+\frac{1}{4\pi} 
+\sqrt{\frac{|y_s| + |\yref|}{|y_s|}}
+\frac{\te^{-\ti k \sqrt{x^2 + (|y_s|+|\yref|)^2} }}{\sqrt{x^2 + (|y_s|+|\yref|)^2}}.
+\end{equation}
+It can be concluded, that the synthesized field coincides with the target sound field on the reference line, apart from a constant amplitude factor. Actually, this correction factor may be included in the driving function, making it target sound field specific, resulting in the spectral formulation of the traditional WFS driving function for a virtual monopole:
+\begin{equation}
+D_{\mathrm{monopole}}(k_x,\omega) = 
+\sqrt{\frac{\pi}{2 \ti}}
+\sqrt{\frac{|y_s| |\yref|}{|y_s| + |\yref|}}
+\sqrt{k_y} H_0^{(2)} \left( k_y |y_s| \right)
+\end{equation}
