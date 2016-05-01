@@ -25,6 +25,10 @@
 \usepackage{amssymb}
 \usepackage{steinmetz}
 \usepackage{palatino}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
 %
 %\setcounter{secnumdepth}{2}
 
@@ -44,6 +48,8 @@
 \newcommand{\vxo}{\mathbf{x}_0}
 \newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
 %
+\renewcommand{\arraystretch}{2.5}
+
 \title{ Dissertation draft}
 \date{\today \\
 Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
@@ -58,9 +64,9 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 %
 %\chapter{Introduction}
 %
-\chapter{Mathematical Preliminaries}
-\label{sec:math}
-\input{math}
+%\chapter{Mathematical Preliminaries}
+%\label{sec:math}
+%\input{math}
 %
 \chapter{Theory of wave propagation and radiation problems}
 \label{sec:theory}
