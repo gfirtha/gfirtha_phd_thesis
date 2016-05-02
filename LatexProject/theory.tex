@@ -141,7 +141,7 @@ P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) }
 where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of the maximum phase advance, given by the gradient of the phase function.
 The solution represents a \emph{plane wave} component traveling in the direction $\mathbf{k}$ with the acoustic wavelength of $\lambda = 2\pi/k$. The terminology indicates that the surface of constant phase points are lying along an infinite plane, perpendicular to $\mathbf{k}$. Refer to figure \ref{Fig:Theory:plane_wave} (a) for the illustration of a traveling plane wave.
 
-\begin{figure}[!h]
+\begin{figure}%[!h]
 	\centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/Wave_theory/plane_wave_illustration.png}
 	\put(2,1){(a)}
@@ -158,21 +158,27 @@ The solution represents a \emph{plane wave} component traveling in the direction
 %\end{eqnarray}
 %  
 %\subsubsection{Evanescent waves}
-Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x^2 + k_z^2 >k$. Resulting from the dispersion relation, $k_y$ becomes complex in these cases, reading
-$k_y = -\ti \sqrt{ k_x^2 + k_z^2 - k^2 }=-\ti k_y'$,
-by ignoring the non-physical positive sign solution.
-The expressed wave describes plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponentially decaying amplitude along the $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
+
+Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x>k$ or $k_z>k$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
+In order to ignore the non-physical exponentially increasing solution in the followings we define $k_y$ as 
 \begin{equation}
-P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
+k_y = \begin{cases}
+                       \sqrt{\left(\frac{\omega}{c}\right)^2 - k_x^2 - k_z^2}  & \text{if} \hspace{3mm} k_x^2 + k_z^2 \leq \left(\frac{\omega}{c}\right)^2\\
+                      -\ti \sqrt{\left(k_x^2+k_z^2 - \frac{\omega}{c}\right)^2 } = -\ti k_y' &  \text{if} \hspace{3mm} k_x^2 + k_z^2 > \left(\frac{\omega}{c}\right)^2,
+                 \end{cases}
+\label{eq:theory:k_y_definition}
 \end{equation}
-In those cases when the wave-length component is shorter than the acoustic wave-length the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
-
-
+Solutions with $k_y'$ describe plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponentially decaying amplitude along $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
+ \begin{equation}
+ P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
+ \end{equation}
+In those cases when one wavelength component is shorter than the acoustic wavelength, the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+ 
 {\color{red}Ez nem stimmel. Ha a testben nagyobb a sebesség, és nincs diszperzió, akkor nagy frekvencián is nagyobb lesz a hullámhossz, mint az akusztikai.
-Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher than in air. As a consequence, in case of e.g. a vibrating solid surface important higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.}
-
+Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in air. As a consequence in case of e.g. a vibrating solid surface higher-order modes will not be radiated into the free-space, since the wavelength on the surface of the object is shorter, than the acoustic wavelength would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.}
+ 
 The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wavelengths.
-
+ 
 
 \subsubsection{The Angular Spectrum and Wave Field Extrapolation}
 We could see that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
@@ -290,18 +296,6 @@ and by transforming wrt. time in the inhomogeneous Helmholtz equation:
 \end{equation}
 Term $q(\vx,t)$ is referred to as the \emph{load term}, and it describes the spatial extension and time history of the excitation.
 
-It should be noted, that the solution of the inhomogeneous wave equation is not unique, since any solution for the homogeneous wave equation may be added to the solution, the inhomogeneous wave equation is still satisfied. In order to obtain a unique solution again, we impose \emph{Cauchy initial conditions}.
-
-Note, that since the free-field solution is considered no boundary conditions are assumed except for the \emph{Sommerfeld-radiation condition}, which ensures that no reflected wave are present: the sound field consist of only outgoing waves. Mathematically it is ensured by implying boundary conditions at infinity:
-\begin{equation}
-\lim_{r \rightarrow \infty} r \left( \frac{\partial}{\partial r}P(\vx,\omega) +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0.
-\label{Eq:Theory:Sommerfeld_radiation_condition}
->>>>>>> origin/fiala
-\end{equation}
-Term $q(\vx,t)$ is referred as the \emph{load term}, describing the spatial extension and time history of the excitation.
-%It should be noted, that the solution of the inhomogeneous wave equation is not unique, since any solution for the homogeneous wave equation may be added to the solution, the inhomogeneous wave equation is still satisfied. In order to obtain a unique solution again, we impose \emph{Cauchy initial conditions}.
-
-\vspace{3mm}
 A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. We define the n-dimensional \emph{Green's function} as the solution for the following equation \cite{Gumerov2004, Williams1999}
 \begin{equation}
 \nabla^2 g(\vx|\vxo,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} g(\vx|\vxo,t) = -\delta\left( \vx - \vxo \right)\delta\left( t - t_0 \right),
@@ -359,7 +353,7 @@ The different representations of the free-field Green's function may be obtained
     $\tilde{G}(k_x,y,z,\omega)$
     \footnote{$\tilde{G}(k_x,k_y,z,\omega)$ and $\tilde{G}(k_x,y,z,\omega)$ may be written in a less expressive, but briefer form as 
     $\tilde{G}(k_x,y,k_z,\omega) = -\frac{\ti}{2}\frac{\te^{-\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}}$ and
-    $\tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4}H_0^{(2)}\left( -\ti\sqrt{k_x^2-(\frac{\omega}{c})^2  } \sqrt{y^2+z^2} \right)$ valid for arbitrary $k_x$.
+    $\tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4}H_0^{(2)}\left( -\ti\sqrt{k_x^2-(\frac{\omega}{c})^2  } \sqrt{y^2+z^2} \right)$ valid for arbitrary $k_x$ and $k_z$.
     }     
     &      
     \scriptsize
@@ -379,9 +373,20 @@ The different representations of the free-field Green's function may be obtained
 \end{center}
 where $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
 The conditional expressions are introduced in order ensure, that the evanescent contribution increases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{Figures/Wave_theory/greens_function.png}
+	\small
+%	\put(27,37){(a)}
+%	\put(40,47){(b)}
+	\end{overpic}
+	\caption{Different representations of the 3D free-field Green's function in the angular frequency domain $G(x,y,z,\omega)$ (a) and in the semi-wavenumber domain $\tilde{G}(k_x,k_y,z,\omega)$ (b) shown at $z=0$.}
+	\label{Fig:Theory:Greens_function}
+\end{figure}
 
 \vspace{3mm}
-In 3-dimensions the 2-dimensional Green's function represents an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining directly the infinite tail of the 2D impulse response: it is given by the sum of 3D impulse responses, delayed and attenuated depending on how far the actual impulse arrives from, and multiplied by 2, since along the vertical line source two point elements contribute to the total field at each time instant--, thus the relation between the 3D and 2D Green's function is given as
+In 3-dimensions the 2-dimensional Green's function represents an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response%: it is given by the sum of 3D impulse responses, delayed and attenuated depending on how far the actual impulse arrives from, and multiplied by 2, since along the vertical line source two point elements contribute to the total field at each time instant
+--, thus the relation between the 3D and 2D Green's function is given as
 \begin{equation}
 G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z = \left. \mathcal{F}_{z}\left\{ G_{3D}(x,y,z,\omega) \right\}\right|_{k_z = 0},
 \end{equation} 
@@ -399,7 +404,7 @@ P_{\mathrm{m}}(\vx|\vxo,\omega) = -\frac{\ti \omega \rho_0 Q_{\mathrm{m}}(\omega
 $Q_{\mathrm{m}}(\omega)$ is often referred as \emph{monopole strength}. Monopoles constitute a good far-field approximation of sources in the velocity field, e.g. a dynamical loudspeaker. It should be noted, that in sound field synthesis literature virtual sources are often assumed to be monopoles, but described by a pressure point source, i.e.  by the Green's function. This slight misconcept has a little practical effect, since only the frequency response differ of the two point source models. Also, if dynamical loudspeakers are applied to reproduce the field of an acoustic point source, due to the secondary source-virtual source interchangeability (see later) inherently monopoles are reproduced.
 
 \vspace{3mm}
-Besides a single omnidirectional point source, the distribution of monopoles are also frequently used models, termed as \emph{multipoles}. In the aspect of the present treatise \emph{dipoles} are of special interest, consisting of two anti-phase monopoles, placed infinitesimally close to each other. The spatial extension of such a source can be described by the derivative of a monopole along the axis of dipole $\mathbf{v}_{\mathrm{d}}$--as the derivative of a Dirac-delta is two anti-phase Dirac-deltas--, and the field of a dipole is yielded as
+Besides single omnidirectional point sources, the distribution of monopoles are also frequently used models, termed as \emph{multipoles}. In the aspect of the present treatise \emph{dipoles} are of special interest, consisting of two anti-phase monopoles, placed infinitesimally close to each other. The spatial extension of such a source can be described by the derivative of a monopole along the axis of dipole $\mathbf{v}_{\mathrm{d}}$--as the derivative of a Dirac-delta is two anti-phase Dirac-deltas--, and the field of a dipole is yielded as
 \begin{equation}
 P_{\mathrm{d}}(\vx|\vxo,\omega) = \left< \mathbf{v}_{\mathrm{d}} \cdot \nabla P_{\mathrm{m}}(\vx,\omega) \right>= -\frac{\ti \omega \rho_0 Q_\mathrm{d}(\omega)}{4\pi}\frac{\left<\mathbf{v}_{\mathrm{d}}\cdot (\vx-\vxo) \right> } {|\vx-\vxo|}\left(  \frac{1}{|\vx-\vxo|} + \ti \frac{\omega}{c} \right)\frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}
 \end{equation}
@@ -409,40 +414,15 @@ P_{\mathrm{d}}(\vx|\vxo,\omega) = \cos \theta \left( \frac{1 + \ti \frac{\omega}
 \end{equation}
 A dipole therefore radiates with a directivity characteristics of $\cos \theta$, with its maximum pointing in the direction of the dipole axis, and attenuating in the far-field approximately according to $\sim 1/|\vx-\vxo|$ ( since in the far-field $\frac{1 + \ti \frac{\omega}{c}|\vx-\vxo|}{|\vx-\vxo|} \approx \ti \frac{\omega}{c}$). $Q_{\mathrm{d}}$ is termed as the \emph{dipole moment}.
  
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .5\columnwidth]{Figures/Theory/dipole_source.png}
-%	\end{overpic}
-%	\caption{3D dipole}
-%	\label{Fig:Theory:dipole_source}
-%\end{figure}
-%
-%\vspace{3mm}
-%For the solution of the wave equation in enclosures the Green's function must satisfy the imposed boundary conditions. In these cases the Green's function --except for special cases-- varies with $\vxo$, therefore it is translation variant.
-%For an more general treatment please refer to \cite{Spors2005}. 
-%When the Green's function satisfies Neumann-boundary conditions (ie. $G(\vx_{S},\omega) = 0$) it is called \emph{Neumann Green's function}, while if it satisfies Dirichlet boundary conditions it is termed as \emph{Dirichlet Green's function}.
-%For special geometries the Neumann and Dirichlet Green's functions may be expressed analytically, as we will see in the following section.
-%
-%\vspace{3mm}
-%Besides simple monopoles the superposition of several point sources is of importance in this thesis. The superposition of two anti-phase monopoles placed infinitesimally close to each other forms an acoustic dipole. Mathematically its field is derivad as the directional gradient of the field of a monopole, eg. in the $y$-direction:
-%\begin{equation}
-%G_d(\vx|\vxo,\omega) =
-%\frac{\partial}{\partial y} G(\vx|\vxo,\omega)|= 
-%- \frac{y}{4\pi}\left( \frac{1}{| \vx - \vxo |} + \ti \frac{\omega}{c} \right) 
-%\frac{\te^{-\ti \frac{\omega}{c}  | \vx - \vxo | }}{| \vx - \vxo |^2}.
-%\end{equation}
-%The sound field of this dipole is depicted in figure \ref{Fig:Theory:dipole_source}.
-
 \newpage
 \section{Boundary integral representation of sound fields}
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
-In the foregoing of this chapter we were dealing with the free-space solutions of the wave equation. In the following the presence of enclosures will be investigated.
+%In the foregoing of this chapter we were dealing with the free-space solutions of the wave equation. In the following the presence of enclosures will be investigated.
+Any sound field obeying the homogeneous Helmholtz-equation may be written in the form of a surface integral above an enclosing surface, termed as the \emph{Kirchhoff-Helmholtz integral equation}. This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forms the backbone of the Boundary Element Method, SVD-based Conformal Nearfield Acoustic Holography, and Sound Field Synthesis.
 
-Any sound field obeying the homogeneous Helmholtz-equation may be written in the form of a surface integral above an enclosing surface, termed as the \emph{Kirchhoff-Helmholtz integral equation}. This integral formulation, which solves the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, eg. forms the backbone of the Boundary Element Method, and SVD-based Conformal Nearfield Acoustic Holography.
-
-In this chapter we investigate the integral formulation of interior problems in source-free volumes.
-Note, that the effect of direct sources may be straightforwardly included in the following results by the proper addition of the solution of the inhomogeneous Helmholtz equation. See \cite{Spors2005} for the examination of this case.
+In this section the integral formulation of interior problems in source-free volumes is introduced.
+The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the proper addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
 \begin{figure}[!h]
 	\centering
 	\begin{overpic}[width = .65\columnwidth]{Figures/Theory/Kirchhoff-Helmholtz.png}
