@@ -375,7 +375,7 @@ where $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\lef
 The conditional expressions are introduced in order ensure, that the evanescent contribution increases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
 
 \vspace{3mm}
-In 3-dimensions the 2-dimensional Green's function represents an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources, thus the relation between the 3D and 2D Green's function is given as
+In 3-dimensions the 2-dimensional Green's function represents an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining directly the infinite tail of the 2D impulse response: it is given by the sum of 3D impulse responses, delayed and attenuated depending on how far the actual impulse arrives from, and multiplied by 2, since along the vertical line source two point elements contribute to the total field at each time instant--, thus the relation between the 3D and 2D Green's function is given as
 \begin{equation}
 G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z = \left. \mathcal{F}_{z}\left\{ G_{3D}(x,y,z,\omega) \right\}\right|_{k_z = 0},
 \end{equation} 
@@ -395,11 +395,11 @@ $Q_{\mathrm{m}}(\omega)$ is often referred as \emph{monopole strength}. Monopole
 \vspace{3mm}
 Besides a single omnidirectional point source, the distribution of monopoles are also frequently used models, termed as \emph{multipoles}. In the aspect of the present treatise \emph{dipoles} are of special interest, consisting of two anti-phase monopoles, placed infinitesimally close to each other. The spatial extension of such a source can be described by the derivative of a monopole along the axis of dipole $\mathbf{v}_{\mathrm{d}}$--as the derivative of a Dirac-delta is two anti-phase Dirac-deltas--, and the field of a dipole is yielded as
 \begin{equation}
-P_{\mathrm{d}}(\vx,\omega) = \left< \mathbf{v}_{\mathrm{d}} \cdot \nabla P_{\mathrm{m}}(\vx,\omega) \right>= -\frac{\ti \omega \rho_0 Q_\mathrm{d}(\omega)}{4\pi}\frac{\left<\mathbf{v}_{\mathrm{d}}\cdot (\vx-\vxo) \right> } {|\vx-\vxo|}\left(  \frac{1}{|\vx-\vxo|} + \ti \frac{\omega}{c} \right)\frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}
+P_{\mathrm{d}}(\vx|\vxo,\omega) = \left< \mathbf{v}_{\mathrm{d}} \cdot \nabla P_{\mathrm{m}}(\vx,\omega) \right>= -\frac{\ti \omega \rho_0 Q_\mathrm{d}(\omega)}{4\pi}\frac{\left<\mathbf{v}_{\mathrm{d}}\cdot (\vx-\vxo) \right> } {|\vx-\vxo|}\left(  \frac{1}{|\vx-\vxo|} + \ti \frac{\omega}{c} \right)\frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}
 \end{equation}
-and by denoting $\cos \theta = \frac{\left< \mathbf{v}\cdot (\vx-\vxo)  \right> } {|\vx-\vxo|}$, where $\theta$ is the angle measured from the dipole axis 
+and by denoting $\cos \theta = \frac{\left< \mathbf{v}_{\mathrm{d}}\cdot (\vx-\vxo)  \right> } {|\vx-\vxo|}$, where $\theta$ is the angle measured from the dipole axis 
 \begin{equation}
-P_{\mathrm{d}}(\vx,\omega) = \cos \theta \left( \frac{1 + \ti \frac{\omega}{c}|\vx-\vxo|}{|\vx-\vxo|} \right) P_{\mathrm{m}} (\vx,\omega).
+P_{\mathrm{d}}(\vx|\vxo,\omega) = \cos \theta \left( \frac{1 + \ti \frac{\omega}{c}|\vx-\vxo|}{|\vx-\vxo|} \right) P_{\mathrm{m}} (\vx,\omega).
 \end{equation}
 A dipole therefore radiates with a directivity characteristics of $\cos \theta$, with its maximum pointing in the direction of the dipole axis, and attenuating in the far-field approximately according to $\sim 1/|\vx-\vxo|$ ( since in the far-field $\frac{1 + \ti \frac{\omega}{c}|\vx-\vxo|}{|\vx-\vxo|} \approx \ti \frac{\omega}{c}$). $Q_{\mathrm{d}}$ is termed as the \emph{dipole moment}.
  
