@@ -84,7 +84,7 @@ Equation \eqref{Eq:Theory:Scalar_wave_equation} can be transformed into the freq
 \nabla^2 P(\vx,\omega) + k^2 P(\vx,\omega) = 0,
 \label{Eq:Theory:Homog_Helmholtz}
 \end{equation}
-where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency trough the \emph{dispersion relation}:
+where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency through the \emph{dispersion relation}:
 \begin{equation}
 k = \frac{\omega}{c}.
 \end{equation}
@@ -116,12 +116,12 @@ Since each term contains a total derivative---independent from any other variabl
 \begin{equation}
 \frac{\partial^2 X(x)}{\partial x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
 \end{equation}
-The solutions may substituted back to equation \eqref{Eq:Theory:Seperated_variables}. In order to include every possible solution the general solution for the free-field homogeneous Helmholtz-equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. However, the variables are not independent, since for a fixed temporal frequency they are related according the dispersion relation
+The solutions may be substituted back into equation \eqref{Eq:Theory:Seperated_variables}. In order to include every possible solution the general solution for the free-field homogeneous Helmholtz-equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. However, the variables are not independent, since for a fixed temporal frequency they are related according the dispersion relation
 (resulting from \eqref{Eq:Theory:Seperated_variables_expanded}):
 \begin{equation}
 k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2.
 \end{equation}
-As a dependent variable we will use $k_y$ trough this treatise so that
+As a dependent variable we will use $k_y$ through this treatise so that
 \begin{equation}
 k_y = \sqrt{ k^2 - k_x^2 - k_z^2 }.
 \end{equation}
@@ -158,34 +158,30 @@ The solution represents a \emph{plane wave} component traveling in the direction
 %\end{eqnarray}
 %  
 %\subsubsection{Evanescent waves}
-Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x>k$ or $k_z>k$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
-In order to ignore the non-physical exponentially increasing solution in the followings we define $k_y$ as 
-\begin{equation}
-k_y = \begin{cases}
-                        \sqrt{\left(\frac{\omega}{c}\right)^2 - k_x^2 - k_z^2}  & \text{if} \hspace{3mm} k_x^2 + k_z^2 \leq \left(\frac{\omega}{c}\right)^2\\
-                        -\ti \sqrt{\left(k_x^2+k_z^2 - \frac{\omega}{c}\right)^2 } = -\ti k_y' &  \text{if} \hspace{3mm} k_x^2 + k_z^2 > \left(\frac{\omega}{c}\right)^2,
-                    \end{cases}
-\label{eq:theory:k_y_definition}
-\end{equation}
-Solutions with $k_y'$ describe plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponentially decaying amplitude along $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
+Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x^2 + k_z^2 >k$. Resulting from the dispersion relation, $k_y$ becomes complex in these cases, reading
+$k_y = -\ti \sqrt{ k_x^2 + k_z^2 - k^2 }=-\ti k_y'$,
+by ignoring the non-physical positive sign solution.
+The expressed wave describes plane waves, propagating perpendicular to the $y$-axis, exhibiting an exponentially decaying amplitude along the $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
 \end{equation}
-In those cases when one wavelength component is shorter, then the acoustic wavelength the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+In those cases when the wave-length component is shorter than the acoustic wave-length the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
 
-Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in air. As a consequence in case of e.g. a vibrating solid surface higher-order modes will not be radiated into the free-space, since the wavelength on the surface of the object is shorter, than the acoustic wavelength would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.
+
+{\color{red}Ez nem stimmel. Ha a testben nagyobb a sebesség, és nincs diszperzió, akkor nagy frekvencián is nagyobb lesz a hullámhossz, mint az akusztikai.
+Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher than in air. As a consequence, in case of e.g. a vibrating solid surface important higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.}
 
 The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wavelengths.
 
 
 \subsubsection{The Angular Spectrum and Wave Field Extrapolation}
-We could see, that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
+We could see that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 Expressing the pressure at the infinite plane $y=0$ reveals, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_y, \omega)\right\}$,
 and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.%: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
 In the followings, the domain characterized by $k_x$,$k_z$ is termed as the \emph{wavenumber domain}.
 
-Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore constitutes a connection between the pressure distribution of an arbitrary sound field measured an arbitrary point and at the plane $y=0$. In the wavenumber domain the equation reads:
+Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. In the wavenumber domain the relation reads:
 \begin{equation}
 \mathcal{F}_x\mathcal{F}_z \left\{ P(\vx,\omega) \right\} = \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{-\ti k_y y}.
 \label{Eq:Theory:Wave_field_extrapolation}
@@ -209,11 +205,11 @@ P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\
 \td k_x\td k_z.
 \label{Eq:Theory:Velocity_propagated}
 \end{equation}
-These formulations are of central importance in the field of Fourier-acoustics. They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred as the propagators: from \eqref{Eq:Theory:Pressure_propagated} term $\te^{-\ti k_y ( y - y' ) }$ is referred as the \emph{pressure propagator} and from \eqref{Eq:Theory:Velocity_propagated} term $\frac{\te^{-\ti k_y ( y - y' ) } }{k_y}$ is called the \emph{velocity propagator}.
+These formulations are of central importance in the field of Fourier-acoustics. They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred to as the propagators: from \eqref{Eq:Theory:Pressure_propagated} term $\te^{-\ti k_y ( y - y' ) }$ is referred to as the \emph{pressure propagator} and from \eqref{Eq:Theory:Velocity_propagated} term $\frac{\te^{-\ti k_y ( y - y' ) } }{k_y}$ is called the \emph{velocity propagator}.
 The importance of these statements---which are the wavenumber expression of the Rayleigh I. and II. integrals---will be further investigated in the latter sections, dealing with Sound Field Synthesis using a planar secondary source distribution.
 
 \vspace{3mm}
-Similarly to the presented Cartesian-solution, the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. The representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, connecting the radiated sound at an arbitrary point, and the sound field measured on a spherical or an infinite cylindrical surface. These solutions are of great importance when spherical, or circular secondary source distributions are applied for sound field reconstruction. Since the present thesis does not include the spectral solution of the reconstruction problem for these geometries, the presentation of the spherical and cylindrical solutions are omitted. For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}.
+Similarly to the presented Cartesian-solution, the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. The representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, relating the radiated sound at an arbitrary point to the sound field measured on a spherical or an infinite cylindrical surface. These solutions are of great importance when spherical or circular secondary source distributions are applied for sound field reconstruction. Since the present thesis does not include the spectral solution of the reconstruction problem for these geometries, the presentation of the spherical and cylindrical solutions are omitted. For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}.
 
 \subsubsection{Boundary conditions}
 \label{Section:Theory:Boundary_conditions}
@@ -221,7 +217,7 @@ Similarly to the presented Cartesian-solution, the general solution for the free
 So far we considered wave propagation in free-field, i.e. no boundaries were present.% In order to obtain a particular solution for the wave equation boundary conditions must be known.
 %As initial conditions through the present thesis we suppose \emph{homogeneous Cauchy initial conditions} by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$, ensuring, that no sound waves are present in the domain of investigation, that would case the non-uniqueness of the particular solution.
 In the presence of boundaries the wave field must satisfy prescribed boundary conditions.
-If the domain of interest is the exterior of the enclosing boundary, while the sources of radiation are inside the volume---or it is the vibrating boundary surface itself--- the problem to be solved is termed as an \emph{exterior radiation problem}. On the other hand, if the aim is to determine the sound field inside a source-free volume an \emph{interior problem} must be solved.
+If the domain of interest is the exterior of the enclosing boundary, while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed as an \emph{exterior radiation problem}. On the other hand, if the aim is to determine the sound field inside a source-free volume an \emph{interior problem} must be solved.
 
 The boundary conditions are typically continuous pressure or particle velocity. By assuming zero pressure or velocity on the boundary surface \emph{homogeneous boundary conditions} are considered. Non-zero field variables on the other hand represent a vibrating surface and are termed \emph{inhomogeneous bondary conditions}.
 
@@ -291,6 +287,16 @@ So far we investigated wave propagation in source-free volumes. Sources of sound
 and by transforming wrt. time in the inhomogeneous Helmholtz equation:
 \begin{equation}
 (\nabla^2 + k^2 ) P(\vx,\omega ) = -Q(\vx,\omega).
+\end{equation}
+Term $q(\vx,t)$ is referred to as the \emph{load term}, and it describes the spatial extension and time history of the excitation.
+
+It should be noted, that the solution of the inhomogeneous wave equation is not unique, since any solution for the homogeneous wave equation may be added to the solution, the inhomogeneous wave equation is still satisfied. In order to obtain a unique solution again, we impose \emph{Cauchy initial conditions}.
+
+Note, that since the free-field solution is considered no boundary conditions are assumed except for the \emph{Sommerfeld-radiation condition}, which ensures that no reflected wave are present: the sound field consist of only outgoing waves. Mathematically it is ensured by implying boundary conditions at infinity:
+\begin{equation}
+\lim_{r \rightarrow \infty} r \left( \frac{\partial}{\partial r}P(\vx,\omega) +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0.
+\label{Eq:Theory:Sommerfeld_radiation_condition}
+>>>>>>> origin/fiala
 \end{equation}
 Term $q(\vx,t)$ is referred as the \emph{load term}, describing the spatial extension and time history of the excitation.
 %It should be noted, that the solution of the inhomogeneous wave equation is not unique, since any solution for the homogeneous wave equation may be added to the solution, the inhomogeneous wave equation is still satisfied. In order to obtain a unique solution again, we impose \emph{Cauchy initial conditions}.
