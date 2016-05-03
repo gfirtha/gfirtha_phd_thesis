@@ -395,7 +395,7 @@ obviously holding for any other representation, as it is reflected by the table 
 \paragraph{Monopole and dipole sources:\\} 
 A frequently used point source model for far-field radiation is the acoustic monopole, which is defined as a pulsating sphere, with its radius decreased to infinitesimal, with the total velocity over the surface held constant \cite{Howe2007}. If the surface vibrates with a velocity $q_{\mathrm{m}}(t)$, the field of a monopole is a point excitation in the velocity potential, i.e. solves
 \begin{equation}
-\nabla^2 p_{\mathrm{m}}(\vx|\vxo,t) - 	\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p_{\mathrm{m}}(\vx|\vxo,t) = \rho_0 \frac{\partial}{\partial t} q_{\mathrm{m}}(t)\delta(\vx-\vxo),
+\nabla^2 p_{\mathrm{m}}(\vx|\vxo,t) - 	\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p_{\mathrm{m}}(\vx|\vxo,t) = \rho_0 \frac{\partial}{\partial t} q_{\mathrm{m}}(t)\delta(\vx-\vxo).
 \end{equation}
 and using the temporal derivative of the Green's function the field of a harmonic monopole reads in the frequency domain
 \begin{equation}
@@ -447,12 +447,12 @@ Let $V$ be an $n$-dimensional enclosure, bounded by the surface $S$ with arbitra
 \oint_{S}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td S(\vxo),
 \label{Eq:Theory:Greens-theorem}
 \end{equation}
-with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \left. \nabla \Phi(\vx)\right|_{\vx = \vxo} \rangle$. Let $\Phi$ to be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and $\Psi$ to be the Green's function---i.e. a point source located at $\vx$--, thus
+with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \left. \nabla \Phi(\vx)\right|_{\vx = \vxo} \rangle$. Let $\Phi$ to be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and $\Psi$ to be the Green's function\footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}
+---i.e. a point source located at $\vx$--, thus
 \begin{equation}
 (\nabla^2 + k^2)P(\vxo,\omega) = 0, \hspace{10mm}
 (\nabla^2 + k^2)G(\vxo|\vx,\omega) = -\delta(\vxo - \vx).
 \end{equation}
-{\color{red}Although the continuity requirement is not fulfilled for $G$, with proper mathematical workaround the singularity at $\vx$ may be excluded from the volume integral\cite{Williams1999}.}
 
 Substituting into the Green's theorem leads to
 \begin{equation}
@@ -516,7 +516,7 @@ G(\vx|\vxo,\omega)
 \right)   \td S_S ( \vxo).
 \end{multline}
 
-Exploiting that any homogeneous solution of the Helmholtz equation -- satisfying free field boundary conditions -- may be added to the Green's function with the Kirchhoff-Helmholtz integral still holding, either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
+Exploiting that any homogeneous solution of the Helmholtz equation ---satisfying free field boundary conditions-- may be added to the Green's function with the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holding, either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
 \begin{itemize}
 \item The \emph{Neumann Green's function} eliminates the double layer potential, by describing Neumann boundary conditions for the Green's function on the bounding infinite plane:
 \begin{equation}
@@ -540,20 +540,20 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 	 	\put(100,16){$x$}		
 		\put(52.5,63.5){$y$}
 		\put(19.5,38){$\vx$}		
-		\put(17,0){$\vx'$}
+		\put(18,0){$\vx'$}
 		\put(44,16){$\vxo$}
 		\put(38.5,34){$\vni$}
 		\put(62,37){$r$}
 		%\put(40,50){$V$}
-		\put(75,18){$S_S$}
-		\put(60,58){$S_P$}
+		\put(75,16){$S_P$}
+		\put(60,59){$S_S$}
 	\end{overpic}
 	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $S_S$ is increased to infinity, therefore only $S_P$ contributes to the radiated field at $y>0$.}
 	\label{Fig:Theory:Rayleigh_geometry}
 \end{figure}
 From simple geometrical considerations it can be deduced, that the sound fields satisfying the inhomogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
 \begin{equation}
- G'_N(\vx,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vx,\omega) = -G(\vxo|\vx',\omega),
+ G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
 \end{equation}
 with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $S_S$, thus
 \begin{equation}
