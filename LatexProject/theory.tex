@@ -562,20 +562,35 @@ with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's fun
 \begin{equation}
 G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vx,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
-holds. Substituting back to the KHIE and the Rayleigh I. and II. integrals are obtained respectively \cite{Berkhout1984}:
+holds. Substituting back to the KHIE yields the Rayleigh I. and II. integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
-P(\vx,\omega) =
+P_N(\vx,\omega) =
 \int_{S_S}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
-G(\vx-\vxo,\omega) \td S_S ( \vxo).
+G(\vxo|\vx,\omega) \td S_S ( \vxo).
 \\
-P(\vx,\omega) =
+P_D(\vx,\omega) =
 \int_{S_S}
 2 P(\vxo,\omega)  
-\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
+\left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y} \right|_{y = 0} 
 \td S_S ( \vxo)
 \end{eqnarray}
+Since the Neumann and Dirichlet Green's functions satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -\delta(\vxo-\vx) -\delta(\vx')$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -\delta(\vxo-\vx)  + \delta(\vxo-\vx')$ respectively, substituting into the Green's theorem \eqref{Eq:Theory:Greens-theorem} reveals that 
+\begin{align*}
+P_N(\vx,\omega) = \begin{cases} 
+P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+P(\vx = \vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0
+\end{cases}
+&&
+P_D(\vx,\omega) = \begin{cases} 
+P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+0 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+-P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0.
+\end{cases}
+\end{align*}
+
 Again, the form of Green's function depends on the problem dimensionality and in 2D the Rayleigh integrals express an arbitrary sound field in the form of a line integral.
 %The Rayleigh integrals provides the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or Dirichlet Green's function.
 
