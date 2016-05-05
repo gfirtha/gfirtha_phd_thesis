@@ -21,7 +21,7 @@
 Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the boundary surface $\partial \Omega$.
 The enclosing source ensemble is termed as the \emph{secondary source distribution (SSD)}.
 The general geometry is depicted in Figure \ref{Fig:Theory:general_sfs_geometry}.
-For the sake of simplicity we assume, that the boundary is acoustically transparent and the secondary sources are acoustic point sources, i.e. described by the $n$-dimensional free field Green's function $G_n(\vx,\omega)$. Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
+For the sake of simplicity we assume, that the boundary is acoustically transparent and the secondary sources are acoustic point sources, i.e. described by the $n$-dimensional free field Green's function. Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
 %Since dynamic loudspeakers can be modeled as 3D monopoles in the low-frequency region, this assumption is feasible for $n = 3$. The incorporation of non-ideal secondary source elements in the generalized SFS theory will be discussed in the next chapter.
 
 With these assumptions the pressure at any $\vx \in \Omega$ is given by the sum of the individual SSD elements, written as a single layer potential \cite{Ahrens2012,Ahrens2010phd,Wierstorf2014,Schultz2014:Comparing_approaches}:
@@ -170,7 +170,7 @@ G(\vx - \vxo,\omega ) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} -\frac{\ti}{2}
 \te^{\ti (k_x x_0 + k_z z_0)} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
 \label{Eq:Theory:Weyls_integral}
 \end{equation}
-with $k_y = \sqrt{ \left( \frac{\omega}{c} \right )^2 - k_x^2 - k_z^2 }$, thus the angular spectrum of the Green's function placed at the origin ($\vxo = [0,\ 0,\ 0]^{\mathrm{T}}$) measured at a fixed $y$ is given as:
+with $k_y = \sqrt{ \left( \frac{\omega}{c} \right )^2 - k_x^2 - k_z^2 }$, thus the angular spectrum of the Green's function placed at the origin ($\vxo = [0,\ 0,\ 0]^{\mathrm{T}}$) measured at a fixed $y$ is given as (as it was shown in table \ref{table:theory:Greens_fun_representations} ):
 \begin{equation}
 \tilde{G}(k_x,y,k_z,\omega) =-\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y }.
 \end{equation}

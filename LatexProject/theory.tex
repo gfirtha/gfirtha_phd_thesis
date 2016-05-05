@@ -339,8 +339,9 @@ p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{Q}(\mathb
 %\end{figure}
 
 \vspace{3mm}
-The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008}
+The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008} given in table \ref{table:theory:Greens_fun_representations}.
 \begin{center}
+\begin{table*}[!h]
     \begin{tabular}{  c | | l |	 l }%\toprule
       & 3-dimensional & 2-dimensional \\ \hline
     $\tilde{G}(k_x,k_y,k_z,\omega)$ & $-\frac{1}{ \left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2-k_z^2} $ &  $-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}\delta(k_z)$ \\ 
@@ -369,10 +370,12 @@ The different representations of the free-field Green's function may be obtained
     $G(x,y,z,\omega)$ 				 &  $\frac{1}{4\pi}\frac{\te^{-\ti\frac{\omega}{c}\sqrt{x^2+y^2+z^2}}}{\sqrt{x^2+y^2+z^2}}$ & \scriptsize$-\frac{\ti}{4} H_0^{(2)}\left( \frac{\omega}{c} \sqrt{x^2+y^2} \right) $\normalsize  \\ 
     $g(x,y,z,t)$ 					 &  $\frac{1}{4\pi}\frac{\delta\left( t - \sqrt{x^2+y^2+z^2}/c \right)}{\sqrt{x^2+y^2+z^2}}$  & $\frac{1}{2\pi}\frac{\theta(t - \sqrt{x^2+y^2}/c)}{\sqrt{t^2 - \left(\frac{\sqrt{x^2+y^2}}{c}\right)^2}}$
 %\bottomrule 
-\label{eq:theory:Greens_fun_representations} 
     \end{tabular}
+    \caption{Representations of the 3D and 2D free-field Green's functions}
+    \label{table:theory:Greens_fun_representations} 
+    \end{table*}
 \end{center}
-where $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
+In the table $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
 The conditional expressions are introduced in order to ensure that the evanescent contribution decreases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
 \begin{figure}
 	\centering
@@ -402,7 +405,7 @@ and using the temporal derivative of the Green's function the field of a harmoni
 \begin{equation}
 P_{\mathrm{m}}(\vx|\vxo,\omega) = -\frac{\ti \omega \rho_0 Q_{\mathrm{m}}(\omega)}{4\pi}\frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
 \end{equation}
-$Q_{\mathrm{m}}(\omega)$ is often referred as \emph{monopole strength}. Monopoles constitute a good far-field approximation of sources in the velocity field, e.g. a dynamical loudspeaker. It should be noted, that in sound field synthesis literature virtual sources are often assumed to be monopoles, but described by a pressure point source, i.e.  by the Green's function. This slight misconcept has a little practical effect, since only the frequency response differ of the two point source models. Also, if dynamical loudspeakers are applied to reproduce the field of an acoustic point source, due to the secondary source-virtual source interchangeability (see later) inherently monopoles are reproduced.
+$Q_{\mathrm{m}}(\omega)$ is often referred as \emph{monopole strength}. Monopoles constitute a good far-field approximation of sources in the velocity field, e.g. a dynamical loudspeaker. %It should be noted, that in sound field synthesis literature virtual sources are often assumed to be monopoles, but described by a pressure point source, i.e.  by the Green's function. This slight misconcept has a little practical effect, since only the frequency response differ of the two point source models. Also, if dynamical loudspeakers are applied to reproduce the field of an acoustic point source, due to the secondary source-virtual source interchangeability (see later) inherently monopoles are reproduced.
 
 \vspace{3mm}
 Besides single omnidirectional point sources, the distribution of monopoles are also frequently used models, termed as \emph{multipoles}. In the aspect of the present treatise \emph{dipoles} are of special interest, consisting of two anti-phase monopoles, placed infinitesimally close to each other. The spatial extension of such a source can be described by the derivative of a monopole along the axis of dipole $\mathbf{v}_{\mathrm{d}}$--as the derivative of a Dirac-delta is two anti-phase Dirac-deltas--, and the field of a dipole is yielded as
@@ -462,12 +465,14 @@ Substituting into the Green's theorem leads to
   \td V(\vxo) = 
 \oint_{S}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td S(\vxo).
 \end{equation}
-The sifting property of the Dirac-delta may be exploited, by taking into account, that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". Finally, by exploiting the reciprocity and translation invariancy of the free-field Green's function ({\color{red}$G(\vxo|\vx) = G(\vx|\vxo)\rightarrow G(\vx-\vxo)$}), as a result the \emph{Kirchhoff-Helmholtz integral}, or \emph{Helmholtz integral equation (KHIE)} is obtained:
+The sifting property of the Dirac-delta may be exploited, by taking into account, that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". Finally, by exploiting the reciprocity and translation invariancy of the free-field Green's function ($G(\vxo|\vx) = G(\vx|\vxo)$, $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni} = -\frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}$),
+As a result the \emph{Kirchhoff-Helmholtz integral}, or \emph{Helmholtz integral equation (KHIE)} is obtained:
 \begin{equation}
 \alpha P(\vx,\omega) = 
-\oint_{S}  \left( 
-P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni}  -  
-G(\vx-\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni} 
+\oint_{S} - \left( 
+\frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
++
+P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
 \right)   \td S( \vxo),
 \label{Eq:Theory:Kirchhoff-Helmholtz}
 \end{equation}
@@ -483,9 +488,8 @@ Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \em
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{S}  \left(  
+\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega) G(\vx-\vxo,\omega) - 
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}
-+
-\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega) G(\vx-\vxo,\omega) 
 \right)   \td S(\vxo),
 \label{Eq:Theory:Kirchhoff}
 \end{equation}
@@ -496,7 +500,7 @@ The interior KHIE describes the pressure field only inside the volume of investi
 In both cases the approach is capable of dealing only with forward propagation problems.
 \vspace{3mm}
 
-KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of monopoles, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase monopoles: by a double layer.
+KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
 
 One drawback of interior HIE is that it overspecifies the problem in order to ensure zero pressure and velocity outside the domain of interest. In the aspect of Sound Field Synthesis the presence of both single and double layer potentials is infeasible. By letting the sound field non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions to the sound field $ P(\vxo,\omega) $ itself in an equivalent scattering problem.
 In the following section the former approach is applied for planar boundaries resulting in the Rayleigh integral theorem.
@@ -506,7 +510,7 @@ In the following section the former approach is applied for planar boundaries re
 
 %The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
 
-In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint plane ($S_P$) and a hemisphere ($S_S$, $S = S_P \cup S_S$), shown in \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($S_P$) and a hemisphere ($S_S$, $S = S_P \cup S_S$), shown in \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
 For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
 \begin{multline}
 P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{S_P} + \int_{S_S} \td S \right) = \\
@@ -515,7 +519,7 @@ P(\vxo,\omega)
 \left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
 -
 \left. \frac{\partial P(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
-G(\vx|\vxo,\omega) 
+G(\vxo|\vx,\omega) 
 \right)   \td S_S ( \vxo).
 \end{multline}
 
@@ -554,13 +558,13 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $S_S$ is increased to infinity, therefore only $S_P$ contributes to the radiated field at $y>0$.}
 	\label{Fig:Theory:Rayleigh_geometry}
 \end{figure}
-From simple geometrical considerations it can be deduced, that the sound fields satisfying the inhomogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
+From simple geometrical considerations it can be deduced, that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
 \begin{equation}
  G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
 \end{equation}
 with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $S_S$, thus
 \begin{equation}
-G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vx,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
+G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
 holds. Substituting back to the KHIE yields the Rayleigh I. and II. integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
@@ -568,15 +572,15 @@ P_N(\vx,\omega) =
 \int_{S_S}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
-G(\vxo|\vx,\omega) \td S_S ( \vxo).
+G(\vx-\vxo,\omega) \td S_S ( \vxo).
 \\
 P_D(\vx,\omega) =
 \int_{S_S}
-2 P(\vxo,\omega)  
-\left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y} \right|_{y = 0} 
+-2 P(\vxo,\omega)  
+\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
 \td S_S ( \vxo)
 \end{eqnarray}
-Since the Neumann and Dirichlet Green's functions satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -\delta(\vxo-\vx) -\delta(\vx')$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -\delta(\vxo-\vx)  + \delta(\vxo-\vx')$ respectively, substituting into the Green's theorem \eqref{Eq:Theory:Greens-theorem} reveals that 
+Since the Neumann and Dirichlet Green's functions satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively, substituting into the Green's theorem \eqref{Eq:Theory:Greens-theorem} reveals that 
 \begin{align*}
 P_N(\vx,\omega) = \begin{cases} 
 P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
@@ -595,3 +599,5 @@ Again, the form of Green's function depends on the problem dimensionality and in
 %The Rayleigh integrals provides the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or Dirichlet Green's function.
 
 The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
+
+It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{table:theory:Greens_fun_representations} and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated} respectively for the 3D case.
