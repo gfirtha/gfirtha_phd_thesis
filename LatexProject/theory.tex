@@ -159,7 +159,7 @@ The solution represents a \emph{plane wave} component traveling in the direction
 %  
 %\subsubsection{Evanescent waves}
 
-Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x>k$ or $k_z>k$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
+Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x^2 + k_z^2 > k^2$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
 In order to ignore the non-physical exponentially increasing solution in the followings we define $k_y$ as 
 \begin{equation}
 k_y = \begin{cases}
@@ -184,8 +184,9 @@ The evanescent contribution is of central importance in the field of \emph{Nearf
 We could see that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 Expressing the pressure at the infinite plane $y=0$ reveals, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_y, \omega)\right\}$,
-and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.%: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
-In the followings, the domain characterized by $k_x$,$k_z$ is termed as the \emph{wavenumber domain}.
+and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.
+%: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
+In the followings, the domain characterized by $k_x$, $k_z$ is termed as the \emph{wavenumber domain}.
 
 Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. In the wavenumber domain the relation reads:
 \begin{equation}
@@ -220,7 +221,8 @@ Similarly to the presented Cartesian-solution, the general solution for the free
 \subsubsection{Boundary conditions}
 \label{Section:Theory:Boundary_conditions}
 
-So far we considered wave propagation in free-field, i.e. no boundaries were present.% In order to obtain a particular solution for the wave equation boundary conditions must be known.
+So far we considered wave propagation in free-field, i.e. no boundaries were present.
+% In order to obtain a particular solution for the wave equation boundary conditions must be known.
 %As initial conditions through the present thesis we suppose \emph{homogeneous Cauchy initial conditions} by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$, ensuring, that no sound waves are present in the domain of investigation, that would case the non-uniqueness of the particular solution.
 In the presence of boundaries the wave field must satisfy prescribed boundary conditions.
 If the domain of interest is the exterior of the enclosing boundary, while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed as an \emph{exterior radiation problem}. On the other hand, if the aim is to determine the sound field inside a source-free volume an \emph{interior problem} must be solved.
@@ -229,11 +231,11 @@ The boundary conditions are typically continuous pressure or particle velocity. 
 
 In the aspect of this thesis two important types of boundary conditions are of interest:
 \begin{itemize}
-\item \emph{Dirichlet boundary condition} prescribes the pressure, measured on the boundary surface. The homogeneous Dirichlet boundary conditions are thus
+\item \emph{Dirichlet boundary condition} prescribes the pressure measured on the boundary surface. The homogeneous Dirichlet boundary conditions are thus
 \begin{equation}
 P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in S.
 \end{equation}
-These types of boundaries are called \emph{sound-soft}, or \emph{pressure release} boundaries. These types of boundary conditions are used to model e.g. the surface of the ocean for a wave, propagating in the water \cite{Blackstock2000, Ziomek1995}.
+These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries. These types of boundary conditions are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Blackstock2000, Ziomek1995}.
 
 The inhomogeneous Dirichlet boundary condition assumes a prescribed pressure value on the boundary surface:
 \begin{equation}
@@ -271,7 +273,7 @@ Inhomogeneous Neumann boundary conditions are given by
 \begin{equation}
 \left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{S}= f_N(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in S.
 \end{equation}
-Vibrating surfaces---e.g. mounted loudspeakers, or baffled pistons---are most often modeled with these type of boundary conditions.
+Vibrating surfaces---e.g. mounted loudspeakers, or baffled pistons---are most often modeled using these type of boundary conditions.
 \end{itemize}
 
 For radiation problems it is feasible to assume free field conditions, i.e. only outgoing waves are present in the sound field. This is ensured mathematically by the \emph{Sommerfeld radiation condition}, excluding the non-physical solutions of the wave equation emerging from infinity, for which the desired sources of radiation behave as acoustic sinks.
@@ -280,7 +282,7 @@ Mathematically it can be formulated by implying boundary condition on $S_{\infty
 \lim_{r \rightarrow \infty} r \left( \left. \frac{\partial}{\partial r}P(\vx,\omega)\right|_{S_{\infty}} +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in S_{\infty}.
 \label{Eq:Theory:Sommerfeld_radiation_condition}
 \end{equation}
-The condition stems from the inclusion of the surface $S_{\infty}$ to the Kirchhoff-Helmholtz integral for the general exterior problem (see in the following section), and by deriving boundary conditions, that ensure zero contribution of this surface in its limiting value\cite{Schot1992:Eighty_years, Williams1999}.
+The condition stems from the inclusion of the surface $S_{\infty}$ to the Kirchhoff-Helmholtz integral for the general exterior problem (see in the following section), and by deriving boundary conditions that ensure zero contribution of this surface in its limiting value\cite{Schot1992:Eighty_years, Williams1999}.
 
 \newpage
 \section{The inhomogeneous wave equation and the Green's function}
@@ -338,10 +340,24 @@ p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{Q}(\mathb
 %	\label{Fig:Theory:point_source}
 %\end{figure}
 
-\vspace{3mm}
-The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008} given in table \ref{table:theory:Greens_fun_representations}.
-\begin{center}
-\begin{table*}[!h]
+%<<<<<<< HEAD
+%\vspace{3mm}
+%The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008} given in table \ref{table:theory:Greens_fun_representations}.
+%=======
+The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green}.
+The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations}.
+
+\begin{table}
+\caption{Free field acoustic Green's function representations \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008}.
+For simplicity it is assumed that $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin.
+$\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
+\left( \right)$ is the modified Bessel function of the second kind.
+The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source.
+}
+\label{tab:theory:Greens_fun_representations} 
+%>>>>>>> origin/fiala
+%\begin{center}
+%\begin{table*}[!h]
     \begin{tabular}{  c | | l |	 l }%\toprule
       & 3-dimensional & 2-dimensional \\ \hline
     $\tilde{G}(k_x,k_y,k_z,\omega)$ & $-\frac{1}{ \left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2-k_z^2} $ &  $-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}\delta(k_z)$ \\ 
@@ -351,12 +367,13 @@ The different representations of the free-field Green's function may be obtained
 	\sqrt{k_x^2+k_z^2}	\leq\left| \frac{\omega}{c} \right| \\
 	\frac{1}{2}\frac{\te^{-\sqrt{k_x^2 + k_z^2-(\frac{\omega}{c})^2}|y|}}{\sqrt{k_x^2 + k_z^2-(\frac{\omega}{c})^2}},\hspace{3mm}  \text{for} \hspace{1mm}				\sqrt{k_x^2+k_z^2}>\left| 	\frac{\omega}{c} \right| 
 	\end{aligned}$ \normalsize    
-    & $-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}$  \\
+    &
+	\color{red}$-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}$
+	\\
     $\tilde{G}(k_x,y,z,\omega)$
-    \footnote{$\tilde{G}(k_x,k_y,z,\omega)$ and $\tilde{G}(k_x,y,z,\omega)$ may be written in a less expressive, but briefer form as 
-    $\tilde{G}(k_x,y,k_z,\omega) = -\frac{\ti}{2}\frac{\te^{-\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}}$ and
-    $\tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4}H_0^{(2)}\left( -\ti\sqrt{k_x^2-(\frac{\omega}{c})^2  } \sqrt{y^2+z^2} \right)$ valid for arbitrary $k_x$ and $k_z$.
-    }     
+    % \footnote{$\tilde{G}(k_x,k_y,z,\omega)$ and $\tilde{G}(k_x,y,z,\omega)$ may be written in a less expressive but briefer form as 
+    % $\tilde{G}(k_x,y,k_z,\omega) = -\frac{\ti}{2}\frac{\te^{-\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}}$ and
+    % $\tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4}H_0^{(2)}\left( -\ti\sqrt{k_x^2-(\frac{\omega}{c})^2  } \sqrt{y^2+z^2} \right)$ valid for arbitrary $k_x$ and $k_z$  }     
     &      
     \scriptsize
     $\begin{aligned}[t] % placement: default is "center", options are "top" and "bottom"
@@ -369,14 +386,23 @@ The different representations of the free-field Green's function may be obtained
 	\end{aligned}$ \normalsize      \\ 
     $G(x,y,z,\omega)$ 				 &  $\frac{1}{4\pi}\frac{\te^{-\ti\frac{\omega}{c}\sqrt{x^2+y^2+z^2}}}{\sqrt{x^2+y^2+z^2}}$ & \scriptsize$-\frac{\ti}{4} H_0^{(2)}\left( \frac{\omega}{c} \sqrt{x^2+y^2} \right) $\normalsize  \\ 
     $g(x,y,z,t)$ 					 &  $\frac{1}{4\pi}\frac{\delta\left( t - \sqrt{x^2+y^2+z^2}/c \right)}{\sqrt{x^2+y^2+z^2}}$  & $\frac{1}{2\pi}\frac{\theta(t - \sqrt{x^2+y^2}/c)}{\sqrt{t^2 - \left(\frac{\sqrt{x^2+y^2}}{c}\right)^2}}$
-%\bottomrule 
-    \end{tabular}
-    \caption{Representations of the 3D and 2D free-field Green's functions}
-    \label{table:theory:Greens_fun_representations} 
-    \end{table*}
-\end{center}
-In the table $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
-The conditional expressions are introduced in order to ensure that the evanescent contribution decreases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
+%<<<<<<< HEAD
+%%\bottomrule 
+%=======
+%>>>>>>> origin/fiala
+%    \end{tabular}
+%    \caption{Representations of the 3D and 2D free-field Green's functions}
+%    \label{table:theory:Greens_fun_representations} 
+%    \end{table*}
+%\end{center}
+%<<<<<<< HEAD
+%In the table $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
+%The conditional expressions are introduced in order to ensure that the evanescent contribution decreases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
+%=======
+\end{table}
+
+
+>>>>>>> origin/fiala
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .95\columnwidth]{Figures/Wave_theory/greens_function.png}
@@ -465,8 +491,18 @@ Substituting into the Green's theorem leads to
   \td V(\vxo) = 
 \oint_{S}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td S(\vxo).
 \end{equation}
+<<<<<<< HEAD
 The sifting property of the Dirac-delta may be exploited, by taking into account, that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". Finally, by exploiting the reciprocity and translation invariancy of the free-field Green's function ($G(\vxo|\vx) = G(\vx|\vxo)$, $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni} = -\frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}$),
 As a result the \emph{Kirchhoff-Helmholtz integral}, or \emph{Helmholtz integral equation (KHIE)} is obtained:
+=======
+The sifting property of the Dirac-delta may be exploited, by taking into account that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". {\color{red}For a rigorous derivation refer to \cite{}}.
+Finally, by exploiting the symmetry and translation invariancy of the free-field Green's function
+\begin{equation}
+G(\vxo|\vx) = G(\vx|\vxo) = G(\vx-\vxo), \qquad
+\frac{G(\vxo|\vx)}{\partial n(\vx0)} = \frac{G(\vx|\vxo)}{\partial n(\vx0)}
+\end{equation}
+the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
+>>>>>>> origin/fiala
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{S} - \left( 
@@ -502,7 +538,7 @@ In both cases the approach is capable of dealing only with forward propagation p
 
 KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
 
-One drawback of interior HIE is that it overspecifies the problem in order to ensure zero pressure and velocity outside the domain of interest. In the aspect of Sound Field Synthesis the presence of both single and double layer potentials is infeasible. By letting the sound field non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions to the sound field $ P(\vxo,\omega) $ itself in an equivalent scattering problem.
+One drawback of interior HIE is that it overspecifies the problem in order to ensure zero pressure and velocity outside the domain of interest. In the aspect of Sound Field Synthesis the presence of both single and double layer potentials is infeasible. By letting the sound field non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions on the sound field $ P(\vxo,\omega) $ itself in an equivalent scattering problem.
 In the following section the former approach is applied for planar boundaries resulting in the Rayleigh integral theorem.
 
 \subsection{The Rayleigh integrals}
@@ -510,20 +546,21 @@ In the following section the former approach is applied for planar boundaries re
 
 %The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
 
-In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($S_P$) and a hemisphere ($S_S$, $S = S_P \cup S_S$), shown in \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
+
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($S_P$) and a hemisphere ($S_S$, $S = S_P \cup S_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
 For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
 \begin{multline}
 P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{S_P} + \int_{S_S} \td S \right) = \\
-\int_{S_S}  \left( 
+\int_{S_P}  \left( 
 P(\vxo,\omega)  
 \left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
 -
 \left. \frac{\partial P(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
 G(\vxo|\vx,\omega) 
-\right)   \td S_S ( \vxo).
+\right)   \td S_P ( \vxo).
 \end{multline}
 
-Exploiting that any homogeneous solution of the Helmholtz equation ---satisfying free field boundary conditions-- may be added to the Green's function with the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holding, either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
+Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function with the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holding, {\color{red}either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero}:
 \begin{itemize}
 \item The \emph{Neumann Green's function} eliminates the double layer potential, by describing Neumann boundary conditions for the Green's function on the bounding infinite plane:
 \begin{equation}
@@ -535,7 +572,7 @@ G_N(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_N(\vxo,\omega),
 \end{equation}
 \item The \emph{Dirichlet Green's function} eliminates the double layer potential in the same manner by prescribing
 \begin{equation}
-G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in S_S.
+G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in S_P.
 \label{Eq:Theory:Dirichlet_Greenfun_def}
 \end{equation}
 \end{itemize}
@@ -562,23 +599,23 @@ From simple geometrical considerations it can be deduced, that the sound fields 
 \begin{equation}
  G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
 \end{equation}
-with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $S_S$, thus
+with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $S_P$, thus
 \begin{equation}
 G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
-holds. Substituting back to the KHIE yields the Rayleigh I. and II. integrals respectively \cite{Berkhout1984}:
+holds. Substituting back to the KHIE yields the Rayleigh I. and II. integrals, respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
-\int_{S_S}
+\int_{S_P}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
 G(\vx-\vxo,\omega) \td S_S ( \vxo).
 \\
 P_D(\vx,\omega) =
-\int_{S_S}
+\int_{S_P}
 -2 P(\vxo,\omega)  
 \left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
-\td S_S ( \vxo)
+\td S_P ( \vxo)
 \end{eqnarray}
 Since the Neumann and Dirichlet Green's functions satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively, substituting into the Green's theorem \eqref{Eq:Theory:Greens-theorem} reveals that 
 \begin{align*}
@@ -601,3 +638,4 @@ Again, the form of Green's function depends on the problem dimensionality and in
 The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
 
 It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{table:theory:Greens_fun_representations} and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated} respectively for the 3D case.
+
