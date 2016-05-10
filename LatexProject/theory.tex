@@ -174,9 +174,8 @@ Solutions with $k_y'$ describe plane waves, propagating perpendicular to the $y$
  \end{equation}
 In those cases when one wave length component is shorter than the acoustic wave length, the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs. These type of waves are termed as \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
  
-{\color{red}Ez nem stimmel. Ha a testben nagyobb a sebesség, és nincs diszperzió, akkor nagy frekvencián is nagyobb lesz a hullámhossz, mint az akusztikai.
-Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the speed of sound is significantly higher, than in air. As a consequence in case of e.g. a vibrating solid surface higher-order modes will not be radiated into the free-space, since the wave length on the surface of the object is shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.}
- 
+Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. As a consequence in case of e.g. a vibrating plate, higher-order modes will not be radiated into the free-space, since the bending wave's wave length on the surface may become shorter, than the acoustic wave length would be in air. In these cases air above the surface acts as a hydrodynamic short-circuit.
+
 The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wavelengths.
  
 
@@ -332,18 +331,6 @@ and the solution in the spatio-temporal domain is yielded by the inverse Fourier
 p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{Q}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  \mathbf{k}^{\mathrm{T}} \mathbf{k} } \te^{-\ti \left( \mathbf{k}^{\mathrm{T}}\vx - \omega t \right) } \td k_x \td k_y \td k_z \td \omega.
 \end{equation}
 
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = 1\columnwidth]{Figures/Theory/point_source.png}
-%	\end{overpic}
-%	\caption{3D point source}
-%	\label{Fig:Theory:point_source}
-%\end{figure}
-
-%<<<<<<< HEAD
-%\vspace{3mm}
-%The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green} (setting $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008} given in table \ref{table:theory:Greens_fun_representations}.
-%=======
 The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green}.
 The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations}.
 
@@ -352,23 +339,20 @@ The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_repres
 For simplicity it is assumed that $\mathbf{x_0} = 0$, i.e. the point source is placed at the origin.
 $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
 \left( \right)$ is the modified Bessel function of the second kind.
-The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source.
+The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind, that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
 }
 \label{tab:theory:Greens_fun_representations} 
-%>>>>>>> origin/fiala
-%\begin{center}
-%\begin{table*}[!h]
     \begin{tabular}{  c | | l |	 l }%\toprule
       & 3-dimensional & 2-dimensional \\ \hline
     $\tilde{G}(k_x,k_y,k_z,\omega)$ & $-\frac{1}{ \left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2-k_z^2} $ &  $-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}\delta(k_z)$ \\ 
-    $\tilde{G}(k_x,y,k_z,\omega)$   &  
+    $\tilde{G}(k_x,k_y,z,\omega)$   &  
     \scriptsize	$\begin{aligned}[t]
-	-\frac{\ti}{2}\frac{\te^{-\ti\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}},\hspace{3mm} \text{for} \hspace{1mm}
-	\sqrt{k_x^2+k_z^2}	\leq\left| \frac{\omega}{c} \right| \\
-	\frac{1}{2}\frac{\te^{-\sqrt{k_x^2 + k_z^2-(\frac{\omega}{c})^2}|y|}}{\sqrt{k_x^2 + k_z^2-(\frac{\omega}{c})^2}},\hspace{3mm}  \text{for} \hspace{1mm}				\sqrt{k_x^2+k_z^2}>\left| 	\frac{\omega}{c} \right| 
+	-\frac{\ti}{2}\frac{\te^{-\ti\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_y^2}|z|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_y^2}},\hspace{3mm} \text{for} \hspace{1mm}
+	\sqrt{k_x^2+k_y^2}	\leq\left| \frac{\omega}{c} \right| \\
+	\frac{1}{2}\frac{\te^{-\sqrt{k_x^2 + k_y^2-(\frac{\omega}{c})^2}|z|}}{\sqrt{k_x^2 + k_y^2-(\frac{\omega}{c})^2}},\hspace{3mm}  \text{for} \hspace{1mm}				\sqrt{k_x^2+k_y^2}>\left| 	\frac{\omega}{c} \right| 
 	\end{aligned}$ \normalsize    
     &
-	\color{red}$-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}$
+	$-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}$
 	\\
     $\tilde{G}(k_x,y,z,\omega)$
     % \footnote{$\tilde{G}(k_x,k_y,z,\omega)$ and $\tilde{G}(k_x,y,z,\omega)$ may be written in a less expressive but briefer form as 
@@ -386,23 +370,10 @@ The conditional expressions ensure that evanescent waves are attenuated with inc
 	\end{aligned}$ \normalsize      \\ 
     $G(x,y,z,\omega)$ 				 &  $\frac{1}{4\pi}\frac{\te^{-\ti\frac{\omega}{c}\sqrt{x^2+y^2+z^2}}}{\sqrt{x^2+y^2+z^2}}$ & \scriptsize$-\frac{\ti}{4} H_0^{(2)}\left( \frac{\omega}{c} \sqrt{x^2+y^2} \right) $\normalsize  \\ 
     $g(x,y,z,t)$ 					 &  $\frac{1}{4\pi}\frac{\delta\left( t - \sqrt{x^2+y^2+z^2}/c \right)}{\sqrt{x^2+y^2+z^2}}$  & $\frac{1}{2\pi}\frac{\theta(t - \sqrt{x^2+y^2}/c)}{\sqrt{t^2 - \left(\frac{\sqrt{x^2+y^2}}{c}\right)^2}}$
-%<<<<<<< HEAD
-%%\bottomrule 
-%=======
-%>>>>>>> origin/fiala
-%    \end{tabular}
-%    \caption{Representations of the 3D and 2D free-field Green's functions}
-%    \label{table:theory:Greens_fun_representations} 
-%    \end{table*}
-%\end{center}
-%<<<<<<< HEAD
-%In the table $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0\left( \right)$ is the modified Bessel function of the second kind.
-%The conditional expressions are introduced in order to ensure that the evanescent contribution decreases exponentially. In the followings for the sake of brevity the Green's function is expressed only in the propagation region, however it must be kept in mind, that the wavenumber components are defined in the evanescent region as it was given by \eqref{eq:theory:k_y_definition}.
-%=======
+    \end{tabular}
 \end{table}
 
 
->>>>>>> origin/fiala
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .95\columnwidth]{Figures/Wave_theory/greens_function.png}
@@ -423,7 +394,7 @@ G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z
 obviously holding for any other representation, as it is reflected by the table above.
 
 \paragraph{Monopole and dipole sources:\\} 
-A frequently used point source model for far-field radiation is the acoustic monopole, which is defined as a pulsating sphere, with its radius decreased to infinitesimal, {\color{red} with the total velocity over the surface held constant} \cite{Howe2007}. If the surface vibrates with a velocity $q_{\mathrm{m}}(t)$, the field of a monopole is a point excitation in the velocity potential, i.e. solves
+A frequently used point source model for far-field radiation is the acoustic monopole, which is defined as a pulsating sphere, with its radius decreased to infinitesimal, with the total volume velocity held constant \cite{Howe2007}. If the surface vibrates with a velocity $q_{\mathrm{m}}(t)$, the field of a monopole is a point excitation in the velocity potential, i.e. solves
 \begin{equation}
 \nabla^2 p_{\mathrm{m}}(\vx|\vxo,t) - 	\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p_{\mathrm{m}}(\vx|\vxo,t) = \rho_0 \frac{\partial}{\partial t} q_{\mathrm{m}}(t)\delta(\vx-\vxo).
 \end{equation}
@@ -491,23 +462,19 @@ Substituting into the Green's theorem leads to
   \td V(\vxo) = 
 \oint_{S}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td S(\vxo).
 \end{equation}
-<<<<<<< HEAD
-The sifting property of the Dirac-delta may be exploited, by taking into account, that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". Finally, by exploiting the reciprocity and translation invariancy of the free-field Green's function ($G(\vxo|\vx) = G(\vx|\vxo)$, $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni} = -\frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}$),
-As a result the \emph{Kirchhoff-Helmholtz integral}, or \emph{Helmholtz integral equation (KHIE)} is obtained:
-=======
+
 The sifting property of the Dirac-delta may be exploited, by taking into account that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". {\color{red}For a rigorous derivation refer to \cite{}}.
 Finally, by exploiting the symmetry and translation invariancy of the free-field Green's function
 \begin{equation}
 G(\vxo|\vx) = G(\vx|\vxo) = G(\vx-\vxo), \qquad
-\frac{G(\vxo|\vx)}{\partial n(\vx0)} = \frac{G(\vx|\vxo)}{\partial n(\vx0)}
+\frac{\partial}{\partial \vxo} G(\vxo|\vx)= \frac{\partial}{\partial \vxo} G(\vx|\vxo)
 \end{equation}
 the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
->>>>>>> origin/fiala
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{S} - \left( 
 \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
-+
+-
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
 \right)   \td S( \vxo),
 \label{Eq:Theory:Kirchhoff-Helmholtz}
@@ -524,7 +491,8 @@ Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \em
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{S}  \left(  
-\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega) G(\vx-\vxo,\omega) - 
+\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega) G(\vx-\vxo,\omega) 
++
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}
 \right)   \td S(\vxo),
 \label{Eq:Theory:Kirchhoff}
@@ -533,7 +501,7 @@ The actual form of the Green's function depends on the problem dimensionality, g
 
 The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
 The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
-In both cases the approach is capable of dealing only with forward propagation problems.
+In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the further effects of an unknown source distribution based on the radiated field, measured on a surface, but not able to describe the source properties 	from these data. This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis \footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
 \vspace{3mm}
 
 KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
@@ -560,7 +528,7 @@ G(\vxo|\vx,\omega)
 \right)   \td S_P ( \vxo).
 \end{multline}
 
-Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function with the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holding, {\color{red}either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero}:
+Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function, the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holds: either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
 \begin{itemize}
 \item The \emph{Neumann Green's function} eliminates the double layer potential, by describing Neumann boundary conditions for the Green's function on the bounding infinite plane:
 \begin{equation}
@@ -595,7 +563,7 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $S_S$ is increased to infinity, therefore only $S_P$ contributes to the radiated field at $y>0$.}
 	\label{Fig:Theory:Rayleigh_geometry}
 \end{figure}
-From simple geometrical considerations it can be deduced, that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
+From simple geometrical considerations it can be deduced that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
 \begin{equation}
  G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
 \end{equation}
@@ -603,21 +571,23 @@ with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's fun
 \begin{equation}
 G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
-holds. Substituting back to the KHIE yields the Rayleigh I. and II. integrals, respectively \cite{Berkhout1984}:
+holds. 
+
+The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
 \int_{S_P}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
-G(\vx-\vxo,\omega) \td S_S ( \vxo).
+G(\vx-\vxo,\omega) \td S_P ( \vxo).
 \\
 P_D(\vx,\omega) =
 \int_{S_P}
--2 P(\vxo,\omega)  
+2 P(\vxo,\omega)  
 \left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
 \td S_P ( \vxo)
 \end{eqnarray}
-Since the Neumann and Dirichlet Green's functions satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively, substituting into the Green's theorem \eqref{Eq:Theory:Greens-theorem} reveals that 
+with
 \begin{align*}
 P_N(\vx,\omega) = \begin{cases} 
 P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
@@ -637,5 +607,5 @@ Again, the form of Green's function depends on the problem dimensionality and in
 
 The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
 
-It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{table:theory:Greens_fun_representations} and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated} respectively for the 3D case.
+It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{tab:theory:Greens_fun_representations}  and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated} in the 3D case.
 

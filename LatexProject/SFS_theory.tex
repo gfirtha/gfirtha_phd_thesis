@@ -113,7 +113,7 @@ The method is often referred to as \emph{mode-matching} solutions, since the eig
 This solution utilizing the single layer potential is unique for general enclosures and also for the---strictly speaking---non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively. In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure due to resonance phenomena.
 
 The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
-For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS}
+For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS}.
 In the present thesis only the planar and linear geometries are investigated in details.
 
 \subsection{Planar SSD geometry}
@@ -161,20 +161,21 @@ D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,k_z,
 \end{equation}
 Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed as the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear}.
 
-It should be noticed, that this method does not pose any constraint on the integral kernel. Theoretically an arbitrary transfer function may be assigned for the SSD elements: as long the problem is well-conditioned---i.e. the spectrum of the transfer function does not exhibit zeros---unique driving functions may be derived applying the above.
+It should be noted, that this method does not pose any constraint on the integral kernel. Theoretically an arbitrary transfer function may be assigned for the SSD elements: as long the problem is well-conditioned---i.e. the spectrum of the transfer function does not exhibit zeros---unique driving functions may be derived applying the above.
 
 \vspace{3mm}
-For the general 3D SFS problems the elements of the SSD are described by the 3D Green's function. The plane wave expansion of the 3D free field Green's function is termed as the Weyl's integral representation \cite{Williams1999, Lalor1969}:
+Generally the elements of the SSD are described by the 3D Green's function. The plane wave expansion of the 3D free field Green's function is termed as the Weyl's integral representation \cite{Williams1999, Lalor1969}:
 \begin{equation}
 G(\vx - \vxo,\omega ) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} -\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y - y_0 |  }}{ k_y }
 \te^{\ti (k_x x_0 + k_z z_0)} \te^{-\ti (k_x x + k_z z)} \td k_x \td k_z.
 \label{Eq:Theory:Weyls_integral}
 \end{equation}
-with $k_y = \sqrt{ \left( \frac{\omega}{c} \right )^2 - k_x^2 - k_z^2 }$, thus the angular spectrum of the Green's function placed at the origin ($\vxo = [0,\ 0,\ 0]^{\mathrm{T}}$) measured at a fixed $y$ is given as (as it was shown in table \ref{table:theory:Greens_fun_representations} ):
+with $k_y$ defined as \eqref{eq:theory:k_y_definition}, thus the angular spectrum of the Green's function placed at the origin is given by
 \begin{equation}
-\tilde{G}(k_x,y,k_z,\omega) =-\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y }.
+\tilde{G}(k_x,y,k_z,\omega) =-\frac{\ti}{2}\frac{\te^{ -\ti k_y  | y |  }}{ k_y },
 \end{equation}
-With the angular spectrum representation the target sound field on a fixed, arbitrary $(y=\mathrm{const})$ plane may be expressed from the field measured on $y=0$ using equation \eqref{Eq:Theory:Wave_field_extrapolation}:
+as it was already shown in table \ref{tab:theory:Greens_fun_representations}.
+Applying equation \eqref{Eq:Theory:Wave_field_extrapolation} the target sound field spectrum on a fixed $(y=\mathrm{const})$ plane may be extrapolated from the field measured on $y=0$:
 \begin{equation}
 \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{- \ti k_y y}.
 \label{Eq:Theory:Wave_field_extrapolation_2}
@@ -191,12 +192,12 @@ By taking the derivative of both sides of \eqref{Eq:Theory:Wave_field_extrapolat
 \begin{equation}
 \frac{\partial}{\partial y}  \tilde{P}(k_x,y,k_z,\omega) = - \ti k_y  \tilde{P}(k_x,y,k_z,\omega) \te^{-\ti k_y y}.
 \end{equation}
-By comparing it with \eqref{Eq:Theory:Planar_explicit_driv_fun} it is revealed, that 
+Comparison with \eqref{Eq:Theory:Planar_explicit_driv_fun} reveals, that 
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega) = -2 \left. \frac{\partial}{\partial y} \tilde{P}(k_x,y,k_z,\omega) \right|_{y = 0}.
 \label{Eq:Theory:Planar_explicit_driv_fun_spatial}
 \end{equation}
-Straightforwardly, the explicit expression of the driving function in the spatial domain is obtained by the proper inverse Fourier-transform according to \eqref{Eq:Theory:Dkx_inverse_Fourier}:
+Straightforwardly, the explicit expression of the driving function in the spatial domain is obtained by the corresponding inverse Fourier-transform according to \eqref{Eq:Theory:Dkx_inverse_Fourier}:
 \begin{equation}
 D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0}.
 \label{Eq:Theory:Planar_explicit_driv_fun_spatial}
@@ -205,7 +206,7 @@ D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_
 \subsection{Linear SSD geometry}
 
 Similarly to the planar case the basis functions for a linear SSD are given by exponentials.
-By realizing that equation \eqref{Eq:Theory:Linear_SFS} can be regarded as a convolution integral along the $x$-axis,
+By realizing that equation \eqref{Eq:Theory:Linear_SFS} is a convolution along the $x$-axis,
 the convolution is transformed into a multiplication by means of a forward Fourier-transform
 \begin{equation}
 \tilde{P}(k_x,y,z, \omega) = \tilde{D}(k_x,\omega)\tilde{G}(k_x,y,z, \omega).
@@ -221,7 +222,7 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,z, 
 \end{equation}
 
 Again, theoretically the transfer function may describe the field of an arbitrary sound source, as long as it does not exhibit zeros in order to keep the problem well-conditioned.
-When applying 3D point sources as SSD elements the Fourier-transform coefficients of the Green's function is given as \cite{Ahrens2010a}
+When applying 3D point sources as SSD elements the Fourier-transform coefficients of the Green's function is given in \ref{tab:theory:Greens_fun_representations}
 \begin{equation}
 \tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 } \sqrt{ y^2 + z^2 } \right).
 \end{equation}
@@ -234,11 +235,23 @@ Also since an infinite line source---i.e. the SSD---can only radiate wavefronts 
 \left( \frac{\omega} {c}\right)^2 - k_x^2 = k_y^2 + k_z^2 = k_{\rho}^2,
 \end{equation}
 %
-with $k_{\rho}$ being the radial wavenumber. This implies that for a fixed temporal frequency only the component $k_x$ can be controlled individually using a linear SSD.
+with $k_{\rho}$ being the radial wavenumber. This implies that for a fixed temporal frequency only component $k_x$ can be controlled individually using a linear SSD.
 
 These restrictions will have the following consequence:
-Since for a fixed $k_x$ the radial wavenumber and the propagation direction of the synthesized field is determined, perfect synthesis may be assured only along a straight line, parallel with the SSD at a distance $d = \sqrt{x^2 + y^2}$.
-On this line the radial wavenumber of the target sound field corresponds to that of the synthesized field.
+Since for a fixed $k_x$ the radial wavenumber and the propagation direction of the synthesized field is determined, phase correct synthesis may be assured only in a plane containing the SSD in which the radial wavenumber of the synthesized field and the target field coincide. Furthermore amplitude correct synthesis is assured in this plane at a distance $\dref = \sqrt{y^2 + y^2}$ for which driving functions are calculated.
+%
+\begin{figure} 
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{Figures/SFS_theory/synthesis_w_linear_ssd.png}
+	\footnotesize
+	\put(0,2){(a)}
+	\put(50,2){(b)}
+	\put(17.5,30){$\dref$}
+	\put(72,30){$\dref$}
+	\end{overpic}
+	\caption{Synthesis of a plane wave with the target sound field (a) and the synthesized field using a linear SSD (b). Since the synthesized field is cylindrically symmetric phase correct synthesis is restricted to the plane containing the SSD at $[x,\ 0,\ 0]^{\mathrm{T}}$ where the radial wavenumber of the plane wave equals to $\left( \frac{\omega}{c} \right)^2 - k_x^2$ (denoted by dotted line), while amplitude correct synthesis is restricted to a cylindrical surface with the radius of $\dref$ (denoted by dashed line)}
+	\label{Fig:Theory:synthesis_w_linear_SSD}
+\end{figure}
 
 For practical applications we choose the horizontal plane $z=0$ for the plane of synthesis, and reference the driving functions to the \emph{reference line}, by setting $y = \yref$.
 See Figure \ref{Fig:Theory:planar_linear_geometry} (b) for an illustration. The driving function thus reads
@@ -249,11 +262,11 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref
 In this geometry amplitude correct synthesis is restricted to the reference line.
 Furthermore, the propagation direction can be reconstructed only for those sound fields, where $k_z = 0$ in the plane $z=0$. Practically this means plane waves propagating along the horizontal plane, line sources perpendicular to the synthesis plane, or point sources located in the plane of synthesis.
 
-Since the pressure of an arbitrary 3D sound field on the SSD does not determine completely the pressure measured on the reference line---and vice versa---therefore the explicit driving function for a linear array of 3D point sources can not be formulated in a similar manner as for the planar case, given by \eqref{Eq:Theory:Planar_explicit_driv_fun}.
-An approximate solution valid for 2D target sound fields is given in the following section that deals with traditional WFS applying 3D secondary point sources.
+Since the pressure of an arbitrary 3D sound field on the SSD does not determine completely the pressure measured on the reference line---and vice versa---therefore the explicit driving function for a linear array based on the target field measured on the SSD can not be expressed, 
+as it was given by \eqref{Eq:Theory:Planar_explicit_driv_fun} for the planar case.
 
 \vspace{3mm}
-It is worth noting that the analytic Fourier-transform cofficients of the target sound field are available only for limited simple virtual source models. In any other cases numerical transforms are needed.
+It is worth noting that the analytic Fourier-transform cofficients of the target sound field are available only for limited simple virtual source models. Even in these cases the inverse transform of the driving functions rarely can be evaluated analytically, therefore numerical transforms are needed.
 For a practical and optimized implementation of the SDM for an arbitrary target sound field refer to \cite{ahrens2013a:efficientSDM}.
 
 % To check: SDM w linear sources from the helical spectrum representation (eg. single layer potential, or scattering from a rigid line source)
@@ -335,20 +348,21 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty}
 \td k_x.
 \end{equation}
 The synthesized field using this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
-As it can be seen from Figure (b) displaying the deviation of the synthesized field from the target field application of the explicit driving function ensures perfect synthesis on the reference line. In other parts of the space amplitude errors are present.
+As it can be seen from Figure (b) displaying the deviation of the synthesized field from the target field, application of the explicit driving function ensures perfect synthesis on the reference line. In other parts of the space amplitude errors are present.
 \newpage
 
-\section{Implicit solution: Wave Field Synthesis}
+\section{Implicit solution and 3D Wave Field Synthesis}
 
-The implicit solution for the general SFS problem aims at the reduction of the Kirchhoff-Helmholtz Integral (\emph{KHIE}) equation to a single layer potential instead of the explicit solution of the inverse problem, as treated in the previous subsection. 
+The implicit solution for the general SFS problem aims at the reduction of the KHIE to a single layer potential instead of the explicit solution of the inverse problem, as treated in the previous subsection. 
 
 As we could see the KHIE describes the sound field inside the enclosure in the form of the sum of a single and a double layer potential:
 \begin{equation}
 P(\vx,\omega) = 
-\oint_{\partial \Omega}  \left( 
-P(\vxo,\omega)  \frac{\partial G(\vx|\vxo,\omega)}{\partial n}  -  
-G(\vx|\vxo,\omega) \frac{\partial P(\vxo,\omega)}{\partial n} 
-\right)   \td \partial \Omega ( \vxo),
+\oint_{S} - \left( 
+\frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
+-
+P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
+\right)   \td \partial \Omega( \vxo),
 \end{equation}
 with $\vx \in \Omega$.
 In order to let the double layer vanish two different approaches exist:
@@ -363,10 +377,10 @@ The resulting single layer potential is termed as the \emph{simple source formul
 \frac{\partial G(\vx|\vxo,\omega)}{\partial n}  = 0.
 \end{equation}
 \end{itemize}
-In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach following \cite{Berkhout1984}. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation could be used directly for SFS applying planar SSD. 
+In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach, following \cite{Berkhout1984}. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation can be used directly for SFS applying a planar SSD. 
 This property however can not be generalized: in general geometries the resulting Neumann Green's function can not be expressed in terms of the free field Green's function, therefore the obtained formulation---although being a single layer potential---can not be realized in practice with real life sound sources \cite{Schultz2014:Comparing_approaches}.
 
-For the sake of completeness it is shown here that the simple source formulation theoretically ensures the realizable driving functions for an arbitrary geometry, leading to the same result for the planar case as the Neumann Green's function approach.
+For the sake of completeness it is shown here that the simple source formulation theoretically ensures realizable driving functions for an arbitrary geometry, leading to the same result for the planar case as the Neumann Green's function approach. The didactic importance of this solution along with the equivalent scattering interpretation stems from the further simplification of the resulting driving functions, based on the Kirchhoff-approximation lent from classic scattering theory. This latter forms the backbone of the extension of WFS for arbitrary SSD geometries.
 
 \begin{figure}
 	\centering
@@ -391,7 +405,7 @@ For the sake of completeness it is shown here that the simple source formulation
 \end{figure}
 
 \subsection{Simple Source Formulation/Equivalent Scattering Problem}
-The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with describing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$ \cite{Ahrens2012}.
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$ \cite{Ahrens2012}.
 
 Assume that we have an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, $\vx \in \Omega_{\mathrm{e}}$, satisfying the homogeneous Helmholtz equation, meaning that all sources are located within the enclosure. The exterior wave field is the sum of  radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation. The sound field is described by a set of incoming or converging waves.
 The two spatially disjunct problems are connected through the following boundary condition written onto the boundary surface
