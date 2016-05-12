@@ -374,7 +374,7 @@ P(\vxo,\omega) = 0.
 The resulting single layer potential is termed as the \emph{simple source formulation}.
 \item Deriving the Neumann Green's function with vanishing normal derivative on the boundary:
 \begin{equation}
-\frac{\partial G(\vx|\vxo,\omega)}{\partial n}  = 0.
+\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}  = 0.
 \end{equation}
 \end{itemize}
 In section \ref{Section:Theory:Rayleigh} the Rayleigh-integrals were introduced from the latter, Neumann Green's function approach, following \cite{Berkhout1984}. Since Rayleigh integrals represent a single layer potential applying the free field Green's function, this formulation can be used directly for SFS applying a planar SSD. 
@@ -479,7 +479,7 @@ Another demonstration of this principle is shown in Figure \ref{Fig:Theory:monop
 %\label{Eq:Theory:Equivalent_scattering_driv_fun}
 %\end{equation}
 
-Simple source approach---and the equivalent scattering interpretation---gives the analytical driving function for an arbitrary SSD geometry implicitly. Unfortunately the exterior scattering solution is scarcely available analytically except for simple geometries. The general application therefore would require numerical computation method, e.g. BEM. Also, when compared to the explicit solution a further drawback is that simple source approach allows only point secondary sources.
+Simple source approach---and the equivalent scattering interpretation---gives the analytical driving function for an arbitrary SSD geometry implicitly. Unfortunately the exterior scattering solution is scarcely available analytically except for simple geometries. The general application therefore would require numerical computation method, e.g. BEM. For such a general scenario see Figure \ref{Fig:Theory:simple_source_formulation}, where the driving functions are calculated numerically for an arbitrary enclosing SSD in a 2D scenario.
 
 \subsection{The Kirchhoff approximation}
 
@@ -487,26 +487,51 @@ Based on the equivalent scattering interpretation the simple source formulation 
 
 In order to approximate the scattered field---and its normal gradient on the scatterer surface-- two approximations are applied:
 \begin{itemize}
-\item Based on the \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field close are not reverse. This basically means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
-\item 
-\end{itemize}
-
-The mathematical basis stems from the equivalent scattering problem interpretation of the general SFS problem, discussed earlier. 
-In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Physical Optics approximation} is frequently used, approximating the scattered field as a single layer potential \cite{Fazi2013:Equivalent_scattering, ColtonKress1998}.
-The general scattering problem is modeled with the scattering of plane waves from planar surfaces with a well-known analytical solution.
-If the SSD is convex (ie. the scattering of the synthesized field is avoided) and the SSD dimensions are much higher, than the physical wavelength of the incident/synthesized field the smooth SSD boundary may be considered locally planar, ie. reflections may be modeled as that of local plane waves from locally planar surfaces.
-
-To the synthesis however only those SSD elements contribute, which are \emph{illuminated} by the incident sound field, ie. those SSD elements, whose sound field propagate into the same direction in the synthesis plane as the target sound field. Otherwise the SSD element is in the \emph{shadow region}, that's contribution to the synthesized field is set identically to zero.
-Mathematically this requirement is formulated by
+\item According to the \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field coincide.
+Mathematically this requirement is formulated as weighting the integral, describing the scattered field by the windowing function
 \begin{equation}
 w(\vxo) = \begin{cases}
                         1, \hspace{3mm} \forall \hspace{3mm} \langle \mathbf{k}(\vxo) \cdot \mathbf{n}_i(\vxo) \rangle > 0 \\
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes wavenumber vector of the incident sound field at $\vxo$, $ \mathbf{n}_i(\vxo)$ is the inward normal of the SSD elements.
-% How is wavenumber vector defined?
-In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, which chooses out the \emph{active secondary sources}.
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements.
+%
+This basically means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
+%
+\item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exist between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
+By assuming, that the incident waves reflected locally according to the Snell's law---i.e. its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer 
+\begin{equation}
+P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{1cm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega).
+\label{Eq:SFS_theory:tangent_plane}
+\end{equation}
+The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also discounts for the secondary reflections due to local assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
+\end{itemize}
+
+Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
+\begin{equation}
+\oint_{\partial \Omega} 
+- 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
+G(\vx|\vxo,\omega) 
+\td \partial \Omega ( \vxo)
+\approx
+\begin{cases} 
+P(\vx,\omega)     & \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i \\
+P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
+-P_{\mathrm{s}}(\vx,\omega)    & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e,
+\end{cases}
+\label{Eq:SFS_theory:Kirchhoff_appr}
+\end{equation}
+giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object.
+
+%
+%The mathematical basis stems from the equivalent scattering problem interpretation of the general SFS problem, discussed earlier. 
+%In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Physical Optics approximation} is frequently used, approximating the scattered field as a single layer potential \cite{Fazi2013:Equivalent_scattering, ColtonKress1998}.
+%The general scattering problem is modeled with the scattering of plane waves from planar surfaces with a well-known analytical solution.
+%If the SSD is convex (ie. the scattering of the synthesized field is avoided) and the SSD dimensions are much higher, than the physical wavelength of the incident/synthesized field the smooth SSD boundary may be considered locally planar, ie. reflections may be modeled as that of local plane waves from locally planar surfaces.
+%
+
+%In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, which chooses out the \emph{active secondary sources}.
 
 \begin{figure}
 	\centering
@@ -530,22 +555,22 @@ In the context of WFS this windowing is termed as \emph{secondary source selecti
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
 
+%
+%With all these approximations the general WFS driving functions for an arbitrary SSD surface reads
+%\begin{equation}
+%D(\vxo,\omega) = -2 w(\vxo) \frac{\partial}{\partial \mathbf{n}_i} \left. P(\vx,\omega) \right|_{\vx = \vxo}.
+%\end{equation}
+%This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
 
-With all these approximations the general WFS driving functions for an arbitrary SSD surface reads
-\begin{equation}
-D(\vxo,\omega) = -2 w(\vxo) \frac{\partial}{\partial \mathbf{n}_i} \left. P(\vx,\omega) \right|_{\vx = \vxo}.
-\end{equation}
-This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
+%A detailed discussion on application of these approximation is given in \cite[Sec. 3.8]{Ahrens2012}.
+%Exclusively in the context of WFS one may deduce the same results by utilizing the Fresnel-Kirchhoff diffraction formula in order to give a single-layer high frequency %approximation of the KHIE \cite[p. 215.]{Pierce1991}. Using several further approximations as given in \cite{Zotter2013:uniqueness} the same driving functions are obtained as given above.
 
-A detailed discussion on application of these approximation is given in \cite[Sec. 3.8]{Ahrens2012}.
-
-Exclusively in the context of WFS one may deduce the same results by utilizing the Fresnel-Kirchhoff diffraction formula in order to give a single-layer high frequency approximation of the KHIE \cite[p. 215.]{Pierce1991}. Using several further approximations as given in \cite{Zotter2013:uniqueness} the same driving functions are obtained as given above.
-
+\newpage
 \subsection{2D/3D Wave Field Synthesis}
 
-Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} it is revealed, that Rayleigh-integral implicitly contains the driving functions for a planar SSD and the driving function is given by
+Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI_II} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} it is revealed, that Rayleigh-integral implicitly contains the driving functions for a planar SSD and the driving function is given by
 \begin{equation}
-D_{\mathrm{3D}}(\vxo,\omega) = -2\frac{\partial}{\partial y} P(\vxo,\omega) = - 2 \ti \rho_0 c k V_{\mathrm{n}}(\vxo,\omega).
+D_{\mathrm{3D}}(\vxo,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0} = - 2 \ti \rho_0 c k V_{\mathrm{n}}(\vxo,\omega).
 \label{Eq:Theory:3D_WFS_driv_fun}
 \end{equation}
 This forms the basic equation of traditional \emph{Wave Field Synthesis}, thus equation \eqref{Eq:Theory:3D_WFS_driv_fun} is referred to as \emph{3D WFS driving function}.
@@ -558,3 +583,5 @@ The equivalence of the explicit approach and the simple source formulation follo
 It should be noted, that the traditional derivation of the Rayleigh-integral follows the Neumann Green's function approach, therefore the equivalence of all three approaches accidental, and is valid only for the planar geometry.
 
 As a conclusion: all three approaches lead to the very same result for a planar SSD geometry: an arbitrary source free sound field may be perfectly synthesized by a set of point sources distributed along an infinite plane by driving the SSD with $(-2)$-times the normal derivative of the target sound field, measured on this plane.
+
+ %Also, when compared to the explicit solution a further drawback is that simple source approach allows only point secondary sources.
