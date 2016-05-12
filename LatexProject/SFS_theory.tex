@@ -436,23 +436,23 @@ The discontinuity in the pressure gradient is termed as the \emph{jump relation}
 
 \begin{figure}[h!]
 	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/simple_source_formulation_2.png}
-%	\put(0, 50){(a)}
-%	\put(50,50){(b)}
-%	\put(0,  0){(c)}
-%	\put(50, 0){(d)}
-%	%\put(22,70){$P_i$}
-%	\put(33, 92){$P(\vx,\omega)$}
-%	\put(83, 92){$P_e(\vx,\omega)$}
-%	\put(33, 42){$P_{\mathrm{synth}}$}
-%	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
-%	\put(27,80){$\Omega_i$}
-%	\put(33,72){$\partial \Omega$}
-%	%\put(60,60){$P_e$}
-%	\put(85,87){$\Omega_e$}
-%	\put(83,72){$\partial \Omega$}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/simple_source_formulation_2.png}
+	\footnotesize
+	\put(2, 36){(a)}
+	\put(52,36){(b)}
+	\put(27, 0){(c)}
+	\put(33, 64){$P(\vx,\omega)$}
+	\put(77, 64){$P_\mathrm{e}(\vx,\omega) = -P_\mathrm{s}(\vx,\omega)$}
+	\put(73, 53){$P_\mathrm{i}(\vx,\omega)$}
+	\put(95,44){$\Omega_e$}
+	\put(92,52){$\Omega_i$}
+	\put(80,44){$\partial \Omega$}
+	\put(45,29){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
+	\put(70,8){$\Omega_e$}
+	\put(68,16){$\Omega_i$}
+	\put(55,7.5){$\partial \Omega$}
 	\end{overpic}
-\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$).}
+\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the target field inside $\Omega_i$, and the $(-1)$ times the scattered field at $\Omega_e$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior, and the error of synthesis in the interior, being 0 ideally.}
 	\label{Fig:Theory:simple_source_formulation}
 \end{figure}
 
@@ -470,7 +470,7 @@ The field measured in the presence of the obstacle is termed the \emph{total fie
 The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \partial \Omega$.
 In the aspect of SFS the incident field inside the theoretical scatterer is the target sound field itself.
 Comparing this result with the simple source formulation it is clear, that the single layer driving function is the derivative of $(-1)$ times the total field on the SSD.
-See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalence scattering problem.
+See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalent scattering problem.
 Another demonstration of this principle is shown in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b) where the difference between the synthesized field and the target sound field is the total field in the equivalent scattering problem $P_{\mathrm{t}}(\vx,\omega) = P(\vx,\omega) - P_{\mathrm{e}}(\vx,\omega)$.
 %\begin{equation}
 %D(\vxo,\omega) = \frac{\partial P_T(\vxo,\omega)}{\partial n}
@@ -483,7 +483,13 @@ Simple source approach---and the equivalent scattering interpretation---gives th
 
 \subsection{The Kirchhoff approximation}
 
-Before the WFS theory for a linear SSD is discussed an extension towards arbitrary SSD geometries is given applying the planar SSD driving functions.
+Based on the equivalent scattering interpretation the simple source formulation may be simplified in the high-frequency region using the \emph{Kirchhoff/Physical optics approximation}, applied frequently to estimate scattering from random surfaces \cite{Voronich1999, Tsang2000}.
+
+In order to approximate the scattered field---and its normal gradient on the scatterer surface-- two approximations are applied:
+\begin{itemize}
+\item Based on the \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field close are not reverse. This basically means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
+\item 
+\end{itemize}
 
 The mathematical basis stems from the equivalent scattering problem interpretation of the general SFS problem, discussed earlier. 
 In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Physical Optics approximation} is frequently used, approximating the scattered field as a single layer potential \cite{Fazi2013:Equivalent_scattering, ColtonKress1998}.
@@ -521,7 +527,7 @@ In the context of WFS this windowing is termed as \emph{secondary source selecti
 %	\put(83,72){$\partial \Omega$}
 	\end{overpic}
 \caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$).}
-	\label{Fig:Theory:simple_source_formulation}
+	\label{Fig:Theory:KH_approximation}
 \end{figure}
 
 
