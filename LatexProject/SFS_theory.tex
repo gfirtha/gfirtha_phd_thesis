@@ -495,17 +495,17 @@ w(\vxo) = \begin{cases}
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements.
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements).
 %
-This basically means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
+This windowing means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
 %
-\item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exist between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
-By assuming, that the incident waves reflected locally according to the Snell's law---i.e. its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer 
+\item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exists between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
+By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer 
 \begin{equation}
 P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{1cm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega).
 \label{Eq:SFS_theory:tangent_plane}
 \end{equation}
-The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also discounts for the secondary reflections due to local assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
+The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also neglects the secondary reflections due to locally reacting assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
 \end{itemize}
 
 Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
@@ -522,16 +522,7 @@ P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial 
 \end{cases}
 \label{Eq:SFS_theory:Kirchhoff_appr}
 \end{equation}
-giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object.
-
-%
-%The mathematical basis stems from the equivalent scattering problem interpretation of the general SFS problem, discussed earlier. 
-%In scattering problems from sound soft bodies at high frequencies the \emph{Kirchhoff/Physical Optics approximation} is frequently used, approximating the scattered field as a single layer potential \cite{Fazi2013:Equivalent_scattering, ColtonKress1998}.
-%The general scattering problem is modeled with the scattering of plane waves from planar surfaces with a well-known analytical solution.
-%If the SSD is convex (ie. the scattering of the synthesized field is avoided) and the SSD dimensions are much higher, than the physical wavelength of the incident/synthesized field the smooth SSD boundary may be considered locally planar, ie. reflections may be modeled as that of local plane waves from locally planar surfaces.
-%
-
-%In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, which chooses out the \emph{active secondary sources}.
+giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure give rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
 
 \begin{figure}
 	\centering
@@ -551,19 +542,9 @@ giving a fair approximation for smooth, convex surfaces in the high frequency re
 %	\put(85,87){$\Omega_e$}
 %	\put(83,72){$\partial \Omega$}
 	\end{overpic}
-\caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$).}
+\caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). In (a) the illuminated/active part of the SSD is denoted by solid black line, whilst the shadow region by dotted line.}
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
-
-%
-%With all these approximations the general WFS driving functions for an arbitrary SSD surface reads
-%\begin{equation}
-%D(\vxo,\omega) = -2 w(\vxo) \frac{\partial}{\partial \mathbf{n}_i} \left. P(\vx,\omega) \right|_{\vx = \vxo}.
-%\end{equation}
-%This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
-
-%A detailed discussion on application of these approximation is given in \cite[Sec. 3.8]{Ahrens2012}.
-%Exclusively in the context of WFS one may deduce the same results by utilizing the Fresnel-Kirchhoff diffraction formula in order to give a single-layer high frequency %approximation of the KHIE \cite[p. 215.]{Pierce1991}. Using several further approximations as given in \cite{Zotter2013:uniqueness} the same driving functions are obtained as given above.
 
 \newpage
 \subsection{2D/3D Wave Field Synthesis}
@@ -584,4 +565,8 @@ It should be noted, that the traditional derivation of the Rayleigh-integral fol
 
 As a conclusion: all three approaches lead to the very same result for a planar SSD geometry: an arbitrary source free sound field may be perfectly synthesized by a set of point sources distributed along an infinite plane by driving the SSD with $(-2)$-times the normal derivative of the target sound field, measured on this plane.
 
+
+%In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, which chooses out the \emph{active secondary sources}.
+
  %Also, when compared to the explicit solution a further drawback is that simple source approach allows only point secondary sources.
+%This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
