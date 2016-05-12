@@ -487,23 +487,22 @@ Based on the equivalent scattering interpretation the simple source formulation 
 
 \begin{figure}
 	\centering
-	\begin{overpic}[width = .9\columnwidth,grid]{Figures/SFS_theory/Kirchhoff_approximation.png}
-%	\put(0, 50){(a)}
-%	\put(50,50){(b)}
-%	\put(0,  0){(c)}
-%	\put(50, 0){(d)}
-%	%\put(22,70){$P_i$}
-%	\put(33, 92){$P(\vx,\omega)$}
-%	\put(83, 92){$P_e(\vx,\omega)$}
-%	\put(33, 42){$P_{\mathrm{synth}}$}
-%	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
-%	\put(27,80){$\Omega_i$}
-%	\put(33,72){$\partial \Omega$}
-%	%\put(60,60){$P_e$}
-%	\put(85,87){$\Omega_e$}
-%	\put(83,72){$\partial \Omega$}
+	\begin{overpic}[width = .9\columnwidth]{Figures/SFS_theory/Kirchhoff_approximation.png}
+	\footnotesize
+	\put(0, 0){(a)}
+	\put(53,0){(b)}
+	\put(-1.5,23){$\vk(\vxo)$}
+	\put(-2,3.5){$\vxs$}
+	\put(8,13){illuminated region}
+	\put(27,29){shadow region}
+	%	
+	\put(58.75,3){$\vxs$}
+	\put(71,12){$\vn(\vxo)$}
+	\put(84,20.5){$\vk(\vxo)$}
+	\put(77.5,5){$\vk_\mathrm{s}(\vxo)$}
+	\put(92.5,2.5){\parbox{.5in}{tangent plane}}
 	\end{overpic}
-\caption{}
+\caption{Illustration of the geometrical optics approximation (a) and the tangent plane approximation (b)}
 	\label{Fig:Theory:KH_approximation_a}
 \end{figure}
 
@@ -517,7 +516,7 @@ w(\vxo) = \begin{cases}
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements.
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
 %
 This windowing means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
 %
