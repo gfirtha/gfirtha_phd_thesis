@@ -485,6 +485,28 @@ Simple source approach---and the equivalent scattering interpretation---gives th
 
 Based on the equivalent scattering interpretation the simple source formulation may be simplified in the high-frequency region using the \emph{Kirchhoff/Physical optics approximation}, applied frequently to estimate scattering from random surfaces \cite{Voronich1999, Tsang2000}.
 
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .9\columnwidth,grid]{Figures/SFS_theory/Kirchhoff_approximation.png}
+%	\put(0, 50){(a)}
+%	\put(50,50){(b)}
+%	\put(0,  0){(c)}
+%	\put(50, 0){(d)}
+%	%\put(22,70){$P_i$}
+%	\put(33, 92){$P(\vx,\omega)$}
+%	\put(83, 92){$P_e(\vx,\omega)$}
+%	\put(33, 42){$P_{\mathrm{synth}}$}
+%	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
+%	\put(27,80){$\Omega_i$}
+%	\put(33,72){$\partial \Omega$}
+%	%\put(60,60){$P_e$}
+%	\put(85,87){$\Omega_e$}
+%	\put(83,72){$\partial \Omega$}
+	\end{overpic}
+\caption{}
+	\label{Fig:Theory:KH_approximation_a}
+\end{figure}
+
 In order to approximate the scattered field---and its normal gradient on the scatterer surface-- two approximations are applied:
 \begin{itemize}
 \item According to the \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field coincide.
@@ -495,34 +517,18 @@ w(\vxo) = \begin{cases}
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements).
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements.
 %
 This windowing means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
 %
 \item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exists between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
-By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer 
+By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000} 
 \begin{equation}
-P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{1cm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega).
+P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \partial \Omega.
 \label{Eq:SFS_theory:tangent_plane}
 \end{equation}
 The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also neglects the secondary reflections due to locally reacting assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
 \end{itemize}
-
-Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
-\begin{equation}
-\oint_{\partial \Omega} 
-- 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
-G(\vx|\vxo,\omega) 
-\td \partial \Omega ( \vxo)
-\approx
-\begin{cases} 
-P(\vx,\omega)     & \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i \\
-P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
--P_{\mathrm{s}}(\vx,\omega)    & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e,
-\end{cases}
-\label{Eq:SFS_theory:Kirchhoff_appr}
-\end{equation}
-giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure give rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
 
 \begin{figure}
 	\centering
@@ -545,8 +551,23 @@ giving a fair approximation for smooth, convex surfaces in the high frequency re
 \caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). In (a) the illuminated/active part of the SSD is denoted by solid black line, whilst the shadow region by dotted line.}
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
+%
+Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
+\begin{equation}
+\oint_{\partial \Omega} 
+- 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
+G(\vx|\vxo,\omega) 
+\td \partial \Omega ( \vxo)
+\approx
+\begin{cases} 
+P(\vx,\omega)     & \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i \\
+P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
+-P_{\mathrm{s}}(\vx,\omega)    & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e,
+\end{cases}
+\label{Eq:SFS_theory:Kirchhoff_appr}
+\end{equation}
+giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure give rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
 
-\newpage
 \subsection{2D/3D Wave Field Synthesis}
 
 Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI_II} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} it is revealed, that Rayleigh-integral implicitly contains the driving functions for a planar SSD and the driving function is given by
