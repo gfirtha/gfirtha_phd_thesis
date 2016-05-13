@@ -11,14 +11,14 @@
 	\put(57,-3){$|\vx - \vxo|$}
 	\end{turn}
 	\put(50,35){$\Omega$}
-	\put(80,20.5){$\partial \Omega$}
+	\put(80,20.5){$\dO$}
 	\end{overpic}
 	\caption{Geometry for the general Sound Field Synthesis problem}
 	\label{Fig:Theory:general_sfs_geometry}
 \end{figure}
 
 
-Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the boundary surface $\partial \Omega$.
+Now we are able the formulate the general Sound Field Synthesis problem. Consider a source-free volume $\Omega \subset \mathbb{R}^n$, bounded by a continuous set of acoustic sources forming the boundary surface $\dO$.
 The enclosing source ensemble is termed as the \emph{secondary source distribution (SSD)}.
 The general geometry is depicted in Figure \ref{Fig:Theory:general_sfs_geometry}.
 For the sake of simplicity we assume, that the boundary is acoustically transparent and the secondary sources are acoustic point sources, i.e. described by the $n$-dimensional free field Green's function. Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
@@ -26,7 +26,7 @@ For the sake of simplicity we assume, that the boundary is acoustically transpar
 
 With these assumptions the pressure at any $\vx \in \Omega$ is given by the sum of the individual SSD elements, written as a single layer potential \cite{Ahrens2012,Ahrens2010phd,Wierstorf2014,Schultz2014:Comparing_approaches}:
 \begin{equation}
-P(\vx,\omega) = \oint_{\partial \Omega} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td \partial \Omega ( \vxo ).
+P(\vx,\omega) = \oint_{\dO} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td \dO ( \vxo ).
 \label{Eq:Theory:3D_SFS}
 \end{equation}
 The weighting factor $D(\vxo,\omega)$ is termed as the \emph{driving function} for the given SSD. 
@@ -112,7 +112,7 @@ Regarding the target sound field two approaches exist: \emph{data-based renderin
 \section{Explicit solution: The Spectral Division Method}
 
 The explicit solution for the general SFS problem utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function $G(\vx - \vxo , \omega )$ \cite{Ahrens2012,MorseFeshbach1953}.
-Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on the boundary surface $\partial \Omega$, that form a complete basis of the solution.
+Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on the boundary surface $\dO$, that form a complete basis of the solution.
 The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero.
 Otherwise the problem is termed \emph{ill-conditioned}.
 Finally the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
@@ -372,7 +372,7 @@ P(\vx,\omega) =
 \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
 -
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
-\right)   \td \partial \Omega( \vxo),
+\right)   \td \dO( \vxo),
 \end{equation}
 with $\vx \in \Omega$,  $\Omega \subset \mathbb{R}^n$.
 In order to let the double layer vanish two different approaches exist:
@@ -404,45 +404,45 @@ For the sake of completeness it is shown here that the simple source formulation
 %	\put(83, 92){$P_e(\vx,\omega)$}
 %	\put(33, 42){$P_{\mathrm{synth}}$}
 %	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
-%	\put(27,80){$\Omega_i$}
-%	\put(33,72){$\partial \Omega$}
+%	\put(27,80){$\Oi$}
+%	\put(33,72){$\dO$}
 %	%\put(60,60){$P_e$}
 %	\put(85,87){$\Omega_e$}
-%	\put(83,72){$\partial \Omega$}
+%	\put(83,72){$\dO$}
 %	\end{overpic}
-%\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$) with a circular SSD at $R_0 = 1~\mathrm{m}$: The incident field, to be synthesized is the field of a 2D point source, described by $G_{\mathrm{2D}}(\vx-\vxo,\omega)$, $\vxo = [-1.5,\ 1.5]^{\mathrm{T}}~\mathrm{m}$, depicted in (a). For a circular SSD contour the interior and exterior fields may be calculated analytically using \cite[Eq.~4.57]{Williams1999} with $k_z=0$, and using $J_n()$ for the interior problem. The resulting exterior field is depicted in (b), while the interior solution is the target field in $\Omega_i$ in (a). Due to the separated variables normal derivatives in equation \eqref{Eq:Theory:Simple_source_HIE}---which means radial derivative in the present setup---are calculated analytically. The obtained strength function is $D(\varphi,\omega) = \sum_{n = 0}^{k} \te^{\ti n \phi} k C_n(\omega) \left( \frac{J'_n(k R_0)}{J_n(k R_0)} - \frac{H_n^{'(2)}(k R_0)}{H_n^{(2)}(k R_0)} \right),$ with $C_n(\omega)$ being the incident pressure spectrum on $\partial \Omega$. The synthesized field, depicted in (c), is calculated by evaluating \eqref{Eq:Theory:3D_SFS}. In $\Omega_i$ the synthesized field equals to the target sound field. The solution of the equivalent scattering problem is depicted in (d) constructed from the simple source approach.}
+%\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$) with a circular SSD at $R_0 = 1~\mathrm{m}$: The incident field, to be synthesized is the field of a 2D point source, described by $G_{\mathrm{2D}}(\vx-\vxo,\omega)$, $\vxo = [-1.5,\ 1.5]^{\mathrm{T}}~\mathrm{m}$, depicted in (a). For a circular SSD contour the interior and exterior fields may be calculated analytically using \cite[Eq.~4.57]{Williams1999} with $k_z=0$, and using $J_n()$ for the interior problem. The resulting exterior field is depicted in (b), while the interior solution is the target field in $\Oi$ in (a). Due to the separated variables normal derivatives in equation \eqref{Eq:Theory:Simple_source_HIE}---which means radial derivative in the present setup---are calculated analytically. The obtained strength function is $D(\varphi,\omega) = \sum_{n = 0}^{k} \te^{\ti n \phi} k C_n(\omega) \left( \frac{J'_n(k R_0)}{J_n(k R_0)} - \frac{H_n^{'(2)}(k R_0)}{H_n^{(2)}(k R_0)} \right),$ with $C_n(\omega)$ being the incident pressure spectrum on $\dO$. The synthesized field, depicted in (c), is calculated by evaluating \eqref{Eq:Theory:3D_SFS}. In $\Oi$ the synthesized field equals to the target sound field. The solution of the equivalent scattering problem is depicted in (d) constructed from the simple source approach.}
 %	\label{Fig:Theory:simple_source_formulation}
 %\end{figure}
 
 
 \subsection{Simple Source Formulation/Equivalent Scattering Problem}
-The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\partial \Omega$ \cite{Ahrens2012}.
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Ahrens2012}.
 
-Let's assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, satisfying the homogeneous Helmholtz equation at $\vx \in \Omega_{\mathrm{e}}$, i.e. that all sources are located within the enclosure. The exterior wave field is the combination of radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation constructed by a set of incoming or converging waves.
+Let's assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, i.e. that all sources are located within the enclosure. The exterior wave field is the combination of radiating, or diverging waves. On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation constructed by a set of incoming or converging waves.
 The two spatially disjunct problems are connected through the following boundary condition written onto the boundary surface
 \begin{equation}
-P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \partial \Omega.
+P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \dO.
 \end{equation}
 Both fields may be expressed in terms of an exterior and an interior KHIE respectively, for the exterior KHIE with inward normals refer to \cite[eq. 8.30]{Williams1999}.
 By adding the exterior and interior KHIEs, due to the coupled boundary condition terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite[p.~268.]{Williams1999}
 \begin{equation}
-\oint_{\partial \Omega} 
+\oint_{\dO} 
 G(\vx|\vxo,\omega) 
 \left(
 \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
 \right)
-\td \partial \Omega ( \vxo)
+\td \dO ( \vxo)
 = 
 \begin{cases} 
 P_{\mathrm{e}}(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e  	   \\
-P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
-P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i.
+P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
+P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Oi.
 \end{cases}
 \label{Eq:Theory:Simple_source_HIE}
 \end{equation}
 The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be determined as a single layer potential, by constructing the corresponding exterior or interior problems, respectively.
 The \emph{single layer strength function} is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
-The discontinuity in the pressure gradient is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential continuous in pressure on the boundary $\partial \Omega$, while the gradient changes sign i.e. \emph{jumps}.
+The discontinuity in the pressure gradient is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
 
 \begin{figure}[h!]
 	\centering
@@ -454,15 +454,15 @@ The discontinuity in the pressure gradient is termed as the \emph{jump relation}
 	\put(33, 64){$P(\vx,\omega)$}
 	\put(77, 64){$P_\mathrm{e}(\vx,\omega) = -P_\mathrm{s}(\vx,\omega)$}
 	\put(73, 53){$P_\mathrm{i}(\vx,\omega)$}
-	\put(95,44){$\Omega_e$}
-	\put(92,52){$\Omega_i$}
-	\put(80,44){$\partial \Omega$}
+	\put(95,44){$\Oe$}
+	\put(92,52){$\Oi$}
+	\put(80,44){$\dO$}
 	\put(45,29){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
-	\put(70,8){$\Omega_e$}
-	\put(68,16){$\Omega_i$}
-	\put(55,7.5){$\partial \Omega$}
+	\put(70,8){$\Oe$}
+	\put(68,16){$\Oi$}
+	\put(55,7.5){$\dO$}
 	\end{overpic}
-\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the target field inside $\Omega_i$, and the $(-1)$ times the scattered field at $\Omega_e$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior, and the error of synthesis in the interior, being 0 ideally.}
+\caption{Illustration of simple source formulation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the target field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior, and the error of synthesis in the interior, being 0 ideally.}
 	\label{Fig:Theory:simple_source_formulation}
 \end{figure}
 
@@ -475,9 +475,9 @@ D(\vxo,\omega) =
 where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field, needed to be calculated in order to solve the SFS problem.
 
 \vspace{3mm}
-As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: we assume that the surface $\partial \Omega$ represents no longer an SSD, but the boundary of a sound soft scattering object. In acoustic scattering problems we consider an a-priori known \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$.
+As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: we assume that the surface $\dO$ represents no longer an SSD, but the boundary of a sound soft scattering object. In acoustic scattering problems we consider an a-priori known \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$.
 The field measured in the presence of the obstacle is termed the \emph{total field} $P_{\mathrm{t}}(\vx,\omega)$, given by the sum of the incident and scattered fields.
-The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \partial \Omega$.
+The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \dO$.
 In the aspect of SFS the incident field inside the theoretical scatterer is the target sound field itself.
 Comparing this result with the simple source formulation it is clear, that the single layer driving function is the derivative of $(-1)$ times the total field on the SSD.
 See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalent scattering problem.
@@ -533,7 +533,7 @@ This windowing means the neglection of both diffracting waves around the scatter
 \item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exists between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
 By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000, Pike2002} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
 \begin{equation}
-P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \partial \Omega.
+P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \dO.
 \label{Eq:SFS_theory:tangent_plane}
 \end{equation}
 The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also neglects the secondary reflections due to locally reacting assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
@@ -551,11 +551,11 @@ The approximation therefore calculates the reflected wave field by modeling each
 %	\put(83, 92){$P_e(\vx,\omega)$}
 %	\put(33, 42){$P_{\mathrm{synth}}$}
 %	\put(77, 42){$P_T = P - P_{\mathrm{synth}}$}
-%	\put(27,80){$\Omega_i$}
-%	\put(33,72){$\partial \Omega$}
+%	\put(27,80){$\Oi$}
+%	\put(33,72){$\dO$}
 %	%\put(60,60){$P_e$}
-%	\put(85,87){$\Omega_e$}
-%	\put(83,72){$\partial \Omega$}
+%	\put(85,87){$\Oe$}
+%	\put(83,72){$\dO$}
 	\end{overpic}
 \caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). In (a) the illuminated/active part of the SSD is denoted by solid black line, whilst the shadow region by dotted line.}
 	\label{Fig:Theory:KH_approximation}
@@ -563,15 +563,15 @@ The approximation therefore calculates the reflected wave field by modeling each
 %
 Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
 \begin{equation}
-\oint_{\partial \Omega} 
+\oint_{\dO} 
 - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
 G(\vx|\vxo,\omega) 
-\td \partial \Omega ( \vxo)
+\td \dO ( \vxo)
 \approx
 \begin{cases} 
-P(\vx,\omega)     & \hspace{1mm} \forall \hspace{5mm}   \vx \in \Omega_i \\
-P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \partial \Omega  \\
--P_{\mathrm{s}}(\vx,\omega)    & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e,
+P(\vx,\omega)     & \hspace{1mm} \forall \hspace{5mm}   \vx \in \Oi \\
+P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
+-P_{\mathrm{s}}(\vx,\omega)    & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oe,
 \end{cases}
 \label{Eq:SFS_theory:Kirchhoff_appr}
 \end{equation}

@@ -233,24 +233,24 @@ In the aspect of this thesis two important types of boundary conditions are of i
 \begin{itemize}
 \item \emph{Dirichlet boundary condition} prescribes the pressure measured on the boundary surface. The homogeneous Dirichlet boundary conditions are thus
 \begin{equation}
-P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in S.
+P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 \end{equation}
 These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries. These types of boundary conditions are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Blackstock2000, Ziomek1995}.
 
 The inhomogeneous Dirichlet boundary condition assumes a prescribed pressure value on the boundary surface:
 \begin{equation}
-P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in S.
+P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 \end{equation}
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .5\columnwidth]{Figures/Basic_acoustics/boundary_conditions.png}
 	\small
 	\put(27,37){$\mathbf{n}_{\mathrm{in}}$}
-	\put(40,47){$V_{\mathrm{i}}$}
-	\put(50,82){$V_{\mathrm{e}}$}
-	\put(11,48){$S$}	
+	\put(40,47){$\Oi$}
+	\put(50,82){$\Oe$}
+	\put(11,48){$\dO$}	
 	\put(79,71){$r$}	
-	\put(84,85){$S_{\infty}$}
+	\put(84,85){$\dO_{\infty}$}
 	\end{overpic}
 	\caption{Geometry for the boundary conditions in general interior and exterior radiation problems, and the infinite boundary for the Sommerfeld radiation condition}
 	\label{Fig:Theory:bounday_condition}
@@ -258,31 +258,31 @@ P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in S.
 
 \item \emph{Neumann boundary condition} gives the normal derivative of the pressure on the boundary surface, i.e. prescribes the normal velocity of the surface. %For the sake of simplicity the normal derivative taken on the surface uses the following notation and definition
 %\begin{equation}
-%\frac{\partial}{\partial n} f(\vx)\equiv \left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\partial \Omega} \equiv \left. \langle \nabla f(\vx), %\mathbf{n}(\vx) \rangle \right|_{\partial \Omega},
+%\frac{\partial}{\partial n} f(\vx)\equiv \left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\dO} \equiv \left. \langle \nabla f(\vx), %\mathbf{n}(\vx) \rangle \right|_{\dO},
 %\end{equation}
 %where $ \mathbf{n}(\vx) $ is the normal vector of the boundary surface. For interior problems the inward pointing normal is used.%
 %
 Homogeneous Neumann boundary condition are
 \begin{equation}
-\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{S}= 0,
+\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\vx \in \dO}= 0,
 \end{equation}
 where $ \mathbf{n}(\vx) $ is the normal vector of the boundary surface.
 These type of boundaries are termed as \emph{sound hard}, or \emph{rigid} boundaries, ensuring that no incident wave can move the boundary surface.
 
 Inhomogeneous Neumann boundary conditions are given by
 \begin{equation}
-\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{S}= f_N(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in S.
+\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\vx \in \dO}= f_N(\vx,\omega).
 \end{equation}
 Vibrating surfaces---e.g. mounted loudspeakers, or baffled pistons---are most often modeled using these type of boundary conditions.
 \end{itemize}
 
 For radiation problems it is feasible to assume free field conditions, i.e. only outgoing waves are present in the sound field. This is ensured mathematically by the \emph{Sommerfeld radiation condition}, excluding the non-physical solutions of the wave equation emerging from infinity, for which the desired sources of radiation behave as acoustic sinks.
-Mathematically it can be formulated by implying boundary condition on $S_{\infty}$, with $r$ is increased to infinity, as shown in Figure \ref{Fig:Theory:bounday_condition}:
+Mathematically it can be formulated by implying boundary condition on $\dO_{\infty}$, with $r$ is increased to infinity, as shown in Figure \ref{Fig:Theory:bounday_condition}:
 \begin{equation}
-\lim_{r \rightarrow \infty} r \left( \left. \frac{\partial}{\partial r}P(\vx,\omega)\right|_{S_{\infty}} +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in S_{\infty}.
+\lim_{r \rightarrow \infty} r \left( \left. \frac{\partial}{\partial r}P(\vx,\omega)\right|_{\vx \in \dO_{\infty}} +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO_{\infty}.
 \label{Eq:Theory:Sommerfeld_radiation_condition}
 \end{equation}
-The condition stems from the inclusion of the surface $S_{\infty}$ to the Kirchhoff-Helmholtz integral for the general exterior problem (see in the following section), and by deriving boundary conditions that ensure zero contribution of this surface in its limiting value\cite{Schot1992:Eighty_years, Williams1999}.
+The condition stems from the inclusion of the surface $\dO_{\infty}$ to the Kirchhoff-Helmholtz integral for the general exterior problem (see in the following section), and by deriving boundary conditions that ensure zero contribution of this surface in its limiting value\cite{Schot1992:Eighty_years, Williams1999}.
 
 \newpage
 \section{The inhomogeneous wave equation and the Green's function}
@@ -434,19 +434,20 @@ The effect of direct sources inside the enclosure may be straightforwardly inclu
 		\put(70.5,31){$\vx$}
 		\put(37,14){$\vxo$}
 		\put(39,22){$\vni(\vxo)$}
-		\put(50,40){$V$}
-		\put(80,5){$\overline{V}$}
-		\put(80,40.5){$S$}
+		\put(50,40){$\Oi$}
+		\put(80,5){$\Oe$}
+		\put(80,40.5){$\dO$}
 	\end{overpic}
-\caption{Geometry for the interior Kirchhoff-Helmholtz integral, representing the sound field inside an enclosure $V$ generated by an exterior sound source in the form of a surface integral along $S$. For 2D problems the boundary degenerates to a closed contour, enclosing the area $V$.}
+\caption{Geometry for the interior Kirchhoff-Helmholtz integral, representing the sound field inside an enclosure $\Oi$ generated by an exterior sound source in the form of a surface integral along $\dO$. For 2D problems the boundary degenerates to a closed contour, enclosing the area $\Oi$.}
 	\label{Fig:Theory:HIE_geometry}
 \end{figure}
 
-Let $V$ be an $n$-dimensional enclosure, bounded by the surface $S$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. Refer to figure \ref{Fig:Theory:HIE_geometry} for the geometry. For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads (see \ref{App:Green_theorem} for the derivation)
+Let $\Oi$ be an $n$-dimensional enclosure, bounded by the surface $\dO$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. Refer to figure \ref{Fig:Theory:HIE_geometry} for the geometry. For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads (see \ref{App:Green_theorem} for the derivation)
 \begin{equation}
+\small
 \int_{V}
-\left(  \Phi(\vxo) \nabla^2 \Psi(\vxo) - \Psi(\vxo) \nabla^2 \Phi(\vxo)   \right)   \td V(\vxo)= 
-\oint_{S}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td S(\vxo),
+\left(  \Phi(\vxo) \nabla^2 \Psi(\vxo) - \Psi(\vxo) \nabla^2 \Phi(\vxo)   \right)   \td \Oi(\vxo)= 
+\oint_{\dO}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td \dO(\vxo),
 \label{Eq:Theory:Greens-theorem}
 \end{equation}
 with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \left. \nabla \Phi(\vx)\right|_{\vx = \vxo} \rangle$.
@@ -459,9 +460,10 @@ Let $\Phi$ be the pressure field inside the enclosure satisfying the homogeneous
 
 Substituting into the Green's theorem leads to
 \begin{equation}
-\int_V - P(\vxo,\omega) \delta(\vxo - \vx)
-  \td V(\vxo) = 
-\oint_{S}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td S(\vxo).
+\small
+\int_{\Oi} - P(\vxo,\omega) \delta(\vxo - \vx)
+  \td \Oi(\vxo) = 
+\oint_{\dO}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td \dO(\vxo).
 \end{equation}
 
 The sifting property of the Dirac-delta may be exploited, by taking into account that the singularity is located in the enclosure: if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". {\color{red}For a rigorous derivation refer to \cite{}}.
@@ -473,29 +475,29 @@ G(\vxo|\vx) = G(\vx|\vxo) = G(\vx-\vxo), \qquad
 the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
 \begin{equation}
 \alpha P(\vx,\omega) = 
-\oint_{S} - \left( 
+\oint_{\dO} - \left( 
 \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
 -
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
-\right)   \td S( \vxo),
+\right)   \td \dO( \vxo),
 \label{Eq:Theory:Kirchhoff-Helmholtz}
 \end{equation}
 with
 \begin{equation*}
 \alpha = \begin{cases} 
-1           & \hspace{1mm} \forall \hspace{5mm}  \vx \in V  	   \\
-\frac{1}{2} & \hspace{1mm} \forall \hspace{5mm}  \vx \in S  \\
-0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \overline{V}.
+1           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oi  	   \\
+\frac{1}{2} & \hspace{1mm} \forall \hspace{5mm}  \vx \in \dO  \\
+0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oe.
 \end{cases}
 \end{equation*}
 Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. A frequently used form of the KHIE utilizing the Euler's equation \eqref{Eq:Theory:Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface ($\frac{\partial P(\vxo,\omega)}{\partial \vni} = -\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega)$), resulting in
 \begin{equation}
 \alpha P(\vx,\omega) = 
-\oint_{S}  \left(  
+\oint_{\dO}  \left(  
 \ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega) G(\vx-\vxo,\omega) 
 +
 P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}
-\right)   \td S(\vxo),
+\right)   \td \dO(\vxo),
 \label{Eq:Theory:Kirchhoff}
 \end{equation}
 The actual form of the Green's function depends on the problem dimensionality, given in the previous section.
@@ -516,17 +518,17 @@ In the following section the former approach is applied for planar boundaries re
 %The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
 
 
-In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($S_P$) and a hemisphere ($S_S$, $S = S_P \cup S_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($\dO_P$) and a hemisphere ($\dO_S$, $\dO = \dO_P \cup \dO_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
 For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
 \begin{multline}
-P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{S_P} + \int_{S_S} \td S \right) = \\
-\int_{S_P}  \left( 
+P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} + \int_{\dO_S} \td \dO \right) = \\
+\int_{\dO_P}  \left( 
 P(\vxo,\omega)  
 \left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
 -
 \left. \frac{\partial P(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
 G(\vxo|\vx,\omega) 
-\right)   \td S_P ( \vxo).
+\right)   \td \dO_P ( \vxo).
 \end{multline}
 
 Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function, the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holds: either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
@@ -541,7 +543,7 @@ G_N(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_N(\vxo,\omega),
 \end{equation}
 \item The \emph{Dirichlet Green's function} eliminates the double layer potential in the same manner by prescribing
 \begin{equation}
-G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in S_P.
+G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
 \label{Eq:Theory:Dirichlet_Greenfun_def}
 \end{equation}
 \end{itemize}
@@ -557,18 +559,18 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 		\put(44,16){$\vxo$}
 		\put(38.5,34){$\vni$}
 		\put(62,37){$r$}
-		%\put(40,50){$V$}
-		\put(75,16){$S_P$}
-		\put(60,59){$S_S$}
+		%\put(40,50){$\Oi$}
+		\put(75,16){$\dO_P$}
+		\put(60,59){$\dO_S$}
 	\end{overpic}
-	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $S_S$ is increased to infinity, therefore only $S_P$ contributes to the radiated field at $y>0$.}
+	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only $\dO_P$ contributes to the radiated field at $y>0$.}
 	\label{Fig:Theory:Rayleigh_geometry}
 \end{figure}
 From simple geometrical considerations it can be deduced that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
 \begin{equation}
  G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
 \end{equation}
-with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $S_P$, thus
+with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $\dO_P$, thus
 \begin{equation}
 G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
@@ -577,16 +579,16 @@ holds.
 The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
-\int_{S_P}
+\int_{\dO_P}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
-G(\vx-\vxo,\omega) \td S_P ( \vxo).
+G(\vx-\vxo,\omega) \td \dO_P ( \vxo).
 \\
 P_D(\vx,\omega) =
-\int_{S_P}
+\int_{\dO_P}
 2 P(\vxo,\omega)  
 \left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
-\td S_P ( \vxo)
+\td \dO_P ( \vxo)
 \label{Eq:Theory:RayleighI_II}
 \end{eqnarray}
 with
