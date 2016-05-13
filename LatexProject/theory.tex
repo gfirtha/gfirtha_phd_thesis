@@ -211,6 +211,7 @@ P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\
 \td k_x\td k_z.
 \label{Eq:Theory:Velocity_propagated}
 \end{equation}
+Note, that all these equation may be applied directly for 2D wave field extrapolation (invariant along the $z$-direction) with substitution $k_z = 0$.
 These formulations are of central importance in the field of Fourier-acoustics. They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred to as the propagators: from \eqref{Eq:Theory:Pressure_propagated} term $\te^{-\ti k_y ( y - y' ) }$ is referred to as the \emph{pressure propagator} and from \eqref{Eq:Theory:Velocity_propagated} term $\frac{\te^{-\ti k_y ( y - y' ) } }{k_y}$ is called the \emph{velocity propagator}.
 The importance of these statements---which are the wavenumber expression of the Rayleigh I. and II. integrals---will be further investigated in the latter sections, dealing with Sound Field Synthesis using a planar secondary source distribution.
 
@@ -608,5 +609,4 @@ Again, the form of Green's function depends on the problem dimensionality and in
 
 The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
 
-It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{tab:theory:Greens_fun_representations}  and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated} in the 3D case.
-
+It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{tab:theory:Greens_fun_representations}  and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated}. It is also revealed therefore, that the velocity propagator and the pressure propagators are the wavenumber representation of (-2) times the Green's function and its derivative.

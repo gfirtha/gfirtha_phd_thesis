@@ -56,6 +56,14 @@ $p(\vx,t)$ therefore satisfies the inhomogeneous wave equation with homogeneous 
 \end{equation}
 The planar SSD geometry is depicted in Figure \ref{Fig:Theory:planar_linear_geometry} (a).
 
+The 2D counterpart of the planar SSD geometry is the continuous set of vertical line sources along an infinite linear contour, able to reproduce a 2D sound field at $y>0$, and the synthesized field is given by
+\begin{equation}
+P_{2\mathrm{D}}(x,y,\omega) =  
+\int_{-\infty}^{\infty} D(x_0,\omega) G_{2\mathrm{D}}(x - x_0 , \omega ) \td x_0.
+\label{Eq:Theory:2D_planar_SFS}
+\end{equation}
+Although having minor practical importance (due to the infinite secondary source elements) 2D synthesis plays an important role in the understanding of the limitations in linear 2.5D synthesis.
+
 \paragraph{Linear SSD geometry:}
 From the practical point of view the application of a planar loudspeaker geometry is unfeasible.
 Instead, in practical arrangements a linear ensemble of 3D point sources is utilized.
@@ -202,6 +210,8 @@ Straightforwardly, the explicit expression of the driving function in the spatia
 D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0}.
 \label{Eq:Theory:Planar_explicit_driv_fun_spatial}
 \end{equation}
+
+In an entirely 2D synthesis scenario the same derivation holds by applying the corresponding spectral representation of the 2D Green's function $\tilde{G}(k_x,y,\omega)$, leading to the very same final result.
 
 \subsection{Linear SSD geometry}
 
@@ -521,7 +531,7 @@ where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sou
 This windowing means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
 %
 \item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exists between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
-By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
+By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000, Pike2002} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
 \begin{equation}
 P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \partial \Omega.
 \label{Eq:SFS_theory:tangent_plane}
@@ -569,24 +579,30 @@ giving a fair approximation for smooth, convex surfaces in the high frequency re
 
 \subsection{2D/3D Wave Field Synthesis}
 
-Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI_II} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} it is revealed, that Rayleigh-integral implicitly contains the driving functions for a planar SSD and the driving function is given by
+Comparison of the Rayleigh-integral \eqref{Eq:Theory:RayleighI_II} with the planar SFS equation \eqref{Eq:Theory:3D_planar_SFS} reveals, that the Rayleigh-integral implicitly contains the driving functions for a planar SSD, 
+ and the driving function is given by
 \begin{equation}
-D_{\mathrm{3D}}(\vxo,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0} = - 2 \ti \rho_0 c k V_{\mathrm{n}}(\vxo,\omega).
-\label{Eq:Theory:3D_WFS_driv_fun}
+D(\vxo,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0} = 2 \ti \rho_0 c k V_{\mathrm{n}}(\vxo,\omega),
+\label{Eq:Theory:2D_3D_WFS_driv_fun}
 \end{equation}
-This forms the basic equation of traditional \emph{Wave Field Synthesis}, thus equation \eqref{Eq:Theory:3D_WFS_driv_fun} is referred to as \emph{3D WFS driving function}.
+valid both in 2 and 3 dimensions.
+The equation forms the basis of traditional \emph{Wave Field Synthesis}, thus equation \eqref{Eq:Theory:2D_3D_WFS_driv_fun} is referred to as \emph{2D} and \emph{3D WFS driving functions}.
 
 Simple physical considerations lead us to the same result from the equivalent scattering problem:
-An arbitrary sound field reflected from an infinite pressure release plane is simply obtained by mirroring the sound field to the infinite plane, with a phase change of $180^{\circ}$ in order to satisfy homogeneous boundary conditions. The phase change along with the mirroring cancel out in the normal derivative, thus the derivative of the total field equals two times the derivative of the incident field.
+An arbitrary sound field reflected from an infinite pressure release plane is simply obtained by mirroring the sound field to the infinite plane, with a phase change of $180^{\circ}$ in order to satisfy homogeneous boundary conditions. The phase change along with the mirroring cancel out in the normal derivative, thus the derivative of the total field equals (-2) times the derivative of the incident field.
 
 Comparison with the explicit solution \eqref{Eq:Theory:Planar_explicit_driv_fun_spatial} reveals also the equality of the implicit and the explicit solutions.
 The equivalence of the explicit approach and the simple source formulation follows from the uniqueness of the solution for the inverse problem in the case of a planar geometry \cite{Fazi2010}.
 It should be noted, that the traditional derivation of the Rayleigh-integral follows the Neumann Green's function approach, therefore the equivalence of all three approaches accidental, and is valid only for the planar geometry.
 
-As a conclusion: all three approaches lead to the very same result for a planar SSD geometry: an arbitrary source free sound field may be perfectly synthesized by a set of point sources distributed along an infinite plane by driving the SSD with $(-2)$-times the normal derivative of the target sound field, measured on this plane.
+%As a conclusion: all three approaches lead to the very same result for a planar SSD geometry: an arbitrary source free sound field may be perfectly synthesized by a set of point sources distributed along an infinite plane by driven by the driving function \eqref{Eq:Theory:3D_WFS_driv_fun}.
+\vspace{3mm}
+In the high frequency region the Kirchhoff approximation provides implicitly the driving functions for an arbitrary smooth, convex enclosing SSD given by
+\begin{equation}
+D(\vxo,\omega) = - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni}.
+\end{equation}
+The high-frequency driving functions therefore are given by the planar driving functions taken locally on the SSD surface.
+This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
+In the context of WFS the windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, choosing out the \emph{active secondary sources}. 
 
-
-%In the context of WFS this windowing is termed as \emph{secondary source selection criterion} \cite{Spors2007, Spors2007:DAGA:SS_selection_criterion}, which chooses out the \emph{active secondary sources}.
-
- %Also, when compared to the explicit solution a further drawback is that simple source approach allows only point secondary sources.
-%This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
+%When compared to the explicit solution a further drawback is that simple source approach allows only point secondary sources.
