@@ -525,6 +525,7 @@ w(\vxo) = \begin{cases}
                         1, \hspace{3mm} \forall \hspace{3mm} \langle \mathbf{k}(\vxo) \cdot \mathbf{n}_i(\vxo) \rangle > 0 \\
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
+\label{eq:theory:windowing_function}
 \end{equation}
 where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
 %
@@ -600,6 +601,7 @@ It should be noted, that the traditional derivation of the Rayleigh-integral fol
 In the high frequency region the Kirchhoff approximation provides implicitly the driving functions for an arbitrary smooth, convex enclosing SSD given by
 \begin{equation}
 D(\vxo,\omega) = - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni}.
+\label{eq:theory:gen_WFS}
 \end{equation}
 The KHIE therefore locally approximated by the Rayleigh-integrals, and high-frequency driving functions are given by the planar driving functions taken locally on the SSD surface.
 This result is not exclusively valid for WFS: theoretically any planar driving function may be applied for arbitrary SSD surfaces using the Kirchhoff-approximation \cite{Ahrens2012}, however only WFS provides an easily implementable approach.
