@@ -529,7 +529,7 @@ w(\vxo) = \begin{cases}
 \end{equation}
 where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
 %
-This windowing means the neglection of both diffracting waves around the scattering object and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
+This windowing means the neglection of both diffracting waves around the scattering object (as well as so-called \emph{creeeping rays} \cite{Bleistein1984}) and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, which geometry is free of these secondary reflections.
 %
 \item As a second simplification in the illuminated region the \emph{tangent plane approximation} is applied: it is assumed, that a local relation exists between the incident and the scattered field at each point on the surface---i.e. again, ray theory with the stationary phase method is applied \cite{Bleistein1984, Bleistein2000, Voronich2007}-- for which Snell's law holds.
 By assuming, that the incident waves reflected locally according to the Snell's law---its amplitude changes according the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal-- the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000, Pike2002} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
@@ -576,7 +576,7 @@ P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
 \end{cases}
 \label{Eq:SFS_theory:Kirchhoff_appr}
 \end{equation}
-giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure gives rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
+giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object\footnote{According to \cite[Eq.(2.7.12)]{Blenstein1975} the approximation holds when $k\rho \gg 1$, where $\rho$ is the principal radii of the curved SSD locally, and $k$ is the wavenumber.}. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure gives rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
 
 \subsection{2D/3D Wave Field Synthesis}
 
