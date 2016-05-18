@@ -31,6 +31,22 @@
 \usepackage{multicol}
 \makesavenoteenv{tabular}
 %
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
 %\setcounter{secnumdepth}{2}
 
 \newcommand{\dint}{\int\!\!\!\!\!\int}
