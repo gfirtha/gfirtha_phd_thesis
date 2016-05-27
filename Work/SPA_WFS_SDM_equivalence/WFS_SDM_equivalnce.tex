@@ -1,0 +1,209 @@
+\documentclass[12pt,a4paper]{article}
+%
+
+\usepackage{steinmetz}
+\usepackage{layouts}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx,overpic,subfigure}
+\usepackage{booktabs} 			% Nice tables
+\usepackage{csquotes}			% Quotation
+\usepackage{multirow} 			% Multirow cells in tables
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage[small,bf]{caption}
+\usepackage{ae,aecompl}
+\usepackage[american]{babel}
+\usepackage{hyperref}
+%
+
+\newcommand{\dint}{\int\!\!\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\td}{\mathrm{d}}
+\newcommand{\te}{\mathrm{e}}
+\newcommand{\ti}{\mathrm{j}}
+\newcommand{\sinfi}{\sin\varphi}
+\newcommand{\cosfi}{\cos\varphi}
+\newcommand{\sinteta}{\sin\theta}
+\newcommand{\costeta}{\cos\theta}
+\newcommand{\yref}{y_{\mathrm{ref}}}
+\newcommand{\dref}{d_{\mathrm{ref}}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vxo}{\mathbf{x}_0}
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
+%
+\title{Equivalence of SDM and WFS under high-frequency assumptions}
+\date{\today \\
+Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
+\author{Firtha Gergely}
+
+\begin{document}
+\maketitle
+
+\section{Invertibility of the Fourier-transform applying the stationary phase method}
+
+Suppose a 2D sound field given in a general polar form
+\begin{equation}
+P(x,y,\omega) = A(x,y,\omega) \te^{\ti \phi(x,y,\omega)}.
+\end{equation}
+
+\subsubsection*{Forward Fourier transform}
+Its forward spatial Fourier transform reads
+\begin{equation}
+\tilde{P}(k_x,y,\omega) = \tilde{A}(k_x,y,\omega)\te^{\ti \tilde{\phi}(k_x,y,\omega)} = 
+\int_{-\infty}^{\infty} A(x,y,\omega)\te^{\ti \phi(x,y,\omega)} \te^{\ti k_x x} \td x.
+\end{equation}
+Under high-frequency assumptions the integral may be approximated using the stationary phase approximation (assuming only one stationary point in the integral path). The stationary point $x^*$ is found, where
+\begin{equation}
+- \left. \frac{\partial}{\partial x} \phi(x,y,\omega) \right|_{x = x^*} = k_x(x^*,y,\omega) = k_x,
+\end{equation}
+i.e. at an arbitrary wavenumber $k_x$ the greatest contribution to the wavenumber spectrum has the point in space, where the local wavenumber vector equals $k_x$. It is therefore assumed, that in the simple sound field each local propagation direction is unique.
+Since each $k_x$ wavenumber component assigns a new stationary point, therefore the stationary point for a given $k_x$ is denoted including its dependency by $x^*(k_x)$.
+
+Around the stationary point the Fourier integral is approximated using the SPA. 
+For the sake of brevity the spatial derivative of the phase function is denoted by $\phi''()$. The integral then yields
+\begin{equation}
+\tilde{P}(k_x,y,\omega) \approx 
+\sqrt{ \frac{ 2\pi }
+{ \pm \ti |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega)\te^{\ti \phi(x^*(k_x),y,\omega)}\te^{\ti k_x x^*(k_x)}.
+\end{equation}
+In the denominator $\pm \ti$ denotes, that the actual sign depends on the sign of the second derivative in the stationary point (i.e. on the sign on $-\left| \frac{\partial}{\partial x}k_x(x,y,\omega	)\right|_{x = x^*(k_x)}$).
+The polar form of the spectrum therefore reads
+\begin{eqnarray}
+\tilde{A}(k_x,y,\omega) = \sqrt{ \frac{ 2\pi }
+{  |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega),\\
+\tilde{ \phi }(k_x,y,\omega) = \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \mp \pi /4
+\end{eqnarray}
+
+\subsubsection*{Inverse Fourier transform}
+Now let's take the inverse Fourier-transform of the same function, i.e. the inverse transform of a spectrum, yielded via the SPA
+\begin{equation}
+P(x,y,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty}\sqrt{ \frac{ 2\pi }
+{ \pm \ti |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega) \te^{\ti \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \right)} \te^{-\ti k_x x} \td k_x.
+\label{Eq:inverse_transform}
+\end{equation}
+Now the phase function under consideration reads
+\begin{equation}
+\tilde{\varphi}(k_x, y,\omega) = \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x \mp \pi / 4.
+\end{equation}
+The integral may be evaluated around the stationary point, which is defined as the $k_x$ value, for which
+\begin{equation}
+\frac{\partial}{\partial k_x} \tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x \mp \pi / 4 \right)
+= 0.
+\end{equation}
+Applying the chain rule the derivative reads
+\begin{multline}
+\frac{\partial}{\partial k_x} \tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x} x^*(k_x) \phi'(x^*(k_x),y,\omega) + x^*(k_x)+  k_x \frac{\partial}{\partial k_x}x^*(k_x) - x = \\
+=
+\frac{\partial}{\partial k_x} x^*(k_x) \left(\phi'(x^*(k_x),y,\omega)+ k_x \right) + x^*(k_x)  - x 
+,
+\end{multline}
+with $\phi'$ denoting the derivative w.r.t. the argument.
+
+By definition $\left(\phi'(x^*(k_x),y,\omega)+ k_x \right) = 0$, since it gave the stationary position for the forward transform, thus the stationary position is found at the $k_x$ value, for which 
+\begin{equation}
+x^*(k_x) - x = 0, \hspace{10mm} \rightarrow \hspace{10mm} x^*(k_x) = x
+\label{Eq:stat_values}
+\end{equation}
+holds. This result states, that each wavenumber component $k_x$ will dominate one designated point in the space $x$, and this point is exactly where the local wavenumber $k_x(\vx,\omega)$ equals $k_x$, i.e. if the stationary phase point of the wavenumber spectrum is denoted by $k_x^*(x)$, then $k_x^*(x) = -\frac{\partial}{\partial _x}\phi(x,y,\omega) = k_x(x,y,\omega)$ holds.
+Also, around the stationary point:
+\begin{equation}
+x^*(k_x^*(x))  = x, \hspace{1cm} k_x^*(x^*(k_x)) = k_x(x).
+\end{equation}
+
+\vspace{3mm}
+The second derivative of the phase function reads
+\begin{align}
+\frac{\partial^2}{\partial k_x^2} \tilde{\varphi}(k_x,y,\omega) 
+&= \frac{\partial^2}{\partial k_x^2} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x - \pi / 4 \right)
+\\
+&= \frac{\partial^2}{\partial k_x^2} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \right)
+\\
+&= \frac{\partial}{\partial k_x}\left( \frac{\partial}{\partial k_x} x^*(k_x) \phi'(x^*(k_x),y,\omega) + x^*(k_x)+  k_x \frac{\partial}{\partial k_x}x^*(k_x) \right)
+\\
+&= \frac{\partial^2}{\partial k_x^2}x^*(k_x)  \phi'(x^*(k_x),y,\omega)+ \left(\frac{\partial}{\partial k_x} x^*(k_x)\right)^2 \phi''(x^*(k_x),y,\omega) + \\
+& 2\frac{\partial}{\partial k_x} x^*(k_x) + k_x\frac{\partial^2}{\partial k_x^2}x^*(k_x)
+\\
+&= \frac{\partial^2}{\partial k_x^2}x^*(k_x)  \left(  \phi'(x^*(k_x),y,\omega)+ k_x\right) + 
+\left(\frac{\partial}{\partial k_x} x^*(k_x)\right)^2 \phi''(x^*(k_x),y,\omega) \\
+& +2\frac{\partial}{\partial k_x} x^*(k_x).
+\label{Eq:sec_der}
+\end{align}
+By definition, around the stationary point 
+\begin{equation}
+\left(  \phi'(x^*(k_x),y,\omega)+ k_x\right) = 0
+\end{equation}
+holds. Differentiating both sides w.r.t. $k_x$ leads to
+\begin{align}
+&\frac{\partial}{\partial k_x} x^*(k_x) \phi''(x^*(k_x),y,\omega) = -1 \\
+&\frac{\partial}{\partial k_x} x^*(k_x) = -\frac{1}{\phi''(x^*(k_x),y,\omega)}.
+\end{align}
+Substituting these equations into \eqref{Eq:sec_der} yields
+\begin{equation}
+\frac{\partial^2}{\partial k_x^2} \tilde{\varphi}(k_x,y,\omega) = -\frac{1}{\phi''(x^*(k_x),y,\omega)}
+\label{Eq:sec_der2}
+\end{equation}
+
+Finally substituting it back along with \eqref{Eq:stat_values} into \eqref{Eq:inverse_transform} with taking into consideration, that according to \eqref{Eq:sec_der2} the second derivatives are opposite signed
+\begin{align}
+P(x,y,\omega) &\approx \frac{1}{2\pi} \sqrt{ \frac{ 2\pi }
+{ \pm \ti \left|\phi''(x^*(k_x),y,\omega)\right|}} 
+A(x,y,\omega) \te^{\ti \left( \phi(x,y,\omega) + k_x(x) x) \right)} \te^{-\ti k_x(x) x} \sqrt{ \frac{2\pi \left|\phi''(x^*(k_x),y,\omega)\right|}{\mp \ti}} 
+\\
+&= \frac{1}{2\pi} \sqrt{ \frac{ \pm \ti (2\pi)^2 \left|\phi''(x,y,\omega)\right|}
+{ \pm \ti \left|\phi''(x,y,\omega)\right|}} 
+A(x,y,\omega) \te^{\ti \phi(x,y,\omega)}  
+= P(x,y,\omega).
+\end{align}
+Thus within the SPA the invertibility of Fourier transform is proven.
+
+\section{2D SDM driving functions in the spatial domain}
+
+Now consider thee following wavenumber domain driving functions
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y,\omega)}.
+\end{equation}
+Assume, that the target sound field is a 2D one, i.e. may be written in terms of the angular spectrum measured on $y=0$. Let $G$ be the 3D Green's function, therefore
+\begin{equation}
+\tilde{D}(k_x,\omega) = 
+\frac{\tilde{P}(k_x,0,\omega) \te^{-\ti \sqrt{k^2-k_x^2}|y|} }
+{-\frac{\ti}{4} H_0^{(2)} 
+\left( \sqrt{ k^2-k_x^2 }|y| \right)
+ }.
+\end{equation}
+By denoting $k_y = \sqrt{k^2-k_x^2}$ and applying the high-frequency approximation of the Hankel function
+\begin{equation}
+-\frac{\ti}{4} H_0^{(2)} \left( k_y|y| \right) \approx \frac{\te^{-\ti k_y|y|}}{\sqrt{8\pi \ti k_y|y|}},
+\end{equation}
+---which is yielded by the Fourier-transform of the Green's function applying the SPA-- allows simplification with the exponents and the driving function reads
+\begin{equation}
+\tilde{D}(k_x) = \tilde{P}(k_x,0,\omega) \sqrt{8\pi \ti k_y|y| }.
+\end{equation}
+
+Now assume, that the plane wave spectrum of the target field on the SSD had been calculated by using the SPA, i.e. the driving function is written as
+\begin{multline}
+\tilde{D}(k_x) = P(x^*(k_x),0,\omega) \sqrt{8\pi \ti k_y |y| } = \\ \sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x^*(k_x),0,\omega) \right|}} A_P(x^*(k_x),0,\omega) \te^{\ti (\phi_P(x^*(k_x),0,\omega)+k_x x^*(k_x)) }\sqrt{8\pi \ti k_y |y| }
+\end{multline}
+and the spatial domain driving function as
+\begin{equation}
+D(x,\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+\sqrt{\frac{2\pi}{\ti \phi_P''(x^*(k_x),0,\omega) }} A_P(x^*(k_x),0,\omega) \te^{\ti (\phi_P(x^*(k_x),0,\omega)+k_x x^*(k_x)) }\sqrt{8\pi \ti k_y |y| } \te^{-\ti k_x x}
+\td k_x.
+\end{equation}
+Since the multiplication by $\sqrt{8\pi \ti k_y |y| }$ does not change the phase of the function (and obviously nor its second derivative), therefore the inverse transform can be carried out in the very same manner using the SPA as in the previous chapter. The stationary phase wavenumber therefore is given by the corresponding local wavenumber vector component: $k_x^*(x) = k_x(x) = -\frac{\partial}{\partial x} \phi(x,y,\omega)$, i.e. the inverse transform of the function reads
+\begin{equation}
+D(x,\omega) = \sqrt{8\pi \ti k_y(x)|y|} P(x,y,\omega) = \sqrt{8\pi \ti k_y(x) |y|} P(x,y,\omega).
+\end{equation}
+
+\section{General 3D SDM driving functions in the spatial domain}
+\bibliographystyle{plain}
+\bibliography{dissertation}
+
+\end{document}
