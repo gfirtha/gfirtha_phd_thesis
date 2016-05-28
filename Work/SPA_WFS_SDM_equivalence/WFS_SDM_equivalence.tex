@@ -170,6 +170,7 @@ A(x,y,\omega) \te^{\ti \phi(x,y,\omega)}
 \end{align}
 Thus within the SPA the invertibility of Fourier transform is proven.
 
+\null\newpage
 \section{2D SDM driving functions in the spatial domain}
 
 Now consider the following wavenumber domain SDM driving functions
@@ -209,7 +210,107 @@ D(x,\omega) = \sqrt{8\pi \ti \sqrt{k^2 - k_x^*(x)^2}|y|} P(x,y,\omega) = \sqrt{8
 \end{equation}
 
 \section{General 3D SDM driving functions in the spatial domain}
-\bibliographystyle{plain}
-\bibliography{dissertation}
+
+Now consider again, the general 3D SDM driving functions, without any assumption on the virtual field dimensionality
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y\omega)},
+\end{equation}
+all functions are considered in the $z=0$ plane.
+
+Now assume, that both functions are obtained via the forward Fourier transform using SPA:
+\begin{equation}
+\tilde{D}(k_x,\omega) = 
+\frac{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x_P^*(k_x),y,\omega) \right|}} A_P(x_P^*(k_x),y,\omega) \te^{\ti (\phi_P(x_P^*(k_x),y,\omega)+k_x x_P^*(k_x)) }
+}{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_G''(x^*(k_x),y,\omega) \right|}} A_G(x^*(k_x),y,\omega) \te^{\ti (\phi_G(x^*(k_x),y,\omega)+k_x x_G^*(k_x)) }
+},
+\end{equation}
+and the spatial driving function read
+\begin{equation}
+\tilde{D}(x,\omega) = 
+\frac{1}{2\pi}\int_{-\infty}^{\infty}
+\frac{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x_P^*(k_x),y,\omega) \right|}} A_P(x_P^*(k_x),y,\omega) \te^{\ti (\phi_P(x_P^*(k_x),y,\omega)+k_x x_P^*(k_x)) }
+}{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_G''(x^*(k_x),y,\omega) \right|}} A_G(x^*(k_x),y,\omega) \te^{\ti (\phi_G(x^*(k_x),y,\omega)+k_x x_G^*(k_x)) }
+}
+\te^{-\ti k_x x} \td x.
+\end{equation}
+The phase of the function is given by
+\begin{equation}
+\tilde{\varphi}(k_x,y,\omega) = \phi_P(x_P^*(k_x),y,\omega) - \phi_G(x^*(k_x),y,\omega)  + k_x \left( x_P^*(k_x) - x_G^*(k_x) \right) -  k_x x + C,
+\end{equation}
+where $C$ may be $\{-\pi/2,\ 0,\ \pi/2\}$, depending on the signs of $\left|\phi_P''(x_P^*(k_x),y,\omega) \right|$ and $\left|\phi_G''(x_G^*(k_x),y,\omega) \right|$.
+
+The stationary position $k_x^*(x)$ is found, where
+\begin{multline}
+\frac{\partial}{\partial k_x}
+\tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x}x_P^*(k_x) \phi_P'(x_P^*(k_x),y,\omega) -  \frac{\partial}{\partial k_x} x^*(k_x)\phi_G'(x^*(k_x),y,\omega) \\ + k_x \frac{\partial}{\partial k_x}\left( x_P^*(k_x) - x_G^*(k_x) \right) + \left( x_P^*(k_x) - x_G^*(k_x) \right) -  x = 0
+\end{multline}
+holds.
+By definition of the forward stationary points
+\begin{eqnarray}
+\phi_P'(x_P^*(k_x),y,\omega) + k_x = 0,\\
+\phi_G'(x_G^*(k_x),y,\omega) + k_x = 0,
+\label{Forward_spa}
+\end{eqnarray}
+thus the phase derivative simplifies to
+\begin{equation}
+\frac{\partial}{\partial k_x}
+\tilde{\varphi}(k_x,y,\omega) = \left( x_P^*(k_x) - x_G^*(k_x) \right) -  x = 0,
+\end{equation}
+thus in the the stationary wavenumber $k_x^*(x)$ it is fulfilled, that 
+\begin{equation}
+x_P^*(k_x^*(x)) = x_G^*(k_x^*(x)) + x.
+\end{equation}
+Since it was shown, that $k_x^*(x)$ is equivalent with the local wavenumber vector in $x$, i.e the stationary point $x^*_P$ is found for a given $x$, where the local propagation direction of the target wave field equals to that of the Green's function, placed at $x$:
+\begin{equation}
+k_{x,P}^l (x_P^*(x)) = k_{x,G}^l(x_P^*(x) + x). 
+\end{equation}
+Note, that the stationary positions are dependent only on $x$
+
+The second derivatives are given by 
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+\frac{\partial^2}{\partial k_x^2}x_P^*(k_x) \phi_P'(x_P^*(k_x),y,\omega)+
+\left( \frac{\partial}{\partial k_x}x_P^*(k_x) \right)^2 \phi_P''(x_P^*(k_x),y,\omega) 
+ - 	\\
+\frac{\partial^2}{\partial k_x^2}x_G^*(k_x) \phi_G'(x_G^*(k_x),y,\omega)-
+\left( \frac{\partial}{\partial k_x}x_G^*(k_x) \right)^2 \phi_G''(x_G^*(k_x),y,\omega) +\\
+k_x \frac{\partial^2}{\partial k_x^2}\left( x_P^*(k_x) - x_G^*(k_x) \right)+
+2 \frac{\partial}{\partial k_x}\left( x_P^*(k_x) - x_G^*(k_x) \right) 
+\end{multline}
+Again, exploiting \eqref{Forward_spa} simplifies the expression to
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+\left( \frac{\partial}{\partial k_x}x_P^*(k_x) \right)^2 \phi_P''(x_P^*(k_x),y,\omega) 
+ - 
+\left( \frac{\partial}{\partial k_x}x_G^*(k_x) \right)^2 \phi_G''(x_G^*(k_x),y,\omega) +\\
+2\left(  \frac{\partial}{\partial k_x} x_P^*(k_x) -  \frac{\partial}{\partial k_x} x_G^*(k_x) \right) 
+\end{multline}
+The $k_x$ derivatives of the stationary points may be  expressed by differentiating \eqref{Forward_spa}
+\begin{eqnarray}
+\frac{\partial}{\partial k_x} x_P^*(k_x)\phi_P''(x_P^*(k_x),y,\omega) + 1 = 0,\\
+\frac{\partial}{\partial k_x} x_G^*(k_x)\phi_G''(x_G^*(k_x),y,\omega) + 1 = 0,\\
+\frac{\partial}{\partial k_x} x_P^*(k_x) = -\frac{1}{\phi_P''(x_P^*(k_x),y,\omega)},\\
+\frac{\partial}{\partial k_x} x_G^*(k_x) = -\frac{1}{\phi_G''(x_G^*(k_x),y,\omega)}.
+\end{eqnarray}
+Substituting into the second derivatives one finally obtains
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+ - \left( \frac{1}{\phi_P''(x_P^*(k_x),y,\omega)} - \frac{1}{\phi_G''(x_G^*(k_x),y,\omega)} \right) 
+\\ =
+ \frac{\phi_P''(x_P^*(k_x),y,\omega) - \phi_G''(x_G^*(k_x),y,\omega)}{\phi_G''(x_G^*(k_x),y,\omega) \phi_P''(x_P^*(k_x),y,\omega)}.
+\end{multline}
+
+Finally the inverse transform is approximated by the SPA around the stationary point. Denoting $x_P^*$ with simply $x^*$ satisfying $k_{x,P}^l(x^*) = k_{x,G}^l(x^*-x)$
+\begin{equation}
+D(x,\omega) = 
+\sqrt{\frac{1}{2\pi \ti}}
+\sqrt{\frac{\phi_G''(x^*- x,y,\omega)^2}{\phi_P''(x^*,y,\omega) - \phi_G''(x^*- x,y,\omega)}}
+\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
+\end{equation}
+
 
 \end{document}
