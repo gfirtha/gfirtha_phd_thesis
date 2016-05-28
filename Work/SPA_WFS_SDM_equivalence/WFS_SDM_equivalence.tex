@@ -312,5 +312,73 @@ D(x,\omega) =
 \frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
 \end{equation}
 
+\subsection{3D point source as SSD elements}
+In WFS the SSD is considered to consist 3D point sources, described by the 3D Green's function. The required expressions in $z=0$ are thus given by
+\begin{align}
+G(x,y,\omega)  &= \frac{1}{4\pi}\te^{-\ti k \sqrt{x^2+y^2}}{\sqrt{x^2 + y^2}},\\
+\phi(x,y,z)    &= -k \sqrt{x^2+y^2} \\
+-\frac{\partial}{\partial x} \phi(x,y,z)     &= k_{x,G}^l(x,y) = k \frac{x}{\sqrt{x^2+y^2}}\\
+\frac{\partial^2}{\partial x^2} \phi(x,y,z) &= k\frac{y^2}{\sqrt{x^2+y^2}^3} .
+\end{align}
+and the driving functions read
+\begin{equation}
+D(x,\omega) = 
+\sqrt{\frac{1}{2\pi \ti}}
+\sqrt{\frac{1}{\phi_P''(x^*,y,\omega) - k\frac{y^2}{\sqrt{(x^*-x)^2+y^2}^3}}}
+k\frac{y^2}{\sqrt{(x^*-x)^2+y^2}^3}
+\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
+\end{equation}
+where $x^*$ satisfies
+\begin{equation}
+ k \frac{x^*-x}{\sqrt{(x^*-x)^2+y^2}} = k_{x,P}^l(x,y).
+\end{equation}
+
+\subsection{Plane wave example}
+Consider a plane wave, described by
+\begin{equation}
+P(x,y,\omega) = \te^{-\ti k\left( \cosfi x + \sinfi y\right) }.
+\end{equation}
+Its local wavenumber vector is given by
+\begin{equation}
+k_{x,P}^l(x,y)= k\cosfi.
+\end{equation}
+For the stationary position it is found, that
+\begin{align}
+k \cosfi &=  k \frac{x^*-x}{\sqrt{(x^*-x)^2+y^2}} \\
+(\cosfi^2 - 1)(x^*-x)^2+ \cosfi^2 y^2 &= 0 \\
+\cosfi y &= \sinfi(x^*-x)\\
+x^*-x &= y\frac{\cosfi}{\sinfi} \\
+x^* &= \frac{\cosfi y + \sinfi x}{\sinfi},
+\end{align}
+Obviously, $\frac{\partial^2}{\partial x^2} \phi(x,y,z)  = 0$.
+The required quantities are
+\begin{eqnarray}
+P(x^*,y,\omega) = \te^{-\ti k\left( \cosfi x + \frac{y} {\sinfi} \right) }\\
+G(x^* - x,y,\omega) = \frac{1}{4\pi}\frac{\te^{-\ti k \sqrt{\left( y\frac{\cosfi}{\sinfi} \right)^2+y^2}}}{\sqrt{\left( y\frac{\cosfi}{\sinfi} \right)^2 + y^2}} =
+\frac{1}{4\pi}\te^{-\ti k \frac{y}{\sinfi}}{\frac{\sinfi}{y}}
+\\
+\phi_G''(x^*-x,y,z) = k\frac{\sinfi^3}{y} 
+\end{eqnarray}
+And the driving function is
+\begin{multline}
+D(x,\omega) = 
+\sqrt{\frac{1}{2\pi \ti}}
+\sqrt{-\phi_G''(x^*- x,y,\omega)}
+\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) } = \\
+\sqrt{\frac{1}{2\pi \ti}}
+\sqrt{-k\frac{\sinfi^3}{y} \frac{y^2}{\sinfi^2}}
+\frac{ \te^{-\ti k\left( \cosfi x + \frac{y} {\sinfi} \right) } }{  \frac{1}{4\pi}\te^{-\ti k \frac{y}{\sinfi}} } =
+\sqrt{\frac{1}{2\pi \ti}}
+4\pi\sqrt{-k\sinfi y}
+\te^{-\ti k\cosfi x } 
+\end{multline}
+And finally one obtains
+\begin{equation}
+D(x,\omega) =
+\sqrt{8\pi \ti k\sinfi y }
+\te^{-\ti k\cosfi x } 
+\end{equation}
+which is exactly the 2.5D WFS driving function with the reference line given by $y$.
+
 
 \end{document}
