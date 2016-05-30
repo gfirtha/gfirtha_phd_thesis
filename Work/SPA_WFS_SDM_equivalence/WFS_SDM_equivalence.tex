@@ -213,7 +213,7 @@ D(x,\omega) = \sqrt{8\pi \ti \sqrt{k^2 - k_x^*(x)^2}|y|} P(x,y,\omega) = \sqrt{8
 
 Now consider again, the general 3D SDM driving functions, without any assumption on the virtual field dimensionality
 \begin{equation}
-\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y\omega)},
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y,\omega)},
 \end{equation}
 all functions are considered in the $z=0$ plane.
 
@@ -228,7 +228,7 @@ Now assume, that both functions are obtained via the forward Fourier transform u
 \end{equation}
 and the spatial driving function read
 \begin{equation}
-\tilde{D}(x,\omega) = 
+D(x,\omega) = 
 \frac{1}{2\pi}\int_{-\infty}^{\infty}
 \frac{
 \sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x_P^*(k_x),y,\omega) \right|}} A_P(x_P^*(k_x),y,\omega) \te^{\ti (\phi_P(x_P^*(k_x),y,\omega)+k_x x_P^*(k_x)) }
@@ -267,7 +267,7 @@ x_P^*(k_x^*(x)) = x_G^*(k_x^*(x)) + x.
 \end{equation}
 Since it was shown, that $k_x^*(x)$ is equivalent with the local wavenumber vector in $x$, i.e the stationary point $x^*_P$ is found for a given $x$, where the local propagation direction of the target wave field equals to that of the Green's function, placed at $x$:
 \begin{equation}
-k_{x,P}^l (x_P^*(x)) = k_{x,G}^l(x_P^*(x) + x). 
+k_{x,P}^l (x_P^*(x)) = k_{x,G}^l(x_P^*(x) - x). 
 \end{equation}
 Note, that the stationary positions are dependent only on $x$
 
@@ -323,7 +323,7 @@ D(x,\omega) =
 where the sign of $\pm \ti$ is positive in case $\phi_P''(x_P^*(k_x),y,\omega) < \phi_G''(x_G^*(k_x),y,\omega)$, and negative otherwise.
 
 \subsection{3D point source as SSD elements}
-In WFS the SSD is considered to consist 3D point sources, described by the 3D Green's function. The required expressions in $z=0$ are thus given by
+In WFS the SSD is considered to consist of 3D point sources, described by the 3D Green's function. The required expressions in $z=0$ are thus given by
 \begin{align}
 G(x,y,\omega)  &= \frac{1}{4\pi}\te^{-\ti k \sqrt{x^2+y^2}}{\sqrt{x^2 + y^2}},\\
 \phi(x,y,z)    &= -k \sqrt{x^2+y^2} \\
