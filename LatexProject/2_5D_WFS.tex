@@ -580,6 +580,7 @@ For the sake of convenience $y_s<0$ restricts the virtual source behind the SSD.
 
 The wavenumber vector is obtained by evaluating the derivative of the line source's phase function using the high-frequency/far-field approximation of the Hankel function \eqref{Eq:25D_WFS:Hankel_approx}
 \begin{equation} 
+\label{Eq:Line_source_correcty_synth}
 \vk_{\text{LS}}(x_0)
 =-\colvec{2}
 {\left.
@@ -778,8 +779,8 @@ In many practical cases the virtual source model is a virtual point source with 
 The different attenuation factor yields that---although the stationary point remains in the same position in the horizontal direction as for a line source due to the same phase functions in the plane of the synthesis---the same referencing function results in amplitude error in a  distance $\dref$ measured from a stationary SSD element. 
 This phenomenon is referred to as \emph{virtual source dimension mismatch}, and has already been reported in e.g. \cite{Voelk2012}.
 
-\subsection{2.5D Neumann Rayleigh Integral and WFS driving functions}
-In order to find the PCS with the incorporation of the 3D nature of a point source the 3D Rayleigh integral \eqref{eq:25D_WFS:3D_neumann} is used. 
+\subsection{2.5D Neumann Rayleigh Integral}
+In order to find the PCS with the incorporation of the 3D nature of a point source the 3D Rayleigh integral \eqref{eq:25D_WFS:3D_neumann} is applied. 
 Assuming a virtual 3D point source at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$  the Rayleigh integral reads
 \begin{equation}
 \label{Eq:Rayleigh3DPointSrc}
@@ -793,36 +794,173 @@ with $\vx = [x,\ y,\ 0]^{\mathrm{T}}$, $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$ being
 Note the difference of $|\phi''(z^*)| = k \frac{1}{ |\vx - \vxo| }$ for the virtual 2D line source and $|\phi''(z^*)| = k \left( \frac{1}{| \vx - \vxo|} + \frac{1}{ |\vxo - \mathbf{x}_s |} \right)$ for the virtual 3D point source. 
 In the latter case, not only the secondary source, but also the virtual source attenuation needs to be corrected.
 
-Evaluating the integral with the SPA--with taking the negative sign of the second derivative into consideration---leads to the 2.5D Neumann Rayleigh integral for a 3D target field
+Evaluating the integral by substituting the corresponding expressions into \eqref{Eq:SPAResult}---with taking the negative sign of the second derivative into consideration---leads to the 2.5D Neumann Rayleigh integral for a 3D target field
 \begin{equation}
 \label{Eq:Rayleigh25DPointSrc}
-P(\vx,\omega) = -2 \int\limits_{-\infty}^{\infty}\sqrt{ \frac{2\pi}{\ti k} }\sqrt{\frac{|\vxo-\vxs| |\vx-\vxo|}{|\vxo-\vxs| + |\vx-\vxo|}} \left. \frac{\partial}{\partial y} G_{3\text{D}}\left( \vxo-\vxs,\omega \right) \right|_{\vx = \vxo} G_{3\text{D}}\left( \vx-\vxo,\omega \right)\,\td x_0.
+P(\vx,\omega) = -2 \int\limits_{-\infty}^{\infty}\sqrt{ \frac{2\pi}{\ti k} }\sqrt{\frac{|\vxo-\vxs| |\vx-\vxo|}{|\vxo-\vxs| + |\vx-\vxo|}} \left. \frac{\partial}{\partial y}  G_{3\text{D}}\left( \vx-\vxs,\omega \right) \right|_{\vx = \vxo} G_{3\text{D}}\left( \vx-\vxo,\omega \right)\,\td x_0,
+\end{equation}
+or written in the more general form
+\begin{equation}
+\label{Eq:Rayleigh25DGeneral}
+P(\vx,\omega) = -2 \int\limits_{-\infty}^{\infty}
+\sqrt{\frac{2\pi}{\ti| \phi_P''(\vxo,\omega) + \phi_G''(\vxo,\omega)|}} 
+\left. \frac{\partial}{\partial y}  P\left( \vx,\omega \right) \right|_{\vx = \vxo} 
+G_{3\text{D}}\left( \vx-\vxo,\omega \right)\,\td x_0.
 \end{equation}
 
-This 2.5D Neumann Rayleigh integral contains the implicit solution of the SFS problem for a virtual 3D point source in terms of the unknown driving function $D(x_0, \omega)$
+\subsection{2.5D WFS driving function for a virtual 3D point source}
+The 2.5D Neumann Rayleigh integral contains the implicit solution of the SFS problem for a virtual 3D point source in terms of the unknown driving function $D(x_0, \omega)$
 \begin{equation}
 D(x_0,\omega) = 
-- 2\,\sqrt{\frac{2\pi}{\ti k}} \sqrt{\frac{| \vxo - \mathbf{x}_s |\cdot | \vx - \vxo|  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }} \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{\vx = \vxo}.
+- 2\,\sqrt{\frac{2\pi}{\ti k}} \sqrt{\frac{| \vxo - \mathbf{x}_s |\cdot | \vx - \vxo|  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }} \left. \frac{\partial G(\vx-\vxs,\omega)}{\partial y} \right|_{\vx = \vxo}.
 \label{Eq:2_5D_point_source_implicit_df}
 \end{equation}
-Comparing this result with \eqref{Eq:2_5D_driv_fun_implicit} it is revealed, that the virtual source mismatch can be compensated with the correction factor $\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$. 
-This result has an expressive geometrical meaning around the horizontal stationary position, since 2D WFS would assume a point source with an attenuation factor of $\frac{1}{\sqrt{r}}$. 
-In the correction factor therefore the numerator stands for the attenuation correction from the point source to the SSD, and the denominator for the correction from the point source to the listener position. 
-%Alternatively: multiplication by $\sqrt{| \vxo - \mathbf{x}_s |}$ approximates the source strength at the source position, while correction with $\frac{1}{\sqrt{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$ corrects the $1/\sqrt{r}$ attenuation to $1/r$.
-The 3D point source driving function therefore consist of the following terms:
-\begin{multline}
+Comparing this result with \eqref{Eq:2_5D_driv_fun_implicit} it is revealed, that the virtual source mismatch can be compensated with the correction factor $\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$ and therefore the 3D point source driving function consist of the following terms:
+\begin{equation}
 D(x_0,\omega) = 
 \underbrace{\sqrt{\frac{2\pi}{\ti k}}}_{\substack{\text{SSD freq.}\\\text{compensation}}} 
 \underbrace{\sqrt{ | \vx - \vxo|}}_{\substack{\text{SSD amp.}\\\text{compensation}}} 
 \underbrace{\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}  }_
 {\substack{\text{Virt. source}\\\text{amp. comp.}}}\times
-\underbrace{ \left. -2 \frac{\partial P(\vx,\omega)}{\partial y}  \right|_{\vx = \vxo}}_{\text{2D driving function, HF approx.}},
+\underbrace{ \left. -2 \frac{\partial P(\vx,\omega)}{\partial y}  \right|_{\vx = \vxo}}_{\text{3D driving function}}.
 \label{Eq:2_5D_point_source_implicit_df_Explanations}
-\end{multline}
+\end{equation}
+Also in the 3D case, the horizontal SPA holds, and the stationary SSD element is found in the same position as for the case of a virtual line source at $z=0$.
+The correction factor gains physical meaning the horizontal stationary position ($\vk_P(\vxo) = \vk_G(\vxo)$), i.e. where $|\vxo-\vxs| + |\vx - \vxo| = |\vx-\vxs|$:
+in the stationary position the numerator stands for the attenuation correction from the point source to the SSD, and the denominator for the correction from the point source to the listener position. 
 
-Also in the 3D case, the horizontal SPA holds, and the stationary SSD element is found in the same position as for the case of a virtual line source. 
-The synthesis will be amplitude correct in a distance of $| \vx - \vxo| $ from the stationary SSD element, in a radial direction away from the virtual source. 
-Refer to Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} for the geometry. 
+Recently, a physical interpretation was given for the correction factors by Völk\cite{Voelk2012}, based on introducing manual correctional terms. 
+Although giving a very specific solution for the general problem, the main idea is outlined here in order to give an insight into the 2.5D WFS driving functions. 
+It is known, that 2D WFS is capable of the synthesis of 2D point sources using a linear array of vertical line sources, i.e.
+\begin{equation}
+G_{2D}(\vx-\vxs) = -2\int_{-\infty}^{\infty} \left. \frac{\partial}{\partial y}G_{2D}(\vx-\vxs)\right|_{\vx = \vxo} G_{2D}(\vx-\vxo)\td x_0.
+\end{equation}
+In order to adjust the equation for the synthesis of 3D point sources using a linear array of 3D point sources and applying the derivative of the 3D target field taken on the SSD three correction factors are needed
+\begin{itemize}
+\item in order to apply 3D point sources as SSD elements the secondary source correction is applied to the integral kernel, i.e. $G_{3D}(\vx-\vxo)/G_{2D}(\vx-\vxo)$.
+\item to express the driving functions in term of the 3D point source driving function the adjustment by $\frac{\partial}{\partial y} G_{3D}(\vxo-\vxs)/\frac{\partial}{\partial y} G_{2D}(\vxo-\vxs)$ is needed.
+\item these corrections would result in the synthesis of a 2D point source written in terms of 3D ones. 
+Finally to let the 2D Rayleigh integral describe a 3D point source both sides should be multiplied by $G_{3D}(\vx-\vxs)/G_{2D}(\vx-\vxs)$.
+These latter two constitute the virtual source compensation factor.
+\end{itemize}
+Applying the high-frequency approximations for the Green's functions \emph{around the vertical stationary point} the two approaches result in the very same driving functions, given by \eqref{Eq:2_5D_point_source_implicit_df_Explanations}.
+This statement gives us an important insight into the WFS compensation factors, also reflecting, that the vertical and horizontal SPAs are inherently related, since the result of the vertical SPA can be physically interpreted only in the horizontal stationary point.
+
+
+\subsection{Referencing schemes for 3D sound fields}
+
+\subsubsection{Referencing function}
+For the general WFS driving function \eqref{Eq:Gen_rayleigh_dx0}
+\begin{equation*}
+D(x_0,\omega) = 
+- \sqrt{\frac{8\pi}{\ti k}} \sqrt{d(x_0)} \left. \frac{\partial P(\vx,\omega)}{\partial y}\right|_{\vx = \vxo},
+\end{equation*}
+the \emph{referencing function} $d(x_0)$ for each SSD element can be stated as
+\begin{equation}
+d(x_0) = \frac{ | \vxo - \mathbf{x}_s | \cdot | \vx - \vxo|  }{ | \vxo - \mathbf{x}_s | + | \vx - \vxo| }
+\label{Eq:dx0_PointSource}
+\end{equation}
+from \eqref{Eq:2_5D_point_source_implicit_df} and \eqref{Eq:2_5D_point_source_implicit_df_Explanations}. For the sake of brevity $r_0 = | \vxo - \mathbf{x}_s |$ is used in the followings.
+
+\subsubsection{Parametric Curves}
+The synthesis may be referenced to an arbitrary curve. From \eqref{Eq:dx0_PointSource} the PCS measured from the stationary SSD point
+\begin{equation}
+|\vx - \vxo| = d(x_0)\frac{r_0}{r_0 - d(x_0)}
+\label{Eq:dx0_PointSource_xx0}
+\end{equation}
+are derived. 
+Comparing the referencing function \eqref{dx0_2DSources} for virtual 2D sound fields and \eqref{Eq:dx0_PointSource_xx0} for the virtual point source, the substitution
+\begin{equation}
+d(x_0) \rightarrow d(x_0)\frac{r_0}{r_0 - d(x_0)}
+\label{Eq:dx0_mapping}
+\end{equation}
+allows for utilizing the parametric curve description \eqref{Eq:Line_source_correcty_synth} that was derived for the virtual line source, due to the equality of the thir wavenumber vectors in $z=0$. 
+This yields the PCS
+\begin{align}
+\mathbf{x}_{\mathrm{ref,PS}}(x_0)=
+\colvec{2}
+{x_0 + (x_0-x_s) \frac{d(x_0)}{r_0 - d(x_0)} }{
+-y_s \frac{d(x_0)}{r_0 - d(x_0)}}.
+\label{Eq:3D_curve}
+\end{align}
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 0.85\columnwidth ]{Figures/WFS_theory/point_source_referencing.png}
+	\scriptsize
+	\end{overpic}
+\caption{Referencing the synthesis of a 3D point source with a constant referencing function (a), to a reference line (b) and to a circle around the virtual source (c). The virtual source is a point source located at $\mathbf{x}_s = [0,\ -3,\ 0]^\mathrm{T}$, oscillating at $\omega = 2\pi \cdot 1 ~\mathrm{krad/s}$. For the constant referencing $\dref = 1.5~\mathrm{m}$ is set. Note, that in front of the point source the amplitude correct synthesis is ensured at $\frac{y_s}{y_s/\dref - 1 } = 3~\mathrm{m}$. For the case of referencing to a line $\yref = 1.5~\mathrm{m}$, while for referencing to a circle $R_{\mathrm{ref}} = y_s + 1.5~\mathrm{m}$ was chosen.}
+	\label{Fig:Theory:point_source_referencing}
+\end{figure}
+
+\subsubsection[Referencing with constant dref]{Referencing with constant $\dref$}
+By fixing the referencing function to a constant value $d(x_0) = \dref$ in \eqref{Eq:3D_curve} the PSC are given by
+\begin{equation}
+\mathbf{x}_{\mathrm{ref}}(x_0)  =  
+\colvec{2}
+{x_0 + (x_0-x_s)\frac{1}{r_0/\dref - 1 } }
+{-y_s \frac{1}{r_0/\dref - 1}}.
+\label{Eq:3D_fixed_reference}
+\end{equation}
+This parametric curve is similar to that of the 2D line source case (cf. \eqref{Eq:Fixed_referencing_LS}, Figure \ref{Fig:Theory:fixed_referencing}), however with several important differences.
+
+The $y$-coordinate exhibits a maximum in front of the virtual source, where $r_0 = |y_s|$. For any other position the PCS is closer to the SSD. 
+Therefore, $r_0 = |y_s|$ is the critical point of the curve: a position of correct synthesis can only be found in the listening area if $|y_s| > \dref$, i.e. the virtual source must be further away from the SSD than the fixed reference distance. 
+Actually, the synthesis gives a fair result close to the SSD only in case, $|y_s| \gg \dref$. 
+As the virtual source approaches the SSD the position of correct synthesis tends to infinity.
+This type of referencing therefore may suffer from serious amplitude errors in the vicinity of the SSD.
+
+The result of synthesis using constant referencing is often investigated along a line, parallel with the SSD at $y=\yref$, i.e. on the reference line. 
+In the previous section it was revealed, that for a virtual plane wave the constant referencing function differs from that, referencing the synthesis on the reference line in a factor of $\sqrt{\sinfi}$. 
+This fact is also pointed out in \cite[(30)]{Ahrens2010a}, \cite[Ch. 3.9.4]{Ahrens2012}, \cite{Schultz2016:DAGA}. 
+From this, it is clear, that using constant referencing the synthesized field on the reference line will read
+\begin{equation}
+P_{\mathrm{synth,PW}}(x,\yref,\omega) = \sqrt{\sinfi_\text{PW}} \, P_{\mathrm{ideal,PW}}(x,\yref,\omega) 
+\end{equation}
+%
+which particular result has already been pointed out in \cite[3.9.4]{Ahrens2012}.
+For a virtual line source located at $\mathbf{x}_s = [x_s,\ y_s,\ 0]$:
+%
+\begin{equation}
+P_{\mathrm{synth,LS}}(x,\yref,\omega) = \sqrt{\cosfi_0(x)} \, P_{\mathrm{ideal,LS}}(x,\yref,\omega),
+\end{equation}
+where $\cosfi_0(x) = \langle\, \frac{\vx- \mathbf{x}_s}{|\vx- \mathbf{x}_s|}, \mathbf{n}_\text{SSD}\rangle$ with $\mathbf{n}_\text{SSD} = [0,\ 1,\ 0]^{\mathrm{T}}$ for the present setup.
+For a virtual point source the error stemming from the virtual source dimensional mismatch is also present, therefore the synthesized field with constant referencing will read
+%
+\begin{equation}
+P_{\mathrm{synth,PS}}(x,\yref,\omega) = \sqrt{\frac{ | \vxo - \mathbf{x}_s | + | \vx - \vxo| }{ | \vxo - \mathbf{x}_s |}} \times
+\sqrt{\cosfi_0(x)} \, P_{\mathrm{ideal,PS}}(x,\yref,\omega).
+\end{equation}
+%
+This type of error can be examined in \cite[Fig.5.13.]{Ahrens2012} with normalized amplitudes (i.e. the constant error factor from the virtual source dimensional mismatch is not shown in the figure.).
+
+\subsubsection{Referencing along a parallel line}
+Referencing along a line that is parallel to the SSD at distance $y=\yref>0$ is obtained by setting the $y$-coordinate of \eqref{Eq:3D_curve} to
+\begin{equation}
+-y_s \frac{d(x_0)}{r_0 - d(x_0)} = \yref.
+\end{equation}
+The resulting referencing function reads
+\begin{equation}
+d_\text{line,PS}(x_0) = r_0 \frac{\yref}{\yref-y_s}.
+\end{equation}
+Substituting it back to \eqref{Eq:2_5D_point_source_implicit_df} one obtains
+\begin{equation}
+D(x_0,\omega) = 
+- \sqrt{\frac{\ti k}{2\pi}} \sqrt{\frac{\yref}{\yref -y_s}}  y_s \frac{\te^{-\ti k r_0 }}{r_0^{3/2}},
+\end{equation}
+which exactly yields the well-known WFS driving function \cite[(2.27)]{Verheijen1997}, \cite[(3.16)\&(3.17)]{Start1997:phd} of a point source, that is equivalent to the farfield/high-frequency approximated explicit SDM solution \cite[(25)]{Spors10ahrens:analysis}.
+
+\subsubsection{Referencing along a circle}
+Referencing the synthesis along a circle around the point source in the synthesis plane is obtained by solving, cf. \eqref{Eq:dx0_mapping} and \eqref{Eq:dCircleLS}
+\begin{equation}
+d(x_0)\frac{r_0}{r_0 - d(x_0)} = R_{\mathrm{ref}} - r_0,
+\end{equation}
+resulting in
+\begin{equation}
+d_\text{circle,PS}(x_0)  = r_0 \frac{R_{\mathrm{ref}} - r_0}{R_{\mathrm{ref}}}.
+\end{equation}
+%
+The performance of this referencing type is demonstrated in Figure \ref{Fig:Theory:point_source_referencing} (c).
 
 
 %
