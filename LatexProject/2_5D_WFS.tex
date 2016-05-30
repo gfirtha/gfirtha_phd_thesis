@@ -418,6 +418,7 @@ Suppose a sound field, synthesized by a planar SSD located at $\vxo = [x_0,\ 0,\
 \begin{equation}
 P(\vx,\omega) = -2\iint_{-\infty}^{\infty} \left.
 \frac{\partial P(\vx,\omega)}{\partial y} \right|_{\vx = \vxo} G_{3\mathrm{D}}(\vx-\vxo) \td z_0 \td x_0.
+\label{eq:25D_WFS:3D_neumann} 
 \end{equation}
 Assuming a target sound field, being independent from the $z$ direction---i.e.\ $k_z(\vx) = 0$---the integral degenerates into the \emph{2D Neumann Raylegh integral} by the direct application of \eqref{Eq:Wave_Theory:2D_Green}
 \begin{equation}
@@ -434,8 +435,9 @@ Restricting the synthesis to the $z=0$ plane the integral of the 3D Green's func
 The involved quantities for the SPA read
 \begin{equation}
 \phi(z_0=0) = -k|\vx-\vxo^*|, \hspace{5mm} \left.
-\frac{\partial^2}{\partial z_0^2} \phi(z_0)\right|_{z_0=0} = -\frac{k}{|\vx-\vxo^*|}
+\frac{\partial^2}{\partial z_0^2} \phi(z_0)\right|_{z_0=0} = -\frac{k}{|\vx-\vxo^*|},
 \end{equation}
+thus the discrepancy between the 2D and 3D Green's function is described by $ \sqrt{\frac{1}{ |\phi''(z_0^*) | }}$.
 %\begin{equation}
 %\label{Eq:SPAintegral_1d}
 %I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(z) \, \te^{\ti \phi(z)} \, \td z
@@ -770,6 +772,59 @@ d_\text{circle,LS}(x_0) = R_{\mathrm{ref}} - r_0.
 For the result of this type of referencing see Figure \ref{Fig:Theory:circle_referencing} (b).
 
 \section{2.5D WFS of 3D sound fields}
+
+All the foregoing holds for pure 2D sound fields, invariant to the vertical direction (here $z$). 
+In many practical cases the virtual source model is a virtual point source with a flat frequency response and an attenuation factor of $\frac{1}{4\pi\,r}$ opposed to a line source. 
+The different attenuation factor yields that---although the stationary point remains in the same position in the horizontal direction as for a line source due to the same phase functions in the plane of the synthesis---the same referencing function results in amplitude error in a  distance $\dref$ measured from a stationary SSD element. 
+This phenomenon is referred to as \emph{virtual source dimension mismatch}, and has already been reported in e.g. \cite{Voelk2012}.
+
+\subsection{2.5D Neumann Rayleigh Integral and WFS driving functions}
+In order to find the PCS with the incorporation of the 3D nature of a point source the 3D Rayleigh integral \eqref{eq:25D_WFS:3D_neumann} is used. 
+Assuming a virtual 3D point source at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$  the Rayleigh integral reads
+\begin{equation}
+\label{Eq:Rayleigh3DPointSrc}
+P(\vx,\omega) = -2 \iint\limits_{-\infty}^{\infty} \left. \frac{\partial}{\partial y} G_{3\text{D}}\left( \vxo-\vxs,\omega \right) \right|_{\vx = \vxo} G_{3\text{D}}\left( \vx-\vxo,\omega \right)\,\td x_0\,\td z_0.
+\end{equation}
+Again, the SPA is applied in order to approximate the integral along the $z$-dimension. Obviously, for any listener position in the plane of the synthesis the vertical stationary position is at $z_0^*=0$. This holds for an arbitrary 3D sound field, for which $k_z(x,y,0) = 0$. By applying the high-frequency gradient of the target field \eqref{eq:25D_WFS:gradient_appr} the phase function and its second derivative under consideration is now
+\begin{equation}
+\phi(z_0^*) = -k \left( |\vxo -\vxs| + |\vx - \vxo| \right) +\pi/2, \hspace{10mm} \phi''(z_0^*) = -k\left(   \frac{1}{| \vxo - \vxs|} + \frac{1}{ |\vx - \vxo |} \right).
+\end{equation}
+with $\vx = [x,\ y,\ 0]^{\mathrm{T}}$, $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$ being the in-plane distances. 
+Note the difference of $|\phi''(z^*)| = k \frac{1}{ |\vx - \vxo| }$ for the virtual 2D line source and $|\phi''(z^*)| = k \left( \frac{1}{| \vx - \vxo|} + \frac{1}{ |\vxo - \mathbf{x}_s |} \right)$ for the virtual 3D point source. 
+In the latter case, not only the secondary source, but also the virtual source attenuation needs to be corrected.
+
+Evaluating the integral with the SPA--with taking the negative sign of the second derivative into consideration---leads to the 2.5D Neumann Rayleigh integral for a 3D target field
+\begin{equation}
+\label{Eq:Rayleigh25DPointSrc}
+P(\vx,\omega) = -2 \int\limits_{-\infty}^{\infty}\sqrt{ \frac{2\pi}{\ti k} }\sqrt{\frac{|\vxo-\vxs| |\vx-\vxo|}{|\vxo-\vxs| + |\vx-\vxo|}} \left. \frac{\partial}{\partial y} G_{3\text{D}}\left( \vxo-\vxs,\omega \right) \right|_{\vx = \vxo} G_{3\text{D}}\left( \vx-\vxo,\omega \right)\,\td x_0.
+\end{equation}
+
+This 2.5D Neumann Rayleigh integral contains the implicit solution of the SFS problem for a virtual 3D point source in terms of the unknown driving function $D(x_0, \omega)$
+\begin{equation}
+D(x_0,\omega) = 
+- 2\,\sqrt{\frac{2\pi}{\ti k}} \sqrt{\frac{| \vxo - \mathbf{x}_s |\cdot | \vx - \vxo|  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }} \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{\vx = \vxo}.
+\label{Eq:2_5D_point_source_implicit_df}
+\end{equation}
+Comparing this result with \eqref{Eq:2_5D_driv_fun_implicit} it is revealed, that the virtual source mismatch can be compensated with the correction factor $\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$. 
+This result has an expressive geometrical meaning around the horizontal stationary position, since 2D WFS would assume a point source with an attenuation factor of $\frac{1}{\sqrt{r}}$. 
+In the correction factor therefore the numerator stands for the attenuation correction from the point source to the SSD, and the denominator for the correction from the point source to the listener position. 
+%Alternatively: multiplication by $\sqrt{| \vxo - \mathbf{x}_s |}$ approximates the source strength at the source position, while correction with $\frac{1}{\sqrt{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$ corrects the $1/\sqrt{r}$ attenuation to $1/r$.
+The 3D point source driving function therefore consist of the following terms:
+\begin{multline}
+D(x_0,\omega) = 
+\underbrace{\sqrt{\frac{2\pi}{\ti k}}}_{\substack{\text{SSD freq.}\\\text{compensation}}} 
+\underbrace{\sqrt{ | \vx - \vxo|}}_{\substack{\text{SSD amp.}\\\text{compensation}}} 
+\underbrace{\sqrt{\frac{| \vxo - \mathbf{x}_s |  }{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}  }_
+{\substack{\text{Virt. source}\\\text{amp. comp.}}}\times
+\underbrace{ \left. -2 \frac{\partial P(\vx,\omega)}{\partial y}  \right|_{\vx = \vxo}}_{\text{2D driving function, HF approx.}},
+\label{Eq:2_5D_point_source_implicit_df_Explanations}
+\end{multline}
+
+Also in the 3D case, the horizontal SPA holds, and the stationary SSD element is found in the same position as for the case of a virtual line source. 
+The synthesis will be amplitude correct in a distance of $| \vx - \vxo| $ from the stationary SSD element, in a radial direction away from the virtual source. 
+Refer to Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} for the geometry. 
+
+
 %
 % Referencing focused sources
 % Synthesis applying directive SSD

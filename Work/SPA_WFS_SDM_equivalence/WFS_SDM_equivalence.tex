@@ -236,6 +236,7 @@ and the spatial driving function read
 \sqrt{\frac{2\pi}{\pm \ti \left|\phi_G''(x^*(k_x),y,\omega) \right|}} A_G(x^*(k_x),y,\omega) \te^{\ti (\phi_G(x^*(k_x),y,\omega)+k_x x_G^*(k_x)) }
 }
 \te^{-\ti k_x x} \td x.
+\label{Eq:inv_tr_2}
 \end{equation}
 The phase of the function is given by
 \begin{equation}
@@ -304,13 +305,22 @@ Substituting into the second derivatives one finally obtains
  \frac{\phi_P''(x_P^*(k_x),y,\omega) - \phi_G''(x_G^*(k_x),y,\omega)}{\phi_G''(x_G^*(k_x),y,\omega) \phi_P''(x_P^*(k_x),y,\omega)}.
 \end{multline}
 
+From simple physical considerations it may be deduced, that for an arbitrary diverging sound field $k_x(x)$ may not decrease (decreasing $k_x(x)$ would describe ) i.e. for its derivative $k_x'(x) \geq 0$ holds, thus $\phi''(x^*,y,\omega)\leq 0$.
+%\begin{eqnarray}
+%k^2 = k_x(x,y)^2 + k_y(x,y)^2 \\
+%0 = \frac{\partial}{\partial x} k_x(x,y)^2 + \frac{\partial}{\partial x}  k_y(x,y)^2 \\
+%k_x(x,y) k_x'(x,y) =-  k_y(x,y) k_y'(x,y),
+%\end{eqnarray}
+In \eqref{Eq:inv_tr_2} $\pm \ti$ therefore cancels out, and also the sign of $\phi_G''(x_G^*(k_x),y,\omega) \phi_P''(x_P^*(k_x),y,\omega)$ is positive. 
+
 Finally the inverse transform is approximated by the SPA around the stationary point. Denoting $x_P^*$ with simply $x^*$ satisfying $k_{x,P}^l(x^*) = k_{x,G}^l(x^*-x)$
 \begin{equation}
 D(x,\omega) = 
-\sqrt{\frac{1}{2\pi \ti}}
+\sqrt{\frac{1}{\pm \ti2\pi}}
 \sqrt{\frac{\phi_G''(x^*- x,y,\omega)^2}{\phi_P''(x^*,y,\omega) - \phi_G''(x^*- x,y,\omega)}}
 \frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
 \end{equation}
+where the sign of $\pm \ti$ is positive in case $\phi_P''(x_P^*(k_x),y,\omega) < \phi_G''(x_G^*(k_x),y,\omega)$, and negative otherwise.
 
 \subsection{3D point source as SSD elements}
 In WFS the SSD is considered to consist 3D point sources, described by the 3D Green's function. The required expressions in $z=0$ are thus given by
