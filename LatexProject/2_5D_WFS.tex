@@ -943,7 +943,7 @@ The resulting referencing function reads
 \begin{equation}
 d_\text{line,PS}(x_0) = r_0 \frac{\yref}{\yref-y_s}.
 \end{equation}
-Substituting it back to \eqref{Eq:2_5D_point_source_implicit_df} one obtains
+Substituting it back to \eqref{Eq:2_5D_point_source_implicit_df} and applying the high-frequency gradient approximation, with $k_{y,\text{PS}}(\vxo) = k \frac{y_0-y_s}{r_0} $ one obtains
 \begin{equation}
 D(x_0,\omega) = 
 - \sqrt{\frac{\ti k}{2\pi}} \sqrt{\frac{\yref}{\yref -y_s}}  y_s \frac{\te^{-\ti k r_0 }}{r_0^{3/2}},
@@ -962,7 +962,33 @@ d_\text{circle,PS}(x_0)  = r_0 \frac{R_{\mathrm{ref}} - r_0}{R_{\mathrm{ref}}}.
 %
 The performance of this referencing type is demonstrated in Figure \ref{Fig:Theory:point_source_referencing} (c).
 
+\section{2.5D WFS for non-linear secondary source distributions}
 
+\subsection{2.5D Neumann Rayleigh integral}
+In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted in Figure \ref{Fig:WFS_Theory:non_linear_geometry} is considered.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 0.7\columnwidth ]{Figures/WFS_theory/wfs_nonlinear_Geometry.png}
+	\scriptsize
+	\put(17,14){$x$}	
+	\put(12,28){$y$}	
+	\put(1, 36){$z$}
+	\put(33.5,20){$\vxo$}
+	\put(46.6,31.5){$\vx$}
+	\put(80,34){synthesis plane}
+	\put(69,42){$\dO_{3\mathrm{D}}$}
+	\put(69,23){$\dO_{2.5\mathrm{D}}$}
+	\end{overpic}
+\caption{General 3D WFS geometry for the derivation of 2.5D driving functions.
+The SSD surface $\dO_{3\mathrm{D}} = f(x_0,y_0)$ is chosen to be independent of $z$-coordinate in order to be able to evaluate the integral with respect to $z_0$ using the SPA. If the virtual sound field is a 2D one, propagating in the direction parallel to the listening plane the the SSD can be interpreted as a continuous set of infinite vertical line sources along $\dO_{2.5\mathrm{D}}$ (described by the 2D Green's function), capable of the perfect synthesis of a virtual 2D field inside the enclosure.}
+	\label{Fig:WFS_Theory:non_linear_geometry}
+\end{figure}
+
+In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
+Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required.
+
+\subsection{Referencing function and referencing schemes}
 %
 % Referencing focused sources
 % Synthesis applying directive SSD

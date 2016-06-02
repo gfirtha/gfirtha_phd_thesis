@@ -143,7 +143,7 @@ The solution represents a \emph{plane wave} component traveling in the direction
 
 \begin{figure}%[!h]
 	\centering
-	\begin{overpic}[width = 1\columnwidth ]{Figures/Basic_acoustics/plane_wave_illustration.png}
+	\begin{overpic}[width = .85\columnwidth ]{Figures/Basic_acoustics/plane_wave_illustration.png}
 	\put(2,1){(a)}
 	\put(52,1){(b)}
 	\end{overpic}
@@ -201,13 +201,13 @@ Note, that wave propagation is determined by the phase change of the plane wave 
 This statement leads to two important formulations:
 the above equation written in the spatial domain yields
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y',k_z,\omega) \te^{-\ti k_y ( y - y' ) }  \te^{- \ti \left( k_x x  + k_z z \right) }
 \td k_x\td k_z,
 \label{Eq:Theory:Pressure_propagated}
 \end{equation}
 Expressing $\tilde{P}(k_x,y',k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y',k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ---i.e. $y$---derivative at $y = y'$ calculated by applying the differentiation theorem to \eqref{Eq:Theory:Wave_field_extrapolation} one obtains
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y',k_z,\omega) \frac{\te^{-\ti k_y ( y - y' ) } }{k_y} \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y',k_z,\omega) \frac{\te^{-\ti k_y ( y - y' ) } }{k_y} \te^{- \ti \left( k_x x + k_z z \right) }
 \td k_x\td k_z.
 \label{Eq:Theory:Velocity_propagated}
 \end{equation}

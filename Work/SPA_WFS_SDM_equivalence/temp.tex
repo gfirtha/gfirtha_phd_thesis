@@ -1,0 +1,467 @@
+\documentclass[12pt,a4paper]{article}
+%
+
+\usepackage{steinmetz}
+\usepackage{layouts}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx,overpic,subfigure}
+\usepackage{booktabs} 			% Nice tables
+\usepackage{csquotes}			% Quotation
+\usepackage{multirow} 			% Multirow cells in tables
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage[small,bf]{caption}
+\usepackage{ae,aecompl}
+\usepackage[american]{babel}
+\usepackage{hyperref}
+%
+
+\newcommand{\dint}{\int\!\!\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\td}{\mathrm{d}}
+\newcommand{\te}{\mathrm{e}}
+\newcommand{\ti}{\mathrm{j}}
+\newcommand{\sinfi}{\sin\varphi}
+\newcommand{\cosfi}{\cos\varphi}
+\newcommand{\sinteta}{\sin\theta}
+\newcommand{\costeta}{\cos\theta}
+\newcommand{\yref}{y_{\mathrm{ref}}}
+\newcommand{\dref}{d_{\mathrm{ref}}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vxo}{\mathbf{x}_0}
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
+%
+\title{Equivalence of SDM and WFS under high-frequency assumptions}
+\date{\today \\
+Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
+\author{Firtha Gergely}
+
+\begin{document}
+\maketitle
+
+\section{Invertibility of the Fourier-transform applying the stationary phase method}
+
+Suppose a steady state 2D sound field given in a general polar form
+\begin{equation}
+P(x,y,\omega) = A(x,y,\omega) \te^{\ti \phi(x,y,\omega)}.
+\end{equation}
+Let's define the local wavenumber vector of the sound field as
+\begin{equation}
+\mathbf{k}^l(\vx) = [k_x^l(\vx),\ k_y^l(\vx)]^{\mathrm{T}} = -\nabla \phi(x,y,\omega),
+\end{equation}
+thus as a vector, pointing in each coordinate towards the local propagation direction of the sound field, with its magnitude being $\omega/c$. Superscript $l$ is introduced in order to distinguish the here defined local wavenumber components from the wavenumber components of the spatial Fourier transform.
+
+\subsubsection*{Forward Fourier transform}
+The forward spatial Fourier transform of the sound field reads
+\begin{equation}
+\tilde{P}(k_x,y,\omega) = \tilde{A}(k_x,y,\omega)\te^{\ti \tilde{\phi}(k_x,y,\omega)} = 
+\int_{-\infty}^{\infty} A(x,y,\omega)\te^{\ti \phi(x,y,\omega)} \te^{\ti k_x x} \td x.
+\end{equation}
+Under high-frequency assumptions ($\phi(x,y,\omega)+k_x x \gg 1$) the integral may be approximated using the stationary phase approximation (assuming only one stationary point in the integral path). The stationary point $x^*(k_x)$ is found, where
+\begin{equation}
+- \left. \frac{\partial}{\partial x} \phi(x,y,\omega) \right|_{x = x^*(k_x)} = k_x^l(x^*,y,\omega) = k_x,
+\end{equation}
+holds: \emph{the greatest contribution to the wavenumber spectrum at an arbitrary wavenumber $k_x$ has the point in space, where the local wavenumber component $k_x^l()$ equals $k_x$}. Note, that it is assumed, that in the sound field each local propagation direction is unique.
+Since each $k_x$ wavenumber component assigns a new stationary point, therefore the stationary point for a given $k_x$ is denoted including its dependency by $x^*(k_x)$.
+
+Around the stationary point the Fourier integral is approximated using the SPA. 
+For the sake of brevity the spatial derivative of the phase function is denoted by $\phi''()$. The integral then yields
+\begin{equation}
+\tilde{P}(k_x,y,\omega) \approx 
+\sqrt{ \frac{ 2\pi }
+{ \pm \ti |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega)\te^{\ti \phi(x^*(k_x),y,\omega)}\te^{\ti k_x x^*(k_x)}.
+\end{equation}
+In the denominator $\pm $ denotes the actual sign depends of the second derivative in the stationary point (i.e. the sign of $-\left| \frac{\partial}{\partial x}k_x(x,y,\omega	)\right|_{x = x^*(k_x)}$).
+The polar form of the spectrum therefore reads
+\begin{eqnarray}
+\tilde{A}(k_x,y,\omega) = \sqrt{ \frac{ 2\pi }
+{  |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega),\\
+\tilde{ \phi }(k_x,y,\omega) = \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \mp \pi /4.
+\end{eqnarray}
+
+\subsubsection*{Inverse Fourier transform}
+Now let's take the inverse Fourier transform of the same function
+\begin{equation}
+P(x,y,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty}\sqrt{ \frac{ 2\pi }
+{ \pm \ti |\phi''(x^*(k_x),y,\omega)| }} 
+A(x^*(k_x),y,\omega) \te^{\ti \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \right)} \te^{-\ti k_x x} \td k_x,
+\label{Eq:inverse_transform}
+\end{equation}
+and try to evaluate it using the SPA.
+Now the phase function under consideration reads
+\begin{equation}
+\tilde{\varphi}(k_x, y,\omega) = \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x \mp \pi / 4.
+\end{equation}
+The integral may be evaluated around the stationary point, which is defined as the $k_x(x)$ value, for which
+\begin{equation}
+\frac{\partial}{\partial k_x} \tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x \mp \pi / 4 \right)
+= 0.
+\end{equation}
+Applying the chain rule the derivative reads
+\begin{multline}
+\frac{\partial}{\partial k_x} \tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x} x^*(k_x) \phi'(x^*(k_x),y,\omega) + x^*(k_x)+  k_x \frac{\partial}{\partial k_x}x^*(k_x) - x = \\
+=
+\frac{\partial}{\partial k_x} x^*(k_x) \left(\phi'(x^*(k_x),y,\omega)+ k_x \right) + x^*(k_x)  - x 
+,
+\end{multline}
+with $\phi'$ denoting the derivative w.r.t. the argument.
+
+By definition $\left(\phi'(x^*(k_x),y,\omega)+ k_x \right) = 0$, since it gave the stationary position for the forward transform, thus the stationary position is found at the $k_x(x)$ value, for which 
+\begin{equation}
+x^*(k_x) - x = 0, \hspace{10mm} \rightarrow \hspace{10mm} x^*(k_x) = x
+\label{Eq:stat_values}
+\end{equation}
+holds. This result states, that each wavenumber component $k_x$ will dominate one designated point in the space $x$, and this point is exactly where the local wavenumber $k_x^l(\vx,\omega)$ equals $k_x$, i.e. if the stationary phase point of the wavenumber spectrum is denoted by $k_x^*(x)$, then $k_x^*(x) = -\frac{\partial}{\partial x}\phi(x,y,\omega) = k_x^l(x,y,\omega)$ holds.
+Also, around the stationary point:
+\begin{equation}
+x^*(k_x^*(x))  = x, \hspace{1cm} k_x^*(x^*(k_x)) = k_x^l(x).
+\end{equation}
+
+\vspace{3mm}
+The second derivative of the phase function reads
+\begin{align}
+\frac{\partial^2}{\partial k_x^2} \tilde{\varphi}(k_x,y,\omega) 
+&= \frac{\partial^2}{\partial k_x^2} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) - k_x x - \pi / 4 \right)
+\\
+&= \frac{\partial^2}{\partial k_x^2} \left( \phi(x^*(k_x),y,\omega) + k_x x^*(k_x) \right)
+\\
+&= \frac{\partial}{\partial k_x}\left( \frac{\partial}{\partial k_x} x^*(k_x) \phi'(x^*(k_x),y,\omega) + x^*(k_x)+  k_x \frac{\partial}{\partial k_x}x^*(k_x) \right)
+\\
+&= \frac{\partial^2}{\partial k_x^2}x^*(k_x)  \phi'(x^*(k_x),y,\omega)+ \left(\frac{\partial}{\partial k_x} x^*(k_x)\right)^2 \phi''(x^*(k_x),y,\omega) + \\
+& 2\frac{\partial}{\partial k_x} x^*(k_x) + k_x\frac{\partial^2}{\partial k_x^2}x^*(k_x)
+\\
+&= \frac{\partial^2}{\partial k_x^2}x^*(k_x)  \left(  \phi'(x^*(k_x),y,\omega)+ k_x\right) + 
+\left(\frac{\partial}{\partial k_x} x^*(k_x)\right)^2 \phi''(x^*(k_x),y,\omega) \\
+& +2\frac{\partial}{\partial k_x} x^*(k_x).
+\label{Eq:sec_der}
+\end{align}
+By definition, around the stationary point 
+\begin{equation}
+\left(  \phi'(x^*(k_x),y,\omega)+ k_x\right) = 0
+\end{equation}
+holds. Differentiating both sides w.r.t. $k_x$ leads to
+\begin{align}
+&\frac{\partial}{\partial k_x} x^*(k_x) \phi''(x^*(k_x),y,\omega) = -1 \\
+&\frac{\partial}{\partial k_x} x^*(k_x) = -\frac{1}{\phi''(x^*(k_x),y,\omega)}.
+\end{align}
+Substituting these equations into \eqref{Eq:sec_der} yields
+\begin{equation}
+\frac{\partial^2}{\partial k_x^2} \tilde{\varphi}(k_x,y,\omega) = -\frac{1}{\phi''(x^*(k_x),y,\omega)}
+\label{Eq:sec_der2}
+\end{equation}
+
+Finally substituting it back along with \eqref{Eq:stat_values} into \eqref{Eq:inverse_transform} with taking into consideration, that according to \eqref{Eq:sec_der2} the second derivatives are opposite signed
+\begin{align}
+P(x,y,\omega) &\approx \frac{1}{2\pi} \sqrt{ \frac{ 2\pi }
+{ \pm \ti \left|\phi''(x^*(k_x),y,\omega)\right|}} 
+A(x,y,\omega) \te^{\ti \left( \phi(x,y,\omega) + k_x^l(x) x) \right)} \te^{-\ti k_x^l(x) x} \sqrt{ \frac{2\pi \left|\phi''(x^*(k_x),y,\omega)\right|}{\mp \ti}} 
+\\
+&= \frac{1}{2\pi} \sqrt{ \frac{ \pm \ti (2\pi)^2 \left|\phi''(x,y,\omega)\right|}
+{ \pm \ti \left|\phi''(x,y,\omega)\right|}} 
+A(x,y,\omega) \te^{\ti \phi(x,y,\omega)}  
+= P(x,y,\omega).
+\end{align}
+Thus within the SPA the invertibility of Fourier transform is proven.
+
+\null\newpage
+\section{2D SDM driving functions in the spatial domain}
+
+Now consider the following wavenumber domain SDM driving functions
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y,\omega)}.
+\end{equation}
+Assume, that the target sound field is a 2D one, i.e. may be written in terms of the angular spectrum measured on $y=0$. Let $G$ be the 3D Green's function, therefore
+\begin{equation}
+\tilde{D}(k_x,\omega) = 
+\frac{\tilde{P}(k_x,0,\omega) \te^{-\ti \sqrt{k^2-k_x^2}|y|} }
+{-\frac{\ti}{4} H_0^{(2)} 
+\left( \sqrt{ k^2-k_x^2 }|y| \right)
+ }.
+\end{equation}
+By denoting $k_y = \sqrt{k^2-k_x^2}$ and applying the high-frequency approximation of the Hankel function
+\begin{equation}
+-\frac{\ti}{4} H_0^{(2)} \left( k_y|y| \right) \approx \frac{\te^{-\ti k_y|y|}}{\sqrt{8\pi \ti k_y|y|}},
+\end{equation}
+---which is yielded by the Fourier-transform of the Green's function applying the SPA-- allows simplification with the exponents and the driving function reads
+\begin{equation}
+\tilde{D}(k_x) = \tilde{P}(k_x,0,\omega) \sqrt{8\pi \ti k_y|y| }.
+\end{equation}
+
+Now assume, that the plane wave spectrum of the target field on the SSD $\tilde{P}(k_x,0,\omega)$ had been evaluated from its spatial description by using the SPA, i.e. the driving function is written as
+\begin{multline}
+\tilde{D}(k_x) = \sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x^*(k_x),0,\omega) \right|}} A_P(x^*(k_x),0,\omega) \te^{\ti (\phi_P(x^*(k_x),0,\omega)+k_x x^*(k_x)) }\sqrt{8\pi \ti k_y |y| }
+\end{multline}
+and the spatial domain driving function as
+\begin{equation}
+D(x,\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+\sqrt{\frac{2\pi}{\ti \phi_P''(x^*(k_x),0,\omega) }} A_P(x^*(k_x),0,\omega) \te^{\ti (\phi_P(x^*(k_x),0,\omega)+k_x x^*(k_x)) }\sqrt{8\pi \ti k_y |y| } \te^{-\ti k_x x}
+\td k_x.
+\end{equation}
+Since the multiplication by $\sqrt{8\pi \ti k_y |y| }$ does not change the phase of the function (and obviously nor its second derivative), therefore the inverse transform can be carried out in the very same manner using the SPA as in the previous chapter. The stationary phase wavenumber therefore is given by the corresponding local wavenumber vector component: $k_x^*(x) = k_x^l(x) = -\frac{\partial}{\partial x} \phi(x,y,\omega)$, i.e. the inverse transform of the function reads
+\begin{equation}
+D(x,\omega) = \sqrt{8\pi \ti \sqrt{k^2 - k_x^*(x)^2}|y|} P(x,y,\omega) = \sqrt{8\pi \ti k_y^l(x) |y|} P(x,y,\omega).
+\end{equation}
+
+\section{General 3D SDM driving functions in the spatial domain}
+
+Now consider again, the general 3D SDM driving functions, without any assumption on the virtual field dimensionality
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,\omega)}{\tilde{G}(k_x,y,\omega)},
+\end{equation}
+all functions are considered in the $z=0$ plane.
+
+Now assume, that both functions are obtained via the forward Fourier transform using SPA:
+\begin{equation}
+\tilde{D}(k_x,\omega) = 
+\frac{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x_P^*(k_x),y,\omega) \right|}} A_P(x_P^*(k_x),y,\omega) \te^{\ti (\phi_P(x_P^*(k_x),y,\omega)+k_x x_P^*(k_x)) }
+}{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_G''(x^*(k_x),y,\omega) \right|}} A_G(x^*(k_x),y,\omega) \te^{\ti (\phi_G(x^*(k_x),y,\omega)+k_x x_G^*(k_x)) }
+},
+\end{equation}
+and the spatial driving function read
+\begin{equation}
+D(x,\omega) = 
+\frac{1}{2\pi}\int_{-\infty}^{\infty}
+\frac{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_P''(x_P^*(k_x),y,\omega) \right|}} A_P(x_P^*(k_x),y,\omega) \te^{\ti (\phi_P(x_P^*(k_x),y,\omega)+k_x x_P^*(k_x)) }
+}{
+\sqrt{\frac{2\pi}{\pm \ti \left|\phi_G''(x^*(k_x),y,\omega) \right|}} A_G(x^*(k_x),y,\omega) \te^{\ti (\phi_G(x^*(k_x),y,\omega)+k_x x_G^*(k_x)) }
+}
+\te^{-\ti k_x x} \td x.
+\label{Eq:inv_tr_2}
+\end{equation}
+The phase of the function is given by
+\begin{equation}
+\tilde{\varphi}(k_x,y,\omega) = \phi_P(x_P^*(k_x),y,\omega) - \phi_G(x^*(k_x),y,\omega)  + k_x \left( x_P^*(k_x) - x_G^*(k_x) \right) -  k_x x + C,
+\end{equation}
+where $C$ may be $\{-\pi/2,\ 0,\ \pi/2\}$, depending on the signs of $\left|\phi_P''(x_P^*(k_x),y,\omega) \right|$ and $\left|\phi_G''(x_G^*(k_x),y,\omega) \right|$.
+
+The stationary position $k_x^*(x)$ is found, where
+\begin{multline}
+\frac{\partial}{\partial k_x}
+\tilde{\varphi}(k_x,y,\omega) = \frac{\partial}{\partial k_x}x_P^*(k_x) \phi_P'(x_P^*(k_x),y,\omega) -  \frac{\partial}{\partial k_x} x^*(k_x)\phi_G'(x^*(k_x),y,\omega) \\ + k_x \frac{\partial}{\partial k_x}\left( x_P^*(k_x) - x_G^*(k_x) \right) + \left( x_P^*(k_x) - x_G^*(k_x) \right) -  x = 0
+\end{multline}
+holds.
+By definition of the forward stationary points
+\begin{eqnarray}
+\phi_P'(x_P^*(k_x),y,\omega) + k_x = 0,\\
+\phi_G'(x_G^*(k_x),y,\omega) + k_x = 0,
+\label{Forward_spa}
+\end{eqnarray}
+thus the phase derivative simplifies to
+\begin{equation}
+\frac{\partial}{\partial k_x}
+\tilde{\varphi}(k_x,y,\omega) = \left( x_P^*(k_x) - x_G^*(k_x) \right) -  x = 0,
+\end{equation}
+thus in the the stationary wavenumber $k_x^*(x)$ it is fulfilled, that 
+\begin{equation}
+x_P^*(k_x^*(x)) = x_G^*(k_x^*(x)) + x.
+\end{equation}
+Since it was shown, that $k_x^*(x)$ is equivalent with the local wavenumber vector in $x$, i.e the stationary point $x^*_P$ is found for a given $x$, where the local propagation direction of the target wave field equals to that of the Green's function, placed at $x$:
+\begin{equation}
+k_{x,P}^l (x_P^*(x)) = k_{x,G}^l(x_P^*(x) - x). 
+\end{equation}
+Note, that the stationary positions are dependent only on $x$. \emph{This finding states, that for a given SSD position $[x,\ 0]$ the stationary point, needed for the calculation of the driving function is found at $[x^*,y]$, where the propagation direction of the target field coincides with that of the Green's function, placed at $[x,\ 0]$.}
+
+The second derivatives are given by 
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+\frac{\partial^2}{\partial k_x^2}x_P^*(k_x) \phi_P'(x_P^*(k_x),y,\omega)+
+\left( \frac{\partial}{\partial k_x}x_P^*(k_x) \right)^2 \phi_P''(x_P^*(k_x),y,\omega) 
+ - 	\\
+\frac{\partial^2}{\partial k_x^2}x_G^*(k_x) \phi_G'(x_G^*(k_x),y,\omega)-
+\left( \frac{\partial}{\partial k_x}x_G^*(k_x) \right)^2 \phi_G''(x_G^*(k_x),y,\omega) +\\
+k_x \frac{\partial^2}{\partial k_x^2}\left( x_P^*(k_x) - x_G^*(k_x) \right)+
+2 \frac{\partial}{\partial k_x}\left( x_P^*(k_x) - x_G^*(k_x) \right) 
+\end{multline}
+Again, exploiting \eqref{Forward_spa} simplifies the expression to
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+\left( \frac{\partial}{\partial k_x}x_P^*(k_x) \right)^2 \phi_P''(x_P^*(k_x),y,\omega) 
+ - 
+\left( \frac{\partial}{\partial k_x}x_G^*(k_x) \right)^2 \phi_G''(x_G^*(k_x),y,\omega) +\\
+2\left(  \frac{\partial}{\partial k_x} x_P^*(k_x) -  \frac{\partial}{\partial k_x} x_G^*(k_x) \right) 
+\end{multline}
+The $k_x$ derivatives of the stationary points may be  expressed by differentiating \eqref{Forward_spa}
+\begin{eqnarray}
+\frac{\partial}{\partial k_x} x_P^*(k_x)\phi_P''(x_P^*(k_x),y,\omega) + 1 = 0,\\
+\frac{\partial}{\partial k_x} x_G^*(k_x)\phi_G''(x_G^*(k_x),y,\omega) + 1 = 0,\\
+\frac{\partial}{\partial k_x} x_P^*(k_x) = -\frac{1}{\phi_P''(x_P^*(k_x),y,\omega)},\\
+\frac{\partial}{\partial k_x} x_G^*(k_x) = -\frac{1}{\phi_G''(x_G^*(k_x),y,\omega)}.
+\end{eqnarray}
+Substituting into the second derivatives one finally obtains
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\tilde{\varphi}(k_x,y,\omega) =
+ - \left( \frac{1}{\phi_P''(x_P^*(k_x),y,\omega)} - \frac{1}{\phi_G''(x_G^*(k_x),y,\omega)} \right) 
+\\ =
+ \frac{\phi_P''(x_P^*(k_x),y,\omega) - \phi_G''(x_G^*(k_x),y,\omega)}{\phi_G''(x_G^*(k_x),y,\omega) \phi_P''(x_P^*(k_x),y,\omega)}.
+\end{multline}
+
+From simple physical considerations it may be deduced, that for an arbitrary diverging sound field $k_x(x)$ may not decrease (decreasing $k_x(x)$ would describe a converging/focused wavefront) i.e. for its derivative $k_x'(x) \geq 0$ holds, thus $\phi''(x^*,y,\omega)\leq 0$.
+%\begin{eqnarray}
+%k^2 = k_x(x,y)^2 + k_y(x,y)^2 \\
+%0 = \frac{\partial}{\partial x} k_x(x,y)^2 + \frac{\partial}{\partial x}  k_y(x,y)^2 \\
+%k_x(x,y) k_x'(x,y) =-  k_y(x,y) k_y'(x,y),
+%\end{eqnarray}
+In \eqref{Eq:inv_tr_2} $\pm \ti$ therefore cancels out, and also the sign of $\phi_G''(x_G^*(k_x),y,\omega) \phi_P''(x_P^*(k_x),y,\omega)$ is positive. 
+Note, that the physical interpretation of $\phi_P''(x^*,y,\omega) = k'_{P,x}(x^*,y,\omega)$ is the curvature rate of the wavefronts. For simple sound field, i.e. point source and plane waves the rate of curvature of the Green's function at $y = 0$ is greater, than a plane wave or a point source placed at $y<0$ at an arbitrary point, therefore $\phi_P''(x^*,y,\omega) - \phi_G''(x^*- x,y,\omega)<0$ holds.
+
+Finally the inverse transform is approximated by the SPA around the stationary point. Denoting $x_P^*$ with simply $x^*$ satisfying $k_{x,P}^l(x^*) = k_{x,G}^l(x^*-x)$
+\begin{equation}
+D(x,\omega) = 
+\sqrt{\frac{1}{\ti2\pi}}
+\sqrt{\frac{\phi_G''(x^*- x,y,\omega)^2}{\phi_P''(x^*,y,\omega) - \phi_G''(x^*- x,y,\omega)}}
+\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
+\label{eq:driv_fun_on_ref}
+\end{equation}
+
+\subsection{Approximation of the target field}
+Now let's express $P(x^*,y,0,\omega)$ in terms of $P(x^*,0,0,\omega)$ using the Rayleigh integral written on $y=0$:
+\begin{equation}
+P(x^*(x),y,0,\omega) = -2\iint_{-\infty}^{\infty} \frac{\partial}{\partial y} P(x_0,0,z_0,\omega) G(x^*(x)-x_0,y,-z_0,\omega) \td z_0 \td x_0,
+\end{equation}
+with the denotation $ \frac{\partial}{\partial y} P(x_0,0,z_0,\omega) = \left.  \frac{\partial}{\partial y} P(x_0,y,z_0,\omega) \right|_{y = 0}$,
+and where the $x$ dependency is given by $\phi_P'(x^*,y) = \phi_G'(x^*-x,y)$
+
+The phase function under consideration by using the high-frequency approximation of the gradient reads
+\begin{equation}
+\phi(x_0,z_0) = \phi_P(x_0,0,z_0) + \phi_G(x^*(x) - x_0,y,-z_0)+ \pi/2.
+\end{equation}
+For the present case from simple geometric consideration the stationary point of the integral lies at $x_0^{*} = [x,\ 0,\ 0]^{\mathrm{T}}$ (proof later).
+
+Integration w.r.t $z_0$ results up in
+\begin{multline}
+P(x^*,y,\omega) = -2\int_{-\infty}^{\infty} 
+\sqrt{\frac{2\pi}{\ti |\phi''_{P,z_0 z_0}(x_0,0,0) + \phi''_{G,z_0 z_0}(x^* - x_0,y,0)|}}
+ \\
+\frac{\partial}{\partial y} P(x_0,0,0,\omega) G(x^*-x_0,y,0,\omega) \td x_0,
+\end{multline}
+and integration w.r.t $x_0$ reads
+\begin{multline}
+P(x^*,y,\omega) = -4\pi\ti\\
+\sqrt{\frac{1}{ |\phi''_{P,z_0 z_0}(x_0,0,0) + \phi''_{G,z_0 z_0}(x^* - x_0,y,0)|}}
+\sqrt{\frac{1}{ |\phi''_{P,x_0 x_0}(x_0,0,0) + \phi''_{G,x_0 x_0}(x^* - x_0,y,0)|}}
+ \\
+\frac{\partial}{\partial y} P(x,0,0,\omega) G(x^*-x,y,0,\omega).
+\end{multline}
+
+The second phase derivative of the target field $\phi''_{P,x,x}(x^*,y,\omega)$ can be expressed in terms of $P(x,0,0)$ as (proof later)
+\begin{equation}
+\phi''_{P,x,x}(x^*,y,\omega) = \frac{\phi''_{P,x_0,x_0}(x,0,0) \cdot \phi''_{G,x_0,x_0}(x^* - x,y,0)}{\phi''_{P,x_0,x_0}(x,0,0) + \phi''_{G,x_0,x_0}(x^* - x,y,0)}
+\end{equation}
+i.e. in the original driving function \eqref{eq:driv_fun_on_ref}
+\begin{equation}
+\sqrt{\frac{\phi_G''(x^*- x,y,\omega)^2}{\phi_P''(x^*,y,\omega) - \phi_G''(x^*- x,y,\omega)}} = -\ti\sqrt{\phi''_{P,x_0,x_0}(x,0,0) + \phi''_{G,x_0,x_0}(x^* - x,y,0)}.
+\end{equation}
+
+Substituting back the approximated target field $P(x^*(x),y,0,\omega)$ to the driving function \eqref{eq:driv_fun_on_ref} along with the expression above yields
+\begin{multline}
+D(x,\omega) = 
+\sqrt{\frac{\ti}{2\pi}}
+\sqrt{\phi''_{P,x_0,x_0}(x,0,0) + \phi''_{G,x_0,x_0}(x^* - x,y,0)}
+(-4\pi\ti)\\
+\sqrt{\frac{1}{ |\phi''_{P,z_0 z_0}(x_0,0,0) + \phi''_{G,z_0 z_0}(x^* - x_0,y,0)|}}
+\sqrt{\frac{1}{ |\phi''_{P,x_0 x_0}(x_0,0,0) + \phi''_{G,x_0 x_0}(x^* - x_0,y,0)|}}
+ \\
+\frac{\partial}{\partial y} P(x,0,0,\omega) G(x^*-x,y,0,\omega)
+\frac{ 1 }{G(x^*- x,y,0,\omega) }
+\end{multline}
+\begin{equation}
+D(x_0,\omega) = 
+\sqrt{8\pi \ti }
+\sqrt{\frac{1}{ |\phi''_{P,z_0 z_0}(x_0,0,0) + \phi''_{G,z_0 z_0}(x^*(x) - x_0,y,0)|}}
+\frac{\partial}{\partial y} P(x_0,0,0,\omega)
+\end{equation}
+
+
+%Temp:\\
+%Integration with respect to $z$ can be therefore approximated as
+%\begin{equation}
+%P(x^*,y,\omega) \approx -2\sqrt{\frac{2\pi}{\ti |A|}} \frac{\partial}{\partial y} P(x,0,0,\omega) G(x^*-x,y,0,\omega),
+%\end{equation}
+%where
+%\begin{equation}
+%A =
+% \frac{\partial^2}{\partial z_0^2} \phi(x_0,z_0)\cdot \frac{\partial^2}{\partial x_0^2} \phi(x_0,z_0) -
+% \left( \frac{\partial^2 }{\partial z_0 x_0}   \phi(x_0,z_0)\right)^2. 
+%\end{equation}
+
+%
+%\subsection{3D point source as SSD elements}
+%In WFS the SSD is considered to consist of 3D point sources, described by the 3D Green's function. The required expressions in $z=0$ are thus given by
+%\begin{align}
+%G(x,y,\omega)  &= \frac{1}{4\pi}\te^{-\ti k \sqrt{x^2+y^2}}{\sqrt{x^2 + y^2}},\\
+%\phi(x,y,z)    &= -k \sqrt{x^2+y^2} \\
+%-\frac{\partial}{\partial x} \phi(x,y,z)     &= k_{x,G}^l(x,y) = k \frac{x}{\sqrt{x^2+y^2}}\\
+%\frac{\partial^2}{\partial x^2} \phi(x,y,z) &= k\frac{y^2}{\sqrt{x^2+y^2}^3} .
+%\end{align}
+%and the driving functions read
+%\begin{equation}
+%D(x,\omega) = 
+%\sqrt{\frac{1}{2\pi \ti}}
+%\sqrt{\frac{1}{\phi_P''(x^*,y,\omega) - k\frac{y^2}{\sqrt{(x^*-x)^2+y^2}^3}}}
+%k\frac{y^2}{\sqrt{(x^*-x)^2+y^2}^3}
+%\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) },
+%\end{equation}
+%where $x^*$ satisfies
+%\begin{equation}
+% k \frac{x^*-x}{\sqrt{(x^*-x)^2+y^2}} = k_{x,P}^l(x,y).
+%\end{equation}
+%
+%\subsection{Plane wave example}
+%Consider a plane wave, described by
+%\begin{equation}
+%P(x,y,\omega) = \te^{-\ti k\left( \cosfi x + \sinfi y\right) }.
+%\end{equation}
+%Its local wavenumber vector is given by
+%\begin{equation}
+%k_{x,P}^l(x,y)= k\cosfi.
+%\end{equation}
+%For the stationary position it is found, that
+%\begin{align}
+%k \cosfi &=  k \frac{x^*-x}{\sqrt{(x^*-x)^2+y^2}} \\
+%(\cosfi^2 - 1)(x^*-x)^2+ \cosfi^2 y^2 &= 0 \\
+%\cosfi y &= \sinfi(x^*-x)\\
+%x^*-x &= y\frac{\cosfi}{\sinfi} \\
+%x^* &= \frac{\cosfi y + \sinfi x}{\sinfi},
+%\end{align}
+%Obviously, $\frac{\partial^2}{\partial x^2} \phi(x,y,z)  = 0$.
+%The required quantities are
+%\begin{eqnarray}
+%P(x^*,y,\omega) = \te^{-\ti k\left( \cosfi x + \frac{y} {\sinfi} \right) }\\
+%G(x^* - x,y,\omega) = \frac{1}{4\pi}\frac{\te^{-\ti k \sqrt{\left( y\frac{\cosfi}{\sinfi} \right)^2+y^2}}}{\sqrt{\left( y\frac{\cosfi}{\sinfi} \right)^2 + y^2}} =
+%\frac{1}{4\pi}\te^{-\ti k \frac{y}{\sinfi}}{\frac{\sinfi}{y}}
+%\\
+%\phi_G''(x^*-x,y,z) = k\frac{\sinfi^3}{y} 
+%\end{eqnarray}
+%And the driving function is
+%\begin{multline}
+%D(x,\omega) = 
+%\sqrt{\frac{1}{2\pi \ti}}
+%\sqrt{-\phi_G''(x^*- x,y,\omega)}
+%\frac{ P(x^*,y,\omega) }{G(x^*- x,y,\omega) } = \\
+%\sqrt{\frac{1}{2\pi \ti}}
+%\sqrt{-k\frac{\sinfi^3}{y} \frac{y^2}{\sinfi^2}}
+%\frac{ \te^{-\ti k\left( \cosfi x + \frac{y} {\sinfi} \right) } }{  \frac{1}{4\pi}\te^{-\ti k \frac{y}{\sinfi}} } =
+%\sqrt{\frac{1}{2\pi \ti}}
+%4\pi\sqrt{-k\sinfi y}
+%\te^{-\ti k\cosfi x } 
+%\end{multline}
+%And finally one obtains
+%\begin{equation}
+%D(x,\omega) =
+%\sqrt{8\pi \ti k\sinfi y }
+%\te^{-\ti k\cosfi x } 
+%\end{equation}
+%which is exactly the 2.5D WFS driving function with the reference line given by $y$.
+%
+%
+\end{document}
