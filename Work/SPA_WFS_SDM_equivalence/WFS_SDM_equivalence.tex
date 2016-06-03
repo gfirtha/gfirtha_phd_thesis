@@ -136,31 +136,32 @@ And vice versa, the spectrum in the proximity of these wavenumber components wil
 
 Supposing, that $x^*_P(k_x)$ and $x^*_G(k_x)$ are the stationary positions for the corresponding integrals, i.e. 
 \begin{eqnarray}
-- \left. \frac{\partial}{\partial x} \phi_P(x,y,\omega) \right|_{x = x^*_P(k_x)} = k_{x,P}^l(x^*_P(k_x),y,\omega) = k_x, \\
-- \left. \frac{\partial}{\partial x} \phi_G(x,y,\omega) \right|_{x = x^*_G(k_x)} = k_{x,G}^l(x^*_G(k_x),y,\omega) = k_x,
+- \left. \frac{\partial}{\partial x} \phi_P(x,y,\omega) \right|_{x = x^*_P(k_x)} = k_{x,P}^l(x^*_P(k_x),y,\omega) = k_x, \label{eq:klP} \\
+- \left. \frac{\partial}{\partial x} \phi_G(x,y,\omega) \right|_{x = x^*_G(k_x)} = k_{x,G}^l(x^*_G(k_x),y,\omega) = k_x, \label{eq:klG} 
 \label{eq:xP_xG_in_spatial_domain}
 \end{eqnarray}
 holds, and accounting for the negative derivatives---since both $P$ and $G$ are non-converging waves---their spectra can be approximated as
 \begin{eqnarray}
-\tilde{P}(k_x,y) \approx \sqrt{\frac{2\pi}{\ti |\phi_{P,x,x}''(x^*_P(k_x),y)|}} A_P(x^*_P(k_x),y) \te^{\ti \phi_P(x^*_P(k_x),y)} \te^{\ti k_x x^*_P(k_x)}
+\tilde{P}(k_x,y) \approx \sqrt{\frac{2\pi}{\ti |\phi_{P,xx}''(x^*_P(k_x),y)|}} A_P(x^*_P(k_x),y) \te^{\ti \phi_P(x^*_P(k_x),y)} \te^{\ti k_x x^*_P(k_x)}
 \\
-\tilde{G}(k_x,y) \approx \sqrt{\frac{2\pi}{\ti |\phi_{G,x,x}''(x^*_G(k_x),y)|}} A_G(x^*_G(k_x),y) \te^{\ti \phi_G(x^*_G(k_x),y)} \te^{\ti k_x x^*_G(k_x)}
+\tilde{G}(k_x,y) \approx \sqrt{\frac{2\pi}{\ti |\phi_{G,xx}''(x^*_G(k_x),y)|}} A_G(x^*_G(k_x),y) \te^{\ti \phi_G(x^*_G(k_x),y)} \te^{\ti k_x x^*_G(k_x)}
 .
 \end{eqnarray}
-For the sake of simplicity the notation $\left. \frac{\partial^2}{\partial x^2} \phi(x)\right|_{x = x^*} = \phi_{x,x}''(x^*)$ is used.
+For the sake of simplicity the notation $\left. \frac{\partial^2}{\partial x^2} \phi(x)\right|_{x = x^*} = \phi_{xx}''(x^*)$ is used.
 
 Finally the driving function spectrum can be approximated as
-\begin{multline}
-\tilde{D}(k_x) \approx 
-\sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
+\begin{align}
+\tilde{D}(k_x)
+&\approx 
+\sqrt{\frac{|\phi_{G,xx}''(x^*_G(k_x),y)|}{|\phi_{P,xx}''(x^*_P(k_x),y)|}}
 \frac{A_P(x^*_P(k_x),y)}{A_G(x^*_G(k_x),y)}
 \te^{\ti \left( \phi_P(x^*_P(k_x),y) - \phi_G(x^*_G(k_x),y)\right)}
-\te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}=
+\te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}
 \\
-=\sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
+&=\sqrt{\frac{|\phi_{G,xx}''(x^*_G(k_x),y)|}{|\phi_{P,xx}''(x^*_P(k_x),y)|}}
 \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
 \te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
-\end{multline}
+\end{align}
 
 
 \subsection{Approximation of the inverse transform}
@@ -173,7 +174,7 @@ D(x_0) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{D(k_x)} \te^{-\ti k_x x_0
 and using the high-frequency approximate spectra
 \begin{multline}
 D(x_0) \approx \frac{1}{2\pi} \int_{-\infty}^{\infty} 
-\sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
+\sqrt{\frac{|\phi_{G,xx}''(x^*_G(k_x),y)|}{|\phi_{P,xx}''(x^*_P(k_x),y)|}}
 \\
 \frac{A_P(x^*_P(k_x),y)}{A_G(x^*_G(k_x),y)}
 \te^{\ti \left( \phi_P(x^*_P(k_x),y) - \phi_G(x^*_G(k_x),y)\right)}
@@ -190,7 +191,7 @@ This time the phase function under consideration is given by
 \end{equation}
 and the stationary wavenumber $k_x^*(x_0)$ found, where 
 \begin{equation}
-\frac{\partial}{\partial k_x}\left( \left( \phi_P(x^*_P(k_x),y) - \phi_G(x^*_G(k_x),y)\right) +  k_x \left( x^*_P(k_x) - x^*_G(k_x)\right) - k_x x_0 \right) = 0
+\left.\frac{\partial}{\partial k_x}\varphi(k_x) \right|_{k_x = k_x^*} = 0
 \end{equation}
 satisfies.
 
@@ -203,7 +204,7 @@ x^{*'}_{G,k_x}(k_x)\left( \phi'_{G,x}(x^*_G(k_x),y) + k_x \right)
 \end{multline}
 Comparing with \eqref{eq:xP_xG_in_spatial_domain} reveals, that  $\phi'_{P,x}(x^*_P(k_x),y) + k_x = 0$ and $ \phi'_{G,x}(x^*_G(k_x),y) + k_x = 0$, thus at the stationary wavenumber $k_x^*(x_0)$
 \begin{equation}
-\left( x^*_P(k_x^*(x_0)) - x^*_G(k_x^*(x_0))\right) - x_0 = 0
+x^*_P(k_x^*(x_0)) - x^*_G(k_x^*(x_0)) - x_0 = 0
 \label{eq:stat_pos_in_kx}
 \end{equation}
 holds.
@@ -212,7 +213,7 @@ Note, that the forward transform positions are dependent only on the evaluation 
 x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 \label{eq:stat_pos_in_kx_2}
 \end{equation}
-
+%
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 1\columnwidth ]{Figs/Spherical_wave_Stationary_point.png}
@@ -234,22 +235,24 @@ x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 	\caption{Illustration of the stationary points $x^*_P(x_0)$ and $x^*_G(x_0)$.}
 	\label{fig:stationary_positions_2}
 \end{figure}
-
-In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other.
-Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$.
-And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
-
-The equation for the stationary position \eqref{eq:stat_pos_in_kx} therefore satisfies
-\begin{eqnarray}
-k_x^*(x^*_P(k_x^*(x_0))) = k^l_{x,P}(x^*_P(x_0)) \\
-k_x^*(x^*_G(k_x^*(x_0))) = k^l_{x,G}(x^*_G(x_0))
-\end{eqnarray}
-Finally, reusing the definitions of the forward stationary points \eqref{eq:xP_xG_in_spatial_domain}
+%
+Taking the difference of \eqref{eq:klP} and \eqref{eq:klG} in the stationary wavenumber $k_x^*(x_0)$ results in
+%
+% In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other.
+% Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$.
+% And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
+% The equation for the stationary position \eqref{eq:stat_pos_in_kx} therefore satisfies
+% \begin{eqnarray}
+% k_x^*(x^*_P(k_x^*(x_0))) = k^l_{x,P}(x^*_P(x_0)) \\
+% k_x^*(x^*_G(k_x^*(x_0))) = k^l_{x,G}(x^*_G(x_0))
+% \end{eqnarray}
+% Finally, reusing the definitions of the forward stationary points \eqref{eq:xP_xG_in_spatial_domain}
 \begin{equation} 
-k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_G(x_0))
+k^l_{x,P}(x^*_P(k^*_x(x_0))) = k^l_{x,G}(x^*_G(k^*_x(x_0)))
+\label{eq:intermediate}
 \end{equation}
-must hold.
-Substituting \eqref{eq:stat_pos_in_kx_2} the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
+% must hold.
+By suppressing the $k^*_x$-dependency and substituting \eqref{eq:stat_pos_in_kx_2} into \eqref{eq:intermediate}, the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
 \begin{equation}
 k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_P(x_0) - x_0).
 \end{equation}
@@ -259,40 +262,40 @@ See Figure \ref{fig:stationary_positions_2} for an illustration.
 In order to evaluate the inverse integral using the SPA one still needs the second derivative of the phase function \eqref{eq:phase_function}, reading
 \begin{multline}
 \frac{\partial^2}{\partial k_x^2} \varphi(k_x) = 
- \left( x^{*'}_{P,k_x}(k_x)^2 \phi_{P,x,x}^{''}(x^*_P (k_x),y)  + 2 x^{*'}_{P,k_x}(k_x)\right) 
+ \left( x^{*'}_{P,k_x}(k_x)^2 \phi_{P,xx}^{''}(x^*_P (k_x),y)  + 2 x^{*'}_{P,k_x}(k_x)\right) 
 \\
--\left( x^{*'}_{G,k_x}(k_x)^2 \phi_{G,x,x}^{''}(x^*_G(k_x),y)  +  2 x^{*'}_{P,k_x}(k_x)\right) 
+-\left( x^{*'}_{G,k_x}(k_x)^2 \phi_{G,xx}^{''}(x^*_G(k_x),y)  +  2 x^{*'}_{P,k_x}(k_x)\right) 
 \label{eq:second_Derivative}
 \end{multline}
 The rate of change of the stationary positions $ x^{*'}_{P,k_x}(k_x)$ and $ x^{*'}_{G,k_x}(k_x)$ can be expressed by differentiating their definition expression \eqref{eq:xP_xG_in_spatial_domain} w.r.t. $k_x$:
 \begin{eqnarray}
 \phi'_{P,x}(x^*_P(k_x),y) + k_x = 0, \\
 \phi'_{G,x}(x^*_G(k_x),y) + k_x = 0, \\
-x^{*'}_{P,k_x}(k_x) = -\frac{1}{ \phi{''}_{P,x,x}(x^*_P(k_x),y) }, \\
-x^{*'}_{G,k_x}(k_x) = -\frac{1}{ \phi{''}_{G,x,x}(x^*_G(k_x),y) }, 
+x^{*'}_{P,k_x}(k_x) = -\frac{1}{ \phi{''}_{P,xx}(x^*_P(k_x),y) }, \\
+x^{*'}_{G,k_x}(k_x) = -\frac{1}{ \phi{''}_{G,xx}(x^*_G(k_x),y) }, 
 \end{eqnarray}
 and the second derivatives simplifies to
 \begin{equation}
-\frac{\partial^2}{\partial k_x^2} \varphi(k_x) = \frac{ \phi{''}_{P,x,x}(x^*_P(k_x),y) - \phi{''}_{G,x,x}(x^*_G(k_x),y)}{\phi{''}_{P,x,x}(x^*_P(k_x),y) \phi{''}_{G,x,x}(x^*_G(k_x),y)}.
+\frac{\partial^2}{\partial k_x^2} \varphi(k_x) = \frac{ \phi{''}_{P,xx}(x^*_P(k_x),y) - \phi{''}_{G,xx}(x^*_G(k_x),y)}{\phi{''}_{P,xx}(x^*_P(k_x),y) \phi{''}_{G,xx}(x^*_G(k_x),y)}.
 \label{eq:second_Derivative_2}
 \end{equation}
 The second derivative of the phase function, ie.\ the rate of change of the wavenumber vector, is proportional to the curvature of the field at a given position (with a factor (-1) present).
 However the curvature of any source positioned behind the SSD will be smaller, than that of a point source, located at $y = 0$ for any $y>0$ position.
-Therefore, for an arbitrary simple sound field $k_{x,G,x}'(\vx) > k_{x,P,x}'(\vx)$ and $\phi{''}_{P,x,x}(x^*_P(k_x),y) - \phi{''}_{G,x,x}(x^*_G(k_x),y) >0$ holds.
+Therefore, for an arbitrary simple sound field $k_{x,G,x}'(\vx) > k_{x,P,x}'(\vx)$ and $\phi{''}_{P,xx}(x^*_P(k_x),y) - \phi{''}_{G,xx}(x^*_G(k_x),y) >0$ holds.
 This determinates the sign function in the SPA.
 
 Finally, substituting this result (Eq.\eqref{eq:second_Derivative_2}) along with \eqref{eq:stat_pos_in_kx} into the SPA in order to evaluate integral \eqref{eq:inverse_transform_2} one obtains (due to the positive sign of the derivatives simplifications may be done)
 \begin{equation}
 D(x_0) \approx
 \sqrt{\frac{\ti}{2\pi}} 
-\sqrt{\frac{ \left| \phi{''}_{G,x,x}(x^*_G(x_0),y )\right|^2}{\left| \phi{''}_{P,x,x}(x^*_P(x_0),y) - \phi{''}_{G,x,x}(x^*_G(x_0),y)\right|}}
+\sqrt{\frac{ \left| \phi{''}_{G,xx}(x^*_G(x_0),y )\right|^2}{\left| \phi{''}_{P,xx}(x^*_P(x_0),y) - \phi{''}_{G,xx}(x^*_G(x_0),y)\right|}}
 \frac{P(x^*_P(x_0),y)}{G(x^*_G(x_0),y)}
 \end{equation}
 Since the stationary positions are related as \eqref{eq:stat_pos_in_kx_2}, therefore it is feasible, to introduce $x^*(x_0) = x^*_P(x_0)$, and the driving function reads
 \begin{equation}
 D(x_0) \approx
 \sqrt{\frac{\ti}{2\pi}} 
-\sqrt{\frac{ \left| \phi{''}_{G,x,x}(x^*(x_0)-x_0,y )\right|^2}{\left| \phi{''}_{P,x,x}(x^*(x_0),y) - \phi{''}_{G,x,x}(x^*(x_0) - x_0,y)\right|}}
+\sqrt{\frac{ \left| \phi{''}_{G,xx}(x^*(x_0)-x_0,y )\right|^2}{\left| \phi{''}_{P,xx}(x^*(x_0),y) - \phi{''}_{G,xx}(x^*(x_0) - x_0,y)\right|}}
 \frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
 \label{eq:spatial_sdm}
 \end{equation}
@@ -325,7 +328,8 @@ The solution for the equations with taking only the positive root into considera
 x^*(x_0) &= x_0 \frac{ R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}} \\
 y(x_0) 	 &= y_s \left( 1 -  \frac{R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}}\right)
 \end{align}
-Substituting into \eqref{eq:spatial_sdm} yields the explicit driving function in the spatial domain referencing the synthesis on a circle. In this case the only difference between the 2D and 3D point source driving functions is the actual form of $P(x^*(x_0),y(x_0))$.
+Substituting into \eqref{eq:spatial_sdm} yields the explicit driving function in the spatial domain referencing the synthesis on a circle.
+In this case the only difference between the 2D and 3D point source driving functions is the actual form of $P(x^*(x_0),y(x_0))$.
 
 Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
 
@@ -334,7 +338,7 @@ Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the sy
 In order to show more connections between SDM and WFS our aim is to express the driving functions in terms of the target field taken on the SSD.
 Let's express an arbitrary sound field at $\vx = [x,\ y,\ z]^{\mathrm{T}}$ using the 3D Rayleigh integral:
 \begin{equation}
-P(x,y,z) = \iint_{-\infty}^{\infty} \frac{\partial}{\partial y}P(x_0,0,z) G(x-x_0,y,z-z_0) \td z_0 \td x_0.
+P(x,y,z) = \iint_{-\infty}^{\infty} P'_y(x_0,0,z_0) G(x-x_0,y,z-z_0) \td z_0 \td x_0.
 \end{equation}
 
 \end{document}
