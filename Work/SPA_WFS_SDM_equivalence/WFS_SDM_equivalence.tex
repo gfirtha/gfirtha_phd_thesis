@@ -149,17 +149,18 @@ holds, and accounting for the negative derivatives---since both $P$ and $G$ are 
 For the sake of simplicity the notation $\left. \frac{\partial^2}{\partial x^2} \phi(x)\right|_{x = x^*} = \phi_{x,x}''(x^*)$ is used.
 
 Finally the driving function spectrum can be approximated as
-\begin{multline}
-\tilde{D}(k_x) \approx 
+\begin{align}
+\tilde{D}(k_x)
+&\approx 
 \sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
 \frac{A_P(x^*_P(k_x),y)}{A_G(x^*_G(k_x),y)}
 \te^{\ti \left( \phi_P(x^*_P(k_x),y) - \phi_G(x^*_G(k_x),y)\right)}
-\te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}=
+\te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}
 \\
-=\sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
+&=\sqrt{\frac{|\phi_{G,x,x}''(x^*_G(k_x),y)|}{|\phi_{P,x,x}''(x^*_P(k_x),y)|}}
 \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
 \te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
-\end{multline}
+\end{align}
 
 
 \subsection{Approximation of the inverse transform}
@@ -189,7 +190,7 @@ This time the phase function under consideration is given by
 \end{equation}
 and the stationary wavenumber $k_x^*(x_0)$ found, where 
 \begin{equation}
-\frac{\partial}{\partial k_x}\left( \left( \phi_P(x^*_P(k_x),y) - \phi_G(x^*_G(k_x),y)\right) +  k_x \left( x^*_P(k_x) - x^*_G(k_x)\right) - k_x x_0 \right) = 0
+\left.\frac{\partial}{\partial k_x}\varphi(k_x) \right|_{k_x = k_x^*} = 0
 \end{equation}
 satisfies.
 
