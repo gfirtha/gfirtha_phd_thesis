@@ -43,6 +43,7 @@
 \newcommand{\sinteta}{\sin\theta}
 \newcommand{\costeta}{\cos\theta}
 \newcommand{\yref}{y_{\mathrm{ref}}}
+\newcommand{\vxref}{\mathbf{x}_{\mathrm{ref}}}
 \newcommand{\dref}{d_{\mathrm{ref}}}
 \newcommand{\vx}{\mathbf{x}}
 \newcommand{\vxo}{\mathbf{x}_0}
@@ -274,8 +275,33 @@ D(x_0) \approx
 \sqrt{\frac{\ti}{2\pi}} 
 \sqrt{\frac{ \left| \phi{''}_{G,x,x}(x^*(x_0)-x_0,y )\right|^2}{\left| \phi{''}_{P,x,x}(x^*(x_0),y) - \phi{''}_{G,x,x}(x^*(x_0) - x_0,y)\right|}}
 \frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
+\label{eq:spatial_sdm}
 \end{equation}
 
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth ]{Figs/sdm_circle_referencing.png}
+	\scriptsize
+	\end{overpic}
+	\caption{Illustration .}
+	\label{fig:sdm_spatial_1}
+\end{figure}
+
 The result is of primary importance in the aspect if the present treatise. It states, that an arbitrary sound field may be synthesized by finding the positions along the reference line, at which the propagation direction/wavefront of the target field matches the field of the actual SSD elements. In this stationary position the driving functions are obtained by the ratio of the target field and the SSD, corrected by the factor, containing the wavefront curvature at the same position. Therefore the explicit, global solution can be approximated by simple local wavefront matching.
+
+One important fact is pointed out here: although having derived the above driving function in terms a forward an inverse spatial Fourier transform along a straight line, there is no restriction in the $y$-coordinate of the stationary point in \eqref{eq:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be depend upon $x_0$. This means, that an arbitrary referencing curve may be defined as $\vxref(x,y)$, and the driving function can be calculated by finding the stationary positions along this curve, and by evaluating the driving functions in the stationary positions. The synthesis will result in amplitude correct synthesis along the reference curve. 
+
+\subsection{Application example}
+As a simple application consider the synthesis of a 2D/3D point source, referencing the synthesis to a circle around the virtual point source. For the sake of simplicity the source is located at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$. Along with the reference curve equation the stationary points are described by the following equations (since $k_{x,P}(x^*(x_0),y(x_0)) = k_{x,G}(x^*(x_0) - x_0,y(x_0)) $)
+\begin{align}
+k \frac{x^*(x_0)}{\sqrt{x^*(x_0)^2 + (y(x_0)-y_s)^2}} &= k \frac{x^*(x_0)-x_0}{\sqrt{(x^*(x_0)-x_0)^2 + y(x_0)^2}}, \\
+x^*(x_0)^2 + (y(x_0)-y_s)^2     &= R_{\mathrm{ref}}^2.
+\end{align}
+The solution for the equations with taking the positive root into consideration is given by
+\begin{align}
+x^*(x_0) &= x_0 \frac{ R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}} \\
+y(x_0) 	 &= y_s \left( 1 -  \frac{R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}}\right)
+\end{align}
+
 
 \end{document}
