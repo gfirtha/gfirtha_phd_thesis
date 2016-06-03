@@ -136,8 +136,8 @@ And vice versa, the spectrum in the proximity of these wavenumber components wil
 
 Supposing, that $x^*_P(k_x)$ and $x^*_G(k_x)$ are the stationary positions for the corresponding integrals, i.e. 
 \begin{eqnarray}
-- \left. \frac{\partial}{\partial x} \phi_P(x,y,\omega) \right|_{x = x^*_P(k_x)} = k_{x,P}^l(x^*_P(k_x),y,\omega) = k_x, \\
-- \left. \frac{\partial}{\partial x} \phi_G(x,y,\omega) \right|_{x = x^*_G(k_x)} = k_{x,G}^l(x^*_G(k_x),y,\omega) = k_x,
+- \left. \frac{\partial}{\partial x} \phi_P(x,y,\omega) \right|_{x = x^*_P(k_x)} = k_{x,P}^l(x^*_P(k_x),y,\omega) = k_x, \label{eq:klP} \\
+- \left. \frac{\partial}{\partial x} \phi_G(x,y,\omega) \right|_{x = x^*_G(k_x)} = k_{x,G}^l(x^*_G(k_x),y,\omega) = k_x, \label{eq:klG} 
 \label{eq:xP_xG_in_spatial_domain}
 \end{eqnarray}
 holds, and accounting for the negative derivatives---since both $P$ and $G$ are non-converging waves---their spectra can be approximated as
@@ -204,7 +204,7 @@ x^{*'}_{G,k_x}(k_x)\left( \phi'_{G,x}(x^*_G(k_x),y) + k_x \right)
 \end{multline}
 Comparing with \eqref{eq:xP_xG_in_spatial_domain} reveals, that  $\phi'_{P,x}(x^*_P(k_x),y) + k_x = 0$ and $ \phi'_{G,x}(x^*_G(k_x),y) + k_x = 0$, thus at the stationary wavenumber $k_x^*(x_0)$
 \begin{equation}
-\left( x^*_P(k_x^*(x_0)) - x^*_G(k_x^*(x_0))\right) - x_0 = 0
+x^*_P(k_x^*(x_0)) - x^*_G(k_x^*(x_0)) - x_0 = 0
 \label{eq:stat_pos_in_kx}
 \end{equation}
 holds.
@@ -213,7 +213,7 @@ Note, that the forward transform positions are dependent only on the evaluation 
 x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 \label{eq:stat_pos_in_kx_2}
 \end{equation}
-
+%
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 1\columnwidth ]{Figs/Spherical_wave_Stationary_point.png}
@@ -235,22 +235,24 @@ x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 	\caption{Illustration of the stationary points $x^*_P(x_0)$ and $x^*_G(x_0)$.}
 	\label{fig:stationary_positions_2}
 \end{figure}
-
-In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other.
-Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$.
-And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
-
-The equation for the stationary position \eqref{eq:stat_pos_in_kx} therefore satisfies
-\begin{eqnarray}
-k_x^*(x^*_P(k_x^*(x_0))) = k^l_{x,P}(x^*_P(x_0)) \\
-k_x^*(x^*_G(k_x^*(x_0))) = k^l_{x,G}(x^*_G(x_0))
-\end{eqnarray}
-Finally, reusing the definitions of the forward stationary points \eqref{eq:xP_xG_in_spatial_domain}
+%
+Taking the difference of \eqref{eq:klP} and \eqref{eq:klG} in the stationary wavenumber $k_x^*(x_0)$ results in
+%
+% In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other.
+% Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$.
+% And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
+% The equation for the stationary position \eqref{eq:stat_pos_in_kx} therefore satisfies
+% \begin{eqnarray}
+% k_x^*(x^*_P(k_x^*(x_0))) = k^l_{x,P}(x^*_P(x_0)) \\
+% k_x^*(x^*_G(k_x^*(x_0))) = k^l_{x,G}(x^*_G(x_0))
+% \end{eqnarray}
+% Finally, reusing the definitions of the forward stationary points \eqref{eq:xP_xG_in_spatial_domain}
 \begin{equation} 
-k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_G(x_0))
+k^l_{x,P}(x^*_P(k^*_x(x_0))) = k^l_{x,G}(x^*_G(k^*_x(x_0)))
+\label{eq:intermediate}
 \end{equation}
-must hold.
-Substituting \eqref{eq:stat_pos_in_kx_2} the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
+% must hold.
+By suppressing the $k^*_x$-dependency and substituting \eqref{eq:stat_pos_in_kx_2} into \eqref{eq:intermediate}, the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
 \begin{equation}
 k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_P(x_0) - x_0).
 \end{equation}
