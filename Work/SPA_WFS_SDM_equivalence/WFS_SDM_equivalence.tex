@@ -58,12 +58,14 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 \maketitle
 
 \section{Preliminary concepts}
-Consider the explicit driving function for a linear SSD consisting of 3D point sources described by $G(\vx,\omega)$. The driving functions are defined only in the synthesis plane $z=0$:
+Consider the explicit driving function for a linear SSD consisting of 3D point sources described by $G(\vx,\omega)$.
+The driving functions are defined only in the synthesis plane $z=0$:
 \begin{equation}
 \tilde{D}(k_x,y,\omega) = \frac{\tilde{P}(k_x,y,0,\omega)}{\tilde{G}(k_x,y,0,\omega)}. 
 \end{equation}
 For the sake of simplicity in the followings both $z$ and $\omega$ dependencies are suppressed.
-Restricting of both $P$ and $G$ to the synthesis plane will result up in phase correct synthesis of sound fields, that's local propagation direction is restricted to the same plane. This can be formulated using the local wavenumber vector.
+Restricting of both $P$ and $G$ to the synthesis plane will result up in phase correct synthesis of sound fields, that's local propagation direction is restricted to the same plane.
+This can be formulated using the local wavenumber vector.
 
 An arbitrary complex valued sound field may be written in a polar form as
 \begin{equation}
@@ -74,7 +76,10 @@ Let's define the local wavenumber vector by
 \begin{equation}
 \vk^l_P(\vx) = [k_x^l(\vx),\ k_y^l(\vx),\ k_z^l(\vx)]^{\mathrm{T}} = -\nabla \phi_P(\vx,\omega),
 \end{equation}
-i.e. as the gradient of the phase function. The wavenumber vector points in the local propagation direction of an arbitrary sound field, with its magnitude equaling $k = \omega/c$ i.e. the acoustic wavenumber. Superscript $l$ is introduced in order to distinguish the here defined local wavenumber from the spectral components in the followings. Throughout the derivation it is a pre-requisition, that $k_{z,P}^l(x,y,0) = 0$. 
+ie.\ as the gradient of the phase function.
+The wavenumber vector points in the local propagation direction of an arbitrary sound field, with its magnitude equaling $k = \omega/c$ ie.\ the acoustic wavenumber.
+Superscript $l$ is introduced in order to distinguish the here defined local wavenumber from the spectral components in the followings.
+Throughout the derivation it is a pre-requisition, that $k_{z,P}^l(x,y,0) = 0$. 
 
 Furthermore, for the sake of simplicity we restrict our investigation into non-converging, or non-focused waves, which we define from simple geometric considerations as waves, for 
 \begin{eqnarray}
@@ -82,7 +87,8 @@ Furthermore, for the sake of simplicity we restrict our investigation into non-c
 \frac{\partial}{\partial y} k_{y,P}^l(\vx) = -\frac{\partial^2}{\partial y^2} \phi_P (\vx,\omega) \geq 0, \hspace{3mm}\rightarrow \hspace{3mm} \frac{\partial^2}{\partial y^2} \phi_P (\vx,\omega) \leq 0\\
 \frac{\partial}{\partial z} k_{z,P}^l(\vx) = -\frac{\partial^2}{\partial z^2} \phi_P (\vx,\omega) \geq 0 \hspace{3mm}\rightarrow \hspace{3mm} \frac{\partial^2}{\partial z^2} \phi_P (\vx,\omega) \leq 0
 \end{eqnarray}
-holds. The equations trivially hold for an acoustic point source.
+holds.
+The equations trivially hold for an acoustic point source.
 
 \section{Inverse Fourier transform of the driving functions}
 
@@ -94,14 +100,16 @@ By definition the wavenumber content of the involved quantities are obtained via
 \begin{equation}
 \tilde{G}(k_x,y) = \int_{-\infty}^{\infty} G(x,y) \te^{\ti k_x x} \td x = \int_{-\infty}^{\infty} A_G(x,y) \te^{\ti \phi_G(x,y)} \te^{\ti k_x x} \td x.
 \end{equation}
-Here $k_x$ denotes the corresponding wavenumber component of the actual global plane wave, constituting the expansion basis of the transform (i.e. the actual spectral component).
+Here $k_x$ denotes the corresponding wavenumber component of the actual global plane wave, constituting the expansion basis of the transform (ie.\ the actual spectral component).
 
 Now consider, that the involved spectra are obtained by using the stationary phase approximation:
-Under high-frequency assumptions ($\phi(x,y,\omega)+k_x x \gg 1$) the Fourier integral may be approximated by evaluation around its stationary point (assuming only one stationary point in the integral path). The stationary point $x^*(k_x)$ is found, where the $x$-derivative of the exponent is zero, i.e. where
+Under high-frequency assumptions ($\phi(x,y,\omega)+k_x x \gg 1$) the Fourier integral may be approximated by evaluation around its stationary point (assuming only one stationary point in the integral path).
+The stationary point $x^*(k_x)$ is found, where the $x$-derivative of the exponent is zero, ie.\ where
 \begin{equation}
 - \left. \frac{\partial}{\partial x} \phi(x,y,\omega) \right|_{x = x^*(k_x)} = k_x^l(x^*(k_x),y,\omega) = k_x,
 \end{equation}
-holds: \emph{the greatest contribution to the wavenumber spectrum at an arbitrary wavenumber $k_x$ has the point in space, where the local wavenumber component $k_x^l(\vx)$ equals $k_x$}. Note, that it is assumed, that in the sound field each local propagation direction is unique.
+holds: \emph{the greatest contribution to the wavenumber spectrum at an arbitrary wavenumber $k_x$ has the point in space, where the local wavenumber component $k_x^l(\vx)$ equals $k_x$}.
+Note, that it is assumed, that in the sound field each local propagation direction is unique.
 Since each $k_x$ wavenumber component assigns a new stationary point, therefore the stationary point for a given $k_x$ is denoted including its dependency by $x^*(k_x)$.
 
 The stationary phase approximation states, that around the stationary point $x^*$ an arbitrary oscillating integral can be approximated as 
@@ -116,7 +124,11 @@ F(x^*) \te^{\ti \phi(x^*) +
 	\begin{overpic}[width = 1\columnwidth]{Figs/stationary_points.png}
 	\scriptsize
 	\end{overpic}
-	\caption{Illustration of the spatial and spectral location of stationary positions during forward and inverse transform: Figure (a) shows the real part of a 3D point source field, with its wavenumber vector shown along $y_0 = 1.5~\mathrm{m}$, along with the $k^l_x(x,y_0)$ component (b). Red dots denote three arbitrary chosen points, with $k^l_x(x,y_0) = -0.5,\ 0,\ 0.5$. Figure (c) shows the wavenumber content $\tilde{P}(k_x,y_0)$ of the sound field. The red dots in the spatial distribution will dominate the same wavenumber components in the spectrum, denoted by red dots again. And vice versa, the spectrum in the proximity of these wavenumber components will dominate the spatial distribution in regions, where the local wavenumber components coincide with the spectral bins.}
+	\caption{Illustration of the spatial and spectral location of stationary positions during forward and inverse transform: Figure (a) shows the real part of a 3D point source field, with its wavenumber vector shown along $y_0 = 1.5~\mathrm{m}$, along with the $k^l_x(x,y_0)$ component (b).
+Red dots denote three arbitrary chosen points, with $k^l_x(x,y_0) = -0.5,\ 0,\ 0.5$.
+Figure (c) shows the wavenumber content $\tilde{P}(k_x,y_0)$ of the sound field.
+The red dots in the spatial distribution will dominate the same wavenumber components in the spectrum, denoted by red dots again.
+And vice versa, the spectrum in the proximity of these wavenumber components will dominate the spatial distribution in regions, where the local wavenumber components coincide with the spectral bins.}
 	\label{fig:stationary_positions}
 \end{figure}
 
@@ -193,7 +205,8 @@ Comparing with \eqref{eq:xP_xG_in_spatial_domain} reveals, that  $\phi'_{P,x}(x^
 \left( x^*_P(k_x^*(x_0)) - x^*_G(k_x^*(x_0))\right) - x_0 = 0
 \label{eq:stat_pos_in_kx}
 \end{equation}
-holds. Note, that the forward transform positions are dependent only on the evaluation position $x_0$, i.e. the equation can be rewritten by omitting $k_x^*()$ dependency
+holds.
+Note, that the forward transform positions are dependent only on the evaluation position $x_0$, ie.\ the equation can be rewritten by omitting $k_x^*()$ dependency
 \begin{equation}
 x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 \label{eq:stat_pos_in_kx_2}
@@ -221,7 +234,9 @@ x^*_P(x_0) -  x^*_G(x_0) - x_0 = 0.
 	\label{fig:stationary_positions_2}
 \end{figure}
 
-In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other. Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$. And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
+In order to interpret this result it is important to realize, that in case of a forward and inverse Fourier transform the stationary positions in spatial and spectral domain mutually determine each other.
+Therefore as already stated in the previous section in the spectrum of a wave field one spectral component $k_x$ will be dominated by that parts, of the space, where the local wavenumber $k_x(x^*)$ coincides $k_x$.
+And vice versa: in the inverse transform \eqref{eq:inverse_transform} those wavenumber $k_x^*(x_0)$ will dominate the integral at $x_0$, that coincides with the local wavenumber vector of the sound field at $x_0$. 
 
 The equation for the stationary position \eqref{eq:stat_pos_in_kx} therefore satisfies
 \begin{eqnarray}
@@ -232,11 +247,13 @@ Finally, reusing the definitions of the forward stationary points \eqref{eq:xP_x
 \begin{equation} 
 k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_G(x_0))
 \end{equation}
-must hold. Substituting \eqref{eq:stat_pos_in_kx_2} the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
+must hold.
+Substituting \eqref{eq:stat_pos_in_kx_2} the original stationary position $x^*_P(x_0)$ is found for a given $x_0$, where 
 \begin{equation}
 k^l_{x,P}(x^*_P(x_0)) = k^l_{x,G}(x^*_P(x_0) - x_0).
 \end{equation}
-This result is of central importance in the aspect of the present derivation: it states, that the driving function at $x_0$ is dominated by the stationary positions $x^*_P(x_0)$ and $x^*_G(x_0)$ taken at $y$, and these positions are defined as the positions, where the local propagation direction of the virtual sound field and the Green's function placed on the SSD at $x_0$ coincide. See Figure \ref{fig:stationary_positions_2} for an illustration.
+This result is of central importance in the aspect of the present derivation: it states, that the driving function at $x_0$ is dominated by the stationary positions $x^*_P(x_0)$ and $x^*_G(x_0)$ taken at $y$, and these positions are defined as the positions, where the local propagation direction of the virtual sound field and the Green's function placed on the SSD at $x_0$ coincide.
+See Figure \ref{fig:stationary_positions_2} for an illustration.
 
 In order to evaluate the inverse integral using the SPA one still needs the second derivative of the phase function \eqref{eq:phase_function}, reading
 \begin{multline}
@@ -258,8 +275,10 @@ and the second derivatives simplifies to
 \frac{\partial^2}{\partial k_x^2} \varphi(k_x) = \frac{ \phi{''}_{P,x,x}(x^*_P(k_x),y) - \phi{''}_{G,x,x}(x^*_G(k_x),y)}{\phi{''}_{P,x,x}(x^*_P(k_x),y) \phi{''}_{G,x,x}(x^*_G(k_x),y)}.
 \label{eq:second_Derivative_2}
 \end{equation}
-The second derivative of the phase function, i.e. the rate of change of the wavenumber vector, is proportional to the curvature of the field at a given position (with a factor (-1) present). However the curvature of any source positioned behind the SSD will be smaller, than that of a point source, located at $y = 0$ for any $y>0$ position.
-Therefore, for an arbitrary simple sound field $k_{x,G,x}'(\vx) > k_{x,P,x}'(\vx)$ and $\phi{''}_{P,x,x}(x^*_P(k_x),y) - \phi{''}_{G,x,x}(x^*_G(k_x),y) >0$ holds. This determinates the sign function in the SPA.
+The second derivative of the phase function, ie.\ the rate of change of the wavenumber vector, is proportional to the curvature of the field at a given position (with a factor (-1) present).
+However the curvature of any source positioned behind the SSD will be smaller, than that of a point source, located at $y = 0$ for any $y>0$ position.
+Therefore, for an arbitrary simple sound field $k_{x,G,x}'(\vx) > k_{x,P,x}'(\vx)$ and $\phi{''}_{P,x,x}(x^*_P(k_x),y) - \phi{''}_{G,x,x}(x^*_G(k_x),y) >0$ holds.
+This determinates the sign function in the SPA.
 
 Finally, substituting this result (Eq.\eqref{eq:second_Derivative_2}) along with \eqref{eq:stat_pos_in_kx} into the SPA in order to evaluate integral \eqref{eq:inverse_transform_2} one obtains (due to the positive sign of the derivatives simplifications may be done)
 \begin{equation}
@@ -276,6 +295,9 @@ D(x_0) \approx
 \frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
 \end{equation}
 
-The result is of primary importance in the aspect if the present treatise. It states, that an arbitrary sound field may be synthesized by finding the positions along the reference line, at which the propagation direction/wavefront of the target field matches the field of the actual SSD elements. In this stationary position the driving functions are obtained by the ratio of the target field and the SSD, corrected by the factor, containing the wavefront curvature at the same position. Therefore the explicit, global solution can be approximated by simple local wavefront matching.
+The result is of primary importance in the aspect if the present treatise.
+It states, that an arbitrary sound field may be synthesized by finding the positions along the reference line, at which the propagation direction/wavefront of the target field matches the field of the actual SSD elements.
+In this stationary position the driving functions are obtained by the ratio of the target field and the SSD, corrected by the factor, containing the wavefront curvature at the same position.
+Therefore the explicit, global solution can be approximated by simple local wavefront matching.
 
 \end{document}
