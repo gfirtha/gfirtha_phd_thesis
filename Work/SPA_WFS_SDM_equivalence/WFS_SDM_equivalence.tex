@@ -125,8 +125,8 @@ F(x^*) \te^{\ti \phi(x^*) +
 	\begin{overpic}[width = 1\columnwidth]{Figs/stationary_points.png}
 	\scriptsize
 	\end{overpic}
-	\caption{Illustration of the spatial and spectral location of stationary positions during forward and inverse transform: Figure (a) shows the real part of a 3D point source field, with its wavenumber vector shown along $y_0 = 1.5~\mathrm{m}$, along with the $k^l_x(x,y_0)$ component (b).
-Red dots denote three arbitrary chosen points, with $k^l_x(x,y_0) = -0.5,\ 0,\ 0.5$.
+	\caption{Illustration of the spatial and spectral location of stationary positions during forward and inverse transform: Figure (a) shows the real part of a 3D point source field, with its wavenumber vector shown along $y_0 = 1.5~\mathrm{m}$, along with the $k^l_x(x,y_0)/k$ component (b).
+Red dots denote three arbitrary chosen points, with $k^l_x(x,y_0)/k = -0.5,\ 0,\ 0.5$.
 Figure (c) shows the wavenumber content $\tilde{P}(k_x,y_0)$ of the sound field.
 The red dots in the spatial distribution will dominate the same wavenumber components in the spectrum, denoted by red dots again.
 And vice versa, the spectrum in the proximity of these wavenumber components will dominate the spatial distribution in regions, where the local wavenumber components coincide with the spectral bins.}
@@ -329,12 +329,22 @@ Substituting into \eqref{eq:spatial_sdm} yields the explicit driving function in
 
 Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
 
-\section{Inverse propagating the driving functions}
+\section{Driving functions in terms of the target field on SSD}
 
-In order to show more connections between SDM and WFS our aim is to express the driving functions in terms of the target field taken on the SSD.
+In order to show the exact connection between SDM and 2.5D WFS the driving functions are expressed in terms of the target field taken on the SSD.
 Let's express an arbitrary sound field at $\vx = [x,\ y,\ z]^{\mathrm{T}}$ using the 3D Rayleigh integral:
 \begin{equation}
 P(x,y,z) = \iint_{-\infty}^{\infty} \frac{\partial}{\partial y}P(x_0,0,z) G(x-x_0,y,z-z_0) \td z_0 \td x_0.
 \end{equation}
+The integral may be evaluated by the SPA.
+Applying high-frequency approximations the gradient of the sound field reads
+\begin{equation}
+\nabla P(\vx) \approx \ti \phi_P(\vx) P(\vx) = -\ti \vk_P^l(\vx) P(\vx),
+\end{equation}
+thus the phase function under consideration is
+\begin{equation}
+\phi(\vx,\vxo) \approx \frac{\pi}{2} + \phi_P(x_0,0,z) + \phi_G(x-x_0,y,z-z_0).
+\end{equation}
+The stationary position $x_0^*(x)$, $z_0^*(z)$ is found, where 
 
 \end{document}
