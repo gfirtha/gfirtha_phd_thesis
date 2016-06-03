@@ -283,25 +283,29 @@ D(x_0) \approx
 	\begin{overpic}[width = .95\columnwidth ]{Figs/sdm_circle_referencing.png}
 	\scriptsize
 	\end{overpic}
-	\caption{Illustration .}
+	\caption{Synthesis of a 2D point source (a,c) and a 3D point source (b,d) located at $\vxs = [0,\ -1,\ 0]^\mathrm{T}$, oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/s}$. The synthesis is referenced on a circle around the virtual source, with a radius of $R_{\mathrm{ref}} = 3~\mathrm{m}$.}
 	\label{fig:sdm_spatial_1}
 \end{figure}
 
+
 The result is of primary importance in the aspect if the present treatise. It states, that an arbitrary sound field may be synthesized by finding the positions along the reference line, at which the propagation direction/wavefront of the target field matches the field of the actual SSD elements. In this stationary position the driving functions are obtained by the ratio of the target field and the SSD, corrected by the factor, containing the wavefront curvature at the same position. Therefore the explicit, global solution can be approximated by simple local wavefront matching.
 
-One important fact is pointed out here: although having derived the above driving function in terms a forward an inverse spatial Fourier transform along a straight line, there is no restriction in the $y$-coordinate of the stationary point in \eqref{eq:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be depend upon $x_0$. This means, that an arbitrary referencing curve may be defined as $\vxref(x,y)$, and the driving function can be calculated by finding the stationary positions along this curve, and by evaluating the driving functions in the stationary positions. The synthesis will result in amplitude correct synthesis along the reference curve. 
+One important fact is pointed out here: although having derived the above driving functions in terms a forward an inverse spatial Fourier transform along a straight line, there is no restriction in the $y$-coordinate of the stationary point in \eqref{eq:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent. This means, that an arbitrary referencing curve may be defined as $\vxref(x,y)$, and the driving functions can be calculated by finding the stationary positions $k_{x,P}^l(\vxref(x_0)) = k_{x,P}^l(\vxref(x_0) - x_0)$ along this curve. Evaluating the driving functions in the stationary positions will result in amplitude correct synthesis along the reference curve. 
+
 
 \subsection{Application example}
-As a simple application consider the synthesis of a 2D/3D point source, referencing the synthesis to a circle around the virtual point source. For the sake of simplicity the source is located at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$. Along with the reference curve equation the stationary points are described by the following equations (since $k_{x,P}(x^*(x_0),y(x_0)) = k_{x,G}(x^*(x_0) - x_0,y(x_0)) $)
+As a simple application consider the synthesis of a 2D/3D point source, referencing the synthesis to a circle around the virtual point source. For the sake of simplicity the source is located at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$. Along with the equation describing the reference curve the stationary points satisfy the following equations (since the phase function of a 2D and 3D point source is approximately the same for 2D and 3D point sources)
 \begin{align}
 k \frac{x^*(x_0)}{\sqrt{x^*(x_0)^2 + (y(x_0)-y_s)^2}} &= k \frac{x^*(x_0)-x_0}{\sqrt{(x^*(x_0)-x_0)^2 + y(x_0)^2}}, \\
 x^*(x_0)^2 + (y(x_0)-y_s)^2     &= R_{\mathrm{ref}}^2.
 \end{align}
-The solution for the equations with taking the positive root into consideration is given by
+The solution for the equations with taking only the positive root into consideration is given by
 \begin{align}
 x^*(x_0) &= x_0 \frac{ R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}} \\
 y(x_0) 	 &= y_s \left( 1 -  \frac{R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}}\right)
 \end{align}
+Substituting into \eqref{eq:spatial_sdm} yields the explicit driving function in the spatial domain referencing the synthesis on a circle. In this case the only difference between the 2D and 3D point source driving functions is the actual form of $P(x^*(x_0),y(x_0))$.
 
+Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
 
 \end{document}
