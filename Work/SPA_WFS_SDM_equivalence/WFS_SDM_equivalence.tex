@@ -293,7 +293,7 @@ The result is of primary importance in the aspect if the present treatise. It st
 One important fact is pointed out here: although having derived the above driving functions in terms a forward an inverse spatial Fourier transform along a straight line, there is no restriction in the $y$-coordinate of the stationary point in \eqref{eq:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent. This means, that an arbitrary referencing curve may be defined as $\vxref(x,y)$, and the driving functions can be calculated by finding the stationary positions $k_{x,P}^l(\vxref(x_0)) = k_{x,P}^l(\vxref(x_0) - x_0)$ along this curve. Evaluating the driving functions in the stationary positions will result in amplitude correct synthesis along the reference curve. 
 
 
-\subsection{Application example}
+\subsubsection{Application example}
 As a simple application consider the synthesis of a 2D/3D point source, referencing the synthesis to a circle around the virtual point source. For the sake of simplicity the source is located at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$. Along with the equation describing the reference curve the stationary points satisfy the following equations (since the phase function of a 2D and 3D point source is approximately the same for 2D and 3D point sources)
 \begin{align}
 k \frac{x^*(x_0)}{\sqrt{x^*(x_0)^2 + (y(x_0)-y_s)^2}} &= k \frac{x^*(x_0)-x_0}{\sqrt{(x^*(x_0)-x_0)^2 + y(x_0)^2}}, \\
@@ -307,5 +307,13 @@ y(x_0) 	 &= y_s \left( 1 -  \frac{R_{\mathrm{ref}}}{\sqrt{x_0^2 + y_s^2}}\right)
 Substituting into \eqref{eq:spatial_sdm} yields the explicit driving function in the spatial domain referencing the synthesis on a circle. In this case the only difference between the 2D and 3D point source driving functions is the actual form of $P(x^*(x_0),y(x_0))$.
 
 Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
+
+\section{Inverse propagation of the driving functions}
+
+In order to show more connections between SDM and WFS our aim is to express the driving functions in terms of the target field taken on the SSD.
+Let's express an arbitrary sound field at $\vx = [x,\ y,\ z]^{\mathrm{T}}$ using the 3D Rayleigh integral:
+\begin{equation}
+P(x,y,z) = \iint_{-\infty}^{\infty} \frac{\partial}{\partial y}P(x_0,0,z) G(x-x_0,y,z-z_0) \td z_0 \td x_0.
+\end{equation}
 
 \end{document}
