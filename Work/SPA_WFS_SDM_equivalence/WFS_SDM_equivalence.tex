@@ -31,7 +31,22 @@
 \usepackage{footnote}
 \usepackage{multicol}
 %
-
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\[2pt]
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
 \newcommand{\dint}{\int\!\!\!\!\!\int}
 \newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
 \newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
@@ -312,7 +327,7 @@ This means, that an arbitrary referencing curve may be defined as $\vxref(x,y)$,
 Evaluating the driving functions in the stationary positions will result in amplitude correct synthesis along the reference curve. 
 
 
-c\subsection{Application example}
+\subsection{Application example}
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .95\columnwidth ]{Figs/sdm_circle_referencing.png}
@@ -370,9 +385,9 @@ The stationary phase approximation in 2D reads
 \end{equation}
 with $A$ being the Hessian matrix, that's determinant is given by
 \begin{equation}
-|\det A| = \phi^{''}_{x_0,x_0}(\vxo^*(\vx),\vx) \phi^{''}_{z_0,z_0}(\vxo^*(\vx),\vx) - \underbrace{\left( \phi^{''}_{z_0,x_0}(\vxo^*(\vx),\vx) \right)^2}_{ \equiv 0}.
+|\det A| = \phi^{''}_{x_0,x_0}(\vxo^*(\vx),\vx) \phi^{''}_{z_0,z_0}(\vxo^*(\vx),\vx) - \underbrace{\left( \phi^{''}_{z_0,x_0}(\vxo^*(\vx),\vx) \right)^2}_{ \equiv 0},
 \end{equation}
-where the second term is the $x$-directional rate of change of $k^l_{z,P/G}(z = 0)$, which is by definition identically zero in the synthesis plane. $\text{sgn}(A)$ denotes the signature of the matrix, given by the difference between the positive and negative eigenvalues of the matrix. Since $A$ is diagonal and for a non-converging virtual sound field both diagonal elements are negative, thus $\text{sgn} (A) = -2$.
+where the second term is the $x$-directional rate of change of $k^l_{z,P/G}()$, which is by definition identically zero in the synthesis plane. $\text{sgn}(A)$ denotes the signature of the matrix, given by the difference between the positive and negative eigenvalues of the matrix. Since $A$ is diagonal and for a non-converging virtual sound field both diagonal elements are negative, thus $\text{sgn} (A) = -2$.
 The sound field under consideration therefore can be approximated as
 \begin{equation}
 P(x,y,0) =  -2 \frac{2\pi}{\ti \sqrt{|\phi^{''}_{x_0,x_0}(\vxo^*(\vx),\vx) \phi^{''}_{z_0,z_0}(\vxo^*(\vx),\vx)|}} \frac{\partial}{\partial y}P(x_0^*(x),0,0) G(x-x_0^*(x),y,0)
@@ -414,10 +429,58 @@ D(x_0) \approx -2
 \sqrt{ \left| \phi''_{P,x,x}(x_0^*(x),0,0) + \phi''_{G,x,x}(x- x_0^*(x),y,0) 	\right|}
 \frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
 \end{equation}
-and as a final result one obtains the driving functions written in terms of the target field, written on the SDM
+and as a final result one obtains the driving functions written in terms of the target field, written on the SDM (by denoting the possible $x_0$ dependency of the reference $y$-coordinate)
 \begin{equation}
 D(x_0) \approx -2
-\sqrt{ \frac{2\pi}{\ti \left| \phi^{''}_{P,z_0,z_0}(x_0,0,0	) + \phi^{''}_{G,z_0,z_0}(x^*(x_0) - x_0,y,0) \right|}}
- \frac{\partial}{\partial y}P(x_0,0,0) .
+\sqrt{ \frac{2\pi}{\ti \left| \phi^{''}_{P,z_0,z_0}(x_0,0,0	) + \phi^{''}_{G,z_0,z_0}(x^*(x_0) - x_0,y(x_0),0) \right|}}
+ \frac{\partial}{\partial y}P(x_0,0,0).
+\label{eq:SDM_rayleigh}
 \end{equation}
+
+The result is basically correspond to the general 2.5D WFS driving functions obtained directly from the 2.5D Neumann Rayleigh integral, with one important difference: the 2.5D Rayleigh integral could be optimized to one point in the space, i.e. to a reference point, and the referencing theory was introduced in an intuitive manner, which made possible to reference the driving functions on an arbitrary reference curve.
+On the other hand, the driving functions given by \eqref{eq:SDM_rayleigh} inherently contains the SPA in the $x$-direction, and the referencing curve concept, since the driving functions derived ensure an optimal synthesis at 
+\begin{equation}
+\vx_{\mathrm{ref}}(x_0) = \colvec{2}{x^*(x_0)}{y(x_0)}, \hspace{5mm} \text{where} \hspace{5mm} \vk^l_{P}(\vxref) = \vk^l_{G}(\vxref-\vxo).
+\end{equation} 
+Note, that in unified WFS theory the referencing function was defined as
+\begin{equation}
+\dref(x_0) = \sqrt{ \frac{k}{\left| \phi^{''}_{P,z_0,z_0}(x_0,0,0	) + \phi^{''}_{G,z_0,z_0}(x^*(x_0) - x_0,y(x_0),0) \right|}}
+\end{equation}
+in terms of the second derivative for the general 3D case which simplified to
+\begin{equation}
+\dref(x_0) = \sqrt{ \frac{k}{\left| \phi^{''}_{G,z_0,z_0}(x^*(x_0) - x_0,y(x_0),0) \right|}}
+\end{equation}
+for an arbitrary 2D target sound field.
+
+From simple geometrical considerations one may deduce, that the local propagation direction of the target sound field at $x_0$ will determine the positions of correct synthesis, and it $x$-coordinates are given by
+\begin{equation}
+x^*(x_0) = x_0 + \frac{k^l_{x,P}(x_0)}{k^l_{y,P}(x_0)} y(x_0), 
+\end{equation}
+therefore the driving function takes the form
+\begin{equation}
+D(x_0) \approx -2
+\sqrt{ \frac{2\pi}{\ti \left| \phi^{''}_{P,z_0,z_0}(x_0,0,0	) + \phi^{''}_{G,z_0,z_0}(\frac{k^l_{x,P}(x_0)}{k^l_{y,P}(x_0)} y(x_0),y(x_0),0) \right|}}
+ \frac{\partial}{\partial y}P(x_0,0,0).
+\end{equation}
+Now, introducing the explicit form of the 3D Green's function:
+\begin{equation}
+\phi^{''}_{G,z_0,z_0}(\frac{k^l_{x,P}(x_0)}{k^l_{y,P}(x_0)} y(x_0),y(x_0),0) = -\frac{k}{\sqrt{\left( \frac{k^l_{x,P}(x_0)}{k^l_{y,P}(x_0)} y(x_0) \right)^2 + y(x_0)^2}}
+= 
+-\frac{k^l_{y,P}(x_0)}{y(x_0)}.
+\end{equation}
+
+Assuming a 2D sound field and using the high frequency gradient approximation this directly leads to the 2D driving functions
+\begin{equation}
+D(x_0) = 
+\sqrt{ 8\pi \ti k^l_{y,P}(x_0) y(x_0) }
+ P(x_0,0,0).
+\end{equation}
+
+Fixing the reference curve $y$-coordinate ($y(x_0) = \yref$) leads to the already known general WFS driving function referencing the synthesis of a 2D field to a reference line. Similarly, the driving function for a 3D virtual sound field, referencing the synthesis on the reference line reads
+\begin{equation}
+D(x_0) = 
+\sqrt{ \frac{8\pi \ti \yref }{\left| \yref\phi^{''}_{P,z_0,z_0}(x_0,0,0	) - k^l_{y,P}(x_0) \right|}}
+ k^l_{y,P}(x_0)P(x_0,0,0).
+\end{equation}
+
 \end{document}
