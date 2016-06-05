@@ -500,16 +500,15 @@ Now, introducing the explicit form of the 3D Green's function:
 
 Assuming a 2D sound field and using the high frequency gradient approximation this directly leads to the 2D driving functions
 \begin{equation}
-D(x_0) = 
+D_{2\mathrm{D}}(x_0) = 
 \sqrt{ 8\pi \ti k^l_{y,P}(x_0) y(x_0) }
  P(x_0,0,0).
 \end{equation}
 
 Fixing the reference curve $y$-coordinate ($y(x_0) = \yref$) leads to the already known general WFS driving function referencing the synthesis of a 2D field to a reference line. Similarly, the driving function for a 3D virtual sound field, referencing the synthesis on the reference line reads
 \begin{equation}
-D(x_0) = 
-\sqrt{ \frac{8\pi \ti \yref }{\left| \yref\phi''_{P,zz}(x_0,0,0	) - k^l_{y,P}(x_0) \right|}}
- k^l_{y,P}(x_0)P(x_0,0,0).
+D_{3\mathrm{D}}(x_0) = 
+\sqrt{ \frac{8\pi \ti k^l_{y,P}(x_0) \yref }{\left| \frac{\yref}{k^l_{y,P}(x_0)}\phi''_{P,zz}(x_0,0,0	) - 1 \right|}} P(x_0,0,0).
 \end{equation}
 
 \end{document}
