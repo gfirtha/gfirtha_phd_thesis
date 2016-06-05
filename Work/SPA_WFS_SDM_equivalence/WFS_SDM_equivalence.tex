@@ -381,7 +381,7 @@ i.e. where
 \left.
 \frac{\partial}{\partial \xi} \left( \phi_P(\xi,0,\zeta) + \phi_G(x-\xi,0,z-\zeta) \right)\right|_{\xi = \xi^*(x), \zeta = \zeta^*(z)} \nonumber \\
 =
-\phi'_{P,x}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,x}(x-\xi^*(x),0,z-\zeta^*(z)) = 0
+\phi'_{P,x}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,x}(x-\xi^*(x),y,z-\zeta^*(z)) = 0
 \label{eq:phix}
 \end{eqnarray}
 %
@@ -390,7 +390,7 @@ and similarly
 \begin{eqnarray}
 \left. \frac{\partial}{\partial \zeta} \left( \phi_P(\xi,0,\zeta) + \phi_G(x-\xi,0,z-\zeta) \right)\right|_{\xi = \xi^*(x), \zeta = \zeta^*(z)} \nonumber \\
 =
-\phi'_{P,z}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,z}(x-\xi^*(x),0,z-\zeta^*(z)) = 0
+\phi'_{P,z}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,z}(x-\xi^*(x),y,z-\zeta^*(z)) = 0
 \label{eq:phiz}
 \end{eqnarray}
 %
@@ -416,11 +416,17 @@ where the second term is the $x$-directional rate of change of $k^l_{z,P/G}()$, 
 The~sound field under consideration therefore can be approximated as
 \begin{equation}
 P(x,y,0) =  -2 \frac{2\pi}{\ti \sqrt{|\phi''_{\xi\xi}(\vxi^*(\vx),\vx) \phi''_{\zeta\zeta}(\vxi^*(\vx),\vx)|}} P'_y(\xi^*(x),0,0) G(x-\xi^*(x),y,0)
+\label{eq:Rayleigh_SPA}
 \end{equation}
 with the phase function given by \eqref{eq:Rayleigh_phase}.
 
 In order to substitute the result into \eqref{eq:spatial_sdm}, the pressure field needs to be evaluated in $\vx = \vx^*(\vxo) = [x^*(x_0), y, 0]^{\mathrm{T}}$.
-Comparing the Rayleigh integral stationary points \eqref{eq:rayleigh_stat_point} with the stationary position of the spatial SDM driving function \eqref{eq:sdm_Stat_point} it is revealed, that they describe stationary point pairs, i.e. $\vxi^*(\vx^*(\vx_0)) = \vx_0$.
+Comparing the Rayleigh integral stationary points \eqref{eq:rayleigh_stat_point} with the stationary position of the spatial SDM driving function \eqref{eq:sdm_Stat_point} it is revealed, that they describe stationary point pairs, i.e.
+%
+\begin{equation}
+\vxi^*(\vx^*(\vx_0)) = \vx_0
+\end{equation}
+%
 Therefore, in the driving function \eqref{eq:spatial_sdm} the target field $P(x^*(x_0),y)$ can be approximated by the Rayleigh integral at $x_0$:
 %
 \begin{multline}
@@ -433,19 +439,21 @@ P(x^*(x_0),y,0) = \\ \frac{1}{\sqrt{
 \end{multline}
 
  one still needs to express the virtual field curvature on the reference curve $\phi''_{P,xx}(x^*(x_0),y)$
-in terms of the curvature on the SSD. This may be done by expressing the Rayleigh integral phase function's \eqref{eq:Rayleigh_phase} second derivative, which is given at the stationary point by
+in terms of the curvature on the SSD.
+This may be done by expressing the second derivative of SPA-approximated Rayleigh integral's \eqref{eq:Rayleigh_SPA} phase function w.r.t. $x$ as follows:
 %
 \begin{multline}
 \frac{\partial^2}{\partial x^2} \left( \phi_P(\xi^*(x),0,0) + \phi_G(x-\xi^*(x),y,0) \right) = \\
-=   \xi^{*'}_{,x}(x)^2 \phi''_{P,xx}(\xi^*(x),0,0) + (1-\xi^{*'}_{,x}(x))^2\phi''_{G,xx	}(x-\xi^*(x)(x),y,0)
+=   \xi^{*'}_{,x}(x)^2 \phi''_{P,xx}(\xi^*(x),0,0) + (1-\xi^{*'}_{,x}(x))^2\phi''_{G,xx	}(x-\xi^*(x),y,0)
 \end{multline}
-where the stationary point's $x$-derivative can be expressed by differentiating its definition \eqref{eq:rayleigh_stat_point}
+%
+where the stationary point's $x$-derivative can be expressed by differentiating its definition \eqref{eq:phix}
 \begin{equation}
 \xi^{*'}_{,x}(x) =  \frac{ \phi''_{G,xx}(x-\xi^*(x),y,0) }{\phi''_{P,xx}(\xi^*(x),0,0) + \phi''_{G,xx}(x-\xi^*(x),y,0) },
 \end{equation}
 thus
 \begin{equation}
-\phi''_{P,xx}( \xi^*(x),y,0 )  =
+\frac{\partial^2}{\partial x^2} \left( \phi_P(\xi^*(x),0,0) + \phi_G(x-\xi^*(x),y,0) \right)  =
 \frac{ \phi''_{P,xx}(\xi^*(x),0,0) \phi''_{G,xx}(x-x^*_0(x),y,0) }
 {\phi''_{P,xx}(\xi^*(x),0,0) + \phi''_{G,xx}(x- \xi^*(x),y,0) } .
 \end{equation}
@@ -458,7 +466,7 @@ D(x_0) \approx -2
 \sqrt{ \left| \phi''_{P,xx}(x_0,0,0) + \phi''_{G,xx}(x^*(x_0)-x_0,y,0) 	\right|}
 \frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
 \end{equation}
-and as a final result one obtains the driving functions written in terms of the target field, written on the SDM (by denoting the possible $x_0$ dependency of the reference $y$-coordinate)
+and as a final result one obtains the driving functions written in terms of the target field on the SDM (by denoting the possible $x_0$ dependency of the reference $y$-coordinate)
 \begin{equation}
 D(x_0) \approx -2
 \sqrt{ \frac{2\pi}{\ti \left| \phi''_{P,zz}(x_0,0,0	) + \phi''_{G,zz}(x^*(x_0) - x_0,y(x_0),0) \right|}}
