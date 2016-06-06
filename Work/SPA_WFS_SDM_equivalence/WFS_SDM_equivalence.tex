@@ -336,7 +336,7 @@ Evaluating the driving functions in the stationary positions will result in ampl
 \end{figure}
 As a simple application consider the synthesis of a 2D/3D point source, referencing the synthesis to a circle around the virtual point source.
 For the sake of simplicity the source is located at $\vxs = [0,\ y_s,\ 0]^{\mathrm{T}}$. Along with the equation describing the reference curve the stationary points satisfy the following equations (since the phase function of a 2D and 3D point source is approximately the same for 2D and 3D point sources)
->>>>>>> origin/fiala
+%
 \begin{align}
 k \frac{x^*(x_0)}{\sqrt{x^*(x_0)^2 + (y(x_0)-y_s)^2}} &= k \frac{x^*(x_0)-x_0}{\sqrt{(x^*(x_0)-x_0)^2 + y(x_0)^2}}, \\
 x^*(x_0)^2 + (y(x_0)-y_s)^2     &= R_{\mathrm{ref}}^2.
@@ -356,8 +356,10 @@ Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the sy
 
 In order to show the exact connection between SDM and 2.5D WFS the driving functions are expressed in terms of the target field taken on the SSD.
 Let's express an arbitrary sound field at $\vx = [x,\ y,\ z]^{\mathrm{T}}$ using the 3D Rayleigh integral:
+%
 \begin{equation}
 \hat{P}(x,y,z) = -2 \iint_{-\infty}^{\infty} P'_y(\xi,0,\zeta) G(x-\xi,y,z-\zeta) \td \zeta \td \xi.
+\label{eq:3drayleigh}
 \end{equation}
 %
 where $\hat{P}$ denotes the Rayleigh-integral representation of $P$.
@@ -367,7 +369,7 @@ Under high-frequency assumptions the gradient of the sound field is approximated
 \nabla P(\vx) \approx \ti \phi_P(\vx) P(\vx) = -\ti \vk_P^l(\vx) P(\vx),
 \end{equation}
 %
-thus the phase function under consideration is
+thus the phase of the integrand in \eqref{eq:3drayleigh} is
 %
 \begin{equation}
 \phi(\vxi,\vx) \approx \frac{\pi}{2} + \phi_P(\xi,0,\zeta) + \phi_G(x-\xi,y,z-\zeta).
@@ -383,7 +385,7 @@ i.e. where
 \left.
 \frac{\partial}{\partial \xi} \left( \phi_P(\xi,0,\zeta) + \phi_G(x-\xi,0,z-\zeta) \right)\right|_{\xi = \xi^*(x), \zeta = \zeta^*(z)} \nonumber \\
 =
-\phi'_{P,x}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,x}(x-\xi^*(x),y,z-\zeta^*(z)) = 0
+\phi'_{P,x}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,x}(x-\xi^*(x),y,z-\zeta^*(z)) = 0,
 \label{eq:phix}
 \end{eqnarray}
 %
@@ -392,34 +394,42 @@ and similarly
 \begin{eqnarray}
 \left. \frac{\partial}{\partial \zeta} \left( \phi_P(\xi,0,\zeta) + \phi_G(x-\xi,0,z-\zeta) \right)\right|_{\xi = \xi^*(x), \zeta = \zeta^*(z)} \nonumber \\
 =
-\phi'_{P,z}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,z}(x-\xi^*(x),y,z-\zeta^*(z)) = 0
+\phi'_{P,z}(\xi^*(x),0,\zeta^*(z)) - \phi'_{G,z}(x-\xi^*(x),y,z-\zeta^*(z)) = 0.
 \label{eq:phiz}
 \end{eqnarray}
 %
 Equations \eqref{eq:phix} and \eqref{eq:phiz} can be combined into
 %
 \begin{equation}
-\vk^l_P(\vxi^*(\vx)) = \vk^l_G(\vx - \vxi^*(\vx))
+\vk^l_P(\vxi^*(\vx)) = \vk^l_G(\vx - \vxi^*(\vx)).
 \label{eq:rayleigh_stat_point}
 \end{equation}
 %
-Fixing the listening position to $z=0$ and for virtual sound fields with $k^l_{z,P}(\vx) = 0$ trivially, $\zeta^*(z) = 0$ holds.
+Fixing the listening position to $z=0$ and for virtual sound fields with $k^l_{z,P}(\vx) = 0$ $\zeta^*(z) = 0$ trivially holds.
 
-The~stationary phase approximation in 2D reads
+The 2D SPA is defined as
+%
 \begin{equation}
-\iint_{-\infty}^{\infty} F(\xi,\zeta) \te^{\ti \phi(\xi,\zeta)}\td \zeta \td \xi \approx
-\frac{2\pi}{\sqrt{|\det A|}}F(\xi^*,\zeta^*) \te^{\ti \phi (\xi^*,\zeta^*) + \ti \frac{\pi}{4} \text{sgn} (A)},
+\iint_{-\infty}^{\infty} F(\vxi) \te^{\ti \phi(\vxi)}\td \vxi \approx
+\frac{2\pi}{\sqrt{|\det H_{\phi}(\vxi^*)|}}F(\vxi^*) \te^{\ti \phi (\vxi^*) + \ti \frac{\pi}{4} \text{sgn} (H_{\phi}(\vxi^*))},
 \end{equation}
-with $A$ being the Hessian matrix, whose determinant is given by
+%
+where $H_{\phi}$ denotes the Hessian matrix of the phase function, with the determinant given as
+%
 \begin{equation}
-\det A = \phi''_{\xi\xi}(\vxi^*(\vx),\vx) \phi''_{\zeta\zeta}(\vxi^*(\vx),\vx) - \underbrace{\left( \phi''_{\zeta\xi}(\vxi^*(\vx),\vx) \right)^2}_{ \equiv 0},
+\det H = \phi''_{\xi\xi}(\vxi^*(\vx),\vx) \phi''_{\zeta\zeta}(\vxi^*(\vx),\vx) - \underbrace{\left( \phi''_{\zeta\xi}(\vxi^*(\vx),\vx) \right)^2}_{ \equiv 0},
 \end{equation}
-where the second term is the $x$-directional rate of change of $k^l_{z,P/G}()$, which is by definition identically zero in the synthesis plane. $\text{sgn}(A)$ denotes the signature of the matrix, given by the difference between the positive and negative eigenvalues of the matrix. Since $A$ is diagonal and for a non-converging virtual sound field both diagonal elements are negative, thus $\text{sgn} (A) = -2$.
+%
+where the second term is the $x$-directional rate of change of $k^l_{z,P/G}()$, which is by definition identically zero in the synthesis plane.
+$\text{sgn}(H)$ denotes the signature of the Hessian, defined as the difference of the number positive and negative eigenvalues. 
+Since $H$ is diagonal, and for a non-converging virtual sound field both diagonal elements are negative, $\text{sgn} (H) = -2$.
 The~sound field under consideration therefore can be approximated as
+%
 \begin{equation}
 \hat{P}(x,y,0) =  -2 \frac{2\pi}{\ti \sqrt{|\phi''_{\xi\xi}(\vxi^*(\vx),\vx) \phi''_{\zeta\zeta}(\vxi^*(\vx),\vx)|}} P'_y(\xi^*(x),0,0) G(x-\xi^*(x),y,0)
 \label{eq:Rayleigh_SPA}
 \end{equation}
+%
 with the phase function given by \eqref{eq:Rayleigh_phase}.
 
 In order to substitute the result into \eqref{eq:spatial_sdm}, the pressure field needs to be evaluated in $\vx = \vx^*(\vxo) = [x^*(x_0), y, 0]^{\mathrm{T}}$.
@@ -427,52 +437,57 @@ Comparing the Rayleigh integral stationary points \eqref{eq:rayleigh_stat_point}
 %
 \begin{equation}
 \vxi^*(\vx^*(\vx_0)) = \vx_0
+\label{eq:statrelation}
+.
 \end{equation}
 %
-Therefore, in the driving function \eqref{eq:spatial_sdm} the target field $P(x^*(x_0),y)$ can be approximated by the Rayleigh integral at $x_0$:
+Therefore,
 %
 \begin{multline}
-\hat{P}(x^*(x_0),y,0) = \\ \frac{1}{\sqrt{ 
+\hat{P}(x^*(x_0),y,0) = \\ \frac{-2}{\sqrt{ 
 \left| \phi''_{P,xx}(x_0,0,0) + \phi''_{G,xx}(x^*(x_0) - x_0,y,0) \right|
 \left| \phi''_{P,zz}(x_0,0,0	) + \phi''_{G,zz}(x^*(x_0) - x_0,y,0) \right|
 }}
 \\
  \frac{2\pi}{\ti}  P'_y(x_0,0,0) G(x^*(x_0) - x_0,y,0).
+ \label{eq:rayleighPfinal}
 \end{multline}
 %
-One still needs to express the virtual field curvature on the reference curve $\phi''_{\hat{P},xx}(x^*(x_0),y)$
-in terms of the curvature on the SSD.
+One still needs to express the virtual field's curvature on the reference curve in terms of its curvature on the SSD.
 This may be done by expressing the second derivative of the SPA-approximated Rayleigh integral's \eqref{eq:Rayleigh_SPA} phase function w.r.t. $x$ as follows:
 %
 \begin{multline}
 \phi''_{\hat{P},xx}(x,y,0) = 
 \frac{\partial^2}{\partial x^2} \left( \phi_P(\xi^*(x),0,0) + \phi_G(x-\xi^*(x),y,0) \right) = \\
 =   \xi^{*'}_{,x}(x)^2 \phi''_{P,xx}(\xi^*(x),0,0) + (1-\xi^{*'}_{,x}(x))^2\phi''_{G,xx	}(x-\xi^*(x),y,0)
+\label{eq:phidd}
 \end{multline}
 %
-where the stationary point's $x$-derivative can be expressed by differentiating its definition \eqref{eq:phix}
+where the stationary point's $x$-derivative $\xi^{*'}_{,x}(x)$ can be expressed by differentiating its definition \eqref{eq:phix}
 %
 \begin{equation}
 \xi^{*'}_{,x}(x) =  \frac{ \phi''_{G,xx}(x-\xi^*(x),y,0) }{\phi''_{P,xx}(\xi^*(x),0,0) + \phi''_{G,xx}(x-\xi^*(x),y,0) },
+\label{eq:xistatdiff}
 \end{equation}
 %
-thus
+Substituting \eqref{eq:xistatdiff} into \eqref{eq:phidd}, and evaluating the result in $\vx = \vx^*(\vxo)$ along with \eqref{eq:statrelation}, results in
+%
 \begin{equation}
-\phi''_{\hat{P},xx}(x,y,0)  =
-\frac{ \phi''_{P,xx}(\xi^*(x),0,0) \phi''_{G,xx}(x-x^*_0(x),y,0) }
-{\phi''_{P,xx}(\xi^*(x),0,0) + \phi''_{G,xx}(x- \xi^*(x),y,0) } .
+\phi''_{\hat{P},xx}(x^*(x_0),y,0)  =
+\frac{ \phi''_{P,xx}(x_0,0,0) \phi''_{G,xx}(x^*(x_0)-x_0,y,0) }
+{\phi''_{P,xx}(x_0,0,0) + \phi''_{G,xx}(x^*(x_0)-x_0,y,0) } .
+\label{eq:rayleighphasefinal}
 \end{equation}
 
-By substituting these results into the SDM driving functions \eqref{eq:spatial_sdm} one obtains
-%
-\begin{equation}
-D(x_0) \approx -2
-\sqrt{\frac{\ti}{2\pi}} 
-\sqrt{ \left| \phi''_{P,xx}(x_0,0,0) + \phi''_{G,xx}(x^*(x_0)-x_0,y,0) 	\right|}
-\frac{\hat{P}(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
-\end{equation}
-%
-and as a final result one obtains the driving functions written in terms of the target field on the SSD (by denoting the possible $x_0$ dependency of the reference $y$-coordinate)
+By substituting \eqref{eq:rayleighPfinal} and \eqref{eq:rayleighphasefinal} into \eqref{eq:spatial_sdm} one obtains the final result
+% \begin{equation}
+% D(x_0) \approx -2
+% \sqrt{\frac{\ti}{2\pi}} 
+% \sqrt{ \left| \phi''_{P,xx}(x_0,0,0) + \phi''_{G,xx}(x^*(x_0)-x_0,y,0) 	\right|}
+% \frac{\hat{P}(x_0,y)}{G(x^*(x_0) - x_0,y)}.
+% \end{equation}
+
+% and as a final result one obtains the driving functions written in terms of the target field on the SSD (by denoting the possible $x_0$ dependency of the reference $y$-coordinate)
 %
 \begin{equation}
 D(x_0) \approx -2
