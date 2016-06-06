@@ -996,20 +996,13 @@ w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td 
 \end{multline}
 with $\vx = [x,y,0]^{\mathrm{T}}$, $\vxo = [x_0,y_0, 0]^{\mathrm{T}}$ denoting in-plane positions.
 
-The integral implicitly contains the---yet receiver position dpeendent---2.5D driving functions, given for a general 3D virtual field by
+The integral implicitly contains the---yet receiver position dependent---2.5D driving functions. Substituting the second derivative of the 3D SSD elements' field yield the general form 
 \begin{equation}
-D_{3\text{D}}(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti \left| \phi''_{P,z,z}(\vxo,\omega) +  \phi''_{G,z,z}(\vx - \vxo,\omega) \right|}}
+D(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti k}}\sqrt{\dref(\vxo,\vx)}
 \frac{\partial P(\vxo,\omega)}{\partial \vni},
 \end{equation}
-which simplifies to
-\begin{multline}
-D_{2\text{D}}(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti \left|\phi''_{G,z,z}(\vx - \vxo,\omega) \right|}}
-\frac{\partial P(\vxo,\omega)}{\partial \vni} = \\ =-2 w(\vxo) \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k}}
-\frac{\partial P(\vxo,\omega)}{\partial \vni} ,
-\end{multline}
-for a 2D virtual field.
+where the referencing function takes the same form as given by \eqref{dx0_2DSources} and \eqref{Eq:dx0_PointSource} for a 2D and a 3D point source target field respectively. Using the Kirchhoff approximation therefore the 2.5D driving functions therefore are given by the 2.5D linear driving functions, supplemented by the already known windowing function.
 
-\vspace{3mm}
 In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
 Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required.
 
