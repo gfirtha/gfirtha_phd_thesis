@@ -965,8 +965,7 @@ The performance of this referencing type is demonstrated in Figure \ref{Fig:Theo
 \section{2.5D WFS for non-linear secondary source distributions}
 
 \subsection{2.5D Neumann Rayleigh integral}
-In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted in Figure \ref{Fig:WFS_Theory:non_linear_geometry} is considered.
-
+%
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 0.7\columnwidth ]{Figures/WFS_theory/wfs_nonlinear_Geometry.png}
@@ -984,11 +983,44 @@ In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted
 The SSD surface $\dO_{3\mathrm{D}} = f(x_0,y_0)$ is chosen to be independent of $z$-coordinate in order to be able to evaluate the integral with respect to $z_0$ using the SPA. If the virtual sound field is a 2D one, propagating in the direction parallel to the listening plane the the SSD can be interpreted as a continuous set of infinite vertical line sources along $\dO_{2.5\mathrm{D}}$ (described by the 2D Green's function), capable of the perfect synthesis of a virtual 2D field inside the enclosure.}
 	\label{Fig:WFS_Theory:non_linear_geometry}
 \end{figure}
+%
+In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted in Figure \ref{Fig:WFS_Theory:non_linear_geometry} is considered. The SSD surface is chosen to be an enclosing contour in the $xy$-plane, being invariant along the vertical dimension.
+Under high-frequency assumptions the general 2D/3D WFS driving functions, given by \eqref{eq:theory:gen_WFS} can be applied. In this special geometry the synthesized field inside the enclosure can be written in the form
+\begin{equation}
+P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \int\displaylimits_{-\infty}^{\infty} w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td z_0 \, \td \dO_{2.5\mathrm{D}}(x_0,y_0).
+\end{equation}
+Similarly to the planar SSD case, the vertical integral may be approximated by the SPA. Again, $k_{z,P}(x,y,0)$ is assumed, i.e. virtual fields, propagating in the plane of synthesis parallel in $z=0$ direction. The stationary position for any $z=0$ receiver position therefore becomes trivially $z_0^*=0$, and the surface integral can be approximated by a contour integral, termed as the \emph{general 2.5D Neumann Rayleigh integral}
+\begin{multline}
+P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \sqrt{\frac{2 \pi}{\ti \left| \phi''_{P,z,z}(\vxo,\omega) +  \phi''_{G,z,z}(\vx - \vxo,\omega) \right|}} \\
+w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td \dO_{2.5\mathrm{D}}(x_0,y_0),
+\end{multline}
+with $\vx = [x,y,0]^{\mathrm{T}}$, $\vxo = [x_0,y_0, 0]^{\mathrm{T}}$ denoting in-plane positions.
 
+The integral implicitly contains the---yet receiver position dpeendent---2.5D driving functions, given for a general 3D virtual field by
+\begin{equation}
+D_{3\text{D}}(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti \left| \phi''_{P,z,z}(\vxo,\omega) +  \phi''_{G,z,z}(\vx - \vxo,\omega) \right|}}
+\frac{\partial P(\vxo,\omega)}{\partial \vni},
+\end{equation}
+which simplifies to
+\begin{multline}
+D_{2\text{D}}(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti \left|\phi''_{G,z,z}(\vx - \vxo,\omega) \right|}}
+\frac{\partial P(\vxo,\omega)}{\partial \vni} = \\ =-2 w(\vxo) \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k}}
+\frac{\partial P(\vxo,\omega)}{\partial \vni} ,
+\end{multline}
+for a 2D virtual field.
+
+\vspace{3mm}
 In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
 Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required.
 
+
+
 \subsection{Referencing function and referencing schemes}
+
+\section{Relation with the explicit solution}
+\subsection{SDM driving functions in the spatial domain}
+\subsection{Driving functions on the SSD}
+	
 %
 % Referencing focused sources
 % Synthesis applying directive SSD
