@@ -83,7 +83,7 @@ The approach is referred as the \emph{Spectral Division Method (SDM)}.
 Explicit solution accounts for the global description of the involved sound field it may be termed as a \emph{global solution} \cite{Ahrens2012}.
 
 As an alternative, \emph{Wave Field Synthesis (WFS)}---giving an \emph{implicit solution}---starts out from the single layer boundary integral formulation of arbitrary sound fields, containing the required driving functions implicitly \cite{Vries2009}.
-All WFS approaches applies the \emph{stationary phase approximation (SPA)} to the Rayleigh integral in order to reduce the problem dimensionality from 3 into 2 dimensions.
+All WFS approaches apply the \emph{stationary phase approximation (SPA)} to the Rayleigh integral in order to reduce the problem dimensionality from 3 into 2 dimensions.
 \emph{Traditional WFS}, as given by Berkhout et. al \cite{Berkhout1988,Berkhout1993:Acoustic_control_by_WFS} utilizes the Rayleigh integral representations to obtain driving functions for linear SSDs with dipole characteristics, later extended for monopole secondary sources \cite{Vogel1993:phd,Start1997:phd,Verheijen1997:phd}. 
 Traditional WFS considered only directive virtual point sources and ensured optimal synthesis on a reference line, parallel to the SSD. 
 \emph{Revisited WFS} \cite{Spors2008:WFSrevisited} extended the theory for arbitrary virtual source models, including non-linear SSD curves by applying the Kirchhoff-approximation to the 2.5D Neumann Rayleigh integral and ensured optimal synthesis of 2D virtual field on a curve, containing the pre-defined reference point.
@@ -135,7 +135,7 @@ G(\vx,\omega) = \frac{1}{4 \pi} \frac{\te^{-\ti k |\vx|}}{|\vx|},
 where $k = \frac{\omega}{c}$ is the acoustic wavenumber and $c$ is the speed of sound.
 
 Obviously, \eqref{Eq:general_SFS_problem} describes a cylindrically symmetric sound field with the center being the SSD.
-Fixing the listening plane to the $z=0$ plane therefore inherently allows the phase correct synthesis of sound fields, that's local propagation direction in this plane coincides with that of the SSD.
+Fixing the listening plane to the $z=0$ plane inherently allows only the phase correct synthesis of sound fields, that's local propagation direction in this plane coincides with that of the SSD.
 In practice this limits the phase correct synthesis for 2D virtual sound fields, invariant along the $z$-dimension and ensembles of 3D point sources located at the $z=0$ plane.
 In the following sections the explicit requirement is formulated using the local wavenumber vector.
 
@@ -143,7 +143,7 @@ In the following sections the explicit requirement is formulated using the local
 
 The explicit solution exploits the fact, that the integral operator in \eqref{Eq:general_SFS_problem} describes a convolution along the $x$-axis. 
 For the linear SSD geometry the orthogonal set of basis functions are given by exponentials and the spectral decomposition is obtained by performing a forward Fourier transform along the $x$-dimension.
-The spatial Fourier transform used in the present treatise are defined in the appendix (ref). 
+The spatial Fourier transform used in the present treatise are defined in the appendix \ref{sec:App_A_Fourier_tr}. 
 In the spectral domain the convolution is transform into a multiplication and the wavenumber content of the synthesized field reads
 \begin{equation}
 \tilde{P}(k_x, y, 0, \omega) = \tilde{D}(k_x, \omega) \tilde{G}(k_x, y, 0,\omega).
@@ -175,7 +175,20 @@ The dispersion relation for the 2.5D SDM scenario is formulated as $\left( \frac
 \section{Conclusion}
 The conclusion goes here.
 
+\appendices
+\section{Definition of Fourier transforms}
+\label{sec:App_A_Fourier_tr}
+Throughout the article the temporal and spatial forward Fourier transforms are defined conventionally as
+\begin{equation}
+P(\vx,\omega) = \int_{-\infty}^{\infty} p(\vx,t) \te^{-\ti \omega t} \td t,
+\end{equation}
+\begin{equation}
+\hat{P}(k_x,y,z,\omega) = \int_{-\infty}^{\infty} P(x,y,z,\omega) \te^{\ti k_x x} \td x.
+\end{equation}
+The corresponding inverse transforms are defined with reversing the exponential sign and normalizing by $\frac{1}{2\pi}$.
 
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
 
 \ifCLASSOPTIONcaptionsoff
   \newpage
