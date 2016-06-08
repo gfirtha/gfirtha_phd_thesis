@@ -21,7 +21,7 @@ In the followings a formal definition is given, and by applying the wavenumber v
 \subsection{The integral approximation}
 %
 The SPA is a basic tool of asymptotic analysis, applied to approximate integrals around critical points in the integral path.
-The method yields approximate solutions for integrals of the form
+The method yields approximate solutions of integrals of the form
 \begin{equation}
 \label{Eq:SPAintegral_1d}
 I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(z) \, \te^{\ti \phi(z)} \, \td z
@@ -35,24 +35,24 @@ in higher dimensions, when $\te^{\ti \phi(\vxo)}$ is highly oscillating and $F(\
 
 
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
-More informally the method relies on the second order truncated Taylor series of the exponent around $z_s$, where $\phi'(z_s) = 0$ and $\phi''(z_s) \neq 0$, with $\phi'(z)$ denoting the derivative with respect to $z$:
+More informally the method relies on the second order truncated Taylor series of the exponent around $z^*$, where $\phi'(z^*) = 0$ and $\phi''(z^*) \neq 0$, with $\phi'(z)$ denoting the derivative with respect to $z$:
 \begin{equation}
-\phi(z) \approx \phi(z_s) + \frac{1}{2}\phi''(z_s)(z-z_s)^2.
+\phi(z) \approx \phi(z^*) + \frac{1}{2}\phi''(z^*)(z-z^*)^2.
 \end{equation}
-Point $z_s$ is termed the \emph{stationary point}.
+Point $z^*$ is termed the \emph{stationary point}.
 
-Supposing that $F(z)$ is a slowly varying smooth function compared to $\phi(z)$, it is assumed, that where the phase varies, i.e.\ $\phi'(z_s) \neq 0$, the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral comes from the immediate surroundings of the stationary point.
-Moreover in the proximity of the stationary point $F(z)$ can be regarded as constant with the value $F(z_s)$.
+Supposing that $F(z)$ is a slowly varying smooth function compared to $\phi(z)$, it is assumed, that where the phase varies, i.e.\ $\phi'(z) \neq 0$, the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral comes from the immediate surroundings of the stationary point.
+Moreover in the proximity of the stationary point $F(z)$ can be regarded as constant with the value $F(z^*)$.
 
 With these considerations the integral becomes
 \begin{align}
-I_{1D} \approx F(z_s)\,\te^{+\ti\phi(z_s)} 
-\int\limits_{-\infty}^{\infty} \te^{+\ti \frac{1}{2}\phi''(z_s)(z-z_s)^2} \, \td z.
+I_{1D} \approx F(z^*)\,\te^{+\ti\phi(z^*)} 
+\int\limits_{-\infty}^{\infty} \te^{+\ti \frac{1}{2}\phi''(z^*)(z-z^*)^2} \, \td z.
 \end{align}
-The remaining integral can be explicitly solved and the SPA of \eqref{Eq:SPAintegral_1d} becomes \cite[Ch.\ 2.8]{Blenstein1975}
+The remaining integral can be evaluated and the SPA of \eqref{Eq:SPAintegral_1d} becomes \cite[Ch.\ 2.8]{Blenstein1975}
 \begin{equation}
 \label{Eq:SPAResult}
-I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''(z_s) |}} F(z_s) \, \te^{+\ti \phi(z_s) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''(z_s) \right)}.
+I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''(z^*) |}} F(z^*) \, \te^{+\ti \phi(z^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''(z^*) \right)}.
 \end{equation}
 \vspace{3mm}
 Similarly, in higher dimensions the stationary point (or more precisely a \emph{simple stationary point}) is defined as
@@ -60,12 +60,12 @@ Similarly, in higher dimensions the stationary point (or more precisely a \emph{
 \label{Eq:ndim_stat_point}
 \begin{split}
 \left.
-\nabla \phi(\vxo)\right|_{\vxo = \vx_s} &= 0,
+\nabla \phi(\vxo)\right|_{\vxo = \vx^*} &= 0,
 \\ \vspace{3mm} \\
 \det A \neq 0,
 \hspace{5mm} 
 A &= \left[
-\frac{\partial^2 \phi(\vx_s)}{\partial x_i \partial x_j} 
+\frac{\partial^2 \phi(\vx^*)}{\partial x_i \partial x_j} 
 \right],
 \hspace{5mm}
 i,j = 1,2,...,n,
@@ -75,27 +75,31 @@ with $A$ being the Hessian matrix of the phase function.
 The multidimensional formula for the integral value reads
 \begin{equation}
 \label{Eq:SPAResult_nd}
-I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det A|}} F(\vx_s) \te^{\ti \phi(\vx_s) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( A \right)},
+I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det A|}} F(\vx^*) \te^{\ti \phi(\vx^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( A \right)},
 \end{equation}
 where $\mathrm{sgn}\left( A \right)$ is the signature of the Hessian (the number of positive eigenvalues minus the number of negative eigenvalues) \cite{Bleistein2000}.
 
 \subsection{The local wavenumber vector}
-Consider an arbitrary steady state harmonic sound field in $\vx \in \mathbb{R}^{2/3}$ written in a general polar form with $A(\vx,\omega)$, $\phi(\vx,\omega) \in \mathbb{R}$
+Consider an arbitrary steady state harmonic sound field in $\vx \in \mathbb{R}^2 / \mathbb{R}^3$ written in a general polar form with $A(\vx,\omega)$, $\phi(\vx,\omega) \in \mathbb{R}$
 \begin{equation}
 P(\vx,\omega) = A(\vx,\omega)\te^{\ti \phi(\vx,\omega)},
 \label{eq:25D_WFS:general_sf}
 \end{equation}
+%
 with a suppressed temporal dependency $\te^{\ti \omega t}$.
 The dynamics of wave propagation is described by the phase of the sound field.
-Borrowed from ray-tracing/geometrical optics theory let's introduce the following quantities \cite{Romer2005,Carozzi2004}:
+Borrowed from ray-tracing/geometrical optics theory we introduce the following quantities \cite{Romer2005,Carozzi2004}:
+%
 \begin{equation}
 \vk(\vx) = [k_x(\vx),\ k_y(\vx),\ k_z(\vx)]^{\mathrm{T}} = -\nabla \phi(\vx,\omega),
 \end{equation}
+%
 \begin{equation}
 k(\vx) =  \frac{1}{c} \frac{\partial}{\partial t} \phase{P(\vx,\omega)}  = \frac{1}{c} \left( \omega + \frac{\partial}{\partial t} \phi(\vx,\omega) \right),
 \end{equation}
-termed as the \emph{local wavenumber vector} and the \emph{instantaneous local wavenumber} respectively, with $ \frac{\partial}{\partial t} \phase{P(\vx,\omega)} $ being the \emph{instantaneous local angular frequency}, where $\phase{f(\cdot)}$ denotes the phase of function $f(\cdot)$.
-The wavenumber vector, defined as the gradient of the phase function points in the direction of the maximum phase advance, i.e.\ it is perpendicular to the wave front in an arbitrary position.
+%
+termed as the \emph{local wavenumber vector} and the \emph{instantaneous local wavenumber}, respectively, with $ \frac{\partial}{\partial t} \phase{P(\vx,\omega)} $ being the \emph{instantaneous local angular frequency}, where $\phase{f}$ denotes the phase of $f$.
+The wavenumber vector, defined as the negative gradient of the phase function points in the direction of maximal phase advance, i.e.\ it is perpendicular to the wave front in an arbitrary position.
 For an isotropic media, where the propagation speed is constant, the phase velocity the and group velocity coincide, and the wavenumber vector points in the direction of the wave's energy flow, i.e.\ in the local wave propagation direction \footnote{This statement holds exclusively for isotropic media.
 Although the wavenumber vector is always perpendicular to the wavefront, in anisotropic media the energy of a wave not necessarily travels along the path as the wavefront normals\cite{Pollard1977}.}.
 For stationary steady state sound fields the wavenumber vector does not depend on time and the instantaneous wavenumber is constant, given by 
@@ -117,7 +121,7 @@ In the current chapter, dealing exclusively with stationary virtual sound fields
 	\end{overpic}
 	\caption{Illustration of the local wavenumber vector for a 2D acoustic point source (a,c) and a 2D plane wave (b,d).
 (a-b) show an arbitrarily chosen contour of constant phase, along with the wavenumber vector on this contour.
-(c-d) show the local normalized $\hat{k_x}(x,y_0)$ component along the line $y_0 = 0.5 ~\mathrm{m}$.
+(c-d) show the local normalized $\hat{k}_x(x,y_0)$ component along the line $y_0 = 0.5 ~\mathrm{m}$.
 These latter components are termed as the \emph{Lagrange submanifolds} in the field of ray-tracing \cite{Tracy2014}, forming one component of the wavenumber vector distribution, termed the \emph{Lagrange manifold}.}
 	\label{Fig:Theory:general_sfs_geometry}
 \end{figure}
@@ -126,7 +130,7 @@ Finally, one may define the \emph{normalized wavenumber vector} as
 \begin{equation}
 \vhk(\vx) = \frac{\vk(\vx)}{|\vk(\vx)|} = \frac{\vk(\vx)}{k(\vx)} = \frac{\vk(\vx)}{\omega/c},
 \end{equation}
-being a vector of unit length, pointing in the local propagation direction of the sound field\footnote{The normalized phase change of wave fields, here termed as normalized wavenumber vector, is a massively used concept in short wavelength wave theory, dealing with asymptotic /local approximate solutions for the wave equation.
+being a vector of unit length, pointing in the local propagation direction of the sound field\footnote{The normalized phase change of wave fields, here termed as normalized wavenumber vector, is a massively used concept in short wavelength wave theory, dealing with asymptotic/local approximate solutions of the wave equation.
 In the field of ray tracing, expression $\Gamma(\vx) = \frac{\phi(\vx,\omega)}{k}$ is termed as the \emph{eikonal}, whose gradient defines the local propagation direction of the wave field: $\nabla \Gamma(\vx) = \vhk(\vx)$.
 Substituting \eqref{eq:25D_WFS:general_sf} into the Helmholtz equation in terms of the eikonal and applying high-frequency assumptions leads to the \emph{eikonal equation}, forming the basis of ray acoustic theory \cite{Kinsler2000}.
 In the field of high-frequency geometrical optics the representation of wave fields in $\vx, \vk(\vx)$ is termed the phase space representation \cite{Arnold1995}.
