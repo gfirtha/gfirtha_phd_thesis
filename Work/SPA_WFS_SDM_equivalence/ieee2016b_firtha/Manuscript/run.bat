@@ -1,0 +1,4 @@
+pdflatex connection_of_wfs_and_sdm.tex
+bibtex connection_of_wfs_and_sdm
+pdflatex connection_of_wfs_and_sdm.tex
+connection_of_wfs_and_sdm.pdf
