@@ -1,0 +1,212 @@
+\documentclass[journal]{IEEEtran}
+
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{graphicx,overpic,subfigure}
+
+\newcommand{\dint}{\int\!\!\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\td}{\mathrm{d}}
+\newcommand{\te}{\mathrm{e}}
+\newcommand{\ti}{\mathrm{j}}
+\newcommand{\sinfi}{\sin\varphi}
+\newcommand{\cosfi}{\cos\varphi}
+\newcommand{\sinteta}{\sin\theta}
+\newcommand{\costeta}{\cos\theta}
+\newcommand{\yref}{y_{\mathrm{ref}}}
+\newcommand{\dref}{d_{\mathrm{ref}}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vxo}{\mathbf{x}_0}
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
+
+\newcount\posveccount
+\newcommand*\posvec[1]{
+        \global\posveccount#1
+        [
+        \posvecnext
+}
+\def\posvecnext#1{
+        #1
+        \global\advance\posveccount-1
+        \ifnum\posveccount>0
+                ,\
+                \expandafter\posvecnext
+        \else
+                ]^{\mathrm{T}}
+        \fi
+}
+
+\begin{document}
+
+\title{The General Relation of Wave Field Synthesis and the Spectral Division Method}
+
+\author{Gergely~Firtha,
+        Peter~Fiala
+\thanks{G. Firtha and P. Fiala were with the Department
+of Networked Systems and Services, Budapest University of Technologies and Economics, Budapest,
+HU e-mail: {firtha,fiala}@hit.bme.hu}}% <-this % stops a space
+%
+\markboth{IEEE TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING}%
+{Shell \MakeLowercase{\textit{et al.}}: WFS SDM connection}
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+The abstract goes here.
+\end{abstract}
+
+\begin{center} \bfseries EDICS Category: AUD-SARR \end{center}
+
+
+
+\section{Introduction}
+
+The physical reconstruction of arbitrary sound fields over an extended listening area---generally termed as \emph{sound field synthesis (SFS)}---has been the subject of an extensive research over the last three decades \cite{Spors2013}.
+As a common property, different SFS techniques apply a densely spaced loudspeaker ensemble, termed the \emph{secondary source distribution (SSD)}. 
+The loudspeakers are fed with properly chosen \emph{driving functions}, so that their resultant sound field coincides the target sound field in the receiving area.
+
+Regarding the approach of the driving function derivation SFS techniques can be classified into two main types:
+
+The \emph{explicit solution} aims at the direct solution of the inverse problem, constituted by the general SFS integral. 
+Once a orthogonal / spectral decomposition is known for the actual SSD geometry, the driving function spectrum may be obtained by a comparison of the corresponding spectral coefficients of the involved sound fields, taken on a control surface \cite{Ahrens2010phd}.
+Hence, these solutions are often termed \emph{mode-matching solutions} \cite{Fazi2010}.
+For simple geometries the explicit solution are well-known.
+The solution in spherical and cylindrical SSD surfaces are termed \emph{Nearfield Compensated Higher Order Ambisonics (NFC HOA)} \cite{Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS,Poletti2005,Zotter2009phd}, giving a wideband extension for  traditional Ambisonics technique \cite{Gerzon1973}.
+Recently the explicit solution for planar and linear geometries was introduced by Ahrens first for a virtual plane wave \cite{Ahrens2008_SDMInit,Ahrens2010a,Ahrens2012:Ambisonics_for_planar_linear}, later extended for arbitrary virtual source models.
+The approach is referred as the \emph{Spectral Division Method (SDM)}.
+Explicit solution accounts for the global description of the involved sound field it may be termed as a \emph{global solution} \cite{Ahrens2012}.
+
+As an alternative, \emph{Wave Field Synthesis (WFS)}---giving an \emph{implicit solution}---starts out from the single layer boundary integral formulation of arbitrary sound fields, containing the required driving functions implicitly \cite{Vries2009}.
+All WFS approaches apply the \emph{stationary phase approximation (SPA)} to the Rayleigh integral in order to reduce the problem dimensionality from 3 into 2 dimensions.
+\emph{Traditional WFS}, as given by Berkhout et. al \cite{Berkhout1988,Berkhout1993:Acoustic_control_by_WFS} utilizes the Rayleigh integral representations to obtain driving functions for linear SSDs with dipole characteristics, later extended for monopole secondary sources \cite{Vogel1993:phd,Start1997:phd,Verheijen1997:phd}. 
+Traditional WFS considered only directive virtual point sources and ensured optimal synthesis on a reference line, parallel to the SSD. 
+\emph{Revisited WFS} \cite{Spors2008:WFSrevisited} extended the theory for arbitrary virtual source models, including non-linear SSD curves by applying the Kirchhoff-approximation to the 2.5D Neumann Rayleigh integral and ensured optimal synthesis of 2D virtual field on a curve, containing the pre-defined reference point.
+In a former article by the present authors a \emph{unified WFS theory} was given \cite{Firtha2016:UnifiedWFS}.
+It was verified, that within the validity of the SPA the synthesis of an arbitrary virtual source may be referenced on an arbitrary smooth, convex reference curve by defining proper referencing functions.
+In this unified WFS theory the former approaches occur as special cases. As WFS finds solution with assuming local plane wave sound field, via matching the SSD and virtual sound field local wavefronts, its is often termed as \emph{local solution} \cite{Ahrens2012}.
+
+The relation of the implicit and explicit solutions has been investigated in several studies recently. 
+It was verified, that revisited WFS constitutes a high frequency approximation of Nearfield Compensated Infinite Order Ambisonics in a circular SSD geometry \cite{Ahrens2012}. 
+Furthermore the same connection has been shown between WFS and SDM for the special cases of a virtual point source \cite{Spors10ahrens:analysis}, a virtual plane wave \cite{Schultz2016,Schultz2016a}, and recently for an arbitrary 2D virtual sound field \cite{Firtha2016:UnifiedWFS}.
+
+The present article establishes the link between the Spectral Division Method and unified WFS theory by showing their equivalence within the validity of the stationary phase approximation.
+The paper starts with an overview on the two approaches including the introduction of the local wavenumber concept.
+Then, using the SPA the spatial expression for the SDM driving functions are obtained.
+As a result new driving functions are presented requiring the target field value taken on an arbitrary, pre-defined reference curve, opposed to WFS, formulating driving functions in terms of its normal derivative on the SSD.
+Furthermore it is shown, that this solution is equivalent with the unified 2.5D driving functions stemming from the 2.5D Neumann Rayleigh integral, containing inherently the referencing curve concept.
+
+\section{Theoretical basics}
+%
+\subsection{SFS problem formulation}
+%
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{figs/linear_geometry.png}
+	\scriptsize
+	\put(86,  22.5){$y$}
+	\put(43.5,  57){$z$}
+	\put(65,  22.5){$\yref$}
+	\put(25,  22.5){$-\yref$}
+	\put(37    ,11){$\begin{matrix}
+		\text{synthesis}\\
+		\text{plane}
+		\end{matrix}$}
+	\end{overpic}
+\caption{Geometry for the general SFS problem applying a linear SSD}
+	\label{Fig:linear_SFS_geometry}
+\end{figure}
+%
+The general SFS geometry, applying a linear SSD is depicted in Figure \ref{Fig:linear_SFS_geometry}. Assume a continuous linear set of secondary sources, located at $\vxo = \posvec{3}{x_0}{0}{0}$. The listening area is a horizontal half-plane, containing the SSD $\vx = \posvec{3}{x}{y>0}{0}$. Assuming a harmonic time dependence given by $\te^{\ti \omega t}$ the synthesized field is given by 
+\begin{equation}
+P(\vx,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) G(x - x_0,y,\omega) \td x_0,
+\label{Eq:general_SFS_problem}
+\end{equation}
+where $G(\vx,\omega)$ describes the field of an individual SSD element and $D(x_0,\omega)$ is the driving function to be found, so that the synthesized field equals the target field in the listening area.
+Generally the SSD elements are regarded to be acoustic point sources, described by the fullspace, free field 3D Green's function
+\begin{equation}
+G(\vx,\omega) = \frac{1}{4 \pi} \frac{\te^{-\ti k |\vx|}}{|\vx|},
+\end{equation}
+where $k = \frac{\omega}{c}$ is the acoustic wavenumber and $c$ is the speed of sound.
+
+Obviously, \eqref{Eq:general_SFS_problem} describes a cylindrically symmetric sound field with the center being the SSD.
+Fixing the listening plane to the $z=0$ plane inherently allows only the phase correct synthesis of sound fields, that's local propagation direction in this plane coincides with that of the SSD.
+In practice this limits the phase correct synthesis for 2D virtual sound fields, invariant along the $z$-dimension and ensembles of 3D point sources located at the $z=0$ plane.
+In the following sections the explicit requirement is formulated using the local wavenumber vector.
+
+\subsection{The Explicit solution: Spectral Division Method}
+
+The explicit solution exploits the fact, that the integral operator in \eqref{Eq:general_SFS_problem} describes a convolution along the $x$-axis. 
+For the linear SSD geometry the orthogonal set of basis functions are given by exponentials and the spectral decomposition is obtained by performing a forward Fourier transform along the $x$-dimension.
+The spatial Fourier transform used in the present treatise are defined in the appendix \ref{sec:App_A_Fourier_tr}. 
+In the spectral domain the convolution is transform into a multiplication and the wavenumber content of the synthesized field reads
+\begin{equation}
+\tilde{P}(k_x, y, 0, \omega) = \tilde{D}(k_x, \omega) \tilde{G}(k_x, y, 0,\omega).
+\end{equation}
+Here $\tilde{G}(k_x,y,0,\omega)$ describes the spectrum of a 3D point source placed at the origin.
+Fixing the $y$-coordinate to $\yref$ the driving function reads
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x, \yref, 0, \omega)}{\tilde{G}(k_x, \yref, 0,\omega)}.
+\end{equation}
+and in the spatial domain
+\begin{equation}
+D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x, \yref, 0, \omega)}{\tilde{G}(k_x, \yref, 0,\omega)} \te^{- \ti k_x x_0} \td k_x.
+\end{equation}
+Since 3D point sources are applied for the synthesis in a 2D listening area the driving functions are termed as the 2.5 SDM driving functions.
+The driving functions ensure perfect synthesis of the pressure field on the reference line, however the local propagation direction---and the particle velocity---can be reconstructed only for sound field propagating in an in-plane direction in $z=0$.
+Restricting the target sound field to fulfill these requirements means, that the basis functions of the spectral decomposition are given by plane waves, propagating along the plane of synthesis with $k_z = 0$. 
+The dispersion relation for the 2.5D SDM scenario is formulated as $\left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2$, therefore $k_x$ component completely determines the propagation of the actual plane wave component.
+
+\subsection{The Implicit solution: 2.5D WFS theory}
+\subsubsection{Local Wavenumber Vector}
+\subsubsection{Stationary Phase Approximation}
+\subsubsection{2.5D Neumann Rayleigh integral}
+
+\section{SDM driving functions in the spatial domain}
+
+\section{The Rayleigh SDM formulation}
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+\appendices
+\section{Definition of Fourier transforms}
+\label{sec:App_A_Fourier_tr}
+Throughout the article the temporal and spatial forward Fourier transforms are defined conventionally as
+\begin{equation}
+P(\vx,\omega) = \int_{-\infty}^{\infty} p(\vx,t) \te^{-\ti \omega t} \td t,
+\end{equation}
+\begin{equation}
+\hat{P}(k_x,y,z,\omega) = \int_{-\infty}^{\infty} P(x,y,z,\omega) \te^{\ti k_x x} \td x.
+\end{equation}
+The corresponding inverse transforms are defined with reversing the exponential sign and normalizing by $\frac{1}{2\pi}$.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+\bibliographystyle{IEEEtran}
+\bibliography{WFS_theory}
+%
+%\begin{IEEEbiography}{Gergely Firtha}
+%Biography text here.
+%\end{IEEEbiography}
+%
+%% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{Péter Fiala}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+
+\end{document}
+
+
