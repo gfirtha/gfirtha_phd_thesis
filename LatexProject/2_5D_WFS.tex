@@ -8,11 +8,20 @@ The approaches account for the SSD dimension correction factors, but neglect the
 
 Instead of introducing 2.5D WFS theory via the existing approaches, this chapter presents a novel unified 2.5D WFS formulation that adapts the target wave field characteristics to the referencing function, and ensures optimized synthesis on an arbitrary reference curve applying arbitrary shaped SSDs.
 The presented approach inherently includes former methods as special cases of the applied referencing schemes.
+The following section overviews the results, presented in \cite{Firtha2016:UnifiedWFS} and \cite{Firtha2016:WFS_vs_SDM}.
 
-2.5D WFS theory relies heavily on the \emph{stationary phase approximation} (SPA) in order to approximate the 2D and 3D Neumann Rayleigh integrals.
+The structure of the section is the following
+\begin{itemize}
+\item 2.5D WFS theory relies heavily on the \emph{stationary phase approximation} (SPA) in order to approximate the 2D and 3D Neumann Rayleigh integrals.
 The section starts with the introduction of the stationary phase method.
-In the previous chapter, dealing with the Kirchhoff approximation the wavenumber vector was already introduced.
+\item In the previous chapter, dealing with the Kirchhoff approximation the wavenumber vector was already introduced.
 In the followings a formal definition is given, and by applying the wavenumber vector concept, an expressive physical interpretation is given for the SPA in the context of WFS.
+\item Applying the physical interpretation of the SPA the generalization of the 2.5D WFS driving functions---obtained from the 2.5D Neumann Rayleigh integral---is presented, allowing amplitude correct synthesis on an arbitrary chosen control curve, termed the \emph{reference curve}.
+The presented theory is verified via numerical examples.
+\item It is followed by the investigation of the exact relation of 2.5D WFS and the explicit solution.
+By the asymptotic evaluation of the general SDM driving function integrals new driving functions are presented, requiring only the target pressure over an arbitrary control curve.
+\item Finally, stemming from these later driving functions the general high-frequency equivalence of the implicit and explicit method is presented.
+\end{itemize}
 
 %
 \section{The stationary phase approximation}
@@ -23,15 +32,12 @@ In the followings a formal definition is given, and by applying the wavenumber v
 The SPA is a basic tool of asymptotic analysis, applied to approximate integrals around critical points in the integral path.
 The method yields approximate solutions for integrals of the form
 \begin{equation}
-\label{Eq:SPAintegral_1d}
-I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(z) \, \te^{\ti \phi(z)} \, \td z
-\end{equation}
-in one dimension and with $\vxo \in \mathbb{R}^{n}$
-\begin{equation}
-\label{Eq:SPAintegral_nd}
+\label{Eq:SPAintegral_1d_nd}
+I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(z) \, \te^{\ti \phi(z)} \, \td z,
+\hspace{20mm} 
 I_{n\mathrm{D}} = \int\limits_{\dO} F(\vxo) \, \te^{\ti \phi(\vxo)} \, \td \dO(\vxo)
 \end{equation}
-in higher dimensions, when $\te^{\ti \phi(\vxo)}$ is highly oscillating and $F(\vxo)$ is comparably slowly varying.
+in one and $n$ dimensions respectively with $\vxo \in \mathbb{R}^{n}$, when $\te^{\ti \phi(\vxo)}$ is highly oscillating and $F(\vxo)$ is comparably slowly varying.
 
 
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
@@ -49,7 +55,7 @@ With these considerations the integral becomes
 I_{1D} \approx F(z_s)\,\te^{+\ti\phi(z_s)} 
 \int\limits_{-\infty}^{\infty} \te^{+\ti \frac{1}{2}\phi''(z_s)(z-z_s)^2} \, \td z.
 \end{align}
-The remaining integral can be explicitly solved and the SPA of \eqref{Eq:SPAintegral_1d} becomes \cite[Ch.\ 2.8]{Blenstein1975}
+The remaining integral can be explicitly solved and the SPA of \eqref{Eq:SPAintegral_1d_nd} becomes \cite[Ch.\ 2.8]{Blenstein1975}
 \begin{equation}
 \label{Eq:SPAResult}
 I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''(z_s) |}} F(z_s) \, \te^{+\ti \phi(z_s) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''(z_s) \right)}.
@@ -138,7 +144,8 @@ For the interpretation of the local wavenumber one should express the first orde
 \end{equation}
 By substitution into \eqref{eq:25D_WFS:general_sf} in the proximity of $\vxo$ the sound field is approximated as
 \begin{equation}
-P(\vx,\omega) \approx A(\vx,\omega) \te^{\ti ( \phi_0(\vxo,\omega) - \vk(\vx)^{\mathrm{T}} \vx )},
+\label{Eq:25D_WFS:plane_wave_approximation}
+P(\vx,\omega) \approx A(\vxo,\omega) \te^{\ti ( \phi_0(\vxo,\omega) - \vk(\vx)^{\mathrm{T}} \vx )},
 \end{equation}
 with $\phi_0(\vxo,\omega) = \phi(\vxo,\omega) + \vk(\vx)^{\mathrm{T}} \vxo $.
 Therefore each point of an arbitrary sound field is approximated as a local elementary plane wave, with the wavenumber and angular frequency given by $\vk(\vx)$ and $\omega$ respectively.
@@ -187,7 +194,7 @@ In the high frequency region $|\vk(\vx)| = k \gg \left| \frac{ \nabla A(\vx,\ome
 \nabla P(\vx,\omega) \approx - \ti \vk(\vx) P(\vx,\omega).
 \label{eq:25D_WFS:gradient_appr}
 \end{equation}
-Note, that it is a further local plane wave approximation of arbitrary sound fields.
+Note, that it is a further local plane wave approximation of arbitrary sound fields, expressing the gradient of the local plane wave representation \eqref{Eq:25D_WFS:plane_wave_approximation}.
 The expression holds for an arbitrary plane wave with equality, and approximates a point-like source in its far-field, where the amplitude does not change rapidly.
 
 \subsection{Physical interpretation}
@@ -257,7 +264,7 @@ The stationary position is then found, where these two directions coincide.
 See Figure \ref{Fig:Theory:stationary_position} (b) for an illustration, with the example of a virtual point source.
 Obviously, at the stationary position $\vxo^*$, $\vk^P(\vxo^*)$ coincides with $-\vk^G(\vxo^*)$ both in magnitude and direction.
 This result is of primary importance herein.
-It states, \emph{that for each receiver position $\vx$, the synthesized sound field is mostly influenced by that SSD element $\vxo^*$, from which the emerging spherical wave fronts locally coincide with the target sound field’s wave fronts, or with other words the propagation direction of a SSD element and the virtual sound field coincide.}\footnote{Since the general SPA equation \eqref{Eq:SPAintegral_nd} holds for an arbitrary surface geometry the same conclusion can be drawn from finding the stationary position in the general Kirchhoff approximation integral with the driving function given by \eqref{eq:25D_WFS:generalized_2d_3d_wfs} by comparing the local wavenumber components specified by the actual SSD geometry.}
+It states, \emph{that for each receiver position $\vx$, the synthesized sound field is mostly influenced by that SSD element $\vxo^*$, from which the emerging spherical wave fronts locally coincide with the target sound field’s wave fronts, or with other words the propagation direction of a SSD element and the virtual sound field coincide.}\footnote{Since the general SPA equation \eqref{Eq:SPAintegral_1d_nd} holds for an arbitrary surface geometry the same conclusion can be drawn from finding the stationary position in the general Kirchhoff approximation integral with the driving function given by \eqref{eq:25D_WFS:generalized_2d_3d_wfs} by comparing the local wavenumber components specified by the actual SSD geometry.}
 
 The counterpart of this statement declares that \emph{every point $\vxo$ on the SSD highly dominates the total synthesized sound field along a straight line, pointing from $\vxo$ towards the direction of the wave number vector $\vk(\vxo)$ of the target sound field.}
 %For the case of a virtual spherical/cylindrical wave, this point is found in the intersection of the vector x 􀀀 xs and the SSD, as seen in Figure 2 (a).

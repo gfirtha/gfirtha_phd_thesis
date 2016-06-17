@@ -34,19 +34,20 @@
 \newcount\colveccount
 \newcommand*\colvec[1]{
         \global\colveccount#1
-        \begin{pmatrix}
+        \begin{bmatrix}
         \colvecnext
 }
 \def\colvecnext#1{
         #1
         \global\advance\colveccount-1
         \ifnum\colveccount>0
-                \\[-10pt]
+                \\[5pt]
                 \expandafter\colvecnext
         \else
-                \end{pmatrix}
+                \end{bmatrix}
         \fi
 }
+
 %\setcounter{secnumdepth}{2}
 
 \newcommand{\dint}{\int\!\!\!\!\!\int}
@@ -75,7 +76,7 @@
 \newcommand{\Oe}{\Omega_{\mathrm{e}}}
 \newcommand{\dO}{\partial \Omega}
 %
-\renewcommand{\arraystretch}{2.5}
+\renewcommand{\arraystretch}{1}
 
 \title{Reproduction of moving sound sources applying a unified Wave Field Synthesis framework}
 \date{\today \\
