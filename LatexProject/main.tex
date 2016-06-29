@@ -31,6 +31,24 @@
 \usepackage{multicol}
 \makesavenoteenv{tabular}
 %
+
+\newcount\posveccount
+\newcommand*\posvec[1]{
+        \global\posveccount#1
+        [
+        \posvecnext
+}
+\def\posvecnext#1{
+        #1
+        \global\advance\posveccount-1
+        \ifnum\posveccount>0
+                ,\
+                \expandafter\posvecnext
+        \else
+                ]^{\mathrm{T}}
+        \fi
+}
+
 \newcount\colveccount
 \newcommand*\colvec[1]{
         \global\colveccount#1
@@ -110,12 +128,10 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 \label{sec:2_5D_WFS}
 \input{2_5D_WFS}
 
-\begin{appendices}
+%\begin{appendices}
 %\chapter{Appendix A}
-\input{appendix_A}
-%\chapter{Appendix B}
-%\input{appendix_B}
-\end{appendices}
+%\input{appendix_A}
+%\end{appendices}
 
 %\the\textwidth
 %\\
