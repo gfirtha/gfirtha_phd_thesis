@@ -246,54 +246,63 @@ In the present treatise this limitation is not investigated further, since the r
 \subsection{Rayleigh integral SPA interpretation}
 When the SPA is applied for the Rayleigh integral an expressive physical interpretation can be given for the solution of the stationary position.
 Since in the frequency domain of interest the Green's functions in the 2D and 3D Rayleigh integrals are rapidly oscillating functions, therefore the pre-requisitions for the application of the SPA hold.
-Approximating the gradient with its high-frequency/plane wave form, given by equation \eqref{eq:25D_WFS:gradient_appr} 
-the synthesized field using a planar SSD located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$ (i.e.\ the Rayleigh integral) reads
+As given in the previous chapters the general 3D Rayleigh integral, describing also the synthesized field using an infinite planar SSD located at 
+$\vxo = \posvec{3}{x_0}{0}{z_0}$ reads
 \begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} 2 \ti k_y(\vxo) P(\vxo,\omega) G(\vx-\vxo,\omega) \td z_0 \td x_0.
+P(\vx,\omega) = \iint_{-\infty}^{\infty} - 2 \underbrace{ \left. \frac{\partial}{\partial y} P(\vxo,\omega) \right|_{y = 0}}_{ \approx -\ti k_y(\vxo) P(\vxo,\omega)}
+ G(\vx-\vxo,\omega) \td z_0 \td x_0.
 \end{equation}
-By definition \eqref{Eq:ndim_stat_point}, the stationary point $\vxo^*$ is given by
+Approximating the gradient of the target field by its high-frequency/local plane wave approximation, given by equation \eqref{eq:25D_WFS:gradient_appr} reveals, that the phase of the target field gradient at the SSD differs from the pressure field only in a constant phase shift.
+By definition \eqref{Eq:ndim_stat_point}, the stationary point $\vxo^*$ is therefore given by
 \begin{multline}
 \nabla_{x_0,z_0} \left.
 \left( \phase{ \ti P(\vxo,\omega)} + \phase{ G(\vx-\vxo,\omega)} \right) \right|_{\vxo^*} =
 \\
 \nabla_{x_0,z_0} \left.
-\left( \frac{\pi}{2}+\phase{ P(\vxo,\omega)} + \phase{ G(\vx-\vxo,\omega)} \right) \right|_{\vxo^*} = 0
+\left( \frac{\pi}{2}+ \phi_P(\vxo,\omega) + \phi_G(\vx-\vxo,\omega) \right) \right|_{\vxo^*} = 0
 \end{multline}
 holds.
 The gradient of the constant phase shift vanishes and the $x_0$ and $z_0$ derivatives of the target field and the Green's function phase can be recognized as the $k_x$ and $k_z$ component of the corresponding local wavenumber vectors.
-For the stationary position therefore the following equation holds
+For the stationary position therefore the following equations hold
 \begin{align}
 \begin{split}
--k_{x}^P(\vxo^*) &= k_{x}^G(\vxo^*), \\
--k_{z}^P(\vxo^*) &= k_{z}^G(\vxo^*),
+-k_{x}^P(\vxo^*) &= k_{x}^G(\vxo^* - \vx), \\
+-k_{z}^P(\vxo^*) &= k_{z}^G(\vxo^* - \vx),
 \end{split}
 \end{align}
-with $k_{x/z}^{P}$ and $k_{x/z}^{G}$ denoting the wavenumber components of $P(\vxo)$ and $G(\vxo|\vx)$ respectively
+with $k_{x/z}^{P}$ and $k_{x/z}^{G}$ denoting the wavenumber components of $P(\vxo)$ and $G(\vxo|\vx)$ respectively.
+Note, that here the reciprocity of the Green's function was exploited.
 %
 \begin{figure}
 	\centering
-	\begin{overpic}[width = .45\columnwidth ]{Figures/WFS_theory/stationary_phase_a.png}
+	\begin{minipage}{0.45\columnwidth}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/WFS_theory/stationary_point_rayleigh.png}
 	\scriptsize
-	\put(16,44){virtual source}
-	\put(55,31){stationary position}
-	\put(98,14.5){$x_0$}
-	\put(98,49.2){$x_0$}
-	\put(81,60){$\vx$}
-	\put(45,64){$y$}
-	\put(18,38){$\phase{\ti P(x_0) + G(x_0)}$}
-	\put(59,14){$x_0^*$}
+	\put(57,92){$\vx$}
+	\put(38,35){stationary position}		
 	\end{overpic}
-	\hspace{10mm}
-	\begin{overpic}[width = .4\columnwidth]{Figures/WFS_theory/stationary_phase_b.png}
+	\end{minipage}
+	%
+	\hspace{15mm}
+	\begin{minipage}{0.4\columnwidth}
+	\vspace{-5mm}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/WFS_theory/stationary_phase_b.png}
 	\scriptsize
-	\put(98,28){$x_0$}
-	\put(17, 75.5){$y$}
-	\put(40, 28){$x_0^*$}
-	\put(58, 63){$\vx$}
-	\put(47, 37.5){$\vk^P(\vxo^*)$}
-	\put(34, 18){$\vk^G(\vxo^*)$}
+	\put(70, 68){$x$}
+	\put(7,  99){$y$}
+	\put(27, 68){$x_0^*$}	
+	\put(40, 93){$\vx$}
+	\put(33, 76){$\vk_P(\vxo^*)$}
+	\put(25, 62){$\vk_G(\vxo^* - \vx)$}
+	%
+	\put(70, 12){$x$}
+	\put(7,  43){$y$}
+	\put(27, 12){$x_0^*$}	
+	\put(40, 37){$\vx$}
+	\put(33, 20){$\vk_P(\vxo^*)$}
 	\end{overpic}
-	\caption{Illustration of the stationary phase approximation.
+	\end{minipage}
+	\caption{Illustration of the Rayleigh integral stationary phase approximation.
 Analytically, the stationary phase position is found, where the phase of the integrand has a stationary point, i.e.\ where its gradient is zero (a).
 In the aspect of the Rayleigh integral the stationary position can be interpreted as the point, where the local wavenumber vector of the Green's function $G(\vxo|\vx)$ equals (-1) times the local wavenumber vector of the virtual field measured on the SSD (b).}
 	\label{Fig:Theory:stationary_position}
@@ -301,16 +310,16 @@ In the aspect of the Rayleigh integral the stationary position can be interprete
 
 Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x(\vx)^2+k_y(\vx)^2+k_z(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
 \begin{equation}
-\vk^P(\vxo^*) = - \vk^G(\vxo^*).
+\vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
 \end{equation}
 Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
 
 Hence, the SPA compares the propagation direction/wave fronts of the virtual field and the Green’s function (placed at the receiver position $\vx$) along the SSD.
 The stationary position is then found, where these two directions coincide.
 See Figure \ref{Fig:Theory:stationary_position} (b) for an illustration, with the example of a virtual point source.
-Obviously, at the stationary position $\vxo^*$, $\vk^P(\vxo^*)$ coincides with $-\vk^G(\vxo^*)$ both in magnitude and direction.
+Obviously, at the stationary position $\vxo^*$, $\vk^P(\vxo^*)$ coincides with $-\vk^G(\vxo^* - \vx )$ both in magnitude and direction.
 This result is of primary importance herein.
-It states, \emph{that for each receiver position $\vx$, the synthesized sound field is mostly influenced by that SSD element $\vxo^*$, from which the emerging spherical wave fronts locally coincide with the target sound field’s wave fronts, or with other words the propagation direction of a SSD element and the virtual sound field coincide.}\footnote{Since the general SPA equation \eqref{Eq:SPAintegral_1d_nd} holds for an arbitrary surface geometry the same conclusion can be drawn from finding the stationary position in the general Kirchhoff approximation integral with the driving function given by \eqref{eq:25D_WFS:generalized_2d_3d_wfs} by comparing the local wavenumber components specified by the actual SSD geometry.}
+It states, \emph{that for each receiver position $\vx$, the synthesized sound field is mostly influenced by that SSD element $\vxo^*$, from which the emerging spherical wave fronts locally coincide with the target sound field’s wave fronts, or with other words the propagation direction of a SSD element and the virtual sound field coincide.}\footnote{Since the general SPA equation \eqref{Eq:SPAintegral_1d_nd} holds for an arbitrary surface geometry the same conclusion can be drawn from finding the stationary position in the general Kirchhoff approximation integral with the driving function given by \eqref{eq:theory:gen_WFS} by comparing the local wavenumber components specified by the actual SSD geometry.}
 
 The counterpart of this statement declares that \emph{every point $\vxo$ on the SSD highly dominates the total synthesized sound field along a straight line, pointing from $\vxo$ towards the direction of the wave number vector $\vk(\vxo)$ of the target sound field.}
 %For the case of a virtual spherical/cylindrical wave, this point is found in the intersection of the vector x 􀀀 xs and the SSD, as seen in Figure 2 (a).
