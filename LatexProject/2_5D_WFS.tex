@@ -219,7 +219,7 @@ For this spectral component the stationary phase point at the field of the point
 The spectrum, shown in Figure (d), therefore will be dominated by this part of space at $k_x = 0.5k$. 
 In (c) and (d) corresponding symbols denote further stationary point pair examples in the spectral components and the local waveunumber components. 
 It is noted here, that in this case, for a given wavenumber component the corresponding stationary position can be found explicitly, and the SPA of the Fourier transform can be evaluated analytically. 
-The result is given by the well-known large argument/asymptotic approximation of the Hankel function \cite[p. 121]{Williams1999} (hence the terminology).}
+The result is given by the well-known large argument/asymptotic approximation of the Hankel function \cite[p. 118]{Williams1999} (hence the terminology).}
 	\label{Fig:Theory:stat_pos_in_kx}
 \end{figure}
 
@@ -243,8 +243,36 @@ This trivially does not hold for the case of e.g. a plane wave, or complex acous
 The SPA however can be extended for multiple stationary positions, and the result of the approximation is obtained by summing the SPA contributions over the stationary positions \cite[p. 129]{Bleistein2000}.
 In the present treatise this limitation is not investigated further, since the results involving the SPA of the Fourier transform hold without any modification for a virtual plane wave as a limiting case.
 
+\paragraph{Point source example:\\}
+As a simple example consider the 1D Fourier transform of a 3D point source, for the sake of simplicity located at the origin. 
+The transform is taken along the $x$-axis at an arbitrary $\posvec{3}{x}{y}{0}$.
+The exact solution for the problem is available analytically, given by the second order Hankel function.
+\begin{equation}
+\tilde{P}(k_x,y,0,\omega) = \frac{1}{4\pi} \int_{-\infty}^{\infty} \frac{\te^{-\ti k \sqrt{x^2 + y^2}}}{\sqrt{x^2 + y^2}} \te^{\ti k_x x} \td x = 
+-\frac{\ti}{4} H_0^{(2)}\left( \sqrt{k^2- k_x^2} |y| \right).
+\end{equation}
+By definition, for an arbitrary spectral wavenumber $k_x$ the stationary position is found, where the $x$-derivative of the phase function vanishes i.e. $x^*(k_x)$ satisfies
+\begin{equation}
+k \frac{x^*(k_x)}{\sqrt{x^*(k_x)^2 + y^2}} = k_x 
+\hspace{1cm} \rightarrow \hspace{1cm} 
+x^*(k_x) = y \frac{k_x}{\sqrt{k^2 - k_x^2}}.
+\end{equation}
+For the geometric interpretation of the stationary point refer to Figure \ref{Fig:Theory:stat_pos_in_kx}.
+At the stationary point the phase of the integrand reads
+\begin{equation}
+-k \sqrt{x^*(k_x)^2 + y^2} + k_x x^*(k_x) = -|y| \sqrt{k^2 - k_x^2},
+\end{equation}
+with the second derivative being
+\begin{equation}
+- k \frac{y^2}{\sqrt{ x^*(k_x)^2 +y^2 }^3} = - \frac{\sqrt{k^2-k_x^2}^3}{k^2 |y|}.
+\end{equation}
+Substitution into the SPA \eqref{Eq:SPAResult} with $\sqrt{x^*(k_x)^2 + y^2} = |y|\frac{k}{\sqrt{k^2 - k_x^2}}$ and taking the negative sign of the second derivative into account yields the asymptotic form of the 3D point source spectrum, i.e. of the Hankel function
+\begin{equation}
+\tilde{P}(k_x,y,0,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{k^2- k_x^2} |y| \right) \approx \sqrt{\frac{\ti}{8\pi}} \frac{\te ^{-\ti |y| \sqrt{k^2 - k_x^2}}}{\sqrt{|y|\sqrt{k^2-k_x^2}}}
+\end{equation}
 
 \subsection{Rayleigh integral SPA interpretation}
+
 When the SPA is applied for the Rayleigh integral an expressive physical interpretation can be given for the solution of the stationary position.
 Since in the frequency domain of interest the Green's functions in the 2D and 3D Rayleigh integrals are rapidly oscillating functions, therefore the pre-requisitions for the application of the SPA hold.
 As given in the previous chapters the general 3D Rayleigh integral, describing also the synthesized field at $\vx$ using an infinite planar SSD located at 
@@ -274,6 +302,13 @@ For the stationary position therefore the following equations hold
 with $k_{x/z}^{P}$ and $k_{x/z}^{G}$ denoting the wavenumber components of $P(\vxo)$ and $G(\vxo|\vx)$ respectively.
 Note, that here the reciprocity of the Green's function was exploited.
 %
+
+Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x^P(\vx)^2+k_y^P(\vx)^2+k_z^P(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
+\begin{equation}
+\vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
+\label{Eq:25D_WFS:Ralyeigh_stat_point}
+\end{equation}
+Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\columnwidth}
@@ -310,13 +345,6 @@ By placing back the point source into the SSD the wavefront of the actual SSD el
 	\label{Fig:Theory:stationary_position}
 \end{figure}
 
-Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x^P(\vx)^2+k_y^P(\vx)^2+k_z^P(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
-\begin{equation}
-\vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
-\label{Eq:25D_WFS:Ralyeigh_stat_point}
-\end{equation}
-Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
-
 Hence, the SPA compares the propagation direction/wave fronts of the virtual field and the Green’s function (placed at the receiver position $\vx$) along the SSD.
 The stationary position is then found, where these two directions coincide.
 See Figure \ref{Fig:Theory:stationary_position} (a,c) for an illustration, with the example of a virtual point source.
@@ -327,6 +355,23 @@ It states, \emph{that for each receiver position $\vx$, the synthesized sound fi
 The counterpart of this statement declares that \emph{every point $\vxo$ on the SSD highly dominates the total synthesized sound field along a straight line, pointing from $\vxo$ towards the direction of the wave number vector $\vk^P(\vxo)$ of the target sound field.}
 %For the case of a virtual spherical/cylindrical wave, this point is found in the intersection of the vector x 􀀀 xs and the SSD, as seen in Figure 2 (a).
 % This is a well-known result in WFS theory
+%
+
+
+\paragraph{Cylindrical wavefront example: \\}
+As a simple 2D example the stationary position for the synthesis of a cylindrical wave field is discussed.
+The cylindrical wave, emitted by a 2D point source describing both the virtual field and the field of the SSD elements is given by the Hankel function.
+Applying the large-argument/asymptotic form \cite{Williams1999} the phase of the 2D Green's function can be extracted as
+\begin{equation}
+\phi^{G_{2\mathrm{D}}}(\vx|\vxo) = k |\vx - \vxo|.
+\end{equation}
+Expressing the $x$-component of the wavenumber vector of the involved sound fields the stationary point for the 2D Rayleigh integral is found, where
+\begin{equation}
+k_{x}^P(\vxo^*) = k \frac{\vxo^*-\vxs}{|\vxo^*-\vxs|} = - k \frac{\vx-\vxo^*}{|\vx-\vxo^*|} = - k_{x}^{G_{2\mathrm{D}}}( \vx - \vxo^* )
+\end{equation}
+holds.
+The equation is satisfied in the intersection of the vector $ \vx - \vxs $ and the SSD, as seen in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (a).
+This is a well-known result in traditional WFS theory \cite{Start1997:phd,Verheijen1997:phd}.
 %
 \begin{figure}
 	\centering
@@ -365,22 +410,6 @@ The counterpart of this statement declares that \emph{every point $\vxo$ on the 
 \caption{Geometry for finding the stationary point for a) a virtual cylindrical wave and b) a virtual plane wave.}
 	\label{Fig:Theory:Spherical_and_Plane_Wave_stationary_point}
 \end{figure}
-
-\paragraph{Cylindrical wavefront example: \\}
-As a simple 2D example the stationary position for the synthesis of a cylindrical wave field is discussed.
-The cylindrical wave, emitted by a 2D point source describing both the virtual field and the field of the SSD elements is given by the Hankel function.
-Applying the large-argument/asymptotic form \cite{Williams1999} the phase of the 2D Green's function can be extracted as
-\begin{equation}
-\phi^{G_{2\mathrm{D}}}(\vx|\vxo) = k |\vx - \vxo|.
-\end{equation}
-Expressing the $x$-component of the wavenumber vector of the involved sound fields the stationary point for the 2D Rayleigh integral is found, where
-\begin{equation}
-k_{x}^P(\vxo^*) = k \frac{\vxo^*-\vxs}{|\vxo^*-\vxs|} = - k \frac{\vx-\vxo^*}{|\vx-\vxo^*|} = - k_{x}^{G_{2\mathrm{D}}}( \vx - \vxo^* )
-\end{equation}
-holds.
-The equation is satisfied in the intersection of the vector $ \vx - \vxs $ and the SSD, as seen in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (a).
-This is a well-known result in traditional WFS theory \cite{Start1997:phd,Verheijen1997:phd}.
-%
 
 \paragraph{Planar wavefront example: \\}
 The principle is further demonstrated via the example of a plane wave synthesis.
