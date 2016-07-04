@@ -22,7 +22,7 @@ The chapter is structured as follows:
 \item 2.5D WFS theory relies heavily on the \emph{stationary phase approximation} (SPA) in order to approximate the 2D and 3D Neumann Rayleigh integrals.
 The chapter starts with the introduction of the stationary phase method in section \ref{Section:25D_WFS:SPA}.
 \item In the previous chapter, dealing with the Kirchhoff approximation the wavenumber vector was already introduced.
-Here a formal definition is given, and by applying the wavenumber vector concept, an expressive physical interpretation is given for the SPA when applied to the Rayleigh integral, revealing its wavefront matching nature within the context of discussion.
+Here a formal definition is given, and by applying the wavenumber vector concept, an expressive physical interpretation is given for the SPA when applied both to the spatial Fourier transform and to the Rayleigh integral, revealing the latter's wavefront matching nature within the context of discussion.
 \item Applying the physical interpretation of the SPA section \ref{Sec:Unified_WFS} presents a unified 2.5D WFS framework, allowing amplitude correct synthesis on an arbitrary chosen control curve, termed the \emph{reference curve}.
 The presented theory is verified via numerical examples.
 \item It is followed by the investigation of the exact relation of 2.5D WFS and the explicit solution in section \ref{Sec:SDM_vs_WFS}.
@@ -101,7 +101,7 @@ where $\mathrm{sgn}\left( H \right)$ is the signature of the Hessian (the number
 In order to interpret the SPA an important concept is introduced: the local properties/asymptotic description of arbitrary sound fields.
 Consider an arbitrary steady state harmonic sound field in $\vx \in \mathbb{R}^2 / \mathbb{R}^3$ written in a general polar form with $A(\vx,\omega)$, $\phi(\vx,\omega) \in \mathbb{R}$
 \begin{equation}
-P(\vx,\omega) = A(\vx,\omega)\te^{\ti \phi(\vx,\omega)},
+P(\vx,\omega) = A^P(\vx,\omega)\te^{\ti \phi^P(\vx,\omega)},
 \label{eq:25D_WFS:general_sf}
 \end{equation}
 %
@@ -110,23 +110,24 @@ The dynamics of wave propagation is described by the phase of the sound field, p
 Borrowed from ray-tracing/geometrical optics theory we introduce the following quantities \cite{Romer2005,Carozzi2004}:
 %
 \begin{equation}
-\vk(\vx) = [k_x(\vx),\ k_y(\vx),\ k_z(\vx)]^{\mathrm{T}} = -\nabla \phi(\vx,\omega),
+\vk^P(\vx) = [k_x^P(\vx),\ k_y^P(\vx),\ k_z^P(\vx)]^{\mathrm{T}} = -\nabla \phi^P(\vx,\omega),
 \end{equation}
 %
 \begin{equation}
-k(\vx) =  \frac{1}{c} \frac{\partial}{\partial t} \phase{P(\vx,\omega)}  = \frac{1}{c} \left( \omega + \frac{\partial}{\partial t} \phi(\vx,\omega) \right),
+k^P(\vx) =  \frac{1}{c} \frac{\partial}{\partial t} \phase{P(\vx,\omega)}  = \frac{1}{c} \left( \omega + \frac{\partial}{\partial t} \phi^P(\vx,\omega) \right),
 \end{equation}
 %
-termed as the \emph{local wavenumber vector} and the \emph{instantaneous local wavenumber}, respectively, with $ \frac{\partial}{\partial t} \phase{P(\vx,\omega)} $ being the \emph{instantaneous local angular frequency}, where $\phase{f}$ denotes the phase of $f$.
+termed as the \emph{local wavenumber vector} and the \emph{instantaneous local wavenumber} of sound field $P$, respectively, with $ \frac{\partial}{\partial t} \phase{P(\vx,\omega)}$ being the \emph{instantaneous local angular frequency}, where $\phase{f}$ denotes the phase of $f$.
+In the followings the existence of the superscript distinguishes local properties from the global ones (e.g. wavenumber components of spectral decomposition).
 The wavenumber vector, defined as the negative gradient of the phase function points in the direction of maximal phase advance, i.e.\ it is perpendicular to the wave front in an arbitrary position.
 For an isotropic media, where the propagation speed is constant, the phase velocity the and group velocity coincide, and the wavenumber vector points in the direction of the wave's energy flow, i.e.\ in the local wave propagation direction \footnote{This statement holds exclusively for isotropic media.
 Although the wavenumber vector is always perpendicular to the wavefront, in anisotropic media the energy of a wave not necessarily travels along the path as the wavefront normals\cite{Pollard1977}.}.
 For stationary steady state sound fields the wavenumber vector does not depend on time and the instantaneous wavenumber is constant, given by 
 \begin{equation}
-k^2 = \left( \frac{\omega}{c} \right)^2 = |\vk(\vx)|^2 = k_x(\vx)^2 + k_y(\vx)^2 + k_z(\vx)^2,
+k^2 = \left( \frac{\omega}{c} \right)^2 = |\vk^P(\vx)|^2 = k^P_x(\vx)^2 + k^P_y(\vx)^2 + k^P_z(\vx)^2,
 \end{equation}
 thus the simple \emph{local dispersion relation } holds.
-Obviously, for 2D sound fields $k_z(\vx)=0$.
+Obviously, for 2D sound fields $k^P_z(\vx)=0$.
 In the current chapter, dealing exclusively with stationary virtual sound fields these assumptions hold.
 
 \begin{figure}[h!]
@@ -147,7 +148,7 @@ These latter components are termed as the \emph{Lagrange submanifolds} in the fi
 
 Finally, one may define the \emph{normalized wavenumber vector} as
 \begin{equation}
-\vhk(\vx) = \frac{\vk(\vx)}{|\vk(\vx)|} = \frac{\vk(\vx)}{k(\vx)} = \frac{\vk(\vx)}{\omega/c},
+\vhk^P(\vx) = \frac{\vk^P(\vx)}{|\vk^P(\vx)|} = \frac{\vk^P(\vx)}{k^P(\vx)} = \frac{\vk^P(\vx)}{\omega/c},
 \end{equation}
 being a vector of unit length, pointing in the local propagation direction of the sound field\footnote{The normalized phase change of wave fields, here termed as normalized wavenumber vector, is a massively used concept in short wavelength wave theory, dealing with asymptotic/local approximate solutions of the wave equation.
 In the field of ray tracing, expression $\Gamma(\vx) = \frac{\phi(\vx,\omega)}{k}$ is termed as the \emph{eikonal}, whose gradient defines the local propagation direction of the wave field: $\nabla \Gamma(\vx) = \vhk(\vx)$.
@@ -157,15 +158,15 @@ Over the last decades also the phase space representation of acoustic fields has
 
 For the interpretation of the local wavenumber one should express the first order Taylor-expansion of the phase function around an arbitrary point $\vxo$ in the space
 \begin{equation}
-\phi(\vx,\omega) \approx \phi(\vxo,\omega) + (\vx-\vxo) \nabla \phi(\vx,\omega).
+\phi^P(\vx,\omega) \approx \phi^P(\vxo,\omega) + (\vx-\vxo) \nabla \phi^P(\vx,\omega).
 \end{equation}
-By substitution into \eqref{eq:25D_WFS:general_sf}, with a slowly varying amplitude function---i.e. $A(\vx)$ is approximated by the first order Taylor expansion coefficient---in the proximity of $\vxo$ the sound field is approximated as
+By substitution into \eqref{eq:25D_WFS:general_sf}, with a slowly varying amplitude function---i.e. $A^P(\vx)$ is approximated by the first order Taylor expansion coefficient---in the proximity of $\vxo$ the sound field is approximated as
 \begin{equation}
 \label{Eq:25D_WFS:plane_wave_approximation}
-P(\vx,\omega) \approx A(\vxo,\omega) \te^{\ti ( \phi_0(\vxo,\omega) - \vk(\vx)^{\mathrm{T}} \vx )},
+P(\vx,\omega) \approx A^P(\vxo,\omega) \te^{\ti ( \phi_0^P(\vxo,\omega) - \vk(\vx)^{\mathrm{T}} \vx )},
 \end{equation}
-with $\phi_0(\vxo,\omega) = \phi(\vxo,\omega) + \vk(\vx)^{\mathrm{T}} \vxo $.
-Therefore each point of an arbitrary sound field is approximated as a local elementary plane wave, with the wavenumber and angular frequency given by $\vk(\vx)$ and $\omega$ respectively.
+with $\phi_0^P(\vxo,\omega) = \phi^P(\vxo,\omega) + \vk^P(\vx)^{\mathrm{T}} \vxo $.
+Therefore each point of an arbitrary sound field is approximated as a local elementary plane wave, with the wavenumber and angular frequency given by $\vk^P(\vx)$ and $\omega$ respectively.
 
 \subsubsection{High-frequency gradient approximation}
 %Applying the local wavenumber concept the 2D/3D WFS theory may be further simplified.
@@ -176,12 +177,12 @@ Therefore each point of an arbitrary sound field is approximated as a local elem
 In the high-frequency domain the gradient of an arbitrary sound field---required by the Rayleigh integral---may be expressed in a simplified form in terms of the local wavenumber vector.
 By applying the product rule of differentiation, the gradient of an arbitrary sound field, described by \eqref{eq:25D_WFS:general_sf} reads
 \begin{equation}
-\nabla P(\vx,\omega) = \left(  \frac{\nabla A(\vx,\omega)}{A(\vx,\omega)} + \ti \nabla \phi(\vx,\omega) \right) P(\vx,\omega) =  \left(  \frac{\nabla A(\vx,\omega)}{A(\vx,\omega)} - \ti \vk(\vx) \right) P(\vx,\omega).
+\nabla P(\vx,\omega) = \left(  \frac{\nabla A^P(\vx,\omega)}{A^P(\vx,\omega)} + \ti \nabla \phi^P(\vx,\omega) \right) P(\vx,\omega) =  \left(  \frac{\nabla A^P(\vx,\omega)}{A^P(\vx,\omega)} - \ti \vk^P(\vx) \right) P(\vx,\omega).
 \end{equation}
 A standard pre-assumption for the general WFS theory is that in the frequency domain of interest the target sound field's phase function varies rapidly compared to the envelope of the oscillation, which must hold both to apply the Kichhoff approximation and the stationary phase approximation in the followings.
-In the high frequency region $|\vk(\vx)| = k \gg \left| \frac{ \nabla A(\vx,\omega)}{A(\vx,\omega)} \right|$ holds, thus the gradient is approximated as
+In the high frequency region $|\vk^P(\vx)| = k \gg \left| \frac{ \nabla A^P(\vx,\omega)}{A^P(\vx,\omega)} \right|$ holds, thus the gradient is approximated as
 \begin{equation}
-\nabla P(\vx,\omega) \approx - \ti \vk(\vx) P(\vx,\omega).
+\nabla P(\vx,\omega) \approx - \ti \vk^P(\vx) P(\vx,\omega).
 \label{eq:25D_WFS:gradient_appr}
 \end{equation}
 Note, that it is a further local plane wave approximation of arbitrary sound fields, expressing the gradient of the local plane wave representation \eqref{Eq:25D_WFS:plane_wave_approximation}.
@@ -193,14 +194,14 @@ Clearly, there is a strong relationship between the local wavenumber vector conc
 The relation is established by the SPA.
 Consider the forward and inverse Fourier transform of a general polar form sound field $P(\vx,\omega)$ given by \eqref{eq:25D_WFS:general_sf}
 \begin{equation}
-\tilde{P}(k_x,y,k_z,\omega) = \iint_{-\infty}^{\infty} A(\vx,\omega)\te^{\ti \phi(\vx,\omega)} \te^{\ti k_x x} \te^{\ti k_z z} \td x \td z,
+\tilde{P}(k_x,y,k_z,\omega) = \iint_{-\infty}^{\infty} A^P(\vx,\omega)\te^{\ti \phi^P(\vx,\omega)} \te^{\ti k_x x} \te^{\ti k_z z} \td x \td z,
 \label{eq:forward_transform}
 \end{equation}
 \begin{equation}
-P(x,y,z,\omega) = \frac{1}{(2\pi)^2} \iint_{-\infty}^{\infty} \tilde{A}(k_x,y,k_z,\omega)\te^{\ti \tilde{\phi}(k_x,y,k_z,\omega)}  \te^{-\ti k_x x} \te^{-\ti k_z z} \td k_x \td k_z,
+P(x,y,z,\omega) = \frac{1}{(2\pi)^2} \iint_{-\infty}^{\infty} \tilde{A}^{\tilde{P}}(k_x,y,k_z,\omega)\te^{\ti \tilde{\phi}^{\tilde{P}}(k_x,y,k_z,\omega)}  \te^{-\ti k_x x} \te^{-\ti k_z z} \td k_x \td k_z,
 \label{eq:inverse_transform}
 \end{equation}
-with $\tilde{P}(k_x,y,k_z,\omega) =\tilde{A}(k_x,y,k_z,\omega)\te^{\ti \tilde{\phi}(k_x,y,k_z,\omega)}$.
+with $\tilde{P}(k_x,y,k_z,\omega) =\tilde{A}^{\tilde{P}}(k_x,y,k_z,\omega)\te^{\ti \tilde{\phi}^{\tilde{P}}(k_x,y,k_z,\omega)}$.
 
 \begin{figure}[h!]
 	\small
@@ -226,8 +227,8 @@ Supposing, that the sound field fulfills the SPA requirements---i.e.\ high frequ
 may be evaluated asymptotically applying the stationary phase method \cite{Arnold1995, Tinkelman2005}.
 The stationary point is found for a given $k_x$, where the gradient of the exponent is zero, thus where
 \begin{align}
-\frac{\partial}{\partial x} \phi(\vx,\omega) + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x(\vx) = k_x, \\
-\frac{\partial}{\partial z} \phi(\vx,\omega) + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z(\vx) = k_z
+\frac{\partial}{\partial x} \phi^P(\vx,\omega) + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx) = k_x, \\
+\frac{\partial}{\partial z} \phi^P(\vx,\omega) + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx) = k_z
 \end{align}
 holds.
 This finding states, that each point in the plane wave spectrum of a sound field is dominated by the parts of the space, where the local wavenumber vector coincides with the corresponding plane wave wavenumber.
@@ -246,10 +247,10 @@ In the present treatise this limitation is not investigated further, since the r
 \subsection{Rayleigh integral SPA interpretation}
 When the SPA is applied for the Rayleigh integral an expressive physical interpretation can be given for the solution of the stationary position.
 Since in the frequency domain of interest the Green's functions in the 2D and 3D Rayleigh integrals are rapidly oscillating functions, therefore the pre-requisitions for the application of the SPA hold.
-As given in the previous chapters the general 3D Rayleigh integral, describing also the synthesized field using an infinite planar SSD located at 
+As given in the previous chapters the general 3D Rayleigh integral, describing also the synthesized field at $\vx$ using an infinite planar SSD located at 
 $\vxo = \posvec{3}{x_0}{0}{z_0}$ reads
 \begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} - 2 \underbrace{ \left. \frac{\partial}{\partial y} P(\vxo,\omega) \right|_{y = 0}}_{ \approx -\ti k_y(\vxo) P(\vxo,\omega)}
+P(\vx,\omega) = \iint_{-\infty}^{\infty} - 2 \underbrace{ \left. \frac{\partial}{\partial y} P(\vxo,\omega) \right|_{y = 0}}_{ \approx -\ti k_y^P(\vxo) P(\vxo,\omega)}
  G(\vx-\vxo,\omega) \td z_0 \td x_0.
 \end{equation}
 Approximating the gradient of the target field by its high-frequency/local plane wave approximation, given by equation \eqref{eq:25D_WFS:gradient_appr} reveals, that the phase of the target field gradient at the SSD differs from the pressure field only in a constant phase shift.
@@ -259,7 +260,7 @@ By definition \eqref{Eq:ndim_stat_point}, the stationary point $\vxo^*$ is there
 \left( \phase{ \ti P(\vxo,\omega)} + \phase{ G(\vx-\vxo,\omega)} \right) \right|_{\vxo^*} =
 \\
 \nabla_{x_0,z_0} \left.
-\left( \frac{\pi}{2}+ \phi_P(\vxo,\omega) + \phi_G(\vx-\vxo,\omega) \right) \right|_{\vxo^*} = 0
+\left( \frac{\pi}{2}+ \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) \right) \right|_{\vxo^*} = 0
 \end{multline}
 holds.
 The gradient of the constant phase shift vanishes and the $x_0$ and $z_0$ derivatives of the target field and the Green's function phase can be recognized as the $k_x$ and $k_z$ component of the corresponding local wavenumber vectors.
@@ -292,36 +293,38 @@ Note, that here the reciprocity of the Green's function was exploited.
 	\put(7,  99){$y$}
 	\put(27, 68){$x_0^*$}	
 	\put(40, 93){$\vx$}
-	\put(33, 76){$\vk_P(\vxo^*)$}
-	\put(25, 62){$\vk_G(\vxo^* - \vx)$}
+	\put(33, 76){$\vk^P(\vxo^*)$}
+	\put(25, 62){$\vk^G(\vxo^* - \vx)$}
 	%
 	\put(70, 12){$x$}
 	\put(7,  43){$y$}
 	\put(27, 12){$x_0^*$}	
 	\put(40, 37){$\vx$}
-	\put(33, 20){$\vk_P(\vxo^*)$}
+	\put(33, 20){$\vk^P(\vxo^*)$}
 	\end{overpic}
 	\end{minipage}
 	\caption{Illustration of the Rayleigh integral stationary phase approximation.
-Analytically, the stationary phase position is found, where the phase of the integrand has a stationary point, i.e.\ where its gradient is zero (a).
-In the aspect of the Rayleigh integral the stationary position can be interpreted as the point, where the local wavenumber vector of the Green's function $G(\vxo|\vx)$ equals (-1) times the local wavenumber vector of the virtual field measured on the SSD (b).}
+Analytically, the stationary phase position is found, where the phase of the integrand has a stationary point, i.e.\ where its gradient is zero (b).
+In the aspect of the Rayleigh integral the stationary position can be interpreted as the point, where the local wavenumber vector of the Green's function positioned at the receiver position $G(\vxo|\vx)$ equals (-1) times the local wavenumber vector of the virtual field measured on the SSD (a)-(c).
+By placing back the point source into the SSD the wavefront of the actual SSD element at $\vxo^*$ and the virtual field coincide at $\vx$.}
 	\label{Fig:Theory:stationary_position}
 \end{figure}
 
-Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x(\vx)^2+k_y(\vx)^2+k_z(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
+Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x^P(\vx)^2+k_y^P(\vx)^2+k_z^P(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
 \begin{equation}
 \vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
+\label{Eq:25D_WFS:Ralyeigh_stat_point}
 \end{equation}
 Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
 
 Hence, the SPA compares the propagation direction/wave fronts of the virtual field and the Green’s function (placed at the receiver position $\vx$) along the SSD.
 The stationary position is then found, where these two directions coincide.
-See Figure \ref{Fig:Theory:stationary_position} (b) for an illustration, with the example of a virtual point source.
+See Figure \ref{Fig:Theory:stationary_position} (a,c) for an illustration, with the example of a virtual point source.
 Obviously, at the stationary position $\vxo^*$, $\vk^P(\vxo^*)$ coincides with $-\vk^G(\vxo^* - \vx )$ both in magnitude and direction.
 This result is of primary importance herein.
 It states, \emph{that for each receiver position $\vx$, the synthesized sound field is mostly influenced by that SSD element $\vxo^*$, from which the emerging spherical wave fronts locally coincide with the target sound field’s wave fronts, or with other words the propagation direction of a SSD element and the virtual sound field coincide.}\footnote{Since the general SPA equation \eqref{Eq:SPAintegral_1d_nd} holds for an arbitrary surface geometry the same conclusion can be drawn from finding the stationary position in the general Kirchhoff approximation integral with the driving function given by \eqref{eq:theory:gen_WFS} by comparing the local wavenumber components specified by the actual SSD geometry.}
 
-The counterpart of this statement declares that \emph{every point $\vxo$ on the SSD highly dominates the total synthesized sound field along a straight line, pointing from $\vxo$ towards the direction of the wave number vector $\vk(\vxo)$ of the target sound field.}
+The counterpart of this statement declares that \emph{every point $\vxo$ on the SSD highly dominates the total synthesized sound field along a straight line, pointing from $\vxo$ towards the direction of the wave number vector $\vk^P(\vxo)$ of the target sound field.}
 %For the case of a virtual spherical/cylindrical wave, this point is found in the intersection of the vector x 􀀀 xs and the SSD, as seen in Figure 2 (a).
 % This is a well-known result in WFS theory
 %
@@ -363,78 +366,31 @@ The counterpart of this statement declares that \emph{every point $\vxo$ on the 
 	\label{Fig:Theory:Spherical_and_Plane_Wave_stationary_point}
 \end{figure}
 
-For the case of a virtual spherical/cylindrical wave, this point is found in the intersection of the vector $ \vx - \vxs $ and the SSD, as seen in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (a).
-In terms of the wavenumber vector, where
+\paragraph{Cylindrical wavefront example: \\}
+As a simple 2D example the stationary position for the synthesis of a cylindrical wave field is discussed.
+The cylindrical wave, emitted by a 2D point source describing both the virtual field and the field of the SSD elements is given by the Hankel function.
+Applying the large-argument/asymptotic form \cite{Williams1999} the phase of the 2D Green's function can be extracted as
 \begin{equation}
-k \frac{\vxo^*-\vxs}{|\vxo^*-\vxs|} = k \frac{\vx-\vxo^*}{|\vx-\vxo^*|}
+\phi^{G_{2\mathrm{D}}}(\vx|\vxo) = k |\vx - \vxo|.
+\end{equation}
+Expressing the $x$-component of the wavenumber vector of the involved sound fields the stationary point for the 2D Rayleigh integral is found, where
+\begin{equation}
+k_{x}^P(\vxo^*) = k \frac{\vxo^*-\vxs}{|\vxo^*-\vxs|} = - k \frac{\vx-\vxo^*}{|\vx-\vxo^*|} = - k_{x}^{G_{2\mathrm{D}}}( \vx - \vxo^* )
 \end{equation}
 holds.
+The equation is satisfied in the intersection of the vector $ \vx - \vxs $ and the SSD, as seen in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (a).
 This is a well-known result in traditional WFS theory \cite{Start1997:phd,Verheijen1997:phd}.
 %
-\subsubsection{Plane Wave Example}	
-The principle is further demonstrated via the example of a plane wave synthesis, which has not been covered in the related literature so far.
+
+\paragraph{Planar wavefront example: \\}
+The principle is further demonstrated via the example of a plane wave synthesis.
 Let's assume a virtual 2D plane wave field with propagating direction $\mathbf{k}_\text{pw}=[k_x,k_y,k_z]^{\mathrm{T}}=k\,[\cosfi_\text{PW},\sinfi_\text{PW},0]^{\mathrm{T}}$.
-The $y$-derivative of such a sound field is given by
-\begin{equation}
-\left.
-\frac{\partial\,\te^{-\ti k ( \cosfi_\text{PW}\cdot x_0 + \sinfi_\text{PW}\cdot y )} }{\partial y} \right|_{ y = 0 } = -\ti k \sinfi_\text{PW}\,\te^{-\ti k \cosfi_\text{PW}\cdot x_0}.
-\end{equation}
-Substituting this back into the Rayleigh integral at a fixed receiver position the synthesized field reads
-\begin{equation}
-P(x,y,z=0,\omega) = \int\limits_{-\infty}^{\infty} \sinfi_\text{PW} \sqrt{8\pi \ti k |\vx-\vxo|}\,
-\te^{-\ti k \cosfi_\text{PW} \cdot x_0} \frac{1}{4\pi}\,\frac{\te^{-\ti k |\vx - \vxo|}}{|\vx - \vxo|} \, \td x_0.\nonumber
-\end{equation}
-The derivative of the phase function within the integral is given by
+Comparison of the $k_x$ component of the plane wave and the cylindrical SSD elements yields the stationary position $x_0^*$, satisfying
 \begin{equation}
 \label{Eq:Phix0_PlaneWaveExample}
-\phi'(x_0) = - k \left( \cosfi_\text{PW} - \frac{x-x_0}{|\vx - \vxo|} \right).
+- k \cosfi_\text{PW} = -k \frac{x-x_0^*}{|\vx - \vxo^*|}.
 \end{equation}
-For a fixed $x$-position the stationary point on the SSD is found for $\phi'(x_0) = 0$, thus where $\cosfi_\text{PW} = \frac{x-x_0}{|\vx-\vxo|}$ holds.
-By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (b) it is obvious, that the equation is satisfied, where $\vx-\vxo$ coincides with the propagation direction $\mathbf{k}_\text{pw}$ of the plane wave.
-
-
-%
-%\fscom{example directly based on the calculus above: with \eqref{Eq:k_vs_PhaseGradients_P_G} 
-%\begin{align}
-%k_x(x_0,0) = -\frac{ \partial }{\partial x_0}\phase{ P(x_0,0,\omega) } = \frac{ \partial }{\partial x_0} \phase{G_{\mathrm{3D}}(|\vxo-\vx|,\omega)}
-%\end{align}
-%and the plane wave
-%\begin{align}
-%&P(x,y,\omega)\big|_{x=x_0,y=0} =\\
-%&\te^{-\ti\,k\,(\cosfi_\text{PW}\,x+\sinfi_\text{PW}\,y)}\big|_{x=x_0,y=0} =\\
-%&\te^{-\ti\,k\,(\cosfi_\text{PW}\,x_0)}
-%\end{align}
-%follows: we derive its phase
-%\begin{align}
-%&\frac{\partial }{\partial x_0} [-k\,(\cosfi_\text{PW}\,x_0)] = -k\cosfi_\text{PW}\\
-%&k_x(x_0,0) = -\frac{ \partial }{\partial x_0}\phase{ P(x_0,0,\omega) } = (-)(-k\cosfi_\text{PW})
-%\end{align}
-%now check phase of Green 3D
-%\begin{align}
-%\frac{\partial }{\partial x_0} [-k\,\sqrt{(x_0-x)^2+(y_0-y)^2+(z_0-z)^2}] = \frac{k(x-x_0)}{|\vx-\vxo|}
-%\end{align}
-%thus we must ensure that
-%\begin{align}
-%\frac{k(x-x_0)}{|\vx-\vxo|} == k\cosfi_\text{PW}\\
-%\frac{(x-x_0)}{|\vx-\vxo|} == \cosfi_\text{PW}\\
-%\end{align}
-%which gives us that the vector directions of $\mathbf{k}_{pw}$ and $\vx-\vxo$ coincide, or with their unit vectors the dot product is one.
-%This is then also consistent with the result \eqref{Eq:Phix0_PlaneWaveExample}.
-%}
-%
-
-%\begin{figure} 
-%	\centering
-%	\begin{overpic}[width = .95\columnwidth]{Figures/WFS_theory/2D_unified_wfs.png}
-%	\footnotesize
-%	\put(0,2){(a)}
-%	\put(47,2){(b)}
-%	\end{overpic}
-%	\caption{Synthesis of a point (line) source at $\vxs = [0,\ -1]^{\mathrm{T}}$ oscillating at $\omega_0 = 2\pi \cdot 1000 ~\mathrm{rad/sec}$ in an entirely 2D SFS scenario, using the high-frequency WFS driving functions \eqref{eq:25D_WFS:generalized_2d_3d_wfs}.
-% The SSD is located at $\vxo = [x_0,\ 0]^{\mathrm{T}}$.
-%The figures show the synthesized field $\mathcal{R}\left( P_{\mathrm{synth}}(x,y,\omega) \right)$ (a) and the deviation from the target sound field $20\mathrm{log}_{10}\left( P_{\mathrm{synth}}(x,y,\omega) - P(x,y,\omega) \right)$ (b).}
-%	\label{Fig:WFS_theory:2D_unified_WFS}
-%\end{figure}
+By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_stationary_point} (b) it is obvious, that the equation is satisfied, where $\vx-\vxo^*$ coincides with the propagation direction $\mathbf{k}_\text{pw}$ of the plane wave.
 
 
 \section{Unified 2.5D WFS theory}
