@@ -188,6 +188,8 @@ In the high frequency region $|\vk^P(\vx)| = k \gg \left| \frac{ \nabla A^P(\vx,
 Note, that it is a further local plane wave approximation of arbitrary sound fields, expressing the gradient of the local plane wave representation \eqref{Eq:25D_WFS:plane_wave_approximation}.
 The expression holds therefore for an arbitrary plane wave with equality, and approximates a point-like source in its far-field, where the amplitude does not change rapidly.
 
+\subsubsection{The local wavefront curvature}
+
 
 \subsection{Fourier transform SPA interpretation}
 Clearly, there is a strong relationship between the local wavenumber vector concept and the plane wave decomposition/angular spectrum of sound fields.
@@ -258,17 +260,14 @@ k \frac{x^*(k_x)}{\sqrt{x^*(k_x)^2 + y^2}} = k_x
 x^*(k_x) = y \frac{k_x}{\sqrt{k^2 - k_x^2}}.
 \end{equation}
 For the geometric interpretation of the stationary point refer to Figure \ref{Fig:Theory:stat_pos_in_kx}.
-At the stationary point the phase of the integrand reads
-\begin{equation}
--k \sqrt{x^*(k_x)^2 + y^2} + k_x x^*(k_x) = -|y| \sqrt{k^2 - k_x^2},
-\end{equation}
-with the second derivative being
-\begin{equation}
-- k \frac{y^2}{\sqrt{ x^*(k_x)^2 +y^2 }^3} = - \frac{\sqrt{k^2-k_x^2}^3}{k^2 |y|}.
-\end{equation}
+At the stationary point the phase of the integrand its second derivative reads
+\begin{align}
+\phi^{G_{3\mathrm{D}}}(\vx^*(k_x)) &=  -k \sqrt{x^*(k_x)^2 + y^2} + k_x x^*(k_x) = -|y| \sqrt{k^2 - k_x^2},\\
+\phi^{''G_{3\mathrm{D}}}_{xx}(\vx^*(k_x)) &=  -k \frac{y^2}{\sqrt{ x^*(k_x)^2 +y^2 }^3} = - \frac{\sqrt{k^2-k_x^2}^3}{k^2 |y|}.
+\end{align}
 Substitution into the SPA \eqref{Eq:SPAResult} with $\sqrt{x^*(k_x)^2 + y^2} = |y|\frac{k}{\sqrt{k^2 - k_x^2}}$ and taking the negative sign of the second derivative into account yields the asymptotic form of the 3D point source spectrum, i.e. of the Hankel function
 \begin{equation}
-\tilde{P}(k_x,y,0,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{k^2- k_x^2} |y| \right) \approx \sqrt{\frac{\ti}{8\pi}} \frac{\te ^{-\ti |y| \sqrt{k^2 - k_x^2}}}{\sqrt{|y|\sqrt{k^2-k_x^2}}}
+\tilde{P}(k_x,y,0,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{k^2- k_x^2} |y| \right) \approx \frac{1}{\sqrt{8\pi \ti}} \frac{\te ^{-\ti |y| \sqrt{k^2 - k_x^2}}}{\sqrt{|y|\sqrt{k^2-k_x^2}}}
 \end{equation}
 
 \subsection{Rayleigh integral SPA interpretation}
@@ -281,6 +280,7 @@ $\vxo = \posvec{3}{x_0}{0}{z_0}$ reads
 P(\vx,\omega) = \iint_{-\infty}^{\infty} - 2 \underbrace{ \left. \frac{\partial}{\partial y} P(\vxo,\omega) \right|_{y = 0}}_{ \approx -\ti k_y^P(\vxo) P(\vxo,\omega)}
  G(\vx-\vxo,\omega) \td z_0 \td x_0.
 \end{equation}
+
 Approximating the gradient of the target field by its high-frequency/local plane wave approximation, given by equation \eqref{eq:25D_WFS:gradient_appr} reveals, that the phase of the target field gradient at the SSD differs from the pressure field only in a constant phase shift.
 By definition \eqref{Eq:ndim_stat_point}, the stationary point $\vxo^*$ is therefore given by
 \begin{multline}
@@ -302,13 +302,6 @@ For the stationary position therefore the following equations hold
 with $k_{x/z}^{P}$ and $k_{x/z}^{G}$ denoting the wavenumber components of $P(\vxo)$ and $G(\vxo|\vx)$ respectively.
 Note, that here the reciprocity of the Green's function was exploited.
 %
-
-Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x^P(\vx)^2+k_y^P(\vx)^2+k_z^P(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
-\begin{equation}
-\vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
-\label{Eq:25D_WFS:Ralyeigh_stat_point}
-\end{equation}
-Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\columnwidth}
@@ -344,6 +337,12 @@ In the aspect of the Rayleigh integral the stationary position can be interprete
 By placing back the point source into the SSD the wavefront of the actual SSD element at $\vxo^*$ and the virtual field coincide at $\vx$.}
 	\label{Fig:Theory:stationary_position}
 \end{figure}
+Along with the \emph{local dispersion relation} \cite{Tracy2014} $\left( \frac{\omega}{c} \right)^2 = k_x^P(\vx)^2+k_y^P(\vx)^2+k_z^P(\vx)^2$ at a fixed angular frequency two components completely determine the wavenumber vector, therefore the stationary position on the SSD for a given receiver position $\vx$ satisfies
+\begin{equation}
+\vk^P(\vxo^*) = - \vk^G(\vxo^* - \vx).
+\label{Eq:25D_WFS:Ralyeigh_stat_point}
+\end{equation}
+Obviously, the same derivation holds for the 2 dimensional case by applying the 1D SPA, where the stationary position is found, where the $k_x$ components of the target and secondary source field's are equal.
 
 Hence, the SPA compares the propagation direction/wave fronts of the virtual field and the Green’s function (placed at the receiver position $\vx$) along the SSD.
 The stationary position is then found, where these two directions coincide.
@@ -424,6 +423,53 @@ By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_sta
 
 \section{Unified 2.5D WFS theory}
 \label{Sec:Unified_WFS}
+
+This section provides a unified WFS framework applying the stationary phase approximation to the 3D Rayleigh integral, with the physical interpretation given in the previous section.
+The SPA is applied in order to reduce the planar single layer potential into a linear one, containing the linear SSD driving function implicitly, optimized to a single receiver position.
+Based on its physical interpretation a further horizontal SPA is applied in order to ensure amplitude correct synthesis on an arbitrary control curve, termed the \emph{reference curve} with its shaped controlled by the properly chosen \emph{referencing function}.
+Finally it is verified, that the presented driving functions can be applied without modification to a arbitrary smooth, curved SSD based on the Kirchhoff-approximation.
+
+\subsection{The 2.5D Rayleigh integral}
+Suppose a sound field, synthesized by a planar SSD located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$, applying the planar WFS driving functions given implicitly by the \emph{3D Neumann Rayleigh integral}, by applying the high frequency gradient approximation for the target sound field:
+\begin{equation}
+P(\vx,\omega) = \iint_{-\infty}^{\infty} 
+\underbrace{ 2 \ti k_y P(\vxo,\omega)}_{ D_{3\mathrm{D}}(\vxo, \omega) }
+G_{3\mathrm{D}}(\vx-\vxo) \td z_0 \td x_0.
+\label{eq:25D_WFS:3D_neumann} 
+\end{equation}
+
+In the following we restrict our investigation to the synthesis plane $z=0$.
+For the sake of brevity $\vx = [x,\ y,\ 0]^{\mathrm{T}}$ denotes in-plane positions.
+In order to reduce the problem dimensionality the SPA is applied to evaluate the integral vertically, along $z_0$-dimension.
+For the sake of phase correct synthesis in the synthesis plane, we expect the virtual source models to propagate parallel to this plane at $z=0$, i.e. the virtual sound field must satisfy
+\begin{equation}
+-\left. \frac{\partial}{\partial z} \phi^P(x,y,z)\right|_{z = 0} = k_z^P(x,y,0) \equiv 0.
+\end{equation}
+This is satisfied by an arbitrary 2D sound field invariant along the vertical dimension and ensembles of 3D point sources located at the synthesis plane.
+With these considerations the vertical stationary position is trivially located at $z_0^* = 0$, satisfying
+\begin{equation}
+\underbrace{k_z^P(x_0,0,0)}_{ = 0} + k_z^{G_{3\mathrm{D}}}(x - x_0,0,-z_0^*) = k \frac{z_0^*}{|\vx-\vxo^*|} =0.
+\end{equation}
+
+Applying the SPA to the 3D Rayleigh integral results in a line integral termed the \emph{2.5D Neumann Rayleigh integral}:
+\begin{equation}
+P(\vx,\omega) = \iint_{-\infty}^{\infty} 
+\underbrace{ 2 \ti k_y P(\vxo,\omega)}_{ D_{3\mathrm{D}}(\vxo, \omega) }
+G_{3\mathrm{D}}(\vx-\vxo) \td z_0 \td x_0.
+\label{eq:25D_WFS:25D_neumann} 
+\end{equation}
+
+
+%
+%\footnote{Note, that in the present setup due to the orthogonality of the integral variables the planar integral may be evaluated by the consecutive SPAs along the vertical and horizontal dimensions---i.e. since 
+%\begin{equation}
+%\frac{\partial^2}{\partial x \partial z} \left( \phi^P(\vxo,\omega) + \phi^G_{3\mathrm{D}}(\vxo-\vx,\omega) \right) = \frac{\partial^2}{\partial y \partial z} \left( \phi^P(\vxo,\omega) + \phi^G_{3\mathrm{D}}(\vxo-\vx,\omega) \right)  = 0
+%\end{equation}
+%holds---. }
+
+%Restricting the synthesis to the $z=0$ plane the integral of the 3D Green's function (i.e.\ the 2D Green's function) may be approximated applying the SPA: based on the foregoing if the receiver position is located at $z=0$ and the virtual sound field radiation is independent from the $z$-coordinate, the stationary position of integral \eqref{eq:25D_WFS:2D_neumann} is located trivially at $z_0=0$: $\vxo^* = [x_0,\ y_0,\ 0]$.
+
+
 %
 %In the previous section the high-frequency gradient approximation has already been applied to simplify the Rayleigh integral.
 %The same approach may be used in order to obtain compact 2/3D WFS driving functions valid for an arbitrary SSD surface.
@@ -457,7 +503,7 @@ By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_sta
 %The application of the driving functions is depicted in \ref{Fig:WFS_theory:2D_unified_WFS} for the case of a linear SSD in a 2D WFS scenario.
 %Obviously, the approximation of the gradient introduces synthesis errors in front of the SSD towards the local wavenumber vector of the target sound field, emerging from SSD parts, where $\langle \left.
 %\frac{\nabla A(\vx,\omega)}{A(\vx,\omega)} \right|_{\vx = \vxo}  \cdot \vni(\vxo) \rangle$ is considerable.
-%
+%%
 %\section{2.5D WFS of 2D sound fields}
 %For didactic reasons the presented WFS theory is introduced starting out from the 2D and 3D Rayleigh integrals, i.e.\ supposing a linear/planar SSD.
 %The theory is later extended for arbitrary SSD shapes applying the unified driving functions \eqref{eq:25D_WFS:generalized_2d_3d_wfs}.
@@ -475,7 +521,7 @@ By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_sta
 %\frac{\partial P(\vx,\omega)}{\partial y} \right|_{\vx = \vxo} \int_{-\infty}^{\infty}  G_{3\mathrm{D}}(\vx-\vxo) \td z_0 \td x_0.
 %\label{eq:25D_WFS:2D_neumann} 
 %\end{equation}
-%
+
 %
 %\vspace{3mm}
 %In the following we restrict our investigation to the synthesis plane $z=0$.
@@ -521,7 +567,7 @@ By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_sta
 %Even by applying ideal line sources, the correct synthesis of a 3D monopole is impossible: amplitude errors would be present in the synthesized field.
 %This phenomenon is referred to as \emph{virtual source dimensional mismatch}, and has to be accounted for, when the aiming for a 3D virtual sound field.
 %In the 2D case two types of virtual sound field models are considered in the present treatise: virtual plane waves, propagating in the $z=0$ plane (i.e.\ with $k_z = 0$) and 2D point(line) sources.
-%
+%%
 %\subsection{Referencing schemes for 2D sound fields}
 %
 %\subsubsection{Referencing Function}
@@ -1058,8 +1104,8 @@ By observing the geometry in Figure \ref{Fig:Theory:Spherical_and_Plane_Wave_sta
 %\vxref = \vxo + \vhk |\vx-\vxo|
 %\end{equation}
 %for an arbitrary SSD geometry.
-%
-%
+
+
 %\subsection{Referencing function and referencing schemes}
 %
 %The validity of the referencing schemes are demonstrated via the example of a circular SSD with a radius of $R_0$. 
