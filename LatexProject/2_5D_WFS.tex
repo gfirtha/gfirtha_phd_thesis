@@ -611,16 +611,16 @@ This distance is controlled by the referencing function.
 In the followings it is presented, how the corresponding referencing function $d(x_0)$ may be derived for 2D and 3D virtual sound fields.
 
 \vspace{3mm}
-It is worth noting, that referencing is always performed by the proper control of the SSD correction factor, i.e. as a generalization the referencing approach may be involved to the 2.5D driving function \eqref{eq:25D_WFS:25D_driv_fun_general} by introducing the here defined referencing curve:
+It is worth noting, that referencing is always performed by the proper control of the SSD correction factor, i.e. as a generalization the referencing approach may be involved to the general 2.5D driving function \eqref{eq:25D_WFS:25D_driv_fun_general} by introducing the here defined referencing curve:
 \begin{equation}
 D_{2.5\mathrm{D}}(x_0,\omega) = -2
 \sqrt{\frac{2\pi}{\ti |\phi_{zz}^{P''}(\vxo, \omega) + \phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)|}}
 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx = \vxo},
 \label{Eq:25D_WFS:Referencing_25D_WFS_driv_fun}
 \end{equation}
-where $\phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)$ is dependent only on $|\vxref(x_0) - \vxo|$.
+where $\phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)$ is dependent only on $|\vxref(x_0) - \vxo|$ (by considering the explicit expression of the second derivative).
 Solving \eqref{Eq:xRefyRef_General} for this reference curve-to-SSD distance and substituting back into \eqref{Eq:25D_WFS:Referencing_25D_WFS_driv_fun} leads to the very same results as given in the followings, independently from the virtual field dimensionality.
-The introduction of the referencing function concept---although giving a problem dimensionality dependent referencing function---gives a more expressive interpretation of the referencing mechanism.
+The introduction of the referencing function concept---although giving a problem dimensionality dependent referencing function---provides a more expressive interpretation of the referencing mechanism, as well as giving an easier to compare description with the existing approaches.
 
 
 \subsection{Referencing 2D sound fields}
