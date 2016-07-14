@@ -460,23 +460,23 @@ This is satisfied by an arbitrary 2D sound field invariant along the vertical di
 Note, that these restrictions on the virtual source model are equivalent, with the considerations, given for linear SDM in section \ref{Sec:SFS_theory:linear_SDM}.
 
 For didactic reasons the investigation begins with the case of a height-invariant 2D virtual field, which is later extended for 3D virtual fields.
-
+Such a SPA scenario with the SPA integration path and the vertical stationary position is illustrated by Figure \ref{Fig:WFS_Theory:25D_Rayleigh}.
 %
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 0.6\columnwidth ]{Figures/WFS_theory/25D_Rayleigh_geometry.png}
-%	\scriptsize
-%	\put(17,14){$x$}	
-%	\put(12,28){$y$}	
-%	\put(1, 36){$z$}
-%	\put(33.5,20){$\vxo$}
-%	\put(46.6,31.5){$\vx$}
-%	\put(80,34){synthesis plane}
-%	\put(69,42){$\dO_{3\mathrm{D}}$}
-%	\put(69,23){$\dO_{2.5\mathrm{D}}$}
+	\scriptsize
+	\put(74, 54){$x$}	
+	\put(88, 35){$y$}	
+	\put(47, 74){$z$}
+	\put(80, 45){$\vx$}
+	\put(53, 43){$\vxo^*$}
+	\put(45, 24){synthesis plane}
+	\put(58, 61){SPA integral path}
+	\put(-1, 62){\parbox{.5in}{2D virtual source}}
 	\end{overpic}
-\caption{General 3D WFS geometry }
-	\label{Fig:WFS_Theory:non_linear_geometry}
+\caption{Geometry for derivation of the 2.5D Neumann Rayleigh integral in case of a general 2D virtual sound field.}
+	\label{Fig:WFS_Theory:25D_Rayleigh}
 \end{figure}
 %
 
@@ -489,7 +489,7 @@ P_{2\mathrm{D}}(\vx,\omega) = \int_{-\infty}^{\infty}
 \underbrace{\int_{-\infty}^{\infty}  G(\vx-\vxo, \omega) \td z_0 }_{G_{2\mathrm{D}}(\vx-\vxo, \omega)} \td x_0.
 \label{eq:25D_WFS:2D_neumann} 
 \end{equation}
-Based on the considerations above, the vertical stationary point lies at $z_0^* = 0$.
+Based on the considerations above with the receiver position fixed to $z=0$ the vertical stationary point lies at $z_0^* = 0$.
 With the required second phase derivative reading
 %\begin{equation}
 $ \phi_{zz}^{G''}(\vx - \vxo,\omega) = -k \frac{1}{|\vx - \vxo|}$
