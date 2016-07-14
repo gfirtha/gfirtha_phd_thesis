@@ -611,7 +611,7 @@ This distance is controlled by the referencing function.
 In the followings it is presented, how the corresponding referencing function $d(x_0)$ may be derived for 2D and 3D virtual sound fields.
 
 \vspace{3mm}
-It is worth noting, that referencing is always performed by the proper control of the SSD correction factor, i.e. as a generalization the referencing approach may be involved to the general 2.5D driving function \eqref{eq:25D_WFS:25D_driv_fun_general} by introducing the here defined referencing curve:
+It is worth noting, that referencing is always performed by the proper control of the SSD correction factor: as a generalization the referencing approach may be involved to the general 2.5D driving function \eqref{eq:25D_WFS:25D_driv_fun_general} by introducing the here defined referencing curve:
 \begin{equation}
 D_{2.5\mathrm{D}}(x_0,\omega) = -2
 \sqrt{\frac{2\pi}{\ti |\phi_{zz}^{P''}(\vxo, \omega) + \phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)|}}
@@ -800,206 +800,393 @@ Furthermore, the analysis allows for the discussion of established referencing f
 
 
 
+\section{Application Examples}
+\label{Sec:examples}
 
+This section presents application examples for the unified WFS referencing approach via the synthesis of virtual plane waves, line and point sources.
+As a simple referencing approach applied in revisited WFS \cite{Ahrens2012} the effects of choosing a constant referencing function are investigated.
+As practical choices of the reference curve it is demonstrated how the referencing function should be chosen in order to reference the synthesis on a line, parallel with the SSD and on a circle around the virtual line/point source.
+
+\subsection{Reference Schemes 2D Sound fields}
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth ]{Figures/WFS_theory/fixed_referencing.png}
+	\scriptsize
+	\end{overpic}
+\caption{Effects of a constant referencing function: The absolute value of the error measured between the synthesized sound field and the target sound field at $\omega = 2\pi\cdot 1.5~\mathrm{krad/s}$ for (a) a virtual plane wave with $\varphi_\text{PW} = 45^{\circ}$ and (b) a line source at $\mathbf{x}_s = [0,\ -1]^{\mathrm{T}}$ is shown. The referencing function is set to $\dref = 2~\mathrm{m}$. 
+For the virtual plane wave the amplitude is thus referenced on a line at $y = \sinfi_\text{PW}\,\dref = 1.41~\mathrm{m}$. 
+For a virtual line source the positions of amplitude correct synthesis is given by the curve\eqref{Eq:Line_source_correcty_synth} with $d(x_0) \rightarrow \dref$, denoted by white dashed line. 
+In front of the virtual source the position of amplitude correct synthesis is located at $\dref$.}
+	\label{Fig:Theory:fixed_referencing}
+\end{figure}
+
+\subsubsection[Referencing with constant dref]{Referencing with constant $\dref$}
+With $d(x_0) = \dref$ the distance from the stationary SSD element becomes fixed. 
+In this referencing scheme the PCS are given by \eqref{Eq:PCS_PW} and \eqref{Eq:Line_source_correcty_synth} with a fixed referencing function
+for a plane wave and a line source, respectively. 
+By that a plane wave will be referenced along a line that is parallel to the SSD at $y = \sinfi_\text{PW}\,\dref$, whereas the line source becomes synthesized with correct amplitude along a bell contour. 
+There the maximum distance $\dref$ corresponds directly to the frontal position of the virtual line source. 
+For an illustration see Figure \ref{Fig:Theory:fixed_referencing}.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth ]{Figures/WFS_theory/line_referencing.png}
+	\scriptsize
+	\end{overpic}
+\caption{Effects of referencing on a line, parallel to the SSD: The absolute value of the error measured between the synthesized sound field and the target sound field for (a) a virtual plane wave with $\varphi_\text{PW} = 45^{\circ}$  and (b) line source at $\mathbf{x}_s = [0,\ -1]^{\mathrm{T}}$ is shown. 
+The referencing function is set to $d_{pw,line}(x_0) = 2 / \sinfi_\text{PW} ~\mathrm{m}$ for the plane wave, and $d_{ls,line}(x_0) = 2 r_0/y_s ~\mathrm{m}$ for the line source, resulting in an amplitude correct synthesis at $\yref = 2~\mathrm{m}$.}
+	\label{Fig:Theory:line_referencing}
+\end{figure}
+
+\subsubsection{Referencing along a parallel line}
+With the appropriate choice of $d(x_0)$ in \eqref{Eq:xRefyRef_2D_General} it is possible to reference amplitude correct synthesis along an arbitrary curve. 
+A feasible choice is to reference the synthesis to a line that is parallel to the SSD at $y=\yref>0$. 
+This can be done, by setting the $y$-coordinate of the parametric curve to a constant value, by choosing the general referencing function, cf. \eqref{Eq:xRefyRef_2D_General}
+\begin{align}
+\label{Eq:General_line_Ref_fun}
+d(x_0) = \frac{k}{k_y(x_0)}\,\yref.
+\end{align}
+
+The referencing functions are obtained via the substitution of the corresponding wavenumber component of a plane wave and a line source, given by \eqref{Eq:kx0_PW} and \eqref{Eq:kx0_LS} respectively.
+By substituting back to the WFS driving function \eqref{Eq:Gen_rayleigh_dx0}, it is obtained, that the driving functions, that reference the synthesis of a plane wave and a cylindrical wave to a reference line is given by
+\begin{equation}
+\label{Eq:Plane_wave_ref_line}
+D_\text{line,PW}(x_0,\omega) 
+=\sqrt{8\pi\,\ti\,k_y\,\yref}\,\te^{-\ti k_x x_0 }
+\end{equation}
+and
+\begin{equation}
+D_\text{line,LS}(x_0,\omega) =- \sqrt{\frac{\ti\,k\,\pi\,\yref\,y_s}{2\,r_0}}  H_1^{(2)}( k r_0 )
+\end{equation}
+respectively. 
+For the case of a virtual plane wave this is a well-known result, equivalent with the explicit SDM solution \cite[(29)]{Ahrens2010a}, \cite{Ahrens2012}.
+
+It is mentioned here, that since plane waves give a full orthogonal basis for an arbitrary 2D sound field, therefore 
+the driving function of an arbitrary 2D sound field may be constructed from the plane wave driving functions with appropriate referencing function, expressed in terms of $k_x$ and $k_y$.  As an example: the driving function referencing the synthesis on a reference line is obtained from the spatio-temporal spectrum/plane wave decomposition of the virtual sound field measured on the SSD utilizing \eqref{Eq:Plane_wave_ref_line}:
+\begin{equation}
+D(x_0,\omega) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} \hat{P}(k_x,0,\omega) \,\sqrt{8\pi\,\ti\,k_y\,\yref} 
+\,\te^{-\ti k_x x_0}\,
+ \td k_x,
+	\label{Eq:General_WFS_in_kx_domain}
+\end{equation}
+where $\hat{P}(k_x,0,\omega)$ is the wavenumber content / spatial Fourier transform of the target field measured on the SSD.
+
+ One important fact should be pointed out. The explicit solution---termed as the \emph{Spectral Division Method}---finds the driving function as the ratio of the wavenumber content of the target sound field and the 3D Green's function measured on the reference line \cite{Ahrens2010a}. 
+ If the target sound field is a 2D one, its wavenumber content on the SSD can be explicitly expressed, yielding the driving function
 %
-%\section{2.5D WFS for non-linear secondary source distributions}
+ \begin{equation}
+D_{\mathrm{SDM}}(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{ \hat{P}(k_x,0,\omega) \te^{-\ti k_y |\yref|}}{
+-\frac{\ti}{4}H_0^{(2)}\left( k_y |\yref| \right) }
+\te^{-\ti k_x x_0 }
+ \td k_x.
+\end{equation}
+If the large-argument approximation of the Hankel function is used: $-\frac{\ti}{4}H_0^{(2)}\left( k_y |\yref| \right) \approx \te^{-\ti k_y |\yref|}/\sqrt{8\pi\ti k_y |\yref|}$ \cite{Williams1999}, valid in the far-field of the SSD, the exponentials cancel out, and one obtains the WFS driving functions, given by \eqref{Eq:General_WFS_in_kx_domain}. 
+This remark indicates the fact, that WFS with a linear SSD and a linear reference curve is the general approximation of the explicit solution for the same setup.
+
+Alternatively the corresponding formulation can be given purely in the spatial domain: with expressing the derivative in \eqref{Eq:Gen_rayleigh_dx0} by the introduced high-frequency approximation \eqref{Eq:y_derivative}, and substituting the general parallel line's referencing function \eqref{Eq:General_line_Ref_fun}
+the driving function \eqref{Eq:Gen_rayleigh_dx0} becomes
+\begin{equation}
+D(x_0,\omega) = \sqrt{8\pi\,\ti\,k_y(x_0)\,\yref } P(x_0,0,\omega).
+\end{equation} 
+This formulation requires only the pressure and the $y$-derivative of the phase of the virtual sound field.
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.4\columnwidth}
+	\vspace{-5mm}
+	\begin{overpic}[width = 1\columnwidth]{Figures/WFS_theory/circular_referencing.png}
+	\scriptsize
+	\put(100,17){$x$}
+	\put(8,  49){$y$}
+    \put(20, 30){$R_{\mathrm{ref}}$}
+    \put(30, 10){$r_0$}
+    \put(48, 24){$\dref$}
+	\end{overpic}
+	\end{minipage}
+	\hspace{5mm}
+	\begin{minipage}{0.5\columnwidth}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/WFS_theory/circle_referencing.png}
+	\scriptsize
+	\end{overpic}
+	\end{minipage}
+\caption{Geometry for deriving the referencing function for a circle around the virtual line source (a) and the absolute value of the error (b) measured between the synthesized sound field and the target sound field for a line source at $\mathbf{x}_s = [0,\ -1]^{\mathrm{T}}$. The synthesis is referenced on a circle around the line source, with a radius of $R_{\mathrm{ref}} = y_s + 2 ~\mathrm{m}$.}
+	\label{Fig:Theory:circular_referencing}
+\end{figure}
+
+\subsubsection{Referencing along a circle}
+For a cylindrical virtual source it might be feasible in several applications to reference the synthesis on a circle around the center of the virtual source. 
+The example is presented in order to demonstrate the validity of the presented referencing approach.
+
+Referencing to a circle with a radius of $R_{\mathrm{ref}} > r_0$ may be done by observing the problem geometry in Figure \ref{Fig:Theory:circular_referencing}. 
+In the stationary point $R_{\mathrm{ref}} = \dref + r_0$, thus
 %
-%\subsection{2.5D Neumann Rayleigh integral}
-%%
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = 0.7\columnwidth ]{Figures/WFS_theory/wfs_nonlinear_Geometry.png}
-%	\scriptsize
-%	\put(17,14){$x$}	
-%	\put(12,28){$y$}	
-%	\put(1, 36){$z$}
-%	\put(33.5,20){$\vxo$}
-%	\put(46.6,31.5){$\vx$}
-%	\put(80,34){synthesis plane}
-%	\put(69,42){$\dO_{3\mathrm{D}}$}
-%	\put(69,23){$\dO_{2.5\mathrm{D}}$}
-%	\end{overpic}
-%\caption{General 3D WFS geometry for the derivation of 2.5D driving functions.
-%The SSD surface $\dO_{3\mathrm{D}} = f(x_0,y_0)$ is chosen to be independent of $z$-coordinate in order to be able to evaluate the integral with respect to $z_0$ using the SPA. If the virtual sound field is a 2D one, propagating in the direction parallel to the listening plane the the SSD can be interpreted as a continuous set of infinite vertical line sources along $\dO_{2.5\mathrm{D}}$ (described by the 2D Green's function), capable of the perfect synthesis of a virtual 2D field inside the enclosure.}
-%	\label{Fig:WFS_Theory:non_linear_geometry}
-%\end{figure}
+\begin{equation}
+d_\text{circle,LS}(x_0) = R_{\mathrm{ref}} - r_0.
+\label{Eq:dCircleLS}
+\end{equation}
 %
-%In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted in Figure \ref{Fig:WFS_Theory:non_linear_geometry} is considered. The SSD surface is chosen to be an enclosing contour in the $xy$-plane, being invariant along the vertical dimension.
-%Under high-frequency assumptions the general 2D/3D WFS driving functions, given by \eqref{eq:theory:gen_WFS} can be applied. In this special geometry the synthesized field inside the enclosure can be written in the form
-%\begin{equation}
-%P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \int\displaylimits_{-\infty}^{\infty} w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td z_0 \, \td \dO_{2.5\mathrm{D}}(x_0,y_0).
-%\end{equation}
-%Similarly to the planar SSD case, the vertical integral may be approximated by the SPA. Again, $k_{z,P}(x,y,0)$ is assumed, i.e. virtual fields, propagating in the plane of synthesis parallel in $z=0$ direction. The stationary position for any $z=0$ receiver position therefore becomes trivially $z_0^*=0$, and the surface integral can be approximated by a contour integral, termed as the \emph{general 2.5D Neumann Rayleigh integral}
-%\begin{multline}
-%P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \sqrt{\frac{2 \pi}{\ti \left| \phi''_{P,z,z}(\vxo,\omega) +  \phi''_{G,z,z}(\vx - \vxo,\omega) \right|}} \\
-%w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td \dO_{2.5\mathrm{D}}(x_0,y_0),
-%\end{multline}
-%with $\vx = [x,y,0]^{\mathrm{T}}$, $\vxo = [x_0,y_0, 0]^{\mathrm{T}}$ denoting in-plane positions.
-%
-%The integral implicitly contains the---yet receiver position dependent---2.5D driving functions. Substituting the second derivative of the 3D SSD elements' field yields the general form 
-%\begin{equation}
-%D(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti k}}\sqrt{\dref(\vxo)}
-%\frac{\partial P(\vxo,\omega)}{\partial \vni},
-%\end{equation}
-%where the referencing function takes the same form as given by \eqref{dx0_2DSources} and \eqref{Eq:dx0_PointSource} for a 2D and a 3D point source target field respectively. Using the Kirchhoff approximation therefore the 2.5D driving functions are given by the 2.5D linear driving functions, completed by the already known windowing function.
-%
-%In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
-%Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required. The positions of correct synthesis are therefore given by
-%\begin{equation}
-%\vxref = \vxo + \vhk |\vx-\vxo|
-%\end{equation}
-%for an arbitrary SSD geometry.
+For the result of this type of referencing see Figure \ref{Fig:Theory:circular_referencing}.
 
 
-%\subsection{Referencing function and referencing schemes}
-%
-%The validity of the referencing schemes are demonstrated via the example of a circular SSD with a radius of $R_0$. 
-%For such an SSD ensemble the normal derivative is given by the radial derivative and the WFS driving function reads
+\subsection{Reference schemes for 3D Point Source}
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth ]{Figures/WFS_theory/point_source_referencing.png}
+	\scriptsize
+	\end{overpic}
+\caption{Referencing the synthesis of a 3D point source with a constant referencing function (a), to a reference line (b) and to a circle around the virtual source (c). The virtual source is a point source located at $\mathbf{x}_s = [0,\ -3,\ 0]^\mathrm{T}$, oscillating at $\omega = 2\pi \cdot 1.5 ~\mathrm{rad/s}$. For the constant referencing $\dref = 1.5~\mathrm{m}$ is set. Note, that in front of the point source the amplitude correct synthesis is ensured at $\frac{y_s}{y_s/\dref - 1 } = 3~\mathrm{m}$. For the case of referencing to a line $\yref = 1.5~\mathrm{m}$, while for referencing to a circle $R_{\mathrm{ref}} = y_s + 1.5~\mathrm{m}$ was chosen.}
+	\label{Fig:Theory:point_source_referencing}
+\end{figure}
+
+\subsubsection[Referencing with constant dref]{Referencing with constant $\dref$}
+
+Similarly to the 2D case, by fixing the referencing function to a constant value the PCS are given by \eqref{Eq:3D_curve} with the substitution $d(x_0) = \dref$.
 %\begin{equation}
-%D(\beta,\omega) = + \sqrt{\frac{8\pi}{\ti k}}\,w(\beta)\,\sqrt{d(\beta)} \left. \frac{\partial P(r,\beta)}{\partial r}  \right|_{r = R_0}.
+%\mathbf{x}_{\mathrm{ref}}(x_0)  =  \begin{bmatrix} x_0 + (x_0-x_s)\frac{1}{\frac{r_0}{\dref} - 1 } \\[0.3em] -y_s \frac{1}{\frac{r_0}{\dref} - 1}\\[0.3em]    \end{bmatrix}.
+%\label{Eq:3D_fixed_reference}
 %\end{equation}
-%
-%\begin{figure}
-%	 \centering
-%	 \begin{overpic}[width = .95\columnwidth]{Figures/WFS_theory/real_part_circular.png}
-%	 \end{overpic}
-% \caption{ The synthesis of a plane wave (a) and a line source (b), used in the following examples. The plane waves propagates in the $x$-direction. The line source is located at $\mathbf{x}_s = [-3,\ 0]^{\mathrm{T}}$. The SSD is a circular array with $R_0 = 2~\mathrm{m}$. The source frequency is set to $\omega_0 = 2\pi	\cdot 1 ~\mathrm{krad/s}$.}
-%	 \label{Fig:Theory:real_part_circular}
-% \end{figure}
-%%
-%The referencing function $d(\beta)$ for an arbitrary curve can be found in the same manner as for a linear SSD using the SPA. 
-%In this case geometrical considerations give us a much simpler referencing method: the stationary secondary source can be found where the wavenumber vector intersects the SSD, which is a constant directed vector for a plane wave, and any vector directed radially from the source position for a line/point source. 
-%The position of reference position can be found in the same direction from any stationary secondary source in a distance of $d(\beta)$ in the plane wave and line source case, and $d(\beta)\frac{r_0}{r_0-d(\beta)}$ for a 3D point source.
-%
-%Two referencing schemes are presented in order to demonstrate the validity of the presented approach: referencing the synthesis along a straight line, and along a concentric circle inside the circular SSD.
-%
-%\subsubsection{Effects of constant referencing}
-%
-%First, the effect of a constant referencing function is investigated. 
-%For both a plane wave and a line source the position of correct synthesis can be found based on the problem geometry.
-%
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .85\columnwidth  ]{Figures/WFS_theory/fixed_referencing_circle.png}
-%	\scriptsize
-%	\put(6,36.2){$\varphi_\text{PW}$}
-%	\put(43, 17){$x$}
-%	\put(23, 39){$y$}
-%    \put(9.5,30){$\dref$}
-%    \put(3,  39){$\mathbf{k}$}
-%    \put(17.5, 19.2){$\beta$}
-%	\put(3.5,    27){$\vxo$}
-%%
-%    \put(63.5, 27.5){$\dref$}
-%    \put(100,17){$x$}
-%    \put(79, 38){$y$}
-%    \put(69, 22){$R_0$}
-%    \put(56.5,21.5){$r_0$}
-%    \put(58.5,19.5){$\alpha$}
-%    \put(68.5,19.5){$\beta$}
-%    \put(55,  17){$\mathbf{x}_s$}
-%	\end{overpic}
-%\caption{ Geometry for finding the position of amplitude correct reproduction of a plane wave (a) and a line source (b) }
-%	\label{Fig:Theory:fixed_referencing_circle}
-%\end{figure}
-%
-%For the case of the synthesis of a plane wave it is obvious, that the points from each SSD element at a distance of $\dref$ describe a circle with the same radius as the SSD, translated in the direction of the plane wave by $\dref$. 
-%See Figure \ref{Fig:Theory:fixed_referencing_circle} (a). The PCS are therefore given by
-%\begin{eqnarray}
-%\mathbf{x}_{\mathrm{ref,PW}}(\vxo) = \colvec{2}{ \cos \beta \,R_0  + \cosfi_\text{PW}\, \dref }{  \sin \beta \,R_0  + \sinfi_\text{PW}\, \dref }
-%\label{Eq:Fixed_referencing_pw_circle}
-%\end{eqnarray}
-%with $\varphi_\text{PW}$ being the propagation angle of the plane wave measured from the $x$-axis.
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .95\columnwidth]{Figures/WFS_theory//fixed_referencing_circular.png}
-%	\end{overpic}
-%\caption{ Positions of amplitude correct synthesis using circular SSD for a virtual plane wave (a) and line source (b). The referencing function is set to $\dref = 1~\mathrm{m}$. }
-%	\label{Fig:Theory:fixed_referencing_circular}
-%\end{figure}
-%
-%For a virtual line source the parametric curve can be given by the problem geometry, displayed in Figure \ref{Fig:Theory:fixed_referencing_circle} (b).
-%The PCS are given by
-%\begin{eqnarray}
-%\mathbf{x}_{\mathrm{ref,LS}}(\vxo) =  \colvec{2}{ x_s + \cos\alpha \, (\dref + r_0)}{ y_s + \sin\alpha\, (\dref+r_0)}.
-%\label{Eq:Fixed_referencing_ls_circle}
-%\end{eqnarray}
-%This curve is not easily accessible for analytic investigation, however two limiting curves can be described purely from the problem geometry. 
-%As the virtual source approaches the SSD the curve describes a circle around the virtual source with a radius of $\dref$. 
-%If the virtual source is very far from the SSD the incident field becomes a plane wave and the curve describes a circle with a radius same as the SSD, translated by $\dref$ into the direction, defined by the position vector of the virtual source. 
-%%In other virtual source position the curve is a mixture of these two circles. 
-%It is also ensured, that in front of the virtual source, the distance of amplitude correct synthesis from the corresponding SSD element is $\dref$. 
-%%This fact is in analogy with the linear SSD case.
-%Results of numeric simulation, using these referencing schemes are depicted in Figure \ref{Fig:Theory:fixed_referencing_circular}.
-%
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .85\columnwidth]{Figures/WFS_theory/fixed_referencing_circular_ps.png}
-%	\end{overpic}
-%\caption{ Positions of amplitude correct synthesis using circular SSD with radius of $R_0 = 1.5~\mathrm{m}$ for a virtual point source with the virtual source positioned at $\mathbf{x}_s = [-2.5,\ 0,\ 0]^{\mathrm{T}}$ (a) and $\mathbf{x}_s = [-4,\ 0,\ 0]^{\mathrm{T}}$ (b). The referencing function is set to $\dref = 1~\mathrm{m}$. In (a) in front of the virtual source is $0.5~\mathrm{m}$, with $r_0< \dref$, therefore no position for correct synthesis can be found. As the virtual source gets further from the SSD (b), $r_0> \dref$ is satisfied, and the position of correct synthesis in front of the virtual source becomes $x_c = x_s + r_0\frac{r_0}{r_0-\dref} = 0$. }
-%	\label{Fig:Theory:fixed_referencing_circular_ps}
-%\end{figure}
-%
-%In each case it should be noted, that the position of amplitude correct synthesis can be defined only inside the SSD. 
-%Moreover, due to high-frequency approximations for the arbitrary SSD extension the curve of correct synthesis is shorter, than it would be allowed by the previous limitation (i.e. does not limited by the intersections with the SSD). 
-%This can be explained by two reasons: in the ending of the curves the corresponding stationary SSD elements can not be modeled as flat surfaces in order to apply the Kirchhoff-approximation due to the large local angle of inclination of the incident field. On the other hand in these parts also the diffraction waves would have considerable contribution in the synthesized field, which are inherently omitted in the geometrical optics approximation (i.e. in these parts of the SSD both assumptions for the Kirchhoff approximation fail).
-%This phenomenon can be observed in both Figure \ref{Fig:Theory:fixed_referencing_circular} (a) and (b).
-%
-%For the synthesis of a virtual point source the substitution of $\dref \rightarrow \dref \frac{r_0}{r_0 - \dref}$ w.r.t. the line source case in \eqref{Eq:Fixed_referencing_ls_circle} holds as discussed above. The PSC are then given as
-%\begin{eqnarray}
-%\mathbf{x}_{\mathrm{ref,PS}}(\vxo) =  \colvec{2}{ x_s + \cos\alpha \, r_0 \frac{r_0}{r_0 - d}  }{ y_s + \sin\alpha\, r_0 \frac{r_0}{r_0 - d} }.
-%\label{Eq:Fixed_referencing_ps_circle}
-%\end{eqnarray}
-%Similarly to the linear SSD case that means, that in front of the virtual source the position of correct synthesis measured from the SSD becomes $\dref \frac{r_0}{r_0- \dref}$, therefore if the point source is closer to the SSD than the reference distance, no position for amplitude correct synthesis can be found. This can be observed in Figure \ref{Fig:Theory:fixed_referencing_circular_ps}.
-%
-%\subsubsection{Referencing to an arbitrary curve}
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .85\columnwidth]{Figures/WFS_theory/referencing_on_circle_and_line.png}
-%	\scriptsize
-%	\put(43, 17){$x$}
-%	\put(23, 39){$y$}
-%    \put(9.5,28.5){$d(\varphi)$}
-%    \put(5,  38){$\mathbf{k}$}
-%    \put(16, 20){$\beta$}
-%	\put(4.5,  28){$x_0$}
-%	\put(12,  22){$R_0$}
-%	\put(16.5,  25){$R_{\mathrm{ref}}$}
-%%
-%    \put(65, 27.5){$d(\varphi)$}
-%    \put(100,17){$x$}
-%    \put(80, 39){$y$}
-%    \put(69, 22){$R_0$}
-%    \put(56.5,21.5){$r_0$}
-%    \put(70.5,17){$x_0$}
-%    \put(68.5,20){$\beta$}
-%    \put(55,  17){$\mathbf{x}_s$}
-%	\end{overpic}
-%\caption{ Geometry for finding $d(\varphi)$ referencing the synthesis of a plane wave to a concentric circle (a) and the synthesis of a line source to a straight line (b). }
-%	\label{Fig:Theory:referencing_on_line_and_circle}
-%\end{figure}
-%
-%Finally it is shown, how synthesis may be referenced to an arbitrary curve. 
-%Two examples are presented: referencing a plane wave on a circle, and a point source on a line.
-%Our aim is to find the referencing function $d(\beta)$, equaling the length of the corresponding vector, seen in Figure \ref{Fig:Theory:referencing_on_line_and_circle}. With geometrical considerations they can be expressed as
-%\begin{eqnarray}
-%d_\text{circle,PW}(\beta) = R_0\cos \beta - \sqrt{ R_{\mathrm{ref}}^2 - R_0^2\,\sin^2\varphi_\text{PW} }
-%\\
-%d_\text{line,LS}(\beta) = -r_0 \left( \frac{x_0 + R_0\cos \beta}{x_s + R_0\cos \beta} \right)
-%\end{eqnarray}
-%respectively. 
-%This latter would ensure the amplitude correct synthesis for a line source. In order to apply the formulation for a 3D point source  $\dref \rightarrow \dref \frac{r_0}{r_0 - \dref}$ substitution is needed, ending up in
+This parametric curve is similar to that of the 2D line source case (Figure \ref{Fig:Theory:fixed_referencing}), however with several important differences.
+
+The $y$-coordinate exhibits a maximum in front of the virtual source, where $r_0 = |y_s|$. For any other position the PCS is closer to the SSD. 
+Therefore, $r_0 = |y_s|$ is the critical point of the curve: a position of correct synthesis can only be found in the listening area if $|y_s| > \dref$, i.e. the virtual source must be further away from the SSD than the fixed reference distance. 
+Actually, the synthesis gives a fair result close to the SSD only in case, $|y_s| \gg \dref$. 
+
+
+As the virtual source approaches the SSD the position of correct synthesis tends to infinity. Here it is stated , that $|y_s|$ should be less, than $\dref$. 
+If $\dref$ is large enough, far field assumptions for the SPA still hold, however no PCS can be found. 
+This type of referencing therefore may suffer from serious amplitude errors in the vicinity of the SSD.
+
+
+\subsubsection{Referencing along a parallel line}
+Referencing along a line that is parallel to the SSD at distance $y=\yref>0$ is obtained by setting the $y$-coordinate of \eqref{Eq:3D_curve} to a fix $\yref$ value, yielding the referencing function
 %\begin{equation}
-%d_{ps,line}(\beta) = r_0 \frac{x_0 + R_0\cos \beta}{x_0-x_s}.
+%-y_s \frac{d(x_0)}{r_0 - d(x_0)} = \yref.
 %\end{equation}
-%The validity of the referencing functions are demonstrated in Figure \ref{Fig:Theory:pw_to_circle_ps_to_line}.
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = 1\columnwidth]{Figures/WFS_theory/pw_to_circle_ps_to_line.png}
-%	\end{overpic}
-%\caption{ Result of referencing the synthesis of a plane wave to a circle (a) and a 3D point source to a line. The plane wave propagates parallel to the $x$-axis and the point source is located at $\mathbf{x}_s = [-4,\ 0,\ 0]^{}\mathrm{T}$. The radius of the reference circle is $R_{\mathrm{ref}} = 1~\mathrm{m}$ at (a) and the line of referencing is located at $x_0 = -0.5~\mathrm{m}$ in (b).}
-%	\label{Fig:Theory:pw_to_circle_ps_to_line}
-%\end{figure}
+%The resulting referencing function reads
+\begin{equation}
+d_\text{line,PS}(x_0) = r_0 \frac{\yref}{\yref-y_s}.
+\end{equation}
+Substituting it back to \eqref{Eq:2_5D_point_source_implicit_df_Explanations} one obtains
+\begin{equation}
+D(x_0,\omega) = 
+- \sqrt{\frac{\ti k}{2\pi}} \sqrt{\frac{\yref}{\yref -y_s}}  y_s \frac{\te^{-\ti k r_0 }}{r_0^{3/2}},
+\end{equation}
+which exactly yields the well-known WFS driving function \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd} of a point source, that is simultaneously equivalent to the farfield/high-frequency approximated explicit SDM solution \cite[(25)]{Spors10ahrens:analysis}.
+
+\subsubsection{Referencing along a circle}
+Referencing the synthesis along a circle around the point source in the synthesis plane is obtained by solving, cf. \eqref{Eq:dx0_mapping} and \eqref{Eq:dCircleLS}
+\begin{equation}
+d(x_0)\frac{r_0}{r_0 - d(x_0)} = R_{\mathrm{ref}} - r_0,
+\end{equation}
+resulting in
+\begin{equation}
+d_\text{circle,PS}(x_0)  = r_0 \frac{R_{\mathrm{ref}} - r_0}{R_{\mathrm{ref}}}.
+\end{equation}
+%
+The performance of this referencing type is demonstrated in Figure \ref{Fig:Theory:point_source_referencing} (c).
+
+
+
+\section{2.5D WFS for non-linear secondary source distributions}
+
+\subsection{2.5D Neumann Rayleigh integral}
+%
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 0.7\columnwidth ]{Figures/WFS_theory/wfs_nonlinear_Geometry.png}
+	\scriptsize
+	\put(17,14){$x$}	
+	\put(12,28){$y$}	
+	\put(1, 36){$z$}
+	\put(33.5,20){$\vxo$}
+	\put(46.6,31.5){$\vx$}
+	\put(80,34){synthesis plane}
+	\put(69,42){$\dO_{3\mathrm{D}}$}
+	\put(69,23){$\dO_{2.5\mathrm{D}}$}
+	\end{overpic}
+\caption{General 3D WFS geometry for the derivation of 2.5D driving functions.
+The SSD surface $\dO_{3\mathrm{D}} = f(x_0,y_0)$ is chosen to be independent of $z$-coordinate in order to be able to evaluate the integral with respect to $z_0$ using the SPA. If the virtual sound field is a 2D one, propagating in the direction parallel to the listening plane the the SSD can be interpreted as a continuous set of infinite vertical line sources along $\dO_{2.5\mathrm{D}}$ (described by the 2D Green's function), capable of the perfect synthesis of a virtual 2D field inside the enclosure.}
+	\label{Fig:WFS_Theory:non_linear_geometry}
+\end{figure}
+
+In order to extend the 2.5D WFS theory for non-linear SSDs the geometry depicted in Figure \ref{Fig:WFS_Theory:non_linear_geometry} is considered. The SSD surface is chosen to be an enclosing contour in the $xy$-plane, being invariant along the vertical dimension.
+Under high-frequency assumptions the general 2D/3D WFS driving functions, given by \eqref{eq:theory:gen_WFS} can be applied. In this special geometry the synthesized field inside the enclosure can be written in the form
+\begin{equation}
+P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \int\displaylimits_{-\infty}^{\infty} w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td z_0 \, \td \dO_{2.5\mathrm{D}}(x_0,y_0).
+\end{equation}
+Similarly to the planar SSD case, the vertical integral may be approximated by the SPA. Again, $k_{z,P}(x,y,0)$ is assumed, i.e. virtual fields, propagating in the plane of synthesis parallel in $z=0$ direction. The stationary position for any $z=0$ receiver position therefore becomes trivially $z_0^*=0$, and the surface integral can be approximated by a contour integral, termed as the \emph{general 2.5D Neumann Rayleigh integral}
+\begin{multline}
+P(\vx,\omega) = -2 \oint\displaylimits_{\dO_{2.5\mathrm{D}}} \sqrt{\frac{2 \pi}{\ti \left| \phi''_{P,z,z}(\vxo,\omega) +  \phi''_{G,z,z}(\vx - \vxo,\omega) \right|}} \\
+w(\vxo) \frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega) \, \td \dO_{2.5\mathrm{D}}(x_0,y_0),
+\end{multline}
+with $\vx = [x,y,0]^{\mathrm{T}}$, $\vxo = [x_0,y_0, 0]^{\mathrm{T}}$ denoting in-plane positions.
+
+The integral implicitly contains the---yet receiver position dependent---2.5D driving functions. Substituting the second derivative of the 3D SSD elements' field yields the general form 
+\begin{equation}
+D(\vxo,\omega) = -2 w(\vxo) \sqrt{\frac{2 \pi}{\ti k}}\sqrt{\dref(\vxo)}
+\frac{\partial P(\vxo,\omega)}{\partial \vni},
+\end{equation}
+where the referencing function takes the same form as given by \eqref{dx0_2DSources} and \eqref{Eq:dx0_PointSource} for a 2D and a 3D point source target field respectively. Using the Kirchhoff approximation therefore the 2.5D driving functions are given by the 2.5D linear driving functions, completed by the already known windowing function.
+
+In the followings it is demonstrated, that the referencing approach, described earlier may be applied without any modification for arbitrary SSD contours. 
+Since both SPA and Kirchhoff-approximation are valid at high-frequency regions no further presumptions are required. The positions of correct synthesis are therefore given by
+\begin{equation}
+\vxref = \vxo + \vhk |\vx-\vxo|
+\end{equation}
+for an arbitrary SSD geometry.
+
+
+\subsection{Referencing function and referencing schemes}
+
+The validity of the referencing schemes are demonstrated via the example of a circular SSD with a radius of $R_0$. 
+For such an SSD ensemble the normal derivative is given by the radial derivative and the WFS driving function reads
+\begin{equation}
+D(\beta,\omega) = + \sqrt{\frac{8\pi}{\ti k}}\,w(\beta)\,\sqrt{d(\beta)} \left. \frac{\partial P(r,\beta)}{\partial r}  \right|_{r = R_0}.
+\end{equation}
+
+\begin{figure}
+	 \centering
+	 \begin{overpic}[width = .95\columnwidth]{Figures/WFS_theory/real_part_circular.png}
+	 \end{overpic}
+ \caption{ The synthesis of a plane wave (a) and a line source (b), used in the following examples. The plane waves propagates in the $x$-direction. The line source is located at $\mathbf{x}_s = [-3,\ 0]^{\mathrm{T}}$. The SSD is a circular array with $R_0 = 2~\mathrm{m}$. The source frequency is set to $\omega_0 = 2\pi	\cdot 1 ~\mathrm{krad/s}$.}
+	 \label{Fig:Theory:real_part_circular}
+ \end{figure}
+%
+The referencing function $d(\beta)$ for an arbitrary curve can be found in the same manner as for a linear SSD using the SPA. 
+In this case geometrical considerations give us a much simpler referencing method: the stationary secondary source can be found where the wavenumber vector intersects the SSD, which is a constant directed vector for a plane wave, and any vector directed radially from the source position for a line/point source. 
+The position of reference position can be found in the same direction from any stationary secondary source in a distance of $d(\beta)$ in the plane wave and line source case, and $d(\beta)\frac{r_0}{r_0-d(\beta)}$ for a 3D point source.
+
+Two referencing schemes are presented in order to demonstrate the validity of the presented approach: referencing the synthesis along a straight line, and along a concentric circle inside the circular SSD.
+
+\subsubsection{Effects of constant referencing}
+
+First, the effect of a constant referencing function is investigated. 
+For both a plane wave and a line source the position of correct synthesis can be found based on the problem geometry.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth  ]{Figures/WFS_theory/fixed_referencing_circle.png}
+	\scriptsize
+	\put(6,36.2){$\varphi_\text{PW}$}
+	\put(43, 17){$x$}
+	\put(23, 39){$y$}
+    \put(9.5,30){$\dref$}
+    \put(3,  39){$\mathbf{k}$}
+    \put(17.5, 19.2){$\beta$}
+	\put(3.5,    27){$\vxo$}
+%
+    \put(63.5, 27.5){$\dref$}
+    \put(100,17){$x$}
+    \put(79, 38){$y$}
+    \put(69, 22){$R_0$}
+    \put(56.5,21.5){$r_0$}
+    \put(58.5,19.5){$\alpha$}
+    \put(68.5,19.5){$\beta$}
+    \put(55,  17){$\mathbf{x}_s$}
+	\end{overpic}
+\caption{ Geometry for finding the position of amplitude correct reproduction of a plane wave (a) and a line source (b) }
+	\label{Fig:Theory:fixed_referencing_circle}
+\end{figure}
+
+For the case of the synthesis of a plane wave it is obvious, that the points from each SSD element at a distance of $\dref$ describe a circle with the same radius as the SSD, translated in the direction of the plane wave by $\dref$. 
+See Figure \ref{Fig:Theory:fixed_referencing_circle} (a). The PCS are therefore given by
+\begin{eqnarray}
+\mathbf{x}_{\mathrm{ref,PW}}(\vxo) = \colvec{2}{ \cos \beta \,R_0  + \cosfi_\text{PW}\, \dref }{  \sin \beta \,R_0  + \sinfi_\text{PW}\, \dref }
+\label{Eq:Fixed_referencing_pw_circle}
+\end{eqnarray}
+with $\varphi_\text{PW}$ being the propagation angle of the plane wave measured from the $x$-axis.
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{Figures/WFS_theory//fixed_referencing_circular.png}
+	\end{overpic}
+\caption{ Positions of amplitude correct synthesis using circular SSD for a virtual plane wave (a) and line source (b). The referencing function is set to $\dref = 1~\mathrm{m}$. }
+	\label{Fig:Theory:fixed_referencing_circular}
+\end{figure}
+
+For a virtual line source the parametric curve can be given by the problem geometry, displayed in Figure \ref{Fig:Theory:fixed_referencing_circle} (b).
+The PCS are given by
+\begin{eqnarray}
+\mathbf{x}_{\mathrm{ref,LS}}(\vxo) =  \colvec{2}{ x_s + \cos\alpha \, (\dref + r_0)}{ y_s + \sin\alpha\, (\dref+r_0)}.
+\label{Eq:Fixed_referencing_ls_circle}
+\end{eqnarray}
+This curve is not easily accessible for analytic investigation, however two limiting curves can be described purely from the problem geometry. 
+As the virtual source approaches the SSD the curve describes a circle around the virtual source with a radius of $\dref$. 
+If the virtual source is very far from the SSD the incident field becomes a plane wave and the curve describes a circle with a radius same as the SSD, translated by $\dref$ into the direction, defined by the position vector of the virtual source. 
+%In other virtual source position the curve is a mixture of these two circles. 
+It is also ensured, that in front of the virtual source, the distance of amplitude correct synthesis from the corresponding SSD element is $\dref$. 
+%This fact is in analogy with the linear SSD case.
+Results of numeric simulation, using these referencing schemes are depicted in Figure \ref{Fig:Theory:fixed_referencing_circular}.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth]{Figures/WFS_theory/fixed_referencing_circular_ps.png}
+	\end{overpic}
+\caption{ Positions of amplitude correct synthesis using circular SSD with radius of $R_0 = 1.5~\mathrm{m}$ for a virtual point source with the virtual source positioned at $\mathbf{x}_s = [-2.5,\ 0,\ 0]^{\mathrm{T}}$ (a) and $\mathbf{x}_s = [-4,\ 0,\ 0]^{\mathrm{T}}$ (b). The referencing function is set to $\dref = 1~\mathrm{m}$. In (a) in front of the virtual source is $0.5~\mathrm{m}$, with $r_0< \dref$, therefore no position for correct synthesis can be found. As the virtual source gets further from the SSD (b), $r_0> \dref$ is satisfied, and the position of correct synthesis in front of the virtual source becomes $x_c = x_s + r_0\frac{r_0}{r_0-\dref} = 0$. }
+	\label{Fig:Theory:fixed_referencing_circular_ps}
+\end{figure}
+
+In each case it should be noted, that the position of amplitude correct synthesis can be defined only inside the SSD. 
+Moreover, due to high-frequency approximations for the arbitrary SSD extension the curve of correct synthesis is shorter, than it would be allowed by the previous limitation (i.e. does not limited by the intersections with the SSD). 
+This can be explained by two reasons: in the ending of the curves the corresponding stationary SSD elements can not be modeled as flat surfaces in order to apply the Kirchhoff-approximation due to the large local angle of inclination of the incident field. On the other hand in these parts also the diffraction waves would have considerable contribution in the synthesized field, which are inherently omitted in the geometrical optics approximation (i.e. in these parts of the SSD both assumptions for the Kirchhoff approximation fail).
+This phenomenon can be observed in both Figure \ref{Fig:Theory:fixed_referencing_circular} (a) and (b).
+
+For the synthesis of a virtual point source the substitution of $\dref \rightarrow \dref \frac{r_0}{r_0 - \dref}$ w.r.t. the line source case in \eqref{Eq:Fixed_referencing_ls_circle} holds as discussed above. The PSC are then given as
+\begin{eqnarray}
+\mathbf{x}_{\mathrm{ref,PS}}(\vxo) =  \colvec{2}{ x_s + \cos\alpha \, r_0 \frac{r_0}{r_0 - d}  }{ y_s + \sin\alpha\, r_0 \frac{r_0}{r_0 - d} }.
+\label{Eq:Fixed_referencing_ps_circle}
+\end{eqnarray}
+Similarly to the linear SSD case that means, that in front of the virtual source the position of correct synthesis measured from the SSD becomes $\dref \frac{r_0}{r_0- \dref}$, therefore if the point source is closer to the SSD than the reference distance, no position for amplitude correct synthesis can be found. This can be observed in Figure \ref{Fig:Theory:fixed_referencing_circular_ps}.
+
+\subsubsection{Referencing to an arbitrary curve}
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .85\columnwidth]{Figures/WFS_theory/referencing_on_circle_and_line.png}
+	\scriptsize
+	\put(43, 17){$x$}
+	\put(23, 39){$y$}
+    \put(9.5,28.5){$d(\varphi)$}
+    \put(5,  38){$\mathbf{k}$}
+    \put(16, 20){$\beta$}
+	\put(4.5,  28){$x_0$}
+	\put(12,  22){$R_0$}
+	\put(16.5,  25){$R_{\mathrm{ref}}$}
+%
+    \put(65, 27.5){$d(\varphi)$}
+    \put(100,17){$x$}
+    \put(80, 39){$y$}
+    \put(69, 22){$R_0$}
+    \put(56.5,21.5){$r_0$}
+    \put(70.5,17){$x_0$}
+    \put(68.5,20){$\beta$}
+    \put(55,  17){$\mathbf{x}_s$}
+	\end{overpic}
+\caption{ Geometry for finding $d(\varphi)$ referencing the synthesis of a plane wave to a concentric circle (a) and the synthesis of a line source to a straight line (b). }
+	\label{Fig:Theory:referencing_on_line_and_circle}
+\end{figure}
+
+Finally it is shown, how synthesis may be referenced to an arbitrary curve. 
+Two examples are presented: referencing a plane wave on a circle, and a point source on a line.
+Our aim is to find the referencing function $d(\beta)$, equaling the length of the corresponding vector, seen in Figure \ref{Fig:Theory:referencing_on_line_and_circle}. With geometrical considerations they can be expressed as
+\begin{eqnarray}
+d_\text{circle,PW}(\beta) = R_0\cos \beta - \sqrt{ R_{\mathrm{ref}}^2 - R_0^2\,\sin^2\varphi_\text{PW} }
+\\
+d_\text{line,LS}(\beta) = -r_0 \left( \frac{x_0 + R_0\cos \beta}{x_s + R_0\cos \beta} \right)
+\end{eqnarray}
+respectively. 
+This latter would ensure the amplitude correct synthesis for a line source. In order to apply the formulation for a 3D point source  $\dref \rightarrow \dref \frac{r_0}{r_0 - \dref}$ substitution is needed, ending up in
+\begin{equation}
+d_{ps,line}(\beta) = r_0 \frac{x_0 + R_0\cos \beta}{x_0-x_s}.
+\end{equation}
+The validity of the referencing functions are demonstrated in Figure \ref{Fig:Theory:pw_to_circle_ps_to_line}.
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/WFS_theory/pw_to_circle_ps_to_line.png}
+	\end{overpic}
+\caption{ Result of referencing the synthesis of a plane wave to a circle (a) and a 3D point source to a line. The plane wave propagates parallel to the $x$-axis and the point source is located at $\mathbf{x}_s = [-4,\ 0,\ 0]^{}\mathrm{T}$. The radius of the reference circle is $R_{\mathrm{ref}} = 1~\mathrm{m}$ at (a) and the line of referencing is located at $x_0 = -0.5~\mathrm{m}$ in (b).}
+	\label{Fig:Theory:pw_to_circle_ps_to_line}
+\end{figure}
 %
 %\newpage
 %\section{Relation with the explicit solution}
