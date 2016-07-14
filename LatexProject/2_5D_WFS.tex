@@ -505,7 +505,7 @@ G(\vx-\vxo, \omega) \td x_0,
 with $\vx = \posvec{3}{x}{y}{0}$ and $\vxo = \posvec{3}{x_0}{0}{0}$.
 
 \vspace{3mm}
-The 2D Green's function therefore may be approximated in the high-frequency/far-field region in terms of the 3D Green's function, based on the asymptotic form of the Hankel function \cite{Williams1999}
+The 2D Green's function therefore may be approximated in the high-frequency/far-field region in terms of the 3D Green's function, based on the asymptotic form of the Hankel function \cite[(10.2.6)]{Nist2010} 
 \begin{equation}
 G_{2\mathrm{D}}(\vx- \vxo,\omega) \approx \sqrt{\frac{ 2\pi |\vx - \vxo|}{\ti k }}
 G(\vx-\vxo, \omega).
@@ -549,6 +549,7 @@ The 2.5D Rayleigh integral implicitly contains the driving functions for a linea
 D_{2.5\mathrm{D}}(\vxo,\omega) = -2
 \sqrt{\frac{2\pi}{\ti |\phi_{zz}^{P''}(\vxo, \omega) + \phi_{zz}^{G''}(\vx - \vxo,\omega)|}}
 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx = \vxo}.
+\label{eq:25D_WFS:25D_driv_fun_general} 
 \end{equation}
 Similarly to the 2D virtual field case, the driving function is still dependent on the receiver position, due to the secondary source compensation factor, described in the previous subsection.
 Besides the secondary source dimensionality mismatch in this case also a \emph{virtual source dimensionality mismatch} is present which is taken into account by an additional virtual source compensation factor\footnote{Revisited WFS theory as given by Spors applied the 2.5D WFS driving functions \eqref{eq:25D_WFS:25D_neumann_2D} for an arbitrary virtual sound field. Neglecting the virtual source compensation factor therefore resulted in amplitude errors when the virtual field was a 3D one.}.
@@ -572,17 +573,17 @@ Comparing this result with \eqref{Eq:2_5D_driv_fun_for_2D} it is revealed, that 
 In the correction factor the numerator stands for the attenuation correction from the point source to the SSD, and the denominator for the correction from the point source to the listener position. 
 %Alternatively: multiplication by $\sqrt{| \vxo - \mathbf{x}_s |}$ approximates the source strength at the source position, while correction with $\frac{1}{\sqrt{| \vxo - \mathbf{x}_s | + | \vx - \vxo| }}$ corrects the $1/\sqrt{r}$ attenuation to $1/r$.
 
-\subsubsection{Unified 2.5D driving functions}
+\subsubsection{Introduction of the referencing function}
 
 So far receiver position dependent driving functions have been found for a linear SSD.
 In the followings we restrict the investigation to the synthesis plane.
-Let's generalize the 2.5D WFS driving functions towards
+Let's generalize the 2D and 3D 2.5D WFS driving functions towards
 \begin{equation}
 D(x_0,\omega) = 
 - \sqrt{\frac{8\pi}{\ti k}} \sqrt{d(x_0)} \left. \frac{\partial P(\vx,\omega)}{\partial y}\right|_{\vx = \vxo},
 \label{Eq:Gen_rayleigh_dx0}
 \end{equation}
-which is obviously a common generalization of \eqref{eq:25D_WFS:25D_neumann_2D} and \eqref{eq:25D_WFS:25D_neumann_general}.
+which is obviously a common generalization of \eqref{Eq:2_5D_driv_fun_for_2D} and \eqref{eq:25D_WFS:25D_neumann_general}.
 The term $d(x_0)$ denotes the newly introduced \emph{referencing function}, whose general role in the synthesis is to optimize amplitude correct synthesis---i.e. to reference the synthesis---to a prescribed \emph{reference curve}.
 
 The principle of referencing the synthesis stems from the physical interpretation of the horizontal SPA:
@@ -609,9 +610,196 @@ This distance is controlled by the referencing function.
 
 In the followings it is presented, how the corresponding referencing function $d(x_0)$ may be derived for 2D and 3D virtual sound fields.
 
+\vspace{3mm}
+It is worth noting, that referencing is always performed by the proper control of the SSD correction factor, i.e. as a generalization the referencing approach may be involved to the 2.5D driving function \eqref{eq:25D_WFS:25D_driv_fun_general} by introducing the here defined referencing curve:
+\begin{equation}
+D_{2.5\mathrm{D}}(x_0,\omega) = -2
+\sqrt{\frac{2\pi}{\ti |\phi_{zz}^{P''}(\vxo, \omega) + \phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)|}}
+\left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{\vx = \vxo},
+\label{Eq:25D_WFS:Referencing_25D_WFS_driv_fun}
+\end{equation}
+where $\phi_{zz}^{G''}(\vxref(x_0) - \vxo,\omega)$ is dependent only on $|\vxref(x_0) - \vxo|$.
+Solving \eqref{Eq:xRefyRef_General} for this reference curve-to-SSD distance and substituting back into \eqref{Eq:25D_WFS:Referencing_25D_WFS_driv_fun} leads to the very same results as given in the followings, independently from the virtual field dimensionality.
+
+
 \subsection{Referencing 2D sound fields}
 
+%Based on the integral representation \eqref{Eq:2D_Rayleigh} an arbitrary 2D sound field can be perfectly resynthesized with a linear set of ideal, vertical line sources. 
+%Practically, one uses loudspeakers that rather radiate like 3D point sources. This results in a \emph{secondary source dimensional mismatch}. 
+%One may overcome this by introducing the high-frequency/far field approximated 2D Green's function that includes the 3D Green's function and a dimensional correction factor \eqref{Eq:2.5D_Rayleigh}, \eqref{Eq:2_5D_driv_fun_implicit}. 
+%Due to the different attenuation factors in the 3D and 2D Green's function, the approximation factor still contains the receiver position, at which the 2D Green's function approximately equals the corrected 3D Green's function. 
+%This is known as referencing the SFS driving function w.r.t. a certain receiver position---a specific receiver curve. 
+
+%Let's define a \emph{referencing function} $d(x_0)$ for each SSD element to generalize the WFS driving function \eqref{Eq:2_5D_driv_fun_implicit} towards
+
+
+Comparing \eqref{Eq:2_5D_driv_fun_for_2D} and \eqref{Eq:Gen_rayleigh_dx0} reveals, that for a 2D virtual sound field the referencing function is given directly by the distance of the SSD and the corresponding stationary position along the reference curve
+%
+\begin{align}
+d(x_0) = |\vxref(\vxo) -\vxo|.
+\label{dx0_2DSources}
+\end{align}
+%
+%In Sec. \ref{Sec:SPA} the link of the stationary point with the wave number vector of the virtual source $\vk(x_0) = [k_x(x_0),\ k_y(x_0)]^{\mathrm{T}}$ given on the SSD was introduced. 
+and the points of correct synthesis are given by
+%
+\begin{align}
+\label{Eq:xRefyRef_2D_General}
+\mathbf{x}_{\mathrm{ref}}(x_0)=
+\begin{bmatrix}
+x_{\mathrm{ref}}(x_0)\\
+y_{\mathrm{ref}}(x_0)
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_0 + \frac{k_x(x_0)}{k} d(x_0)\\
+\frac{k_y(x_0)}{k} d(x_0)
+\end{bmatrix}.
+%x_{\mathrm{ref}}(x_0)& = x_0 + \frac{k_x(x_0)}{k} d(x_0)\\
+%y_{\mathrm{ref}}(x_0)& =\frac{k_y(x_0)}{k} d(x_0).
+\end{align}
+
+As simple examples for 2D virtual sound fields virtual plane waves and line sources are investigated.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 0.4\columnwidth ]{Figures/WFS_theory/Plane_wave_Stationary_point_2.png}
+	\scriptsize
+	\put(-5,2){(a)}
+	\put(100,19){$x$}
+	\put(18, 69){$y$}
+	\put(33,19){$\vxo$}
+	%\put(74,42){$d(x_0)$}
+	\put(12, 50){$y_{\mathrm{ref}}$}
+	\put(82, 19){$x_{\mathrm{ref}}$}
+	\put(84, 52){$\mathbf{x}_{\mathrm{ref}}$}
+    \put(41.5, 25){$\varphi_\text{PW}$}
+    \put(39, 33){$\vk(x_0)$}
+    \put(47, 41){$k_x(x_0)$}
+    \put(63, 30){$k_y(x_0)$}
+	\end{overpic}
+	\hspace{10mm}
+	\begin{overpic}[width = 0.4\columnwidth ]{Figures/WFS_theory/Spherical_wave_Stationary_point_2.png}
+    \scriptsize
+	\put(-5,2){(b)}
+	\put(99, 19){$x$}
+	\put(16, 69){$y$}
+	\put(8, 53){$y_{\mathrm{ref}}$}
+	\put(82.5, 19){$x_{\mathrm{ref}}$}
+    \put(38, 19){$\vxo$}
+    \put(16, 4.5){$\vxs$}
+	%\put(74,42){$d(x_0)$}
+    \put(45.5, 25){$\varphi$}
+    \put(43, 33){$\vk(x_0)$}
+    \put(50, 43){$k_x(x_0)$}
+    \put(66, 30){$k_y(x_0)$}
+	\put(85, 55){$\mathbf{x}_{\mathrm{ref}}$}
+    \put(27, 18){$r_0$}
+	\end{overpic}	
+\caption{Geometry for finding the positions of correct synthesis for a plane wave (a) and a line/point source (b)}
+	\label{Fig:Theory:Position of correct synthesis}
+\end{figure}
+
+\subsubsection{For a virtual 2D plane wave} the wavenumber vector / propagation direction ($k_z=0$) is
+\begin{equation}
+\label{Eq:kx0_PW}
+\vk_\mathrm{PW}(x_0) = \begin{bmatrix} k_x(x_0) \\[0.3em] k_y(x_0)\\[0.3em]    \end{bmatrix} =  k\begin{bmatrix} \cosfi_\text{PW} \\[0.3em] \sinfi_\text{PW} \\[0.3em]    \end{bmatrix}
+\end{equation}
+
+and with \eqref{Eq:kx0_PW} into \eqref{Eq:xRefyRef_2D_General} the positions of correct synthesis (PCS) are 
+\begin{align}
+\label{Eq:PCS_PW}
+\mathbf{x}_{\mathrm{ref,PW}}(x_0)=
+\begin{bmatrix}
+x_0 + \cosfi_\text{PW} \, d(x_0)\\
+\sinfi_\text{PW} \, d(x_0)
+\end{bmatrix}
+%x_{\mathrm{ref}}(x_0)& = x_0 + \cosfi_\text{PW} \, d(x_0) \\
+%y_{\mathrm{ref}}(x_0)& = \sinfi_\text{PW} \, d(x_0).
+\end{align}
+
+\subsubsection{For a virtual line source} consider the source location at $\mathbf{x}_s = [ x_s,\ y_s ]^{\mathrm{T}}$ with $r_0 = | \vxo - \mathbf{x}_s |$. 
+For the sake of convenience $y_s<0$ restricts the virtual source behind the SSD. 
+For the derivative of the phase function the high-frequency/far-field approximation of the Hankel function \eqref{eq:25D_WFS:2D_Greens_vs_3D}  as the line source model is applied, yielding
+%
+\begin{equation} 
+\label{Eq:kx0_LS}
+\vk_\text{LS}(x_0)
+%\begin{bmatrix} k_x(x_0) \\[0.3em] k_y(x_0)\\[0.3em]    \end{bmatrix}
+%&=-\begin{bmatrix} 
+%\left. \frac{\partial(\cdot)}{\partial x} \right|_{x = x_0} 
+%\\[0.3em] 
+%\left. \frac{\partial(\cdot)}{\partial y} \right|_{y = 0} 
+%\\[0.3em]    \end{bmatrix} 
+%\left(-k\,\sqrt{(x-x_s)^2 + (y-y_s)^2}\right) \nonumber\\
+=k\begin{bmatrix} 
+\frac{x_0- x_s}{r_0}
+\\[0.3em] 
+\frac{-y_s}{r_0}
+\\[0.3em]    \end{bmatrix}.
+\end{equation}
+%
+Inserting into \eqref{Eq:xRefyRef_2D_General} the PCS are
+%
+\begin{align}
+\mathbf{x}_{\mathrm{ref,LS}}(x_0)=
+\begin{bmatrix}
+x_0 + \frac{x_0-x_s}{r_0} \, d(x_0) \\
+\frac{-y_s}{r_0} \, d(x_0)
+\end{bmatrix}.
+%x_{\mathrm{ref}}(x_0)& = x_0 + \frac{x_0-x_s}{r_0} \, d(x_0) \\
+%y_{\mathrm{ref}}(x_0)& = \frac{-y_s}{r_0} \, d(x_0).
+\label{Eq:Line_source_correcty_synth}
+\end{align}
+For the same solution by geometric considerations see Figure \ref{Fig:Theory:Position of correct synthesis}.
+
+%Now we are able to estimate the PCS of different parametric curves by varying $d(x_0)$.
+
+
 \subsection{Referencing 3D sound fields}
+
+For 3D referencing example the investigation is restricted exclusively to 3D point sources.
+
+Also in the 3D case, the horizontal SPA holds, and due to the same phase functions in the plane of the synthesis the stationary point remains in the same position in the horizontal direction as for a line source.
+%The different attenuation factor however yields that, the same referencing function results in amplitude error in a  distance $\dref$ measured from a stationary SSD element.
+Again, the synthesis will be amplitude correct in a distance of $| \vx(\vxo) - \vxo |$ from the stationary SSD element, in a radial direction away from the virtual source. 
+Refer to Figure \ref{Fig:Theory:Position of correct synthesis} (b) for the geometry. 
+
+Also for a virtual 3D point source the driving functions can be written in the form of the general WFS driving function \eqref{Eq:Gen_rayleigh_dx0}.
+Comparison with \eqref{Eq:2_5D_point_source_implicit_df_Explanations} reveals, that in this case the \emph{referencing function} $d(x_0)$ for each SSD element can be stated as
+\begin{equation}
+d(x_0) = \frac{ r_0 \cdot | \vxref(\vxo) - \vxo|  }{ r_0 + | \vxref(\vxo) - \vxo| }
+\label{Eq:dx0_PointSource}
+\end{equation}
+using $r_0 = | \vxo - \mathbf{x}_s |$, therefore the distance of the PCS measured from the stationary SSD point is
+%
+\begin{equation}
+|\vxref(\vxo) - \vxo| = d(x_0)\frac{r_0}{r_0 - d(x_0)}.
+\label{Eq:dx0_PointSource_xx0}
+\end{equation}
+%
+Comparing the referencing function \eqref{dx0_2DSources} for virtual 2D sound fields and \eqref{Eq:dx0_PointSource_xx0} for the virtual point source, the substitution
+\begin{equation}
+d(x_0) \rightarrow d(x_0)\frac{r_0}{r_0 - d(x_0)}
+\label{Eq:dx0_mapping}
+\end{equation}
+allows for utilizing the parametric curve description \eqref{Eq:Line_source_correcty_synth} that was derived for the virtual line source. 
+This yields the PCS
+\begin{align}
+\mathbf{x}_{\mathrm{ref,PS}}(x_0)=
+\begin{bmatrix}
+x_0 + (x_0-x_s) \frac{d(x_0)}{r_0 - d(x_0)}\\
+-y_s \frac{d(x_0)}{r_0 - d(x_0)}
+\end{bmatrix}.
+\label{Eq:3D_curve}
+\end{align}
+
+In the following section it will be shown how the referencing function could be chosen in order to reference the synthesized field along a prescribed receiver curve. 
+Furthermore, the analysis allows for the discussion of established referencing function's choices in traditional WFS theory.
+
+
+
+
 %
 %\section{2.5D WFS for non-linear secondary source distributions}
 %
