@@ -23,9 +23,9 @@
 I introduced a unified WFS framework, allowing one to synthesize arbitrary sound fields with arbitrary shaped loudspeaker ensembles (secondary source distribution (SSD)), and to optimize the synthesis on an arbitrary reference curve. 
 The unified framework inherently contains the existing WFS approaches as special cases.
 \begin{enumerate}
-\item \label{th:SPAinterpret} I established a physical interpretation of the Stationary Phase Approximation (SPA).
+\item \label{th:SPAinterpret} I established a physical interpretation of the Stationary Phase Approximation (SPA) for the Rayleigh integral.
 By defining the local wavenumber vector of a time-harmonic sound field I showed that the SPA ensures wave front matching of the virtual field and the secondary sound fields at the receiver position.
-\item I exploited the physical interpretation to derive 3D WFS driving functions for an arbitrary shaped SSD curve within the validity of the Physical Optics approximation of the Kirchhoff-Helmholtz integral.
+\item I exploited the physical interpretation to derive WFS driving functions for an arbitrary shaped SSD curve within the validity of the Physical Optics approximation of the Kirchhoff-Helmholtz integral.
 \item
 % It had been an already known fact, that---according to the SPA---the synthesized field at an arbitrary position is dominated by its stationary SSD element, that's emitted wavefront matches with the target sound field at the receiver position.
 I derived an analytical expression for the general \emph{reference curve} that connects the points in the synthesis plane where the amplitude error is minimal.
@@ -36,9 +36,23 @@ I derived the referencing function for an arbitrary reference curve.
 % For 3D virtual sound fields, the referencing function compensates the \emph{virtual source dimensionality mismatch}.
 % I verified, that by controlling the referencing function one may reference the synthesis on an arbitrary reference curve.
 As a special case I showed that a linear SSD with a parallel reference line yields the traditional WFS driving functions.
-\item Using the unified WFS framework I proved that 2.5D WFS is the high-frequency approximation of the explicit spectral solution (the \emph{Spectral Division Method}) for an arbitrary 2D virtual sound field.
+%\item Using the unified WFS framework I proved that 2.5D WFS is the high-frequency approximation of the explicit spectral solution (the \emph{Spectral Division Method}) for an arbitrary 2D virtual sound field.
 \end{enumerate}
 %
+\item \emph{High-frequency explicit driving functions and WFS equivalence}\\
+Besides the implicit WFS technique---yielding the required driving functions as an implicit integral kernel in a reduced surface integral---explicit solutions exist, obtaining the driving functions as a spectral integral.
+For a linear SSD the explicit solution is termed as the \emph{Spectral Division Method (SDM)}.
+So far the connection of the implicit and explicit solutions has been investigated for several special target sound field.
+Applying the SPA to the SDM driving functions I derived the spatial representation of the explicit driving functions, and I highlighted its genreal equivalence of the explicit and implicit solutions in the high-frequency region.
+\begin{enumerate}
+\item SDM yields the linear driving functions in the form of an inverse spatial Fourier transform.
+Applying the SPA to the Fourier integral I gave the analytical SDM driving functions purely in the spatial domain.
+Unlike WFS the new, so far unknown driving functions express the SSD driving signals in terms of the target sound field measured along an arbitrary reference curve.
+\item I expressed the newly introduced driving functions in terms of the target field's gradient measured on the SSD.
+The obtained expressions can be directly compared with the unified WFS driving functions.
+I proved, that under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field.
+\end{enumerate}
+
 \item \emph{Wave Field Synthesis of moving point sources}\\
 In the aspect of synthesizing dynamic sound scenes the synthesis of moving sources is of primary importance.
 I adapted the unified WFS framework to the synthesis of sound fields induced by moving point sources.
