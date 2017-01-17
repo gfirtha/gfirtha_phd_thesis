@@ -16,19 +16,20 @@ The presence of a sound wave causes incremental change in the instantaneous pres
 %
 
 In order to apply a linear model for sound propagation two assumptions are made.
-Since the traveling speed of thermal diffusion is small compared to the speed of sound and the acoustical wave length {\color{red} how do you compare the travelin speed to the wave length?} in the audible frequency range, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
+Since the traveling speed of thermal diffusion is small compared to the speed of sound and the acoustical wave length {\color{red} how do you compare the traveling speed to the wave length?} in the audible frequency range, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
 Furthermore the alternation of the instantaneous sound pressure must be small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around $P_0$. This later assumption is also fulfilled for pressure magnitudes below the threshold of pain of the human auditory system, as it was pointed out in \cite{Gumerov2004, Ahrens2012}.
 %
 
 The linear wave equation may be derived by utilizing two fundamental physical principles.
 \begin{itemize}
-\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of gas we obtain the connection between the particle velocity vector and the pressure field at each point at each time instant. The resulting \emph{Euler's equation} states that the force acting on the volume, which is proportional to the pressure on the surface causes an acceleration, which is given by the time derivative of the particle velocity:
+\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of gas we obtain the connection between the particle velocity vector and the pressure field at each point at each time instant. The resulting \emph{Euler's equation} states that {\color{red}  the force acting on the volume, which is proportional to the pressure on the surface causes an acceleration, which is given by the time derivative of the particle velocity}:
 \begin{equation}
 \nabla p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\vx,t),
 \label{Eq:Theory:Eulers_equation}
 \end{equation}
 \nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}
-where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
+where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. 
+In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
 Equation \eqref{Eq:Theory:Eulers_equation} may be transformed with respect to time into the angular frequency domain, supposing steady-state harmonic wave solutions. Using the Fourier differentiation theorem the frequency domain Euler's equation reads
 \begin{equation}
 \nabla P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega).
@@ -182,7 +183,7 @@ The evanescent contribution is of central importance in the field of \emph{Nearf
 \subsubsection{The Angular Spectrum and Wave Field Extrapolation}
 We could see that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
-Expressing the pressure at the infinite plane $y=0$ reveals, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_y, \omega)\right\}$,
+Expressing the pressure at the infinite plane $y=0$ reveals, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_z, \omega)\right\}$,
 and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.
 %: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
 In the followings, the domain characterized by $k_x$, $k_z$ is termed as the \emph{wavenumber domain}.
