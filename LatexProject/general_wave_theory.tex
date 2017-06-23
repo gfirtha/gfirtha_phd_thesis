@@ -1,0 +1,899 @@
+In this chapter the theoretical basis of sound radiation is introduced. 
+The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. 
+Various integral representations of sound fields are presented including spectral and boundary integral representations.
+%
+
+\vspace{3mm}
+Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the pressure (along with density) and in the displacement of the medium's particles.
+The propagation of the disturbance is described fully by the acoustic wave equation. 
+First the homogeneous wave equation is introduced briefly, which is valid for \emph{source-free} domains. 
+For a detailed treatise on the derivation refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
+
+%
+\section{The wave equation}
+
+Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. 
+In the aspect of the present thesis it is feasible to investigate sound propagation solely in air at room temperature.
+
+%
+The domain of investigation $\Omega \in \mathbb{R}^n$, i.e. where sound waves propagate is termed as \emph{sound field} hereinafter.
+Within this thesis usually 3 dimensional problems are investigated, i.e. $n = 3$.
+The acoustical quantities of the the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
+The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
+The presence of a sound wave causes incremental change in the instantaneous pressure and the particle velocity.
+%
+
+In order to apply a linear model for sound propagation two assumptions are made.
+Since the traveling speed of thermal diffusion is small compared to the speed of sound, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic changes.
+Furthermore the alternation of the instantaneous sound pressure must be small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around $P_0$.
+This later assumption is also fulfilled for pressure magnitudes below the threshold of pain of the human auditory system, as it was pointed out in \cite{Gumerov2004, Ahrens2012}.
+First the homogeneous wave equation is presented, valid for a source free domain, describing purely the propagation characteristics of acoustic waves.
+%
+
+\subsection{The homogeneous wave equation}
+%
+The linear homogeneous wave equation may be derived by utilizing two fundamental physical principles.
+\begin{itemize}
+\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of gas we obtain the connection between the particle velocity vector and the pressure field at each point at each time instant. 
+The resulting \emph{Euler's equation} states that the force acting on the volume due to variation in the pressure distribution causes an acceleration, given by the time derivative of the particle velocity:
+\begin{equation}
+\nabla p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\vx,t),
+\label{Eq:Theory:Eulers_equation}
+\end{equation}
+\nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}
+where $\nabla$ is the gradient operator and $\rho_0$ is the fluid ambient density. 
+In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
+
+\item \emph{The gas law:} For adiabatic processes the change of state is governed by the following equation
+\begin{equation}
+P V^{\gamma} = \mathrm{constant},
+\label{Eq:Theory:Adiabatic_change}
+\end{equation}
+where $\gamma = C_P/C_V$ is the ratio of specific heat of the fluid in constant pressure and with constant volume. For air $\gamma = 1.4$. 
+Linearization of \eqref{Eq:Theory:Adiabatic_change} around the static pressure $P_0$ and expressing the change in pressure---equaling the instantaneous pressure---one obtains
+\begin{equation}
+\td P = p(\vx,t) = -\gamma P_0 \frac{\td V}{V_0},
+\end{equation}
+where $V_0$ is the undisturbed volume. 
+The relative change of volume may be expressed as the divergence of the particle displacement over the infinitesimal boundary surface. 
+Applying the definition of divergence and expressing the equation in terms of particle velocity yields
+\begin{equation}
+\frac{\partial}{\partial t} p(\vx,t) = -\gamma P_0 \, \nabla \cdot \mathbf{v}(\vx,t),
+\label{Eq:Theory:continuity_eq}
+\end{equation}
+\nomenclature[4]{$\nabla \cdot$}{Divergence operator. In Descartes-coordinates: $\nabla \cdot =  \frac{\partial}{\partial x} + \frac{\partial}{\partial y} + \frac{\partial}{\partial z}$}
+where $\nabla \cdot$ is the \emph{divergence operator}.
+This \emph{continuity equation} states that the net flow of the fluid out of an infinitezimal volume results in decreased density and pressure inside the volume \cite{Arfken2005}.
+\end{itemize}
+%
+%
+Taking the time derivative of equation \ref{Eq:Theory:continuity_eq} and the divergence of equation \ref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. By using the \emph{Laplacian-operator} $\nabla \cdot \nabla = \nabla^2$ the scalar linear homogeneous wave equation is obtained for the sound pressure
+\begin{equation}
+\nabla^2 p(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\vx,t) = 0,
+\label{Eq:Theory:Scalar_wave_equation}
+\end{equation}
+\nomenclature[1]{$c$}{Speed of sound}%
+\nomenclature[3]{$\nabla^2$}{Laplacian operator. 
+In Descartes-coordinates: $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}$}%
+where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of the sound wave in the medium. 
+For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
+The instantaneous pressure may be also eliminated in a similar manner, resulting in the vector wave equation for each component of the particle velocity
+\begin{equation}
+\nabla^2 \mathbf{v}(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \mathbf{v}(\vx,t) = 0,
+\label{Eq:Theory:Vector_wave_equation}
+\end{equation}
+valid in curl-free media, where $\nabla \left( \nabla \cdot \right) = \nabla^2$ holds.
+%
+Besides the pressure and the velocity, acoustic fields are often expressed via the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and is related to the other field variables as 
+\begin{equation}
+\mathbf{v}(\vx,t) = \nabla \varphi(\vx,t), \hspace{7mm} p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \varphi(\vx,t).
+\label{eq:theory:velocity_potential_definition}
+\end{equation}
+%
+The wave equations fully describe the properties of acoustic wave propagation as long as the above made assumptions are fulfilled.
+
+\vspace{3mm}
+%
+Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform, given by \eqref{eq:temporal_fourier_transform_def}.
+Applying the differentiation property of the Fourier-transform to \eqref{Eq:Theory:Eulers_equation} yields the frequency domain Euler's equation,
+\begin{equation}
+\nabla P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega)
+\label{Eq:Theory:Freq_Eulers_equation}
+\end{equation}
+relating the pressure distribution of a time-harmonic sound field to the harmonic velocity vector field.
+By taking the Fourier transform of the wave equation \eqref{Eq:Theory:Scalar_wave_equation} the \emph{homogeneous Helmholtz-equation} is obtained:
+\begin{equation}
+\nabla^2 P(\vx,\omega) + k^2 P(\vx,\omega) = 0,
+\label{Eq:Theory:Homog_Helmholtz}
+\end{equation}
+where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency through the \emph{dispersion relation}:
+\begin{equation}
+k = \frac{\omega}{c}.
+\end{equation}
+%
+Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with harmonic time-dependence for a source-free volume (which latter is indicated with the zero load term on the right side). 
+In the aspect of the present thesis the time-domain wave equation is rarely solved, therefore in the followings the general solution for the Helmholtz-equation is presented.
+
+\subsection{The inhomogeneous wave equation}
+
+So far wave propagation in source-free volumes was investigated.
+Simple disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation}
+\begin{equation}
+\nabla^2 p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = -s(\vx,t),
+\label{Eq:Theory:Inhomogene_wave_eq_time_domain}
+\end{equation}
+and by transforming wrt. time in the \emph{inhomogeneous Helmholtz equation}
+\begin{equation}
+(\nabla^2 + k^2 ) P(\vx,\omega ) = -S(\vx,\omega).
+\end{equation}
+Term $s(\vx,t)$ is referred to as the \emph{load term}, and it describes the spatial extension and time history of the excitation.
+
+It should be noted, that pressure excitation is hardly realizable in practice.
+To involve more physical source excitation models, additional force source term may be added to the equation of motion \eqref{Eq:Theory:Eulers_equation}, or injected mass/volume terms may be included in the continuity equation \eqref{Eq:Theory:continuity_eq}.
+This results in the \emph{general inhomogeneous wave equations} \cite{Howe2007, Kinsler2000, Pierce1991}
+\begin{equation}
+\nabla^2 p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = - \rho_0 \frac{\partial}{\partial t} q(\vx,t) + \nabla \cdot \mathbf{f}(\vx,t),
+\label{Eq:Theory:Inhomogene_wave_eq_time_domain}
+\end{equation}
+and
+\begin{equation}
+(\nabla^2 + k^2 ) P(\vx,\omega ) = - \ti \omega \rho_0 Q(\vx,\omega) + \nabla \cdot \mathbf{F}(\vx,\omega).
+\label{Eq:Theory:Inhomogene_wave_eq_freq_domain}
+\end{equation}
+in the time and angular frequency domain respectively, where $q(\vx,t)$ describes the rate of increase of fluid volume per unit volume 
+\footnote{The volume injection term $q(\vx,t)$ can be modeled as a simple disturbance in the velocity potential i.e. satisfies equation $\nabla^2 \varphi(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}\varphi(\vx,t) = -q(\vx,t)$ \cite{Jensen2007}.}
+and $\mathbf{f}(\vx,t)$ represent body force excitation.
+The first term is generated by sources, changing the fluid volume, e.g. a pulsating sphere or a baffled dynamic loudspeaker.
+The latter force term are produced by sources moving through the fluid without any change in volume e.g unbaffled loudspeakers.
+A further third type of excitation term as introduced by Lighthill accounts for sounds produced by turbulence, resulting in quadrupole sound fields \cite[p. 141]{Kinsler2000}. 
+This latter term is not investigated in the present thesis.
+
+\subsection{Boundary conditions}
+\label{Section:Theory:Boundary_conditions}
+
+So far we considered wave propagation in free-field, i.e. no boundaries were present.
+% In order to obtain a particular solution for the wave equation boundary conditions must be known.
+%As initial conditions through the present thesis we suppose \emph{homogeneous Cauchy initial conditions} by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$, ensuring, that no sound waves are present in the domain of investigation, that would case the non-uniqueness of the particular solution.
+In order to obtain a particular solution for the wave equation the wave field must satisfy prescribed boundary conditions.
+The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition}.
+If the domain of interest is the exterior of the enclosing boundary, while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed as an \emph{exterior radiation problem}. 
+On the other hand, if the aim is to determine the sound field inside a source-free volume---or the reflected field of a sound source inside a cavity---an \emph{interior problem} must be solved.
+
+The boundary conditions are typically continuous pressure or particle velocity. 
+By assuming zero pressure or velocity on the boundary surface \emph{homogeneous boundary conditions} are considered. 
+Non-zero field variables on the other hand represent a vibrating surface and are termed as \emph{inhomogeneous bondary conditions}.
+
+In the aspect of this thesis two important types of boundary conditions are of interest:
+\begin{itemize}
+\item \emph{Dirichlet boundary condition} prescribes the pressure measured on the boundary surface. 
+The homogeneous Dirichlet boundary conditions are thus
+\begin{equation}
+P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
+\end{equation}
+These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries. 
+These types of boundary conditions are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Blackstock2000, Ziomek1995}.
+
+The inhomogeneous Dirichlet boundary condition assumes a prescribed pressure value on the boundary surface:
+\begin{equation}
+P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
+\end{equation}
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .5\columnwidth]{Figures/Basic_acoustics/boundary_conditions.png}
+	\small
+	\put(27,37){$\mathbf{n}_{\mathrm{in}}$}
+	\put(40,47){$\Oi$}
+	\put(50,82){$\Oe$}
+	\put(11,48){$\dO$}	
+	\put(79,71){$r$}	
+	\put(84,85){$\dO_{\infty}$}
+	\end{overpic}
+	\caption{Geometry for the boundary conditions in general interior and exterior radiation problems, and the infinite boundary for the Sommerfeld radiation condition}
+	\label{Fig:Theory:bounday_condition}
+\end{figure}
+
+\item \emph{Neumann boundary condition} gives the normal derivative of the pressure on the boundary surface, i.e. prescribes the normal velocity of the surface. %For the sake of simplicity the normal derivative taken on the surface uses the following notation and definition
+%\begin{equation}
+%\frac{\partial}{\partial n} f(\vx)\equiv \left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\dO} \equiv \left. \langle \nabla f(\vx), %\mathbf{n}(\vx) \rangle \right|_{\dO},
+%\end{equation}
+%where $ \mathbf{n}(\vx) $ is the normal vector of the boundary surface. For interior problems the inward pointing normal is used.%
+%
+Homogeneous Neumann boundary condition are
+\begin{equation}
+\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\vx \in \dO}= 0,
+\end{equation}
+where $ \mathbf{n}(\vx) $ is the normal vector of the boundary surface.
+These type of boundaries are termed as \emph{sound hard}, or \emph{rigid} boundaries, ensuring that no incident wave can move the boundary surface.
+
+Inhomogeneous Neumann boundary conditions are given by
+\begin{equation}
+\left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\vx \in \dO}= f_N(\vx,\omega).
+\end{equation}
+Vibrating surfaces---e.g. mounted loudspeakers, or baffled pistons---are most often modeled using these type of boundary conditions.
+\end{itemize}
+
+For radiation problems it is feasible to assume free field conditions, i.e. only outgoing waves are present in the sound field. 
+This is ensured mathematically by the \emph{Sommerfeld radiation condition}, excluding the non-physical solutions of the wave equation emerging from infinity, for which the desired sources of radiation behave as acoustic sinks.
+Mathematically it can be formulated by implying boundary condition on $\dO_{\infty}$, with $r$ is increased to infinity, as shown in Figure \ref{Fig:Theory:bounday_condition}:
+\begin{equation}
+\lim_{r \rightarrow \infty} r \left( \left. \frac{\partial}{\partial r}P(\vx,\omega)\right|_{\vx \in \dO_{\infty}} +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO_{\infty}.
+\label{Eq:Theory:Sommerfeld_radiation_condition}
+\end{equation}
+The condition stems from the inclusion of the surface $\dO_{\infty}$ to the Kirchhoff-Helmholtz integral for the general exterior problem (see in the following section), and by deriving boundary conditions that ensure zero contribution of this surface in its limiting value\cite{Schot1992:Eighty_years, Williams1999}.
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+\newpage
+\section{Solution of the homogeneous wave equation}
+
+\subsection{Plane wave theory}
+Now the general solution of the homogeneous wave equation is considered in Cartesian coordinate system, leading to the plane wave theory.
+The Descartes coordinate form of the Laplace-operator is given by
+\begin{equation}
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}.
+\end{equation}
+A common method for obtaining the general solution for the Helmholtz-equation is the separation of variables \cite{Devaney2012}: 
+it is supposed, that the solution for \eqref{Eq:Theory:Homog_Helmholtz} can be written in the form of the product
+\begin{equation}
+P(\vx,\omega) = \hat{P}(\omega) X(x)Y(y)Z(z).
+\label{Eq:Theory:Seperated_variables}
+\end{equation}
+Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$ yields
+\begin{equation}
+\underbrace{\frac{\td^2 X(x)}{\td x^2}\frac{1}{X(x)}}_{-k_x^2} + 
+\underbrace{\frac{\td^2 Y(y)}{\td y^2}\frac{1}{Y(y)}}_{-k_y^2} + 
+\underbrace{\frac{\td^2 Z(z)}{\td z^2}\frac{1}{Z(z)}}_{-k_z^2}
+= - k^2.
+\label{Eq:Theory:Seperated_variables_expanded}
+\end{equation}
+Since each term contains a total derivative---independent from any other variable-- equality may hold only if each term is constant. 
+These constant are denoted by $k_x-k_y-k_z$. 
+Consequently each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is given by exponentials. 
+Written e.g. for the $x$-variable:
+\begin{equation}
+\frac{\partial^2 X(x)}{\partial x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
+\end{equation}
+The solutions may be substituted back into equation \eqref{Eq:Theory:Seperated_variables}. 
+In order to include every possible solution the general solution for the free-field homogeneous Helmholtz-equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. 
+However, the variables are not independent, for a fixed temporal frequency they are related according to the dispersion relation, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}:
+\begin{equation}
+k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2.
+\end{equation}
+As a dependent variable we will use $k_y$ through this treatise so that
+\begin{equation}
+k_y = \sqrt{ k^2 - k_x^2 - k_z^2 }.
+\end{equation}
+With all the foregoing and by denoting the arbitrary weighting constant by $\tilde{P}(k_x,k_z, \omega)$ the general solution for the 3D Helmholtz equation reads
+%\footnote{The same result may be obtained by applying the seperation of variables method directly to the time domain wave equation, resulting in the further temporal inverse Fourier transform as well.}
+\begin{equation}
+P(\vx,\omega) = \frac{1}{(2\pi)^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,k_z, \omega)  \te^{- \ti \left( k_x x + k_y y + k_z z \right) }
+\td k_x\td k_z.
+\label{Eq:Theory:Helmholtz_Inverse_Fourier}
+\end{equation}
+Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier-transform normalization term. 
+The general solution---describing the inverse Fourier transform of $\tilde{P}(k_x,k_z, \omega)  \te^{- \ti k_y y }$---therefore is obtained in the form of a spectral integral, similarly to the case of the temporal solution.
+Obviously, the spectral coefficients are obtained via a suitable forward Fourier transform, as explained in the next section.
+%\footnote{\color{red} {The same result can be obtained by performing a forward Fourier transform to the Helmholtz equation along all spatial dimensions resulting in $\left(-k_x^2 -k_y^2 -k_z^2 + \left(\frac{\omega}{c}\right)^2 \right)\tilde{P}(k_x,k_y,k_z,\omega) = 0$, which is satisfied for any $\tilde{P}$ as long as the dispersion relation holds.
+%In the inverse transform for $P(\vx,\omega)$ the latter can be taken into consideration by multiplication with $\delta(k_y - \sqrt{k^2-k_x^2-k_z^2})$, and by exploiting the sifting property of the Dirac function integration with respect to $k_y$ can be carried out.}}.
+
+\vspace{3mm}
+One separated solution from the integral is in the form of \cite{Williams1999}
+\begin{equation}
+P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \left< \vk \cdot \vx \right> },
+\end{equation}
+where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of the maximum phase advance, given by the gradient of the phase function  \nomenclature[5]{$\left< \mathbf{a} \cdot \mathbf{b} \right>$}{Inner product of vector $\mathbf{a}$ and $\mathbf{b}$, given by $\mathbf{a}^{\mathrm{T}} \mathbf{b}$}.
+The solution represents a \emph{plane wave} component with the acoustic wavelength of $\lambda = 2\pi/k$, traveling in the direction
+\begin{equation}
+\vk = - \nabla \phi_P(\vx,\omega)
+\label{Eq:Theory:PW_wavenumber_vec}
+\end{equation}
+where $\phi_P$ denotes the phase of function $P$  \nomenclature[5]{$\phi_f$}{Phase of the complex valued function $f(x) \in \mathbb{C}$, written in a general polar form $f(x) = A_f(x) \te^{\ti \phi_f(x)}$}.
+The terminology indicates that the surface of constant phase points are lying along an infinite plane, perpendicular to $\mathbf{k}$. Refer to Figure \ref{Fig:Theory:plane_wave} (a) for the illustration of a traveling plane wave.
+
+\begin{figure}%[!h]
+	\centering
+	\begin{overpic}[width = .85\columnwidth ]{Figures/Basic_acoustics/plane_wave_illustration.png}
+	\put(2,1){(a)}
+	\put(52,1){(b)}
+	\end{overpic}
+\caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\omega = 2\pi \cdot 1000 ~\mathrm{rad/s}$. 
+In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. 
+Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$ and $y$ directions. 
+For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in exponential decay along the $y$-coordinate.
+In a source free region propagating and evanescent waves form a complete, orthonormal basis for the solution of the helmholtz equation.}
+	\label{Fig:Theory:plane_wave}
+\end{figure}
+\vspace{2mm}
+%As it is indicated in the figure $k_x-k_y-k_z$ variables are the $x-y-z$ directional components of the wavenumber vector. For the sake of simplicity assume that $k_z = 0$, thus the propagation direction of the plane wave is parallel with the $z=0$ plane. In this case the wavenumber components are expressed as
+%\begin{eqnarray}
+%k_x = k \sin \theta , \\
+%k_y = k \cos \theta .
+%\end{eqnarray}
+%  
+%\subsubsection{Evanescent waves}
+
+Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x^2 + k_z^2 > k^2$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
+In order to ignore the non-physical exponentially increasing solution in the followings we define $k_y$ as 
+\begin{equation}
+k_y = \begin{cases}
+                       \sqrt{\left(\frac{\omega}{c}\right)^2 - k_x^2 - k_z^2}  & \text{if} \hspace{3mm} k_x^2 + k_z^2 \leq \left(\frac{\omega}{c}\right)^2\\
+                      -\ti \sqrt{k_x^2+k_z^2 - \left(\frac{\omega}{c}\right)^2 } = -\ti k_y' &  \text{if} \hspace{3mm} k_x^2 + k_z^2 > \left(\frac{\omega}{c}\right)^2,
+                 \end{cases}
+\label{eq:theory:k_y_definition}
+\end{equation}
+Solutions with $k_y'$ given as
+ \begin{equation}
+ P(\vx,\omega) = \hat{P}(\omega) \te^{-k_y' y} \te^{-\ti \left( k_x x + k_z z \right) }.
+ \end{equation}
+describe plane waves, propagating perpendicular to the $y$-axis (since the phase gradient is given by $[k_x,\ k_z]^{\mathrm{T}}$), exhibiting an exponentially decaying amplitude along the $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
+In those cases when one wavelength component is shorter than the acoustic wavelength, the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs.
+These type of waves are termed as \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+ 
+%
+Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
+As a consequence in case of e.g. a vibrating plate, higher-order modes will not be radiated into the free-space, since the bending wave's wavelength on the surface may become shorter, than the acoustic wavelength would be in air. 
+In these cases air above the surface acts as a hydrodynamic short-circuit.
+An other example may be the radiation from a cold surface into a warmer half space with a continuous temperature profile, resulting in a continuous sound speed profile.
+Due to the variation in the speed of sound the wavenumber components of a plane wave also alter continuously resulting in refraction phenomena.
+As soon as one wavenumber component reaches the evanescent region total internal refraction occurs and only rapidly decaying evanescent waves are present in the further part of the half space.
+
+%
+The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---, however their contribution is often neglected in the field of sound field synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wavelengths.
+
+%
+\subsection{The angular spectrum representation}
+It could be seen that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
+This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
+The meaning of the spectral weighting components $\tilde{P}(k_x,k_z,\omega)$ is obtained by expressing the pressure at the infinite plane $y=0$: it is revealed, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_z, \omega)\right\}$,
+and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.
+%: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
+In the followings, the domain characterized by $k_x$, $k_z$ is termed as the \emph{wavenumber domain}.
+
+Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. 
+In the wavenumber domain the relation reads
+\footnote{This formulation is the direct consequence of the Fourier shift theorem applied in the $k_x, k_y, k_z$ space for the $y$-coordinate}
+\begin{equation}
+\mathcal{F}_x\mathcal{F}_z \left\{ P(\vx,\omega) \right\} = \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{-\ti k_y y},
+\label{Eq:Theory:Wave_field_extrapolation}
+\end{equation}
+with $k_y$ given by \eqref{eq:theory:k_y_definition}.
+Note, that wave propagation is determined by the phase change of the plane wave expansion's $y$-component, therefore generally speaking the following equation holds:
+\begin{equation}
+\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }.
+\end{equation}
+
+\vspace{3mm}
+This statement leads to two important formulations:
+the above equation written in the spatial domain yields
+\begin{equation}
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }  \te^{- \ti \left( k_x x  + k_z z \right) }
+\td k_x\td k_z,
+\label{Eq:Theory:Pressure_propagated}
+\end{equation}
+Expressing $\tilde{P}(k_x,y_0,k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ---i.e. $y$---derivative at $y = y_0$ calculated by applying the differentiation theorem to \eqref{Eq:Theory:Wave_field_extrapolation} one obtains
+\begin{equation}
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \frac{\te^{-\ti k_y ( y - y_0 ) } }{k_y} \te^{- \ti \left( k_x x + k_z z \right) }
+\td k_x\td k_z.
+\label{Eq:Theory:Velocity_propagated}
+\end{equation}
+%\footnote{\color{red}{Note, that all these equation may be applied directly for 2D wave field extrapolation (invariant along the $z$-direction) with substitution $k_z = 0$.}}
+These formulations are of central importance in the field of Fourier-acoustics. 
+They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component, measured along an infinite plane. 
+Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred to as the \emph{pressure propagator} $\tilde{G}_p$ in \eqref{Eq:Theory:Pressure_propagated} and the \emph{velocity propagator} $\tilde{G}_v$ in \eqref{Eq:Theory:Velocity_propagated}:
+\begin{equation}
+\tilde{G}_p(k_x,y-y_0,k_z,\omega) = \te^{-\ti k_y ( y - y_0 ) } ,\ \hspace{1cm}
+\tilde{G}_v(k_x,y-y_0,k_z,\omega) = \rho_0 c k \frac{\te^{-\ti k_y ( y - y_0 ) } }{k_y}
+\label{Eq:Theory:propagators}
+\end{equation}
+\begin{align}
+\tilde{P}(k_x,y,k_z,\omega) &= \tilde{P}(k_x,y_0,k_z,\omega) \, \tilde{G}_p(k_x,y-y_0,k_z,\omega) \\
+                            &= \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \, \tilde{G}_v(k_x,y-y_0,k_z,\omega).
+\end{align}
+Wave propagation in source-free volumes therefore can be modeled by 2D linear filtering of the sound field, where the filter transfer characteristics are given by the corresponding propagator.
+Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed as the Rayleigh I. and II. integrals, as it will be further discussed in the latter sections.
+
+%
+\subsection{Solution in other geometries}
+Similarly to the presented Cartesian-solution, the general solution for the free-field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. 
+The representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, relating the radiated sound at an arbitrary point to the sound field measured on a spherical or an infinite cylindrical surface.
+These solutions are of great importance when spherical or circular secondary source distributions are applied for sound field reconstruction. 
+Since the present thesis does not include the spectral solution of the reconstruction problem for these geometries, the presentation of the spherical and cylindrical solutions are omitted. 
+For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}.
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+\newpage
+\section{Solution of the inhomogeneous wave equation}
+
+\subsection{The Green's function}
+%First the solution for \eqref{Eq:Theory:Inhomogene_wave_eq_time_domain} is introduced.
+A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. 
+We define the n-dimensional \emph{Green's function} as the solution for the following equation \cite{Gumerov2004, Williams1999}
+\begin{equation}
+\nabla^2 g(\vx|\vxo,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} g(\vx|\vxo,t) = -\delta\left( \vx - \vxo \right)\delta\left( t - t_0 \right),
+\label{Eq:Theory:Green_function_def}
+\end{equation}
+with $\vx, \vxo \in \mathbb{R}^{n}$ and where $\delta()$ is the Dirac-delta distribution. 
+The Green's function therefore describes the sound field at $\vx$ due to an impulsive disturbance located at $\vxo$ at the time instant $t_0$.
+The Green's function is often referred to as the \emph{spatio-temporal impulse response} of the domain of interest and its temporal Fourier-transform $G(\vx|\vxo,\omega)$ as the \emph{spatio-temporal transfer function} of a point source at $\vxo$. 
+In the followings we assume free-field conditions by implying the Sommerfeld-radiation condition. 
+Under these assumptions the \emph{free field Green's function} is translation invariant, denoted by $g(\vx-\vxo,t)$.
+
+The motivation behind the use of the Green's function is that assuming an arbitrary linear differential operator $\mathcal{L}_{\vx}\left\{ \right\}$ acting on a distribution $p(\vx)$ with an arbitrary excitation $-s(\vx)$, the solution of the inhomogeneous differential equation $\mathcal{L}_{\vx}\left(p(\vx)\right) = -s	(\vx)$ may be expressed by the convolution of the Green's function and the load term:
+\footnote{Multiplying both sides of the left equation of \eqref{Eq:Theory:Basic_Green_function_eq} by $-s(\vxo)$ and integrating along all dimensions according to $\vxo$ results in
+$-\int_{\Omega(\vxo)} s(\vxo)\mathcal{L}_{\vx}\left\{ g(\vx-\vxo) \right\} \td \vxo= s(\vx)$.
+Since $\mathcal{L}_{\vx}$ acts only on $\vx$, the operator may be taken outside of the integration.
+Expressing the load term by $-\mathcal{L}_{\vx}\left\{ p(\vx) \right\}$ leads to $\mathcal{L}_{\vx}\left\{ \int_{\Omega(\vxo)} s(\vxo) g(\vx-\vxo) \td \vxo \right\} = \mathcal{L}_{\vx}\left\{ p(\vx) \right\}$.
+}
+\begin{equation}
+\mathcal{L}_{\vx}\left\{ g(\vx-\vxo) \right\} = -\delta( \vx-\vxo ) \hspace{3mm} \rightarrow \hspace{3mm}
+p(\vx) = \int_{\Omega(\vxo)}  g(\vx-\vxo) s(\vxo) \td \vxo.
+\label{Eq:Theory:Basic_Green_function_eq}
+\end{equation}
+
+The Green's function is usually obtained by eigenfunction expansion of the operator in a given geometry with specified boundary conditions. 
+Under free-space assumptions, where harmonic functions give a full orthogonal basis a straightforward method is to perform a Fourier transform to equation \eqref{Eq:Theory:Green_function_def} at $\vxo = 0$ with respect to space and time, yielding in $\vx \in \mathbb{R}^{3}$
+\begin{equation}
+(-(k_x^2 + k_y^2 + k_z^2) + \left(\frac{\omega}{c} \right)^2)\tilde{G}(\mathbf{k},\omega) = -1,
+\end{equation}
+with $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$.
+The Green's function in the wavenumber space reads \cite{Devaney2012, Watanabe2015}
+\begin{equation}
+\tilde{G}(\mathbf{k},\omega) = -\frac{1}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 }.
+\label{Eq:Theory:3D_kxkykzw_Green}
+\end{equation}
+Applying the Fourier convolution theorem to \eqref{Eq:Theory:Basic_Green_function_eq} the solution of \eqref{Eq:Theory:Inhomogene_wave_eq_time_domain} in the wavenumber domain reads
+\begin{equation}
+\tilde{P}(\mathbf{k},\omega)  = \tilde{S}(\mathbf{k},\omega) \tilde{G}(\mathbf{k},\omega) = -\frac{\tilde{S}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 },
+\end{equation}
+and the solution in the spatio-temporal domain is yielded by the inverse Fourier-transform:
+\begin{equation}
+p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{S}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 } \te^{-\ti \left( \mathbf{k}^{\mathrm{T}}\vx - \omega t \right) } \td k_x \td k_y \td k_z \td \omega.
+\end{equation}
+The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green}.
+The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration	.
+
+\begin{table}[h!]
+\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008}.
+$\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
+\left( \right)$ is the modified Bessel function of the second kind.
+The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind, that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
+}
+\FloatBarrier
+\renewcommand*{\arraystretch}{2.25}
+\label{tab:theory:Greens_fun_representations} 
+    \begin{tabular}[h!]{  c | | l |	 l }%\toprule
+      & 3-dimensional & 2-dimensional \\ \hline
+    $\tilde{G}(k_x,k_y,k_z,\omega)$ & $-\frac{1}{ \left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2-k_z^2} $ &  $-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}\delta(k_z)$ \\ 
+    $\tilde{G}(k_x,k_y,z,\omega)$   &  
+    \scriptsize	$\begin{aligned}[t]
+	-\frac{\ti}{2}\frac{\te^{-\ti\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_y^2}|z|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_y^2}},\hspace{3mm} \text{for} \hspace{1mm}
+	\sqrt{k_x^2+k_y^2}	\leq\left| \frac{\omega}{c} \right| \\
+	\frac{1}{2}\frac{\te^{-\sqrt{k_x^2 + k_y^2-(\frac{\omega}{c})^2}|y|}}{\sqrt{k_x^2 + k_y^2-(\frac{\omega}{c})^2}},\hspace{3mm}  \text{for} \hspace{1mm}				\sqrt{k_x^2+k_y^2}>\left| 	\frac{\omega}{c} \right| 
+	\end{aligned}$ \normalsize    
+    &
+	$-\frac{1}{\left(\frac{\omega}{c}\right)^2 - k_x^2-k_y^2}$
+	\\
+    $\tilde{G}(k_x,y,z,\omega)$
+    % \footnote{$\tilde{G}(k_x,k_y,z,\omega)$ and $\tilde{G}(k_x,y,z,\omega)$ may be written in a less expressive but briefer form as 
+    % $\tilde{G}(k_x,y,k_z,\omega) = -\frac{\ti}{2}\frac{\te^{-\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 - k_z^2}}$ and
+    % $\tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4}H_0^{(2)}\left( -\ti\sqrt{k_x^2-(\frac{\omega}{c})^2  } \sqrt{y^2+z^2} \right)$ valid for arbitrary $k_x$ and $k_z$  }     
+    &      
+    \scriptsize
+    $\begin{aligned}[t] % placement: default is "center", options are "top" and "bottom"
+	-\frac{\ti}{4} H_0^{(2)}\left( \sqrt{(\frac{\omega}{c})^2 - k_x^2 } \sqrt{y^2+z^2} \right),\hspace{3mm} \text{for} \hspace{1mm}|k_x|<\left| \frac{\omega}{c} \right| \\ \frac{1}{2\pi} K_0\left( \sqrt{k_x^2 - (\frac{\omega}{c})^2 } \sqrt{y^2+z^2} \right),\hspace{3mm}  \text{for} \hspace{1mm}|k_x|>\left| \frac{\omega}{c} \right| 
+	\end{aligned}$ \normalsize
+     &     
+     \scriptsize	$\begin{aligned}[t]
+	-\frac{\ti}{2}\frac{\te^{-\ti\sqrt{(\frac{\omega}{c})^2 - k_x^2 }|y|}}{\sqrt{(\frac{\omega}{c})^2 - k_x^2 }},\hspace{3mm} \text{for} \hspace{1mm}|k_x|		\leq			\left| \frac{\omega}{c} \right| \\
+	\frac{1}{2}\frac{\te^{- \sqrt{k_x^2 -(\frac{\omega}{c})^2}|y|}}{\sqrt{k_x^2 -(\frac{\omega}{c})^2}},\hspace{3mm}  \text{for} \hspace{1mm}|k_x|>\left| 					\frac{\omega}{c} \right| 
+	\end{aligned}$ \normalsize      \\ 
+    $G(x,y,z,\omega)$ 				 &  $\frac{1}{4\pi}\frac{\te^{-\ti\frac{\omega}{c}\sqrt{x^2+y^2+z^2}}}{\sqrt{x^2+y^2+z^2}}$ & \scriptsize$-\frac{\ti}{4} H_0^{(2)}\left( \frac{\omega}{c} \sqrt{x^2+y^2} \right) $\normalsize  \\ 
+    $g(x,y,z,t)$ 					 &  $\frac{1}{4\pi}\frac{\delta\left( t - \sqrt{x^2+y^2+z^2}/c \right)}{\sqrt{x^2+y^2+z^2}}$  & $\frac{1}{2\pi}\frac{\theta(t - \sqrt{x^2+y^2}/c)}{\sqrt{t^2 - \left(\frac{\sqrt{x^2+y^2}}{c}\right)^2}}$
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{Figures/Basic_acoustics/greens_function.png}
+	\small
+%	\put(27,37){(a)}
+%	\put(40,47){(b)}
+	\end{overpic}
+	\caption{Different representations of the 3D free-field Green's function in the angular frequency domain $G(x,y,z,\omega)$, with $\lambda = \frac{c}{f} = \frac{2\pi c}{\omega}$ (a) and in the semi-wavenumber domain $\tilde{G}(k_x,k_y,z,\omega)$ (b) shown at $z=0$.}
+	\label{Fig:Theory:Greens_function}
+\end{figure}
+%
+%\vspace{3mm}
+In 3-dimensions the 2-dimensional Green's function represents an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response%: it is given by the sum of 3D impulse responses, delayed and attenuated depending on how far the actual impulse arrives from, and multiplied by 2, since along the vertical line source two point elements contribute to the total field at each time instant
+---, thus the relation between the 3D and 2D Green's functions is given as
+\begin{equation}
+G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z = \left. \mathcal{F}_{z}\left\{ G_{3D}(x,y,z,\omega) \right\}\right|_{k_z = 0},
+\label{Eq:Wave_Theory:2D_Green}
+\end{equation} 
+obviously holding for any other representation, as it is reflected by the table above.
+
+\subsection{Solution of the general inhomogeneous wave equation} 
+Now the solution of the general inhomogeneous wave equation, given by \eqref{Eq:Theory:Inhomogene_wave_eq_freq_domain} is presented.
+From \eqref{Eq:Theory:Basic_Green_function_eq} the solution in the spatial domain is obtained by the convolution of the source term with the Green's function 
+\footnote{The second term can be obtained by integration by parts: $
+\int \nabla \cdot \mathbf{F}(\vxo)G(\vx-\vxo) \td \vxo = 
+\int \nabla \cdot \left( \mathbf{F}(\vxo)G(\vx-\vxo) \right) \td \vxo 
+- \int \left< \nabla G(\vx-\vxo)  \cdot \mathbf{F}(\vxo) \right> \td \vxo $.
+Applying the Gauss theorem and invoking the Sommerfeld radiation condition reveals, that the first term of the right handside vanishes.}
+:
+\begin{equation}
+P(\vx,t) = -\int_{\Omega(\vxo)} \ti \omega \rho_0 Q(\vxo,\omega)G(\vx-\vxo,\omega) +  \left< \mathbf{F}(\vxo,\omega)\cdot \nabla G(\vx-\vxo,\omega) \right> \td \vxo,
+\end{equation}	
+where $\Omega(\vx)$ is the domain of interest, containing the source distribution.
+From the general solution the case of point-like disturbances is of special interest, with the distribution function described by a Dirac distribution:
+%
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .95\columnwidth ]{Figures/Basic_acoustics/monopole_dipole.png}
+	\footnotesize
+	\put(0,0){(a)}
+	\put(35,0){(b)}
+	\put(68,0){(c)}
+	\end{overpic}
+	\caption{ Directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). All multipoles are solutions to the wave equation due to its linearity.}
+	\label{Fig:Theory:multipoles}
+\end{figure}
+\begin{itemize}
+%
+\item supposing, that $Q(\vxo,\omega) = \hat{Q}(\omega)\delta(\vx)$, one obtains the field response to a point-like volume injection
+\begin{equation}
+P_{\mathrm{m}}(\vx,\omega) = - \frac{\ti \omega \rho_0 \hat{Q}(\omega)}{4\pi} \frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
+\end{equation}
+This is the field of an \emph{acoustic monopole}, which is defined as a pulsating sphere, with its radius decreased to infinitesimal, with the total volume velocity held constant \cite{Howe2007}.
+$\hat{Q}(\omega)$ is often referred as \emph{monopole strength}. Monopoles constitute a good far-field approximation of sources in the velocity field, e.g. a dynamical loudspeaker.
+\item assuming a point-like force excitation, described by $\mathbf{F}(\vx,\omega) =  \mathbf{f} \hat{F}(\omega) \delta(\vx)$, where vector $\mathbf{f}$ being a unit vector denotes the direction of the force the solution for the inhomogeneous wave equation is given by
+\begin{equation}
+P_{\mathrm{d}}(\vx,\omega) = -\hat{F}(\omega) \left< \mathbf{f} \cdot \nabla G(\vx,\omega) \right>.
+\end{equation}
+The expression describes the field, generated by an \emph{acoustic dipole}, with vector $\hat{F}(\omega) \mathbf{f}$ denoting the \emph{dipole moment}.
+The terminology refers to the fact, an acoustic dipole can be constructed by two antiphase point sources, positioned infinitesimally close to each other 
+\footnote{Such a distribution can be described by the directional gradient of a Dirac distribution $s(\vx,\omega) = \left< \mathbf{f} \cdot \nabla \delta(\vx) \right>$.}.
+By expressing the gradient of the Green's function the full form of a dipole field is given as
+\begin{equation}
+P_{\mathrm{d}}(\vx,\omega) =  \hat{F}(\omega)
+\cos \theta \left(  \frac{1}{|\vx-\vxo|} + \ti \frac{\omega}{c} \right)
+\frac{1}{4\pi}
+\frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
+\end{equation}
+with $\cos \theta = \frac{\left<\mathbf{f} \cdot (\vx-\vxo) \right> } {|\vx-\vxo|}$.
+Unlike monopoles, dipoles are directive sources, with the directivity characteristics described by $\cos \theta$.
+Dipoles give a good model for e.g. unbaffled loudspeakers, moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$ often termed as the \emph{dipole axis}, and without any lateral radiation.
+%
+\end{itemize}
+The importance of monopole and dipoles along with higher order \emph{multipoles} lies in the far-field approximation of the field of extended sources,
+where a complex radiation pattern may be expanded into series of weighted multipole fields, termed as \emph{multipole expansion}.
+Figure \ref{Fig:Theory:multipoles} presents the directivity pattern of multipoles up to the third order.
+
+\vspace{3mm}
+It is important to notice, that comparison of $\tilde{G}(k_x,y,k_z,\omega)$ in Table \ref{tab:theory:Greens_fun_representations}  with the pressure and velocity propagators \eqref{Eq:Theory:propagators} with applying the Fourier differentiation theorem reveals that
+\begin{align}
+\tilde{G}_p(k_x,y,k_z,\omega) &=  2 \ti k_y \tilde{G}(k_x,y,k_z,\omega) 
+\hspace{2mm} \rightarrow \hspace{2mm} 
+G_p(\vx,\omega) = -2 \frac{\partial}{\partial y} G(\vx,\omega) = 2 P_{\mathrm{d}}(\vx,\omega),
+\\
+\tilde{G}_v(k_x,y,k_z,\omega) &=  2 \ti \omega \rho_0 \tilde{G}(k_x,y,k_z,\omega) 
+\hspace{1mm} \rightarrow \hspace{1mm} 
+G_v(\vx,\omega) = 2 \ti \omega \rho_0 G(\vx,\omega) = -2P_{\mathrm{m}}(\vx,\omega),
+\end{align}
+i.e. the pressure and velocity propagators are given by dipoles and monopoles respectively.
+This finding will be further discussed in the section, dealing with the Rayleigh integral formulation.
+
+\newpage
+\section{Boundary integral representation of sound fields}
+
+\subsection{The Kirchhoff-Helmholtz integral equation}
+Any sound field obeying the homogeneous Helmholtz-equation may be written in the form of a surface integral above an enclosing surface, termed as the \emph{Kirchhoff-Helmholtz integral equation}. 
+This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forms the backbone of the Boundary Element Method, SVD-based Conformal Nearfield Acoustic Holography, and Sound Field Synthesis.
+
+In this section the integral formulation of interior problems in source-free volumes is introduced.
+The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the proper addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
+\begin{figure}[!h]
+	\centering
+	\begin{overpic}[width = .65\columnwidth ]{Figures/Basic_acoustics/Kirchhoff-Helmholtz.png}
+	\scriptsize
+	\put(0,23){primary source}
+		\put(48,1){$\mathbf{O}$}
+		\put(70.5,31){$\vx$}
+		\put(37,14){$\vxo$}
+		\put(39,22){$\vni(\vxo)$}
+		\put(50,40){$\Oi$}
+		\put(80,5){$\Oe$}
+		\put(80,40.5){$\dO$}
+	\end{overpic}
+\caption{Geometry for the interior Kirchhoff-Helmholtz integral, representing the sound field inside an enclosure $\Oi$ generated by an exterior sound source in the form of a surface integral along $\dO$. For 2D problems the boundary degenerates to a closed contour, enclosing the area $\Oi$.}
+	\label{Fig:Theory:HIE_geometry}
+\end{figure}
+
+Let $\Oi$ be an $n$-dimensional enclosure, bounded by the surface $\dO$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. 
+Refer to figure \ref{Fig:Theory:HIE_geometry} for the geometry. 
+For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads (see \ref{App:Green_theorem} for the derivation)
+\begin{equation}
+\small
+\int_{\Omega}
+\left(  \Phi(\vxo) \nabla^2 \Psi(\vxo) - \Psi(\vxo) \nabla^2 \Phi(\vxo)   \right)   \td \Oi(\vxo)= 
+\oint_{\dO}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td \dO(\vxo),
+\label{Eq:Theory:Greens-theorem}
+\end{equation}
+with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \left. \nabla \Phi(\vx)\right|_{\vx = \vxo} \rangle$.
+Let $\Phi$ be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and let $\Psi$ be the Green's function
+\footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}
+---i.e. a point source located at $\vx$:
+\begin{equation}
+(\nabla^2 + k^2)P(\vxo,\omega) = 0, \hspace{10mm}
+(\nabla^2 + k^2)G(\vxo|\vx,\omega) = -\delta(\vxo - \vx).
+\end{equation}
+
+Substituting into the Green's theorem leads to
+\begin{equation}
+\small
+\int_{\Oi} - P(\vxo,\omega) \delta(\vxo - \vx)
+  \td \Oi(\vxo) = 
+\oint_{\dO}  \left(  G(\vxo|\vx,\omega) \frac{\partial P(\vxo,\omega)}{\partial \vni}  - P(\vxo,\omega)  \frac{\partial G(\vxo|\vx,\omega)}{\partial \vni}  \right)   \td \dO(\vxo).
+\end{equation}
+
+The sifting property of the Dirac-delta may be exploited, by taking into account that the singularity is located in the enclosure:
+if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume". For a rigorous derivation refer to \cite{Williams1999}.
+Finally, by exploiting the symmetry and translation invariancy of the free-field Green's function
+\begin{equation}
+G(\vxo|\vx) = G(\vx|\vxo) = G(\vx-\vxo), \qquad
+\frac{\partial}{\partial \vxo} G(\vxo|\vx)= \frac{\partial}{\partial \vxo} G(\vx|\vxo)
+\end{equation}
+the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
+\begin{equation}
+\alpha P(\vx,\omega) = 
+\oint_{\dO} - \left( 
+\frac{\partial P(\vxo,\omega)}{\partial \vni} G(\vx-\vxo,\omega)
+-
+P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni} 
+\right)   \td \dO( \vxo),
+\label{Eq:Theory:Kirchhoff-Helmholtz}
+\end{equation}
+with
+\begin{equation*}
+\alpha = \begin{cases} 
+1           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oi  	   \\
+\frac{1}{2} & \hspace{1mm} \forall \hspace{5mm}  \vx \in \dO  \\
+0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oe.
+\end{cases}
+\end{equation*}
+Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. 
+A frequently used form of the KHIE utilizing the Euler's equation \eqref{Eq:Theory:Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface ($\frac{\partial P(\vxo,\omega)}{\partial \vni} = -\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega)$), resulting in
+\begin{equation}
+\alpha P(\vx,\omega) = 
+\oint_{\dO}  \left(  
+V_{\mathrm{n}}(\vxo,\omega) \underbrace{\ti \rho_0 \omega  G(\vx-\vxo,\omega) }_{-P_{\mathrm{m}}(\vx-\vxo,\omega)}
++
+P(\vxo,\omega)  \underbrace{\frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}}_{-P_{\mathrm{d}}(\vx-\vxo,\omega)}
+\right)   \td \dO(\vxo),
+\label{Eq:Theory:Kirchhoff}
+\end{equation}
+where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, functioning as velocity and pressure propagators analogously to the angular spectrum approach.
+The actual form of the Green's function depends on the problem dimensionality, given in the previous section.
+
+The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
+The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
+In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the further effects of an unknown source distribution based on the radiated field, measured on a surface, but not able to describe the source properties from these data. 
+This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
+\footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
+\vspace{3mm}
+
+KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
+
+One drawback of interior HIE is that it overspecifies the problem in order to ensure zero pressure and velocity outside the domain of interest. 
+In the aspect of Sound Field Synthesis the presence of both single and double layer potentials is infeasible.
+By letting the sound field non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions on the sound field $ P(\vxo,\omega)$ itself in an equivalent scattering problem.
+In the following sections these approaches are applied for the simplification of the KHIE.
+
+
+
+\subsection{Simple Source Formulation and Equivalent Scattering Problem}
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Ahrens2012}.
+%
+\begin{figure}[h!]
+	\centering
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/simple_source_formulation_2.png}
+	\footnotesize
+	\put(2, 36){(a)}
+	\put(52,36){(b)}
+	\put(27, 0){(c)}
+	\put(33, 64){$P(\vx,\omega)$}
+	\put(77, 64){$P_\mathrm{e}(\vx,\omega) = -P_\mathrm{s}(\vx,\omega)$}
+	\put(73, 53){$P_\mathrm{i}(\vx,\omega)$}
+	\put(95,44){$\Oe$}
+	\put(92,52){$\Oi$}
+	\put(80,44){$\dO$}
+	\put(45,29){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
+	\put(70,8){$\Oe$}
+	\put(68,16){$\Oi$}
+	\put(55,7.5){$\dO$}
+	\end{overpic}
+\caption{Illustration of simple source formulation in a 2D problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior.}
+	\label{Fig:Theory:simple_source_formulation}
+\end{figure}
+
+Let's assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, i.e. that all sources are located within the enclosure. 
+The exterior wave field is the combination of radiating, or diverging waves. 
+On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation constructed by a set of incoming or converging waves.
+The two spatially disjunct problems are connected through the following boundary condition written onto the boundary surface
+\begin{equation}
+P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \dO.
+\end{equation}
+Both fields may be expressed in terms of an exterior and an interior KHIE respectively, for the exterior KHIE with inward normals refer to \cite[eq. 8.30]{Williams1999}.
+By adding the exterior and interior KHIEs, due to the coupled boundary condition terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite[p.~268.]{Williams1999}
+\begin{equation}
+\oint_{\dO} 
+G(\vx|\vxo,\omega) 
+\left(
+\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
+\right)
+\td \dO ( \vxo)
+= 
+\begin{cases} 
+P_{\mathrm{e}}(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e  	   \\
+P_{\mathrm{e}}=P_{\mathrm{i}} & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
+P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Oi.
+\end{cases}
+\label{Eq:Theory:Simple_source_HIE}
+\end{equation}
+The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be determined as a single layer potential, by constructing the corresponding exterior or interior problems, respectively.
+The \emph{single layer strength function} is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
+The discontinuity in the pressure gradient is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
+
+
+%In terms of sound field synthesis the interior sound field is the desired sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
+%\begin{equation}
+%D(\vxo,\omega) = 
+%\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P(\vxo,\omega)}{\partial \vni},
+%\label{Eq:Theory:Source_strength}
+%\end{equation}
+%where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field, needed to be calculated in order to solve the SFS problem.
+
+\vspace{3mm}
+As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
+we assume that the surface $\dO$ represents the boundary of a sound soft scattering object. 
+In acoustic scattering problems we consider an a-priori known \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$.
+The field measured in the presence of the obstacle is termed the \emph{total field} $P_{\mathrm{t}}(\vx,\omega)$, given by the sum of the incident and scattered fields.
+The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \dO$.
+%In the aspect of SFS the incident field inside the theoretical scatterer is the target sound field itself.
+Comparing this result with the simple source formulation it is clear, that the single layer driving function is the derivative of $(-1)$ times the total field on the boundary.
+See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalent scattering problem.
+Obviously, in practical applications usually only the incident field is known analytically.
+The general application therefore would require numerical computation method, e.g. BEM. For such a general scenario see Figure \ref{Fig:Theory:simple_source_formulation}, where the single layer weighting factors are calculated numerically for an arbitrary enclosing reflecting surface in a 2D scenario.
+
+%Another demonstration of this principle is shown in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b) where the difference between the synthesized field and the target sound field is the total field in the equivalent scattering problem $P_{\mathrm{t}}(\vx,\omega) = P(\vx,\omega) - P_{\mathrm{e}}(\vx,\omega)$.
+%\begin{equation}
+%D(\vxo,\omega) = \frac{\partial P_T(\vxo,\omega)}{\partial n}
+%=
+%\frac{\partial P(\vxo,\omega)}{\partial n} + \frac{\partial P_s(\vxo,\omega)}{\partial n}.
+%\label{Eq:Theory:Equivalent_scattering_driv_fun}
+%\end{equation}
+%Simple source approach---and the equivalent scattering interpretation---gives the analytical driving function for an arbitrary SSD geometry implicitly. 
+%Unfortunately the exterior scattering solution is scarcely available analytically except for simple geometries. The general application therefore would require numerical computation method, e.g. BEM. For such a general scenario see Figure \ref{Fig:Theory:simple_source_formulation}, where the driving functions are calculated numerically for an arbitrary enclosing SSD in a 2D scenario.
+
+\subsection{The Rayleigh integrals}
+\label{Section:Theory:Rayleigh}
+
+The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
+
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($\dO_P$) and a hemisphere ($\dO_S$, $\dO = \dO_P \cup \dO_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
+For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
+\begin{multline}
+P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} + \int_{\dO_S} \td \dO \right) = \\
+\int_{\dO_P}  \left( 
+P(\vxo,\omega)  
+\left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+-
+\left. \frac{\partial P(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+G(\vxo|\vx,\omega) 
+\right)   \td \dO_P ( \vxo).
+\end{multline}
+
+Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function, the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holds: either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
+\begin{itemize}
+\item The \emph{Neumann Green's function} eliminates the double layer potential, by describing Neumann boundary conditions for the Green's function on the bounding infinite plane:
+\begin{equation}
+G_N(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_N(\vxo,\omega),
+\end{equation}
+\begin{equation}
+\frac{\partial G_N(\vx,\omega) }{\partial \vni} = \left. \frac{\partial G_N(\vx,\omega) }{\partial y_0} \right|_{y_0 = 0} = 0.
+\label{Eq:Theory:Neumann_Greenfun_def}
+\end{equation}
+\item The \emph{Dirichlet Green's function} eliminates the double layer potential in the same manner by prescribing
+\begin{equation}
+G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
+\label{Eq:Theory:Dirichlet_Greenfun_def}
+\end{equation}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = .5\columnwidth ]{Figures/Basic_acoustics/Rayleigh_integral.png}
+	\scriptsize
+	 	\put(100,16){$x$}		
+		\put(52.5,63.5){$y$}
+		\put(19.5,38){$\vx$}		
+		\put(18,0){$\vx'$}
+		\put(44,16){$\vxo$}
+		\put(38.5,34){$\vni$}
+		\put(62,37){$r$}
+		\put(40,50){$\Oi$}
+		\put(75,16){$\dO_P$}
+		\put(60,59){$\dO_S$}
+	\end{overpic}
+	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only $\dO_P$ contributes to the radiated field at $y>0$.}
+	\label{Fig:Theory:Rayleigh_geometry}
+\end{figure}
+From simple geometrical considerations it can be deduced that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
+\begin{equation}
+ G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
+\end{equation}
+with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $\dO_P$, thus
+\begin{equation}
+G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
+\end{equation}
+holds. 
+
+The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
+\begin{eqnarray}
+P_N(\vx,\omega) =
+\int_{\dO_P}
+-2
+\left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
+G(\vx-\vxo,\omega) \td \dO_P ( \vxo).
+\\
+P_D(\vx,\omega) =
+\int_{\dO_P}
+2 P(\vxo,\omega)  
+\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
+\td \dO_P ( \vxo)
+\label{Eq:Theory:RayleighI_II}
+\end{eqnarray}
+with
+\begin{align*}
+P_N(\vx,\omega) = \begin{cases} 
+P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+P(\vx = \vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0
+\end{cases}
+&&
+P_D(\vx,\omega) = \begin{cases} 
+P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+0 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+-P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0.
+\end{cases}
+\end{align*}
+
+Again, the form of Green's function depends on the problem dimensionality and in 2D the Rayleigh integrals express an arbitrary sound field in the form of a line integral.
+The Rayleigh integrals provides the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or Dirichlet Green's function.
+
+The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
+
+It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{tab:theory:Greens_fun_representations}  and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated}. It is also revealed therefore, that the velocity propagator and the pressure propagators are the wavenumber representation of (-2) times the Green's function and its derivative.

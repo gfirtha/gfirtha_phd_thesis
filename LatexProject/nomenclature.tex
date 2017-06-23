@@ -1,0 +1,27 @@
+\printnomenclature
+%
+\paragraph{Temporal Fourier transforms:}
+The forward and inverse temporal Fourier transform is defined as 
+\begin{equation}
+\label{eq:temporal_fourier_transform_def}
+F(\omega) = \mathcal{F}_t \left\{ f(t) \right\} = \int_ {-\infty}^{\infty} f(t) \te^{-\ti \omega t} \td t,
+\end{equation}
+\begin{equation}
+\label{eq:temporal_inverse_fourier_transform_def}
+f(t) = \mathcal{F}_{\omega}^{-1} \left\{ F(\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} F(\omega) \te^{ \ti \omega t} \td \omega.
+\end{equation}
+%
+\paragraph{Spatial Fourier transforms:}
+Following the convention as given in e.g. \cite{Williams1999} the sp	atial Fourier transformed is defined with reversed exponential for the sake of a consequent physical interpretation, when applied for planar or outgoing spherical waves:
+\begin{equation}
+\label{eq:spatial_fourier_transform_def}
+F(k_x) = \mathcal{F}_x \left\{ f(x) \right\} = \int_ {-\infty}^{\infty} f(x) \te^{\ti k_x x} \td x,
+\end{equation}
+\begin{equation}
+\label{eq:spatial_inverse_fourier_transform_def}
+f(x) = \mathcal{F}_{k_x}^{-1} \left\{ F(k_x) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} F(k_x) \te^{ -\ti k_x x} \td k_x,
+\end{equation}
+
+
+%
+\paragraph{Spatio-temporal Fourier transforms:}
