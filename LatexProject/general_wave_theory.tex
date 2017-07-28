@@ -382,7 +382,9 @@ P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y_0,k_z,\
 \end{equation}
 Expressing $\tilde{P}(k_x,y_0,k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ---i.e. $y$---derivative at $y = y_0$ calculated by applying the differentiation theorem to \eqref{Eq:Theory:Wave_field_extrapolation} one obtains
 \begin{equation}
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \frac{\te^{-\ti k_y ( y - y_0 ) } }{k_y} \te^{- \ti \left( k_x x + k_z z \right) }
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} 
+\underbrace{ \rho_0 c k \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)}_{-\frac{1}{\ti} \frac{\partial}{\partial y} \tilde{P}(k_x,y_0,k_z,\omega) }
+\frac{\te^{-\ti k_y ( y - y_0 ) } }{k_y} \te^{- \ti \left( k_x x + k_z z \right) }
 \td k_x\td k_z.
 \label{Eq:Theory:Velocity_propagated}
 \end{equation}
@@ -468,7 +470,7 @@ Applying the Fourier convolution theorem to \eqref{Eq:Theory:Basic_Green_functio
 \end{equation}
 and the solution in the spatio-temporal domain is yielded by the inverse Fourier-transform:
 \begin{equation}
-p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{S}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 } \te^{-\ti \left( \mathbf{k}^{\mathrm{T}}\vx - \omega t \right) } \td k_x \td k_y \td k_z \td \omega.
+p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{S}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 } \te^{-\ti \left( \left< \vk \cdot \vx \right> - \omega t \right) } \td k_x \td k_y \td k_z \td \omega.
 \end{equation}
 The different representations of the free-field Green's function may be obtained by the corresponding inverse Fourier-transform of \eqref{Eq:Theory:3D_kxkykzw_Green}.
 The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration	.
@@ -535,6 +537,7 @@ G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z
 obviously holding for any other representation, as it is reflected by the table above.
 
 \subsection{Solution of the general inhomogeneous wave equation} 
+\label{Section:Theory:Inhom_wave_eq_solution}
 Now the solution of the general inhomogeneous wave equation, given by \eqref{Eq:Theory:Inhomogene_wave_eq_freq_domain} is presented.
 From \eqref{Eq:Theory:Basic_Green_function_eq} the solution in the spatial domain is obtained by the convolution of the source term with the Green's function 
 \footnote{The second term can be obtained by integration by parts: $
@@ -714,7 +717,7 @@ In the following sections these approaches are applied for the simplification of
 
 
 
-\subsection{Simple Source Formulation and Equivalent Scattering Problem}
+\subsection{The Simple Source Formulation}
 The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Ahrens2012}.
 %
 \begin{figure}[h!]
@@ -801,9 +804,11 @@ The general application therefore would require numerical computation method, e.
 \subsection{The Rayleigh integrals}
 \label{Section:Theory:Rayleigh}
 
-The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
+The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. 
+The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
 
-In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($\dO_P$) and a hemisphere ($\dO_S$, $\dO = \dO_P \cup \dO_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($\dO_P$) and a hemisphere ($\dO_S$, $\dO = \dO_P \cup \dO_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. 
+As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
 For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
 \begin{multline}
 P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} + \int_{\dO_S} \td \dO \right) = \\
@@ -834,8 +839,10 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 \end{itemize}
 
 \begin{figure}
-	\centering
-	\begin{overpic}[width = .5\columnwidth ]{Figures/Basic_acoustics/Rayleigh_integral.png}
+\small
+  \begin{minipage}[c]{0.45\textwidth}
+  \hspace{1cm}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/Basic_acoustics/Rayleigh_integral.png}
 	\scriptsize
 	 	\put(100,16){$x$}		
 		\put(52.5,63.5){$y$}
@@ -847,10 +854,14 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \for
 		\put(40,50){$\Oi$}
 		\put(75,16){$\dO_P$}
 		\put(60,59){$\dO_S$}
-	\end{overpic}
-	\caption{Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only $\dO_P$ contributes to the radiated field at $y>0$.}
-	\label{Fig:Theory:Rayleigh_geometry}
+	\end{overpic} \end{minipage}\hfill
+	\begin{minipage}[c]{0.4\textwidth}
+    \caption{
+Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only $\dO_P$ contributes to the radiated field at $y>0$.
+    } \label{Fig:Theory:Rayleigh_geometry}
+  \end{minipage}
 \end{figure}
+
 From simple geometrical considerations it can be deduced that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
 \begin{equation}
  G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
@@ -859,9 +870,10 @@ with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's fun
 \begin{equation}
 G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
 \end{equation}
-holds. 
+holds.
 
-The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
+%The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. 
+Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
 \int_{\dO_P}
@@ -891,9 +903,16 @@ P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
 \end{cases}
 \end{align*}
 
-Again, the form of Green's function depends on the problem dimensionality and in 2D the Rayleigh integrals express an arbitrary sound field in the form of a line integral.
-The Rayleigh integrals provides the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or Dirichlet Green's function.
+%Again, the form of Green's function depends on the problem dimensionality and in 2D the Rayleigh integrals express an arbitrary sound field in the form of a line integral.
+The Rayleigh integrals provides the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or 
+Dirichlet Green's function.
+The Rayleigh integrals are of major importance in the theory of diffraction from finite aperture. 
+The Rayleigh I integral is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
 
-The Rayleigh I integral is of major importance in the aspect of Sound Field Synthesis, and in the theory of diffraction from finite aperture. It is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
+\vspace{3mm}
+It is important, to note, that the Rayleigh integrals---besides the presented methodology involving the Neumann and Dirichlet Greeen's function---can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
 
-It should be noted, that applying a forward Fourier-transform to the Rayleigh integrals transforms convolution into a multiplication in the wavenumber domain. By inserting the wavenumber representation of the Green's function given in table \ref{tab:theory:Greens_fun_representations}  and applying the differentiation theorem the Rayleigh I and II integrals transform into \eqref{Eq:Theory:Velocity_propagated} and \eqref{Eq:Theory:Pressure_propagated}. It is also revealed therefore, that the velocity propagator and the pressure propagators are the wavenumber representation of (-2) times the Green's function and its derivative.
+Another straightforward way to obtain the Rayleigh integrals stems from the direct inverse Fourier-transform of the angular spectrum representations
+\eqref{Eq:Theory:Pressure_propagated} and \eqref{Eq:Theory:Velocity_propagated} by applying the Fourier transform convolution theorem and applying that the pressure and velocity propagators are given by the field of dipoles and monopoles, as it was stated in section \ref{Section:Theory:Inhom_wave_eq_solution}.
+
+Obviously, the fact, that all the presented three approaches lead to the same solution stems from the uniqueness of the solution for the simple source formulation problem for a planar boundary.

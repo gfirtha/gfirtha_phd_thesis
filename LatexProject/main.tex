@@ -33,7 +33,10 @@
 \usepackage{caption}
 \usepackage{placeins}
 %\usepackage{subcaption}
-\makesavenoteenv{tabular}
+ \usepackage{mathtools}
+\usepackage{sidecap}
+ 
+ \makesavenoteenv{tabular}
 %
 \renewcommand{\floatpagefraction}{.99}
 
@@ -126,9 +129,17 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 \input{general_wave_theory}
 %
 %
+%
+\chapter{High frequency approximation of wave fields and radiation problems}
+\label{sec:high_freq_approx}
+\input{high_freq_approx_theory}
+%
+%
 \begin{appendices}
 \chapter{Appendix A}
 \input{appendix_A}
+\chapter{Appendix B}
+\input{appendix_B}
 \end{appendices}
 
 
