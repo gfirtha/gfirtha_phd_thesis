@@ -575,17 +575,17 @@ The forward and inverse transforms describe projecting and composing the sound f
 \begin{figure}[h!]
 	\small
 	\centering
-	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/stationary_points_in_kx.png}
+	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/fourier_stat_point.png}
 %	\put(0,30){a)}
 %	\put(50,30){b)}
 %	\put(0,0){c)}
 %	\put(50,0){d)}
 	\end{overpic}
-	\caption{Illustration of the stationary phase approximation of the Fourier transform in case of a 3D point source at $\vxs = \posvec{3}{0}{0}{0}$ with its one-dimensional Fourier-transform evaluated along $y = 0.5 ~ \mathrm{m}$ along the $x$-dimension. 
-Figure (a) presents a spectral basis function (i.e. a plane wave) at $k_x = 0.5 k$. 
-For this spectral component the stationary phase point at the field of the point source is found, where the local propagation direction of the point source coincides with that of the plane wave---indicated by white arrow---.
-The spectrum, shown in Figure (d), therefore will be dominated by this part of space at $k_x = 0.5k$. 
-In (c) and (d) corresponding symbols denote further stationary point pair examples in the spectral components and the local waveunumber components. }
+	\caption{Illustration of the stationary phase approximation of the Fourier transform in case of a 3D point source at $\vxs = \posvec{3}{0}{-0.75}{0}$ with its one-dimensional Fourier-transform evaluated along the $x$-axis. 
+Upper part of Figure (a) presents a spectral basis function (i.e. a plane wave), which is at this example chosen as $k_x = 0.5 k$. 
+For this spectral component the stationary phase point at the field of the point source is found, where the local propagation direction of the point source coincides with that of the plane wave---indicated by white arrow---. 
+Note, that the local propagation directions coincide because in the plane of investigation $k_z^G(x,y,0) \equiv 0$, and the spectral plane wave is assumed to propagate with $k_z = 0$.
+The spectrum, shown in Figure (c), given in Table \eqref{tab:theory:Greens_fun_representations} around $ k_x = 0.5k$ will be dominated by this stationary position, denoted by $x^*(k_x)$ in Figure (b).}
 	\label{Fig:Theory:stat_pos_in_kx}
 \end{figure}
 
@@ -658,10 +658,17 @@ For this special case the stationary position defined by \eqref{eq:HF_approx:gre
 	\small
 	\centering
 	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/greens_stat_pos_2.png}
-%	\put(0,30){a)}
-%	\put(50,30){b)}
-%	\put(0,0){c)}
-%	\put(50,0){d)}
+	\put(1,13){$x$}
+	\put(34,11){$y$}
+	\put(15,40){$z$}
+	%
+	\put(99,9.5){$x$}
+	\put(72,37){$y$}
+	\put(66,9.5){$x^*(k_x)$}
+	\put(80,20.5){$k_x$}
+	\put(71.5,31.5){$k_{\rho}$}
+	\put(80.5,30){$\vk$}
+	\put(68.5,18){$r_0$}
 	\end{overpic}
 	\caption{Illustration for considering the spectrum of the Green's function as the field of a line source with harmonic spatial distribution with the wavenumber $k_x$, evaluated at $x = 0$.
 	Such a source radiates a cylindrical symmetric sound field, with a radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$ so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies.
