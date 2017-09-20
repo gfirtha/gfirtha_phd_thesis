@@ -1,10 +1,10 @@
-The boundary integral representations introduced in the previous section already give the possibility for solving the sound field synthesis problem (to be introduced later) for special geometries, or at the expense of great computational complexity.
-In order to derive integral representations better applicable for sound field synthesis, the application of approximate solutions are inevitable.
+The boundary integral representations introduced in the previous section already give the possibility for solving the sound field synthesis problem for special geometries, or at the expense of great computational complexity.
+In order to derive integral representations more suitable for general sound field synthesis, the application of approximate solutions are inevitable.
 This chapter presents several high-frequency asymptotic approximations of sound fields and their integral representations.
-These approximations will be of crucial interest for finding the driving functions for general loudspeaker contours.
+These approximations will be of crucial interest for finding the driving functions for general loudspeaker contours in the latter sections.
 
-First the local wavenumber vector concept is introduced.
-This concept describes the local propagation characteristics of sound fields, and provides a powerful tool for the interpretation of the stationary phase approximation, applied to either boundary or spectral integral representation of sound fields.
+%First the local wavenumber vector concept is introduced.
+%This concept describes the local propagation characteristics of sound fields, and provides a powerful tool for the interpretation of the stationary phase approximation, applied to either boundary or spectral integral representation of sound fields.
 
 The presented local/asymptotic description of wave fields are not unknown in the fields of acoustics: with minor modifications they are massively used concepts in ray tracing and geometrical optics/acoustics.
 However, their application for sound field synthesis problems has been unprecedented so far.
@@ -12,7 +12,7 @@ However, their application for sound field synthesis problems has been unprecede
 \section{Local attributes of sound fields}
 \subsection{The local wavenumber vector}
 
-Consider an arbitrary steady state harmonic sound field in $\vx \in \mathbb{R}^2 / \mathbb{R}^3$ written in a general polar form with $A^P(\vx,\omega)$, $\phi^P(\vx,\omega) \in \mathbb{R}$
+Consider an arbitrary steady state harmonic sound field in $\vx \in \mathbb{R}^3$ written in a general polar form with $A^P(\vx,\omega)$, $\phi^P(\vx,\omega) \in \mathbb{R}$
 \begin{equation}
 P(\vx,\omega) = A^P(\vx,\omega)\te^{\ti \phi^P(\vx,\omega)},
 \label{eq:HF_appr:general_sf}
@@ -76,11 +76,6 @@ In order to have the equality satisfied for an arbitrary sound field both real a
 \label{eq:HF_appr:transport_eq}
 \nabla^2 \phi^P + 2\frac{ \left< \nabla \phi^P \cdot \nabla A^P \right> }{A^P} = 0.
 \end{eqnarray}
-%For isotropic media the Green's function's amplitude factor serves as the Green's function for the Laplace equation, satisfying equation
-%\begin{equation}
-%\nabla^2 A^G(\vx) = \nabla^2 \frac{1}{4\pi} \frac{1}{|\vx-\vxo|} = -\delta(\vx-\vxo).
-%\end{equation}
-%Since an arbitrary source free volume may be expressed as a boundary integral with the kernel being the Green's function (using the simple source formulation or the Rayleigh integral), therefore for an arbitrary sound field $\frac{\nabla^2 A^P}{A^P} = 0$ holds excluding the points of sound sources present.
 
 Assuming high frequency conditions, where the phase changes rapidly compared to the amplitude, $\frac{\nabla^2 A^P}{A^P} \ll | \nabla \phi^P |^2$ holds
 and by applying the definition of the local wavenumber vector equation \eqref{eq:HF_appr:eikonal_eq} leads to the \emph{local dispersion relation}
@@ -89,18 +84,18 @@ and by applying the definition of the local wavenumber vector equation \eqref{eq
 \label{eq:HF_appr:local_dispersion}
 \end{equation}
 %
-The equation holds trivially for a plane wave and for a point source excluding the singular point \footnote{Since for isotropic media the Green's function's amplitude factor serves as the Green's function for the Laplace equation, satisfying equation satisfying $\nabla^2 \frac{1}{4\pi} \frac{1}{|\vx-\vxo|} = -\delta(\vx-\vxo)$.}.
+The equation holds trivially for simple sound fields: for plane waves, point sources and line sources excluding the singular point \footnote{Since for isotropic media the Green's function's amplitude factor serves as the Green's function for the Laplace equation, satisfying equation satisfying $\nabla^2 \frac{1}{4\pi} \frac{1}{|\vx-\vxo|} = -\delta(\vx-\vxo)$.}, however fails in the presence of strong interference phenomena, due to which the amplitude distribution varies heavily.
+It is important to note that the the present form of the local dispersion relation is only valid for a stationary sound field in isotropic medium.
+In latter sections the theory will be extended to non-stationary fields, with the example of the sound field generated by a moving harmonic source.
 
-Applying the local dispersion relation the \emph{normalized wavenumber vector} can be defined as
+Applying the local dispersion relation the \emph{normalized wavenumber vector} can be defined for a stationary sound field as
 \begin{equation}
 \vhk^P(\vx) = \frac{\vk^P(\vx)}{|\vk^P(\vx)|} = \frac{\vk^P(\vx)}{\omega/c},
 \end{equation}
 being a vector of unit length, pointing in the local propagation direction of the sound field.
 %In the field of high-frequency geometrical optics the representation of wave fields in $\vx, \vk(\vx)$ is termed the phase space representation \cite{Arnold1995}.
 %Over the last decades also the phase space representation of acoustic fields has gained an increasing interest\cite{Steinberg1993, Teyssandier2005}.}.
-
-It is important to note that the the present form of the local dispersion relation is only valid for a stationary sound field in isotropic medium.
-In latter sections the theory will be extended to non-stationary fields, with the example of the sound field generated by a moving harmonic source.
+%
 The normalized wavenumber vector, i.e. the normalized phase change of wave fields, is a basic concept in ray tracing, massively used for solving wave propagation problems in anisotropic media.
 In the field of ray tracing, expression $\Gamma(\vx) = \frac{\phi^P(\vx,\omega)}{k}$ is termed the \emph{eikonal}, whose gradient defines the local propagation direction of the wave field: $\nabla \Gamma(\vx) = \vhk(\vx)$.
 In that context, the local dispersion relation in the form of \eqref{eq:HF_appr:eikonal_eq} is termed the \emph{eikonal equation} \cite{Kinsler2000}, having to be solved for the eikonal at space-variant sound speeds resulting in the phase of sound rays.
@@ -108,47 +103,50 @@ The second basic ray tracing equation termed the \emph{transport equation} is gi
 
 \subsection{The local wavefront curvature}
 
-%
+%%
 \begin{figure}[h!]
 	\small
-	\centering
-	\begin{overpic}[width = .9\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
-	\put(0,47){a)}
-	\put(50,47){b)}
-	\put(0,26){c)}
-	\put(50,26){d)}
-	\put(0,0){e)}
-	\put(50,0){f)}
+  \begin{minipage}[c]{0.45\textwidth}
+  \hspace{0cm}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
+	\put(0,66){a)}
+	\put(0,33){b)}
+	\put(0,0){d)}
 	\end{overpic}
-	\caption{
-	{\color{red} Illustration of the local wavenumber vector (a-b) and the local curvature component along the $x$- (c-d) and $y$-direction (e-f) for a 2D point source placed at the origin $\vxs = \posvec{3}{0}{0}{0}$ as an example for diverging wave field and for a 2D point sink as an example for a converging wave fields.
-Although being the most simple examples the point source/sink models have an important role in sound field reproduction, being frequently used virtual source models.
-For this case the local curvature components given along the $x$-dimension reads $k^{P''}_{x,x}(\vx)/k = \pm \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and the mean (and the principal) curvature simply reads $\overline{\kappa}^P(\vx)/k = \pm \frac{1}{|\vx-\vxs|}$ being positive for the divergent, negative for the convergent case.}
+	\end{minipage}
+	\hspace{10mm}
+	\begin{minipage}[c]{0.4\textwidth}
+    \caption{
+	 Illustration of the local wavenumber vector (a) the second partial derivative along $x$-dimension (b) the curvature (c) for a 3D point source placed at the origin along the $z=0$ plane as an example for diverging wave field.
+For this case $\phi^{P''}_{xx}(\vx)/k = \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and both the mean and the principal curvatures simply reads $\overline{\kappa}^P(\vx)/k = \frac{1}{|\vx-\vxs|}$.
 }
 	\label{Fig:HF_appr:local_wave_curvature}
+	  \end{minipage}
 \end{figure}
-%
-Applying the local wavenumber vector concept the local \emph{curvature} of arbitrary sound fields can be introduced in order to distinguish \emph{divergent} and \emph{convergent} wavefronts.
 
-A wave field is \emph{divergent}, if it has a convex wavefront propagating away from a source distribution.
-Similarly, the field is \emph{convergent} or \emph{focused}, if the concave wavefront propagates towards a focal point.
-Mathematically the local vergence of the wave field may be described by the \emph{mean curvature} of the wavefront, generally defined as the divergence of the surface normal \cite{Goldman2005}, or in a more strict sense the \emph{principal curvatures} of the wavefront \cite{HF_and_Pulse_Scattering1992, Arnold1986}.
-In the present case the wavefront normal is given by the (normalized) local wavenumber vector $\mathbf{k}^P(\mathbf{x})$ and the mean wavefront curvature $\overline{\kappa}^P(\vx)$ is given by
-%
-%Given an implicit function f (x,y,z) = 0
-%At any point on the surface, The implicit can be easily transformed to explicit form
-%Z = F(X,Y)
-%simply by choosing the orthonormal basis such that the Z coordinate parallel to gradient f at the point under consideration.
-%Then take the Hessian of F, the two eigen values of the Hessian are the two principal curvatures.
+
+
+Applying the local wavenumber vector concept the \emph{local wavefront curvature} of arbitrary sound fields can be introduced in order to distinguish \emph{divergent} and \emph{convergent} wavefronts.
+A wave field is termed \emph{divergent} with a convex wavefront propagating away from a source distribution and \emph{convergent} or \emph{focused}, if a concave wavefront propagates towards a focal point.
+Mathematically the local vergence of the wave field may be described by the \emph{principal curvatures} of the wavefront, or in a looser sense by the \emph{mean curvature} of the wavefront.
+
+The principal curvature components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the the maximal and minimal radii of osculating spheres at a point on the wavefront.
+Mathematically if the local dispersion relation holds, the principal curvatures are given by the two non-zeros eigenvalues of the phase function's negative Hessian \cite{Hartmann1999}.
+A wave field is then divergent with both principal curvatures being negative \cite{HF_and_Pulse_Scattering1992, Bleistein1984, Arnold1986}.
+
+The \emph{mean curvature} of the wavefront---generally defined as the divergence of the surface normal \cite{Goldman2005}---is given by the negative divergence of the local wavenumber vector, or the trace of the Hessian:
 %
 \begin{equation}
-\overline{\kappa}^P(\vx) = \nabla \cdot \vk^P(\vx) = - \nabla^2 \phi^P(\vx,\omega) = - \left( \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx) \right).
+\overline{\kappa}^P(\vx) = \nabla \cdot \vk^P(\vx) = -\nabla^2 \phi^P(\vx,\omega) = -\left(  \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx) \right).
 \label{eq:HF_appr:curvature}
 \end{equation}
-The principal curvature components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the radii of the maximal and minimal osculating spheres at a point on the wavefront \cite{HF_and_Pulse_Scattering1992, Bleistein1984}.
-Mathematically the principle curvatures are the two non-zero eigenvalues of the Hessian matrix of the phase function, consisting of its second derivatives \cite{Hartmann1999} (while the mean curvature above is given by its trace).
-A wave field is then divergent with both principal curvatures being positive.
-Since the mean and the principle curvatures are related as $\overline{\kappa}^P(\vx)  = \kappa_1(\vx)^P+\kappa_2(\vx)^P$, wave fields may be classified as
+Note, that employing the transport equation \eqref{eq:HF_appr:transport_eq} the divergence of the local wavenumber vector can be expressed as
+\begin{equation}
+\overline{\kappa}^P(\vx) = -2 \left< \vk^P(\vx)\cdot \frac{ \nabla A^P(\vx,\omega) }{A^P(\vx,\omega)}\right>,
+\end{equation}
+resulting in a formal definition for the vergence of the sound field in a mean sense: a field is divergent if it's amplitude decreases in the local propagation direction and convergent if the intensity is focused towards the propagation direction.
+
+Since the mean and the principle curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1(\vx)^P+\kappa_2(\vx)^P \right)$, wave fields may be classified as
 \begin{equation}
 \label{eq:HF_appr:curvature_cases}
 \kappa_1^P(\vx),\kappa_2^P(\vx),\overline{\kappa}^P(\vx) 
@@ -158,11 +156,7 @@ Since the mean and the principle curvatures are related as $\overline{\kappa}^P(
 < 0  \hspace{5mm} \text{for a locally converging/focused wave field.} 
 \end{cases*}
 \end{equation}
-Note, that employing the transport equation \eqref{eq:HF_appr:transport_eq} the divergence of the local wavenumber vector can be expressed as
-\begin{equation}
-\nabla \cdot \vk^P(\vx) = - 2 \left< \vk^P(\vx)\cdot \frac{ \nabla A^P(\vx,\omega) }{A^P(\vx,\omega)}\right>,
-\end{equation}
-resulting in a formal definition for the vergence of the sound field: a field is divergent if it's amplitude decreases in the local propagation direction and convergent if the intensity is focused towards the propagation direction.
+Furthermore, it can be proven, that the inequalities also hold for the second partial derivatives in \eqref{eq:HF_appr:curvature} separately.
 
 As the most simple example for a diverging and converging wave field the case of a 2D point source is illustrated in Figure \ref{Fig:HF_appr:local_wave_curvature} with the local curvature components.
 
@@ -187,9 +181,8 @@ For the interpretation of the local wavenumber concept and the high-frequency gr
 By substitution into \eqref{eq:HF_appr:general_sf}, with a slowly varying amplitude function---i.e. $A^P(\vx)$ is approximated by the first order Taylor expansion coefficient---in the proximity of $\vxo$ the sound field is approximated as
 \begin{equation}
 \label{Eq:HF_approx:plane_wave_approximation}
-P(\vx,\omega) \approx A^P(\vxo,\omega) \te^{\ti ( \phi_0^P(\vxo,\omega) - \left< \vk^P(\vxo) \cdot \vx \right>} = P(\vxo,\omega) \te^{-\ti  \left< \vk^P(\vxo) \cdot \vx  \right>},
+P(\vx,\omega) \approx P(\vxo,\omega) \te^{-\ti  \left< \vk^P(\vxo) \cdot \left( \vx - \vxo \right) \right>}.
 \end{equation}
-with $\phi_0^P(\vxo,\omega) = \phi^P(\vxo,\omega) + \left< \vk^P(\vxo) \cdot \vxo \right>$.
 Therefore each point of an arbitrary sound field is approximated as a local elementary plane wave, with the wavenumber and angular frequency given by $\vk^P(\vx)$ and $\omega$, respectively.
 
 Furthermore expressing the gradient of the local plane wave representation \eqref{Eq:HF_approx:plane_wave_approximation} leads to the high-frequency gradient approximation \eqref{eq:HF_approx:gradient_appr}, which is therefore obviously the gradient of locally plane wave fields.
@@ -244,7 +237,7 @@ The local wavenumber vector therefore equals to that of a point source positione
 Hence, the local wavenumber vector and the position of the phantom source can be steered in the listener's position by applying proper frequency independent gains to the point source pair.
 The local wavenumber vector for a general scenario is illustrated in Figure \ref{Fig:HF_appr:stereophony_wave_number}
 
-\begin{figure}[t!]
+\begin{figure}[]
 	\small
 	\centering
 	\begin{overpic}[width = .9\columnwidth ]{Figures/High_freq_approximations/stereophony.png}
@@ -257,7 +250,7 @@ The gain factors $A_1, A_2$ were selected so that the angle of the local wavenum
 In figure (a) contour lines indicate iso-phase surfaces illustrating the propagating wavefront, with the normalized local wavenumber vector displayed along the stereo axis.
 Figure (b) shows the normalized wavenumber components along $x=0$.
 Note, that due to enhanced interference phenomena the amplitude changes rapidly, and the local dispersion relation \eqref{eq:HF_appr:local_dispersion} does not hold.
-The length of the wavenumber vector therefore decreases between the sources, where standing waves may occur, and increases to infinity on the parts where the amplitude vanishes and the phase changes rapidly due to destructive interference. \fpcom{x axis on the patch is incorrect}
+The length of the wavenumber vector therefore decreases between the sources, where standing waves may occur, and increases to infinity on the parts where the amplitude vanishes and the phase changes rapidly due to destructive interference.
 }
 	\label{Fig:HF_appr:stereophony_wave_number}
 \end{figure}
@@ -278,6 +271,7 @@ Obviously the tangent law only expresses the relationship between $A_1$ and $A_2
 A frequently used strategy is keeping the power at a constant value by requiring $A_1^2 + A_2^2 = \text{constant}$.
 Alternatively it may be exploited, that the amplitude of the resultant field on the stereo axis is given by $\frac{1}{4\pi}\frac{A_1+A_2}{|\vx-\vx_1|}$ (as given by \eqref{Eq:AppB:stereo_amplitude}) in order to match the amplitude to that of e.g. a phantom point source.
 
+\newpage
 \section{The Kirchhoff approximation}
 
 The Kirchhoff  approximation is an important high-frequency asymptotic approximation of the Kirchhoff-Helmholtz integral.
@@ -306,7 +300,19 @@ Based on the equivalent scattering interpretation, the simple source formulation
 
 In order to approximate the scattered field---and its normal gradient on the scatterer surface-- two approximations are applied:
 \begin{itemize}
-\item According to \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field coincide \fpcom{I do not see the connection of the direction of the scattered field to the surface normal}.
+\item As a first simplification, the \emph{tangent plane approximation} is applied on the illuminated region.
+It is assumed, that there exists a local relation between the incident and the scattered field at each point on the surface.
+By assuming that the incident wave is reflected locally according to the Snell's law  \cite{Voronich2007}---its amplitude changes according to the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal---the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000, Pike2002} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
+\begin{equation}
+P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \dO.
+\label{Eq:SFS_theory:tangent_plane}
+\end{equation}
+The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. 
+Obviously, the method also neglects the secondary reflections due to locally reacting assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. 
+In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
+%
+\item According to \emph{geometrical optics} or \emph{ray acoustics} the scatterer surface is divided into an \emph{illuminated} and a \emph{shadow region}: only those parts of the scatterer surface contribute to the scattered field that are directly illuminated by the primary source, i.e. where the local propagation directions of the incident and the scattered field---determined locally by the scatterer surface normal---coincide.
+In the field of high-frequency boundary element method this is termed as \emph{determining the visible elements} on the boundary \cite{Herrin2003}.
 Mathematically this requirement is formulated as weighting the integral, describing the scattered field by the windowing function
 \begin{equation}
 w(\vxo) = \begin{cases}
@@ -315,18 +321,11 @@ w(\vxo) = \begin{cases}
                     \end{cases}
 \label{eq:theory:windowing_function}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$, pointing in the local propagation direction---defined precisely in the following chapter--, and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
+where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$ and $ \mathbf{n}_i(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
 %
-This windowing means the neglection of both diffracting waves around the scattering object (as well as so-called \emph{creeeping rays} \cite{Bleistein1984}) and reflections from one part of the scatterer to an other \cite{Pignier2015}. Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, free of secondary reflections.
+This windowing means the neglection of both diffracting waves around the scattering object (as well as so-called \emph{creeeping rays} \cite{Bleistein1984}) and reflections from one part of the scatterer to an other \cite{Pignier2015}. 
+Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, free of secondary reflections.
 %
-\item As a second simplification, the \emph{tangent plane approximation} is applied on the illuminated region.
-It is assumed, that there exists a local relation between the incident and the scattered field at each point on the surface.
-By assuming that the incident wave is reflected locally according to the Snell's law  \cite{Voronich2007}---its amplitude changes according to the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal---the following relations are yielded for a sound soft scatterer \cite{Bleistein1984, Bleistein2000, Pike2002} (see Figure \ref{Fig:Theory:KH_approximation_a} (b))
-\begin{equation}
-P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \dO.
-\label{Eq:SFS_theory:tangent_plane}
-\end{equation}
-The approximation therefore calculates the reflected wave field by modeling each point on the scatterer with a tangential infinite plane. Obviously, the method also neglects the secondary reflections due to locally reacting assumptions. Furthermore, for low-frequencies and non-smooth boundaries the surface can not be considered locally planar, introducing further artifacts. In order to overcome these limitations several curvature correctional and iterative approaches exist \cite{Elfouhaily2004}.
 \end{itemize}
 
 \begin{figure}
@@ -347,7 +346,7 @@ The approximation therefore calculates the reflected wave field by modeling each
 %	\put(85,87){$\Oe$}
 %	\put(83,72){$\dO$}
 	\end{overpic}
-\caption{Illustration of Kirchhoff approximation in a 2D SFS problem ($\Omega \subset \mathbb{R}^2$). In (a) the illuminated/active part of the SSD is denoted by solid black line, whilst the shadow region by dotted line.}
+\caption{Illustration of Kirchhoff approximation in a 2D problem ($\Omega \subset \mathbb{R}^2$). In (a) the illuminated/active part of the scatterer contour is denoted by solid black line, whilst the shadow region by dotted line.}
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
 %
@@ -367,6 +366,7 @@ P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
 \end{equation}
 giving a fair approximation for smooth, convex surfaces in the high frequency region, where the wavelength is significantly smaller, than the dimensions of the scattering object\footnote{According to \cite[Eq.(2.7.12)]{Blenstein1975} the approximation holds when $k\rho_i \gg 1$, where $\rho_i$ are the principal radii of the curved scatterer locally, and $k$ is the wavenumber.}. For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. Note, that the lack of diffractional waves around the enclosure gives rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
 
+%\newpage
 \section{The stationary phase approximation}
 
 The section introduces a basic tool of asymptotic analysis, the \emph{stationary phase approximation (SPA)}.
@@ -433,6 +433,7 @@ where $\mathrm{sgn}\left( H \right)$ is the signature of the Hessian: the number
 In the followings the physical interpretation of the SPA is discussed when applied to boundary and spectral integrals of sound fields.
 
 \subsection{Asymptotic approximation of boundary integrals}
+\label{Sec:HS_approx:SPA_for_Rayleigh}
 For the sake of simplicity first the physical interpretation of the stationary position is discussed for the case when the SPA is applied to the Rayleigh I integral.
 %
 
@@ -445,9 +446,9 @@ Since for the application of the SPA high-frequency conditions are standard prer
 P(\vx,\omega) = 2 \iint_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo,\omega) G(\vx-\vxo,\omega) \td x_0 \td z_0.
 \end{equation}
 Suppose that the Rayleigh integral is to be evaluated applying the SPA at a given receiver position $\vx$.
-The involved functions written in polar form reads \fpcom{Check the first therm, should be a derivative}
+The involved functions written in polar form reads
 \begin{equation}
-P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \phi^P(\vxo,\omega) A^P(\vxo,\omega ) A^G(\vx-\vxo,\omega) \te^{\ti \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) + \frac{\pi}{4} \right)} \td x_0 \td z_0.
+P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \phi^{P'}_y(\vxo,\omega) A^P(\vxo,\omega ) A^G(\vx-\vxo,\omega) \te^{\ti \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) + \frac{\pi}{4} \right)} \td x_0 \td z_0.
 \end{equation}
 By definition, the stationary position for the integral is found where the phase gradient vanishes.
 Exploiting that the constant phase shift $\frac{\pi}{4}$ vanishes due to differentiation the stationary position for a given receiver position $\vxo^*(\vx)$ is found, where
@@ -531,13 +532,13 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 	\centering
 	\begin{overpic}[width = 0.8\columnwidth ]{Figures/High_freq_approximations/KHIE_stat_point.png}
 	\small
-	\put(12.5,34.5){$\vxs$}
-	\put(31.5,30.5){$\vxo$}
+	\put(13.5,36.5){$\vxs$}
+	\put(31.5,31){$\vxo$}
 	\put(58.5,20.5){$\vx$}	
-	\put(20,28){$\vk^G(\vxo-\vx)$}
-	\put(40,28.5){$\vk^P(\vxo)$}
+	\put(15,28){$\vk^G(\vxo-\vx)$}
+	\put(38,28.5){$\vk^P(\vxo)$}
 	\end{overpic}
-\caption{2D Geometry for the illustration of the stationary position for a Kirchhoff-Helmholtz integral.}
+\caption{2D Geometry for the illustration of the stationary position for the Kirchhoff-Helmholtz integral.}
 	\label{Fig:HF_appr:KH_approximation_HF}
 \end{figure}
 %
@@ -551,7 +552,7 @@ resulting in the windowing function \eqref{eq:theory:windowing_function} and the
 \begin{equation}
 P(\vx,\omega) = 
 \oint_{\dO} 
-- 2 \ti k_{\mathrm{n}}^P(\vxo) 
+- 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) 
 P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 \label{Eq:HF_appr:Kirchhoff_approximation}
 \end{equation}
@@ -575,11 +576,15 @@ The forward and inverse transforms describe projecting and composing the sound f
 \begin{figure}[h!]
 	\small
 	\centering
-	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/fourier_stat_point.png}
-%	\put(0,30){a)}
-%	\put(50,30){b)}
-%	\put(0,0){c)}
-%	\put(50,0){d)}
+	\begin{overpic}[width = .95\columnwidth ]{Figures/High_freq_approximations/fourier_stat_point.png}
+	\put(54,40){$x$}
+	\put(7,53){$y$}
+	\put(54,13){$x$}
+	\put(7,35){$y$}
+	\put(37,50){$\vk$}
+	\put(31,12.5){$x^*(\vk)$}
+	\scriptsize
+	\put(89,6){$x^*(k_x)$}
 	\end{overpic}
 	\caption{Illustration of the stationary phase approximation of the Fourier transform in case of a 3D point source at $\vxs = \posvec{3}{0}{-0.75}{0}$ with its one-dimensional Fourier-transform evaluated along the $x$-axis. 
 Upper part of Figure (a) presents a spectral basis function (i.e. a plane wave), which is at this example chosen as $k_x = 0.5 k$. 
@@ -591,10 +596,10 @@ The spectrum, shown in Figure (c), given in Table \eqref{tab:theory:Greens_fun_r
 
 Supposing that the sound field fulfills the SPA requirements---i.e.\ high frequency assumptions---the forward transform \eqref{eq:forward_transform}
 may be evaluated asymptotically applying the stationary phase method \cite{Arnold1995, Tinkelman2005}.
-The stationary point $\vx^*(k_x)$ is found for a given $k_x$ \fpcom{and $k_z$}, where the gradient of the exponent is zero, thus where
+The stationary point $\vx^*(k_x,k_z)$ is found for a given $k_x$ and $k_z$, where the gradient of the exponent is zero, thus where
 \begin{align}
-\frac{\partial}{\partial x} \phi^P(\vx^*(k_x),\omega) + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx^*(k_x)) = k_x, \\
-\frac{\partial}{\partial z} \phi^P(\vx^*(k_x),\omega) + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx^*(k_x)) = k_z
+\frac{\partial}{\partial x} \phi^P(\vx^*(k_x,k_z),\omega) + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx^*(k_x,k_z)) = k_x, \\
+\frac{\partial}{\partial z} \phi^P(\vx^*(k_x,k_z),\omega) + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx^*(k_x,k_z)) = k_z
 \end{align}
 holds.
 Again, assuming that the local dispersion relation holds, two local wavenumber components completely define the local wavenumber vector and the stationary position for the spectral integral is found where $\vk^P(\vx^*(\vk)) = \vk$ is satisfied, with $\vk$ being the wavenumber vector of the spectral plane wave.
@@ -645,16 +650,12 @@ H_0^{(2)}(z)\approx \sqrt{\frac{2 \ti}{\pi z}} \te^{-\ti z}.
 \end{equation}
 Furthermore, the DC ($k_x = 0$) component of the spectrum of the 3D Green's function describes the sound field generated by an infinite line source along the $x$-axis, i.e. the approximation of the 2D Green's function which therefore stems from the direct asymptotic approximation of \eqref{Eq:Wave_Theory:2D_Green} by the SPA \cite[p. 118]{Williams1999}
 \begin{equation}
-G_{2\text{D}}(\vx,\omega) \approx \frac{1}{\sqrt{8\pi \ti}}\frac{\te^{-\ti k |\vx|}}{\sqrt{k |\vx|}},
+G_{2\text{D}}(\vx,\omega) \approx \frac{1}{\sqrt{8\pi \ti}}\frac{\te^{-\ti k |\vx|}}{\sqrt{k |\vx|}} =  \sqrt{\frac{2 \pi |\vx|}{\ti k }}G_{3\text{D}}(\vx,\omega),
 \end{equation}
 with $\vx = \posvec{2}{y}{z}$. 
 This result also verifies, that the 2D Green's function and the 3D Green's function's phase---and thus their local wavenumber vector---approximately equal in the high frequency region, with the 3D distances substituted with the 2D ones.
 
-In case $k_x \neq 0$ equation \eqref{Eq:HF_approx:Greens_spectrum_defintion} describes the sound field of an infinite line source with a harmonic spatial distribution, evaluated at $x = 0$.
-Obviously, this special statement only holds because the function to be Fourier transformed is the Green's function itself.
-Such a line source radiates attenuating plane wavefronts propagating radially away from the $x$-axis with the local wavenumber vector given by $\vk^P(\vx) = \posvec{2}{k_x}{k_\rho}$, illustrated in \ref{Fig:Theory:greens_stat_pos}.
-For this special case the stationary position defined by \eqref{eq:HF_approx:greens_spectrum_stat_point} gains a simple geometrical interpretation, as presented in Figure \ref{Fig:Theory:greens_stat_pos}.
-\begin{figure}[h!]
+\begin{figure}[]
 	\small
 	\centering
 	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/greens_stat_pos_2.png}
@@ -678,3 +679,7 @@ For this special case the stationary position defined by \eqref{eq:HF_approx:gre
 	From simple geometric considerations it is found at $x^*(k_x) = r_0 \frac{k_x}{k_{\rho}}$}
 	\label{Fig:Theory:greens_stat_pos}
 \end{figure}
+In case $k_x \neq 0$ equation \eqref{Eq:HF_approx:Greens_spectrum_defintion} describes the sound field of an infinite line source with a harmonic spatial distribution, evaluated at $x = 0$.
+Obviously, this special statement only holds because the function to be Fourier transformed is the Green's function itself.
+Such a line source radiates attenuating plane wavefronts propagating radially away from the $x$-axis with the local wavenumber vector given by $\vk^P(\vx) = \posvec{2}{k_x}{k_\rho}$, illustrated in \ref{Fig:Theory:greens_stat_pos}.
+For this special case the stationary position defined by \eqref{eq:HF_approx:greens_spectrum_stat_point} gains a simple geometrical interpretation, as presented in Figure \ref{Fig:Theory:greens_stat_pos}.

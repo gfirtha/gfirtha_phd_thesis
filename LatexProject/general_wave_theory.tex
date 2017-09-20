@@ -12,9 +12,8 @@ For a detailed treatise on the derivation refer to \cite{Beranek1993, Morse1968,
 Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. 
 In the aspect of the present thesis it is appropriate to restrict the investigations to sound propagation solely in air at room temperature.
 
-The domain of investigation $\Omega \in \mathbb{R}^n$, i.e. where sound waves propagate is termed \emph{sound field} hereinafter.
-\fpcom{Sound field is not the domain, but a common term for the pressure field and velocity field and density field etc within the domain.}
-Within this thesis usually 3 dimensional problems are investigated, i.e. $n = 3$.
+The domain of investigation $\Omega \in \mathbb{R}^n$, where sound waves propagate is termed \emph{sound field} hereinafter.
+Within this thesis usually 3 dimensional problems are investigated ($n = 3$).
 The acoustical quantities of the the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
 The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
 The presence of sound causes incremental change in the instantaneous pressure and the particle velocity.
@@ -114,7 +113,7 @@ In the aspect of the present thesis the time-domain wave equation is rarely solv
 \subsection{The inhomogeneous wave equation}
 
 So far wave propagation in source-free volumes was investigated.
-Simple disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation} \fpcom{Why is it the disturbane of the pressure field? Don't understand.}
+Simple scalar disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation} %\fpcom{Why is it the disturbane of the pressure field? Don't understand.}
 \begin{equation}
 \nabla^2 p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = -s(\vx,t),
 \label{Eq:Theory:Inhomogene_wave_eq_time_domain}
@@ -125,7 +124,7 @@ and by transforming wrt. time in the \emph{inhomogeneous Helmholtz equation}
 \end{equation}
 Term $s(\vx,t)$ is referred to as the \emph{load term}, and it describes the spatial extension and time history of the excitation.
 
-It should be noted that pressure excitation is hardly realizable in practice. \fpcom{Why is $s$ a pressure excitation?}
+%It should be noted that pressure excitation is hardly realizable in practice. \fpcom{Why is $s$ a pressure excitation?}
 To involve more physical source excitation models, additional force source terms may be added to the equation of motion \eqref{Eq:Theory:Eulers_equation}, or injected mass/volume terms may be included in the continuity equation \eqref{Eq:Theory:continuity_eq}.
 This results in the \emph{general inhomogeneous wave equations} \cite{Howe2007, Kinsler2000, Pierce1991}
 \begin{equation}
@@ -459,7 +458,7 @@ The different representations of the free-field Green's function may be obtained
 The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration.
 
 \begin{table}[h!]
-\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008}.
+\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008, DeSanto1992}.
 $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
 \left( \right)$ is the modified Bessel function of the second kind.
 The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind, that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
