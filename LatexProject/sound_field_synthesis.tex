@@ -110,6 +110,39 @@ In this case no windowing function required, i.e. $w(\vxo) \equiv 1$ and the nor
 
 \subsection*{Application example: 3D synthesis of a virtual point source}
 
+\begin{figure}  
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/3D_WFS_general.png}
+	\end{overpic}   \end{minipage}\hfill
+	\begin{minipage}[c]{0.35\textwidth}
+    \caption{3D synthesis of a 3D point source located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $\omega_0 = 2\pi \cdot 1.5 \mathrm{krad}/s$.
+    The SSD surface is chosen to be independent of $z$-coordinate, i.e. as illustrated in \ref{fig:SFS_theory:WFS_geometry}.
+	Obviously, instead of a vertically infinite SSD, the SSD was truncated and tapered along the vertical dimension by choosing parameters, so that the diffraction effects due the truncation are not considerable in the simulation results.
+    Figure (a) depicts the real part of the synthesized field, (b) presents the absolute error of synthesis in a logarithmic scale measured in the horizontal plane, containing the virtual point source.
+	The active arc of the SSD is denoted by solid black line, and the inactive part with dotted by black line.
+    }
+\label{fig:SFS_theory:3D_WFS_general}  \end{minipage}
+\end{figure}
+
+As a simple example the 3D WFS of a virtual point source is discussed.
+Assume a 3D point source, located at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$.
+Substituting the Green's function into \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} yields the point source specific 3D WFS driving function
+\begin{equation}
+D(\vxo,\omega) = w(\vxo)  \frac{\ti k }{2\pi} \frac{\left< \vxo-\vxs \cdot \vn(\vxo) \right> }{|\vxo-\vxs|} \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|},
+\end{equation}
+begin equivalent to \cite[Eq. 20.]{Zotter2013:uniqueness} and \cite[Eq. 19.]{Spors2008:WFSrevisited}.
+
+The result of synthesis is depicted in Figure \ref{fig:SFS_theory:3D_WFS_general} for the special case of an SSD surface, being independent of the $z$-coordinate, as illustrated by Figure \ref{fig:SFS_theory:WFS_geometry} in the following section.
+As it can be seen, the driving functions ensure an amplitude correct synthesis within the validity of the Kirchhoff-approximation:
+amplitude errors arise 
+\begin{itemize}
+\item in the proximity of SSD elements with large local curvature of the SSD surface, due to the local failure of the tangent plane approximation
+\item in the proximity of SSD elements where the normal component of the local wavenumber vector is small---i.e. parts off the SSD, nearly parallel to the local virtual field propagation direction---, since at these positions the high-frequency gradient approximation fails, with also the lack of diffractional waves causing amplitude errors.
+\item at space regimes for which the above described SSD elements serve as a stationary position.
+\end{itemize}
+On other space regimes, for which the corresponding stationary SSD element satisfies assumptions for the Kirchhoff approximation, amplitude correct synthesis is achieved.
+
 \subsection{The 2.5D Kirchhoff approximation}
 
 Before dealing with 2.5D Wave Field Synthesis a further simplification of the Kirchhoff approximation is introduced, reducing the 3D Kirchhoff integral into a 2D contour integral describing a 3D sound field with the integral kernel being the 3D Green's function.
@@ -294,8 +327,8 @@ The 2D Green's function is weighted by the normal derivative of the 2D sound fie
 	Obviously in the present geometry there exist SSD elements, for which no unique reference position can be found.
 	In order to ensure smooth driving functions in order to avoid truncation artifacts for these SSD positions the referencing function is extrapolated. %\footnote{For general enclosing SSDs the normal component of the local wavenumber vector tends to zero smoothly, ensuring driving functions with smooth envelope.
 %	In case the SSD is truncated diffraction waves are present emerging from the SSD edges, resulting in strong ringing artifacts in the listening area.}
-    } \end{minipage}
-\label{fig:SFS_theory:25D_WFS_generals}  
+    }
+\label{fig:SFS_theory:25D_WFS_generals}   \end{minipage}
 \end{figure}
 %
 Application of the 2.5D WFS driving functions aims to describe a 3D sound field in terms of a 2D contour integral with the kernel being the 3D Green's function,
