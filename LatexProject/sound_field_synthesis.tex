@@ -433,6 +433,18 @@ As a second example the synthesis of a plane wave applying a circular SSD with t
 The synthesis is referenced to a concentric circle inside the SSD with the radius if $R_{\mathrm{ref}}$.
 For this geometry the explicit driving functions are also known, which are however not discussed in details in the present thesis.
 
+\begin{figure}
+\centering
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/25D_WFS_circular_SSD.png}
+	\end{overpic}   
+    \caption{2.5D synthesis of a 2D plane wave with the angular frequency $\omega_0 = 2\pi \cdot 1 \mathrm{krad}/s$ propagating into the direction $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}} }{0}{0}$.
+    The SSD is a circular one, with the radius $R_{\mathrm{SSD}} = 2~\mathrm{m}$.
+    The reference curve is a circle with the radius $R_{\mathrm{ref}} = 1.5~\mathrm{m}$.
+    Figure (a) depicts the real part of the synthesized field, (b) shows the error of synthesis.
+    }
+\label{fig:SFS_theory:25D_WFS_circular_ssd}  
+\end{figure}
+
 Again, the system of equations describing the reference distance for each SSD element is given by
 \begin{align}
 \vxref(\vxo) &= \vxo + \hat{\vk}^P(\vxo) |\vxref(\vxo)-\vxo|
@@ -447,18 +459,6 @@ By exploiting that $|\vxo| = R_{\mathbb{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and ta
 \end{equation}
 with $\hat{k}^P_r(\vxo)$ denoting the radial component of the normalized wavenumber vector.
 Applying the reference distance to the general 2.5D WFS driving functions \eqref{Eq:SFS_theory:25D_WFS_driv_fun} allows the synthesis of an arbitrary sound field referenced on a reference circle inside the SSD.
-
-\begin{figure}
-\centering
-	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/25D_WFS_circular_SSD.png}
-	\end{overpic}   
-    \caption{2.5D synthesis of a 2D plane wave with the angular frequency $\omega_0 = 2\pi \cdot 1 \mathrm{krad}/s$ propagating into the direction $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}} }{0}{0}$.
-    The SSD is a circular one, with the radius $R_{\mathrm{SSD}} = 2~\mathrm{m}$.
-    The reference curve is a circle with the radius $R_{\mathrm{ref}} = 1.5~\mathrm{m}$.
-    Figure (a) depicts the real part of the synthesized field, (b) shows the error of synthesis.
-    }
-\label{fig:SFS_theory:25D_WFS_circular_ssd}  
-\end{figure}
 
 Assume the special case of a virtual 2D plane wave, propagating parallel to the synthesis plane described by the wavenumber vector $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}}}{k_y^{\mathrm{PW}}}{0}$.
 For a 2D sound field $\phi^{''P}_{zz}(\vxo) = 0$ holds and the reference function is given by the reference distance itself.
@@ -475,7 +475,7 @@ The result of synthesis, along with the error of synthesis is depicted in Figure
 \section{Explicit solution: Spectral Division Method}
 
 The explicit solution for the general SFS problem utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function $G(\vx - \vxo , \omega )$ \cite{Ahrens2012,MorseFeshbach1953}.
-Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on the boundary surface $\dO$, that form a complete basis of the solution.
+Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on a control surface, that form a complete basis of the solution.
 The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero.
 Otherwise the problem is termed \emph{ill-conditioned}.
 Finally the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
