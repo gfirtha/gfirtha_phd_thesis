@@ -104,25 +104,25 @@ The second basic ray tracing equation termed the \emph{transport equation} is gi
 \subsection{The local wavefront curvature}
 
 %%
-\begin{figure}[h!]
-	\small
-  \begin{minipage}[c]{0.45\textwidth}
-  \hspace{0cm}
-	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
-	\put(0,66){a)}
-	\put(0,33){b)}
-	\put(0,0){d)}
-	\end{overpic}
-	\end{minipage}
-	\hspace{10mm}
-	\begin{minipage}[c]{0.4\textwidth}
-    \caption{
-	 Illustration of the local wavenumber vector (a) the second partial derivative along $x$-dimension (b) the curvature (c) for a 3D point source placed at the origin along the $z=0$ plane as an example for diverging wave field.
-For this case $\phi^{P''}_{xx}(\vx)/k = \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and both the mean and the principal curvatures simply reads $\overline{\kappa}^P(\vx)/k = \frac{1}{|\vx-\vxs|}$.
-}
-	\label{Fig:HF_appr:local_wave_curvature}
-	  \end{minipage}
-\end{figure}
+%\begin{figure}[h!]
+%	\small
+%  \begin{minipage}[c]{0.45\textwidth}
+%  \hspace{0cm}
+%	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
+%	\put(0,66){a)}
+%	\put(0,33){b)}
+%	\put(0,0){d)}
+%	\end{overpic}
+%	\end{minipage}
+%	\hspace{10mm}
+%	\begin{minipage}[c]{0.4\textwidth}
+%    \caption{
+%	 Illustration of the local wavenumber vector (a) the second partial derivative along $x$-dimension (b) the curvature (c) for a 3D point source placed at the origin along the $z=0$ plane as an example for diverging wave field.
+%For this case $\phi^{P''}_{xx}(\vx)/k = \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and both the mean and the principal curvatures simply reads $\overline{\kappa}^P(\vx)/k = \frac{1}{|\vx-\vxs|}$.
+%}
+%	\label{Fig:HF_appr:local_wave_curvature}
+%	  \end{minipage}
+%\end{figure}
 
 
 
@@ -616,6 +616,8 @@ The SPA however can be extended for multiple stationary positions, and the resul
 In the present treatise this limitation is not investigated further, since the results involving the SPA of the Fourier transform hold without any modification for a virtual plane wave as a limiting case. 	
 
 \subsection*{Application example: Spectrum of the Green's function}
+\label{sec:greens_function_pectrum}
+
 As a simple example consider the 1D Fourier transform of the field of a 3D point source.
 For the sake of simplicity the source is located at the origin, and the transform is taken along the $x$-dimension.
 The exact solution for the problem is available analytically, given by the second order Hankel function.
