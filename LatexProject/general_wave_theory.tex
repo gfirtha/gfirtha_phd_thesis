@@ -3,36 +3,30 @@ The section starts with discussing the physics of sound propagation and radiatio
 Various integral representations of sound fields are presented including spectral and boundary integral representations.
 %
 
-\vspace{3mm}
-Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the fluid's density and pressure, as well as in the displacement of the medium's particles.
-The propagation of the disturbance is described by the acoustic wave equation. 
-First, the homogeneous wave equation is introduced, which is valid for \emph{source-free} domains.
-For a detailed treatise on the derivation refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
-
-%
 \section{The wave equation}
+
+Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the fluid's density and pressure, as well as displacement of the medium's particles.
+The propagation of the disturbance is described by the acoustic wave equation. 
+For a detailed treatise on the derivation refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
 
 Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. 
 In the aspect of the present thesis it is appropriate to restrict the investigations to sound propagation solely in air at room temperature.
 
-%
-The domain of investigation $\Omega \in \mathbb{R}^n$, i.e. where sound waves propagate is termed as \emph{sound field} hereinafter.
-\fpcom{Sound field is not the domain, but a common term for the pressure field and velocity field and density field etc within the domain.}
-Within this thesis usually 3 dimensional problems are investigated, i.e. $n = 3$.
+The domain of investigation $\Omega \in \mathbb{R}^n$, where sound waves propagate is termed \emph{sound field} hereinafter.
+Within this thesis usually 3 dimensional problems are investigated ($n = 3$).
 The acoustical quantities of the the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
 The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
 The presence of sound causes incremental change in the instantaneous pressure and the particle velocity.
-%
 
 In order to apply a linear model for sound propagation two assumptions are made.
 Since the traveling speed of thermal diffusion is small compared to the speed of sound, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic.
 Furthermore the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around $P_0$.
 This later assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 First the homogeneous wave equation is presented, valid for a source free domain, describing purely the propagation characteristics of acoustic waves.
-%
 
 \subsection{The homogeneous wave equation}
-%
+
+First, the homogeneous wave equation is introduced, which is valid for \emph{source-free} domains.
 The linear homogeneous wave equation may be derived by utilizing two fundamental physical principles.
 \begin{itemize}
 \item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of gas we obtain the connection between the particle velocity vector and the pressure field at each point at each time instant. 
@@ -43,20 +37,21 @@ The resulting \emph{Euler's equation} states that the force acting on the volume
 \end{equation}
 \nomenclature[2]{$\nabla$}{Gradient operator. In Descartes-coordinates it is given by $\nabla = \frac{\partial}{\partial x} \mathbf{e}_x + \frac{\partial}{\partial y} \mathbf{e}_y + \frac{\partial}{\partial z} \mathbf{e}_z$}
 where $\nabla$ is the gradient operator and $\rho_0$ is the fluid's ambient density. 
-In room temperature for the above given static pressure it is given as $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
+In room temperature for the above given static pressure $\rho_0 = 1.18~\mathrm{kg}/\mathrm{m}^3$.
 
-\item \emph{The gas law:} For adiabatic processes the change of state is governed by the following equation
+\item \emph{The gas law:} For adiabatic processes the change of state is governed by the relation
 \begin{equation}
 P V^{\gamma} = \mathrm{constant},
 \label{Eq:Theory:Adiabatic_change}
 \end{equation}
-where $\gamma = C_P/C_V$ is the ratio of specific heat of the fluid in constant pressure and with constant volume. For air $\gamma = 1.4$. 
+where $\gamma = C_P/C_V$ is the ratio of specific heat of the fluid with constant pressure and with constant volume.
+For air $\gamma = 1.4$.
 Linearization of \eqref{Eq:Theory:Adiabatic_change} around the static state $P_0, V_0$ yields
 \begin{equation}
 \td P = p(\vx,t) = -\gamma P_0 \frac{\td V}{V_0},
 \end{equation}
 where $V_0$ is the undisturbed volume. 
-The relative change of volume may be expressed as the divergence of the particle displacement over the infinitesimal boundary surface. 
+The relative change of volume $\td V / V_0$ may be expressed by the divergence of the particle displacement $\nabla \cdot \mathbf{u}$. 
 Applying the definition of divergence and expressing the equation in terms of particle velocity yields
 \begin{equation}
 \frac{\partial}{\partial t} p(\vx,t) = -\gamma P_0 \, \nabla \cdot \mathbf{v}(\vx,t),
@@ -76,7 +71,7 @@ Taking the time derivative of equation \eqref{Eq:Theory:continuity_eq} and the d
 \nomenclature[1]{$c$}{Speed of sound}%
 \nomenclature[3]{$\nabla^2$}{Laplacian operator. 
 In Descartes-coordinates: $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} +  \frac{\partial^2}{\partial z^2}$}%
-where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of the sound wave in the medium. 
+where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of sound in the medium. 
 For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
 The instantaneous pressure may also be eliminated in a similar manner, resulting in the vector wave equation for each component of the particle velocity
 \begin{equation}
@@ -85,7 +80,7 @@ The instantaneous pressure may also be eliminated in a similar manner, resulting
 \end{equation}
 valid in curl-free media, where $\nabla \left( \nabla \cdot \right) = \nabla^2$ holds.
 %
-Besides the pressure and the velocity, acoustic fields are often expressed via the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and is related to the other field variables as 
+Besides the pressure and the velocity, acoustic fields are often expressed via the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and which is related to the other field variables as 
 \begin{equation}
 \mathbf{v}(\vx,t) = \nabla \varphi(\vx,t), \hspace{7mm} p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \varphi(\vx,t).
 \label{eq:theory:velocity_potential_definition}
@@ -95,7 +90,7 @@ The wave equations fully describe the properties of acoustic wave propagation as
 
 \vspace{3mm}
 %
-Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform, given by \eqref{eq:temporal_fourier_transform_def}.
+Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform  \eqref{eq:temporal_fourier_transform_def}.
 Applying the differentiation property of the Fourier-transform to \eqref{Eq:Theory:Eulers_equation} yields the frequency domain Euler's equation,
 \begin{equation}
 \nabla P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega)
@@ -112,13 +107,13 @@ where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal fr
 k = \frac{\omega}{c}.
 \end{equation}
 %
-Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with harmonic time-dependence for a source-free volume (which latter is indicated with the zero load term on the right side). 
-In the aspect of the present thesis the time-domain wave equation is rarely solved, therefore in the followings the general solution of the Helmholtz-equation is presented.
+Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with harmonic time-dependence for a source-free volume. 
+In the aspect of the present thesis the time-domain wave equation is rarely solved, therefore the general solution of the Helmholtz-equation is presented in the followings.
 
 \subsection{The inhomogeneous wave equation}
 
 So far wave propagation in source-free volumes was investigated.
-Simple disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation} \fpcom{Why is it the disturbane of the pressure field? Don't understand.}
+Simple scalar disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation} %\fpcom{Why is it the disturbane of the pressure field? Don't understand.}
 \begin{equation}
 \nabla^2 p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = -s(\vx,t),
 \label{Eq:Theory:Inhomogene_wave_eq_time_domain}
@@ -129,7 +124,7 @@ and by transforming wrt. time in the \emph{inhomogeneous Helmholtz equation}
 \end{equation}
 Term $s(\vx,t)$ is referred to as the \emph{load term}, and it describes the spatial extension and time history of the excitation.
 
-It should be noted, that pressure excitation is hardly realizable in practice. \fpcom{Why is $s$ a pressure excitation?}
+%It should be noted that pressure excitation is hardly realizable in practice. \fpcom{Why is $s$ a pressure excitation?}
 To involve more physical source excitation models, additional force source terms may be added to the equation of motion \eqref{Eq:Theory:Eulers_equation}, or injected mass/volume terms may be included in the continuity equation \eqref{Eq:Theory:continuity_eq}.
 This results in the \emph{general inhomogeneous wave equations} \cite{Howe2007, Kinsler2000, Pierce1991}
 \begin{equation}
@@ -157,12 +152,12 @@ So far we considered wave propagation in free-field, i.e. no boundaries were pre
 %As initial conditions through the present thesis we suppose \emph{homogeneous Cauchy initial conditions} by setting $p(\vx,0) = 0$, $\frac{\partial}{\partial t}p(\vx,t)|_{t=0} = 0$, ensuring, that no sound waves are present in the domain of investigation, that would case the non-uniqueness of the particular solution.
 In order to obtain a particular solution of the wave equation the wave field must satisfy prescribed boundary conditions.
 The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition}.
-If the domain of interest is the exterior of the enclosing boundary, while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed as an \emph{exterior radiation problem}. 
+If the domain of interest is the exterior of the enclosing boundary, while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed an \emph{exterior radiation problem}. 
 On the other hand, if the aim is to determine the sound field inside a source-free volume---or the reflected field of a sound source inside a cavity---an \emph{interior problem} must be solved.
 
 The boundary conditions are typically prescribed pressure or particle velocity. 
 By assuming zero pressure or velocity on the boundary surface \emph{homogeneous boundary conditions} are considered. 
-Non-zero field variables on the other hand represent a vibrating surface and are termed as \emph{inhomogeneous bondary conditions}.
+Non-zero field variables on the other hand represent a vibrating surface and are termed \emph{inhomogeneous bondary conditions}.
 
 In the aspect of this thesis two important types of boundary conditions are of interest:
 \begin{itemize}
@@ -203,7 +198,7 @@ Homogeneous Neumann boundary condition are
 \left. \frac{\partial}{\partial \mathbf{n}(\vx)} f(\vx) \right|_{\vx \in \dO}= 0,
 \end{equation}
 where $ \mathbf{n}(\vx) $ is the normal vector of the boundary surface.
-These type of boundaries are termed as \emph{sound hard}, or \emph{rigid} boundaries, ensuring that no incident wave can mobilize the boundary surface.
+These type of boundaries are termed \emph{sound hard}, or \emph{rigid} boundaries, ensuring that no incident wave can mobilize the boundary surface.
 
 Inhomogeneous Neumann boundary conditions are given by
 \begin{equation}
@@ -324,7 +319,7 @@ Solutions with $k_y'$ given as
  \end{equation}
 describe plane waves, propagating perpendicular to the $y$-axis, and exhibiting an exponentially decaying amplitude along the $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
 In those cases when one wavelength component is shorter than the acoustic wavelength, the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs.
-These type of waves are termed as \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
  
 %
 Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
@@ -341,11 +336,11 @@ The evanescent contribution is of central importance in the field of \emph{Nearf
 \subsection{The angular spectrum representation}
 
 It could be seen that any source-free sound field may be expressed in terms of a double inverse Fourier-transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
-This formulation is termed as the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
+This formulation is termed the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 The meaning of the spectral weighting components $\tilde{P}(k_x,k_z,\omega)$ is obtained by expressing the pressure at the infinite plane $y=0$: it is revealed, that $P(x,0,z,\omega) = \mathcal{F}_x^{-1}\mathcal{F}_z^{-1} \left\{\tilde{P}(k_x,k_z, \omega)\right\}$,
 and the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ can be therefore expressed as the corresponding forward Fourier-transform of the pressure distribution at $y=0$.
 %: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
-In the followings, the domain characterized by $k_x$, $k_z$ is termed as the \emph{wavenumber domain}.
+In the followings, the domain characterized by $k_x$, $k_z$ is termed the \emph{wavenumber domain}.
 
 Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} therefore relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. 
 In the wavenumber domain the relation reads
@@ -390,7 +385,7 @@ Wave propagation is calculated by multiplying the measured spectra with an expon
                             &= \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \, \tilde{G}_v(k_x,y-y_0,k_z,\omega).
 \end{align}
 Wave propagation in source-free volumes therefore can be modeled by 2D linear filtering of the sound field, where the filter transfer characteristics are given by the corresponding propagator.
-Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed as the Rayleigh I. and II. integrals, as it will be further discussed in the latter sections.
+Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed the Rayleigh I. and II. integrals, as it will be further discussed in the latter sections.
 
 %
 \subsection{Solution in other geometries}
@@ -463,7 +458,7 @@ The different representations of the free-field Green's function may be obtained
 The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration.
 
 \begin{table}[h!]
-\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008}.
+\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008, DeSanto1992}.
 $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
 \left( \right)$ is the modified Bessel function of the second kind.
 The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind, that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
@@ -575,11 +570,11 @@ P_{\mathrm{d}}(\vx,\omega) =  \hat{F}(\omega)
 \end{equation}
 with $\cos \theta = \frac{\left<\mathbf{f} \cdot (\vx-\vxo) \right> } {|\vx-\vxo|}$.
 Unlike monopoles, dipoles are directive sources, with the directivity characteristics described by $\cos \theta$.
-Dipoles give a good model for e.g. unbaffled loudspeakers, moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$ often termed as the \emph{dipole axis}, and without any lateral radiation.
+Dipoles give a good model for e.g. unbaffled loudspeakers, moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$ often termed the \emph{dipole axis}, and without any lateral radiation.
 %
 \end{itemize}
 The importance of monopoles and dipoles along with higher order \emph{multipoles} lies in the far-field approximation of the field of extended sources,
-where a complex radiation pattern may be expanded into series of weighted multipole fields, termed as \emph{multipole expansion}.
+where a complex radiation pattern may be expanded into series of weighted multipole fields, termed \emph{multipole expansion}.
 Figure \ref{Fig:Theory:multipoles} presents the directivity pattern of multipoles up to the third order.
 
 \vspace{3mm}
@@ -599,7 +594,7 @@ This finding will be further discussed in the section, dealing with the Rayleigh
 \section{Boundary integral representation of sound fields}
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
-Any sound field obeying the homogeneous Helmholtz-equation may be written in the form of a surface integral above an enclosing surface, termed as the \emph{Kirchhoff-Helmholtz integral equation}. 
+Any sound field obeying the homogeneous Helmholtz-equation may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
 This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forms the backbone of the Boundary Element Method, SVD-based Conformal Nearfield Acoustic Holography, and Sound Field Synthesis.
 
 In this section the integral formulation of interior problems in source-free volumes is introduced.
@@ -673,7 +668,7 @@ with
 0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oe.
 \end{cases}
 \end{equation*}
-Point $\vx$ is termed as \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. 
+Point $\vx$ is termed \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. 
 A frequently used form of the KHIE---utilizing the Euler's equation \eqref{Eq:Theory:Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface ($\frac{\partial P(\vxo,\omega)}{\partial \vni} = -\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega)$)---is
 \begin{equation}
 \alpha P(\vx,\omega) = 
@@ -754,7 +749,7 @@ P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Oi.
 \end{equation}
 The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be represented as a single layer potential.
 The \emph{single layer strength function} is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
-The discontinuity in the pressure gradient is termed as the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
+The discontinuity in the pressure gradient is termed the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
 
 %In terms of sound field synthesis the interior sound field is the desired sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
 %\begin{equation}
@@ -865,13 +860,14 @@ P_N(\vx,\omega) =
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
 G(\vx-\vxo,\omega) \td \dO_P ( \vxo).
+\label{Eq:Theory:RayleighI}
 \\
 P_D(\vx,\omega) =
 \int_{\dO_P}
 2 P(\vxo,\omega)  
 \left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
 \td \dO_P ( \vxo)
-\label{Eq:Theory:RayleighI_II}
+\label{Eq:Theory:RayleighII}
 \end{eqnarray}
 with
 \begin{align*}

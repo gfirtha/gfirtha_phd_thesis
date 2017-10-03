@@ -1,0 +1,42 @@
+\section{2.5D Kirchhoff integral for a 3D point source}
+\label{App:25D_KI}
+
+Assume a 2D point source, located at $\vxs = \posvec{2}{x_s}{y_s}$.
+The generated sound field inside the domain, bounded by the contour $C$ can be described by the 2D Kirchhoff approximation in terms of the 2D Green's function.
+At position $\vx \in \mathbb{R}^2$ the field reads
+\begin{equation}
+P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega) G_{2\text{D}}(\vx-\vxo,\omega) \td C,
+\end{equation} 
+with in the present case $P_{2\text{D}}(\vx,\omega) = G_{2\text{D}}(\vx-\vxs,\omega)$.
+The equality holds withing the validity of the stationary phase approximation.
+
+As a first step assume, that in three dimensions, the sound field of a vertical line source is to be described at $z=0$ in terms of the 3D Green's function.
+The equation can be rewritten as
+\begin{equation}
+P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega)\int_{-\infty}^{\infty}  G_{3\text{D}}(\vx-\vxo,\omega) \td z_0 \td C.
+\end{equation}
+The inner integral can be approximated by the SPA with the stationary point lying trivially at $z=0$, resulting in the approximation of the 2D Green's function presented in equation \eqref{eq:HF_approx:2D_vs_3D_GF}:
+\begin{equation}
+P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega)  \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }}G_{3\text{D}}(\vx-\vxo,\omega) \td C.
+\label{Eq:App:25D_KI_2D_ps}
+\end{equation}
+
+Now assume, that instead of a 2D point source, a 3D point source is to be described by \eqref{Eq:App:25D_KI_2D_ps}.
+Since the integral holds only for two dimensional sound fields the 3D field has to be formulated in terms of a 2D sound field with appropriate correction factors.
+Since $P$ is the sound field of a point source in 2 or 3 dimensions 
+\begin{equation}
+P_{2\text{D}}(\vx,\omega) = \sqrt{\frac{2 \pi |\vx-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega), \hspace{1cm}
+P_{2\text{D}}(\vxo,\omega) = \sqrt{\frac{2 \pi |\vxo-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega)
+\end{equation} 
+holds.
+Rewriting \eqref{Eq:App:25D_KI_2D_ps} in terms of the 3D field variables
+\begin{multline}
+\sqrt{\frac{2 \pi |\vx-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) \sqrt{\frac{2 \pi |\vxo-\vxs|}{\ti k }} P_{3\text{D}}(\vxo,\omega) \\
+  \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }}G_{3\text{D}}(\vx-\vxo,\omega) \td C.
+\end{multline}
+Finally, simplification and rearrangement leads to the 2.5D formulation of the Kirchhoff integral for the special case of a describing a 3D point source
+\begin{equation}
+P_{3\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }} \sqrt{ \frac{|\vxo-\vxs|}{|\vx-\vxs|}} P_{3\text{D}}(\vxo,\omega) 
+ G_{3\text{D}}(\vx-\vxo,\omega) \td C.
+\end{equation}
+The horizontal stationary position for the integral is then found, where $|\vx-\vxs| = |\vx - \vxo(\vx)| + |\vxo(\vx)-\vxs|$ is satisfied.
