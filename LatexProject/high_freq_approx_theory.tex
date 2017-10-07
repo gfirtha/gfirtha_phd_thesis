@@ -103,26 +103,55 @@ The second basic ray tracing equation termed the \emph{transport equation} is gi
 
 \subsection{The local wavefront curvature}
 
+%%%
+%%\begin{figure}[h!]
+%%	\small
+%%  \begin{minipage}[c]{0.45\textwidth}
+%%  \hspace{0cm}
+%%	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
+%%	\put(0,66){a)}
+%%	\put(0,33){b)}
+%%	\put(0,0){d)}
+%%	\end{overpic}
+%%	\end{minipage}
+%%	\hspace{10mm}
+%%	\begin{minipage}[c]{0.4\textwidth}
+%%    \caption{
+%%	 Illustration of the local wavenumber vector (a) the second partial derivative along $x$-dimension (b) the curvature (c) for a 3D point source placed at the origin along the $z=0$ plane as an example for diverging wave field.
+%%For this case $\phi^{P''}_{xx}(\vx)/k = \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and both the mean and the principal curvatures simply reads $\overline{\kappa}^P(\vx)/k = \frac{1}{|\vx-\vxs|}$.
+%%}
+%%	\label{Fig:HF_appr:local_wave_curvature}
+%%	  \end{minipage}
+%%\end{figure}
+%
+
 %%
-%\begin{figure}[h!]
-%	\small
-%  \begin{minipage}[c]{0.45\textwidth}
-%  \hspace{0cm}
-%	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wave_curvature.png}
-%	\put(0,66){a)}
-%	\put(0,33){b)}
-%	\put(0,0){d)}
-%	\end{overpic}
-%	\end{minipage}
-%	\hspace{10mm}
-%	\begin{minipage}[c]{0.4\textwidth}
-%    \caption{
-%	 Illustration of the local wavenumber vector (a) the second partial derivative along $x$-dimension (b) the curvature (c) for a 3D point source placed at the origin along the $z=0$ plane as an example for diverging wave field.
-%For this case $\phi^{P''}_{xx}(\vx)/k = \frac{1}{|\vx-\vxs|}\left( 1 - \frac{x^2}{|\vx-\vxs|^2} \right)$ and both the mean and the principal curvatures simply reads $\overline{\kappa}^P(\vx)/k = \frac{1}{|\vx-\vxs|}$.
-%}
-%	\label{Fig:HF_appr:local_wave_curvature}
-%	  \end{minipage}
-%\end{figure}
+\begin{figure}[h!]
+	\small
+  \begin{minipage}[c]{0.55\textwidth}
+  \hspace{0cm}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/High_freq_approximations/wavefront_curvature.png}
+	\small
+	\put(45,50.5){$\vxo$}
+	\put(46,65){$\hat{\vk}(\vxo)$}
+	\put(36,40){$\rho_1$}
+	\put(60,28.5){$\rho_2$}
+	\put(60.5,60){$\mathbf{v}_1$}
+	\put(28.5,61){$\mathbf{v}_2$}
+	\put(71,40){$-\phi^P(\vx) = \text{const}$}
+	\end{overpic}
+	\end{minipage}
+	\hspace{10mm}
+	\begin{minipage}[c]{0.4\textwidth}
+    \caption{
+	 Illustration of the principal radii and principal curvatures at $\vxo$ of an arbitrary smooth wavefront, satisfying the local dispersion relation.
+	 The principal radii are denoted by $\rho_1$ and $\rho_2$, with the corresponding tangent vectors $\mathbf{v}_1$ and $\mathbf{v}_2$ respectively.
+	 The principal curvatures are given by the reciprocal of the principal radii.
+	 In the present treatise non-converging wave fields are discussed with both principal curvatures being non-negative.
+}
+	\label{Fig:HF_appr:local_wave_curvature}
+	  \end{minipage}
+\end{figure}
 
 
 
@@ -130,9 +159,9 @@ Applying the local wavenumber vector concept the \emph{local wavefront curvature
 A wave field is termed \emph{divergent} with a convex wavefront propagating away from a source distribution and \emph{convergent} or \emph{focused}, if a concave wavefront propagates towards a focal point.
 Mathematically the local vergence of the wave field may be described by the \emph{principal curvatures} of the wavefront, or in a looser sense by the \emph{mean curvature} of the wavefront.
 
-The principal curvature components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the the maximal and minimal radii of osculating spheres at a point on the wavefront.
+The principal curvature components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the the maximal and minimal radii of osculating spheres at a point on the wavefront, as illustrated in Figure \ref{Fig:HF_appr:local_wave_curvature}.
 Mathematically if the local dispersion relation holds, the principal curvatures are given by the two non-zeros eigenvalues of the phase function's negative Hessian \cite{Hartmann1999}.
-A wave field is then divergent with both principal curvatures being negative \cite{HF_and_Pulse_Scattering1992, Bleistein1984, Arnold1986}.
+A wave field is then divergent with both principal curvatures being positive \cite{HF_and_Pulse_Scattering1992, Bleistein1984, Arnold1986}.
 
 The \emph{mean curvature} of the wavefront---generally defined as the divergence of the surface normal \cite{Goldman2005}---is given by the negative divergence of the local wavenumber vector, or the trace of the Hessian:
 %
@@ -271,7 +300,6 @@ Obviously the tangent law only expresses the relationship between $A_1$ and $A_2
 A frequently used strategy is keeping the power at a constant value by requiring $A_1^2 + A_2^2 = \text{constant}$.
 Alternatively it may be exploited, that the amplitude of the resultant field on the stereo axis is given by $\frac{1}{4\pi}\frac{A_1+A_2}{|\vx-\vx_1|}$ (as given by \eqref{Eq:AppB:stereo_amplitude}) in order to match the amplitude to that of e.g. a phantom point source.
 
-\newpage
 \section{The Kirchhoff approximation}
 
 The Kirchhoff  approximation is an important high-frequency asymptotic approximation of the Kirchhoff-Helmholtz integral.
@@ -559,6 +587,7 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 This is obviously--since high-frequency assumptions must hold---equivalent to the Kirchhoff-approximation \eqref{Eq:SFS_theory:Kirchhoff_appr}, derived by physically motivated considerations from the simple source formulation.
 
 \subsection{Asymptotic approximation of spectral integrals}
+\label{Sec:SPA_for_Fourier}
 Clearly, there is a strong relationship between the local wavenumber vector concept and the plane wave decomposition/angular spectrum of sound fields.
 The relation is established by the SPA.
 Consider the forward and inverse Fourier transform of a general polar form sound field $P(\vx,\omega)$ given by \eqref{eq:HF_appr:general_sf}
@@ -618,6 +647,31 @@ In the present treatise this limitation is not investigated further, since the r
 \subsection*{Application example: Spectrum of the Green's function}
 \label{sec:greens_function_pectrum}
 
+\begin{figure}[]
+	\small
+	\centering
+	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/greens_stat_pos_2.png}
+	\put(1,13){$x$}
+	\put(34,11){$y$}
+	\put(15,40){$z$}
+	%
+	\put(99,9.5){$x$}
+	\put(72,37){$y$}
+	\put(66,9.5){$x^*(k_x)$}
+	\put(80,20.5){$k_x$}
+	\put(71.5,31.5){$k_{\rho}$}
+	\put(80.5,30){$\vk$}
+	\put(68.5,18){$r_0$}
+	\end{overpic}
+	\caption{Illustration for considering the spectrum of the Green's function as the field of a line source with harmonic spatial distribution with the wavenumber $k_x$, evaluated at $x = 0$.
+	Such a source radiates a cylindrical symmetric sound field, with a radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$ so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies.
+	For the case of $k_x=0$ this equals to the field of the 2D Green's function.
+	Using this interpretation an alternative geometric interpretation may be found for the stationary position of the integral definition \eqref{Eq:HF_approx:Greens_spectrum_defintion}:
+	for a given wavenumber $k_x$ and for a given $\vx = \posvec{3}{x=0}{y}{z}$ that part of the $x$-axis will be a stationary point from which the emerging wavefront coincides with that of a plane wave with $k_x$ in $\vx$.
+	From simple geometric considerations it is found at $x^*(k_x) = r_0 \frac{k_x}{k_{\rho}}$}
+	\label{Fig:Theory:greens_stat_pos}
+\end{figure}
+
 As a simple example consider the 1D Fourier transform of the field of a 3D point source.
 For the sake of simplicity the source is located at the origin, and the transform is taken along the $x$-dimension.
 The exact solution for the problem is available analytically, given by the second order Hankel function.
@@ -649,6 +703,7 @@ Substitution into the SPA \eqref{Eq:SPAResult} with $\sqrt{x^*(k_x)^2 + y^2 + z^
 This result is the Hankel function's well-known asymptotic expansion for large arguments \cite[10.17.6]{Olver:2010:NHMF}
 \begin{equation}
 H_0^{(2)}(z)\approx \sqrt{\frac{2 \ti}{\pi z}} \te^{-\ti z}.
+\label{Eq:HF_approx:Hankel_asymptotic_form}
 \end{equation}
 Furthermore, the DC ($k_x = 0$) component of the spectrum of the 3D Green's function describes the sound field generated by an infinite line source along the $x$-axis, i.e. the approximation of the 2D Green's function which therefore stems from the direct asymptotic approximation of \eqref{Eq:Wave_Theory:2D_Green} by the SPA \cite[p. 118]{Williams1999}
 \begin{equation}
@@ -658,30 +713,6 @@ G_{2\text{D}}(\vx,\omega) \approx \frac{1}{\sqrt{8\pi \ti}}\frac{\te^{-\ti k |\v
 with $\vx = \posvec{2}{y}{z}$. 
 This result also verifies, that the 2D Green's function and the 3D Green's function's phase---and thus their local wavenumber vector---approximately equal in the high frequency region, with the 3D distances substituted with the 2D ones.
 
-\begin{figure}[]
-	\small
-	\centering
-	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/greens_stat_pos_2.png}
-	\put(1,13){$x$}
-	\put(34,11){$y$}
-	\put(15,40){$z$}
-	%
-	\put(99,9.5){$x$}
-	\put(72,37){$y$}
-	\put(66,9.5){$x^*(k_x)$}
-	\put(80,20.5){$k_x$}
-	\put(71.5,31.5){$k_{\rho}$}
-	\put(80.5,30){$\vk$}
-	\put(68.5,18){$r_0$}
-	\end{overpic}
-	\caption{Illustration for considering the spectrum of the Green's function as the field of a line source with harmonic spatial distribution with the wavenumber $k_x$, evaluated at $x = 0$.
-	Such a source radiates a cylindrical symmetric sound field, with a radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$ so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies.
-	For the case of $k_x=0$ this equals to the field of the 2D Green's function.
-	Using this interpretation an alternative geometric interpretation may be found for the stationary position of the integral definition \eqref{Eq:HF_approx:Greens_spectrum_defintion}:
-	for a given wavenumber $k_x$ and for a given $\vx = \posvec{3}{x=0}{y}{z}$ that part of the $x$-axis will be a stationary point from which the emerging wavefront coincides with that of a plane wave with $k_x$ in $\vx$.
-	From simple geometric considerations it is found at $x^*(k_x) = r_0 \frac{k_x}{k_{\rho}}$}
-	\label{Fig:Theory:greens_stat_pos}
-\end{figure}
 In case $k_x \neq 0$ equation \eqref{Eq:HF_approx:Greens_spectrum_defintion} describes the sound field of an infinite line source with a harmonic spatial distribution, evaluated at $x = 0$.
 Obviously, this special statement only holds because the function to be Fourier transformed is the Green's function itself.
 Such a line source radiates attenuating plane wavefronts propagating radially away from the $x$-axis with the local wavenumber vector given by $\vk^P(\vx) = \posvec{2}{k_x}{k_\rho}$, illustrated in \ref{Fig:Theory:greens_stat_pos}.

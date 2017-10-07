@@ -303,6 +303,7 @@ Once the reference position is expressed for each SSD element, the driving funct
 In order to gain a physical interpretation on the structure of the resulting driving functions, the referencing function can be expressed in terms of the principal radii of the virtual field and the Green's function. 
 This results in the driving function expression
 \begin{equation}
+\label{Eq:SFS_theory:25D_WFS_driv_fun_ver_2}
 D(\vxo, \omega) = 
 \underbrace{\sqrt{\frac{2\pi \rho^G(\vxref(\vxo)-\vxo) }{\ti k}}}_{{\substack{\text{SSD}\\\text{compensation}}}}
 \underbrace{\sqrt{ \frac{\rho^P(\vxo) }{\rho^P(\vxo) +  \rho^G(\vxref(\vxo)-\vxo) } }}_{{\substack{\text{virtual source}\\\text{compensation}}}}
@@ -425,6 +426,7 @@ D(\vxo, \omega) =  \frac{1}{4\pi}
 \sqrt{\frac{8\pi}{\ti k}}
 \sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } }
 \ti k y_s \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|^{\frac{3}{2}}}.
+\label{eq:SFS_theory:WFS_point_source}
 \end{equation}
 This result is precisely equivalent with the traditional WFS driving function \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd} of a point source, and furthermore identical to the farfield/high-frequency approximated explicit solution presented in the next section \cite[(25)]{Spors10ahrens:analysis}, \cite[Ch. 2.3]{Schultz2016}. 
 
@@ -610,6 +612,7 @@ by realizing that the above equation is a convolution along the $x$-axis, the co
 The driving function spectra is then obtained as a spectral ratio
 \begin{equation}
 \tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = \frac{\mathcal{F}_x\left\{ P(\vx,\omega) \right\}}{\mathcal{F}_x\left\{ G(\vx,\omega) \right\}},
+\label{Eq:SFS_Theory:LinearSDM_spectral}
 \end{equation}
 and the frequency domain driving function therefore reads as
 \begin{equation}
@@ -673,6 +676,7 @@ is given as
 \end{equation}
 and in the spatial domain as
 \begin{equation}
+\label{Eq:Theory:SDM_point_source}
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
 \frac{  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  }
      {  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref|       \right)  }
@@ -682,8 +686,245 @@ D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty}
 The synthesized field using this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
 As it can be seen from Figure (b) displaying the deviation of the synthesized field from the target field, application of the explicit driving function ensures perfect synthesis on the reference line. 
 In other parts of the space amplitude errors are present.
-\newpage  
 
-\subsection{High frequency spatial approximation}
+As discussed in \cite{Spors10ahrens:analysis} the derived driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
+The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds (since $\yref-y_s> \yref$), which is valid in the far field of the SSD in front of the virtual source, where $k_y \gg k_x$ dominates the inverse transform.
+Applying the Hankel's function approximation the inverse transform can be carried out analytically, resulting in
+\begin{equation}
+D(x_0,\omega) \approx \frac{1}{2} \sqrt{\frac{\yref}{\yref-y_0}} \ti \frac{\omega}{c} \frac{y_0}{|\vxo-\vxs|} H_1^{(2)}\left( \frac{\omega}{c} |\vxo-\vxs| \right)
+\end{equation}
+as given by \cite[(24)]{Spors10ahrens:analysis}.
+By a further large-argument approximation of the Hankel function returns the 2.5D WFS driving function for a 3D point source referencing the synthesis on a reference line, given by \eqref{eq:SFS_theory:WFS_point_source}.
+The equivalence of the SDM and 2.5D WFS referencing the synthesis of a virtual plane wave on a reference line was further discussed in \cite{Firtha2016, Schultz2016:DAGA,Schultz2016}.
+The general relation of the explicit solution and 2.5D WFS is discussed in the following section.
+
+\subsection{Approximate explicit solution in the spatial domain}
+
+As discussed in \ref{Sec:SPA_for_Fourier} the stationary phase approximation allows the evaluation of forward and inverse Fourier integrals	around stationary positions in the spatial and spectral domain.
+In the followings the SPA is employed in order to give an approximate formulation for the 2.5D explicit driving functions purely in the spatial domain.
+The derivation consists of two main steps
+\begin{itemize}
+%
+\item First the spectral driving functions are expressed in an asymptotic form. 
+The calculus can be done by assuming, that the involved spectra are obtained via the SPA of the corresponding forward Fourier-transforms. 
+This step links the spectral coefficients to stationary positions in the spatial domain.
+%
+\item It is followed by the inverse Fourier transform of the asymptotic spectral driving functions.
+The evaluation of the inverse transform with the SPA relates the forward transform stationary positions to positions along the SSD.
+\end{itemize}
+
+\subsubsection{Asymptotic approximation of the explicit driving functions}
+
+The derivation starts from the 2.5D explicit driving functions in the wavenumber domain given by \eqref{Eq:SFS_Theory:LinearSDM_spectral}
+\begin{equation}
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,0, \omega)}{\tilde{G}(k_x,y,0, \omega)},
+\end{equation}
+ensuring perfect synthesis along a line with fixed $y$-coordinate.
+In the following for the sake of brevity and transparency $\omega$ and $z$ dependency is suppressed, the latter since the driving functions are defined at $z=0$.
+By definition the wavenumber content of the involved quantities is obtained via a forward Fourier transform, with the involved sound fields expressed by their polar form
+\begin{align} 
+\hat{P}(k_x,y) = \int\limits_{-\infty}^{\infty} A^P(x,y) \, \te^{\ti \phi^P(x,y)} \, \te^{\ti k_x x} \td x, \\
+\hat{G}(k_x,y) = \int\limits_{-\infty}^{\infty} A^G(x,y) \, \te^{\ti \phi^G(x,y)} \, \te^{\ti k_x x} \td x.
+\end{align}
+It is assumed, that the involved spectra are obtained by using the SPA:
+under high-frequency assumptions the Fourier integrals may be approximated by evaluation around their stationary point $x^*_P(k_x)$ and $x^*_G(k_x)$, where their phase derivative vanishes, i.e.
+the stationary positions are defined as
+\begin{align}
+\label{eq:xP_xG_in_spatial_domain}
+\left. \frac{\partial}{\partial x} \left(  \phi^P(x,y) + k_x x \right )\right|_{x =x^*_P(k_x)} = 0
+\hspace{3mm} &\rightarrow \hspace{3mm}
+k_x^P(x^*_P(k_x),y) = k_x \nonumber
+\\ 
+\left. \frac{\partial}{\partial x} \left(  \phi^G(x,y) + k_x x \right )\right|_{x =x^*_G(k_x)} = 0
+\hspace{3mm} &\rightarrow \hspace{3mm}
+k_x^G(x^*_G(k_x),y) = k_x.
+\end{align}
+Again, since it is assumed, that $k_z^P(x,y) = k_z^G(x,y) = k_z = 0$ holds in the plane of investigation, therefore the stationary positions are found along a given $y$, where the local propagation direction of the virtual field and the Green's function matches to that of the spectral plane wave, defined by $k_x$.
+The properties of the involved wave fields at these positions will dominate the corresponding Fourier integrals.
+Hence, the forward transform defines two particular positions in the space, linked together via the actual spectral wavenumber.
+Note, that it is assumed, that in the virtual sound field each local propagation direction is unique, i.e. a unique stationary position can be found.
+This statement trivially does not hold even in the simplest case of a virtual plane wave.
+The final result of the derivation however may be applied for such virtual fields without any modification.
+
+Having defined the stationary positions, the forward Fourier transforms can be evaluated by the SPA. 
+With accounting for the negative second phase-derivatives---since both the virtual sound field and the Green's function are diverging--- their spectra can be approximated as \cite[Ch. 5]{Tracy2014}
+\begin{align}
+\hat{P}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiPxx(x^*_P(k_x),y)|}} A^P(x^*_P(k_x),y) \, \te^{\ti \phi^P(x^*_P(k_x),y)} \, \te^{\ti k_x \cdot x^*_P(k_x)},\\
+\hat{G}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiGxx(x^*_G(k_x),y)|}} A^G(x^*_G(k_x),y) \, \te^{\ti \phi^G(x^*_G(k_x),y)} \, \te^{\ti k_x \cdot x^*_G(k_x)}.
+\end{align}
+The asymptotic approximation of the SDM driving functions on a given spectral component therefore reads
+\begin{equation}
+\label{eq:hfapproxspectra}
+\hat{D}(k_x,y)
+\approx  
+\sqrt{\frac{|\phi_{G,xx}''(x^*_G(k_x),y)|}{|\phi_{P,xx}''(x^*_P(k_x),y)|}}
+\, \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
+\, \te^{\ti k_x \cdot \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
+\end{equation}
+
+\subsubsection{Explicit driving functions in the spatial domain}
+
+Using the asymptotic approximation of the SDM spectrum the spatial driving functions are obtained via an inverse spatial Fourier transform:
+%
+\begin{equation}
+\label{Eq:inverse_transform_def}
+D(x_0,y)
+=  \frac{1}{2\pi} \int\limits_{-\infty}^{\infty}
+\sqrt{\frac{|\phi_{G,xx}''(x^*_G(k_x),y)|}{|\phi_{P,xx}''(x^*_P(k_x),y)|}} 
+\frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
+\,\te^{\ti k_x \cdot\left( x^*_P(k_x) - x^*_G(k_x)\right)}
+\,\te^{-\ti k_x x_0} \td k_x
+.
+\end{equation}
+Again, the integral is approximated using the SPA, with the phase function under investigation given by
+\begin{equation}
+\label{Eq:inverse_transform_phase_function}
+{\Phi}(k_x) = \phi^P[x^*_P(k_x),y] -  \phi^G[x^*_G(k_x),y] +  k_x \, x^*_P(k_x) - k_x\, x^*_G(k_x) -  k_x x_0.
+\end{equation}
+%
+As it was discussed in \ref{Sec:SPA_for_Fourier}, generally speaking in the inverse transform of an arbitrary wave field $P$ each wavenumber component $k_x$ will dominate one spatial position $x_0$, where the actual wavenumber component $k_x(x_0)$ coincides with the local wavenumber of the sound field $k_x^P(x_0)$.
+For the present case this wavenumber is found as the stationary phase wavenumber $k_x^*(x_0)$ of integral \eqref{Eq:inverse_transform_def} \cite{Tracy2014}.
+
+The derivative of the spectral phase function \eqref{Eq:inverse_transform_phase_function} can be evaluated by applying the chain rule, resulting in
+\begin{multline}
+\label{eq:spectral_phase_first_derivative}
+\frac{\partial}{\partial k_x}\Phi(k_x) = \\ 
+  x^{*'}_{P,k_x}(k_x) \underbrace{ \left( \phi^{P'}_x[x^*_P(k_x),y]  + k_x \right)}_{ = 0} 
+- x^{*'}_{G,k_x}(k_x) \underbrace{ \left( \phi^{G'}_x[x^*_G(k_x),y]  + k_x \right) }_{ = 0} 
++x^*_P(k_x)- x^*_G(k_x) -  x_0,
+\end{multline}
+where $x^{*'}_{k_x}(k_x)$ is the rate of change of the forward transform stationary positions with respect to the change of the spectral wavenumber, and the bracketed terms cancel out according to the definition of the stationary points \eqref{eq:xP_xG_in_spatial_domain}.
+The stationary wavenumber $k_x^*(x_0)$ is then found where
+\begin{equation}
+\label{eq:xP_xG_in_spectral_domain}
+\left. \frac{\partial}{\partial k_x}\Phi(k_x) \right|_{k_x=k_x^*(x_0)} = x^*_P(k_x^*(x_0))- x^*_G(k_x^*(x_0)) -  x_0 = 0
+\end{equation}
+holds.
+This definition relates the evaluation points $x^*_P$ and $x^*_G$ directly to the actual SSD coordinate $x_0$, therefore the intermediate stationary wavenumber ($k_x^*$) dependency may be omitted i.e. $x^*_P(k_x^*(x_0)) \rightarrow x^*_P(x_0)$ and $x^*_G(k_x^*(x_0)) \rightarrow x^*_G(x_0)$ may be written. 
+
+The definitions for the forward and inverse transform stationary points \eqref{eq:xP_xG_in_spatial_domain} and \eqref{eq:xP_xG_in_spatial_domain} completely define the evaluation points $x^*_P$,$x^*_G$ for a given SSD position $x_0$ independently of the spectral wavenumber:
+by expressing \eqref{eq:xP_xG_in_spatial_domain} with \eqref{eq:xP_xG_in_spectral_domain} for and arbitrary $x_0$ position the evaluation points along a fixed $y$ is found, where
+%
+\begin{align} 
+\label{Eq:stationary_evaluation_points}
+k_{x}^P(x^*_P(x_0),y) = k_{x}^G(x^*_P(x_0) - x_0,y),
+\end{align}
+is satisfied.
+This results states, that \emph{for a given SSD coordinate $x_0$ the evaluation point $x^*_P$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$ measured on the reference line}. 
+For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points}.
+%
+\begin{figure}[t!]
+\small
+  \begin{minipage}[c]{0.58\textwidth}
+%  \hspace{1cm}
+	\small
+%	\centering
+%	\hspace{-30mm}
+	\begin{overpic}[width = \textwidth ]{Figures/SFS_theory/explicit_sol_stationary_point.png}
+	\put(96,30){$x$}
+	\put(15,80){$y$}
+	\put(79.5,29.5){$x^*_P(x_0)$}
+	\put(62.5,29.5){$x_0$}
+	\put(52,72){$\vk^P(x^*_P,y) = \vk^G(x^*_P-x_0,y)$}
+	\end{overpic}  \end{minipage}\hfill
+	\begin{minipage}[c]{0.4\textwidth}
+    \caption{
+       Illustration of the evaluation position $x^*_P(x_0)$ (and $x^*_G(x_0)$) as the function of $x_0$. 
+	   For a given SSD position $x_0$ the stationary positions is found on a given reference line $y=\text{const}$, where the virtual field propagation direction coincides with that of the Green's function translated into $x_0$. 
+	   At $x^*_P(x_0)$ the local curvature of the translated Green's function is always greater, than that of the virtual field.
+       } 
+       \label{fig:SFS_theroy:explicit_sol_stationary_points}.
+  \end{minipage}
+\end{figure}
+%
+
+Having found the stationary position for \eqref{Eq:inverse_transform_def} in order to apply the SPA one still needs the phase function's second derivative around the stationary position and its sign.
+The second derivative is obtained by a further differentiation of \eqref{eq:spectral_phase_first_derivative} with respect to $k_x$ leads to
+\begin{multline}
+\frac{\partial^2}{\partial k_x^2}\Phi(k_x) = 
+  x^{*''}_{P,k_x k_x}(k_x) \underbrace{ \left( \phi^{P'}_x[x^*_P(k_x),y]  + k_x \right)}_{ = 0} + 
+  x^{*'}_{P,k_x}(k_x) \left( x^{*'}_{P,k_x}(k_x) \phi^{P''}_{xx}[x^*_P(k_x),y]  +2  \right)  -\\
+- x^{*''}_{G,k_x k_x}(k_x) \underbrace{ \left( \phi^{G'}_x[x^*_G(k_x),y]  + k_x \right) }_{ = 0} 
+- x^{*'}_{G,k_x}(k_x) \left( x^{*'}_{G,k_x}(k_x)  \phi^{G''}_{xx}[x^*_G(k_x),y]  + 2\right).
+\end{multline}
+The required rate of change of the stationary positions ($x^{*'}_P(k_x)$ and $x^{*'}_G(k_x)$) the second derivative can be obtained by differentiating equations \eqref{eq:spectral_phase_first_derivative} with respect to $k_x$, resulting in
+\begin{equation}
+x^{*'}_{P,k_x}(k_x) = -\frac{1}{\phi^{P''}_{xx}[x^*_P(k_x),y]}, \hspace{5mm} x^{*'}_{G,k_x}(k_x) = -\frac{1}{\phi^{G''}_{xx}[x^*_G(k_x),y]}.
+\end{equation}
+Thus the second derivative is given by
+\begin{equation}
+\label{eq:SFS_theory:second_Derivative_2}
+\frac{\partial^2}{\partial k_x^2}\Phi(k_x) = 
+\frac{\phi^{P''}_{xx}[x^*_P(k_x),y] - \phi^{G''}_{xx}[x^*_G(k_x),y]}{\phi^{P''}_{xx}[x^*_P(k_x),y] \, \phi^{G''}_{xx}[x^*_G(k_x),y]}.
+\end{equation}
+The second derivatives describe the curvature of the wavefront along the $x$-direction, as given by \eqref{Eq:App:Hessian_inplane}, being maximal in absolute value for a point source.
+Obviously, for any source distribution behind the SSD the wavefront curvature is smaller at $y>0$ than the curvature of the stationary SSD element's wavefront, i.e.
+\begin{equation}
+\phiPxx(x^*_P(k_x),y) > \phiGxx(x^*_G(k_x),y)
+\end{equation}
+holds and the sign of \eqref{eq:SFS_theory:second_Derivative_2} is positive. 
+
+These results now may be substituted back into the SPA \eqref{Eq:SPAResult} of the inverse transform \eqref{Eq:inverse_transform_def}.
+For the sake of brevity in the followings the evaluation point is denoted by $x^*_P \rightarrow x^*$. 
+Denoting the stationary position by $\vxref(\vxo) = \posvec{3}{x^*(x_0)}{y}{0}$ the resulting driving function is formulated as
+\begin{equation}
+\label{eq:SFS_theory:spatial_sdm}
+D(x_0) =
+\sqrt{\frac{ \left| \phiGxx(\vxref(\vxo)-\vxo )\right|^2}{\left| \phiPxx(\vxref(\vxo)) - \phiGxx(\vxref(\vxo)-\vxo)\right|}}
+\sqrt{\frac{\ti}{2\pi}} 
+\frac{P(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo)},
+\end{equation}
+where $k_x^P(\vxref(\vxo)) = k_x^G(\vxref(\vxo)-\vxo)$ holds.
+This result states, that an arbitrary sound field may be synthesized by finding the positions along the reference line, where the propagation direction/wavefront of the target field matches the field of the actual SSD elements.
+In this stationary position the driving functions are obtained by the ratio of the target field and the actual SSD element, corrected by the factor, containing the wavefront curvatures at the same position.
+Therefore the explicit, global solution can be approximated by simple local wavefront matching.
+
+Expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} and exploiting, that by definition $ \hat{k}_y^{G}(\vxref(\vxo)-\vxo) = \hat{k}_y^{P}(\vxref(x_0))$ holds the driving function can be cast into the form
+\begin{equation}
+\label{eq:SFS_theory:spatial_sdm_2}
+D(x_0) =
+\underbrace{\sqrt{\frac{\rho^P(\vxref(\vxo))}{\rho^P(\vxref(\vxo))-\rho^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}}
+\underbrace{ \sqrt{\frac{\ti k}{2\pi \rho^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
+\underbrace{\frac{\hat{k}_y^{P}(\vxref(x_0))P(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo)}}_{\substack{\text{2D}\\\text{driving function}}},
+\end{equation}
+with $\rho^P$ and $\rho^G$ being the principal radii of the target field and the Green's function along the horizontal direction.
+The formulation implies the fact, that similarly to the implicit solution, the explicit driving functions also applies the derivative of the target field, measured on the reference position.
+Furthermore, the driving function explicitly contains the SSD compensation factor presented in \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2}, correcting the applied 3D SSD elements to 2D ones.
+
+One important fact is pointed out here: although having derived the above driving functions in terms of a forward an inverse spatial Fourier transform along a straight line, there is no restriction on the $y$-coordinate of the stationary point in \eqref{eq:SFS_theory:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent.
+This means, that an arbitrary referencing curve may be defined as $\vxref(x_0)$, and the driving functions can be calculated by finding the stationary positions 
+satisfying $k_x^P(\vxref(x_0)) = k_x^G(\vxref(x_0) - \vx_0)$ along this curve.
+Evaluating the driving functions in the stationary positions will result in amplitude correct synthesis along the reference curve. 
+This means, that the presented driving functions are equivalent to the 2.5D WFS driving functions with the important difference that here the target field needs to be evaluated on the reference curve.
+Furthermore, within the validity of the Kirchhoff-approximation also the SSD has to be not necessarily linear: the spatial explicit driving functions can be applied using an arbitrary shaped SSD contour.
+Obviously in that case \eqref{eq:SFS_theory:spatial_sdm_2} has to be evaluated with $\hat{k}_y^{P}(\vxref(x_0)) \rightarrow \hat{k}_{\mathrm{n}}^{P}(\vxref(x_0))$, i.e. with the wavenumber component along the normal of the actual SSD element.
+Similarly the second derivatives in \eqref{eq:SFS_theory:spatial_sdm} have to be evaluated along the direction, defined by the actual SSD element.
+
+In the followings first a simple example is presented in order to demonstrate the validity of the spatial SDM driving functions.
+
+\subsection*{Application example: Synthesis of a 3D point source using a linear SSD}
+
+Consider the synthesis of a 3D point source at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$ with $y_s < 0$, referencing the synthesis to a circle around the virtual point source with the radius of $R_{\mathrm{ref}}$.
+The linear SSD is located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+Along with the equation describing the reference curve $\vxref(x_0) = \posvec{3}{x^*(x_0)}{y^*(x_0)}{0}$ the stationary points satisfy the following equations
+\begin{align}
+\vk^G(\vxref(\vxo)-\vxs) &= \vk^G(\vxref(\vxo)-\vxo), \\
+|\vxref - \vxs|    &= R_{\mathrm{ref}}.
+\end{align}
+The~solution for the equations is given by
+\begin{align}
+\vxref(\vxo) = \vxs + R_{\mathrm{ref}}\frac{\vxo-\vxs}{|\vxo-\vxs|}.
+\end{align}
+Substituting into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by simple distances from the point sources--- yields the explicit driving function in the spatial domain referencing the synthesis on a circle	
+\begin{equation}
+D(x_0) =(y-y_s)
+\sqrt{\frac{|\vxref-\vxo|}{|\vxref-\vxs|-|\vxref-\vxo| }}
+\sqrt{\frac{\ti k }{2\pi}} 
+\frac{ \te^{-\ti k ( |\vxref - \vxs| + |\vxref-\vxo|)}  }{|\vxref - \vxs|^{\frac{3}{2}}}
+\end{equation}
+
+Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
+
+
 
 \section{Relation of implicit and explicit solutions}
