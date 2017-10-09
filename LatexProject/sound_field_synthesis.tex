@@ -973,6 +973,7 @@ P(\vx) \approx
 \end{multline}
 or written in terms of the principal radii (and applying the high-frequency gradient approximation, in order to simplify by $k_y^P(\vx^*(\vxo))$)
 \begin{equation}
+\label{Eq:Rayleigh_integral_approx}
 P(\vx) \approx 
 4\pi
 \sqrt{ \frac{\rho^P_1(\vxo^*) \rho^G_1(\vx-\vxo^*)}{\rho^P_1(\vxo^*) + \rho^G_1(\vx-\vxo^*)} }
@@ -1007,6 +1008,14 @@ In terms of the principal radii the equation states, that
 \rho^P(\vx)=  \rho^P(\vxo^*(\vx)) + \rho^G(\vx-\vxo^*(\vx))
 \end{equation}
 reflecting the simple fact, the principal radii of an arbitrary field grows simply linearly with further propagation from $\vxo$ to $\vx$, while obviously the curvature, and thus the second phase derivatives are added reciprocally.
+This finding may be employed in order to simplify \eqref{Eq:Rayleigh_integral_approx}.
+For the special case of the 3D Green's function $\rho^G_1(\vx-\vxo^*) = \rho^G_s(\vx-\vxo^*) = |\vx-\vxo^*|$ holds and by substituting the explicit expression for the Green's function the equation simplifies to
+\begin{equation}
+P(\vx) \approx 
+\sqrt{ \frac{\rho^P_1(\vxo^*)}{\rho^P_1(\vx)}
+\frac{\rho^P_2(\vxo^*)}{\rho^P_2(\vx)} }
+P(\vxo^*(\vx))\te^{-\ti k |\vx-\vxo^*(\vx)|}.
+\end{equation}
 
 Comparing the definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed, that they describe stationary point pairs.
 Therefore in the spatial SDM driving function \eqref{eq:SFS_theory:spatial_sdm} both the target field and the second phase derivative at the evaluation point $x^*(x_0)$ can be expressed by the corresponding quantities taken at $x_0$, by using \eqref{Eq:Asymptotic_Rayleigh_integral} and \eqref{Eq:Asymptotic_second_derivatives}, respectively, with a substitution of $\vxo^*(\vx) \rightarrow \posvec{3}{x_0}{0}{0}$ and $\vx \rightarrow \posvec{3}{x^*(x_0)}{y}{0}$.
@@ -1034,3 +1043,12 @@ Comparing with \eqref{Eq:SFS_theory:25D_WFS_driv_fun} reveals, that the asymptot
 It is important to note, that the WFS driving functions were obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
 On the other hand the driving function \eqref{Eq:SDM_on_SSD} inherently contains the horizontal SPA and the reference curve concept.
 It is therefore verified that under high-frequency assumptions WFS is the asymptotic or local approximation of the global explicit solution.
+
+\section{Summary}
+
+TODO: \\
+- Write matlab code to regenerate figs 1.6 and 2.6 \\
+- Check the stat.position def. for the Rayleigh and KHI! \\
+- Check curvature / radii definitions, normalized or not! \\
+- Check 3.2/3.3. what goes to appendix \\ 
+- Maybe the beginning of 3.3 may go to the 2.3.2 (or to appendix)
