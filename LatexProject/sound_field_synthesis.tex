@@ -1009,14 +1009,14 @@ In terms of the principal radii the equation states, that
 \end{equation}
 reflecting the simple fact, the principal radii of an arbitrary field grows simply linearly with further propagation from $\vxo$ to $\vx$, while obviously the curvature, and thus the second phase derivatives are added reciprocally.
 This finding may be employed in order to simplify \eqref{Eq:Rayleigh_integral_approx}.
-For the special case of the 3D Green's function $\rho^G_1(\vx-\vxo^*) = \rho^G_s(\vx-\vxo^*) = |\vx-\vxo^*|$ holds and by substituting the explicit expression for the Green's function the equation simplifies to
+For the special case of the 3D Green's function $\rho^G_1(\vx-\vxo^*) = \rho^G_2(\vx-\vxo^*) = |\vx-\vxo^*|$ holds and by substituting the explicit expression for the Green's function the equation simplifies to
 \begin{equation}
 P(\vx) \approx 
 P(\vxo^*(\vx))
 \sqrt{ \frac{\rho^P_1(\vxo^*) \, \rho^P_2(\vxo^*)}{\rho^P_1(\vx) \, \rho^P_2(\vx)} }
 \te^{-\ti k |\vx-\vxo^*(\vx)|},
 \end{equation}
-where $\rho^P_1(\vx) \, \rho^P_2(\vx)$ is the reciprocal of the Gaussian curvature of the wavefront.
+where $\rho^P_1(\vx) \cdot \rho^P_2(\vx)$ is the reciprocal of the Gaussian curvature of the wavefront.
 Thus, in a ray-tracing manner the wave field is approximated locally by its value at the stationary position: the numerator of the amplitude factor approximates the field in the source position, attenuated by the denominator, given by \eqref{Eq:principal_radii_addition}, while a simple phase shift term corresponds to the propagation time delay.
 
 Comparing the definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed, that they describe stationary point pairs.
@@ -1054,3 +1054,4 @@ TODO: \\
 - Check curvature / radii definitions, normalized or not! \\
 - Check 3.2/3.3. what goes to appendix \\ 
 - Maybe the beginning of 3.3 may go to the 2.3.2 (or to appendix)
+- Check a (-1) multipl. in 3.15
