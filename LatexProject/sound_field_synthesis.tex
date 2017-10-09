@@ -310,6 +310,7 @@ D(\vxo, \omega) =
 \underbrace{\left(-2\right) w(\vxo)  \ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega)}_{\substack{\text{2D}\\\text{driving function}}},
 \end{equation}
 where $\rho^P$ and $\rho^G$ are the principal radii of the virtual field and the Green's function along the vertical direction normalized by $k$, with the absolute value operation omitted due to their positive sign for diverging virtual fields.
+As it is later verified in \eqref{Eq:principal_radii_addition} furthermore $\rho^P(\vx) = \rho^P(\vxo) +  \rho^G(\vxref(\vxo)-\vxo)$ holds.
 
 The terms in the driving function can be identified as compensation factors for the \emph{dimensionality mismatch}, present in the 2.5D Kirchhoff integral.
 According to the 2D Kirchhoff approximation given by \eqref{Eq:SFS_theory:Kirchhoff_appr}, an arbitrary 2D sound field may be described in the area of investigation by a contour integral.
@@ -885,11 +886,12 @@ Expressing the second derivatives in terms of the principal radii according to \
 D(x_0) =
 \underbrace{\sqrt{\frac{\rho^P(\vxref(\vxo))}{\rho^P(\vxref(\vxo))-\rho^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}}
 \underbrace{ \sqrt{\frac{\ti k}{2\pi \rho^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
-\underbrace{\frac{\hat{k}_y^{P}(\vxref(x_0))P(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo)}}_{\substack{\text{2D}\\\text{driving function}}},
+\underbrace{\frac{\hat{k}_y^{P}(\vxref(x_0))P(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo)}}_{\substack{\text{2D explicit}\\\text{driving function}}},
 \end{equation}
-with $\rho^P$ and $\rho^G$ being the principal radii of the target field and the Green's function along the horizontal direction.
+with $\rho^P$ and $\rho^G$ being the principal radii of the target field and the Green's function along the horizontal direction normalized by $k$.
 The formulation implies the fact, that similarly to the implicit solution, the explicit driving functions also applies the derivative of the target field, measured on the reference position.
 Furthermore, the driving function explicitly contains the SSD compensation factor presented in \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2}, correcting the applied 3D SSD elements to 2D ones.
+The virtual source compensation factor is the reciprocal of that, presented for the implicit solution, given by $\sqrt{ \rho^P(\vxref)/\rho^P(\vxo) }$.
 
 One important fact is pointed out here: although having derived the above driving functions in terms of a forward an inverse spatial Fourier transform along a straight line, there is no restriction on the $y$-coordinate of the stationary point in \eqref{eq:SFS_theory:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent.
 This means, that an arbitrary referencing curve may be defined as $\vxref(x_0)$, and the driving functions can be calculated by finding the stationary positions 
@@ -913,18 +915,122 @@ Along with the equation describing the reference curve $\vxref(x_0) = \posvec{3}
 \end{align}
 The~solution for the equations is given by
 \begin{align}
+\label{Eq:SFS_theory:spatial_SDM_circle_ref_points}
 \vxref(\vxo) = \vxs + R_{\mathrm{ref}}\frac{\vxo-\vxs}{|\vxo-\vxs|}.
 \end{align}
-Substituting into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by simple distances from the point sources--- yields the explicit driving function in the spatial domain referencing the synthesis on a circle	
+Substituting the spherical virtual field into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by simple distances from the point sources--- yields the explicit driving function in the spatial domain for a virtual point source.
 \begin{equation}
-D(x_0) =(y-y_s)
-\sqrt{\frac{|\vxref-\vxo|}{|\vxref-\vxs|-|\vxref-\vxo| }}
-\sqrt{\frac{\ti k }{2\pi}} 
-\frac{ \te^{-\ti k ( |\vxref - \vxs| + |\vxref-\vxo|)}  }{|\vxref - \vxs|^{\frac{3}{2}}}
+D(x_0) =
+\sqrt{\frac{|\vxref-\vxs|}{|\vxref-\vxs|-|\vxref-\vxo| }}
+\sqrt{\frac{\ti k}{2\pi |\vxref-\vxo|}} 
+\hat{k}_y^G(\vxref(\vxo)-\vxs)
+\frac{G(\vxref(\vxo)-\vxs)}{G(\vxref(\vxo)-\vxo)}
 \end{equation}
-
-Investigating Figure \ref{fig:sdm_spatial_1} verifies, that in both cases the synthesis is optimized on the prescribed reference curve.
-
+Substituting the reference position coordinates along the reference circle \eqref{Eq:SFS_theory:spatial_SDM_circle_ref_points} specifies the the driving functions optimizing the synthesis on the reference circle
+\begin{equation}
+D(x_0) =-y_s
+\sqrt{\frac{R_{\mathrm{ref}}-|\vxo-\vxs|}{R_{\mathrm{ref}}}}
+\sqrt{\frac{\ti k }{2\pi}} 
+\frac{\te^{-\ti k |\vxo-\vxs|}}
+{ |\vxo-\vxs|^{\frac{3}{2}} }.
+\end{equation}
+%
+\begin{figure}
+\centering
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/25D_spatial_SDM_linear_SSD.png}
+	\end{overpic}   
+    \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $\omega_0 = 2\pi \cdot 1 \mathrm{krad}/s$.
+	The synthesis is referenced on a circle around the virtual source, with a radius of $R_{\mathrm{ref}} = 4 ~ \mathrm{m}$.
+    Figure (a) depicts the real part of the synthesized field, (b) shows the error of synthesis.
+    }
+\label{fig:SFS_theory:25D_spatial_SDM_linear_ssd}  
+\end{figure}
+Investigating Figure \ref{fig:SFS_theory:25D_spatial_SDM_linear_ssd} verifies, that the synthesis is optimized on the prescribed reference curve.
 
 
 \section{Relation of implicit and explicit solutions}
+
+Finally, utilizing the high-frequency spatial explicit driving functions \eqref{eq:SFS_theory:spatial_sdm} the general relationship between the explicit and implicit solutions is highlighted.
+This is done by expressing the target field at the reference point by a 3D Neumann Rayleigh integral, approximated by the SPA along all dimensions.
+\begin{equation}
+P(\vx,\omega) = 2 \iint_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo,\omega) G( \vx - \vxo ) \td \vxo.
+\end{equation}
+As discussed in \ref{Sec:HS_approx:SPA_for_Rayleigh}, the stationary position on the Rayleigh plane $\vxo^*(\vx)$ is found, where
+\begin{equation}
+\label{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point}
+k_{x}^P(\vxo^*(\vx)) = k_{x}^G( \vx - \vxo^*(\vx))
+\end{equation}
+holds, with $\vx = \posvec{3}{x}{y}{0}$ and $\vxo^*(\vx) = \posvec{3}{x_0^*(x)}{0}{0}$, since the vertical stationary point trivially remains at $z=0$. 
+Accounting for the negative second derivatives for a diverging field, around the stationary point the the asymptotic approximation of the 3D Rayleigh integral reads
+\begin{multline}
+\label{Eq:Asymptotic_Rayleigh_integral}
+P(\vx) \approx 
+-2 \frac{2\pi}{\ti}
+\frac{1}{\sqrt{ \left| \phiPzz(\vxo^*(\vx)) + \phiGzz(\vx-\vxo^*(\vx)) \right| }}  
+\frac{1}{\sqrt{ \left| \phiPxx(\vxo^*(\vx)) + \phiGxx(\vx-\vxo^*(\vx)) \right| }}  \times
+\\ 
+\left. \frac{ \partial P(\vx)}{\partial y}\right|_{\vx = \vxo^*(\vx)} G(\vx-\vxo^*(\vx)),
+\end{multline}
+or written in terms of the principal radii (and applying the high-frequency gradient approximation, in order to simplify by $k_y^P(\vx^*(\vxo))$)
+\begin{equation}
+P(\vx) \approx 
+4\pi
+\sqrt{ \frac{\rho^P_1(\vxo^*) \rho^G_1(\vx-\vxo^*)}{\rho^P_1(\vxo^*) + \rho^G_1(\vx-\vxo^*)} }
+\sqrt{ \frac{\rho^P_2(\vxo^*) \rho^G_2(\vx-\vxo^*)}{\rho^P_2(\vxo^*) + \rho^G_2(\vx-\vxo^*)} }
+P(\vxo^*(\vx)) G(\vx-\vxo^*(\vx)),
+\end{equation}
+
+\vspace{3mm}
+In order to express \eqref{eq:SFS_theory:spatial_sdm} in terms of the involved quantities measured along the SSD, one still needs to express the second derivative of the target field's phase $\phiPxx(\vx)$ at an arbitrary receiver position $\vx$ in terms of the second derivative taken on the SSD at the stationary point $\phiPxx(\vxo^*(\vx))$.
+This is possible by expressing the second derivative of the asymptotic Rayleigh integral's phase function \eqref{Eq:Asymptotic_Rayleigh_integral}, i.e. from
+\begin{multline}
+\phiPxx(\vx) = \frac{\partial^2}{\partial x^2} \left( \phi^P(\vxo^*(\vx)) + \phi^G(\vx - \vxo^*(\vx)) \right) = 
+\mathbf{x}^{*''}_{0,xx}(\vx)  \underbrace{\left( \phi^{P'}_x(\vxo^*(\vx)) - \phi^{G'}_x(\vx - \vxo^*(\vx)) \right)}_{ = 0} + \\
+ + \mathbf{x}^{*'}_{0,x}(\vx)^2 \phi^{P''}_{xx}(\vxo^*(\vx))
+ + (1 - \mathbf{x}^{*'}_{0,x}(\vx))^2\phi^{G''}_{xx}(\vx - \vxo^*(\vx)).
+\end{multline}
+
+Again, the rate of change of the stationary position due to change in the evaluation position $\mathbf{x}^{*'}_{0,x}(\vx)$ has to be expressed, found by the differentiating the implicit definition of the stationary position \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point}:
+\begin{equation}
+\mathbf{x}^{*'}_{0,x}(\vx) = \frac{\phi^{G''}_{xx}(\vx - \vxo^*(\vx))}{ \phi^{G''}_{xx}(\vx - \vxo^*(\vx))  -   \phi^{P''}_{xx}(\vxo^*(\vx))}.
+\end{equation}
+Finally the required second derivative reads as
+\begin{equation}
+\label{Eq:Asymptotic_second_derivatives}
+\phiPxx(\vx) = \frac{\phiPxx(\vxo^*(\vx)) \phiGxx(\vx- \vxo^*(\vx))}
+{\phiPxx(\vxo^*(\vx)) + \phiGxx(\vx- \vxo^*(\vx))}
+\end{equation}
+valid assuming high frequency conditions.
+In terms of the principal radii the equation states, that
+\begin{equation}
+\label{Eq:principal_radii_addition}
+\rho^P(\vx)=  \rho^P(\vxo^*(\vx)) + \rho^G(\vx-\vxo^*(\vx))
+\end{equation}
+reflecting the simple fact, the principal radii of an arbitrary field grows simply linearly with further propagation from $\vxo$ to $\vx$, while obviously the curvature, and thus the second phase derivatives are added reciprocally.
+
+Comparing the definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed, that they describe stationary point pairs.
+Therefore in the spatial SDM driving function \eqref{eq:SFS_theory:spatial_sdm} both the target field and the second phase derivative at the evaluation point $x^*(x_0)$ can be expressed by the corresponding quantities taken at $x_0$, by using \eqref{Eq:Asymptotic_Rayleigh_integral} and \eqref{Eq:Asymptotic_second_derivatives}, respectively, with a substitution of $\vxo^*(\vx) \rightarrow \posvec{3}{x_0}{0}{0}$ and $\vx \rightarrow \posvec{3}{x^*(x_0)}{y}{0}$.
+
+Substituting \eqref{Eq:Asymptotic_second_derivatives} into \eqref{eq:SFS_theory:spatial_sdm} yields the spatial SDM driving functions in terms of the curvatures measured on the SSD
+\begin{equation}
+D(x_0) \approx 
+\sqrt{\left| 
+\phiPxx(x_0,0) + \phiGxx(x^*(x_0)-x_0,y)
+\right|}
+\\
+\sqrt{\frac{\ti}{2\pi}} 
+\frac{P(x^*(x_0),y)}{G(x^*(x_0) - x_0,y)}.
+\end{equation}
+Finally, by expressing the target field by \eqref{Eq:Asymptotic_Rayleigh_integral}, the Green's function vanishes and one obtains the asymptotic form of the spatial SDM driving functions written in terms of the target field taken on the SSD
+\begin{equation}
+\label{Eq:SDM_on_SSD}
+D(x_0) \approx 
+\sqrt{\frac{8\pi}{\ti}} \\
+\frac{1}{\sqrt{ \left| \phiPzz(x_0,0) + \phiGzz(x^*(x_0)- x_0,y ) \right| }}
+\ti k_y^P(\vxo)P(\vxo).
+\end{equation}
+
+Comparing with \eqref{Eq:SFS_theory:25D_WFS_driv_fun} reveals, that the asymptotic SDM driving functions exactly coincide the 2.5D WFS driving function.
+It is important to note, that the WFS driving functions were obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
+On the other hand the driving function \eqref{Eq:SDM_on_SSD} inherently contains the horizontal SPA and the reference curve concept.
+It is therefore verified that under high-frequency assumptions WFS is the asymptotic or local approximation of the global explicit solution.
