@@ -353,6 +353,7 @@ with $k_y$ given by \eqref{eq:theory:k_y_definition}.
 Note, that wave propagation is determined by the phase change of the plane wave expansion's $y$-component, therefore generally speaking the following equation holds:
 \begin{equation}
 \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }.
+\label{Eq:Theory:Wave_field_extrapolation_2}
 \end{equation}
 
 \vspace{3mm}
@@ -386,6 +387,13 @@ Wave propagation is calculated by multiplying the measured spectra with an expon
 \end{align}
 Wave propagation in source-free volumes therefore can be modeled by 2D linear filtering of the sound field, where the filter transfer characteristics are given by the corresponding propagator.
 Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed the Rayleigh I. and II. integrals, as it will be further discussed in the latter sections.
+
+As a further important consequence of the wavefield extrapolating equations the $y$-derivative of the angular spectrum can be expressed by differentiating both sides of \eqref{Eq:Theory:Wave_field_extrapolation_2} with respect to the $y$-coordinate
+\begin{equation}
+\frac{\partial}{\partial y} \tilde{P}(k_x,y,k_z,\omega) = \frac{\partial}{\partial y} \left( \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) } \right) = -\ti k_y \tilde{P}(k_x,y,k_z,\omega),
+\label{eq:Theory:Fourier_diff}
+\end{equation}
+which is the Fourier transform differentiation theorem for wavefield extrapolation.
 
 %
 \subsection{Solution in other geometries}
@@ -578,7 +586,7 @@ where a complex radiation pattern may be expanded into series of weighted multip
 Figure \ref{Fig:Theory:multipoles} presents the directivity pattern of multipoles up to the third order.
 
 \vspace{3mm}
-It is important to notice, that comparison of $\tilde{G}(k_x,y,k_z,\omega)$ in Table \ref{tab:theory:Greens_fun_representations}  with the pressure and velocity propagators \eqref{Eq:Theory:propagators} with applying the Fourier differentiation theorem reveals that
+It is important to notice, that comparison of $\tilde{G}(k_x,y,k_z,\omega)$ in Table \ref{tab:theory:Greens_fun_representations}  with the pressure and velocity propagators \eqref{Eq:Theory:propagators} with applying the Fourier differentiation theorem \eqref{eq:Theory:Fourier_diff} reveals that
 \begin{align}
 \tilde{G}_p(k_x,y,k_z,\omega) &=  2 \ti k_y \tilde{G}(k_x,y,k_z,\omega) 
 \hspace{2mm} \rightarrow \hspace{2mm} 

@@ -24,7 +24,7 @@ The curvature is defined as the quadratic form
 \label{Eq:App:curvature_def}
 \end{equation}
 The main curvatures are then defined as the minimum and maximum values of curvature, i.e. the reciprocal of the osculating circles radii (the principal radii).
-The corresponding eigenvectors $\mathbf{v}_2$ and $\mathbf{v}_3$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.
+The corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.
 \end{itemize}
 
 Note, that for the special case of the three-dimensional Green's function positioned at $\vxs$, only eigenvector $\lambda_3$ is well-defined over the spherical /\emph{umbilical} wavefront, being a radial directed normal vector.
@@ -42,6 +42,7 @@ with the trivial eigenvector/principal direction $\mathbf{v_2} = \posvec{3}{0}{0
 Furthermore, considering, that the eigenvector with a zero eigenvalue is given by $\mathbf{v}_3 = \hat{\vk}^P(\vx) = \posvec{3}{\hat{k}_x^P(\vx)}{\hat{k}_y^P(\vx)}{0}$ and $\mathbf{v}_1$ is orthogonal to  $\mathbf{v}_2$ and $\mathbf{v}_3$, therefore $\mathbf{v}_1 = \posvec{3}{\hat{k}_y^P(\vx)}{\hat{k}_x^P(\vx)}{0}$ holds.
 From simple geometrical considerations and applying \eqref{Eq:App:curvature_def} the elements of the Hessian matrix can be expressed as
 \begin{equation}
+\label{Eq:App:Hessian_inplane}
 H = - \begin{bmatrix} 
 \hat{k}_y^{P}(\vx)^2 \kappa_1^P(\vx) & \hat{k}_x^{P}(\vx)\hat{k}_y^{P}(\vx)\kappa_1^P(\vx) & 0 \\[.7em]
 \hat{k}_x^{P}(\vx)\hat{k}_y^{P}(\vx) \kappa_1^P(\vx) & \hat{k}_x^{P}(\vx)^2\kappa_1^P(\vx) & 0 \\[.7em]
