@@ -1,0 +1,93 @@
+%
+\renewcommand{\floatpagefraction}{.99}
+
+\newcount\posveccount
+\newcommand*\posvec[1]{
+        \global\posveccount#1
+        [
+        \posvecnext
+}
+\def\posvecnext#1{
+        #1
+        \global\advance\posveccount-1
+        \ifnum\posveccount>0
+                ,\
+                \expandafter\posvecnext
+        \else
+                ]^{\mathrm{T}}
+        \fi
+}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{bmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\[5pt]
+                \expandafter\colvecnext
+        \else
+                \end{bmatrix}
+        \fi
+}
+
+%\setcounter{secnumdepth}{2}
+
+\newcommand{\dint}{\int\!\!\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
+\newcommand{\td}{\mathrm{d}}
+\newcommand{\te}{\mathrm{e}}
+\newcommand{\ti}{\mathrm{j}}
+\newcommand{\sinfi}{\sin\varphi}
+\newcommand{\cosfi}{\cos\varphi}
+\newcommand{\sinteta}{\sin\theta}
+\newcommand{\costeta}{\cos\theta}
+\newcommand{\yref}{y_{\mathrm{ref}}}
+\newcommand{\dref}{d_{\mathrm{ref}}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vn}{\mathbf{n}}
+\newcommand{\vxo}{\mathbf{x}_0}
+\newcommand{\vni}{\mathbf{n}_{\mathrm{in}}}
+\newcommand{\vno}{ \mathbf{n}_{\mathrm{out}} }
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
+\newcommand{\vxref}{\mathbf{x}_{\mathrm{ref}}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vhk}{\hat{\mathbf{k}}}
+\newcommand{\kn}{k_\mathrm{n}}
+\newcommand{\Oi}{\Omega_{\mathrm{i}}}
+\newcommand{\Oe}{\Omega_{\mathrm{e}}}
+\newcommand{\dO}{\partial \Omega}
+\newcommand{\Div}{\mathrm{div}}
+\newcommand{\Dx}{\nabla_{\!\!\vx}\,}
+\newcommand{\Dxo}{\nabla_{\!\!\vxo}\,}
+\newcommand{\Lx}{\nabla^2_{\!\!\vx}}
+
+\newcommand{\fpcom}[1]{{\color{blue}#1}}
+\newcommand{\fgcom}[1]{{\color{red}#1}}
+
+\newcommand{\phix}{\phi'_{x}}
+\newcommand{\phixx}{\phi''_{xx}}
+
+\newcommand{\phiy}{\phi'_{y}}
+\newcommand{\phiyy}{\phi''_{yy}}
+
+\newcommand{\phiz}{\phi'_{z}}
+\newcommand{\phizz}{\phi''_{zz}}
+
+\newcommand{\phiPxx}{\phi^{P''}_{xx}}
+\newcommand{\phiGxx}{\phi^{G''}_{xx}}
+
+\newcommand{\phiPyy}{\phi^{P''}_{yy}}
+\newcommand{\phiGyy}{\phi^{G''}_{yy}}
+
+\newcommand{\phiPzz}{\phi^{P''}_{zz}}
+\newcommand{\phiGzz}{\phi^{G''}_{zz}}
+
+\newcommand{\Phikk}{\Phi''_{k_x k_x}}
+
+\renewcommand{\arraystretch}{1}
