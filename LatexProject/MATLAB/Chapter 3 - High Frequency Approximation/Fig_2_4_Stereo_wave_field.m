@@ -19,7 +19,6 @@ fi = 10;
 C = ( tan(fi*pi/180)/tand(fi0) );
 A1 = 1;
 A2 = A1*(1-C)/(C+1);
-%A1 = 1;A2 = ;
 %
 Avec = [A1 A2];
 A1 = A1/norm(Avec);  A2 = A2/norm(Avec);
@@ -45,9 +44,12 @@ curv = kxx + kyy;
 field = 1/(4*pi)*(A1*exp(-1i*k*r1)./r1 + A2*exp(-1i*k*r2)./r2);
 
 %%
-ftsize= 12;
-f = figure('Units','points','Position',[200,200,520,300]);
-pos = [ 0.02 0.15 0.6 .75
+ftsize = 11;
+f = figure('Units','points','Position',[200,200,500,300]);
+
+set(f,'defaulttextinterpreter','latex')
+   
+pos = [ 0.035 0.15 0.6 .75
         0.71 0.73 0.28 .16
         0.71 0.45 0.28 .16
         0.71 0.14 0.28 .16];
@@ -61,19 +63,14 @@ hold on
 pcolor_ax =(gca);
 cRange = caxis; 
 [C,~] = contour( x, y , real(field), '-k');
-hLines = findobj(gca, 'type', 'line'); % find all the separate lines on contour plot.
-set(hLines, 'LineWidth', 1); % and set their width.
+hLines = findobj(gca, 'type', 'line');
+set(hLines, 'LineWidth', 1);
 caxis(cRange); 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
+ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 plot(y(1:5:end)*0,y(1:5:end),'--k');
-% S = contourdata(C);
-% %N=6,10
-% N = 13;
-% x0 = S(N).xdata;
-% y0 = S(N).ydata;
-% plot(x0,y0,'--k');
+
 % 
 x0 = 0*y;
 y0 = y;
@@ -100,8 +97,8 @@ xtp1 = p1.XTickLabel;
 
 p2 = axes('Units','normalized','Position',pos(2,:));
 plot(y,kx0/k)
-xlabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$k_x^P(x=0,y)/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2 );
+xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(0,y)$' , 'FontSize', ftsize );
 xlim([y(1),y(end)])
 grid on
 set(gca,'FontName','Times New Roman');
@@ -112,8 +109,8 @@ plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize'
 
 p3 = axes('Units','normalized','Position',pos(3,:));
 plot(y,-ky0/k)
-xlabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$k_y^P(x=0,y)/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2 );
+xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+ylabel( '$\hat{k_y}^P(0,y)$' , 'FontSize', ftsize );
 xlim([y(1),y(end)])
 grid on
 set(gca,'FontName','Times New Roman');
@@ -124,8 +121,8 @@ plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize'
 
 p4 = axes('Units','normalized','Position',pos(4,:));
 plot(y,sqrt(kx0.^2+ky0.^2)/k)
-xlabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$\left| \mathbf{k}^P(x=0,y)/k \right|$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2 );
+xlabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$\left| \hat{\mathbf{k}}^P(0,y) \right|$', 'FontSize', ftsize );
 xlim([y(1),y(end)])
 grid on
 set(gca,'FontName','Times New Roman');
@@ -136,7 +133,7 @@ plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize'
 
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(p1,'XTickLabel',xtp1)
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/High_freq_approximations','stereophony' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/High_freq_approximations','stereophony' ) ,'-dpng')

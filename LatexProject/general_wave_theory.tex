@@ -711,21 +711,21 @@ The simple source formulation is derived from the KHIE by the construction of a 
 %
 \begin{figure}[h!]
 	\centering
-	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/simple_source_formulation_2.png}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/Basic_acoustics/simple_source_formulation.png}
 	\footnotesize
-	\put(2, 36){(a)}
-	\put(52,36){(b)}
+	\put(2, 38){(a)}
+	\put(52,38){(b)}
 	\put(27, 0){(c)}
-	\put(33, 64){$P(\vx,\omega)$}
-	\put(77, 64){$P_\mathrm{e}(\vx,\omega) = -P_\mathrm{s}(\vx,\omega)$}
+	\put(36, 68){$P(\vx,\omega)$}
+	\put(77, 68){$P_\mathrm{e}(\vx,\omega) = -P_\mathrm{s}(\vx,\omega)$}
 	\put(73, 53){$P_\mathrm{i}(\vx,\omega)$}
-	\put(95,44){$\Oe$}
-	\put(92,52){$\Oi$}
-	\put(80,44){$\dO$}
-	\put(45,29){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
+	\put(85,57){$\Oi$}
+	\put(92,52.5){$\dO$}
+	\put(95,47){$\Oe$}
+	\put(45,32){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
 	\put(70,8){$\Oe$}
-	\put(68,16){$\Oi$}
-	\put(55,7.5){$\dO$}
+	\put(58,18){$\Oi$}
+	\put(65,13.5){$\dO$}
 	\end{overpic}
 \caption{Illustration of simple source formulation in a 2D problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior.}
 	\label{Fig:Theory:simple_source_formulation}

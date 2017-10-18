@@ -182,7 +182,7 @@ In this special geometry the integral variables are separable and the Kirchhoff 
 \begin{equation}
 P(\vx,\omega) = 
 \oint_{C} \int_{-\infty}^{\infty} 
-- 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) 	
+2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) 	
 P(\vxo,\omega) G(\vx-\vxo,\omega)  \td z_0 \td s,
 \label{Eq:SFS_theory:Kirchhoff_spec_geom}
 \end{equation}
@@ -200,7 +200,7 @@ In the plane of investigation $k_z^P(x,y,0) \equiv 0$ holds, being valid for 3D 
 Having the vertical stationary position fixed to $z_0^* = 0$ the vertical integral can be approximated by the SPA.
 Application of the 1D SPA formulation \eqref{Eq:SPAResult} requires the sign of the phase function's second derivative at the stationary position reading
 \begin{equation}
-\phi''_{zz}(x_0,y_0,0) = \phi^{P''}_{zz}(x_0,y_0,0) +\phi^{G''}_{zz}(x-x_0,x-y_0,0) = -\left( \kappa_2^P(\vxo) + \kappa_2^G(\vx-\vxo) \right),
+\phi''_{zz}(x_0,y_0,0) = \phi^{P''}_{zz}(x_0,y_0,0) +\phi^{G''}_{zz}(x-x_0,y-y_0,0) = -\left( \kappa_2^P(\vxo) + \kappa_2^G(\vx-\vxo) \right),
 \end{equation}
 which in the present case is the negative sum of the principal curvatures of sound field $P$ and the Green's function as discussed in appendix \ref{App:Hessian} in details.
 By definition, for an arbitrary diverging sound field the principal curvatures are positive.
@@ -211,9 +211,9 @@ With these considerations application of the SPA to \eqref{Eq:SFS_theory:Kirchho
 \begin{equation}
 P(\vx,\omega) = 
 \oint_{C}
-- 2 w(\vxo) 
+2 w(\vxo) 
 \sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo) +\phi^{G''}_{zz}(\vx-\vxo)|}}
-\underbrace{\ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega) }_{ \frac{\partial P(\vxo,\omega)}{\partial \vn_{\mathrm{in}}}}
+\underbrace{\ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega) }_{ - \frac{\partial P(\vxo,\omega)}{\partial \vn_{\mathrm{in}}}}
 G(\vx-\vxo,\omega) \td s, 
 \label{Eq:SFS_thery:25_KI}
 \end{equation}
@@ -1018,6 +1018,7 @@ P(\vxo^*(\vx))
 \end{equation}
 where $\rho^P_1(\vx) \cdot \rho^P_2(\vx)$ is the reciprocal of the Gaussian curvature of the wavefront.
 Thus, in a ray-tracing manner the wave field is approximated locally by its value at the stationary position: the numerator of the amplitude factor approximates the field in the source position, attenuated by the denominator, given by \eqref{Eq:principal_radii_addition}, while a simple phase shift term corresponds to the propagation time delay.
+Also, the equation reflects the fact, that the intensity of the wave field is proportional to the Gaussian curvature of the wavefront, being a well-known fact in the field of optics \cite[Sec. 3.1]{Born1970}, \cite[Sec. 1.3]{Bouche1997}.
 
 Comparing the definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed, that they describe stationary point pairs.
 Therefore in the spatial SDM driving function \eqref{eq:SFS_theory:spatial_sdm} both the target field and the second phase derivative at the evaluation point $x^*(x_0)$ can be expressed by the corresponding quantities taken at $x_0$, by using \eqref{Eq:Asymptotic_Rayleigh_integral} and \eqref{Eq:Asymptotic_second_derivatives}, respectively, with a substitution of $\vxo^*(\vx) \rightarrow \posvec{3}{x_0}{0}{0}$ and $\vx \rightarrow \posvec{3}{x^*(x_0)}{y}{0}$.

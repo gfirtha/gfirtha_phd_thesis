@@ -31,14 +31,15 @@ Ppw = exp(1i*(kx*X+sqrt(k^2-kx^2)*Y)-phi0pw);
 Nx = 5e3;
 kx0 = 2*pi*(-Nx/2:Nx/2-1)'/(Nx*dx);
 Pps_spec = -1i/4*besselh(0,2,-1i*sqrt(kx0.^2-k^2)*abs(xs(2)));
-
-fig = figure('Units','points','Position',[200,200,800,430]);
-ftsize = 15;
+%%
+fig = figure('Units','points','Position',[200,200,500,270]);
+set(fig,'defaulttextinterpreter','latex')
+ftsize = 11;
 
 pos = [0.01 0.34 .53  1 ;
        0.01 -0.165 .53 1 ;
-       0.66 0.6  .325 .35;
-       0.66 0.1  .325 .35 ];
+       0.66 0.635  .325 .325;
+       0.66 0.125  .325 .325 ];
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 
@@ -56,8 +57,9 @@ set(gca,'box','off')
 color = get(fig,'Color');
 set(gca,'XColor',color,'YColor',color,'TickDir','out')
 ol = 15*dx;
-headWidth = 5*1.5;
-headLength = 5*1.5;
+headWidth = 5;
+headLength = 5;
+LineLength = 0.7;
 ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);
@@ -74,9 +76,6 @@ ylim([y1(1)-ol,y1(end)+ol]);
 
 q = 15;
 
-headWidth = 7.5;
-headLength = 7.5;
-LineLength = 0.7;
 for i = rem(ind,q):q:length(x)
         ah = annotation('arrow',...
             'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
@@ -87,9 +86,8 @@ for i = rem(ind,q):q:length(x)
         end
 end
 
-plot(x0(1),x0(2),'.k','MarkerSize',20);
+plot(x0(1),x0(2),'.k','MarkerSize',10);
 
-%%
 p2 = axes('Units','normalized','Position',pos(2,:));
 
 p2_ = pcolor( x,y, real(Pps) );
@@ -123,8 +121,6 @@ ylim([y(1)-ol,y(end)+ol]);
 
 
 q = 15;
-%headLength = 5;
-%LineLength = 0.7;
 for i = rem(ind,q):q:length(x)
         ah = annotation('arrow',...
             'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
@@ -136,8 +132,8 @@ for i = rem(ind,q):q:length(x)
 end
 line([x(1),x(end)],[0,0],'Color','black','LineStyle','-','LineWidth',2)
 
-plot(xs(1),xs(2),'.k','MarkerSize',20)
-plot(x0(1),x0(2),'.k','MarkerSize',20)
+plot(xs(1),xs(2),'.k','MarkerSize',15)
+plot(x0(1),x0(2),'.k','MarkerSize',15)
 
 
 set(gca,'box','off')
@@ -149,15 +145,15 @@ p3 = axes('Units','normalized','Position',pos(3,:));
 
 p3_ = plot( x, nkx );
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$k_{x}^P(x,0,0)/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$\hat{k}_{x}^P(x,0,0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 
 a = get(gca,'XTickLabel');
-set(gca,'XTickLabel',a,'fontsize',ftsize-2);
+set(gca,'XTickLabel',a,'fontsize',ftsize);
 hold on
-plot(x(ind),nkx(ind),'ko','MarkerSize',5,'MarkerFaceColor','black')
+plot(x(ind),nkx(ind),'ko','MarkerSize',3,'MarkerFaceColor','black')
 %
 xl = xlim;
 yl = ylim;
@@ -167,19 +163,19 @@ line([x(ind),x(ind)],[yl(1),nkx(ind)],'Color','black','LineStyle','--');
 p4 = axes('Units','normalized','Position',pos(4,:));
 plot(kx0/k,abs(Pps_spec));
 xlabel( '$k_x/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$\tilde{P}(k_x,0,0)$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+ylabel( '$\tilde{P}(k_x,0,0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 %  
 hold on
 Pkx0 = -1i/4*besselh(0,2,-1i*sqrt(kx.^2-k^2)*abs(xs(2)));
-plot(kx/k,abs( Pkx0 ), 'ko','MarkerSize',5,'MarkerFaceColor','black')
+plot(kx/k,abs( Pkx0 ), 'ko','MarkerSize',3,'MarkerFaceColor','black')
 line([kx/k,kx/k],[0,abs(Pkx0)],'Color','black','LineStyle','--');
 
 xlim(1.2*[-1,1])
 a = get(gca,'XTickLabel');
-set(gca,'XTickLabel',a,'fontsize',ftsize-2)
+set(gca,'XTickLabel',a,'fontsize',ftsize)
  
 set(p3,'XTickLabel', a)
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/High_freq_approximations','fourier_stat_point' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/High_freq_approximations','fourier_stat_point' ) ,'-dpng')

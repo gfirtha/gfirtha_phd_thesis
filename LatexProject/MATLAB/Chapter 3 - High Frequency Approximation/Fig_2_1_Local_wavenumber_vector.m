@@ -19,7 +19,7 @@ fi = (0:dfi:2*pi); R0 = 1.55;
 x0_ps = R0*cos(fi); y0_ps = R0*sin(fi);
 kx_ps = k*x0_ps./R0;
 ky_ps = k*y0_ps./R0;
-yref = 0.5;x
+yref = 0.5;
 nkx_ps2 = x./sqrt(x.^2+yref^2);
 
 theta = 60;
@@ -30,7 +30,7 @@ ky_pw = k*sin(theta*pi/180)*ones(size(y0_pw));
 
 p_pw = exp(-1i*k*(cos(theta*pi/180)*X+sin(theta*pi/180)*Y));
 %%
-ftsize = 11;
+ftsize = 12.2;
 f = figure('Units','points','Position',[200,200,500,360]);
 
 set(f,'defaulttextinterpreter','latex')
@@ -89,15 +89,15 @@ set(gca,'FontName','Times New Roman');
 %
 p3 = axes('Units','normalized','Position',[ 0.08 0.1 0.37 .2 ]);
 plot(x,nkx_ps2);
-xlabel( '$x \rightarrow [\mathrm{m}]$'  , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow [\mathrm{rad/m}]$'   , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow$'   , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 
 p4 = axes('Units','normalized','Position',[ 0.61 0.1 0.37 .2 ]);
 plot(x,cos(theta*pi/180)*ones(size(x)));
-xlabel( '$x \rightarrow [\mathrm{m}]$'  , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow [\mathrm{rad/m}]$' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 ylim([0,1])
 grid on
