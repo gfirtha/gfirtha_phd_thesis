@@ -24,8 +24,10 @@ Gkx = -1i/2*exp(1i*(Kx*x0+Ky*y0)).*exp(-sqrt(-k^2 + (Kx.^2 + Ky.^2))*abs(z0))./ 
 [X,Y] = meshgrid(x,y);
 Gx = 1/(4*pi)*exp(-1i*k*sqrt((X-x0).^2+(Y-y0).^2 + z0.^2))./sqrt((X-x0).^2+(Y-y0).^2 + z0.^2);
 %%
-ftsize = 14;
-f = figure('Units','points','Position',[200,200,850,350]);
+ftsize = 11;
+f = figure('Units','points','Position',[200,200,500,220]);
+set(f,'defaulttextinterpreter','latex')
+
 scale = 20;
 q = 2;
 subplot(1,2,1)
@@ -87,7 +89,7 @@ zlabel('$|(\tilde{G}(k_x,k_y,0,\omega_0)|$','Interpreter','latex','FontSize',fts
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 set(gcf,'PaperPositionMode','auto');
 print( fullfile( '../..','Figures/Basic_acoustics','greens_function' ) ,'-dpng')

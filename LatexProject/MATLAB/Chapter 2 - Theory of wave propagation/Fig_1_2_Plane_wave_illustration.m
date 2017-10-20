@@ -22,8 +22,9 @@ y = (0:dx:2)';
 field_prop = exp( 1i*( kx1*X + ky1*Y  ) );
 field_evan = exp( 1i*( kx2*X + ky2*Y  ) );
 %%
-ftsize = 12;
-f = figure('Units','points','Position',[200,200,500,220]);
+ftsize = 12.2;
+f = figure('Units','points','Position',[200,200,500,230]);
+set(f,'defaulttextinterpreter','latex')
 set(gcf,'Units','normalized');
 
 subplot(1,2,1)
@@ -31,8 +32,8 @@ p1 = pcolor(x,y,real(field_prop));
 set(gca, 'Units','normalized','Position',[ 0.075 0.11 0.37 .9 ]);
 caxis([-1.5,1.5])
 shading interp
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow$ [m]' , 'FontSize', ftsize );
 axis equal tight
 hold on
 contour( x, y, real(field_prop),[0 0], '-k');
@@ -72,7 +73,7 @@ cRange = caxis;
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 set(gcf,'PaperPositionMode','auto');
 print( fullfile( '../..','Figures/Basic_acoustics','plane_wave_illustration' ) ,'-dpng')

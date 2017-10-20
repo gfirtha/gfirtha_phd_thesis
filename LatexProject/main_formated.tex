@@ -1,0 +1,76 @@
+\documentclass[%
+	paper=A4,					% paper size
+	twoside=true,				% onesite or twoside printing
+	openright,					% doublepage cleaning ends up right side
+	chapterprefix=true,			% prefix for chapter marks
+	11pt,						% font size
+	headings=normal,			% size of headings
+	bibliography=totoc,			% include bib in toc
+	listof=totoc,				% include listof entries in toc
+	titlepage=on,				% own page for each title page
+	captions=tableabove,		% display table captions above the float env
+	draft=false,				% value for draft version
+]{scrreprt}
+
+\usepackage[utf8]{inputenc}		% defines file's character encoding
+\usepackage[english]{babel} % babel system, adjust the language of the content
+\usepackage[					% clean thesis style
+	figuresep=colon,%
+	sansserif=false,%
+	hangfigurecaption=true,%
+	hangsection=true,%
+	hangsubsection=true,%
+	colorize=full,%
+	colortheme=bluemagenta,%
+	bibsys=bibtex,%
+	bibfile=dissertation,%
+	bibstyle=alphabetic%
+]{fg_thesis}
+
+\newcommand{\thesisTitle}{A Unified Wave Field Synthesis Framework \\
+\large with Application for Moving Virtual Sources}
+\newcommand{\thesisName}{Gergely Firtha}
+\newcommand{\thesisSubject}{PhD Thesis}
+\newcommand{\thesisDate}{\today}
+\newcommand{\thesisVersion}{My First Draft}
+
+\hypersetup{					% setup the hyperref-package options
+	pdftitle={\thesisTitle},	% 	- title (PDF meta)
+	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
+	pdfauthor={\thesisName},	% 	- author (PDF meta)
+	plainpages=false,			% 	-
+	colorlinks=false,			% 	- colorize links?
+	pdfborder={0 0 0},			% 	-
+	breaklinks=true,			% 	- allow line break inside links
+	bookmarksnumbered=true,		%
+	bookmarksopen=true			%
+}
+
+
+\begin{document}
+
+\pagestyle{plain}				% display just page numbers
+\setcounter{tocdepth}{2}		% define depth of toc
+\tableofcontents				% display table of contents
+\cleardoublepage
+\pagenumbering{arabic}			% arabic page numbering
+\setcounter{page}{1}			% set page counter
+\pagestyle{maincontentstyle} 	% fancy header and footer
+
+\input{mydefs}
+
+\chapter{Theory of wave propagation and radiation problems}
+\pagenumbering{arabic}
+\label{sec:general_wave_theory}
+\input{general_wave_theory}
+\cleardoublepage
+{%
+\setstretch{1.1}
+\renewcommand{\bibfont}{\normalfont\small}
+\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+\printbibliography
+} 
+
+
+\end{document}
