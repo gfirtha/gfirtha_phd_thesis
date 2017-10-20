@@ -156,7 +156,7 @@ Since the mean and the principle curvatures are related as $\overline{\kappa}^P(
 < 0  \hspace{5mm} \text{for a locally converging/focused wave field.} 
 \end{cases*}
 \end{equation}
-Furthermore, it can be proven, that the inequalities also hold for the second partial derivatives in \eqref{eq:HF_appr:curvature} separately.
+Furthermore, it can be proven (by expressing the diagonal elements of the Hessian using \eqref{Eq:App:Hessian_w_curvature}), that the inequalities also hold for the second partial derivatives in \eqref{eq:HF_appr:curvature} separately.
 
 \subsection{High frequency gradient approximation}
 As a further approximation in the high-frequency domain, the gradient of an arbitrary sound field may be expressed in a simplified form in terms of the local wavenumber vector.
@@ -413,7 +413,7 @@ Similarly, in higher dimensions the stationary point $\vx^*$ (or more precisely 
 \\ \vspace{3mm} \\
 \det H(\vx^*) &\neq 0,
 \hspace{5mm} 
-H(\vx^*) = \left. \left[
+H_{ij}(\vx^*) = \left. \left[
 \frac{\partial^2 \phi(\vx)}{\partial x_i \partial x_j} 
 \right] \right|_{\vx = \vx^*},
 \hspace{5mm}
@@ -428,7 +428,8 @@ I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det H(\vx^*)|}} F(\vx^*) \te^{\ti \phi(\v
 \end{equation}
 where $\mathrm{sgn}\left( H(\vx^*) \right)$ is the signature of the Hessian: the number of positive eigenvalues minus the number of negative eigenvalues \cite{Bleistein2000}.
 
-In the followings the physical interpretation of the SPA is discussed when applied to boundary and spectral integrals of sound fields.
+In the followings the physical interpretation of the SPA is discussed when applied to boundary and spectral integrals of sound fields, and simple examples are given for its application.
+The conclusions of the presented examples will be further utilized in the following chapters.
 
 \subsection{Asymptotic approximation of boundary integrals}
 \label{Sec:HS_approx:SPA_for_Rayleigh}
