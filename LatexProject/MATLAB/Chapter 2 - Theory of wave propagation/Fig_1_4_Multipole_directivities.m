@@ -14,47 +14,49 @@ quadrupole = sin(2*Fi).*cos(Theta);
 [X2,Y2,Z2] = sph2cart(Fi, Theta ,abs(dipole));
 [X3,Y3,Z3] = sph2cart(Fi, Theta ,abs(quadrupole));
 %%
-ftsize = 14;
-f = figure('Units','points','Position',[200,200,750,240]);
+ftsize = 11;
+f = figure('Units','points','Position',[200,200,500,180]);
+set(f,'defaulttextinterpreter','latex')
 
-subplot(1,3,1)
+pos = [ 0.0    0.15 0.33 .8 
+        0.35  0.15 0.3 .85
+        0.695   0.15 0.3 .85 ];
+        
+    
+p1 = axes('Units','normalized','Position',pos(1,:));
 set(gca,'TickLabelInterpreter', 'tex');
-set(gca, 'Units','normalized','Position',[ 0.012 0.15 0.33 .8 ]);
 surf(X1,Y1,Z1);
 axis equal tight
-xlabel('$x$','Interpreter','latex','FontSize',ftsize);
-ylabel('$y$','Interpreter','latex','FontSize',ftsize);
-zlabel('$z$','Interpreter','latex','FontSize',ftsize);
+xlabel('$x$','FontSize',ftsize);
+ylabel('$y$','FontSize',ftsize);
+zlabel('$z$','FontSize',ftsize);
 set(gca,'FontName','Times New Roman');
+set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 
-
-subplot(1,3,2)
+p2 = axes('Units','normalized','Position',pos(2,:));
 set(gca,'TickLabelInterpreter', 'tex');
-set(gca, 'Units','normalized','Position',[ 0.33 0.15 0.33 .8 ]);
 surf(X2,Y2,Z2);
 axis equal tight
-xlabel('$x$','Interpreter','latex','FontSize',ftsize);
-ylabel('$y$','Interpreter','latex','FontSize',ftsize);
-zlabel('$z$','Interpreter','latex','FontSize',ftsize);
+xlabel('$x$','FontSize',ftsize);
+ylabel('$y$','FontSize',ftsize);
+zlabel('$z$','FontSize',ftsize);
 set(gca,'FontName','Times New Roman');
+set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 
-
-subplot(1,3,3)
+p3 = axes('Units','normalized','Position',pos(3,:));
 set(gca,'TickLabelInterpreter', 'tex');
-set(gca, 'Units','normalized','Position',[ 0.685 0.15 0.33 .8 ]);
 surf(X3,Y3,Z3);
 axis equal tight
-xlabel('$x$','Interpreter','latex','FontSize',ftsize);
-ylabel('$y$','Interpreter','latex','FontSize',ftsize);
-zlabel('$z$','Interpreter','latex','FontSize',ftsize);
+xlabel('$x$','FontSize',ftsize);
+ylabel('$y$','FontSize',ftsize);
+zlabel('$z$','FontSize',ftsize);
 set(gca,'FontName','Times New Roman');
+set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 
 
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-%set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/Basic_acoustics','monopole_dipole' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/Basic_acoustics','monopole_dipole' ) ,'-dpng')
