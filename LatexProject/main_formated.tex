@@ -34,6 +34,15 @@
 \newcommand{\thesisDate}{\today}
 \newcommand{\thesisVersion}{My First Draft}
 
+\newcommand{\thesisFirstSupervisor}{Peter Fiala}
+
+\newcommand{\thesisUniversity}{\protect{Budapest University of Technology and Economics}}
+\newcommand{\thesisUniversityDepartment}{Department of Networked Systems and Services}
+\newcommand{\thesisUniversityGroup}{Laboratory of Acoustics and Studio Technologies}
+\newcommand{\thesisUniversityCity}{Budapest}
+\newcommand{\thesisUniversityStreetAddress}{Magyar Tudosok korutja 2.}
+\newcommand{\thesisUniversityPostalCode}{1117}
+
 \hypersetup{					% setup the hyperref-package options
 	pdftitle={\thesisTitle},	% 	- title (PDF meta)
 	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
@@ -48,6 +57,11 @@
 
 
 \begin{document}
+
+\pagenumbering{roman}			% roman page numbing (invisible for empty page style)
+\pagestyle{empty}				% no header or footers
+\input{titlepage}		% INCLUDE: all titlepages
+\cleardoublepage
 
 \pagestyle{plain}				% display just page numbers
 \setcounter{tocdepth}{2}		% define depth of toc
@@ -65,26 +79,26 @@
 \input{general_wave_theory}
 %
 %
-\chapter{High frequency approximation of wave fields and radiation problems}
-\label{sec:high_freq_approx}
-\input{high_freq_approx_theory}
-%
-%
-\chapter{Theory of Sound Field Synthesis}
-\label{sec:sound_field_synthesis}
-\input{sound_field_synthesis}
-%
-%
-\begin{appendices}
-\chapter{Appendix A}
-\input{appendix_A}
-\chapter{Appendix B}
-\input{appendix_B}
-\chapter{Appendix C}
-\input{appendix_C}
-\chapter{Appendix D}
-\input{appendix_D}
-\end{appendices} 
+%\chapter{High frequency approximation of wave fields and radiation problems}
+%\label{sec:high_freq_approx}
+%\input{high_freq_approx_theory}
+%%
+%%
+%\chapter{Theory of Sound Field Synthesis}
+%\label{sec:sound_field_synthesis}
+%\input{sound_field_synthesis}
+%%
+%%
+%\begin{appendices}
+%\chapter{Appendix A}
+%\input{appendix_A}
+%\chapter{Appendix B}
+%\input{appendix_B}
+%\chapter{Appendix C}
+%\input{appendix_C}
+%\chapter{Appendix D}
+%\input{appendix_D}
+%\end{appendices} 
 
 \cleardoublepage
 {%
