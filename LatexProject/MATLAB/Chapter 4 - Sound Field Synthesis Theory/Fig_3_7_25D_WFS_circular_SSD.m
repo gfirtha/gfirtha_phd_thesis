@@ -50,11 +50,12 @@ x_pw = x0 + dref*cos(alpha_pw);
 y_pw = y0 + dref*sin(alpha_pw);
 %%
 
-ftsize = 13 ;
-g = figure('Units','points','Position',[200,120,650,300]);
+ftsize = 14.3;
+f = figure('Units','points','Position',[200,120,650,300]);
+set(f,'defaulttextinterpreter','latex')
 
-pos = [ 0.045 0.135 0.4 .76 
-        0.55 0.07 .43 .9  ];
+pos = [ 0.045 0.16 0.4 .76 
+        0.55  0.085 .43 .9  ];
 
 
 p1 = axes('Units','normalized','Position',pos(1,:));
@@ -65,12 +66,12 @@ hold on
 plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
 caxis([-1,1])
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(g,'type','axes');
+allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
 
@@ -82,14 +83,14 @@ hold on
 plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
 caxis([-25,20])
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 %title('$20\mathrm{log}_{10}\left( P_{\mathrm{synth,pw}}(\mathbf{x},\omega)-P_{\mathrm{ref,pw}}(\mathbf{x},\omega) \right)$'...
 %                                                , 'Interpreter', 'LaTex' , 'FontSize', ftsize);
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(g,'type','axes');
+allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);

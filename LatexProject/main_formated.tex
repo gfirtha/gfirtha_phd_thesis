@@ -55,8 +55,10 @@
 	bookmarksopen=true			%
 }
 
-
+\makenomenclature
 \begin{document}
+
+\input{mydefs}
 
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
 \pagestyle{empty}				% no header or footers
@@ -70,8 +72,7 @@
 \pagenumbering{arabic}			% arabic page numbering
 \setcounter{page}{1}			% set page counter
 \pagestyle{maincontentstyle} 	% fancy header and footer
-
-\input{mydefs}
+\input{nomenclature}
 
 \chapter{Theory of wave propagation and radiation problems}
 \pagenumbering{arabic}

@@ -46,54 +46,12 @@ ref_field = 1/(4*pi)*exp(-1i*k*r_ref)./r_ref;
 x_fig = abs(x_field)<= 3;
 dx = x_field(2)-x_field(1);
 
-% ftsize = 13;
-% fig = figure('Units','points','Position',[200,200,650,230]);
-% pos = [ 0.06  0.065  0.38 .9
-%         0.53    0.065  0.465 .9];
-% 
-% p1 = axes('Units','normalized','Position',pos(1,:));
-% pcolor(x_field(x_fig),y_field,real(field(:,x_fig)));
-% set(gca, 'Units','normalized','Position',[ 0.025 0.175 0.45 .75 ]);
-% shading interp
-% axis equal tight
-% caxis([-5e-2,5e-2])
-% xlim([-3,3]);
-% hold on;
-% plot( [ -3+dx 3-dx ],  [ 0 0 ], 'k', 'Linewidth', 2 )
-% hold off;
-% xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-% ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-% set(gca,'FontName','Times New Roman');
-% allAxesInFigure = findall(fig,'type','axes');
-% b = get(gca,'XTickLabel');
-% set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-% %
-% error = (ref_field(:,x_fig)-field(:,x_fig));
-% 
-% p2 = axes('Units','normalized','Position',pos(2,:));
-% pcolor(x_field(x_fig),y_field,20*log10(abs(error)));
-% set(gca, 'Units','normalized','Position',[ 0.525 0.175 0.45 .75 ]);
-% shading interp
-% axis equal tight
-% caxis([-100,0])
-% xlim([-3,3]);
-% hold on;
-% plot( [ -3+dx 3-dx ],  [ 0 0 ], 'k', 'Linewidth', 2 )
-% hold off;
-% c = colorbar;
-% title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
-% xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-% ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-% set(gca,'FontName','Times New Roman');
-% allAxesInFigure = findall(fig,'type','axes');
-% b = get(gca,'XTickLabel');
-% set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
-
-x_fig = abs(x_field)<= 3;
 ftsize = 13;
 fig = figure('Units','points','Position',[200,200,650,230]);
-pos = [ 0.06  0.065  0.38 .9
-        0.53    0.065  0.465 .9];
+set(fig,'defaulttextinterpreter','latex')
+
+pos = [ 0.06    0.09 0.38 .9
+        0.53    0.09  0.465 .9];
 
 
 p1 = axes('Units','normalized','Position',pos(1,:));
@@ -101,12 +59,12 @@ pcolor(x_field(x_fig),y_field,real(field(:,x_fig)));
 shading interp
 axis equal tight
 caxis([-1,1]*3e-2)
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 line([-L_field;L_field],[0;0], 'Color', 'black','LineStyle','-','LineWidth',2);
 
 
@@ -115,12 +73,12 @@ pcolor(x_field(x_fig),y_field,20*log10( abs( ref_field(:,x_fig) - field(:,x_fig)
 shading interp
 axis equal tight
 caxis([-70,-10])
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 c = colorbar;
 title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
 
@@ -129,4 +87,4 @@ line([-L_field;L_field],[0;0], 'Color', 'black','LineStyle','-','LineWidth',2);
 
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','Planar_SDM' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/SFS_theory','Planar_SDM' ) ,'-dpng')
