@@ -90,7 +90,7 @@ The wave equations fully describe the properties of acoustic wave propagation as
 
 \vspace{3mm}
 %
-Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform  \eqref{eq:temporal_fourier_transform_def}.
+Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform according to \eqref{eq:temporal_fourier_transform_def}.
 Applying the differentiation property of the Fourier transform to \eqref{Eq:Theory:Eulers_equation} yields the frequency domain Euler's equation,
 \begin{equation}
 \Dx P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega)
@@ -414,6 +414,13 @@ The Green's function describes the sound field at $\vx$ due to an impulsive dist
 The Green's function is often referred to as the \emph{spatio-temporal impulse response} of the domain of interest and its temporal Fourier transform $G(\vx|\vxo,\omega)$ as the \emph{spatio-temporal transfer function} of a point source at $\vxo$. 
 In the followings we assume free field conditions by implying the Sommerfeld radiation condition. 
 Under these assumptions the \emph{free field Green's function} is translation invariant, denoted by $g(\vx-\vxo,t)$.
+Furthermore, in a stationary isotropic medium the \emph{reciprocity principle} for the Green's function holds due to its symmetry \cite{Stakgold2011}
+\begin{eqnarray}
+\label{Eq:Theory:Green_fun_reciprocity}
+g(\vxo|\vx,t) = g(\vx|\vxo,t) = g(\vx-\vxo,t), \\
+\frac{\partial}{\partial \vx} g(\vxo|\vx,t)= \frac{\partial}{\partial \vx} g(\vx|\vxo,t),
+\end{eqnarray}
+stating that a response at $\vx$ caused by a unit source at $\vxo$ is the same as the response at $\vxo$ due to a unit source at $\vx$.
 
 The motivation behind the use of the Green's function is that assuming an arbitrary linear differential operator $\mathcal{L}_{\vx}\left\{ \right\}$ acting on a distribution $p(\vx)$ with an arbitrary excitation $-s(\vx)$, the solution of the inhomogeneous differential equation $\mathcal{L}_{\vx} \left\{ p(\vx) \right\} = -s(\vx)$ may be expressed by the convolution of the Green's function and the load term:
 \footnote{Multiplying both sides of the left equation of \eqref{Eq:Theory:Basic_Green_function_eq} by $-s(\vxo)$ and integrating along all dimensions according to $\vxo$ results in
@@ -587,7 +594,7 @@ This finding will be further discussed in the section, dealing with the Rayleigh
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
 Any sound field obeying the homogeneous Helmholtz equation may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
-This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and Sound Field Synthesis.
+This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and sound field synthesis.
 
 In this section the integral formulation of interior problems in source-free volumes is introduced.
 The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the proper addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
@@ -637,12 +644,7 @@ Substituting into the Green's theorem leads to
 The sifting property of the Dirac-delta may be exploited by taking into account that the singularity is located in the enclosure:
 if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume".
 For a rigorous derivation refer to \cite{Williams1999}.
-Finally, by exploiting the symmetry and translation invariancy of the free field Green's function
-\begin{equation}
-G(\vxo|\vx) = G(\vx|\vxo) = G(\vx-\vxo), \qquad
-\frac{\partial}{\partial \vxo} G(\vxo|\vx)= \frac{\partial}{\partial \vxo} G(\vx|\vxo)
-\end{equation}
-the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
+Finally, by exploiting the symmetry and translation invariancy of the free field Green's function \eqref{Eq:Theory:Green_fun_reciprocity} the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{\dO} - \left( 
@@ -661,18 +663,18 @@ with
 \end{cases}
 \end{equation*}
 Point $\vx$ is termed \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. 
-A frequently used form of the KHIE---utilizing the Euler's equation \eqref{Eq:Theory:Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface ($\frac{\partial P(\vxo,\omega)}{\partial \vni} = -\ti \rho_0 \omega V_{\mathrm{n}}(\vxo,\omega)$)---is
+A frequently used form of the KHIE---utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
 \begin{equation}
 \alpha P(\vx,\omega) = 
-\oint_{\dO}  \left(  
+\oint_{\dO}  \bigg(  
 V_{\mathrm{n}}(\vxo,\omega) \underbrace{\ti \rho_0 \omega  G(\vx-\vxo,\omega) }_{-P_{\mathrm{m}}(\vx-\vxo,\omega)}
 +
 P(\vxo,\omega)  \underbrace{\frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}}_{-P_{\mathrm{d}}(\vx-\vxo,\omega)}
-\right)   \td \dO(\vxo),
+\bigg)   \td \dO(\vxo),
 \label{Eq:Theory:Kirchhoff}
 \end{equation}
 where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, functioning as velocity and pressure propagators analogously to the angular spectrum approach.
-The actual form of the Green's function depends on the problem dimensionality, given in the previous section.
+%The actual form of the Green's function depends on the problem dimensionality, given in the previous section.
 
 The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
 The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
