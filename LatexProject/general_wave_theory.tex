@@ -626,8 +626,8 @@ For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\
 \end{multline}
 with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \left. \Dx \Phi(\vx)\right|_{\vx = \vxo} \rangle$
 \nomenclature[7]{$\frac{\partial F(\vxo)}{\partial \vv}$}{The directional derivative into the direction $\vv$, evaluated at $\vx = \vxo$: $\langle \vv(\vxo) \cdot \left. \Dx F(\vx)\right|_{\vx = \vxo} \rangle$}.
-Let $\Phi$ be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and let $\Psi$ be the Green's function located at $\vx$
-\footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}, therefore equations
+Let $\Phi$ be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and let $\Psi$ be the Green's function located at $\vx$ \footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}---with its actual form depending on the problem dimensionality---
+, therefore equations
 \begin{equation}
 (\nabla^2 + k^2)P(\vxo,\omega) = 0, \hspace{10mm}
 (\nabla^2 + k^2)G(\vxo|\vx,\omega) = -\delta(\vxo - \vx)
@@ -662,7 +662,14 @@ with
 0 			& \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oe.
 \end{cases}
 \end{equation*}
-Point $\vx$ is termed \emph{evaluation point}, while $\vxo$ is termed the \emph{field point}. 
+The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
+The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. 
+For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
+In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
+This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
+\footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
+\vspace{3mm}
+
 A frequently used form of the KHIE---utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
 \begin{equation}
 \alpha P(\vx,\omega) = 
@@ -674,31 +681,22 @@ P(\vxo,\omega)  \underbrace{\frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}}_{
 \label{Eq:Theory:Kirchhoff}
 \end{equation}
 where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, functioning as velocity and pressure propagators analogously to the angular spectrum approach.
-%The actual form of the Green's function depends on the problem dimensionality, given in the previous section.
-
-The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
-The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
-In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
-This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
-\footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
-\vspace{3mm}
-
-KHIE consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
+KHIE therefore consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
 
 One drawback of interior HIE is that it overspecifies the problem in order to ensure zero pressure and velocity outside the domain of interest. 
-In the aspect of Sound Field Synthesis the presence of both single and double layer potentials is infeasible.
-By letting the sound field non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions on the sound field $ P(\vxo,\omega)$ itself in an equivalent scattering problem.
+In the aspect of sound field synthesis the presence of both single and double layer potentials is infeasible.
+By letting the sound field be non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or to impose these boundary conditions on the sound field $ P(\vxo,\omega)$ itself in an equivalent scattering problem.
 In the following sections these approaches are applied for the simplification of the KHIE.
-
-
+%
+%
 
 \subsection{The Simple Source Formulation}
-The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Ahrens2012}.
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Copley1968}.
 %
 \begin{figure}[h!]
 	\centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/Basic_acoustics/simple_source_formulation.png}
-	\footnotesize
+	\small
 	\put(2, 38){(a)}
 	\put(52,38){(b)}
 	\put(27, 0){(c)}
@@ -708,24 +706,29 @@ The simple source formulation is derived from the KHIE by the construction of a 
 	\put(85,57){$\Oi$}
 	\put(92,52.5){$\dO$}
 	\put(95,47){$\Oe$}
-	\put(45,32){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
-	\put(70,8){$\Oe$}
+	\put(40,8){$P_\mathrm{t}(\vx,\omega) = P(\vx,\omega) + P_\mathrm{s}(\vx,\omega)$}
+	\put(70,31){$\Oe$}
 	\put(58,18){$\Oi$}
 	\put(65,13.5){$\dO$}
 	\end{overpic}
-\caption{Illustration of simple source formulation in a 2D problem ($\Omega \subset \mathbb{R}^2$). Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$. Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior.}
+\caption{Illustration of simple source formulation in a 2D problem ($\Omega \subset \mathbb{R}^2$). 
+Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). 
+The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$ oscillating at $\omega = 2 \pi \cdot 1~\mathrm{krad/sec}$. 
+Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. 
+The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior.}
 	\label{Fig:Theory:simple_source_formulation}
 \end{figure}
 
-Let's assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, i.e. that all sources are located within the enclosure. 
+Assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$ in the geometry depicted in Figure \ref{Fig:Theory:HIE_geometry}, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, meaning that all sources are located within the enclosure. 
 The exterior wave field is the combination of radiating, or diverging waves. 
-On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega$, induced by a sound source located outside the volume of investigation, thus the interior field also satisfies the homogeneous Helmholtz equation constructed by a set of incoming or converging waves.
+On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega_i$, induced by a sound source located outside the volume of investigation.
+The interior field constructed by a set of incoming or converging waves also satisfies the homogeneous Helmholtz equation in the interior domain.
 The two spatially disjunct problems are connected through the following boundary condition written onto the boundary surface
 \begin{equation}
 P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \dO.
 \end{equation}
-Both fields may be expressed in terms of an exterior and an interior KHIE respectively, for the exterior KHIE with inward normals refer to \cite[eq. 8.30]{Williams1999}.
-By adding the exterior and interior KHIEs, due to the coupled boundary condition terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite[p.~268.]{Williams1999}
+Both fields may be expressed in terms of an exterior and an interior KHIE respectively, for the exterior KHIE expressed in terms of the inward normals refer to \cite[eq. 8.30]{Williams1999}.
+By adding the exterior and interior KHIEs---due to the coupled boundary condition---terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite{Courant1962, Kellogg1967, Williams1999}
 \begin{equation}
 \oint_{\dO} 
 G(\vx|\vxo,\omega) 
@@ -745,47 +748,28 @@ The equation states that either the interior or the exterior sound field, satisf
 The \emph{single layer strength function} is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
 The discontinuity in the pressure gradient is termed the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
 
-%In terms of sound field synthesis the interior sound field is the desired sound field itself. The simple source formulation therefore states that for an arbitrary geometry the SSD driving function is given by
-%\begin{equation}
-%D(\vxo,\omega) = 
-%\frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P(\vxo,\omega)}{\partial \vni},
-%\label{Eq:Theory:Source_strength}
-%\end{equation}
-%where $P_{\mathrm{e}}(\vxo,\omega)$ is the corresponding exterior sound field, needed to be calculated in order to solve the SFS problem.
-
 \vspace{3mm}
 As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
-we assume that the surface $\dO$ represents the boundary of a sound soft scattering object. 
-In acoustic scattering problems we consider an a-priori known \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$.
+Assume that the surface $\dO$ represents the boundary of a sound soft scattering object!
+In acoustic scattering problems it is assumed, that an the \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$ is known a priori.
 The field measured in the presence of the obstacle is termed the \emph{total field} $P_{\mathrm{t}}(\vx,\omega)$, given by the sum of the incident and scattered fields.
 The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \dO$.
-%In the aspect of SFS the incident field inside the theoretical scatterer is the target sound field itself.
-Comparing this result with the simple source formulation it is clear, that the single layer driving function is the derivative of $(-1)$ times the total field on the boundary.
+Comparing this result with the simple source formulation it is clear, that the single layer strength function is the derivative of $(-1)$ times the total field on the boundary.
 See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalent scattering problem.
-Obviously, in practical applications usually only the incident field is known analytically.
-The general application therefore would require numerical computation method, e.g. BEM. For such a general scenario see Figure \ref{Fig:Theory:simple_source_formulation}, where the single layer weighting factors are calculated numerically for an arbitrary enclosing reflecting surface in a 2D scenario.
-
-%Another demonstration of this principle is shown in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b) where the difference between the synthesized field and the target sound field is the total field in the equivalent scattering problem $P_{\mathrm{t}}(\vx,\omega) = P(\vx,\omega) - P_{\mathrm{e}}(\vx,\omega)$.
-%\begin{equation}
-%D(\vxo,\omega) = \frac{\partial P_T(\vxo,\omega)}{\partial n}
-%=
-%\frac{\partial P(\vxo,\omega)}{\partial n} + \frac{\partial P_s(\vxo,\omega)}{\partial n}.
-%\label{Eq:Theory:Equivalent_scattering_driv_fun}
-%\end{equation}
-%Simple source approach---and the equivalent scattering interpretation---gives the analytical driving function for an arbitrary SSD geometry implicitly. 
-%Unfortunately the exterior scattering solution is scarcely available analytically except for simple geometries. The general application therefore would require numerical computation method, e.g. BEM. For such a general scenario see Figure \ref{Fig:Theory:simple_source_formulation}, where the driving functions are calculated numerically for an arbitrary enclosing SSD in a 2D scenario.
+In the presented general 2D scenario the single layer weighting factors were calculated numerically for an arbitrary enclosing reflecting surface.
 
 \subsection{The Rayleigh integrals}
 \label{Section:Theory:Rayleigh}
 
-The Rayleigh integrals formulate the sound field with merely the pressure field or the normal velocity measured on an infinite plane. 
-The derivation utilizes the Neumann and Dirichlet Green's functions for the geometry, that can be seen in figure \ref{Fig:Theory:Rayleigh_geometry}.
+The Rayleigh integrals formulate the sound field based on the pressure field or the normal velocity measured on an infinite plane utilizing the Neumann or Dirichlet Green's functions.
 
-In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a boundary consisting of a simply joint disc ($\dO_P$) and a hemisphere ($\dO_S$, $\dO = \dO_P \cup \dO_S$), shown in Figure\ \ref{Fig:Theory:Rayleigh_geometry}. 
-As the radius of the hemisphere is increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on the infinite plane. 
-For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, i.e. the field at $y>0$ reads
+In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a simply joint boundary consisting of a disc $\dO_P$ and hemisphere $\dO_S$, as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
+With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here the \emph{Rayleigh plane}. 
+For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$ and all the primary sources of sound are located at $y<0$.
+In this geometry the KHIE \eqref{Eq:Theory:Kirchhoff-Helmholtz} describing the field at $\vx = \posvec{3}{x}{y>0}{z}$ degenerates to
 \begin{multline}
-P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} + \int_{\dO_S} \td \dO \right) = \\
+\label{Eq:Theory:Rayleigh_geometry}
+P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} \td \dO_P + \int_{\dO_S} \td \dO_S \right) = \\
 \int_{\dO_P}  \left( 
 P(\vxo,\omega)  
 \left. \frac{\partial G(\vxo|\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
@@ -794,30 +778,32 @@ P(\vxo,\omega)
 G(\vxo|\vx,\omega) 
 \right)   \td \dO_P ( \vxo).
 \end{multline}
-
-Exploiting that any homogeneous solution of the Helmholtz equation---satisfying free field boundary conditions---may be added to the Green's function, the inhomogeneous wave equation, and the Kirchhoff-Helmholtz integral still holds: either the single or the double layer potential may be eliminated in the integral by setting the homogeneous solution in the Green's function to non-zero:
+Obviously, any homogeneous solution of the Helmholtz equation may be added to the Green's function, the inhomogeneous wave equation and the Kirchhoff-Helmholtz integral still holds.
+Generally, this property can be in order to solve the inhomogeneous wave equation in the presence of boundaries, by taking the reflected field into consideration.
+In the following this fact is exploited in order to eliminate either the single or the double layer potential in the integral \eqref{Eq:Theory:Rayleigh_geometry} by finding a proper additive term to the Green's function:
 \begin{itemize}
-\item The \emph{Neumann Green's function} eliminates the double layer potential, by describing Neumann boundary conditions for the Green's function on the bounding infinite plane:
+\item The \emph{Neumann Green's function} eliminates the double layer potential by describing Neumann boundary conditions for the Green's function along the infinite plane:
 \begin{equation}
 G_N(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_N(\vxo,\omega),
 \end{equation}
 \begin{equation}
-\frac{\partial G_N(\vx,\omega) }{\partial \vni} = \left. \frac{\partial G_N(\vx,\omega) }{\partial y_0} \right|_{y_0 = 0} = 0.
+\frac{\partial G_N(\vxo,\omega) }{\partial \vni} = \frac{\partial G_N(\vxo,\omega) }{\partial y_0} = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
 \label{Eq:Theory:Neumann_Greenfun_def}
 \end{equation}
-\item The \emph{Dirichlet Green's function} eliminates the double layer potential in the same manner by prescribing
+\item The \emph{Dirichlet Green's function} eliminates the double layer potential by describing Dirichlet boundary conditions for the Green's function, given by
 \begin{equation}
 G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
 \label{Eq:Theory:Dirichlet_Greenfun_def}
 \end{equation}
 \end{itemize}
-
+In the general case of an arbitrary shaped enclosing surface the Neumann and Dirichlet Green's functions are given by the scattered field of a point source positioned at $\vx$, reflected from a rigid or a sound soft boundary respectively.
+Their actual form therefore would depend on the evaluation point $\vx$.
 \begin{figure}
 \small
   \begin{minipage}[c]{0.45\textwidth}
   \hspace{1cm}
 	\begin{overpic}[width = 1\columnwidth ]{Figures/Basic_acoustics/Rayleigh_integral.png}
-	\scriptsize
+	\small
 	 	\put(100,16){$x$}		
 		\put(52.5,63.5){$y$}
 		\put(19.5,38){$\vx$}		
@@ -835,54 +821,52 @@ Geometry for deriving the Rayleigh integrals. The radius of the hemisphere $\dO_
     } \label{Fig:Theory:Rayleigh_geometry}
   \end{minipage}
 \end{figure}
+In the present geometry the scattered field of a point source from a rigid or sound soft infinite plane can be easily obtained by mirroring the in-phase or anti-phase source to the scatterer plane,
+and the required Green's functions are given as
+\begin{eqnarray}
+G_N(\vxo,\omega) =  G(\vxo|\vx,\omega) + G(\vxo|\vx',\omega) \\
+G_D(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
+\end{eqnarray}
+with $\vx' = \posvec{3}{x}{-y}{z}$.
+%
 
-From simple geometrical considerations it can be deduced that the sound fields satisfying the homogeneous Helmholtz equation at $y>0$ and equations \eqref{Eq:Theory:Neumann_Greenfun_def}, \eqref{Eq:Theory:Dirichlet_Greenfun_def} on the infinite plane $y=0$ are given as
-\begin{equation}
- G'_N(\vxo,\omega) = G(\vxo|\vx',\omega), \hspace{10mm} G'_D(\vxo,\omega) = -G(\vxo|\vx',\omega),
-\end{equation}
-with $\vx' = [x,\ -y,\ z]^{\mathrm{T}}$ i.e. by simple mirroring the Green's function to the boundary surface $\dO_P$, thus
-\begin{equation}
-G_N(\vxo,\omega) = 2G(\vxo,\vx,\omega), \hspace{10mm}  \left. \frac{\partial G_D(\vxo,\omega) }{\partial y_0} \right|_{y_0 = 0} = 2\left. \frac{\partial G(\vxo|\vx,\omega) }{\partial y_0} \right|_{y_0 = 0}
-\end{equation}
-holds.
-
-%The Neumann and Dirichlet Green's functions therefore satisfy $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx) + \delta(\vx'))$ and $(\nabla^2+k^2)G_N(\vxo,\omega) = -(\delta(\vxo-\vx)  - \delta(\vxo-\vx'))$ respectively. 
-Substituting them into the Green's theorem \eqref{Eq:Theory:Greens-theorem} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
+Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
 \int_{\dO_P}
 -2
-\left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = 0} 
-G(\vx-\vxo,\omega) \td \dO_P ( \vxo).
+\left. \frac{\partial P(\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+G(\vx-\vxo,\omega) \td \dO_P ( \vxo)
 \label{Eq:Theory:RayleighI}
 \\
 P_D(\vx,\omega) =
 \int_{\dO_P}
 2 P(\vxo,\omega)  
-\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = 0} 
-\td \dO_P ( \vxo)
+\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+\td \dO_P ( \vxo).
 \label{Eq:Theory:RayleighII}
 \end{eqnarray}
-with
-\begin{align*}
-P_N(\vx,\omega) = \begin{cases} 
-P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
-P(\vx = \vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
-P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0
-\end{cases}
-&&
-P_D(\vx,\omega) = \begin{cases} 
-P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
-0 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
--P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0.
-\end{cases}
-\end{align*}
+%with
+%\begin{align*}
+%P_N(\vx,\omega) = \begin{cases} 
+%P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+%P(\vx = \vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+%P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0
+%\end{cases}
+%&&
+%P_D(\vx,\omega) = \begin{cases} 
+%P(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  y>0  	     \\
+%0 			& \hspace{1mm} \forall \hspace{5mm}  y=0  \\
+%-P(\vx',\omega) 			& \hspace{1mm} \forall \hspace{5mm}  y<0.
+%\end{cases}
+%\end{align*}
+Obviously, the Rayleigh integrals do not ensure a zero sound field behind the Rayleigh plane at $y<0$.
+In this region the Rayleigh I integral expresses the field of the primary source distribution, reflected from an infinite rigid plane, while the Rayleigh II integral gives that from a sound soft planar boundary.
 
-%Again, the form of Green's function depends on the problem dimensionality and in 2D the Rayleigh integrals express an arbitrary sound field in the form of a line integral.
-The Rayleigh integrals provide the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or 
-Dirichlet Green's function.
-The Rayleigh integrals are of major importance in the theory of diffraction from finite aperture. 
-The Rayleigh I integral is also extensively used in the calculation of radiated fields from finite radiators, mounted in infinite walls, e.g. the field of loudspeakers. It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources, driven by the normal velocity distribution, or mathematically speaking: by convolving the Green's function with the velocity distribution over the infinite surface.
+%The Rayleigh integrals provide the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or 
+%Dirichlet Green's function.
+The Rayleigh integrals are of major importance in the theory of diffraction from finite aperture and used extensively for the calculation of radiated fields from finite radiators mounted in infinite walls, e.g. the field of loudspeakers.
+The Rayleigh I integral states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources on the surface, driven by the normal velocity distribution, or mathematically speaking by convolving the Green's function with the velocity distribution over the infinite surface.
 
 \vspace{3mm}
 It is important to note that the Rayleigh integrals---besides the presented methodology involving the Neumann and Dirichlet Greeen's function---can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
