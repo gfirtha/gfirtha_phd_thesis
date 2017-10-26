@@ -272,7 +272,7 @@ Alternatively it may be exploited, that the amplitude of the resultant field on 
 
 \begin{figure} 
 	\centering
-	\begin{overpic}[width = .95\columnwidth]{Figures/High_freq_approximations/Kirchhoff_approximation.png}
+	\begin{overpic}[width = .95\columnwidth ]{Figures/High_freq_approximations/Kirchhoff_approximation.png}
 	\small
 	\put(0, 0){(a)}
 	\put(53,0){(b)}
@@ -282,9 +282,10 @@ Alternatively it may be exploited, that the amplitude of the resultant field on 
 	\put(27,29){shadow region}
 	%	
 	\put(58.25,3){$\vxs$}
-	\put(71,12){$\vno(\vxo)$}
-	\put(84,20.5){$\vk(\vxo)$}
-	\put(77.5,5){$\vk_\mathrm{s}(\vxo)$}
+	\put(71.5,12){$\vno$}
+	\put(77,17.5){$\vni$}
+	\put(84.5,15){$\vk^P(\vxo)$}
+	\put(77.5,5){$\vk^{P_\mathrm{s}}(\vxo)$}
 	\put(92.5,2.5){\parbox{.5in}{tangent plane}}
 	\end{overpic}
 \caption{Illustration of the geometrical optics approximation (a) and the tangent plane approximation (b)}
@@ -301,12 +302,12 @@ In the field of high-frequency boundary element method this is termed as \emph{d
 Mathematically this requirement is formulated as weighting the integral, describing the scattered field by the windowing function
 \begin{equation}
 w(\vxo) = \begin{cases}
-                        1, \hspace{3mm} \forall \hspace{3mm} \langle \mathbf{k}(\vxo) \cdot \vni(\vxo) \rangle > 0 \\
+                        1, \hspace{3mm} \forall \hspace{3mm} \langle \vk^P(\vxo) \cdot \vni(\vxo) \rangle > 0 \\
                         0  \hspace{3mm} \text{elsewhere},
                     \end{cases}
 \label{eq:theory:windowing_function}
 \end{equation}
-where $\mathbf{k}(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$ and $ \vni(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
+where $\mathbf{k}^P(\vxo)$ denotes the local wavenumber vector of the incident sound field at $\vxo$ and $ \vni(\vxo)$ is the inward normal of the surface elements. For an illustration see Figure \ref{Fig:Theory:KH_approximation_a} (a).
 %
 This windowing means the neglection of both diffracting waves around the scattering object (as well as so-called \emph{creeeping rays} \cite{Bleistein1984}) and reflections from one part of the scatterer to an other \cite{Pignier2015}. 
 Due to this latter restriction the Kirchhoff approximation may be applied only to convex surfaces, free of secondary reflections.
@@ -349,7 +350,7 @@ In (a) the illuminated/active part of the scatterer contour is denoted by solid 
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
 %
-Introducing the window function and \eqref{Eq:SFS_theory:tangent_plane} written in terms of the inward normal vector into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
+Writing \eqref{Eq:SFS_theory:tangent_plane} in terms of the inward normal vector, with exploiting that the exterior sound field is related to the scattered sound field according to $P_\mathrm{e}(\vx) = -P_{\mathrm{s}}(\vx)$ and introducing the windowing function into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
 \begin{equation}
 \oint_{\dO} 
 - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
@@ -365,7 +366,7 @@ P=-P_{\mathrm{s}}  & \hspace{1mm} \forall \hspace{5mm}         \vx \in \dO  \\
 \end{equation}
 giving a fair approximation for smooth, convex surfaces in the high frequency and farfield region, where the wavelength and the wavefront curvature is significantly smaller, than the dimensions of the scattering object\footnote{According to \cite[Eq.(2.7.12)]{Blenstein1975} the approximation holds when $k\rho_i \gg 1$, where $\rho_i$ are the principal radii of the curved scatterer locally, and $k$ is the wavenumber.}. 
 For the result of applying the approximation for the previous 2D example see Figure \ref{Fig:Theory:KH_approximation}. 
-The lack of diffractional waves around the enclosure gives rise to artifacts on parts of the space, where the local propagation direction of the incident field is approximately parallel to the contour.
+The lack of diffractional waves around the enclosure gives rise to artifacts on parts of the space, where the local propagation direction of the incident field is nearly parallel to the contour.
 
 %\newpage
 \section{The stationary phase approximation}
