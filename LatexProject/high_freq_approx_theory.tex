@@ -377,14 +377,14 @@ In the following chapters the SPA allows to extract asymptotic, local solutions 
 
 \subsection{The integral approximation}
 %
-Generally speaking the SPA yields approximate solutions of complex integrals of the form
+Generally speaking the SPA yields approximate solutions of complex integrals of the form with $\vx \in \mathbb{R}^{n}$
 \begin{equation}
 \label{Eq:SPAintegral_1d_nd}
 I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(z) \, \te^{\ti \phi(z)} \, \td z,
 \hspace{20mm} 
 I_{n\mathrm{D}} = \int\limits_{\dO} F(\vx) \, \te^{\ti \phi(\vx)} \, \td \dO(\vx)
 \end{equation}
-in one and $n$ dimensions respectively, with $\vx \in \mathbb{R}^{n}$, in cases when $\te^{\ti \phi(\vx)}$ is highly oscillating and $F(\vx)$ is comparably slowly varying.
+in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $F(\vx)$ is comparably slowly varying.
 
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
 More informally the method relies on the second order truncated Taylor series of the exponent around $z^*$, where $\phi'_z(z^*) = 0$ and $\phi''_{zz}(z^*) \neq 0$, with $\phi'_z(z)$ denoting the derivative with respect to $z$:
@@ -401,23 +401,22 @@ With these considerations the integral becomes
 I_{1D} \approx F(z^*)\,\te^{+\ti\phi(z^*)} 
 \int\limits_{-\infty}^{\infty} \te^{+\ti \frac{1}{2}\phi''_{zz}(z^*)(z-z^*)^2} \, \td z.
 \end{align}
-The remaining integral can be evaluated and the SPA of \eqref{Eq:SPAintegral_1d_nd} becomes \cite[Ch.\ 2.8]{Blenstein1975}
+The remaining integral can be evaluated analytically, and the SPA of \eqref{Eq:SPAintegral_1d_nd} becomes \cite[Ch.\ 2.8]{Blenstein1975}
 \begin{equation}
 \label{Eq:SPAResult}
 I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''_{zz}(z^*) |}} F(z^*) \, \te^{+\ti \phi(z^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''_{zz}(z^*) \right)}.
 \end{equation}
 
-\vspace{3mm}
 Similarly, in higher dimensions the stationary point $\vx^*$ (or more precisely a \emph{simple stationary point}) is defined as
 \begin{align}
 \label{Eq:ndim_stat_point}
 \begin{split}
 \left.
 \Dx \phi(\vx)\right|_{\vx = \vx^*} &= 0,
-\\ \vspace{3mm} \\
-\det H(\vx^*) &\neq 0,
+\\ \vspace{1.5mm} \\
+\det H(\vx^*) \neq 0,
 \hspace{5mm} 
-H_{ij}(\vx^*) = \left. \left[
+H_{ij}(\vx^*) &= \left. \left[
 \frac{\partial^2 \phi(\vx)}{\partial x_i \partial x_j} 
 \right] \right|_{\vx = \vx^*},
 \hspace{5mm}
