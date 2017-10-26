@@ -715,7 +715,7 @@ The simple source formulation is derived from the KHIE by the construction of a 
 Figures show the incident/target sound field (a), the field given by the simple source formulation (b) and the scattering of the incident field from a sound soft boundary (c). 
 The incident field is the field of a 2D point source (i.e. a line source) at $\vxs = [-0.4,\ 2.5]^{\mathrm{T}}$ oscillating at $\omega = 2 \pi \cdot 1~\mathrm{krad/sec}$. 
 Equation \eqref{Eq:Theory:Simple_source_HIE} was evaluated numerically using an open source C++ Boundary Element software \cite{Fiala2014:BEM}. 
-The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior.}
+The figures demonstrate, how simple source formulation expresses the incident field inside $\Oi$, and the $(-1)$ times the scattered field at $\Oe$ in an equivalent sound soft scattering problem. Figure (c) showing the difference between the incident field and the simple source field ((a)-(b)) therefore illustrates the total scattering in the exterior domain.}
 	\label{Fig:Theory:simple_source_formulation}
 \end{figure}
 
@@ -727,14 +727,15 @@ The two spatially disjunct problems are connected through the following boundary
 \begin{equation}
 P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \dO.
 \end{equation}
-Both fields may be expressed in terms of an exterior and an interior KHIE respectively, for the exterior KHIE expressed in terms of the inward normals refer to \cite[eq. 8.30]{Williams1999}.
+Both fields may be expressed in terms of an exterior and an interior KHIE respectively.
+For the exterior KHIE expressed in terms of the inward normals refer to \cite[eq. 8.30]{Williams1999}.
 By adding the exterior and interior KHIEs---due to the coupled boundary condition---terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite{Courant1962, Kellogg1967, Williams1999}
 \begin{equation}
 \oint_{\dO} 
-G(\vx|\vxo,\omega) 
 \left(
 \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
 \right)
+G(\vx|\vxo,\omega) 
 \td \dO ( \vxo)
 = 
 \begin{cases} 
@@ -761,7 +762,7 @@ In the presented general 2D scenario the single layer weighting factors were cal
 \subsection{The Rayleigh integrals}
 \label{Section:Theory:Rayleigh}
 
-The Rayleigh integrals formulate the sound field based on the pressure field or the normal velocity measured on an infinite plane utilizing the Neumann or Dirichlet Green's functions.
+The Rayleigh integrals formulate an arbitrary sound field based on the pressure field or the normal velocity measured along an infinite plane utilizing the Neumann or Dirichlet Green's functions.
 
 In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a simply joint boundary consisting of a disc $\dO_P$ and hemisphere $\dO_S$, as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here the \emph{Rayleigh plane}. 
@@ -851,9 +852,7 @@ P_D(\vx,\omega) =
 Obviously, the Rayleigh integrals do not ensure a zero sound field behind the Rayleigh plane at $y<0$.
 In this region the Rayleigh I integral expresses the field of the primary source distribution, reflected from an infinite rigid plane, while the Rayleigh II integral gives that from a sound soft planar boundary.
 
-%The Rayleigh integrals provide the radiated field in the form of a spatial convolution over the boundary surface with the convolution kernel being either the Neumann or 
-%Dirichlet Green's function.
-The Rayleigh integrals are of major importance in the theory of diffraction from finite aperture.
+The Rayleigh integrals are of major importance in the theory of diffraction from finite apertures.
 In the present treatise the Rayleigh I integral is of special importance, being a single layer potential.
 This formulation is used extensively for the calculation of radiated fields from finite radiators mounted in infinite walls, e.g. the field of loudspeakers.
 It states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources on the surface, driven by the normal velocity distribution, or mathematically speaking by convolving the Green's function with the velocity distribution over the infinite surface.
@@ -861,4 +860,4 @@ It states that the radiated field from a rigid vibrating plane can be calculated
 \vspace{3mm}
 Besides the presented methodology involving the Neumann and Dirichlet Greeen's function the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
 Another straightforward way to obtain the Rayleigh integrals stems from the direct inverse Fourier transform of the angular spectrum representations \eqref{Eq:Theory:Pressure_propagated} and \eqref{Eq:Theory:Velocity_propagated} by applying the Fourier transform convolution theorem and applying that the pressure and velocity propagators are given by the field of dipoles and monopoles, as it was stated in section \ref{Section:Theory:Inhom_wave_eq_solution}.
-Obviously, the fact, that all the presented three approaches lead to the same solution stems from the uniqueness single layer problem for a planar boundary.
+Obviously, the fact, that all the presented three approaches lead to the same solution stems from the uniqueness of the single layer problem for a planar boundary.

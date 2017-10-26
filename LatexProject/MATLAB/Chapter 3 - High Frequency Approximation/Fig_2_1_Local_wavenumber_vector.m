@@ -88,16 +88,16 @@ ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 %
 p3 = axes('Units','normalized','Position',[ 0.08 0.1 0.37 .2 ]);
-plot(x,nkx_ps2);
+plot(x,nkx_ps2,'LineWidth',1);
 xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow$'   , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0)$'   , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 
 p4 = axes('Units','normalized','Position',[ 0.61 0.1 0.37 .2 ]);
-plot(x,cos(theta*pi/180)*ones(size(x)));
+plot(x,cos(theta*pi/180)*ones(size(x)),'LineWidth',1);
 xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow$' , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 ylim([0,1])
 grid on

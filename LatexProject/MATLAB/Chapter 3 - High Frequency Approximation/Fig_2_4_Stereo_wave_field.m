@@ -96,7 +96,7 @@ ylim([y(1),y(end)]);
 xtp1 = p1.XTickLabel;
 
 p2 = axes('Units','normalized','Position',pos(2,:));
-plot(y,kx0/k)
+plot(y,kx0/k,'LineWidth',1)
 xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 ylabel( '$\hat{k_x}^P(0,y)$' , 'FontSize', ftsize );
 xlim([y(1),y(end)])
@@ -108,7 +108,7 @@ yl = ylim;
 plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
 
 p3 = axes('Units','normalized','Position',pos(3,:));
-plot(y,-ky0/k)
+plot(y,-ky0/k,'LineWidth',1)
 xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 ylabel( '$\hat{k_y}^P(0,y)$' , 'FontSize', ftsize );
 xlim([y(1),y(end)])
@@ -120,7 +120,7 @@ yl = ylim;
 plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
 
 p4 = axes('Units','normalized','Position',pos(4,:));
-plot(y,sqrt(kx0.^2+ky0.^2)/k)
+plot(y,sqrt(kx0.^2+ky0.^2)/k,'LineWidth',1)
 xlabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 ylabel( '$\left| \hat{\mathbf{k}}^P(0,y) \right|$', 'FontSize', ftsize );
 xlim([y(1),y(end)])
