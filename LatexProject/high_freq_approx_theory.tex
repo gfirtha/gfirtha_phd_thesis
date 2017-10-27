@@ -600,9 +600,9 @@ Note, that since points $\vx$ and $\vxo^*(\vx)$ are related by the local wavenum
 Without the loss of generality thus along the propagation path the pressure field can be approximated as
 \begin{equation}
 \small
-P(\vx+\td x\hat{\vk}^P(\vx),\omega) =
+P(\vx+\td x \cdot \hat{\vk}^P(\vx),\omega) =
 \sqrt{ \frac{ \rho_1^P(\vx) \rho_2^P(\vx) }{ \left(\rho_1^P(\vx) + \td x \right) \left(\rho_2^P(\vx) + \td x\right) } }
-\te^{-\ti k \, \td x } P(\vx,\omega).
+\te^{-\ti \omega \frac{\td x}{c} } P(\vx,\omega).
 \end{equation}
 From the above equation the relative amplitude change can be expressed---by applying the L'Hospital's rule---, reading as
 \begin{equation}
@@ -614,7 +614,7 @@ From the above equation the relative amplitude change can be expressed---by appl
 \end{equation}
 which result is in agreement with the definition of the mean curvature using the transport equation \eqref{eq:HF_appr:curvature}.
 
-In the aspect of the present thesis the importance of these results lies in allowing the assignment of a physical interpretation to the correctional terms, present in the sound field synthesis driving functions, discussed in the following chapter.
+In the aspect of the present thesis the importance of these results lies in allowing the assignment of a physical interpretation to the correctional terms, present in the sound field synthesis driving functions as discussed in the following chapter.
 
 \subsection*{Application example \#2: The Kirchhoff approximation}
 As a second application example for the SPA of boundary integrals an alternative derivation of the Kirchhoff-approximation is presented directly from the Kirchhoff-Helmholtz integral.
@@ -638,20 +638,21 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 %
 \begin{figure}
 	\centering
-	\begin{overpic}[width = 0.8\columnwidth ]{Figures/High_freq_approximations/KHIE_stat_point.png}
+	\begin{overpic}[width = 0.8\columnwidth]{Figures/High_freq_approximations/KHIE_stat_point.png}
 	\small
 %	\put(13.5,36.5){$\vxs$}
-	\put(30.5,31.5){$\vxo^*(\vx)$}
-	\put(59,20.5){$\vx$}	
-	\put(11,28){$\vk^G(\vxo^*(\vx)-\vx)$}
+	\put(30,31.5){$\vxo^*(\vx)$}
+	\put(56.5,23){$\vx$}	
+	\put(11.2,27){$\vk^G(\vxo^*(\vx)-\vx)$}
+	\put(64,20){$\vk^G(\vx-\vxo^*(\vx))$}	
 	\put(41.5,27){$\vk^P(\vxo^*(\vx))$}
 	\end{overpic}
 \caption{2D Geometry for the illustration of the stationary position for the Kirchhoff-Helmholtz integral.}
 	\label{Fig:HF_appr:KH_approximation_HF}
 \end{figure}
 %
-Again, it can be assumed that for a given receiver position $\vx$ most part of the integral cancels out, and the field is dominated by one particular point on the surface, i.e. by the stationary point.
-Obviously, the stationary point is found on $\dO$ where the phase gradient vanishes, i.e. where the local wavenumber vector/local propagation direction of the described sound field, and the Green's function positioned at $\vx$ coincide: $\vk^P(\vxo) = -\vk^G(\vxo-\vx)$.
+Again, it can be assumed that for a given receiver position $\vx$ most part of the integral cancels out, and the field is dominated by one particular point on the surface: by the stationary point.
+Obviously, the stationary point is found on $\dO$ where the phase gradient vanishes, i.e. where the local wavenumber vector/local propagation direction of the described sound field and the Green's function positioned at $\vx$ coincide, satisfying $\vk^P(\vxo^*(\vx))= \vk^G(\vx-\vxo^*(\vx)) = -\vk^G(\vxo^*(\vx)-\vx)$.
 This interpretation is illustrated in Figure \ref{Fig:HF_appr:KH_approximation_HF} in case of a primary point source.
 
 As an approximation therefore the amplitude factor of the integral can be substituted by its value at the stationary point, i.e. with $k_{\mathrm{n}}^G(\vx-\vxo) = k_{\mathrm{n}}^P(\vxo)$.
@@ -664,7 +665,7 @@ P(\vx,\omega) =
 P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 \label{Eq:HF_appr:Kirchhoff_approximation}
 \end{equation}
-This is obviously--since high frequency assumptions must hold---equivalent to the Kirchhoff-approximation \eqref{Eq:SFS_theory:Kirchhoff_appr}, derived by physically motivated considerations from the simple source formulation.
+This is obviously--since high frequency assumptions must hold---equivalent to the Kirchhoff-approximation \eqref{Eq:SFS_theory:Kirchhoff_appr}, derived by physically motivated considerations from the equivalent scattering interpretation of the simple source formulation.
 
 \subsection{Asymptotic approximation of spectral integrals}
 \label{Sec:SPA_for_Fourier}

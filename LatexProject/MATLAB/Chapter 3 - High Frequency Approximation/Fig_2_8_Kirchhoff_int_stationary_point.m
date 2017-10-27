@@ -101,6 +101,12 @@ ah4 = annotation('arrow',...
 set(ah4,'parent',gca);
 set(ah4,'position',[x0(1), x0(2), LineLength*kxn_g, LineLength*kyn_g]);    
 
+ah5 = annotation('arrow',...
+    'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth,'LineWidth',1.5);
+set(ah5,'parent',gca);
+set(ah5,'position',[xr(1), xr(2), -LineLength*kxn_p, -LineLength*kyn_p]);    
+
+
 set(gca,'box','off')
 color = get(fig,'Color');
 
