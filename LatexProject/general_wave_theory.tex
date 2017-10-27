@@ -735,7 +735,7 @@ By adding the exterior and interior KHIEs---due to the coupled boundary conditio
 \left(
 \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
 \right)
-G(\vx|\vxo,\omega) 
+G(\vx-\vxo,\omega) 
 \td \dO ( \vxo)
 = 
 \begin{cases} 
@@ -766,8 +766,8 @@ The Rayleigh integrals formulate an arbitrary sound field based on the pressure 
 
 In order to derive the Rayleigh integrals an interior problem is considered by writing the KHIE on a simply joint boundary consisting of a disc $\dO_P$ and hemisphere $\dO_S$, as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld-radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here the \emph{Rayleigh plane}. 
-For the sake of simplicity the plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$ and all the primary sources of sound are located at $y<0$.
-In this geometry the KHIE \eqref{Eq:Theory:Kirchhoff-Helmholtz} describing the field at $\vx = \posvec{3}{x}{y>0}{z}$ degenerates to
+The plane is located at $y=y_0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$ and all the primary sources of sound are located at $y<y_0$.
+In this geometry the KHIE \eqref{Eq:Theory:Kirchhoff-Helmholtz} describing the field at $\vx = \posvec{3}{x}{y>y_0}{z}$ degenerates to
 \begin{multline}
 \label{Eq:Theory:Rayleigh_geometry}
 P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} \td \dO_P + \int_{\dO_S} \td \dO_S \right) = \\
@@ -819,7 +819,7 @@ Their actual form therefore would depend on the evaluation point $\vx$.
 	\begin{minipage}[c]{0.4\textwidth}
     \caption{
 Geometry for deriving the Rayleigh integrals. 
-The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only the Rayleigh plane $\dO_P$ contributes to the radiated field at $y>0$.
+The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only the Rayleigh plane $\dO_P$ contributes to the radiated field at $y>y_0$.
 For this special geometry the required Neumann and Dirichlet Green's functions are given by the sum of a point source at the evaluation point $\vx$ and a point source, positioned at $\vx'$, obtained by mirroring $\vx$ to the Rayleigh plane.
     } \label{Fig:Theory:Rayleigh_geometry}
   \end{minipage}
@@ -830,22 +830,22 @@ and the required Green's functions are given as
 G_N(\vxo,\omega) =  G(\vxo|\vx,\omega) + G(\vxo|\vx',\omega) \\
 G_D(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
 \end{eqnarray}
-with $\vx' = \posvec{3}{x}{-y}{z}$.
+with $\vx' = \posvec{3}{x}{2 y_0-y}{z}$  as illustrated in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 %
 
-Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
+Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariancy of the Green's function yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
 \int_{\dO_P}
 -2
-\left. \frac{\partial P(\vx,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+\left. \frac{\partial P(\vx,\omega)}{\partial y} \right|_{y = y_0} 
 G(\vx-\vxo,\omega) \td \dO_P ( \vxo)
 \label{Eq:Theory:RayleighI}
 \\
 P_D(\vx,\omega) =
 \int_{\dO_P}
 2 P(\vxo,\omega)  
-\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y_0} \right|_{y_0 = 0} 
+\left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y} \right|_{y = y_0} 
 \td \dO_P ( \vxo).
 \label{Eq:Theory:RayleighII}
 \end{eqnarray}
