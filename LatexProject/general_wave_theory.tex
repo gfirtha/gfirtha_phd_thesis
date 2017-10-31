@@ -183,7 +183,7 @@ P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{
     Geometry for the boundary conditions in general interior and exterior radiation problems.
-    The Sommerfeld radiation condition can be derived in a mixed interior and exterior radiation problem by prescribing proper boundary conditions on the surface $\dO_{\infty}$ besides increasing its radius $r$ to infinity, which ensure that to reflection may occur from this outer boundary surface.}
+    The Sommerfeld radiation condition can be derived in a mixed interior and exterior radiation problem by prescribing proper boundary conditions on the surface $\dO_{\infty}$ besides increasing its radius $r$ to infinity, which ensures that to reflection may occur from this outer boundary surface.}
 	\label{Fig:Theory:bounday_condition}
 	  \end{minipage}
 \end{figure}
@@ -460,7 +460,7 @@ The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_repres
 \caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008, DeSanto1992}.
 $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
 \left( \right)$ is the modified Bessel function of the second kind \cite{Nist2010}.
-The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind, that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
+The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the followings Greens function is expressed only in the propagating region, however it should be kept in mind that evanescent wavenumber components are defined as given in \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
 }
 \FloatBarrier
 \renewcommand*{\arraystretch}{2.25}
@@ -526,7 +526,7 @@ From \eqref{Eq:Theory:Basic_Green_function_eq} the solution in the spatial domai
 \int \nabla \cdot \mathbf{F}(\vxo)G(\vx-\vxo) \td \vxo = 
 \int \nabla \cdot \left( \mathbf{F}(\vxo)G(\vx-\vxo) \right) \td \vxo 
 - \int \left< \nabla G(\vx-\vxo)  \cdot \mathbf{F}(\vxo) \right> \td \vxo $.
-Applying the Gauss theorem and invoking the Sommerfeld radiation condition reveals, that the first term of the right handside vanishes.}:
+Applying the Gauss theorem and invoking the Sommerfeld radiation condition reveals that the first term of the right handside vanishes.}:
 \begin{equation}
 P(\vx,t) = -\int_{\Omega} \ti \omega \rho_0 Q(\vxo,\omega)G(\vx-\vxo,\omega) +  \left< \mathbf{F}(\vxo,\omega)\cdot \Dx G(\vx-\vxo,\omega) \right> \td \Omega(\vxo),
 \end{equation}	
@@ -547,7 +547,7 @@ From the general solution the case of point-like disturbances are of special int
 \end{figure}
 \begin{itemize}
 %
-\item supposing, that $Q(\vxo,\omega) = \hat{Q}(\omega)\delta(\vx)$ one obtains the field response to a point-like volume injection
+\item supposing that $Q(\vxo,\omega) = \hat{Q}(\omega)\delta(\vx)$ one obtains the field response to a point-like volume injection
 \begin{equation}
 P_{\mathrm{m}}(\vx,\omega) = - \frac{\ti \omega \rho_0 \hat{Q}(\omega)}{4\pi} \frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
 \end{equation}
@@ -642,7 +642,7 @@ Substituting into the Green's theorem leads to
 \end{equation}
 
 The sifting property of the Dirac-delta may be exploited by taking into account that the singularity is located in the enclosure:
-if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed, that "only half of the Dirac-impulse is in the volume".
+if $\vx$ lies outside the volume the integral is identically zero, while if it is on the surface it is assumed that "only half of the Dirac-impulse is in the volume".
 For a rigorous derivation refer to \cite{Williams1999}.
 Finally, by exploiting the symmetry and translation invariancy of the free field Green's function \eqref{Eq:Theory:Green_fun_reciprocity} the \emph{Kirchhoff-Helmholtz integral equation} (KHIE) is obtained:
 \begin{equation}
@@ -752,10 +752,10 @@ The discontinuity in the pressure gradient is termed the \emph{jump relation}, e
 \vspace{3mm}
 As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
 Assume that the surface $\dO$ represents the boundary of a sound soft scattering object!
-In acoustic scattering problems it is assumed, that an the \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$ is known a priori.
+In acoustic scattering problems it is assumed that an the \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$ is known a priori.
 The field measured in the presence of the obstacle is termed the \emph{total field} $P_{\mathrm{t}}(\vx,\omega)$, given by the sum of the incident and scattered fields.
 The scattered field is the solution of the exterior radiation problem, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega) = - P_{\mathrm{e}}(\vxo,\omega), \hspace{.2cm} \vxo \in \dO$.
-Comparing this result with the simple source formulation it is clear, that the single layer strength function is the derivative of $(-1)$ times the total field on the boundary.
+Comparing this result with the simple source formulation it is clear that the single layer strength function is the derivative of $(-1)$ times the total field on the boundary.
 See Figure \ref{Fig:Theory:simple_source_formulation} for an illustration of the simple source formulation and for its interpretation as an equivalent scattering problem.
 In the presented general 2D scenario the single layer weighting factors were calculated numerically for an arbitrary enclosing reflecting surface.
 
@@ -860,4 +860,4 @@ It states that the radiated field from a rigid vibrating plane can be calculated
 \vspace{3mm}
 Besides the presented methodology involving the Neumann and Dirichlet Greeen's function the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
 Another straightforward way to obtain the Rayleigh integrals stems from the direct inverse Fourier transform of the angular spectrum representations \eqref{Eq:Theory:Pressure_propagated} and \eqref{Eq:Theory:Velocity_propagated} by applying the Fourier transform convolution theorem and applying that the pressure and velocity propagators are given by the field of dipoles and monopoles, as it was stated in section \ref{Section:Theory:Inhom_wave_eq_solution}.
-Obviously, the fact, that all the presented three approaches lead to the same solution stems from the uniqueness of the single layer problem for a planar boundary.
+Obviously, the fact that all the presented three approaches lead to the same solution stems from the uniqueness of the single layer problem for a planar boundary.
