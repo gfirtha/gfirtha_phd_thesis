@@ -105,12 +105,12 @@ for n = 1 : length(Dx0)
 end
 close(wb)
 %%
-ftsize = 12;
+ftsize = 13.75;
 f = figure('Units','points','Position',[200,200,400,470]);
 set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.565  0.72 .45
         0.1   0.035 0.85 .5];
-    
+
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x,y,real(field_synth));
 axis equal tight

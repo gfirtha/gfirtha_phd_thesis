@@ -46,9 +46,17 @@ close(wb);
 field_pw_ref = exp(-1i*k*(cos(alpha_pw)*X+sin(alpha_pw)*Y));
 
 %%
-x_pw = x0 + dref*cos(alpha_pw);
-y_pw = y0 + dref*sin(alpha_pw);
-%%
+%x_pw = x0 + dref*cos(alpha_pw);
+%y_pw = y0 + dref*sin(alpha_pw);
+
+x_pw = Rref*cos(fi((kn)>=0));
+y_pw = Rref*sin(fi((kn)>=0));
+x_pw2 = Rref*cos(fi((kn)<0));
+y_pw2 = Rref*sin(fi((kn)<0));
+
+[~,i] = max(sqrt(sum(diff(x_pw2).^2,2)));
+x_pw2 = [x_pw2(i+1:end,:);x_pw2(1:i,:)];
+y_pw2 = [y_pw2(i+1:end,:);y_pw2(1:i,:)];
 
 ftsize = 14.3;
 f = figure('Units','points','Position',[200,120,650,300]);
@@ -65,6 +73,7 @@ axis equal tight
 hold on
 plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
+plot(x_pw2,y_pw2,':w','LineWidth',1)
 caxis([-1,1])
 xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
@@ -82,6 +91,7 @@ axis equal tight
 hold on
 plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
+plot(x_pw2,y_pw2,':w','LineWidth',1)
 caxis([-25,20])
 xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
 ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );

@@ -54,7 +54,7 @@ allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 line([x(1);x(end)],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
-line([x(1);x(end)],[0;0]+yref, 'Color', 'white','LineStyle',':','LineWidth',1);
+line([x(1);x(end)],[0;0]+yref, 'Color', 'white','LineStyle','--','LineWidth',1);
 
 
 p2 = axes('Units','normalized','Position',pos(2,:));
@@ -72,9 +72,9 @@ c = colorbar;
 title(c,'[dB]', 'FontSize', ftsize);
 
 line([x(1);x(end)],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
-line([x(1);x(end)],[0;0]+yref, 'Color', 'white','LineStyle',':','LineWidth',1);
+line([x(1);x(end)],[0;0]+yref, 'Color', 'white','LineStyle','--','LineWidth',1);
 
 
 %
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','25D_WFS_linear_SSD' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/SFS_theory','25D_WFS_linear_SSD' ) ,'-dpng')
