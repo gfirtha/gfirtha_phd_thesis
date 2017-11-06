@@ -49,10 +49,14 @@ field_ref = 1/(4*pi)*exp(-1i*k*r_ref)./r_ref;
 %%
 L0 = 3;
 x_fig = abs(x_field)<= L0;
-ftsize = 13;
+
+ftsize = 14.3;
 fig = figure('Units','points','Position',[200,200,650,230]);
-pos = [ 0.06  0.065  0.38 .9
-        0.53    0.065  0.465 .9];
+set(fig,'defaulttextinterpreter','latex')
+
+pos = [ 0.06    0.09 0.38 .9
+        0.53    0.09  0.465 .9];
+
 
 
 p1 = axes('Units','normalized','Position',pos(1,:));
@@ -60,8 +64,8 @@ pcolor(x_field(x_fig),y_field,real(field(:,x_fig)));
 shading interp
 axis equal tight
 caxis([-1,1]*5e-2)
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
@@ -75,18 +79,18 @@ pcolor(x_field(x_fig),y_field,20*log10(abs(field_ref(:,x_fig)-field(:,x_fig))));
 shading interp
 axis equal tight
 caxis([-85,-10])
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 c = colorbar;
-title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
+title(c,'[dB]' , 'FontSize', ftsize-2);
 
 line([-L0;L0],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
 line([-L0;L0],[0;0]+yref, 'Color', 'white','LineStyle',':','LineWidth',1);
 
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','Linear_SDM' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/SFS_theory','Linear_SDM' ) ,'-dpng')

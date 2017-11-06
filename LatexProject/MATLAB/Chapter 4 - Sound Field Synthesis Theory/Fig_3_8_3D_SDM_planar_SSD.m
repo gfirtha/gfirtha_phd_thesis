@@ -46,7 +46,7 @@ ref_field = 1/(4*pi)*exp(-1i*k*r_ref)./r_ref;
 x_fig = abs(x_field)<= 3;
 dx = x_field(2)-x_field(1);
 
-ftsize = 13;
+ftsize = 14.3;
 fig = figure('Units','points','Position',[200,200,650,230]);
 set(fig,'defaulttextinterpreter','latex')
 

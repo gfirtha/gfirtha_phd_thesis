@@ -572,6 +572,7 @@ where the underbraced part is---by the definition of the cross product---the $y$
 
 By taking into consideration that for a divergent field both curvatures of the wavefront are positive and the signature of the Hessian equals (-2), substitution into \eqref{Eq:SPAResult_nd} yields the SPA of the Rayleigh integral, reading
 \begin{equation}
+\label{eq:HF_approx:asymptotic_rayleigh}
 P(\vx,\omega) = 4\pi \frac{P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega)}
 {
 \sqrt{\left(\kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx))\right)}
@@ -733,7 +734,7 @@ The SPA however can be extended for multiple stationary positions and the result
 In the present treatise this limitation is not investigated further, since the results involving the SPA of the Fourier transform hold without any modification for a virtual plane wave as a limiting case. 	
 
 \subsection*{Application example \#1: 1D spectrum of the Green's function}
-\label{sec:greens_function_pectrum}
+\label{sec:greens_function_spectrum}
 
 
 As a simple example the 1D Fourier transform of the 3D Green's function is investigated, with the transform taken along the $x$-dimension.
@@ -846,8 +847,8 @@ Taking the positive curvatures into consideration (the signature of the Hessian 
 \end{equation}
 Substituting the determinant and expressing the stationary positions by \eqref{eq:HF_approx:2D_FFT_stat_pos} leads finally to
 \begin{equation}
-\tilde{G}(k_y,y,k_z) =-\frac{\ti}{2} \frac{\te^{-\ti k_y y } }{k_y} =
--\frac{\ti}{2} \frac{\te^{-\ti \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} y } }{ \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} }.
+\tilde{G}(k_y,y,k_z) =\frac{1}{2} \frac{\te^{-\ti k_y y } }{\ti k_y} =
+\frac{1}{2} \frac{\te^{-\ti \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} y } }{ \ti \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} }.
 \label{eq:HF_approx:Greens_2D_Spectrum}
 \end{equation}
 Comparison with Table \eqref{tab:theory:Greens_fun_representations} reveals that in this special case the 2D SPA yields the exact spectrum of the Green's function in the propagation region.

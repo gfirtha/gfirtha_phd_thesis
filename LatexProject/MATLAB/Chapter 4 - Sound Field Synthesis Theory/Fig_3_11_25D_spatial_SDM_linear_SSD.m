@@ -29,7 +29,7 @@ G = 1/(4*pi)*exp( -1i*k*dref )./dref;
 P_2D = -1i/4*besselh(0,2, k*R);
 P_3D = 1/(4*pi)*exp( -1i*k*R )./R;
 
-ky = (xref(:,2)-ys)./R;
+%ky = (xref(:,2)-ys)./R;
 %Dx_3D =sqrt( R./(R-dref) ).*sqrt(1i*k./(2*pi*dref)).*ky.*P_3D./G;
 Dx_3D = (-ys)*sqrt(1i*k/(2*pi))*sqrt((Rref-r0)./Rref).*exp(-1i*k*r0)./r0.^(3/2);
 
@@ -52,11 +52,13 @@ close(wb)
 R = sqrt((X-xs).^2 + (Y-ys).^2);
 field_ref_3D = 1/(4*pi)*exp(-1i*k*R)./R;
 %%
-ftsize = 13;
-fig = figure('Units','points','Position',[200,200,650,230]);
-pos = [ 0.06  0.065  0.38 .9
-        0.53    0.065  0.465 .9];
 
+ftsize = 14.3;
+fig = figure('Units','points','Position',[200,200,650,230]);
+set(fig,'defaulttextinterpreter','latex')
+
+pos = [ 0.06    0.09 0.38 .9
+        0.53    0.09  0.465 .9];
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x_field,y_field,real(field_synth_3D));
@@ -67,8 +69,8 @@ axis equal tight
 caxis([-.05,.05])
 hold on
 plot( [ -3+dx 3-dx ],  [ 0 0 ], 'k', 'Linewidth', 2 )
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
@@ -86,12 +88,12 @@ axis equal tight
 hold on
 plot( [ -3+dx 3-dx ],  [ 0 0 ], 'k', 'Linewidth', 2 )
 caxis([-70,-10])
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 c = colorbar;
 title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
 plot(xc,yc, 'Color', 'white','LineStyle',':','LineWidth',1);
@@ -100,4 +102,4 @@ xlim([x_field(1),x_field(end)]);
 
 %
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','25D_spatial_SDM_linear_SSD' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/SFS_theory','25D_spatial_SDM_linear_SSD' ) ,'-dpng')

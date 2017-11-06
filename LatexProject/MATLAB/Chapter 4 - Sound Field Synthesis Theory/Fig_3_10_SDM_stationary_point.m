@@ -62,12 +62,12 @@ headLength = 5*1.5;
 ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);
-set(ah,'position',[x(1)-10*dx, 0, x(end)-x(1)+10*dx, 0]);    
+set(ah,'position',[x(1)-10*dx, 0, x(end)-x(1)+25*dx, 0]);    
 
 ah2 = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah2,'parent',gca);
-set(ah2,'position',[x_ax, y(1), 0, y(end)-y(1)+0*dx]);  
+set(ah2,'position',[x_ax, y(1), 0, y(end)-y(1)+15*dx]); 
 
 kxn_p = -(x0(1)-xs(1))/sqrt( sum( (x0-xs).^2 ) );
 kyn_p = -(x0(2)-xs(2))/sqrt( sum( (x0-xs).^2 ) );
@@ -89,7 +89,8 @@ set(ah4,'position',[xr(1), xr(2), LineLength*kxn_g, LineLength*kyn_g]);
 
 set(gca,'box','off')
 color = get(fig,'Color');
-
+xlim([x(1),x(end)+20*dx])
+ylim([y(1),y(end)+20*dx])
 set(gca,'XColor',color,'YColor',color,'TickDir','out')
 set(gca,'FontName','Times New Roman','FontSize',12);
 allAxesInFigure = findall(fig,'type','axes');
@@ -97,4 +98,4 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','explicit_sol_stationary_point' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/SFS_theory','explicit_sol_stationary_point' ) ,'-dpng')
