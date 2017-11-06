@@ -74,7 +74,7 @@ ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 line([x_field(1);x_field(end)],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
 
 lim = x0(abs(x0)<sqrt(Rref^2-ys^2));
@@ -96,7 +96,7 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 c = colorbar;
 title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
-plot(xc,yc, 'Color', 'white','LineStyle',':','LineWidth',1);
+plot(xc,yc, 'Color', 'white','LineStyle','--','LineWidth',1);
 line([x_field(1);x_field(end)],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
 xlim([x_field(1),x_field(end)]);
 
