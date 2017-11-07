@@ -27,6 +27,8 @@ From ray-tracing/geometrical optics theory the following quantity is introduced\
 \vk^P(\vx) = [k_x^P(\vx),\ k_y^P(\vx),\ k_z^P(\vx)]^{\mathrm{T}} = -\Dx \phi^P(\vx,\omega),
 \end{equation}
 %
+\fscom{give a note that this holds for the used time/space convention in the Fourier transforms}
+
 termed the \emph{local wavenumber vector} of sound field $P$, being obviously the generalization of the plane wave wavenumber vector introduced by equation \eqref{Eq:Theory:PW_wavenumber_vec}.
 In the followings the existence of the superscript distinguishes local properties from the global ones, i.e. local wavenumber components of spectral decomposition.
 The wavenumber vector, defined as the negative gradient of the phase function points in the direction of maximal phase advance, i.e.\ it is perpendicular to the wavefront in any position.
@@ -44,7 +46,7 @@ Although the wavenumber vector is always perpendicular to the wavefront, in anis
 	\end{overpic}
 	\caption{Illustration of the local wavenumber vector for a 2D acoustic point source (a,c) and a 2D plane wave (b,d).
 (a-b) show an arbitrarily chosen contour of constant phase (isochronous contour), along with the wavenumber vector on this contour.
-(c-d) show the local normalized $\hat{k}_x(x,y_0)$ component along the line $y_0 = 0.5 ~\mathrm{m}$.
+(c-d) show the local normalized $\hat{k}_x(x,y_0)$ component along the line $y_0 = 0.5 ~\mathrm{m}$.\fscom{0.5m line in fig a might be helpful}
 }
 	\label{Fig:HF_appr:local_wavenumber_vector}
 \end{figure}
@@ -128,13 +130,14 @@ A wave field is then divergent with both principal curvatures being positive \ci
 	 Illustration of the principal radii and principal curvatures at $\vxo$ of an arbitrary smooth wavefront, satisfying the local dispersion relation.
 	 The principal radii are denoted by $\rho_1$ and $\rho_2$, with the corresponding tangent vectors $\mathbf{v}_1$ and $\mathbf{v}_2$ respectively showing into the direction of the largest an smallest curvature being two eigenvectors of the phase function's Hessian.
 	 The principal curvatures are given by the reciprocal of the principal radii.
-	 In the present treatise non-converging wave fields are discussed with both principal curvatures being non-negative.
+	 In the present treatise non-converging wave fields are discussed with both principal curvatures being non-negative.\fscom{check vecotr v for velocity and here}
 }
 	\label{Fig:HF_appr:local_wave_curvature}
 	  \end{minipage}
 \end{figure}
-The \emph{mean curvature} of the wavefront---generally defined as the divergence of the surface normal \cite{Goldman2005}---is given by the negative divergence of the normalized local wavenumber vector, or the trace of the Hessian:
+The \emph{mean curvature} of the wavefront---generally defined as the divergence of the surface normal \cite{Goldman2005}---is given by the negative divergence of the normalized local wavenumber vector, or the \fscom{negative} trace of the Hessian:
 %
+\fscom{one minus sign might be checked, due to \eqref{eq:local_wn_vec_def}}
 \begin{equation}
 \overline{\kappa}^P(\vx) = -\frac{1}{2}\Dx \cdot \hat{\vk}^P(\vx) = - \frac{1}{2 k} \Lx \phi^P(\vx,\omega) = -\frac{1}{2 k} \left(  \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx) \right),
 \label{eq:HF_appr:curvature}
@@ -707,7 +710,7 @@ The forward and inverse transforms describe projection and composition of the so
 Upper part of Figure (a) presents a spectral basis function (i.e. a horizontal plane wave) which is at this example chosen as $k_x = 0.5 k$. 
 For this spectral component the stationary phase point in the field of the point source is found, where the local propagation direction of the point source coincides with that of the plane wave---indicated by white arrow---. 
 Coincidence of local propagation directions is ensured by the assumption that in the plane of investigation $k_z^G(x,y,0) \equiv 0$, and the spectral plane wave is assumed to propagate with $k_z = 0$.
-The spectrum, shown in Figure (c) (as given analytically in Table \eqref{tab:theory:Greens_fun_representations}) will be dominated around $ k_x = 0.5k$ by this stationary position, denoted by $x^*(k_x)$ in Figure (b).}
+The spectrum, shown in Figure (c) (as given analytically in Table \eqref{tab:theory:Greens_fun_representations}) will be dominated around $ k_x = 0.5k$ by this stationary position, denoted by $x^*(k_x)$ in Figure (b).\fscom{in an older version you gave the postion of xs in absolute metrics, here it is omitted. Maybe its helful to give position in relative wavelengths. Also give ticks and units in term so of relative wavelengths in the left xy-diagrams}}
 	\label{Fig:Theory:stat_pos_in_kx}
 \end{figure}
 
