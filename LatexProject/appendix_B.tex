@@ -64,7 +64,7 @@ In the followings these properties will be discussed when the SPA is applied for
 
 \subsection{Hessian for the SPA applied for the Rayleigh-integral}
 
-Assume the Rayleigh-integral, written onto the plane $y = 0$, with the high-frequency gradient approximation applied:
+Consider the Rayleigh-integral written on the plane $y = 0$, with the high-frequency gradient approximation applied:
 \begin{equation}
 P(\vx,\omega) = 2 \int_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo, \omega) G(\vx-\vxo,\omega) \td x_0  \td z_0.
 \end{equation}
@@ -84,7 +84,7 @@ The 3x3 Hessian of the integrand's phase function is defined as
 \label{eq:app:Hessian_for_Rayleigh}
 H_{kl} = H_{kl}^P+ H_{kl}^G = \frac{\partial^2}{\partial x_{0 k} \partial x_{0 l}}\left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) \right), \hspace{3mm} k,l = 1,2,3.
 \end{equation}
-Obviously, the eigenfunctions of $H_{kl}^P$ and $H_{kl}^G$ are the principal curvatures of the target field and the Green's function measured at the stationary position $\vxo^*(\vx)$.
+Obviously, the eigenvalues of $H_{kl}^P$ and $H_{kl}^G$ are the principal curvatures of the target field and the Green's function measured at the stationary position $\vxo^*(\vx)$.
 Since the principal directions for the Green's function's wavefront are not well-defined, they can be chosen to coincide with the principal directions of $H^P$.
 Therefore at the stationary point the eigenvectors of $H^P$ and $H^G$ coincide and their eigenvalues are additive.
 The eigenvalues of the resultant matrix are therefore simply given as
@@ -96,7 +96,7 @@ The eigenvalues of the resultant matrix are therefore simply given as
 \end{align}
 \vspace{0.5mm}
 
-In the aspect of the followings it's important to investigate the local principal curvatures and the principal radii of the described wavefront of $P$ at the evaluation point $\vx$. 
+In the aspect of the followings it is important to investigate the local principal curvatures and the principal radii of the described wavefront of $P$ at the evaluation point $\vx$. 
 The curvatures are defined as the eigenvalues (normalized by $-k$) of the Hessian 
 \begin{equation}
 H_{ij}^P = \frac{\partial^2}{\partial x_{i} \partial x_{j}} \phi^P ( \vx,\omega) = \frac{\partial^2}{\partial x_{i} \partial x_{j}}\left( \phi^P(\vxo^*(\vx),\omega) + \phi^G(\vx-\vxo^*(\vx),\omega) \right) 
@@ -126,20 +126,20 @@ H_{ij}^P
  \frac{\partial ( x_{l} - x_{0 l}) }{\partial x_{j} }
 \underbrace{ \frac{\partial^2 \phi^G(x_{kl}-x_{0 kl},\omega)}{\partial( x_k - x_{0 k}) \partial ( x_{l} - x_{0 l})} }_{H^G_{kl}} 
 \end{multline}
-where the underbraced part of equation equals to zero by the definition of the stationary position.
+where the first underbraced part equals zero by the definition of the stationary position.
 By introducing the matrix $\Dx \vxo$ for the rate of change of the stationary position with respect to the change in any coordinate of the evaluation point, defined as
 \begin{equation}
 [\Dx \vxo]_{lj} =  \frac{\partial x_{0 l}	}{\partial x_j} =  
 \begin{bmatrix} \frac{\partial \vxo^*(\vx)}{\partial x} \hspace{1mm} \bigg| & \hspace{-2.5mm}  \frac{\partial \vxo^*(\vx)}{ \partial y} \hspace{1mm} \bigg| & \hspace{-2.5mm} \frac{\partial \vxo^*(\vx)}{ \partial z} 
- \\[.3em] \end{bmatrix}
+ \\[.3em] \end{bmatrix},
 \end{equation}
 the Hessian under consideration can be written in a matrix form as
 \begin{equation}
 \label{eq:app:Hpij}
-H_{ij}^P = (\Dx \vxo)^{\mathrm{T}}  H_{kl}^P (\Dx \vxo) + \left( \mathbf{I} - \Dx \vxo \right)^{\mathrm{T}} H^G_{kl} \left( \mathbf{I} - \Dx \vxo \right) \\ 
+H_{ij}^P = (\Dx \vxo)^{\mathrm{T}}  H_{kl}^P (\Dx \vxo) + \left( \mathbf{I} - \Dx \vxo \right)^{\mathrm{T}} H^G_{kl} \left( \mathbf{I} - \Dx \vxo \right).
 \end{equation}
 
-In order to express this gradient of the stationary position its definition \eqref{eq:app:Rayleigh_stat_point} is reconsidered, rewritten in terms of an arbitrary component of the gradient, taken at the stationary position as
+In order to express this gradient of the stationary position its definition \eqref{eq:app:Rayleigh_stat_point} is reconsidered:
 \begin{equation}
 \frac{\partial}{\partial x_{0 k}} \phi^P(\vxo^*(\vx),\omega) - \frac{\partial}{\partial x_{0 k}}\phi^G(\vx-\vxo^*(\vx),\omega)  = 0
 \end{equation}
