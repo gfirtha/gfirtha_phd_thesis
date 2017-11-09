@@ -37,11 +37,13 @@
 \usepackage{sidecap}
 \usepackage{transparent}
 
+\newcommand{\fscom}[2][red]{\textcolor{#1}{#2}} %Schultz comment
+
 \makesavenoteenv{tabular}
 \input{mydefs}
 
 \title{A Unified Wave Field Synthesis Framework \\
-		\large with Application for Moving Virtual Sources}
+		\large \fscom{with Special Focus on Moving Virtual Sources}}
 \date{\today \\
 Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
 \author{Gergely Firtha}
@@ -57,9 +59,10 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 %
 %\chapter{Introduction}
 %
-\chapter{Theory of wave propagation and radiation problems}
+\chapter{Theory of Wave Propagation and Radiation Problems}
 \pagenumbering{arabic}
 \label{sec:general_wave_theory}
+\fscom{sections/subsec large headings?}
 \input{general_wave_theory}
 %
 %
