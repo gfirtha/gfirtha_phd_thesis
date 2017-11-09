@@ -3,7 +3,7 @@
 
 \subsection{Definition of the principal curvatures and principal directions}
 Assume a wave field, described by the general polar form $P(\vx,\omega) = A^P(\vx,\omega)\te^{\ti \phi^P (\vx,\omega)}$!
-Supposing, that the amplitude changes slowly, compared to the phase function the local dispersion relation $| \nabla \phi(\vx,\omega) |= \frac{\omega}{c} = k$ holds and the equation describing an arbitrary wavefront i.e. $\phi^P(\vx,\omega) - C = 0$ is the \emph{normalform} of the given surface \cite{Hartmann1999, Hartmann2001}.
+Supposing that the amplitude changes slowly compared to the phase function, the local dispersion relation $| \nabla \phi(\vx,\omega) |= \frac{\omega}{c} = k$ holds and the equation describing an arbitrary wavefront i.e. $\phi^P(\vx,\omega) - C = 0$ is the \emph{normalform} of the given surface \cite{Hartmann1999, Hartmann2001}.
 The Hessian matrix of the function is given by the symmetric matrix 
 \begin{equation}
 H^P =
@@ -18,7 +18,7 @@ with the eigenvalues $\lambda_1, \lambda_2, \lambda_3$ and the corresponding eig
 Since the function under consideration is a normalform, therefore the following properties hold
 \begin{itemize}
 \item $\lambda_3 = 0$ with the eigenvector $\mathbf{v}_3 = - \nabla \phi^P(\vx,\omega) /k = \hat{\vk}^P(\vx)$, i.e. being the normal of the wavefront
-\item $\lambda_1 = -k \cdot \kappa^P_1(\vx)$, $\lambda_2 = -k \cdot	\kappa^P_2(\vx)$ being proportional to the \emph{main or principal curvatures} of the wavefront and $\rho^P_1(\vx) = 1 /\kappa^P_1(\vx)$, $\rho^P_2(\vx) = 1 /\kappa^P_2(\vx)$ being the \emph{principal radii}.
+\item $\lambda_1 = -k \cdot \kappa^P_1(\vx)$ and $\lambda_2 = -k \cdot	\kappa^P_2(\vx)$ are proportional to the \emph{main or principal curvatures} of the wavefront, where $\rho^P_1(\vx) = 1 /\kappa^P_1(\vx)$ and $\rho^P_2(\vx) = 1 /\kappa^P_2(\vx)$ are the \emph{principal radii}.
 The principal curvatures and radii are defined as the following:
 Consider all the planes containing the normal of the surface at the point of investigation, defined by the surface normal and vector $\mathbf{v}$, being the tangent of the surface.
 The curvature is defined as the quadratic form 
@@ -36,7 +36,7 @@ H^P = -k \left( \kappa_1  \mathbf{v}_1 \mathbf{v}_1^\mathrm{T} + \kappa_2 \mathb
 \end{equation}
 where $\mathbf{V} = \begin{bmatrix} \mathbf{v}_1 & \mathbf{v}_2 \\\end{bmatrix}$ and $\mathbf{K} = \begin{bmatrix} \kappa_1 & 0 \\[.0em] 0 & \kappa_2 \\[0.0em] \end{bmatrix}$ are the matrices of the eigenvectors and the curvatures.
 
-For the special case of the three-dimensional Green's function positioned at $\vxo$, only eigenvector corresponding for $\lambda_3$ is well-defined over the spherical /\emph{umbilical} wavefront, being a radial directed normal vector.
+For the special case of the three-dimensional Green's function positioned at $\vxo$, only the eigenvector corresponding to $\lambda_3$ is well-defined over the spherical /\emph{umbilical} wavefront, being a radial directed normal vector.
 $\lambda_2$ and $\lambda_3$ may be arbitrary orthogonal vectors in the plane, tangent to the surface in the point of investigation $\vx$, with the corresponding principal curvatures being $\kappa_1^G(\vx) = \kappa_2^G(\vx) = 1/|\vx - \vxo| $.
 
 \vspace{3mm}
@@ -48,8 +48,8 @@ H^P =  \begin{bmatrix}
 0 & 0 & \phi^{P''}_{zz}(\vx,\omega) \\[0.5em]    \end{bmatrix},
 \end{equation}
 with the trivial eigenvector/principal direction $\mathbf{v_2} = \posvec{3}{0}{0}{1}$ and the corresponding principal curvature $\kappa_2^P(\vx) = -\frac{1}{k} \phi^{P''}_{zz}(\vx,\omega)$.
-Furthermore, considering, that the eigenvector with a zero eigenvalue is given by $\mathbf{v}_3 = \hat{\vk}^P(\vx) = \posvec{3}{\hat{k}_x^P(\vx)}{\hat{k}_y^P(\vx)}{0}$ and $\mathbf{v}_1$ is orthogonal to  $\mathbf{v}_2$ and $\mathbf{v}_3$, therefore $\mathbf{v}_1 = \posvec{3}{\hat{k}_y^P(\vx)}{\hat{k}_x^P(\vx)}{0}$ holds.
-From simple geometrical considerations and applying \eqref{Eq:App:curvature_def} the elements of the Hessian matrix can be expressed as
+Furthermore, considering that the eigenvector with a zero eigenvalue is given by $\mathbf{v}_3 = \hat{\vk}^P(\vx) = \posvec{3}{\hat{k}_x^P(\vx)}{\hat{k}_y^P(\vx)}{0}$ and $\mathbf{v}_1$ is orthogonal to  $\mathbf{v}_2$ and $\mathbf{v}_3$, therefore $\mathbf{v}_1 = \posvec{3}{\hat{k}_y^P(\vx)}{\hat{k}_x^P(\vx)}{0}$ holds.
+Applying \eqref{Eq:App:Hessian_w_curvature} the elements of the Hessian matrix can be expressed as
 \begin{equation}
 \label{Eq:App:Hessian_inplane}
 H^P = -k	 \begin{bmatrix} 
