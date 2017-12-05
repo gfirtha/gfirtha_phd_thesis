@@ -101,12 +101,12 @@ The second basic ray tracing equation termed the \emph{transport equation} is gi
 \subsection{The local wavefront curvature}
 %
 Applying the local wavenumber vector concept the \emph{local wavefront curvature} of arbitrary sound fields can be introduced.
-The wavefront curvature and the radius of curvature give an expressive physical interpretation and coordinate free description for the results of the asymptotic approximations developed in the following sections, an serves as a mathematical basis in order to distinguish \emph{divergent} and \emph{convergent} wavefronts.
+The wavefront curvature and the radius of curvature give an expressive physical interpretation and coordinate free description for the results of the asymptotic approximations developed in the following sections, and serves as a mathematical basis in order to distinguish \emph{divergent} and \emph{convergent} wavefronts.
 A wave field is termed \emph{divergent} with a convex wavefront propagating away from a source distribution and \emph{convergent} or \emph{focused}, if a concave wavefront propagates towards a focal point.
 Mathematically the local vergence of the wave field may be described by the \emph{principal curvatures} of the wavefront, or in a looser sense by the \emph{mean curvature} of the wavefront.
 
 The principal curvature components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the principal radii $\rho_1^P(\vx), \rho_2^P(\vx)$, being the maximal and minimal radii of osculating circles at a point on the wavefront, as illustrated in Figure \ref{Fig:HF_appr:local_wave_curvature}.
-Mathematically if the local dispersion relation holds, the principal curvatures are given by the two non-zeros eigenvalues of the phase function's negative Hessian, normalized by $\omega/c$ as discussed in details in the Appendix \ref{App:Hessian} \cite{Hartmann1999, Hartmann2001}.
+Mathematically if the local dispersion relation holds, the principal curvatures are given by the two non-zero eigenvalues of the phase function's negative Hessian, normalized by $\omega/c$, as discussed in details in the Appendix \ref{App:Hessian} \cite{Hartmann1999, Hartmann2001}.
 A wave field is then divergent with both principal curvatures being positive \cite{Arnold1986, Bleistein1984, HF_and_Pulse_Scattering1992}.
 
 \begin{figure} 
@@ -139,18 +139,20 @@ The \emph{mean curvature} of the wavefront---generally defined as the divergence
 %
 \fscom{one minus sign might be checked, due to \eqref{eq:local_wn_vec_def}}
 \begin{equation}
-\overline{\kappa}^P(\vx) = -\frac{1}{2}\Dx \cdot \hat{\vk}^P(\vx) = - \frac{1}{2 k} \Lx \phi^P(\vx,\omega) = -\frac{1}{2 k} \left(  \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx) \right),
+\overline{\kappa}^P(\vx) =
+-\frac{1}{2}\Dx \cdot \hat{\vk}^P(\vx) = - \frac{1}{2 k} \Lx \phi^P(\vx,\omega) = -\frac{1}{2 k} \left(  \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx) \right),
 \label{eq:HF_appr:curvature}
 \end{equation}
 with $k = \frac{\omega}{c}$ being the acoustic wavenumber.
 Employing the transport equation \eqref{eq:HF_appr:transport_eq} the divergence of the local wavenumber vector can be expressed as
 \begin{equation}
-\overline{\kappa}^P(\vx) = -\left< \hat{\vk}^P(\vx)\cdot \frac{ \Dx A^P(\vx,\omega) }{A^P(\vx,\omega)}\right>
--\frac{ \partial A^P(\vx,\omega) / \partial \hat{\vk}^P }{ A^P(\vx,\omega)},
+\overline{\kappa}^P(\vx)
+= -\left< \hat{\vk}^P(\vx)\cdot \frac{ \Dx A^P(\vx,\omega) }{A^P(\vx,\omega)}\right>
+= -\frac{ \partial A^P(\vx,\omega) / \partial \hat{\vk}^P }{ A^P(\vx,\omega)},
 \end{equation}
 resulting in a formal definition for the vergence of the sound field in a mean sense: a field is divergent if it's amplitude decreases in the local propagation direction and convergent if the intensity is focused towards the propagation direction, so that the relative amplitude change equals the local mean curvature.
 
-Since the mean and the principle curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1(\vx)^P+\kappa_2(\vx)^P \right)$, wave fields may be classified as
+Since the mean and the principal curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1(\vx)^P+\kappa_2(\vx)^P \right)$, wave fields may be classified as
 \begin{equation}
 \label{eq:HF_appr:curvature_cases}
 \kappa_1^P(\vx),\kappa_2^P(\vx),\overline{\kappa}^P(\vx) 
@@ -228,8 +230,8 @@ P(\vx,\omega) =
 \end{equation}
 
 Generally the phase of the resultant field and the local wavenumber vector is described by a complex formula, derived in \ref{App:stereophony}.
-From the aspect of stereophonic applications only the investigation of the local propagation direction on the stereo axis is of importance at the plane of the sources (i.e. $z=0$), since the listener's position is assumed to be at the origin.
-On the stereo axis $x = 0$ the local wavenumber vector simplifies to
+From the aspect of stereophonic applications only the investigation of the local propagation direction on the stereo axis is of importance, since the listener's position is assumed to be at the origin.
+On the stereo axis $(x,z) = (0,0)$ the local wavenumber vector simplifies to
 \begin{equation}
 \vk^P(0,y,0) = - \left. \Dx \phi^P(\vx,\omega) \right|_{x=0,z=0} =
 k \begin{bmatrix} \frac{A_1 - A_2  }{ A_1 + A_2  } \frac{x-x_1}{|\vx-\vx_1|}  \\[.7em] \frac{y-y_1}{|\vx-\vx_1|} \\[.7em] \frac{z-z_1}{|\vx-\vx_1|}= 0 \\[0.5em]    \end{bmatrix}. 
@@ -270,7 +272,7 @@ The tangent law therefore ensures the matching of the local propagation directio
 
 Obviously the tangent law expresses merely the relationship between $A_1$ and $A_2$, the exact value of the gain factors can be calculated by applying some type of normalizing strategy \cite{Moore1990}.
 A frequently used strategy is keeping the power at a constant value by requiring $A_1^2 + A_2^2 = \text{constant}$.
-Alternatively it may be exploited that the amplitude of the resultant field on the stereo axis is given by $\frac{1}{4\pi}\frac{A_1+A_2}{|\vx-\vx_1|}$ (as given by \eqref{Eq:AppB:stereo_amplitude}) in order to match the amplitude to that of e.g. a phantom point source.
+Alternatively it may be exploited that the amplitude of the resultant field on the stereo axis is given by $\frac{1}{4\pi}\frac{A_1+A_2}{|\vx-\vx_1|}$ (as given by \eqref{Eq:AppB:stereo_amplitude}) in order to match the amplitude to that of a phantom point source.
 
 \section{The Kirchhoff approximation}
 
@@ -354,7 +356,7 @@ In (a) the illuminated/active part of the scatterer contour is denoted by solid 
 	\label{Fig:Theory:KH_approximation}
 \end{figure}
 %
-Writing \eqref{Eq:SFS_theory:tangent_plane} in terms of the inward normal vector, with exploiting that the exterior sound field is related to the scattered sound field according to $P_\mathrm{e}(\vx) = -P_{\mathrm{s}}(\vx)$ and introducing the windowing function into the simple source formulation, one obtains the Kirchhoff-approximation of the KHIE
+Writing \eqref{Eq:SFS_theory:tangent_plane} in terms of the inward normal vector, with exploiting that the exterior sound field is related to the scattered sound field according to $P_\mathrm{e}(\vx) = -P_{\mathrm{s}}(\vx)$ and introducing the windowing function into the simple source formulation, one obtains the Kirchhoff-approximation of the simple source formulation
 \begin{equation}
 \oint_{\dO} 
 - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
@@ -375,12 +377,12 @@ The lack of diffractional waves around the enclosure gives rise to artifacts on 
 %\newpage
 \section{The stationary phase approximation}
 
-The section introduces a basic tool of asymptotic analysis, the \emph{stationary phase approximation (SPA)}.
+This section introduces a basic tool of asymptotic analysis, the \emph{stationary phase approximation (SPA)}.
 The method is applied to evaluate complex integrals by considering the greatest contribution stemming from critical points in the integral path.
 In the following chapters the SPA allows to extract asymptotic, local solutions from the global ones for radiation and reproduction problems written in terms of either boundary or spectral integrals.
 
 For the sake of brevity the following notation convention is used hereinafter:
-Given an $n$-dimensional function $f(\vx)$ with $\vx = \posvec{4}{x_1}{x_2}{...}{x_i}$, $i = 1,2,...,n$, the first and second partial derivatives with respect to the $i$-th and $j$-th coordinates $x_i$, $x_j$ evaluated at point $\vx^*$ is then denoted as
+Given an $n$-dimensional function $f(\vx)$ with $\vx = \posvec{4}{x_1}{x_2}{...}{x_i}$, $i = 1,2,...,n$, the first and second partial derivatives with respect to the $i$-th and $j$-th coordinates $x_i$, $x_j$ evaluated at point $\vx^*$ are denoted as
 \begin{equation}
 \left. \frac{\partial}{\partial x_i} f(\vx) \right|_{\vx = \vx^*} = f'_{x_i}(\vx^*), \hspace{1cm}
 \left. \frac{\partial^2}{\partial x_i \partial x_j} f(\vx) \right|_{\vx = \vx^*} = f''_{x_i x_j}(\vx^*).
@@ -466,7 +468,7 @@ First the physical interpretation of the stationary position is discussed for th
 %
 
 Assume that the Rayleigh integral describes an arbitrary sound field at $y>y_0$ in terms of the boundary integral along the plane $\vxo = \posvec{3}{x_0}{y = y_0}{z_0}$ according to \eqref{Eq:Theory:RayleighI}.
-It supposed that all sources of sound are located behind the Rayleigh plane in the half space $y<y_0$ generating a non-converging wavefront.
+It is supposed that all sources of sound are located behind the Rayleigh plane in the half space $y<y_0$ generating a non-converging wavefront.
 Since for the application of the SPA high frequency conditions are standard prerequisites, therefore the high frequency gradient approximation \eqref{eq:HF_approx:gradient_appr} can be applied, resulting in the high frequency Rayleigh integral
 \begin{equation}
 \label{eq:HF_approx:HighF_Rayleigh}
@@ -480,9 +482,15 @@ P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \phi^{P'}_y(\vxo,\omega) A^P(\vxo,\o
 According to \eqref{Eq:ndim_stat_point} the stationary position for the integral is found where the phase gradient vanishes.
 Exploiting that the constant phase shift $-\frac{\pi}{4}$ vanishes due to differentiation and applying the chain rule, the stationary position $\vxo^*(\vx)$ for a given receiver position $\vx$ is found, where
 \begin{equation}
-\begin{bmatrix} \frac{\partial}{\partial x_0} \\[.7em] \frac{\partial}{\partial z_0} \\[0.5em]  \end{bmatrix} \phi^P(\vxo^*(\vx),\omega) 
+\left.
+\begin{bmatrix} \frac{\partial}{\partial x_0} \\[.7em] \frac{\partial}{\partial z_0} \\[0.5em]  \end{bmatrix}
+\phi^P(\vxo,\omega)
+\right|_{\vxo=\vxo^*(\vx)}
 = 
--\begin{bmatrix} \frac{\partial}{\partial x_0} \\[.7em] \frac{\partial}{\partial z_0} \\[0.5em]  \end{bmatrix} \phi^G(\vx-\vxo^*(\vx),\omega) 
+\left.
+-\begin{bmatrix} \frac{\partial}{\partial x_0} \\[.7em] \frac{\partial}{\partial z_0} \\[0.5em]  \end{bmatrix}
+\phi^G(\vx-\vxo,\omega) 
+\right|_{\vxo=\vxo^*(\vx)}
 \end{equation}
 is satisfied.
 Applying the chain rule, by the definition \eqref{eq:local_wn_vec_def} the derivatives describe the corresponding components of the local wavenumber vector.
@@ -525,8 +533,8 @@ In the right hand side the reciprocity of the Green's function was exploited.
 %
 
 Hence, the SPA 'compares' the propagation direction/wavefronts of the described field and the Green's function along the integral path.
-The stationary position for a given receiver position is then given by that point $\vxo^*(\vx)$, where the local propagation direction of the described wave field coincides with that of a point source positioned at the receiver position $\vx$.
-Obviously, by translating back the 3D Green's function into the $\vxo^*(\vx)$, its wavenumber vector at $\vx$ will coincide with the described field's wavenumber vector. 
+The stationary position for a given receiver position is then given by that point $\vxo^*(\vx)$, where the local propagation direction of the described wave field is opposite to that of a monopole field centered at the receiver position $\vx$.
+Obviously, by translating back the 3D Green's function into $\vxo^*(\vx)$, its wavenumber vector at $\vx$ will coincide with the described field's wavenumber vector. 
 In other words, since the Rayleigh integral describes an arbitrary sound field as the resultant field of a planar distribution of point sources, for a given receiver point that point source will have the greatest contribution, that's sound field propagates into the same direction in the receiver point as the target sound field.
 
 This interpretation is illustrated in Figure \ref{Fig:HF_appr:rayleigh_stat_point} with the example of a 2D point source described by the 2D Rayleigh integral.
@@ -540,7 +548,7 @@ As an application example for the stationary phase approximation the evaluation 
 
 The stationary point was found on the Rayleigh plane, where the local propagation direction of the primary sound field coincides (with a negative sign) with the spherical wavefront of the Green's function positioned at the receiver point. 
 In order to evaluate integral \eqref{eq:HF_approx:HighF_Rayleigh} around its stationary position according to \eqref{Eq:SPAResult_nd} (with $n=2$), the signature and the determinant of the Hessian in the stationary point is required.
-In the present geometry the Hessian is given by the quadratic form
+In the present geometry the Hessian is given by the expression
 \begin{equation}
 H(\vxo) =
 \begin{bmatrix} 
@@ -548,7 +556,7 @@ H(\vxo) =
 \frac{\partial^2}{\partial x_0 \partial z_0} & \frac{\partial^2}{\partial z_0^2}\\[0.5em] \end{bmatrix} 
 \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega)  \right).
 \end{equation}
-Since in the stationary position the primary wavefront and the Green's function wavefront are tangential, and because of the spherical/umbilical nature of the latter one in the stationary point the eigenvectors of their Hessian can be chosen to coincide, and their curvatures (eigenvalues) are additive.
+Since in the stationary position the primary wavefront and the Green's function wavefront are tangential, and because of the spherical/umbilical nature of the latter one in the stationary point the eigenvectors of their Hessians can be chosen to coincide, and their curvatures (eigenvalues) are additive.
 Thus, the Hessian of the sum of the phase functions can be expressed in terms of the principal curvatures of the primary sound field $\kappa_1^P, \kappa_2^P$ and the Green's function $\kappa_1^G, \kappa_2^G$ as
 \begin{equation}
 H(\vxo^*(\vx)) = -k
@@ -590,7 +598,7 @@ P(\vx,\omega) =
 \sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \rho_2^P(\vxo^*(\vx)) }{ \left(\rho_1^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)| \right) \left(\rho_2^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|\right) } }
 \te^{-\ti k |\vx-\vxo^*(\vx)| } P(\vxo^*(\vx),\omega) .
 \end{equation}
-Finally, by applying that according to \eqref{eq:app:propagated_radii} into the direction of the local propagation direction the principal radii increase proportional with the Euclidean distance $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$, the asymptotic formula takes the form
+Finally, by applying that according to \eqref{eq:app:propagated_radii} the principal radii increase proportional with the Euclidean distance along the direction of the local propagation direction $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$, the asymptotic formula takes the form
 \begin{equation}
 \label{eq:HF_approx:ray_propagation}
 P(\vx,\omega) =
@@ -657,7 +665,7 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 	\label{Fig:HF_appr:KH_approximation_HF}
 \end{figure}
 %
-Again, it can be assumed that for a given receiver position $\vx$ most part of the integral cancels out, and the field is dominated by one particular point on the surface: by the stationary point.
+Again, it can be assumed that for a given receiver position $\vx$ most part of the integral cancels out, and the field is dominated by one particular stationary point on the surface.
 Obviously, the stationary point is found on $\dO$ where the phase gradient vanishes, i.e. where the local wavenumber vector/local propagation direction of the described sound field and the Green's function positioned at $\vx$ coincide, satisfying $\vk^P(\vxo^*(\vx))= \vk^G(\vx-\vxo^*(\vx)) = -\vk^G(\vxo^*(\vx)-\vx)$.
 This interpretation is illustrated in Figure \ref{Fig:HF_appr:KH_approximation_HF} in case of a primary point source.
 
@@ -719,9 +727,13 @@ may be evaluated asymptotically applying the stationary phase method \cite{Arnol
 The stationary point $\vx^*(k_x,k_z)$ is found for a given $k_x$ and $k_z$, where the gradient of the exponent is zero.
 Assuming that the local dispersion relation holds, two local wavenumber components completely define the local wavenumber vector and the stationary position for the spectral integral is found where
 \begin{align}
-\frac{\partial}{\partial x} \phi^P(\vx^*(k_x,k_z),\omega) + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx^*(k_x,k_z)) = k_x, \\
-\frac{\partial}{\partial z} \phi^P(\vx^*(k_x,k_z),\omega) + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx^*(k_x,k_z)) = k_z, \\
-\Dx \phi^P(\vx^*(k_x,k_z),\omega) + \vk  &= 0 \hspace{3mm} \rightarrow \hspace{3mm} \vk^P(\vx^*(\vk)) = \vk.	
+\left.
+\frac{\partial}{\partial x} \phi^P(\vx,\omega)
+\right|_{\vx=\vx^*(k_x,k_z)} + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx^*(k_x,k_z)) = k_x, \\
+\left.\frac{\partial}{\partial z} \phi^P(\vx,\omega)
+\right|_{\vx=\vx^*(k_x,k_z)} + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx^*(k_x,k_z)) = k_z, \\
+\left.\Dx \phi^P(\vx,\omega)
+\right|_{\vx=\vx^*(\vk)} + \vk  &= 0 \hspace{3mm} \rightarrow \hspace{3mm} \vk^P(\vx^*(\vk)) = \vk.	
 \end{align}
 is satisfied, with $\vk$ being the wavenumber vector of the spectral plane wave.
 
@@ -839,12 +851,12 @@ k_z^G(x^*(k_x),y,z^*(k_z)) &= k_z, \hspace{3mm} \rightarrow \hspace{3mm} k\frac{
 |\vk^G(\vx^*(k_x,k_z))| &= |\vk|,  \hspace{3mm} \rightarrow \hspace{3mm} k\frac{y}{|\vx^*(k_x,k_z)|} = k_y
 \end{align} 
 holds.
-From the same consideration as used in \ref{Sec:HF:RayleighSPA} the determinant of the phase function's Hessian is given terms of the principal curvatures, known analytically for the Green's function.
+From the same consideration as used in \ref{Sec:HF:RayleighSPA} the determinant of the phase function's Hessian is given in terms of the principal curvatures, known analytically for the Green's function.
 By definition, around the stationary position $k_y^G(\vx^*(k_x,k_z)) = k_y$ holds, and the determinant reads as
 \begin{equation}
 \mathrm{det} H(\vx^*(k_x,k_z)) = k^2 \kappa^G_1(\vx^*(k_x,k_z))\kappa^G_2(\vx^*(k_x,k_z)) \hat{k}^G_y(\vx^*(k_x,k_z))^2 = \frac{k_y^2}{|\vx^*(k_x,k_z)|^2}.
 \end{equation}
-Taking the positive curvatures into consideration (the signature of the Hessian equals (-2)) the 2D Fourier transform can be approximated by the 2D SPA of \eqref{eq:HF_approx:2D_FFT} as
+Accounting for the positive curvatures (the signature of the Hessian equals (-2)) the 2D Fourier transform can be approximated by the 2D SPA of \eqref{eq:HF_approx:2D_FFT} as
 \begin{equation}
 \tilde{G}(k_y,y,k_z) = \frac{2\pi}{\sqrt{|\det H(\vx^*(k_x,k_z))|}} \frac{1}{4\pi} \frac{\te^{-\ti k |\vx^*(k_x,k_z)|}}{|\vx^*(k_x,k_z)|} \te^{\ti k_x x^*(k_x)} \te^{\ti k_z z^*(k_z)} \te^{-\ti \frac{\pi}{2}},
 \end{equation}

@@ -36,7 +36,10 @@
 }
 
 %\setcounter{secnumdepth}{2}
-
+  \renewcommand\not[1]{#1\xnot}
+  \renewcommand{\notin}{\not\in}
+  
+  
 \newcommand{\dint}{\int\!\!\!\!\!\int}
 \newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
 \newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
@@ -98,4 +101,8 @@
 \newcommand{\Phikk}{\Phi''_{k_x k_x}}
 
 \newcommand{\tE}{t_{\mathrm{e}}}
+\newcommand{\Tret}{{\scriptstyle \frac{|\vx-\vxo|}{c} }}
+\newcommand{\TretS}{{\scriptstyle \frac{|\vx-\vxo^*(\vx,t)|}{c} }}
+
+
 \renewcommand{\arraystretch}{1}
