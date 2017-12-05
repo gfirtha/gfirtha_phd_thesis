@@ -257,76 +257,6 @@ Obviously, for a moving point source the mean curvature is that of a spherical w
 \end{equation}
 This result reflects that although the spatial distribution of the amplitude factor is altered according to the Doppler factor, the attenuation of the individual wavefronts over the propagation path is inversely proportional to the distance from the source position at the emission time instant.
 
-\subsection{Spectral representation  of moving sources}
-
-For the special case of sources under uniform motion the frequency domain and wavenumber domain representation of the radiated sound field can be expressed analytically.
-
-Assume a harmonic source moving along a straight trajectory parallel on the $x$-axis, with the source position time history $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$, oscillating at the source angular frequency $\omega_0$.
-According to \eqref{eq:moving_source:non_stat_convolution} the radiated field can be written in the form of a non-stationary convolution with the kernel being the moving source Green's function
-\begin{equation}
-P_{\mathrm{m}}(\vx,t,\omega_0) = \int_{\tE} g_m(\vx - \vxs(\tE),t-\tE) \te^{\ti \omega_0 \tE} \td \tE,
-\end{equation}
-with $t_e$ being the emission time and the $g_m$ being the retarded Green's function.
-The retarded Green's function can be expressed in terms of the 1D inverse spatial-temporal Fourier transform of the stationary Green's function
-\begin{equation}
-g_{\mathrm{m}}(\vx - \vxs(\tE),t-\tE) = \frac{1}{(2\pi)^2} \int_{k_x} \int_{\omega'} \tilde{G}(k_x,y,z,\omega') \te^{-\ti k_x \left( x-x_s - v \tE \right)}  \td k_x  \te^{\ti \omega' (t-\tE) } \td \omega',
-\end{equation}
-where $\omega'$ is the perceived frequency.
-The frequency domain representation of the radiated field is expressed in terms of the forward temporal Fourier transform with applying the above representation of the Green's function 
-\begin{equation}
-\small
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
-\int_{t}
-\int_{\tE}
-\int_{\omega'}
-\int_{k_x}
-\frac{1}{4\pi^2} \,
-\tilde{G}(k_x, y, z, \omega') \\
-\te^{-\ti k_x \left(x-x_s-v\tE\right)}\,
-\td k_x \,
-\te^{\ti \omega' \left(t-\tE\right)}\, 
-\td \omega' \,
-\te^{\ti \omega_0 \tE}\,
-\td \tE \,
-\te^{-\ti\omega t} \td t.
-\end{equation}
-Reversing the order of integration, exploiting that $\int_{t} \te^{-\ti(\omega-\omega') t} \td t = \delta(\omega-\omega')$ and applying the Dirac delta's sifting property yields
-\begin{equation}
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
-\int_{k_x}
-\frac{1}{2\pi} \,
-\tilde{G}(k_x, y, z, \omega) \\
-\te^{-\ti k_x \left(x-x_s\right)}\,
-\underbrace{\int_{\tE} \te^{-\ti (\omega-\omega_0 - k_x v)\tE} \td \tE }_{\delta(\omega-\omega_0 - k_x v)} \td k_x .
-\end{equation}
-Finally, by applying the rescaling property of the Dirac delta the analytical expression of the frequency domain representation of a moving source pass-by is obtained
-\begin{equation}
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
-\frac{1}{v}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
-\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)},
-\end{equation}
-with the Green's function wavenumber content given in \ref{tab:theory:Greens_fun_representations}.
-
-This representation can be directly Fourier transform along the $x$-dimension, yielding
-\begin{equation}
-\tilde{P}_\mathrm{m}}(k_x,y,z,\omega,\omega_0) =
-\frac{2\pi}{v}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
-\te^{\ti \frac{\omega-\omega_0}{v} x_s}
- \delta(k_x - \frac{\omega-\omega_0}{v}),
-\end{equation}
-and obviously the angular spectrum representation is given as
-\begin{equation}
-\tilde{P}_\mathrm{m}}(k_x,y,k_z,\omega,\omega_0) =
-\frac{2\pi}{v}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, k_z, \omega)
-\te^{\ti \frac{\omega-\omega_0}{v} x_s}
- \delta(k_x - \frac{\omega-\omega_0}{v}),
-\end{equation}
-
-These representation will be later directly applied for the explicit formulation of the synthesis of moving sources, serving as reference solutions.
-
 \section{Wave Field Synthesis of moving sources}
 
 So far only boundary integral formulations of steady state sound fields were discussed entirely in the frequency domain.
@@ -775,37 +705,127 @@ The above driving functions can be easily extded for sources moving inclined to 
 In this case however the moving source crosses the theoretically infinite SSD resulting in singular driving functions at the time instant of the crossing, and converging virtual wavefronts afterwards.
 The synthesis of this type of focused moving sources is not investigated in the present thesis.
 
-\section{SDM of moving sources}
-\subsection{3D SDM of moving sources}
+\section{Explicit solution for the synthesis of moving sources}
+
+\subsection{Spectral representation  of moving sources}
+
+So far only the time domain and a mixed time-frequency domain representation of moving sources were discussed, applied directly for the Wave Field Synthesis of sources under motion.
+For the special case of sources under uniform motion the frequency domain and wavenumber domain representation of the radiated sound field can be expressed analytically.
+
+Assume a harmonic source moving along a straight trajectory parallel on the $x$-axis, with the source position time history $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$, oscillating at the source angular frequency $\omega_0$.
+According to \eqref{eq:moving_source:non_stat_convolution} the radiated field can be written in the form of a non-stationary convolution with the kernel being the moving source Green's function
 \begin{equation}
-\tilde{P}_\mathrm{m}}(k_x,y-y_s,k_z,\omega,\omega_0) =
+P_{\mathrm{m}}(\vx,t,\omega_0) = \int_{\tE} g_{\mathrm{m}}(\vx - \vxs(\tE),t-\tE) \te^{\ti \omega_0 \tE} \td \tE,
+\end{equation}
+with $t_e$ being the emission time and $g_{\mathrm{m}}$ representing the retarded Green's function.
+The retarded Green's function can be expressed in terms of the 1D inverse spatial Fourier transform of the stationary Green's function taken in a retarded coordinate system
+\begin{equation}
+g_{\mathrm{m}}(\vx - \vxs(\tE),t-\tE) = \frac{1}{2\pi} \int_{k_x} \tilde{g}(k_x,y,z,t-\tE) \te^{-\ti k_x \left( x-x_s - v \tE \right)}  \td k_x .
+\end{equation}	
+The frequency domain representation of the radiated field is expressed in terms of the forward temporal Fourier transform with applying the above representation of the Green's function. 
+After rearranging the equation yields
+\begin{equation}
+\small
+P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =\frac{1}{(2\pi)^2}
+\int_{t} \!
+\int_{k_x} \!
+\underbrace{\int_{\tE} \!
+\tilde{g}(k_x, y, z, t-\tE) \\
+\te^{-\ti \tE \left(\omega_0 + v k_x\right)}\,
+\td \tE
+}_{\tilde{G}(k_x,y,z,\omega_0 + v k_x)  \te^{-\ti t (\omega_0 + v k_x)}}
+\te^{-\ti k_x (x-x_s)}
+\td k_x \,
+\te^{-\ti\omega t} \td t,
+\end{equation}
+where the underbraced part containing the spatio-temporal spectrum of the Green's function is expressed applying the shift theorem of Fourier transform, and $\omega$ is the perceived frequency.
+Reversing the order of integration the expression is cast in the form
+\begin{equation}
+P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
+\int_{k_x}
+\frac{1}{2\pi} \,
+\tilde{G}(k_x, y, z, \omega_0 + v k_x) \\
+\te^{-\ti k_x \left(x-x_s\right)}\,
+\underbrace{\int_{t} \te^{-\ti (\omega-\omega_0 - k_x v) t } \td t }_{\delta(\omega-\omega_0 - k_x v)} \td k_x .
+\end{equation}
+Finally, with applying the rescaling property, integration with the Dirac delta sifts out $k_x = \frac{\omega-\omega_0}{v}$ and the analytical expression of the frequency domain representation of a moving source pass-by is obtained
+\begin{equation}
+P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
+\frac{1}{v}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
+\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)},
+\end{equation}
+with the Green's function wavenumber content given in \ref{tab:theory:Greens_fun_representations}.
+The equation states that the frequency domain representation of a moving point source pass-by at a given receiver point is completely described by it's 1D spatio temporal spectrum $\tilde{G}(k_x,y,z,\omega)$ with the substitution $k_x \rightarrow \frac{\omega-\omega_0}{v}$.
+In the present geometry the time history of the measured pass-by is invariant along the $x$-axis up to a constant time delay depending on the source velocity.
+This fact is represented by the fact that the above spectrum depends on the $x$-position only through an exponential term, representing a group delay of a factor $\frac{x-x_s}{v}$. 
+
+Due to the spatio-temporal invariancy along the $x$-dimension the above representation can be easily Fourier transformed along the $x$-dimension, yielding
+\begin{equation}
+\tilde{P}_\mathrm{m}}(k_x,y,z,\omega,\omega_0) =
 \frac{2\pi}{v}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, k_z, \omega)
-\te^{\ti \frac{\omega-\omega_0}{v} x_s} 
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
+\te^{\ti \frac{\omega-\omega_0}{v} x_s}
  \delta(k_x - \frac{\omega-\omega_0}{v}),
 \end{equation}
+and obviously the angular spectrum representation (i.e. $k_x-y-k_z$ representation) is given as
 \begin{equation}
-\tilde{D}_\mathrm{m}}(k_x,y,k_z,\omega,\omega_0) =
-\frac{
+\tilde{P}_\mathrm{m}}(k_x,y,k_z,\omega,\omega_0) =
 \frac{2\pi}{v}
-( \te^{-\ti \sqrt{k^2-(\frac{\omega-\omega_0}{v})^2-k_z^2} |y-y_s|}/ \sqrt{k^2-(\frac{\omega-\omega_0}{v})^2-k_z^2})
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, k_z, \omega)
 \te^{\ti \frac{\omega-\omega_0}{v} x_s}
- \delta(k_x - \frac{\omega-\omega_0}{v})}
- { \te^{-\ti \sqrt{k^2-k_x^2-k_z^2} |y|}/ \sqrt{k^2-k_x^2-k_z^2} }
+ \delta(k_x - \frac{\omega-\omega_0}{v}),
 \end{equation}
+
+These representation will be later directly applied for the explicit formulation of the synthesis of moving sources, serving as reference solutions.
+
+\subsection{3D SDM of moving sources}
+
 \begin{equation}
-\tilde{D}_\mathrm{m}}(x,y,k_z,\omega,\omega_0) =
-\frac{
-\frac{2\pi}{v}
- \te^{-\ti \sqrt{k^2-(\frac{\omega-\omega_0}{v})^2-k_z^2} |y-y_s|}}
-{ \te^{-\ti \sqrt{k^2-k_x^2-k_z^2} |y|} }
-\te^{\ti \frac{\omega-\omega_0}{v} x_s}
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \te^{ -\ti k_y  | y |  } } \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
 \end{equation}
+
 \begin{equation}
-\tilde{D}_\mathrm{m}}(x,y,k_z,\omega,\omega_0) =
-\frac{2\pi}{v}
- \te^{-\ti \sqrt{k^2-(\frac{\omega-\omega_0}{v})^2-k_z^2} |y_s|}
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\frac{2\pi}{v}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y-y_s, k_z, \omega)
 \te^{\ti \frac{\omega-\omega_0}{v} x_s}
+ \delta(k_x - \frac{\omega-\omega_0}{v})}{ \te^{ -\ti k_y  | y |  } } \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+\end{equation}
+
+\begin{equation}
+D(x_0,z_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 2\ti \sqrt{ k^2 - \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2 } \frac{\frac{1}{v}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y-y_s, k_z, \omega)
+\te^{\ti \frac{\omega-\omega_0}{v} x_s}
+}{ \te^{ -\ti \sqrt{ k^2 - \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2 }  | y |  } } \te^{-\ti (\frac{\omega-\omega_0}{v} x_0 + k_z z_0)}  \td k_z.
+\end{equation}
+
+\begin{equation}
+D(x_0,z_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{v}
+\frac{
+\te^{-\ti \sqrt{k^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y-y_s|} 
+}{ \te^{ -\ti \sqrt{ k^2 - \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2 }  | y |  } } \te^{-\ti (\frac{\omega-\omega_0}{v} (x_0-x_s) + k_z z_0)}  \td k_z.
+\end{equation}
+
+\begin{equation}
+D(x_0,z_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{v}
+\underbrace{\te^{-\ti \sqrt{k^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y_s|} }_{
+\ti \left. \frac{\partial}{\partial y} \frac{\te^{-\ti \sqrt{k^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y-y_s|}}{\sqrt{k^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2}} \right|_{y=0}
+}
+\te^{-\ti k_z z_0} \td k_z
+ \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) }  .
+\end{equation}
+
+\begin{equation}
+D(x_0,z_0,\omega) = -2 \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{v}
+\left. \frac{\partial}{\partial y}  \tilde{G}(\frac{\omega-\omega_0}{v}, y-y_s, k_z, \omega) \right|_{y=0}
+\te^{-\ti k_z z_0} \td k_z
+ \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) }  .
+\end{equation}
+
+\begin{equation}
+D(x_0,z_0,\omega) = -2\frac{1}{v}
+\left. \frac{\partial}{\partial y}  \tilde{G}(\frac{\omega-\omega_0}{v}, y-y_s, z_0, \omega) \right|_{y=0}
+ \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) }  .
 \end{equation}
 
 \section{Artifacts of synthesis}
