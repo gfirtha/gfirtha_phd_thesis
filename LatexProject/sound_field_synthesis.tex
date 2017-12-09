@@ -643,7 +643,7 @@ Finally, the explicit driving function for an arbitrary virtual field is found a
 	\put(47,0){(b)}
 	\end{overpic}
 \caption{
-Synthesis of a virtual point source using a planar SSD based applying the SDM driving functions.
+Synthesis of a virtual point source using a planar SSD applying the SDM driving functions.
 The SSD is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$ denoted by solid black line. 
 The virtual source is located at $\vxs = [0,\ -2,\ 0]^{\mathrm{T}}$ oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/sec}$.
 The figures depict the real part of the synthesized field (a) and the deviation from the target sound field (b) measured at $z=0$.}
@@ -675,6 +675,7 @@ Obviously, the figure also presents the result of 3D WFS of a spherical wave wit
 
 
 \subsection{2.5D Spectral Division Method}
+\label{Sec:25D_SDM}
 
 As the geometry for the derivation of 2.5D explicit driving functions assume that the SSD is an infinite linear distribution of point sources, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The synthesized field in this arrangement reads as
@@ -775,7 +776,7 @@ As discussed in \cite{Spors10ahrens:analysis} the derived driving function spect
 The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the far field of the SSD in front of the virtual source, where $k_y \gg k_x$ dominates the inverse transform.
 Applying the Hankel's function approximation the inverse transform can be carried out analytically, resulting in
 \begin{equation}
-D(x_0,\omega) \approx \frac{1}{2} \sqrt{\frac{\yref}{\yref-y_0}} \ti \frac{\omega}{c} \frac{y_0}{|\vxo-\vxs|} H_1^{(2)}\left( \frac{\omega}{c} |\vxo-\vxs| \right)
+D(x_0,\omega) \approx \frac{1}{2} \sqrt{\frac{\yref}{\yref-y_s}} \ti \frac{\omega}{c} \frac{y_s}{|\vxo-\vxs|} H_1^{(2)}\left( \frac{\omega}{c} |\vxo-\vxs| \right)
 \end{equation}
 as given by \cite[(24)]{Spors10ahrens:analysis}.
 A further large-argument approximation of the Hankel function returns the 2.5D WFS driving function for a 3D point source referencing the synthesis on a reference line, given by \eqref{eq:SFS_theory:WFS_point_source}, indicating the the implicit solution constitutes a high frequency approximation for the explicit solution in case of a virtual point source.
