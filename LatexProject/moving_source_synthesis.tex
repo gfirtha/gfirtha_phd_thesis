@@ -258,6 +258,7 @@ Obviously, for a moving point source the mean curvature is that of a spherical w
 This result reflects that although the spatial distribution of the amplitude factor is altered according to the Doppler factor, the attenuation of the individual wavefronts over the propagation path is inversely proportional to the distance from the source position at the emission time instant.
 
 \section{Wave Field Synthesis of moving sources}
+\label{Sec:Moving_source_WFS}
 
 So far only boundary integral formulations of steady state sound fields were discussed entirely in the frequency domain.
 In order to synthesize the temporally varying sound field of a moving point source by using implicit SFS methodology an appropriate time domain boundary integral representation of arbitrary sound fields is required.
@@ -623,9 +624,10 @@ d(\vxo,t_0,\omega_0) = w(\vxo,t_0)
 \cdot \\ \cdot
 \left< \vxo -\vxs(t_0-\tau(\vxo,t_0)) \cdot \vni \right>
 \sqrt{\frac{1}{2\pi c}}
-\frac{ h(t_0) \ast_{t_0} s(t_0 - \tau( \vxo,t_0 )) }{\Delta(\vxo,t_0-\tau( \vxo, t_0 ))^{\frac{3}{2}}},
+\frac{ s^{\nshortmid}_t(t_0 - \tau( \vxo,t_0 )) }{\Delta(\vxo,t_0-\tau( \vxo, t_0 ))^{\frac{3}{2}}},
 \end{multline}
-with the pre-equalization filter's impulse response given by $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
+where the prefiltered input signal is given by $ s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with the pre-equalization filter's impulse response given by $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
+Note that unlike for the stationary case, here the order of pre-filtering and delaying of the excitation signal is not interchangeable due to the time-dependent propagation time delay.
 
 The driving functions are capable of the synthesis of a source under motion, with an arbitrary source trajectory and velocity profile applying an arbitrary SSD contour, with ensuring optimized synthesis on an arbitrary shaped reference contour.
 The synthesis in such a general scenario is depicted in Figure \ref{fig:SFS_theory:25D_WFS_moving_source}, illustrating the reproduction of a source, moving along a straight trajectory.
@@ -693,10 +695,10 @@ d(\vxo,t_0) = -
 \sqrt{\frac{ 1 }{2\pi c} }
 \sqrt{\frac{ \yref }{\yref-y_s}}
 y_s
-\frac{h(t_0) \ast_{t_0} s(\left( t_0 - \tau( \vxo,t_0 )\right))}{\Delta(\vxo,t_0)^{\frac{3}{2}}},
+\frac{s^{\nshortmid}_t(t_0 - \tau( \vxo,t_0 ))}{\Delta(\vxo,t_0)^{\frac{3}{2}}},
 \label{Eq:Moving_sources:25D_WFS_linear_ssd_td}
 \end{equation}
-with $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
+where $s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
 
 The result of synthesis is illustrated in Figure \eqref{fig:Moving_sources:25D_WFS_linear_ssd}, verifying that the presented driving function optimize the synthesis along the reference line.
 Comparison with \eqref{eq:SFS_theory:WFS_point_source} reveals that the moving source driving function formally coincide with the traditional WFS driving functions given for a stationary point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd} with the stationary distances, delays and amplitude factor changed for the corresponding dynamical variables.
@@ -766,8 +768,20 @@ P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) = \frac{1}{v}
 \int_{-\infty}^{\infty} S(\omega_0)
 \tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
 \te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)} \td \omega_0.
+\label{Eq:Moving_sources:Freq_domain_representation_wb_excit}
 \end{equation}
-This equation describes a non-stationary convolution in the spectral domain, adumbrating the fact that a non-stationary convolution in the time domain is a non-stationary convolution in the frequency domain as well \cite{Margrave1998}.
+The equation describes a non-stationary convolution in the spectral domain.
+This reveals that a non-stationary convolution in the time domain is a non-stationary convolution in the frequency domain as well \cite{Margrave1998}, formulated generally as
+\begin{equation}
+p(x,t) = \int_{-\infty}^{\infty} g(\tE, t-t_e) s(\tE) \td \tE,
+\hspace{5mm}
+P(x,\omega) = \int_{-\infty}^{\infty} \tilde{G}(\omega - \omega_0, \omega) S(\omega_0) \td \omega_0,
+\end{equation}
+or in a mixed time-frequency domain as
+\begin{equation}
+p(x,t) = \frac{1}{2\pi} \iint_{-\infty}^{\infty} G(\tE, \omega) s(\tE) \te^{\ti \omega (t-\tE)} \td \omega \td \tE.
+\end{equation}
+Obviously, these formulations directly yields equation \eqref{Eq:Moving_sources:Freq_domain_representation_wb_excit} with applying the Fourier similarity and shift theorem.
 
 \begin{figure}
 \centering
@@ -783,7 +797,8 @@ This equation describes a non-stationary convolution in the spectral domain, adu
 \label{fig:Moving_sources:moving_source_field}  
 \end{figure}
 
-Due to the spatio-temporal invariancy of the spectrum \eqref{Eq:Moving_sources:Freq_domain_representation} along the $x$-dimension the above representation can be easily Fourier transformed along the $x$-dimension, yielding
+\vspace{3mm}
+Due to the spatio-temporal invariancy of the spectrum \eqref{Eq:Moving_sources:Freq_domain_representation} along the $x$-dimension the representation can be easily Fourier transformed along the $x$-dimension, yielding
 \begin{equation}
 \tilde{P}_{\mathrm{m}}(k_x,y,z,\omega,\omega_0) =
 \frac{2\pi}{v}
@@ -847,6 +862,21 @@ D(x_0,z_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{v}
  \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) } .
 \end{equation}
 The integrand can be recognized as the $y$-derivative of the Green's function, taken on the SSD.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Planar_SDM.png}
+	\small
+	\put(0, 0){(a)}
+	\put(47,0){(b)}
+	\end{overpic}
+\caption{
+Synthesis of a moving virtual point source using a planar SSD applying the SDM driving functions.
+The SSD is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$ denoted by solid black line. 
+The virtual source is located at $\vxs(t) = [1.5 + v\cdot t,\ -2,\ 0]^{\mathrm{T}}$ with $v = \frac{3}{4} c$, oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/sec}$.
+The figures depict the real part of the synthesized field (a) and the deviation from the target sound field (b) measured at $z=0$.}
+	\label{Fig:Moving_sources:moving_synthesis_by_planar_SDM}
+\end{figure}
 Hence, evaluating the integration with respect $k_z$ results in the frequency domain explicit driving function
 \begin{equation}
 D(x_0,z_0,\omega,\omega_0) = -\frac{2}{v}
@@ -863,40 +893,11 @@ D(x_0,z_0,t,\omega_0) =
 \end{equation}
 with $\tau(\vxo,t_0)$ and $\Delta(\vxo,t_0)$ given by \eqref{fig:Moving_sources:tau_uniform} and \eqref{fig:Moving_sources:delta_uniform} respectively.
 %
-\begin{figure}
-	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Planar_SDM.png}
-	\small
-	\put(0, 0){(a)}
-	\put(47,0){(b)}
-	\end{overpic}
-\caption{
-Synthesis of a moving virtual point source using a planar SSD applying the SDM driving functions.
-The SSD is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$ denoted by solid black line. 
-The virtual source is located at $\vxs(t) = [1.5 + v\cdot t,\ -2,\ 0]^{\mathrm{T}}$ with $v = \frac{3}{4} c$, oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/sec}$.
-The figures depict the real part of the synthesized field (a) and the deviation from the target sound field (b) measured at $z=0$.}
-	\label{Fig:Moving_sources:moving_synthesis_by_planar_SDM}
-\end{figure}
 
 The result of synthesis applying the above driving functions is depicted in Figure \ref{Fig:Moving_sources:moving_synthesis_by_planar_SDM}, verifying, that applying an infinite planar SSD perfect synthesis can be achieved in front of the SSD.
 Obviously, the explicit driving functions coincide with the implicit solution for the same SSD geometry, without applying the high frequency gradient approximation.
 
 \subsection{2.5D Spectral Division Method for moving sources}
-
-\begin{figure}
-	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Linear_SDM.png}
-	\footnotesize
-	\put(0, 0){(a)}
-	\put(45,0){(b)}
-	\end{overpic}
-\caption{Synthesis of a uniformly moving virtual point source employing a linear SSD applying the 2.5D SDM driving functions.
-The SSD is located at $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$, denoted by a solid black line. 
-The virtual source is located at $\vxs(t) = [v\cdot t + 1.5,\ -2,\ 0]^{\mathrm{T}}$ with $v = \frac{3}{4}c$ oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/sec}$. 
-The reference line was set to $\yref = 1.5~\mathrm{m}$.
-The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (a) depicting the real part of the synthesized field, (b) depicting the error of synthesis.}
-	\label{Fig:Moving_sources:moving_synthesis_by_linear_SDM}
-\end{figure}
 
 Applying the wavenumber domain formulation of the field generated by a uniformly moving source the explicit driving function for an infinite linear SSD may be obtained.
 As discussed in the foregoing, the application of a linear SSD allows the synthesis of a source distribution located at the plane of the SSD and the reference line, hence in the followings 
@@ -939,6 +940,21 @@ H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\o
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
 \end{equation}
 
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Linear_SDM.png}
+	\footnotesize
+	\put(0, 0){(a)}
+	\put(45,0){(b)}
+	\end{overpic}
+\caption{Synthesis of a uniformly moving virtual point source employing a linear SSD applying the 2.5D SDM driving functions.
+The SSD is located at $\vxo = [x_0,\ 0,\ 0]^{\mathrm{T}}$, denoted by a solid black line. 
+The virtual source is located at $\vxs(t) = [v\cdot t + 1.5,\ -2,\ 0]^{\mathrm{T}}$ with $v = \frac{3}{4}c$ oscillating at $\omega_0 = 2\pi \cdot 1 ~\mathrm{krad/sec}$. 
+The reference line was set to $\yref = 1.5~\mathrm{m}$.
+The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (a) depicting the real part of the synthesized field, (b) depicting the error of synthesis.}
+	\label{Fig:Moving_sources:moving_synthesis_by_linear_SDM}
+\end{figure}
+
 The result of synthesis applying the explicit driving function is depicted in \eqref{Fig:Moving_sources:moving_synthesis_by_linear_SDM}.
 It is verified, that the explicit method theoretically ensures perfect synthesis along the reference line, therefore may serve as a reference solution.
 
@@ -951,8 +967,9 @@ D(x_0,\omega,\omega_0) =
 \te^{-\ti \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2}|y_s|}
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
 \end{equation}
-This formulation coincides with the implicit Wave Field Synthesis driving functions for a moving source, derived entirely in the spectral domain:
-
+This formulation coincides with the implicit Wave Field Synthesis driving functions for a moving source, derived entirely in the spectral domain: 
+the frequency domain representation of a moving source \eqref{Eq:Moving_sources:Freq_domain_representation} allows an alternative derivation of 2.5D WFS driving functions by applying the stationary phase approximation entirely in the frequency domain.
+The approach is described in details in \cite{Firtha2015}, however it is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in \ref{Sec:Moving_source_WFS}.
 
 \section{Artifacts of synthesis}
 	\subsection{Effects of SSD sampling}

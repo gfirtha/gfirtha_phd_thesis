@@ -471,9 +471,9 @@ Exploiting the shift theorem and the associativity of convolution yields the tem
 \begin{equation}
 d(\vxo, t) =  -
 \sqrt{\frac{1}{2\pi c}}
-\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ h(t) \ast_t s( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
+\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
 \end{equation}
-with $\ast_t$ denoting convolution in the time dimension.
+where $  s^{\nshortmid}_t( t ) = h(t) \ast_t s( t  )$, with $\ast_t$ denoting convolution in the time dimension.
 The source time history is pre-equalized with a filter, exhibiting the frequency response of $H(\omega) = \sqrt{\ti \omega}$ being a half-differentiator. 
 The filter compensates the frequency response of a 2D SSD contour as the part of the secondary source compensation factor, as discussed above.
 The impulse response of the SSD compensation filter can be expressed by differentiating the half-integrator's impulse response as given in \cite{Deregowski1983}
@@ -481,8 +481,8 @@ The impulse response of the SSD compensation filter can be expressed by differen
 h(t) = \frac{\delta(t)}{\sqrt{\pi t}} - \frac{1}{2} \frac{\theta(t)}{t^{3/2}},
 \end{equation}
 where $\theta(t)$ is the Heaviside step function.
-Practical implementation of this prefilter---being present in the 2.5D time domain driving function for an arbitrary sound field---is discussed in details in \cite{Schultz2013:IIR_prefilters}.
-\fscom{in Schultz PhD CH2.5 the ideal FIR was given analytically}
+Practical implementation of this prefilter---being present in the 2.5D time domain driving function for an arbitrary sound field---is discussed in details in \cite{Schultz2013:IIR_prefilters} applying IIR filters, while in \cite[Sec. 2.5]{Schultz2016} the ideal FIR filter coefficients are given analytically.
+
 \subsection*{Application example: Synthesis of a plane wave applying a circular SSD}
 
 As a second example the synthesis of a plane wave applying a circular SSD with the radius of $R_{\mathrm{SSD}}$ is presented.
