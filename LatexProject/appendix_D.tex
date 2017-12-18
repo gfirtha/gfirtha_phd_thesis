@@ -1,42 +1,97 @@
-\section{2.5D Kirchhoff integral for a 3D point source}
-\label{App:25D_KI}
+\section{Moving source derivatives}
 
-Assume a 2D point source, located at $\vxs = \posvec{2}{x_s}{y_s}$.
-The generated sound field inside the domain, bounded by the contour $C$ can be described by the 2D Kirchhoff approximation in terms of the 2D Green's function.
-At position $\vx \in \mathbb{R}^2$ the field reads
 \begin{equation}
-P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega) G_{2\text{D}}(\vx-\vxo,\omega) \td C,
-\end{equation} 
-with in the present case $P_{2\text{D}}(\vx,\omega) = G_{2\text{D}}(\vx-\vxs,\omega)$.
-The equality holds withing the validity of the stationary phase approximation.
-
-As a first step assume, that in three dimensions, the sound field of a vertical line source is to be described at $z=0$ in terms of the 3D Green's function.
-The equation can be rewritten as
-\begin{equation}
-P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega)\int_{-\infty}^{\infty}  G_{3\text{D}}(\vx-\vxo,\omega) \td z_0 \td C.
-\end{equation}
-The inner integral can be approximated by the SPA with the stationary point lying trivially at $z=0$, resulting in the approximation of the 2D Green's function presented in equation \eqref{eq:HF_approx:2D_vs_3D_GF}:
-\begin{equation}
-P_{2\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k^P_{\mathrm{n}}(\vxo) P_{2\text{D}}(\vxo,\omega)  \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }}G_{3\text{D}}(\vx-\vxo,\omega) \td C.
-\label{Eq:App:25D_KI_2D_ps}
+\phi^{P}(\vx,t) = \omega_0 \left( t - \tau(\vx,t) \right) =  \omega_0 \left( t - \frac{|\vx-\vxs( t- \tau(\vx,t))|}{c} \right)
 \end{equation}
 
-Now assume, that instead of a 2D point source, a 3D point source is to be described by \eqref{Eq:App:25D_KI_2D_ps}.
-Since the integral holds only for two dimensional sound fields the 3D field has to be formulated in terms of a 2D sound field with appropriate correction factors.
-Since $P$ is the sound field of a point source in 2 or 3 dimensions 
 \begin{equation}
-P_{2\text{D}}(\vx,\omega) = \sqrt{\frac{2 \pi |\vx-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega), \hspace{1cm}
-P_{2\text{D}}(\vxo,\omega) = \sqrt{\frac{2 \pi |\vxo-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega)
-\end{equation} 
-holds.
-Rewriting \eqref{Eq:App:25D_KI_2D_ps} in terms of the 3D field variables
-\begin{multline}
-\sqrt{\frac{2 \pi |\vx-\vxs|}{\ti k }} P_{3\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) \sqrt{\frac{2 \pi |\vxo-\vxs|}{\ti k }} P_{3\text{D}}(\vxo,\omega) \\
-  \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }}G_{3\text{D}}(\vx-\vxo,\omega) \td C.
+\phi^{'P}_t(\vx,t) = \omega_0 \frac{|\vx-\vxs(t-\tau)|}{\Delta(\vx,t-\tau)}
+\end{equation}
+
+\begin{equation}
+\phi^{'P}_{x_i}(\vx,t) = -\frac{\omega_0}{c} \frac{x_i -x_{s\, i}(t-\tau(\vx,t))}{\Delta(t-\tau(\vx,t))}
+\end{equation}
+
+\begin{equation}
+\phi^{''P}_{tt}(\vx,t) = \omega_0 c \left( \frac{1}{\Delta} - \frac{2 |\vx-\vxs|}{\Delta^2} + \frac{|\vx-\vxs|^2}{\Delta^3}
+\left( 1- \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx-\vxs \right>}{c^2}\right)\right)
+\end{equation}
+
+
+\begin{multline} 
+\small
+\phi^{''P}_{x_i x_j}(\vx,t) = \\
+-\frac{\omega_0}{c}\frac{ 1 }{\Delta} \left( \delta_{ij} +  \frac{  (x_j -x_{s\, j})v_{s\, i} + (x_i -x_{s\, i}) v_{s \, j} }{c \Delta} 
+-  \frac{(x_i -x_{s\, i}) (x_j -x_{s j}) \left( 1-  \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s\cdot \vx - \vxs\right>}{c^2} \right)  }{\Delta^2} \right)
 \end{multline}
-Finally, simplification and rearrangement leads to the 2.5D formulation of the Kirchhoff integral for the special case of a describing a 3D point source
-\begin{equation}
-P_{3\text{D}}(\vx,\omega) = 2 \oint_C w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) \sqrt{\frac{2 \pi |\vx-\vxo|}{\ti k }} \sqrt{ \frac{|\vxo-\vxs|}{|\vx-\vxs|}} P_{3\text{D}}(\vxo,\omega) 
- G_{3\text{D}}(\vx-\vxo,\omega) \td C.
+
+
+\begin{equation} 
+\small
+\Lx \phi^P(\vx,t) = 
+-\frac{\omega_0}{c}\frac{ 1 }{\Delta} \left( 3 +  2 \frac{  \left< \vvs \cdot \vx - \vxs  \right> /c}{ \Delta} 
+-  \frac{|\vx-\vxs|^2 \left( 1-  \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s\cdot \vx - \vxs\right>}{c^2} \right)  }{\Delta^2} \right)
 \end{equation}
-The horizontal stationary position for the integral is then found, where $|\vx-\vxs| = |\vx - \vxo(\vx)| + |\vxo(\vx)-\vxs|$ is satisfied.
+
+Transport equation:
+\begin{equation}
+\frac{ \left< \Dx \phi^P \cdot \Dx A^P \right> }{A^P} - \frac{1}{c^2} \frac{A^{P'}_t \phi^{P'}_t }{A^P} = -\frac{1}{2} \left( \Lx \phi^P - \frac{1}{c^2} \phi^{P''}_{tt} \right) = \frac{\omega_0}{c} \frac{1}{\Delta}.
+\end{equation}
+
+The relative change of amplitude into the direction of the local propagation, propagating with the actual wavefront:
+\begin{equation}
+\frac{ \left< \hat{\vk}^P \cdot \Dx A^P \right>+\frac{1}{c} A^{P'}_t }{A^P}  = \frac{ -\left< \Dx \phi^P \cdot \Dx A^P \right> }{A^P \frac{1}{c}\phi^{P'}_t } + \frac{1}{c} \frac{A^{P'}_t  }{A^P} = - \frac{1}{|\vx-\vxs|}
+\end{equation}
+From which the transport equation:
+\begin{equation}
+\frac{ -\left< \Dx \phi^P \cdot \Dx A^P \right> }{A^P } + \frac{1}{c^2} \frac{A^{P'}_t \phi^{P'}_t }{A^P} = - \frac{1}{c}\phi^{P'}_t \frac{1}{|\vx-\vxs|}
+= -\frac{\omega_0}{c} \frac{1}{\Delta}.
+\end{equation}
+Thus the relative amplitude change over the propagation direction 
+\begin{equation}
+\frac{ \left< \hat{\vk}^P \cdot \Dx A^P \right>+\frac{1}{c} A^{P'}_t }{A^P}  = \frac{1}{2} \frac{ \Lx \phi^P - \frac{1}{c^2} \phi^{P''}_{tt} }{\frac{1}{c}\phi^{P'}_t}
+\end{equation}
+
+Required:
+\begin{equation}
+\frac{\partial}{\partial t} \tau(\vx,t) = \frac{1}{c}\frac{\partial}{\partial t} |\vx-\vxs(t-\tau(\vx,t))| = 1 - \frac{|\vx-\vxs(t-\tau)|}{\Delta(\vx,t-\tau)}
+\end{equation}
+\begin{equation}
+1-\frac{\partial}{\partial t} \tau(\vx,t) = \frac{|\vx-\vxs(t-\tau)|}{\Delta(\vx,t-\tau)}
+\end{equation}
+\begin{equation}
+\Dx \tau(\vx,t) = \frac{1}{c} \Dx |\vx-\vxs(t-\tau(\vx,t))| = \frac{1}{c} \frac{\vx -\vxs(t-\tau(\vx,t))}{\Delta(t-\tau(\vx,t))}
+\end{equation}
+\begin{equation}
+\frac{\partial}{\partial x_i} \tau(\vx,t) = \frac{1}{c}\frac{\partial}{\partial x_i} |\vx-\vxs(t-\tau(\vx,t))| = \frac{1}{c} \frac{x_i -x_{s\, i}(t-\tau(\vx,t))}{\Delta(t-\tau(\vx,t))}
+\end{equation}
+\begin{multline}
+\Dx \left< \vvs(t-\tau) \cdot \vx - \vxs(t-\tau) \right> = \\ \Dx \tau(\vx,t) \left( |\vvs(\vx,t-\tau)|^2 - \left< \mathbf{a}_s(\vx,t-\tau) \cdot \vx - \vxs(t-\tau) \right> \right) + \vvs(t-\tau)
+\end{multline}
+\begin{multline}
+\Dx \Delta(\vx,t-\tau) =  c \Dx \tau(\vx,t) \left( 1-  \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx - \vxs \right>}{c^2} \right) - \frac{\vvs}{c}
+=
+\\ \frac{\vx -\vxs}{\Delta} \left( 1-  \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx - \vxs \right>}{c^2} \right) - \frac{\vvs }{c}
+\end{multline}
+\begin{multline}
+\frac{\partial}{\partial t	} \left< \vvs(t-\tau) \cdot \vx - \vxs(t-\tau) \right> = \left( 1-\frac{\partial}{\partial t} \tau(\vx,t) \right) \left( \left< \mathbf{a}_s(\vx,t-\tau) \cdot \vx - \vxs(t-\tau) \right> - |\vvs(\vx,t-\tau)|^2 \right)
+\end{multline}
+\begin{equation}
+\frac{\partial}{\partial t} \Delta = 
+c\left( 1-\frac{|\vx-\vxs|}{\Delta}
+\left(  1-  \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx - \vxs \right>}{c^2} \right)  \right)
+\end{equation}
+
+
+\begin{equation}
+\Dx A^{P}(\vx,t) = -\frac{\vx-\vxs}{\Delta^3} \left( 1- \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx-\vxs \right>}{c^2}\right)
++\frac{\vvs/c}{\Delta^2}
+\end{equation}
+
+\begin{equation}
+\frac{\partial}{\partial t} A^{P}(\vx,t) = -c \left( \frac{1}{\Delta^2} - \frac{|\vx-\vxs|}{\Delta^3} \left( 1- \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx-\vxs \right>}{c^2}\right)\right)
+\end{equation}
+
+\begin{equation}
+\phi^{''P}_{t x_{i}}(\vx,t) =  \omega_0 \left( \frac{(x_i - x_{s \, i}) + |\vx-\vxs| v_{s \, i}/c }{\Delta^2} - \frac{|\vx-\vxs|(x_i - x_{s \, i})}{\Delta^3} \left( 1- \frac{|\vvs|^2}{c^2} + \frac{\left< \mathbf{a}_s \cdot \vx-\vxs \right>}{c^2}\right) \right)
+\end{equation}

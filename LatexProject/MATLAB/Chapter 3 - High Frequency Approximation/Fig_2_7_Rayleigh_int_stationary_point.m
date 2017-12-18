@@ -78,7 +78,8 @@ set(ah4,'parent',gca);
 set(ah4,'position',[x0(1), x0(2), LineLength*kxn_g, LineLength*kyn_g]);    
 %text(x(end)+0.15,-.1,'$x$',  'Interpreter', 'LaTex' , 'FontSize', ftsize)
 %text(x_ax-0.17,y(end)+0.15,'$y$',  'Interpreter', 'LaTex' , 'FontSize', ftsize)
-
+xlim([x(1),x(end)+20*dx])
+ylim([y(1),y(end)+20*dx])
 set(gca,'box','off')
 color = get(fig,'Color');
 
@@ -89,4 +90,4 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/High_freq_approximations','rayleigh_stat_point' ) ,'-dpng')
+print( '-r300' ,fullfile( '../..','Figures/High_freq_approximations','rayleigh_stat_point' ) ,'-dpng')

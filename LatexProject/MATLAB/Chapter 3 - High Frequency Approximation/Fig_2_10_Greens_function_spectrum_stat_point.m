@@ -2,7 +2,7 @@
 clear 
 close
 
-dx = 0.025;
+dx = 0.01;
 
 L = 2;
 x = (-L:dx:L)';
@@ -57,7 +57,6 @@ B = 2*Ly^2/Lz;
 C = Ly^2 - Lr^2;
 a = (-B-sqrt(B^2-4*A*C))/(2*A);
 %%
-ftsize = 14;
 pos = [ 0.0 0.05 0.5 1 ;
         0.5 0.05 0.5 0.9 ];
 f = figure('Units','points','Position',[200,200,700,330]);
@@ -67,14 +66,6 @@ mesh(x,y,0*Zxz,real(P_xy),'FaceColor','interp');
 set(gca, 'Units','normalized','Position',pos(1,:));
 hold on; 
 mesh(x,0*Yxy,Zxz,real(P_xz),'FaceColor','interp');
-%plot3(x,0*x+dx,0*x+dx,'k','LineWidth',2.5);
-% plot3(x,0*x+yref,0*x,'--k','LineWidth',1.5);
-% plot3(x,0*x,0*x+yref,'--k','LineWidth',1.5);
-% plot3(0*(0:0.01:pi/2),yref*cos(0:0.01:pi/2),yref*sin(0:0.01:pi/2),'--k','LineWidth',1.5);
-% plot3(0*y,y,0*y,'--k');
-% plot3(0*z,0*z,z,'--k');
-% plot3(0*y,y,y*(kz/ky),'.k','LineWidth',1.5);
-
 e2 = mesh(0*Yyz,Yyz,Zyz,real(P_yz),'FaceColor','interp','facealpha',.8);
 shading interp
 axis equal tight
@@ -96,21 +87,11 @@ arrow3(Xi',Xe','1k')
 xlim([xi(1),xe(1)]);
 ylim([yi(2),ye(2)]);
 zlim([zi(3),ze(3)]);
-xlabel('$x$','Interpreter','latex','FontSize',ftsize)
-ylabel('$y$','Interpreter','latex','FontSize',ftsize)
-zlabel('$z$','Interpreter','latex','FontSize',ftsize)
-set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(f,'type','axes');
-b = get(gca,'XTickLabel');
-set(gca,...
-'XTickLabel','','YTickLabel','','ZTickLabel','');
+set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 set(gca,'box','off')
 color = get(f,'Color');
 set(gca,'XColor',color,'YColor',color,'ZColor',color,'TickDir','out')
 grid off
-% %set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
-% 
-%hold off
 
 subplot(1,2,2)
 pcolor(x,y,real(P_xy));
@@ -120,8 +101,7 @@ shading interp
 caxis([-1,1]*1e-1)
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(gca,...
-'XTickLabel','','YTickLabel','','ZTickLabel','');
+set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 set(gca,'box','off')
 color = get(f,'Color');
 set(gca,'XColor',color,'YColor',color,'TickDir','out')
@@ -129,7 +109,8 @@ grid off
 hold on
 pcolor_ax =(gca);
 cRange = caxis;
-[C,~]= contour( x, y , real(P_xy), '-k');
+P_xy(1:2,:)= 0*P_xy(1:2,:);
+[C,~]= contour( x, y , real(P_xy) ,1 , '-k');
 
 headWidth = 5*1.5;
 headLength = 5*1.5;
@@ -171,5 +152,4 @@ line([-xstat,0],[x0,y0],'Color','black','LineStyle','--')
 ylim([y(1)-10*dx,y(end)+15*dx])
 
 set(gcf,'PaperPositionMode','auto');
-print -dpng Greens_spectrum_SPA -r300
-print( fullfile( '../..','Figures/High_freq_approximations','greens_stat_pos_2' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/High_freq_approximations','greens_stat_pos_2' ) ,'-dpng')

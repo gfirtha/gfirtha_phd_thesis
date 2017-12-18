@@ -65,10 +65,11 @@ for n = 1 : length(Dx0)
 end
 close(wb)
 %%
-ftsize = 12;
+ftsize = 13.75;
 f = figure('Units','points','Position',[200,200,400,470]);
+set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.565  0.72 .45
-        0.1   0.025 0.85 .5];
+        0.1   0.035 0.85 .5];
     
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x,y,real(field_synth));
@@ -79,8 +80,8 @@ hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 
 %
@@ -95,12 +96,15 @@ hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 c = colorbar;
-title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize);
+title(c,'[dB]'  , 'FontSize', ftsize);
 set(gca,'FontName','Times New Roman');
 %
 %
+allAxesInFigure = findall(f,'type','axes');
+b = get(gca,'XTickLabel');
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(gcf,'PaperPositionMode','auto');
 print( fullfile( '../..','Figures/SFS_theory','3D_WFS_general' ) ,'-dpng')

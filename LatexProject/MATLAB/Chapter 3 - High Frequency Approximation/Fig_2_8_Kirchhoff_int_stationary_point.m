@@ -13,7 +13,7 @@ rad_ext.Elements = flip_elements(rad_ext.Elements);
 Lx = 6.25;
 Ly = 4;
 dx = 1e-2;
-x = (0:dx:Lx);
+x = (0:dx:Lx);  
 y = (0:dx:Ly);
 [X,Y] = meshgrid(x,y);
 
@@ -72,8 +72,7 @@ x0 = [x2(ind(i)),y2(ind(i))];
 R0 = sqrt((X-xr(1)).^2 + (Y-xr(2)).^2);
 field2 =exp(-1i*k*R0)./R0;
 [C2,~]= contour( x, y , real(field2).*mask, '--k');
-set(gca,...
-'XTickLabel','','YTickLabel','');
+set(gca,'XTickLabel','','YTickLabel','');
 
 
 plot(xs(1),xs(2),'.k','MarkerSize',20);
@@ -92,14 +91,25 @@ headWidth = 5*1.5;
 headLength = 5*1.5;
 
 LineLength = 0.65;
+ah3 = annotation('arrow',...
+    'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth,'LineWidth',1.5);
+set(ah3,'parent',gca);
+set(ah3,'position',[x0(1), x0(2), LineLength*kxn_p, LineLength*kyn_p]);    
+
 ah4 = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth,'LineWidth',1.5);
 set(ah4,'parent',gca);
 set(ah4,'position',[x0(1), x0(2), LineLength*kxn_g, LineLength*kyn_g]);    
+
+ah5 = annotation('arrow',...
+    'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth,'LineWidth',1.5);
+set(ah5,'parent',gca);
+set(ah5,'position',[xr(1), xr(2), -LineLength*kxn_p, -LineLength*kyn_p]);    
+
 
 set(gca,'box','off')
 color = get(fig,'Color');
 
 set(gca,'XColor',color,'YColor',color,'TickDir','out')
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/High_freq_approximations','KHIE_stat_point' ) ,'-dpng')
+print( '-r300', fullfile( '../..','Figures/High_freq_approximations','KHIE_stat_point' ) ,'-dpng')

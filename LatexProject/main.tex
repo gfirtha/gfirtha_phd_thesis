@@ -37,81 +37,13 @@
 \usepackage{sidecap}
 \usepackage{transparent}
 
- \makesavenoteenv{tabular}
-%
-\renewcommand{\floatpagefraction}{.99}
+\newcommand{\fscom}[2][red]{\textcolor{#1}{#2}} %Schultz comment
 
-\newcount\posveccount
-\newcommand*\posvec[1]{
-        \global\posveccount#1
-        [
-        \posvecnext
-}
-\def\posvecnext#1{
-        #1
-        \global\advance\posveccount-1
-        \ifnum\posveccount>0
-                ,\
-                \expandafter\posvecnext
-        \else
-                ]^{\mathrm{T}}
-        \fi
-}
-
-\newcount\colveccount
-\newcommand*\colvec[1]{
-        \global\colveccount#1
-        \begin{bmatrix}
-        \colvecnext
-}
-\def\colvecnext#1{
-        #1
-        \global\advance\colveccount-1
-        \ifnum\colveccount>0
-                \\[5pt]
-                \expandafter\colvecnext
-        \else
-                \end{bmatrix}
-        \fi
-}
-
-%\setcounter{secnumdepth}{2}
-
-\newcommand{\dint}{\int\!\!\!\!\!\int}
-\newcommand{\tint}{\int\!\!\!\!\int\!\!\!\!\int}
-\newcommand{\qint}{\int\!\!\!\!\int\!\!\!\!\int\!\!\!\!\int}
-\newcommand{\td}{\mathrm{d}}
-\newcommand{\te}{\mathrm{e}}
-\newcommand{\ti}{\mathrm{j}}
-\newcommand{\sinfi}{\sin\varphi}
-\newcommand{\cosfi}{\cos\varphi}
-\newcommand{\sinteta}{\sin\theta}
-\newcommand{\costeta}{\cos\theta}
-\newcommand{\yref}{y_{\mathrm{ref}}}
-\newcommand{\dref}{d_{\mathrm{ref}}}
-\newcommand{\vx}{\mathbf{x}}
-\newcommand{\vn}{\mathbf{n}}
-\newcommand{\vxo}{\mathbf{x}_0}
-\newcommand{\vni}{\mathbf{n}_{\mathrm{in}}}
-\newcommand{\vno}{ \mathbf{n}_{\mathrm{out}} }
-\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
-\newcommand{\vxref}{\mathbf{x}_{\mathrm{ref}}}
-\newcommand{\vk}{\mathbf{k}}
-\newcommand{\vhk}{\hat{\mathbf{k}}}
-\newcommand{\kn}{k_\mathrm{n}}
-\newcommand{\Oi}{\Omega_{\mathrm{i}}}
-\newcommand{\Oe}{\Omega_{\mathrm{e}}}
-\newcommand{\dO}{\partial \Omega}
-\newcommand{\Div}{\mathrm{div}}
-
-\newcommand{\fpcom}[1]{{\color{blue}#1}}
-\newcommand{\fgcom}[1]{{\color{red}#1}}
-
-%
-\renewcommand{\arraystretch}{1}
+\makesavenoteenv{tabular}
+\input{mydefs}
 
 \title{A Unified Wave Field Synthesis Framework \\
-		\large with Application for Moving Virtual Sources}
+		\large \fscom{with Special Focus on Moving Virtual Sources}}
 \date{\today \\
 Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
 \author{Gergely Firtha}
@@ -127,9 +59,10 @@ Budapest University of Technology and Economics, \\ Dept. of Networked Systems a
 %
 %\chapter{Introduction}
 %
-\chapter{Theory of wave propagation and radiation problems}
+\chapter{Theory of Wave Propagation and Radiation Problems}
 \pagenumbering{arabic}
 \label{sec:general_wave_theory}
+\fscom{sections/subsec large headings?}
 \input{general_wave_theory}
 %
 %

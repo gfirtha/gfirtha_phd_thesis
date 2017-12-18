@@ -30,10 +30,12 @@ ky_pw = k*sin(theta*pi/180)*ones(size(y0_pw));
 
 p_pw = exp(-1i*k*(cos(theta*pi/180)*X+sin(theta*pi/180)*Y));
 %%
-ftsize = 12;
+ftsize = 12.2;
 f = figure('Units','points','Position',[200,200,500,360]);
 
-p1 = axes('Units','normalized','Position',[ 0.075 0.42 0.37 .6 ]);
+set(f,'defaulttextinterpreter','latex')
+   
+p1 = axes('Units','normalized','Position',[ 0.08 0.42 0.37 .6 ]);
 pcolor(x,y,real(p_ps));
 shading interp
 axis equal tight
@@ -53,13 +55,9 @@ for i = 1:1:length(x0_ps)
 end
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
+ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(f,'type','axes');
-b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-%
 
 p2 = axes('Units','normalized','Position',[ 0.61 0.42 0.37 .6 ]);
 pcolor(x,y,real(p_pw));
@@ -85,28 +83,29 @@ end
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
 
-
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
+ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(f,'type','axes');
-b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
 %
-p3 = axes('Units','normalized','Position',[ 0.075 0.1 0.37 .2 ]);
-plot(x,nkx_ps2);
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow [\mathrm{rad/m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+p3 = axes('Units','normalized','Position',[ 0.08 0.1 0.37 .2 ]);
+plot(x,nkx_ps2,'LineWidth',1);
+xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0)$'   , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 
 p4 = axes('Units','normalized','Position',[ 0.61 0.1 0.37 .2 ]);
-plot(x,cos(theta*pi/180)*ones(size(x)));
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$\hat{k_x}^P(x,y_0) \rightarrow [\mathrm{rad/m}]$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+plot(x,cos(theta*pi/180)*ones(size(x)),'LineWidth',1);
+xlabel( '$x \rightarrow$ [m]'  , 'FontSize', ftsize );
+ylabel( '$\hat{k_x}^P(x,y_0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 ylim([0,1])
 grid on
 
+allAxesInFigure = findall(f,'type','axes');
+b = get(gca,'XTickLabel');
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
+
+
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/High_freq_approximations','wavenumber_vector' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/High_freq_approximations','wavenumber_vector' ) ,'-dpng')
