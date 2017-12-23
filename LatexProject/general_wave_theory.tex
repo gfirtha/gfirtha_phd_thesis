@@ -1,4 +1,4 @@
-In this chapter the theoretical basis of sound radiation is introduced. 
+In this chapter the theoretical basis of sound radiation is \fscom{introduced}. 
 The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. 
 Various integral representations of sound fields are presented including spectral and boundary integrals.
 %
@@ -543,7 +543,7 @@ From the general solution the case of point-like disturbances are of special int
 	\put(35,0){(b)}
 	\put(68,0){(c)}
 	\end{overpic}
-	\caption{ Directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). All multipoles are solutions to the wave equation due to its linearity.}
+	\caption{ Directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). All multipoles are solutions to the wave equation due to its linearity.\fscom{give a hint what exactly is plotted, abs/dB, maybe improved resolution without meshlines?}}
 	\label{Fig:Theory:multipoles}
 \end{figure}
 \begin{itemize}
@@ -655,7 +655,7 @@ P(\vxo,\omega)  \frac{\partial G(\vx-\vxo,\omega)}{\partial\vni}
 \right)   \td \dO( \vxo),
 \label{Eq:Theory:Kirchhoff-Helmholtz}
 \end{equation}
-with
+with \fscom{check if $\frac{\partial G(\vx-\vxo,\omega)}{\partial\vni}$ is derivative w.r.t. $\vxo$ (notation above is w.r.t $\vx$) for source position $\vxo$ and receiver $\vx$ for the chosen sign convention, seems to be ok, but then check later Rayleigh integrals.}
 \begin{equation*}
 \alpha = \begin{cases} 
 1           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Oi  	   \\
@@ -834,7 +834,7 @@ G_D(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
 with $\vx' = \posvec{3}{x}{2 y_0-y}{z}$  as illustrated in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 %
 
-Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariancy of the Green's function yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
+Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariance of the Green's function yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
 \begin{eqnarray}
 P_N(\vx,\omega) =
 \int_{\dO_P}
@@ -850,6 +850,7 @@ P_D(\vx,\omega) =
 \td \dO_P ( \vxo).
 \label{Eq:Theory:RayleighII}
 \end{eqnarray}
+\fscom{same as above, derivative w.r.t. to $\vx$ or $\vxo$ or check sign of Dirichlet Rayleigh}
 Obviously, the Rayleigh integrals do not ensure a zero sound field behind the Rayleigh plane at $y<0$.
 In this region the Rayleigh I integral expresses the field of the primary source distribution, reflected from an infinite rigid plane, while the Rayleigh II integral gives that from a sound soft planar boundary.
 
