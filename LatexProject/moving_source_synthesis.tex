@@ -710,47 +710,27 @@ The synthesis of this type of focused moving sources is not investigated in the 
 \section{Explicit solution for the synthesis of moving sources}
 
 So far only the time domain and a mixed time-frequency domain representation of moving sources were discussed, applied directly for the Wave Field Synthesis of sources under motion.
-For the special case of sources under uniform motion the frequency domain and wavenumber domain representation of the radiated sound field can be expressed analytically.
+For the special case of sources under uniform motion the frequency domain and wavenumber domain representation of the radiated sound field can be expressed analytically, by applying the Fourier theorem for a non-stationary convolution.
 
 \subsection{Spectral representation  of moving sources}
 
-Assume a harmonic source moving along a straight trajectory parallel on the $x$-axis, with the source position time history $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$, oscillating at the source angular frequency $\omega_0$.
-According to \eqref{eq:moving_source:non_stat_convolution} the radiated field can be written in the form of a non-stationary convolution with the kernel being the moving source Green's function
+Assume a harmonic source moving along a straight trajectory parallel on the $x$-axis, with the source position time history $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$ with a wide-band excitation time history $s(t)$.
+According to \eqref{eq:moving_source:non_stat_convolution} the radiated field can be written in the form of a convolution with the kernel being the moving source Green's function
 \begin{equation}
-P_{\mathrm{m}}(\vx,t,\omega_0) = \int_{\tE} g_{\mathrm{m}}(\vx - \vxs(\tE),t-\tE) \te^{\ti \omega_0 \tE} \td \tE,
+P_{\mathrm{m}}(\vx,t) = \int_{\tE} g_{\mathrm{m}}(x - x_s-v\cdot\tE ,y,z,t-\tE) s(\tE) \td \tE,
 \end{equation}
 with $t_e$ being the emission time and $g_{\mathrm{m}}$ representing the retarded Green's function.
-The retarded Green's function can be expressed in terms of the 1D inverse spatial Fourier transform of the stationary Green's function taken in a retarded coordinate system
+Comparison with \eqref{Eq:App:Non_stat_conv_td} reveals that the radiated field is written in terms of a non-stationary convolution, for which the spectral representation is known, given by \eqref{Eq:App:Non_stat_conv_fd}.
+By applying the Fourier shift theorem (by a factor of $x-x_s$) and the scaling theorem (by $v$) to \eqref{Eq:App:Non_stat_conv_fd} the spectrum of the radiated field is given by
 \begin{equation}
-g_{\mathrm{m}}(\vx - \vxs(\tE),t-\tE) = \frac{1}{2\pi} \int_{k_x} \tilde{g}(k_x,y,z,t-\tE) \te^{-\ti k_x \left( x-x_s - v \tE \right)}  \td k_x .
-\end{equation}	
-The frequency domain representation of the radiated field is expressed in terms of the forward temporal Fourier transform with applying the above representation of the Green's function. 
-After rearranging the equation yields
-\begin{equation}
-\small
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =\frac{1}{(2\pi)^2}
-\int_{t} \!
-\int_{k_x} \!
-\underbrace{\int_{\tE} \!
-\tilde{g}(k_x, y, z, t-\tE) \\
-\te^{-\ti \tE \left(\omega_0 + v k_x\right)}\,
-\td \tE
-}_{\tilde{G}(k_x,y,z,\omega_0 + v k_x)  \te^{-\ti t (\omega_0 + v k_x)}}
-\te^{-\ti k_x (x-x_s)}
-\td k_x \,
-\te^{-\ti\omega t} \td t,
+P_{\mathrm{m}}(\mathbf{x},\omega) = \frac{1}{v} 
+\int_{-\infty}^{\infty} S(\omega_0)
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
+\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)} \td \omega_0.
+\label{Eq:Moving_sources:Freq_domain_representation_wb_excit}
 \end{equation}
-where the underbraced part containing the spatio-temporal spectrum of the Green's function is expressed applying the shift theorem of Fourier transform, and $\omega$ is the perceived frequency.
-Reversing the order of integration the expression is cast in the form
-\begin{equation}
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
-\int_{k_x}
-\frac{1}{2\pi} \,
-\tilde{G}(k_x, y, z, \omega_0 + v k_x) \\
-\te^{-\ti k_x \left(x-x_s\right)}\,
-\underbrace{\int_{t} \te^{-\ti (\omega-\omega_0 - k_x v) t } \td t }_{\delta(\omega-\omega_0 - k_x v)} \td k_x .
-\end{equation}
-Finally, with applying the rescaling property, integration with the Dirac delta sifts out $k_x = \frac{\omega-\omega_0}{v}$ and the analytical expression of the frequency domain representation of a moving source pass-by is obtained
+Hence, the radiated field in the spectral domain is obtained by a non-stationary convolution as well.
+Since summation is done over the frequency content of the source input signal $S(\omega_0)$, the non-stationary convolution kernel can be recognized as the frequency content of a moving source pass-by, radiating at a single frequency component $\omega_0$, given as
 \begin{equation}
 P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
 \frac{1}{v}
@@ -758,30 +738,13 @@ P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
 \te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)},
 \label{Eq:Moving_sources:Freq_domain_representation}
 \end{equation}
-with the Green's function wavenumber content given in \ref{tab:theory:Greens_fun_representations}.
+with the Green's function wavenumber content given in \ref{tab:theory:Greens_fun_representations} as
+\begin{equation}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega) = -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} y \right).
+\end{equation}
 The equation states that the frequency domain representation of a moving point source pass-by at a given receiver point is completely described by it's 1D spatio temporal spectrum $\tilde{G}(k_x,y,z,\omega)$ with the substitution $k_x \rightarrow \frac{\omega-\omega_0}{v}$.
 In the present geometry the time history of the measured pass-by is invariant along the $x$-axis up to a constant time delay depending on the source velocity.
 This fact is represented by the fact that the above spectrum depends on the $x$-position only through an exponential term, representing a group delay of a factor $\frac{x-x_s}{v}$. 
-For an arbitrary wideband source excitation signal with the frequency content given by $S(\omega)$, the spectrum of the radiated field can be written by summing over the weighted spectral components 
-\begin{equation}
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) = \frac{1}{v} 
-\int_{-\infty}^{\infty} S(\omega_0)
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
-\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)} \td \omega_0.
-\label{Eq:Moving_sources:Freq_domain_representation_wb_excit}
-\end{equation}
-The equation describes a non-stationary convolution in the spectral domain.
-This reveals that a non-stationary convolution in the time domain is a non-stationary convolution in the frequency domain as well \cite{Margrave1998}, formulated generally as
-\begin{equation}
-p(x,t) = \int_{-\infty}^{\infty} g(\tE, t-t_e) s(\tE) \td \tE,
-\hspace{5mm}
-P(x,\omega) = \int_{-\infty}^{\infty} \tilde{G}(\omega - \omega_0, \omega) S(\omega_0) \td \omega_0,
-\end{equation}
-or in a mixed time-frequency domain as
-\begin{equation}
-p(x,t) = \frac{1}{2\pi} \iint_{-\infty}^{\infty} G(\tE, \omega) s(\tE) \te^{\ti \omega (t-\tE)} \td \omega \td \tE.
-\end{equation}
-Obviously, these formulations directly yields equation \eqref{Eq:Moving_sources:Freq_domain_representation_wb_excit} with applying the Fourier similarity and shift theorem.
 
 \begin{figure}
 \centering
@@ -877,7 +840,7 @@ The virtual source is located at $\vxs(t) = [1.5 + v\cdot t,\ -2,\ 0]^{\mathrm{T
 The figures depict the real part of the synthesized field (a) and the deviation from the target sound field (b) measured at $z=0$.}
 	\label{Fig:Moving_sources:moving_synthesis_by_planar_SDM}
 \end{figure}
-Hence, evaluating the integration with respect $k_z$ results in the frequency domain explicit driving function
+Hence, evaluating the integration with respect to $k_z$ results in the frequency domain explicit driving function
 \begin{equation}
 D(x_0,z_0,\omega,\omega_0) = -\frac{2}{v}
 \left. \frac{\partial}{\partial y}  \tilde{G}(\frac{\omega-\omega_0}{v}, y-y_s, z_0, \omega) \right|_{y=0}
@@ -969,9 +932,19 @@ D(x_0,\omega,\omega_0) =
 \end{equation}
 This formulation coincides with the implicit Wave Field Synthesis driving functions for a moving source, derived entirely in the spectral domain: 
 the frequency domain representation of a moving source \eqref{Eq:Moving_sources:Freq_domain_representation} allows an alternative derivation of 2.5D WFS driving functions by applying the stationary phase approximation entirely in the frequency domain.
-The approach is described in details in \cite{Firtha2015}, however it is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in \ref{Sec:Moving_source_WFS}.
+The approach---described in details in \cite{Firtha2015}---is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in \ref{Sec:Moving_source_WFS}.
+The coincidence of the driving functions, however indicates that Wave Field Synthesis is a high-frequency/wavefront matching approximation of the explicit solution, proven for a general stationary sound field in the previous chapter.
 
-\section{Artifacts of synthesis}
-	\subsection{Effects of SSD sampling}
-	
-\section{Practical implementation of Wave Field Synthesis driving functions}
+\section{Practical aspects of the synthesis of moving sources}
+
+The present thesis so far discussed the theoretical foundations of sound field synthesis (in particular of WFS) assuming an idealized secondary source distribution, resulting in analytical driving functions.
+Obviously, the practical implementation of the foregoing raises numerous questions.
+As an example the effects of applying directive SSD elements---instead of the ideal monopole secondary sources---were already discussed in section \ref{Sec:Dir_SSD}, compensated analytically within the validity of the stationary phase approximation.
+
+The following final section presents several practical considerations for the implementation of the presented Wave Field Synthesis framework including difficulties, arising for the special case of synthesizing a moving point source.
+
+\subsection{Effects of the SSD shape and discretization}
+
+\subsection{Calculation of source trajectory}
+
+\subsection{Calculation of propagation time delay}
