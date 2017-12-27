@@ -841,7 +841,7 @@ and the asymptotic approximation of the explicit driving function on a given spe
 \label{eq:hfapproxspectra}
 \tilde{D}(k_x,y)
 \approx  
-\sqrt{\frac{\phi_{G,xx}''(x^*_G(k_x),y)}{\phi_{P,xx}''(x^*_P(k_x),y)}}
+\sqrt{\frac{\phiGxx(x^*_G(k_x),y)}{\phiPxx(x^*_P(k_x),y)}}
 \, \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
 \, \te^{\ti k_x \cdot \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
 \end{equation}
@@ -853,7 +853,7 @@ In order to express the driving functions in the spatial domain the inverse Four
 \label{Eq:inverse_transform_def}
 D(x_0,y)
 =  \frac{1}{2\pi} \int\limits_{-\infty}^{\infty}
-\sqrt{\frac{\phi_{G,xx}''(x^*_G(k_x),y)}{\phi_{P,xx}''(x^*_P(k_x),y)}} 
+\sqrt{\frac{\phiGxx(x^*_G(k_x),y)}{\phiPxx(x^*_P(k_x),y)}} 
 \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
 \,\te^{\ti k_x \cdot\left( x^*_P(k_x) - x^*_G(k_x)\right)}
 \,\te^{-\ti k_x x_0} \td k_x
@@ -1104,7 +1104,7 @@ or expressed in terms of the second phase derivatives
 D(x_0,\omega) =
 \small
 2\sqrt{\frac{2\pi }{\ti }} 
-\frac{ 1 }{\sqrt{\phi^{''P}_{zz}(\vxo) + \phi^{''G}_{zz}(\vxref(\vxo)-\vxo)}}
+\frac{ 1 }{\sqrt{\phi^{P''}_{zz}(\vxo) + \phi^{G''}_{zz}(\vxref(\vxo)-\vxo)}}
 \ti k_y^{P}(\vxo)
 P(\vxo,\omega).
 \end{equation}
