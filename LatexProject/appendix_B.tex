@@ -4,7 +4,7 @@
 \subsection{Definition of the principal curvatures and principal directions}
 Assume a wave field, described by the general polar form $P(\vx,\omega) = A^P(\vx,\omega)\te^{\ti \phi^P (\vx,\omega)}$!
 Supposing, that the amplitude changes slowly, compared to the phase function the local dispersion relation $| \nabla \phi(\vx,\omega) |= \frac{\omega}{c} = k$ holds and the equation describing an arbitrary wavefront i.e. $\phi^P(\vx,\omega) - C = 0$ is the \emph{normalform} of the given surface \cite{Hartmann1999, Hartmann2001}.
-The Hessian matrix of the function is given by the symmetric matrix 
+The Hessian matrix of the function is given by the symmetric matrix \fscom{maybe its better to make H bold to indicate matrix}
 \begin{equation}
 H^P =
 \frac{\partial^2}{\partial x_i \partial x_j} \phi^P(\vx,\omega) 
@@ -26,8 +26,9 @@ The curvature is defined as the quadratic form
 \kappa = \mathbf{v} H^P \mathbf{v}^{\mathrm{T}}.
 \label{Eq:App:curvature_def}
 \end{equation}
+\fscom{define $\mathbf{v}$, check $\mathbf{V}$ vs. $\mathbf{v}$, indicate kappa as matrix with bold?}
 The main curvatures are then defined as the minimum and maximum values of curvature, i.e. the reciprocal of the osculating circles' radii (the principal radii).
-The corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.
+The corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.\fscom{cf. figure \ref{Fig:HF_appr:local_wave_curvature}}
 \end{itemize}
 Finally, as the general case the Hessian matrix of an arbitrary wavefront can be written in terms of the principal curvatures and the corresponding eigenvectors as
 \begin{equation}
@@ -37,7 +38,7 @@ H^P = -k \left( \kappa_1  \mathbf{v}_1 \mathbf{v}_1^\mathrm{T} + \kappa_2 \mathb
 where $\mathbf{V} = \begin{bmatrix} \mathbf{v}_1 & \mathbf{v}_2 \\\end{bmatrix}$ and $\mathbf{K} = \begin{bmatrix} \kappa_1 & 0 \\[.0em] 0 & \kappa_2 \\[0.0em] \end{bmatrix}$ are the matrices of the eigenvectors and the curvatures.
 
 For the special case of the three-dimensional Green's function positioned at $\vxo$, only eigenvector corresponding for $\lambda_3$ is well-defined over the spherical /\emph{umbilical} wavefront, being a radial directed normal vector.
-$\lambda_2$ and $\lambda_3$ may be arbitrary orthogonal vectors in the plane, tangent to the surface in the point of investigation $\vx$, with the corresponding principal curvatures being $\kappa_1^G(\vx) = \kappa_2^G(\vx) = 1/|\vx - \vxo| $.
+$\lambda_2$ and $\lambda_3$ \fscom{1 and 2?} may be arbitrary orthogonal vectors in the plane, tangent to the surface in the point of investigation $\vx$, with the corresponding principal curvatures being $\kappa_1^G(\vx) = \kappa_2^G(\vx) = 1/|\vx - \vxo| $.
 
 \vspace{3mm}
 In the present treatise when dealing with 2.5D problems it is a standard prerequisition, that in the plane of investigation ($z = 0$) all the involved wave fields propagate along the horizontal direction ($k_z(x,y,0) \equiv 0$), thus the Hessian of the phase function becomes
@@ -49,7 +50,7 @@ H^P =  \begin{bmatrix}
 \end{equation}
 with the trivial eigenvector/principal direction $\mathbf{v_2} = \posvec{3}{0}{0}{1}$ and the corresponding principal curvature $\kappa_2^P(\vx) = -\frac{1}{k} \phi^{P''}_{zz}(\vx,\omega)$.
 Furthermore, considering, that the eigenvector with a zero eigenvalue is given by $\mathbf{v}_3 = \hat{\vk}^P(\vx) = \posvec{3}{\hat{k}_x^P(\vx)}{\hat{k}_y^P(\vx)}{0}$ and $\mathbf{v}_1$ is orthogonal to  $\mathbf{v}_2$ and $\mathbf{v}_3$, therefore $\mathbf{v}_1 = \posvec{3}{\hat{k}_y^P(\vx)}{\hat{k}_x^P(\vx)}{0}$ holds.
-From simple geometrical considerations and applying \eqref{Eq:App:curvature_def} the elements of the Hessian matrix can be expressed as
+From simple geometrical considerations and applying \eqref{Eq:App:curvature_def} \fscom{\eqref{Eq:App:Hessian_w_curvature}?} the elements of the Hessian matrix can be expressed as
 \begin{equation}
 \label{Eq:App:Hessian_inplane}
 H^P = -k	 \begin{bmatrix} 
@@ -66,7 +67,7 @@ In the followings these properties will be discussed when the SPA is applied for
 
 Assume the Rayleigh-integral, written onto the plane $y = 0$, with the high-frequency gradient approximation applied:
 \begin{equation}
-P(\vx,\omega) = 2 \int_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo, \omega) G(\vx-\vxo,\omega) \td x_0  \td z_0.
+P(\vx,\omega) = 2 \dint_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo, \omega) G(\vx-\vxo,\omega) \td x_0  \td z_0.
 \end{equation}
 By definition the stationary position for the integral is found where
 \begin{equation}
