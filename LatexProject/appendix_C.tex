@@ -1,64 +1,46 @@
-\section{Wavenumber vector of a point source pair}
-\label{App:stereophony}
+\section{Spectral representation of non-stationary convolutions}
+\label{Sec:Non_stat_conv}
 
-Given a point source pair positioned symmetrically to the $y$-axis $\vx_1 = \posvec{3}{x_1}{y_1}{0}$, $\vx_2 = \posvec{3}{-x_1}{y_1}{0}$ the radiated field reads
+Assume the following non-stationary convolution
 \begin{equation}
-P(\vx,\omega) = 
-\frac{A_1}{4\pi}\frac{\te^{-\ti \frac{\omega}{c}|\vx - \vx_1|} }{|\vx - \vx_1|} + 
-\frac{A_2}{4\pi}\frac{\te^{-\ti \frac{\omega}{c}|\vx - \vx_2|} }{|\vx - \vx_2|},
+g(t) = \int_{-\infty}^{\infty} h(t_0,t-t_0) f(t_0) \td t_0,
+\label{Eq:App:Non_stat_conv_td}
 \end{equation}
-with the amplitude factors denoted by $A_1$ and $A_2$.
-Applying the Euler's formula the phase function of the resultant field becomes
-\begin{equation}
--\phi^P(\vx,\omega) = \arctan \frac{ 
-\frac{A_1}{r_1}\sin \left( \frac{\omega}{c}|\vx-\vx_1| \right) +  
-\frac{A_1}{r_2}\sin \left( \frac{\omega}{c}|\vx-\vx_2| \right)  }
-{
-\frac{A_1}{r_1}\cos \left( \frac{\omega}{c}|\vx-\vx_1| \right) +
-\frac{A_2}{r_1}\cos \left( \frac{\omega}{c}|\vx-\vx_2| \right)  
-}.
-\end{equation}
-The local wavenumber vector, i.e. the gradient of the expression can be calculated by using that
-\begin{equation}
-\left( \arctan \frac{f}{g} \right)' = \frac{f'g - f g'}{f^2+g^2},
-\end{equation}
-with the derivatives given by
+with $h(t_0,t-t_0)$ denoting the time-variant convolution kernel.
+Terms $f(t_0)$ and $h(t_0,t-t_0)$ can be expressed by means of the inverse transform of its spectrum given as
 \begin{align}
-f' & = A_1 r'_1 \frac{k r_1 \cos \left(k  r_1 \right) - \sin \left(  k r_1 \right) }{r_1^2} + 
-A_2 r'_2 \frac{k r_2 \cos \left(k r_2 \right) - \sin \left( k r_2 \right) }{r_2^2}
+f(t_0) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0
 \\
-g' & = A_1 r'_1 \frac{-k r_1 \sin \left( k r_1 \right) - \cos \left(  k r_1 \right) }{r_1^2} + 
-A_2 r'_2 \frac{-k r_2 \sin \left(k r_2 \right) - \cos \left( k r_2\right) }{r_2^2},
+h(t_0,t-t_0) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1,
 \end{align}
-denoting $r_1 = |\vx-\vx_1|$ and $r_2 = |\vx-\vx_2|$ and $k = \frac{\omega}{c}$.
-By expressing the gradient with several simplification one obtains
+Applying the above formulations the non-stationary convolution can be cast into the form
 \begin{equation}
-\phi^{P'} = \frac{
-k \left(
-r_1' A_1^2 r_2^2 + r_2' A_2^2 r_1^2 + A_1 A_2 r_1 r_2 (r_1'+r_2') \cos\left( k \Delta r \right)
-\right) 
--A_1 A_2 (r_1' r_2 - r_2' r_1) \sin \left( k \Delta r \right)
- }
- {r_1^2 r_2^2 {A^{P}}^2(\vx,\omega)},
+g(t) = \frac{1}{2\pi^2} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 f(t_0) \td t_0,
 \end{equation}
-with $\Delta r = r_1 - r_2$ and where $A^P(\vx,\omega)$ is the amplitude of the resulting field omitting the normalizing factor $1/4\pi$.
 \begin{equation}
-A^P(\vx,\omega) = \sqrt{ A_1^2 r_2^2 + A_2^2 r_1^2 + 2 A_1 A_2 r_1 r_2 \cos\left( k \Delta r \right) } / r_1 r_2.
+g(t) = \frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1  F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0,
 \end{equation}
-
-These complex expression along with the amplitude factor describes the interference pattern of the point source pair over the whole listening area: 
-due to destructive interference the amplitude factor vanishes over the zeros of $A^P(\vx,\omega)$.
-At these positions the phase changes rapidly resulting in infinitely large local wavenumber vector lengths.
-
-From the aspect of stereophonic application only the stereo axis is of interest, where $r_1 = r_2$ holds.
-Due to the symmetry of the geometry along that axis $\frac{\partial}{\partial x} r_1 = - \frac{\partial}{\partial x} r_2$, $\frac{\partial}{\partial y} r_1 = \frac{\partial}{\partial y} r_2$ and $\frac{\partial}{\partial z} r_1 = \frac{\partial}{\partial z} r_2$ holds, and the derivatives of the phase function is given as
-\begin{align}
--\phi^{P'}_x &= k r_x' \frac{ A_1  - A_2 
- }{ A_1 + A_2} \\
--\phi^{P'}_y &= k r_y'.
-\end{align}
-and the amplitude factor reads as
+Taking the Fourier transform of the latter expression:
 \begin{equation}
-A^P(0,y,z,\omega) = \frac{A_1 +  A_2}{r}.
-\label{Eq:AppB:stereo_amplitude}
+G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0 \te^{-\ti \omega t} \td t,
 \end{equation}
+Reversing the order of integration and rearrangement results in
+\begin{equation}
+G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) F(\omega_0)  \te^{-\ti (\omega_1-\omega_0) t_0}  
+\underbrace{ \int_{-\infty}^{\infty}  \te^{-\ti (\omega-\omega_1) t}  \td t}_{2\pi \delta(\omega-\omega_1)}
+ \, \td \omega_1 \,  \td \omega_0 \, \td t_0.
+\end{equation}
+Integration along $\omega_1$ sifts out $\omega_1 = \omega$:
+\begin{equation}
+G(\omega) =  \iint_{-\infty}^{\infty} H(t_0,\omega) F(\omega_0)  \te^{-\ti (\omega-\omega_0) t_0}   \td \omega_0 \, \td t_0.
+\end{equation}
+Finally it can be exploited that
+\begin{equation}
+\tilde{H}(\omega-\omega_0) =  \int_{-\infty}^{\infty}  H(t_0,\omega)  \te^{-\ti (\omega-\omega_0) t_0}  \td t_0
+\end{equation}
+holds, yielding the final result
+\begin{equation}
+G(\omega) =  \int_{-\infty}^{\infty} H(\omega - \omega_0,\omega) F(\omega_0)  \td \omega_0.
+\label{Eq:App:Non_stat_conv_fd}
+\end{equation}
+Hence, a non-stationary convolution in the second variable of a time domain function yields a non-stationary convolution in the first variable of its spectral representation.

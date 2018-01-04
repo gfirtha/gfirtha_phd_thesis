@@ -1,4 +1,4 @@
-clear;
+    clear;
 close all
 addpath(genpath('../Files'));
 
@@ -84,7 +84,7 @@ t = (1:length(dref))';
 dref = interp1(t(ref_win_x0 == 1),dref(ref_win_x0 == 1,:),t,'linear','extrap') ;
 int_t = 'nearest';
 dref = ( 0*interp1(x_ssd_refd(:,1),dref(ref_win_x0 == 1,:),x_ssd(:,1),int_t,'extrap')+...
-        1*interp1(x_ssd_refd(:,2),dref(ref_win_x0 == 1,:),x_ssd(:,2),int_t,'extrap') );
+         1*interp1(x_ssd_refd(:,2),dref(ref_win_x0 == 1,:),x_ssd(:,2),int_t,'extrap') );
 %int_t = 'linear';
 %dref = ( 0.5*interp1(x_ssd_refd(:,1),dref(ref_win_x0 == 1,:),x_ssd(:,1),int_t,'extrap')+...
 %         0.5*interp1(x_ssd_refd(:,2),dref(ref_win_x0 == 1,:),x_ssd(:,2),int_t,'extrap') );
