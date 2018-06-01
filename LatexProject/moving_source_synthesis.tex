@@ -752,8 +752,8 @@ This fact is represented by the fact that the above spectrum depends on the $x$-
 	\put(0,1){(a)}
 	\put(48,1){(b)}
 	\end{overpic}   
-    \caption{The time history and spectrum of a source pass-by, moving on a trajectory $\vxs(t) = \posvec{3}{v\cdot t}{-2}{0}$ with $v = \frac{c}{2}$, measured at the origin.
-    The source is oscillating at $\omega_0 = 2\pi \cdot 500~\mathrm{krad/s}$.
+    \caption{The time history and spectrum of a moving source pass-by, moving on a trajectory $\vxs(t) = \posvec{3}{v\cdot t}{-2}{0}$ with $v = \frac{c}{2}$, measured at the origin.
+    Both the time history and spectrum is normalized by the source frequency.
     The spectrum is described by the Hankel function as given by \eqref{Eq:Moving_sources:Freq_domain_representation}.
     The poles/singularities of the spectrum are the \emph{dominant frequencies} of the approaching ($t \rightarrow -\infty$) and the diverging ($t \rightarrow \infty$), given by \eqref{eq:HF_appr:moving_s_per_freq} as $\omega_d = \omega_0 \frac{1}{1 \pm M}$, with $M = \frac{v}{c}$ being the Mach number.
     }
@@ -780,6 +780,21 @@ and obviously the angular spectrum representation (i.e. $k_x-y-k_z$ representati
 \label{Eq:Moving_sources:MS_field_kx_kz}
 \end{equation}
 Note that the representation does not pose any constraint on the actual form of the Green's function, the above equations theoretically describes the field of an arbitrary source under uniform motion.	
+
+The spectral $k_x-\omega$ domain representation of a moving source field is depicted in figure \ref{fig:Moving_sources:moving_source_kxw} (b), allowing the comparison with  a stationary source.
+In both cases the amplitude distribution of the line spectral ,,lines'' are described by the wavenumber content of the Green's function, $\tilde{G}(k_x,y,z,\omega)$.
+Through the example of a harmonic source it is illustrated that bringing a sound source into uniform motion will result in the rotation of its spectrum around $k_x = 0$ and rescaling in order to fill the propagation region.
+The amount of rotation is given directly by the source velocity (the angle of rotation is $\frac{\pi}{2} \cdot \frac{v}{c}$).
+\begin{figure}
+\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Moving_source_kxw.png}
+	\put(0,1){(a)}
+	\put(48,1){(b)}
+	\end{overpic}   
+    \caption{Spectrum of a stationary (a) and moving (b) harmonic source in the $k_x-\omega$ domain.
+    In the dynamic case the source is moving with a constant velocity, $v = \frac{c}{2}$.}
+\label{fig:Moving_sources:moving_source_kxw}  
+\end{figure}
 
 The above spectral formulations can be extended for sources, moving inclined to the $x$-axis, given in Appendix \ref{App:Moving_source_representations}.
 These formulations may be applied for deriving implicit and explicit driving functions for virtual sources moving uniformly along arbitrary directed straight trajectories, as it is discussed in details in \cite{firtha2015sound}.
@@ -932,7 +947,7 @@ D(x_0,\omega,\omega_0) =
 \end{equation}
 This formulation coincides with the implicit Wave Field Synthesis driving functions for a moving source, derived entirely in the spectral domain: 
 the frequency domain representation of a moving source \eqref{Eq:Moving_sources:Freq_domain_representation} allows an alternative derivation of 2.5D WFS driving functions by applying the stationary phase approximation entirely in the frequency domain.
-The approach---described in details in \cite{Firtha2015sound}---is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in \ref{Sec:Moving_source_WFS}.
+The approach---described in details in \cite{firtha2015sound}---is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in \ref{Sec:Moving_source_WFS}.
 The coincidence of the driving functions, however indicates that Wave Field Synthesis is a high-frequency/wavefront matching approximation of the explicit solution, proven for a general stationary sound field in the previous chapter.
 
 \section{Practical aspects of the synthesis of moving sources}
