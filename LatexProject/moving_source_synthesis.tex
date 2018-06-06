@@ -782,8 +782,8 @@ and obviously the angular spectrum representation (i.e. $k_x-y-k_z$ representati
 Note that the representation does not pose any constraint on the actual form of the Green's function, the above equations theoretically describes the field of an arbitrary source under uniform motion.	
 
 The spectral $k_x-\omega$ domain representation of a moving source field is depicted in figure \ref{fig:Moving_sources:moving_source_kxw} (b), allowing the comparison with  a stationary source.
-In both cases the amplitude distribution of the line spectral ,,lines'' are described by the wavenumber content of the Green's function, $\tilde{G}(k_x,y,z,\omega)$.
-Through the example of a harmonic source it is illustrated that bringing a sound source into uniform motion will result in the rotation of its spectrum around $k_x = 0$ and rescaling in order to fill the propagation region.
+In both cases the amplitude distribution of the spectra are described by the wavenumber content of the Green's function, $\tilde{G}(k_x,y,z,\omega)$.
+It is illustrated that bringing a sound source into uniform motion will result in the rotation of its spectrum around $k_x = 0$ and rescaling in order to fill the propagation region.
 The amount of rotation is given directly by the source velocity (the angle of rotation is $\frac{\pi}{2} \cdot \frac{v}{c}$).
 \begin{figure}
 \centering
@@ -917,6 +917,20 @@ H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\o
 }
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
 \end{equation}
+For a moving source with wide-band excitation signal $s(t)$ the explicit driving function reads as
+\begin{equation}
+D(x_0,\omega) = 
+\frac{1}{2 \pi v}
+\int_{\infty}^{\infty} S(\omega_0)
+\frac{ 
+H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} |\yref - y_s| \right)
+}{
+H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} |\yref| \right)
+}
+\te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)} \td \omega_0,
+\end{equation}
+where $S(\omega) = \int_{-\infty}^{\infty} s(t)\te^{-\ti \omega t} \td t$ is the spectrum of the source excitation.
+
 
 \begin{figure}
 	\centering
@@ -933,7 +947,7 @@ The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (
 	\label{Fig:Moving_sources:moving_synthesis_by_linear_SDM}
 \end{figure}
 
-The result of synthesis applying the explicit driving function is depicted in \eqref{Fig:Moving_sources:moving_synthesis_by_linear_SDM}.
+The result of synthesis applying the explicit driving function in case of a harmonic moving source is depicted in \eqref{Fig:Moving_sources:moving_synthesis_by_linear_SDM}.
 It is verified, that the explicit method theoretically ensures perfect synthesis along the reference line, therefore may serve as a reference solution.
 
 Assuming high frequency conditions the Hankel function can be approximated by its asymptotic expansion as given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
@@ -952,21 +966,104 @@ The coincidence of the driving functions, however indicates that Wave Field Synt
 
 \section{Practical aspects of the synthesis of moving sources}
 
-The present thesis so far discussed the theoretical foundations of sound field synthesis (in particular of WFS) assuming an idealized secondary source distribution, resulting in analytical driving functions.
+So far the theoretical foundations of synthesizing moving sources were discussed.
 Obviously, the practical implementation of the foregoing raises numerous questions.
-As an example the effects of applying directive SSD elements---instead of the ideal monopole secondary sources---were already discussed in section \ref{Sec:Dir_SSD}, compensated analytically within the validity of the stationary phase approximation.
-
-The following final section presents several practical considerations for the implementation of the presented Wave Field Synthesis framework including difficulties, arising for the special case of synthesizing a moving point source.
-
-\subsection{Effects of the SSD shape and discretization}
-
-Throughout the present thesis the secondary source distribution has been assumed to be a continuous distribution of point sources.
-Obviously, in practical applications the SSD consists of discrete secondary source elements (practically loudspeakers) with the minimal distance between adjacent elements determined by the physical size of the sound sources applied.
-The violation of the continuous SSD assumption leads to severe artifacts in the synthesized field, termed as \emph{spatial aliasing artifacts}.
-
-Generally, spatial aliasing 
-
+Even the definition of several quantities, present in the driving function and assumed to be a-priori known in the foregoing is not straightforward.
+Also the choice of the SSD shape, the applied referencing scheme and the applied anti-aliasing strategy is crucial in the aspect of synthesizing dynamic sound scenes.
+The following final section presents several practical considerations and solutions for the difficulties, arising for the special case of synthesizing a moving point source, following \cite{Firtha2018_daga_moving_source}.
 
 \subsection{Calculation of source trajectory}
 
-	\subsection{Calculation of propagation time delay}
+Direct implementation of the moving source driving function \eqref{Eq:SFS_theory:25D_KI_moving_source} assumes that the time dependence of the source position $\vxs(t)$ is known a-priori. 
+This is an optimistic assumption in the aspect of practical applicability. 
+Instead, more often a parametric curve $\mathbf{y}(u)$ is given, which the virtual source follows with a pre-defined velocity profile.
+This requirement can be formulated as finding a reparameterization, so that 
+\begin{equation}
+\mathbf{y}(u(t)) = \vxs(t), \hspace{6mm} \left| \frac{\td \vxs(t)}{\td t} \right| = |\vvs(t)| 
+\label{Eq:parametric_curves}
+\end{equation}
+holds. 
+The goal is to find the explicit parametrization $u(t)$ so that substitution into \eqref{Eq:parametric_curves} yields the desired source position vector.
+\NewL
+Differentiation of \eqref{Eq:parametric_curves} with respect to time and application of the chain rule results in the following expression of $\td u / \td t$:
+%
+% referred to as \emph{reparameterization by arc-length}.
+% Analytically their relation can be established by differentiating \eqref{Eq:parametric_curves} with applying the chain rule, and taking the absolute value of the involved quantities
+% \begin{equation}
+% \left| \frac{\td \mathbf{y}(p(t))}{\td p} \right| \cdot \frac{\td p(t) }{\td t} = \left| \frac{\td \vxs(t) }{\td t}  \right| = |\vvs(t)|,
+% \end{equation}
+% after rearrangement leading to
+\begin{equation}
+ \frac{\td u(t) }{\td t} = \frac{|\vvs(t)|}{\left| \td \mathbf{y}(u(t)) / \td u \right|}.
+\end{equation}
+%The parametrization $u(t)$ is then obtained by integration:
+In order to express $u(t)$ both sides are multiplied by $\td t$, and according the first fundamental theorem of calculus taking the definite integral leads to
+\begin{equation}
+u(t) = \int_{t_0}^{t} \frac{|\vvs(s)|}{\left| \td \mathbf{y}(u(s)) / \td u \right|} \td s
+\label{Eq:pt}
+\end{equation}
+with $t_0$ being a user-defined initial time.
+Note that for sources moving with constant velocity ($|\vvs(s)| = v$) the parametrization is referred to as reparametrization to arc-length.
+\NewL
+For an arbitrary trajectory and velocity profile the parametrization \eqref{Eq:pt} can only be evaluated numerically.
+A detailed discussion on the frequently used numerical methods can be found in \cite{Parent2012}.
+As a simplest approach, the integral may be approximated numerically with the forward-Euler method, approximating the integral with the iteration scheme
+\begin{equation}
+u_{i+1} = u_i + \td t \frac{|\vvs(u_i)|}{ | \td \mathbf{y}(u_i)/\td u | }, \hspace{10mm} i \geq 0,
+\end{equation}
+where $\td t = \frac{1}{fs}$ is the sampling period of the source trajectory.
+Once the parametrization $u_i$ is found, the required source trajectory vector at the time instant $t_i$ can be obtained from $\vxs(t_i) = \mathbf{y}(u_i)$. 
+
+\subsection{Calculation of propagation time delay}
+	
+Having found the source trajectory the implementation of the driving functions would still require the solution of the quadratic equation \eqref{eq:tau} for each SSD element at each time instant, in order to find the propagation time delay between the moving source at the emission time $t-\tau$ and the SSD elements at the receiving time, which makes real-time implementation infeasible.
+
+The computational complexity may be considerably decreased by implementing a further Euler iteration scheme, i.e. by approximating $\tau(\vx,t)$ by its first order Taylor series
+\begin{equation}
+\tau(\vx,t+\td t) \approx \tau(\vx,t) + \td t \frac{\td \tau(\vx,t)}{\td t},
+\end{equation}
+with the temporal derivative of $\tau$ obtained from the implicit derivation of its definition \eqref{eq:tau}, reading as
+\begin{equation}
+\frac{\td \tau(\vx,t)}{\td t} = \tau'(\vx,t) = \frac{-\frac{1}{c} \left< \vvs(t-\tau) \cdot ( \vx-\vxs(t-\tau) ) \right>}{| \vx - \vxs(t) |}.
+\end{equation}
+Hence the iteration scheme at the time instant $t_i$ reads as
+\begin{equation}
+\tau(\vx,t_i) = \tau(\vx,t_{i-1}) + \td t \cdot \tau'(\vx,t_{i-1}),
+\end{equation}
+with $\td t = \frac{1}{f_s}$ being the sampling period of the driving function \cite{doi:10.1121/1.4996126}.
+Obviously, when only numerically available, $\vxs(t-\tau)$ may be interpolated from the trajectory vector, from which the source velocity $\vvs(t-\tau)$ may be calculated by differentiating it numerically with respect to time.
+
+It is important to note that the sampling frequency for the calculation of the source trajectory and propagation time delay may be chosen significantly lower than the actual source driving signal's sampling frequency.
+As a result computational cost can be decreased, besides still ensuring numerical stability. 
+
+\subsection{Effects of the SSD discretization}
+
+Finally the effects of the SSD discretization is discussed in case of synthesizing a moving source.
+Assume the synthesis of a moving source applying a linear SSD, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+The source moves uniformly along a straight trajectory, parallel to the SSD.
+Similarly to the static case, this geometry is chosen because the explicit solution allows the analytical description of the effects of the SSD discretization.
+
+\begin{figure}
+\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/Aliased_repr_field.png}	
+	\put(1,38){(a)}	
+	\put(51.5,38){(b)}
+	\put(27.5,0){(c)}
+	\end{overpic}   
+    \caption{Illustration of the ideal aliased synthesis of a virtual point source in the setup, used for \ref{fig:SFS_theory:Aliased_spectrum}.
+    Figure (a) shows the spectrum of the discretized driving function with overlapping spectral repetition.
+    Figure (b) shows the spectrum of the 3D Green's function and Figure (c) shows the spectrum of the synthesized field, both measured along the reference line.}
+\label{fig:SFS_theory:Aliased_repr_field}  
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/antialiased_synth_moving_source.png}
+	\footnotesize
+	\put(0, 0){(a)}
+	\put(45,0){(b)}
+	\end{overpic}
+\caption{}
+	\label{Fig:Moving_sources:antialiased_synth_moving_source}
+\end{figure}
+
