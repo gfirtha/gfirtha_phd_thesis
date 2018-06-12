@@ -1105,7 +1105,9 @@ the mirror spectra are more likely to alias: in the current example in front of 
 	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Aliased_spectogram.png}	
 	\put(1,38){(a)}	
 	\end{overpic}   
-    \caption{ }
+    \caption{Wavenumber-frequency representation of the synthesized field of a harmonic moving source, applying a linear SSD (a) and the corresponding spectogram (b).
+    The source is located at $\vxs = \posvec{3}{v \cdot t}{-2}{0}$ with $v= \frac{c}{2}$, radiating at $\omega_0 =~2\pi \cdot 1 \mathrm{krad}/s$.
+    The spectrum of the synthesized field is measured along the reference line, set to $\yref = 1.5~\mathrm{m}$, while the spectogram of the pass-by is measured at $x = 0~\mathrm{m}$, on the reference line.}
 \label{fig:Moving_sources:Aliased_spectogram}  
 \end{figure}
 
@@ -1164,8 +1166,23 @@ Denoting the tangent vector of the SSD elements by $\mathbf{t}(\vxo)$ this leads
 \begin{equation}
 D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi c}{\Delta x} \frac{|\vxo-\vxs(t_0-\tau(\vxo,t_0))|}
 {|\left< \vxo-\vxs(t_0-\tau(\vxo,t_0)) \cdot \mathbf{t}(\vxo) \right>|}.
+\label{Eq:Moving_source:Antialiasing_cutoff_freq}
 \end{equation}
 This means that antialiasing requires the implementation of a time varying low pass filter with the cut-off frequency given above.
+
+\begin{figure}
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/antialiased_synth_moving_source.png}
+	\footnotesize
+	\put(0, 0){(a)}
+	\put(45,0){(b)}
+	\end{overpic}
+\caption{Synthesis of a moving source on an arbitrary trajectory, applying a circular SSD, with the radius of $R_{\mathrm{SSD}} = 2~\mathrm{m}$, sampled at $\Delta x = 10~\mathrm{cm}$.
+	The source, traveling with a constant velocity of $|\mathbf{v}| = \frac{3}{4}c$.
+    Figure (a) shows the effects of source discretization with clearly visible aliasing echoes with the strongest contribution emerging from front of the virtual source, where the local perceived frequency is increased by the Doppler effect.
+    Figure (b) shows the effect of ideal antialising filtering the driving functions by temporal lowpass filtering under the time-variant cut-off frequency \eqref{Eq:Moving_source:Antialiasing_cutoff_freq} in the Short-time Fourier Transform domain with properly chosen window and hop sizes.}
+	\label{Fig:Moving_sources:antialiased_synth_moving_source}
+\end{figure}
 
 As in the stationary case, full-band synthesis is achieved only on those parts of the synthesized field, for which the stationary SSD element's normal vector coincides with the local propagation direction of the virtual field (Here the above cut-off frequency $\omega(\vxo,t_0) \equiv \infty$).
 
@@ -1175,25 +1192,25 @@ This is again an important advantage of applying circular loudspeaker arrays.
 Terminology nearly full-band synthesis refers to the fact that due to the discretization of the SSD, full-band synthesis is only possible when at the stationary SSD position an actual SSD element is located.
 In practice when the moving source is located between two actual SSD elements even at the center of the array the synthesized field is slightly bandlimited (depending on the distance of the virtual source from the SSD), which may cause audible artifacts if the source is close to the SSD.
 
-The result of the proposed antialiasing approach is illustrated in Figure \ref{Fig:Moving_sources:antialiased_synth_moving_source} in case of a circular SSD.
+The result of the proposed antialiasing approach is illustrated in Figure \ref{Fig:Moving_sources:antialiased_synth_moving_source} by using a circular SSD.
+In the simulation the source is traveling along an arbitrary trajectory defined by a discrete set of points, with the trajectory and the propagation time delay calculated iteratively, as discussed in the previous subsections.
 The simulation results verify the nearly full-band synthesis in the center of the secondary array.
 
-\begin{figure}
-	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/antialiased_synth_moving_source.png}
-	\footnotesize
-	\put(0, 0){(a)}
-	\put(45,0){(b)}
-	\end{overpic}
-\caption{}
-	\label{Fig:Moving_sources:antialiased_synth_moving_source}
-\end{figure}
-
 \subsection{Choosing the referencing scheme}
-A further advantage of circular SSDs is that analytical formulation is available for the referencing function in case of referencing the synthesis to a concentric reference circle inside the listening region.
-In practical applications the 2.5D WFS driving functions, given by \eqref{Eq:Moving_source:25D_WFS} are evaluated, requiring the reference position $\vxref(\vxo,t_0)$ for each SSD element at each time instant.
-For general referencing curves with arbitrary shaped SSDs this point is found at the intersection of a straight line---connecting the actual SSD element $\vxo$ with the corresponding source position at the emission time $\vxs(t_0-\tau(\vxo,t_0))$---and a polyline, defining the reference curve. 
+%A further advantage of circular SSDs is that analytical formulation is available for the referencing function in case of referencing the synthesis to a concentric reference circle inside the listening region.
+In practical applications the 2.5D WFS driving functions, given by \eqref{Eq:Moving_source:25D_WFS} are evaluated, requiring the definition of a reference position $\vxref(\vxo,t_0)$ for each SSD element at each time instant.
+In case of a moving source, for general referencing curves with arbitrary shaped SSDs this point is found at the intersection of a straight line---connecting the actual SSD element $\vxo$ with the corresponding source position at the emission time $\vxs(t_0-\tau(\vxo,t_0))$---and a polyline, defining the reference curve. 
 Obviously, the direct solution for the reference position is of great computational cost, making real-time applications infeasible, therefore geometries with analytical solutions are preferred.
+As a possible solution specific reference curve shapes may be used for which the analytical solution for the reference position is available.
+As an example, in case of circular SSDs the choice of a concentric circle for the reference curve may be feasible, for which geometry the intersection of a parametric line and a circle is well-known \cite[Ch.7.3.2]{Schneider2003:ComputerGraphics}.
+However, as a result amplitude correct synthesis at a given time instant is ensured only over an arc, for which part of the reference curve a stationary SSD element exist.
+
+Alternatively, as the most simple solution, synthesis may be optimized to a given reference point $\vxref$ independently from the actual SSD position, e.g. to the center of the SSD in case of a circular secondary ensemble.
+%In this case for a given virtual source position amplitude correct synthesis is ensured rather over a curve than merely at the reference position, as it is discussed in details in \cite{Firtha2016}. 
+%Due to the motion of the virtual point source the shape of this curve varies with time, however containing the reference position at an arbitrary time instant.
+%Therefore this solution ensures optimal synthesis at the reference point during the entire virtual source pass-by.
+Since ideal antialiasing can be also achieved only at a given listening position, this simple choice may be feasible in the aspect of practical implementation.
+
 Furthermore, amplitude correct synthesis may be achieved over those parts of the reference curve, for which a stationary SSD element can be found, depending on the virtual source position.
 As the most simple referencing strategy in case of a circular geometry, amplitude correct synthesis may be achieved at the center of the secondary array independently on the virtual source trajectory.
 
