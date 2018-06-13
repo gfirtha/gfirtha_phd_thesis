@@ -23,7 +23,7 @@ Assume an infinite, rigid surface, located along the $y=0$ plane.
 Over the surface only a small extent $\partial \Omega_p$ moves/vibrates with a pre-defined normal velocity profile $V_y(x,0,z,\omega)$, while in other parts of the plane the surface velocity is identically zero.
 This geometry is termed as a baffled radiator, that's radiated field at an arbitrary receiver position $\vx = \posvec{3}{x}{y>0}{z}$ is given by the Rayleigh I integral
 \begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y}(\vxo,\omega) G(\vx-\vxo,\omega  ) \, \td x_0 \, \td z_0,
+P(\vx,\omega) = \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) G(\vx-\vxo,\omega  ) \, \td x_0 \, \td z_0,
 \end{equation}
 with the surface point being $\vx_0 = \posvec{3}{x_0}{0}{z_0}$.
 
@@ -34,7 +34,7 @@ G(\vx-\vxo,\omega ) \approx G(\vx - \vx_{\mathrm{c}},\omega) \te^{-\ti  \left< \
 \end{equation}
 After substitution into the Rayleigh integral the Green's function can be collected from the integral
 \begin{equation}
-P(\vx,\omega) = G(\vx - \vx_{\mathrm{c}},\omega) \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y}(\vxo,\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>} \, \td x_0 \, \td z_0,
+P(\vx,\omega) = G(\vx - \vx_{\mathrm{c}},\omega) \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>} \, \td x_0 \, \td z_0,
 \end{equation}
 For the sake of simplicity the center of the radiator is chosen to be the origin ($\vx_{\mathrm{c}} = \posvec{3}{0}{0}{0}$).
 By expanding the inner product the integral simplifies to

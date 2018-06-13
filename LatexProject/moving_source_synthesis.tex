@@ -986,7 +986,7 @@ This requirement can be formulated as finding a reparameterization, so that
 \end{equation}
 holds. 
 The goal is to find the explicit parametrization $u(t)$ so that substitution into \eqref{Eq:parametric_curves} yields the desired source position vector.
-\NewL
+
 Differentiation of \eqref{Eq:parametric_curves} with respect to time and application of the chain rule results in the following expression of $\td u / \td t$:
 %
 % referred to as \emph{reparameterization by arc-length}.
@@ -1006,7 +1006,7 @@ u(t) = \int_{t_0}^{t} \frac{|\vvs(s)|}{\left| \td \mathbf{y}(u(s)) / \td u \righ
 \end{equation}
 with $t_0$ being a user-defined initial time.
 Note that for sources moving with constant velocity ($|\vvs(s)| = v$) the parametrization is referred to as reparametrization to arc-length.
-\NewL
+
 For an arbitrary trajectory and velocity profile the parametrization \eqref{Eq:pt} can only be evaluated numerically.
 A detailed discussion on the frequently used numerical methods can be found in \cite{Parent2012}.
 As a simplest approach, the integral may be approximated numerically with the forward-Euler method, approximating the integral with the iteration scheme
