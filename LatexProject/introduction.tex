@@ -58,9 +58,8 @@ NFC-HOA and SDM are therefore commonly referred to as the \emph{explicit solutio
 Besides NFC-HOA and SDM the most prominent, well-known sound field synthesis approach is Wave Field Synthesis, the main subject of the present dissertation.
 Wave Field Synthesis (WFS) aims to recreate the desired sound field---or more precisely the desired wavefronts---by putting the Huygens-principle into practice: 
 each reproduction loudspeaker acts as the source of a secondary wavefront, so that the resultant wavefront of the entire speaker arrangement coincides with that of a virtual sound source \cite{Berkhout1993:Acoustic_control_by_WFS, Verheijen1997:phd, Ahrens2012}.
-In order to achieve this the spatial characteristic of the virtual sound scene, i.e. a source model has to be known, from which the required loudspeaker driving signals may be computed, similarly to NFC-HOA and SDM.
-However, as an important difference WFS yields driving signal emerging from the local properties of the virtual sound field at the position of the actual loudspeaker, while the explicit solutions computes the driving signal for a given loudspeaker from a global description of the virtual field, given by the spherical harmonic components.
-Hence, WFS is often termed as a \emph{local solution}, while NFC-HOA and SDM are \emph{global solutions}.
+As WFS yields driving signals from the local behaviour of the virtual sound field at the position of the loudspeakers it is often termed as a \emph{local solution} to the SFS problem.
+On the other hand the explicit solutions compute the driving signal for a single loudspeaker from the global description of the virtual field, therefore NFC-HOA and SDM are termed as \emph{global solutions}.
 Furthermore, since WFS extracts the loudspeaker driving signals from an appropriate boundary integral representation of sound fields, containing the solution implicitly, WFS is referred to as an \emph{implicit solution}.
 
 \paragraph{Categorization of spatial audio techniques:}
@@ -93,7 +92,7 @@ In the followings, first a brief overview on Wave Field Synthesis history is giv
 	\small
 	\centering
 	\begin{overpic}[width = .7\columnwidth]{Figures/Introduction/huygens_wfs.png}
-	\put(30,0){primary wavefront}
+	\put(31,3){primary wavefront}
 	\put(14,45){\parbox{.5in}{secondary wavefronts}}
 	\put(60,30){listening region}
 	\end{overpic}
