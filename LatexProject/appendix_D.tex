@@ -1,46 +1,100 @@
-\section{Spectral representation of non-stationary convolutions}
-\label{Sec:Non_stat_conv}
+\section{Farfield approximation of planar radiators}
+\label{App:Planar_radiators}
 
-Assume the following non-stationary convolution
+\begin{figure}[b!]
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = .85\columnwidth]{Figures/Appendices/planar_radiator.png}
+	\small
+	\put(-1,46){$x$}
+	\put(93,44){$y$}
+	\put(43,100){$z$}
+	\put(89,74){$\vx$}
+	\put(34.5,43.5){$\partial \Omega_p$}
+	\put(37.75,53.25){$\theta$}
+	\put(49,53.75){$\phi$}
+	\end{overpic}   \end{minipage}\hfill	
+	\begin{minipage}[c]{0.35\textwidth}
+    \caption{2.5D synth}
+\label{fig:App:Planar_radiator}   \end{minipage}
+\end{figure}
+
+Assume an infinite, rigid surface, located along the $y=0$ plane.
+Over the surface only a small extent $\partial \Omega_p$ moves/vibrates with a pre-defined normal velocity profile $V_y(x,0,z,\omega)$, while in other parts of the plane the surface velocity is identically zero.
+This geometry is termed as a baffled radiator, that's radiated field at an arbitrary receiver position $\vx = \posvec{3}{x}{y>0}{z}$ is given by the Rayleigh I integral
 \begin{equation}
-g(t) = \int_{-\infty}^{\infty} h(t_0,t-t_0) f(t_0) \td t_0,
-\label{Eq:App:Non_stat_conv_td}
+P(\vx,\omega) = \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) G(\vx-\vxo,\omega  ) \, \td x_0 \, \td z_0,
 \end{equation}
-with $h(t_0,t-t_0)$ denoting the time-variant convolution kernel.
-Terms $f(t_0)$ and $h(t_0,t-t_0)$ can be expressed by means of the inverse transform of its spectrum given as
-\begin{align}
-f(t_0) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0
-\\
-h(t_0,t-t_0) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1,
-\end{align}
-Applying the above formulations the non-stationary convolution can be cast into the form
+with the surface point being $\vx_0 = \posvec{3}{x_0}{0}{z_0}$.
+
+Let $\vx_{\mathrm{c}}$ be the geometric center of the radiator, and approximate the Green's function by it's local plane wave approximation around this center, as introduced by \eqref{Eq:HF_approx:plane_wave_approximation}. 
+The asymptotic approximation of the Green's function reads as
 \begin{equation}
-g(t) = \frac{1}{2\pi^2} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 f(t_0) \td t_0,
+G(\vx-\vxo,\omega ) \approx G(\vx - \vx_{\mathrm{c}},\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>}.
 \end{equation}
+After substitution into the Rayleigh integral the Green's function can be collected from the integral
 \begin{equation}
-g(t) = \frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1  F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0,
+P(\vx,\omega) = G(\vx - \vx_{\mathrm{c}},\omega) \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>} \, \td x_0 \, \td z_0,
 \end{equation}
-Taking the Fourier transform of the latter expression:
+For the sake of simplicity the center of the radiator is chosen to be the origin ($\vx_{\mathrm{c}} = \posvec{3}{0}{0}{0}$).
+By expanding the inner product the integral simplifies to
 \begin{equation}
-G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0 \te^{-\ti \omega t} \td t,
+P(\vx,\omega) = 2 \ti \omega \rho_0 G(\vx ,\omega) 
+\iint_{-\infty}^{\infty} V_{y}(\vxo,\omega) \te^{-\ti \left( k_x^G(\vx) \cdot x_0 + k_z^G(\vx) \cdot z_0 \right)} \, \td x_0 \, \td z_0.
 \end{equation}
-Reversing the order of integration and rearrangement results in
+The right side is obviously a double Fourier integral of the surface velocity distribution, multiplied by the field of a point source at the center of the radiator, hence the radiated field can be written as
 \begin{equation}
-G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) F(\omega_0)  \te^{-\ti (\omega_1-\omega_0) t_0}  
-\underbrace{ \int_{-\infty}^{\infty}  \te^{-\ti (\omega-\omega_1) t}  \td t}_{2\pi \delta(\omega-\omega_1)}
- \, \td \omega_1 \,  \td \omega_0 \, \td t_0.
+P(\vx,\omega) = 2 \ti \omega \rho_0 \cdot \tilde{V}_{y}(k_x^G(\vx),0,k_z^G(\vx),\omega) \cdot G(\vx,\omega) 
 \end{equation}
-Integration along $\omega_1$ sifts out $\omega_1 = \omega$:
+Hence, the planar radiator can be modeled in its far-field as a directive point source, and once the 2D spectrum of the velocity distribution is known, the directivity characteristics can be obtained by evaluating the spectrum at the local wavenumber vector of the point source at the given receiver point.
+
+The local wavenumber vector of the point source in Descartes and spherical coordinates are given as
 \begin{equation}
-G(\omega) =  \iint_{-\infty}^{\infty} H(t_0,\omega) F(\omega_0)  \te^{-\ti (\omega-\omega_0) t_0}   \td \omega_0 \, \td t_0.
+\vk^G(\vx) = 
+k \cdot \begin{bmatrix} \frac{x}{|\vx|}  \\[.7em] \frac{y}{|\vx|} \\[.7em] \frac{z}{|\vx|}\\[0.5em]  \end{bmatrix}
+=
+k \cdot \begin{bmatrix} \sin \phi \cos \theta \\[.7em] \cos \phi  \\[.7em]  \sin \phi \sin \theta \\[0.5em]  \end{bmatrix},
+\label{Eq:App:ps_k_vec}
 \end{equation}
-Finally it can be exploited that
+with the spherical angles shown in figure \ref{fig:App:Planar_radiator} and the usual spherical form of the planar radiator's field reads as
 \begin{equation}
-\tilde{H}(\omega-\omega_0) =  \int_{-\infty}^{\infty}  H(t_0,\omega)  \te^{-\ti (\omega-\omega_0) t_0}  \td t_0
+P(r,\phi,\theta,\omega) = 
+2 \ti \omega \rho_0 \cdot \underbrace{\tilde{V}_{y}(k \sin \phi \cos \theta ,0,k \sin \phi \sin \theta ,\omega) }_{\Theta(\phi,\theta,\omega)}
+\cdot G(r,\phi,\theta,\omega) 
+\label{Eq:App:directive_monopole}
 \end{equation}
-holds, yielding the final result
+where $\Theta(\phi,\theta,\omega)$ is termed the directivity function.
+
+\vspace{3mm}
+As a simple example, dynamic loudspeakers are often modeled as baffled circular pistons, that's velocity distribution is given as
 \begin{equation}
-G(\omega) =  \int_{-\infty}^{\infty} H(\omega - \omega_0,\omega) F(\omega_0)  \td \omega_0.
-\label{Eq:App:Non_stat_conv_fd}
+V_y(x,0,z,\omega) =
+\begin{cases}
+V_0  \hspace{5mm} \text{if} \hspace{3mm} x^2+z^2 \leq r_0^2\\ 
+0 \hspace{10mm} \text{everywhere else},
+\end{cases}
+\end{equation} 
+with $r_0$ being the radius of the piston.
+Hence each point over the rigid piston's surface moves in-phase, which is a fair approximation for loudspeakers at frequencies, at which the modal behaviour of the membrane is negligible \footnote{At high frequencies mode shapes of a circular membrane can be expanded into a Fourier-Bessel series, from which the directivity function can be directly expressed. 
+The present result is the zeroth order term of this expansion \cite{Williams1999}.}.
+The 2D Fourier transform of this unit circular disk with radius $r_0$ is given as
+\begin{equation}
+\tilde{V_y}(k_x,0,k_z,\omega) = 2 \frac{J_1\left( r_0 \sqrt{k_x^2+k_z^2} \right)}{r_0 \sqrt{k_x^2+k_z^2}},
 \end{equation}
-Hence, a non-stationary convolution in the second variable of a time domain function yields a non-stationary convolution in the first variable of its spectral representation.
+with $J_1$ being the first order Bessel function and the field, generated by the circular piston is given as
+\begin{equation}
+P(r,\phi,\theta,\omega) = 
+2 \ti \omega \rho_0 \cdot \underbrace{2
+\frac{J_1\left( k r_0 \sin \phi \right)}{k r_0 \sin \phi}
+}_{\Theta(\phi,\omega)}
+G(r,\phi,\theta,\omega)
+\label{Eq:App_Circ_piston}
+\end{equation}
+
+In the aspect of sound field synthesis the directivity function in the horizontal plane, containing the directive point source (i.e. at $\theta=0$) is of special interest.
+In this plane the directivity  is given as
+\begin{equation}
+\Theta(\phi,\omega) = \tilde{V}_{y}(k_x^G(\vx),0,k_z^G(\vx) \equiv 0 ,\omega) = \mathcal{F}_x\left\{ \int_{-\infty}^{\infty} V_y(x,0,z,\omega) \td z \right\}_{k_x = k \sin \phi},
+\end{equation}
+hence a horizontal ,,strength function'' may be defined as $\int_{-\infty}^{\infty} V_y(x,0,z,\omega) \td z$, which characterizes the directivtiy in the horizontal plane.
+This fact has been exploited in order to design spatial low-pass filters in previous studies \cite{Verheijen1997}.
