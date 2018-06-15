@@ -44,6 +44,19 @@ once a model for the spatial characteristics of the virtual audio object is avai
 Finally, at the reproduction, or decoding stage the loudspeaker signals for the actual loudspeaker layout are decoded from the spherical harmonics coefficients following some suitable decoding strategy \cite{Daniel2000:phd, Daniel2003b, zotter:hal-01106738, zotter2012all}.
 Applying a decoding strategy that takes the actual reproduction loudspeaker characteristics into consideration is termed as Near-Field Compensated Higher Order Ambisonics (NFC-HOA) \cite{Daniel2003}.
 
+\begin{figure}  
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = 1\columnwidth, grid ]{Figures/Introduction/sfs_aim.png}
+	\small
+	
+	\end{overpic}   \end{minipage}\hfill
+	\begin{minipage}[c]{0.3\textwidth}
+    \caption{The general geometry for Sound Field Synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object, or primary source of sound inside a control region, bounded by a densely spaced loudspeaker ensemble.}
+\label{fig:introduction:sfs_aim}  \end{minipage}
+\end{figure}
+
+
 \paragraph{Sound field synthesis:}
 An important property of spherical harmonic decomposition of a given sound field around a fixed point---practically around the listener's position---that increasing the decomposition order increases the area/volume at which the sound field is represented correctly, overcoming the sweet spot limitation of stereophony.
 This fact adumbrates the motivation behind physically based sound field reproduction methods, commonly referred to as \emph{Sound Field Synthesis techniques}, or \emph{holophony} synthesizing the physical properties of a desired sound field over an extended listening area inherently ensures that the listener perceives the desired perceptual properties within the control region \cite{Spors2013:Survey}.
@@ -97,7 +110,6 @@ In the followings, first a brief overview on Wave Field Synthesis history is giv
 	\put(60,30){listening region}
 	\end{overpic}
 	\caption{Reproduction of a primary wavefront based on the Huygens-principle.}
-}
 	\label{Fig:intro:huygens_wfs}
 \end{figure}
 

@@ -29,7 +29,7 @@ F(\vx,\omega) = \mathcal{F}_{k_x}^{-1} \left\{ \hat{F}(k_x,y,z,\omega) \right\} 
 \item in two dimensions:
 \begin{equation}
 \label{eq:spatial_fourier_transform_def_2d}
-\hat{F}(k_x,y,k_z,\omega) = \iint_ {-\infty}^{\infty} F(\vx,\omega) \te^{\ti \left( k_x x + k_z z \right } \td x \, \td z,
+\hat{F}(k_x,y,k_z,\omega) = \iint_ {-\infty}^{\infty} F(\vx,\omega) \te^{\ti \left( k_x x + k_z z \right) } \td x \, \td z,
 \end{equation}
 \begin{equation}
 \label{eq:spatial_inverse_fourier_transform_def_2d}
@@ -42,14 +42,14 @@ F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^2} \iint_ {-\infty}^{\infty} \hat{F
 \end{equation}
 \begin{equation}
 \label{eq:spatial_inverse_fourier_transform_def_3d}
-F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^3} \iiint_ {-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ -\ti \left< \vk \cdot \vx \right>} \td k_x \, \td k_y \x \td k_z.
+F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^3} \iiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ -\ti \left< \vk \cdot \vx \right>} \td k_x \, \td k_y \, \td k_z.
 \end{equation}
 \end{itemize}
 Hence, hat over the function symbol indicates that the function is taken in the wavenumber domain.
 Note that the exponent of the spatial Fourier transform is taken with a reversed sign, compared to the temporal transform.
 Writing an arbitrary function in the form of a spatio-temporal inverse Fourier transform
 \begin{equation}
-f(\vx,t) = \frac{1}{\left( 2\pi \right)^4} \iiiint_ {-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ \ti \left( \omega t - \left< \vk \cdot \vx \right> \right)} \td k_x \, \td k_y \x \td k_z
+f(\vx,t) = \frac{1}{\left( 2\pi \right)^4} \iiiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ \ti \left( \omega t - \left< \vk \cdot \vx \right> \right)} \td k_x \, \td k_y \, \td k_z
 \end{equation}
 basically describes the expansion of an arbitrary function into the linear combination of plane waves, propagating to direction $\vk$.
 The reversed sign therefore ensures that this simple physical interpretation can be assigned to the Fourier transform.
