@@ -1,4 +1,4 @@
-In this chapter the theoretical basis of sound radiation is \fscom{introduced}. 
+In this chapter the basics of sound radiation theory are introduced.
 The section starts with discussing the physics of sound propagation and radiation by deriving the formulation and solution of the governing homogeneous and inhomogeneous wave equations. 
 Various integral representations of sound fields are presented including spectral and boundary integrals.
 %
@@ -13,13 +13,13 @@ In the aspect of the present thesis it is appropriate to restrict the investigat
 
 The domain of investigation $\Omega \in \mathbb{R}^n$ where sound waves propagate is termed \emph{sound field} hereinafter.
 Within this thesis usually 3 dimensional problems are investigated ($n = 3$).
-The acoustical quantities of the the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
+The acoustical properties of the the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$.
 The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
 The presence of sound waves causes incremental change in the instantaneous pressure and the particle velocity.
 
 In order to apply a linear model for sound propagation two assumptions are made.
 Since the traveling speed of thermal diffusion is small compared to the speed of sound, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic.
-Furthermore the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state-change characteristics can be linearized around $P_0$.
+Furthermore the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state change characteristics can be linearized around $P_0$.
 This later assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 
 First the homogeneous wave equation is presented, valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
@@ -29,7 +29,7 @@ For a more detailed derivation refer to \cite{Beranek1993, Morse1968, Williams19
 %
 The linear homogeneous wave equation may be derived by utilizing two fundamental physical principles.
 \begin{itemize}
-\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of the fluid the connection between the particle velocity vector and the pressure field is obtained at each point at each time instant. 
+\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimal small volume of the fluid the connection between the particle velocity vector and the pressure field is established at each point at each time instant. 
 The resulting \emph{Euler's equation} states that the force acting on the volume due to variation in the spatial pressure distribution causes an acceleration of the volume:
 \begin{equation}
 \Dx p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\vx,t),
@@ -50,7 +50,7 @@ Linearization of \eqref{Eq:Theory:Adiabatic_change} around the static state $P_0
 \td P = p(\vx,t) = -\gamma P_0 \frac{\td V}{V_0},
 \end{equation}
 where $V_0$ is the undisturbed volume. 
-The relative change of volume $\td V / V_0$ may be expressed by the  \emph{divergence} of the particle displacement $\Dx \cdot \mathbf{u}$. 
+The relative change of volume $\td V / V_0$ may be expressed by the  \emph{divergence} of the particle displacement $\Dx \cdot \mathbf{u}(\vx,t)$. 
 Applying the definition of divergence and expressing the equation in terms of particle velocity yields
 \begin{equation}
 \frac{\partial}{\partial t} p(\vx,t) = -\gamma P_0 \, \Dx \cdot \mathbf{v}(\vx,t).
@@ -75,7 +75,7 @@ The instantaneous pressure may also be eliminated in a similar manner, resulting
 \end{equation}
 valid in curl-free media, where $\Dx \left( \Dx \cdot \right) = \Lx$ holds.
 %
-Besides the pressure and the velocity, acoustic fields are often expressed via the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and which is related to the other field variables as 
+Besides the pressure and the velocity, acoustic fields are often described by the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and which is related to the other field variables as 
 \begin{equation}
 \mathbf{v}(\vx,t) = \Dx \varphi(\vx,t), \hspace{7mm} p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \varphi(\vx,t).
 \label{eq:theory:velocity_potential_definition}
@@ -86,9 +86,9 @@ The wave equations fully describe the properties of acoustic wave propagation as
 \vspace{3mm}
 %
 Equations \eqref{Eq:Theory:Eulers_equation} and \eqref{Eq:Theory:Scalar_wave_equation} may be transformed into the angular frequency domain by performing a temporal Fourier transform according to \eqref{eq:temporal_fourier_transform_def}.
-Applying the differentiation property of the Fourier transform to \eqref{Eq:Theory:Eulers_equation} yields the frequency domain Euler's equation,
+Applying the differentiation property of the Fourier transform to \eqref{Eq:Theory:Eulers_equation} yields the frequency domain Euler's equation
 \begin{equation}
-\Dx P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega)
+\Dx P(\vx,\omega) = -\ti \omega \rho_0 \mathbf{V}(\vx,\omega),
 \label{Eq:Theory:Freq_Eulers_equation}
 \end{equation}
 relating the pressure distribution of a time-harmonic sound field to the harmonic velocity vector field.
@@ -100,11 +100,11 @@ By taking the Fourier transform of the wave equation \eqref{Eq:Theory:Scalar_wav
 where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency through the linear \emph{dispersion relation} $k = \frac{\omega}{c}$.
 %
 Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with harmonic time-dependence for a source-free volume. 
-In the aspect of the present thesis the time domain wave equation is rarely solved, therefore the general solution of the Helmholtz equation is presented in the followings.
+In the aspect of the present thesis the time domain wave equation is rarely solved directly, therefore the general solution of the Helmholtz equation will be presented in the followings.
 
 \subsection{The inhomogeneous wave equation}
 %
-So far wave propagation in source-free volumes was investigated.
+So far wave propagation in source-free volumes was investigated, without considering how these waves were generated.
 A simple scalar disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation}  
 \begin{equation}
 \Lx p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = -s(\vx,t),
@@ -132,15 +132,15 @@ in the time and angular frequency domains, respectively, where $q(\vx,t)$ descri
 and $\mathbf{f}(\vx,t)$ represents a body force excitation.
 The first term is generated by sources that change the fluid volume, e.g. a pulsating sphere or a baffled dynamic loudspeaker.
 The latter force term is produced by sources moving through the fluid without any change in volume, e.g. unbaffled loudspeakers.
-A further third type of excitation term, as introduced by Lighthill, accounts for sounds produced by turbulence resulting in quadrupole sound fields \cite{Lighthill1952, Lighthill1954, Kinsler2000}.
+A further third type of excitation term, as introduced by Lighthill, accounts for sounds, produced by turbulence resulting in quadrupole sound fields \cite{Lighthill1952, Lighthill1954, Kinsler2000}.
 This third term is not investigated in the present thesis.
 
 \subsection{Boundary conditions}
 \label{Section:Theory:Boundary_conditions}
 
 %So far wave propagation in free field was considered, i.e. no boundaries were present.
-In order to obtain a particular solution of the wave equation the wave field must satisfy prescribed boundary conditions.
-The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition}.
+In order to obtain a particular solution of the wave equation the behaviour of waves, arriving at boundaries has to be known: the wave field must satisfy prescribed boundary conditions.
+The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition} with an enclosing surface/contour denoted by $\dO$.
 If the domain of interest is the exterior of the enclosing boundary while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed an \emph{exterior radiation problem}. 
 On the other hand, if the aim is to determine the sound field inside a source-free volume---or the reflected field of a sound source inside a cavity---an \emph{interior problem} must be solved.
 
@@ -157,7 +157,7 @@ P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 \end{equation}
 These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries, and are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Blackstock2000, Ziomek1995}.
 
-The inhomogeneous Dirichlet boundary condition assumes a prescribed pressure value on the boundary surface:
+The inhomogeneous Dirichlet boundary condition assumes a specific pressure distribution on the boundary surface:
 \begin{equation}
 P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 \end{equation}
@@ -178,7 +178,7 @@ P(\vx,\omega) = f_D(\vx,\omega), \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{
     Geometry for the boundary conditions in general interior and exterior radiation problems.
-    The Sommerfeld radiation condition can be derived in a mixed interior and exterior radiation problem by prescribing proper boundary conditions on the surface $\dO_{\infty}$ besides increasing its radius $r$ to infinity, which ensures that no reflection may occur from this outer boundary surface.}
+    The Sommerfeld radiation condition can be derived in a mixed interior and exterior radiation problem by prescribing appropriate boundary conditions on the surface $\dO_{\infty}$ besides increasing its radius $r$ to infinity, which ensures that no reflection may occur from this outer boundary surface.}
 	\label{Fig:Theory:bounday_condition}
 	  \end{minipage}
 \end{figure}
@@ -189,13 +189,13 @@ Homogeneous Neumann boundary condition are
 \frac{\partial P(\vx,\omega)}{\partial \mathbf{n}} = 0, \hspace{3mm} \forall \hspace{3mm}  \vx \in \dO,
 \end{equation}
 where $ \vn(\vx) $ is the interior or exterior normal vector of the boundary surface, and $\frac{\partial}{\partial \mathbf{n}} P(\vx,\omega) = \left< \vn(\vx) \cdot \Dx P(\vx,\omega) \right>$.
-These type of boundaries are termed \emph{sound hard}, or \emph{rigid} boundaries, ensuring that no incident wave can mobilize the boundary surface.
+These type of boundaries are termed \emph{sound hard}, or \emph{rigid} boundaries, with the boundary condition ensuring that no incident wave can mobilize the boundary surface.
 
 Inhomogeneous Neumann boundary conditions are given by
 \begin{equation}
 \frac{\partial P(\vx,\omega)}{\partial \mathbf{n}} = f_N(\vx,\omega), \hspace{3mm} \forall \hspace{3mm}  \vx \in \dO.
 \end{equation}
-Vibrating surfaces---e.g. mounted loudspeakers, or baffled pistons---are most often modeled using these type of boundary conditions.
+Vibrating surfaces (e.g. mounted loudspeakers, or baffled pistons) are most often modeled using these type of boundary conditions.
 \end{itemize}
 
 For radiation problems it is feasible to assume free field conditions, i.e. only outgoing waves are present in the sound field. 
@@ -218,7 +218,7 @@ The Descartes coordinate form of the Laplace-operator is given in the nomenclatu
 A common method for obtaining the general solution of the Helmholtz equation is the separation of variables \cite{Devaney2012}: 
 it is supposed that the solution of \eqref{Eq:Theory:Homog_Helmholtz} can be written in the form of the product
 \begin{equation}
-P(\vx,\omega) = \hat{P}(\omega) X(x)Y(y)Z(z).
+P(\vx,\omega) = W(\omega) X(x)Y(y)Z(z).
 \label{Eq:Theory:Seperated_variables}
 \end{equation}
 Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$ yields
@@ -229,7 +229,7 @@ Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides b
 = - k^2.
 \label{Eq:Theory:Seperated_variables_expanded}
 \end{equation}
-Since each term contains a total derivative---independent from any other variable---equality may hold only if each term is constant. 
+Since each term contains a total derivative---being independent from any other variable---equality may hold only if each term is constant. 
 These constant are denoted by $k_x^2, k_y^2, k_z^2$. 
 Consequently each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is given by exponentials. 
 Written e.g. for the $x$-variable:
@@ -239,11 +239,11 @@ Written e.g. for the $x$-variable:
 The solutions may be substituted back into equation \eqref{Eq:Theory:Seperated_variables}. 
 In order to include every possible solution the general solution for the free field homogeneous Helmholtz equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. 
 However, the variables are not independent. 
-For a fixed temporal frequency their relation is described the dispersion relation, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}
+For a fixed temporal frequency their relation is described by the dispersion relation, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}
 \begin{equation}
 k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2.
 \end{equation}
-As a dependent variable we will use $k_y$ through this thesis, so that
+Through the present thesis $k_y$ will be used as a dependent variable, so that
 \begin{equation}
 k_y^2 = k^2 - k_x^2 - k_z^2
 \end{equation}
@@ -258,17 +258,17 @@ Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier transform normalization
 The general solution---describing the inverse Fourier transform of $\tilde{P}(k_x,k_z, \omega)  \te^{- \ti k_y y }$---therefore is obtained in the form of a spectral integral, similarly to the case of the temporal solution.
 Obviously, the spectral coefficients are obtained via a suitable forward Fourier transform, as explained in the next section.
 
-One separated solution from the integral is in the form of \cite{Williams1999}
+One separated solution from integral \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} is in the form of \cite{Williams1999}
 \begin{equation}
 P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \left< \vk \cdot \vx \right> },
 \end{equation}
 where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of the maximum phase advance, given by the gradient of the phase function.
-The solution represents a \emph{plane wave} component with the acoustic wavelength $\lambda = 2\pi/k$, traveling in the direction
+The separated solution represents a \emph{plane wave} component with the acoustic wavelength $\lambda = 2\pi/k$, traveling in the direction
 \begin{equation}
-\vk = - \nabla \phi_P(\vx,\omega),
+\vk = - \nabla \phi^P(\vx,\omega),
 \label{Eq:Theory:PW_wavenumber_vec}
 \end{equation}
-where $\phi_P$ denotes the phase of function $P$.
+where $\phi^P$ denotes the phase of function $P$.
 The terminology indicates that the surface of constant phase points are lying along an infinite plane, perpendicular to $\mathbf{k}$. Refer to Figure \ref{Fig:Theory:plane_wave} (a) for the illustration of a traveling plane wave.
 
 \begin{figure}%[!h]
@@ -285,9 +285,8 @@ For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in expon
 In a source free region propagating and evanescent waves form a complete, orthonormal basis for the solution of the helmholtz equation.}
 	\label{Fig:Theory:plane_wave}
 \end{figure}
-%
 
-Since there is no constraint on the values of $k_x$ and $k_z$, the plane wave equation is satisfied also when $k_x^2 + k_z^2 > k^2$. Resulting from the dispersion relation in these cases $k_y$ becomes complex.
+Since there is no constraint on the values of $k_x$ and $k_z$, the dispersion relation is satisfied also when $k_x^2 + k_z^2 > k^2$ in which case $k_y$ becomes complex.
 In order to ignore the non-physical exponentially increasing solution, $k_y$ may be defined as 
 \begin{equation}
 k_y = \begin{cases}
@@ -302,7 +301,7 @@ Solutions with $k_y'$ given as
  \end{equation}
 describe plane waves propagating perpendicular to the $y$-axis and exhibiting an exponentially decaying amplitude along the $y$-direction (see Figure \ref{Fig:Theory:plane_wave} (b)):
 in those cases when one wavelength component is shorter than the acoustic wavelength, the wave can not propagate from the $y = 0$ surface, but an exponentially decaying radiation phenomena occurs.
-These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves}, when all wavenumber components are real valued.
+These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves} for which all wavenumber components are real valued.
  
 %
 Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
@@ -313,7 +312,7 @@ Due to the variation in the speed of sound the wavenumber components of a plane 
 As soon as one wavenumber component reaches the evanescent region total internal refraction occurs and only rapidly decaying evanescent waves are present in the further part of the half space.
 
 %
-The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}---when one needs a high-resolution image from the velocity distribution on the vibrating object's surface---however their contribution is often neglected in the field of sound field synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is higher than the evanescent wavelengths.
+The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}, when one needs a high-resolution image from the velocity distribution on the vibrating object's surface, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is significantly higher than the evanescent wavelengths.
 
 %
 \subsection{The angular spectrum representation}
