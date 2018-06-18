@@ -241,8 +241,9 @@ In order to include every possible solution the general solution for the free fi
 However, the variables are not independent. 
 For a fixed temporal frequency their relation is described by the dispersion relation, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}
 \begin{equation}
-k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2.
+k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2,
 \end{equation}
+connecting the temporal and spatial frequencies.
 Through the present thesis $k_y$ will be used as a dependent variable, so that
 \begin{equation}
 k_y^2 = k^2 - k_x^2 - k_z^2
@@ -258,9 +259,9 @@ Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier transform normalization
 The general solution---describing the inverse Fourier transform of $\tilde{P}(k_x,k_z, \omega)  \te^{- \ti k_y y }$---therefore is obtained in the form of a spectral integral, similarly to the case of the temporal solution.
 Obviously, the spectral coefficients are obtained via a suitable forward Fourier transform, as explained in the next section.
 
-One separated solution from integral \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} is in the form of \cite{Williams1999}
+One separated solution from integral \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} is in the form of
 \begin{equation}
-P(\vx,\omega) = \hat{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \hat{P}(\omega) \te^{-\ti \left< \vk \cdot \vx \right> },
+P(\vx,\omega) = \tilde{P}(\omega) \te^{-\ti \left( k_x x + k_y y + k_z z \right) } =  \tilde{P}(\omega) \te^{-\ti \left< \vk \cdot \vx \right> },
 \end{equation}
 where $\mathbf{k} = [k_x,\ k_y,\ k_z]^{\mathrm{T}}$ is the \emph{wavenumber vector}, with its length equaling the acoustic wavenumber $k = | \mathbf{k}|$ and pointing into the direction of the maximum phase advance, given by the gradient of the phase function.
 The separated solution represents a \emph{plane wave} component with the acoustic wavelength $\lambda = 2\pi/k$, traveling in the direction
@@ -278,7 +279,7 @@ The terminology indicates that the surface of constant phase points are lying al
 	\put(2,1){(a)}
 	\put(52,1){(b)}
 	\end{overpic}
-\caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\omega = 2\pi \cdot 1000 ~\mathrm{rad/s}$. 
+\caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\lambda = \frac{2\pi c}{\omega} = \frac{2\pi}{k}$ being the \emph{acoustic wavelength} of the plane wave. 
 In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. 
 Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$ and $y$ directions. 
 For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in exponential decay along the $y$-coordinate.
@@ -304,33 +305,33 @@ in those cases when one wavelength component is shorter than the acoustic wavele
 These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves} for which all wavenumber components are real valued.
  
 %
-Evanescent waves are often the results of the difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
+Strong evanescent contribution is often the result of difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
 As a consequence, in the exemplary case of a vibrating plate higher-order modes will not be radiated into the free-space, since the bending wave's wavelength on the surface may become shorter than the acoustic wavelength would be in air. 
 In these cases air above the surface acts as a hydrodynamic short-circuit.
-An other example may be the radiation from a cold surface into a warmer half space with a continuous temperature profile, resulting in a continuous sound speed profile.
-Due to the variation in the speed of sound the wavenumber components of a plane wave also alter continuously resulting in refraction phenomena.
-As soon as one wavenumber component reaches the evanescent region total internal refraction occurs and only rapidly decaying evanescent waves are present in the further part of the half space.
+%An other example may be the radiation from a cold surface into a warmer half space with a continuous temperature profile, resulting in a continuous sound speed profile.
+%Due to the variation in the speed of sound the wavenumber components of a plane wave also alter continuously resulting in refraction phenomena.
+%As soon as one wavenumber component reaches the evanescent region total internal refraction occurs and only rapidly decaying evanescent waves are present in the further part of the half space.
 
 %
-The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}, when one needs a high-resolution image from the velocity distribution on the vibrating object's surface, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is significantly higher than the evanescent wavelengths.
+The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography}, when one needs a high-resolution image from the velocity distribution of the vibrating object's surface, however their contribution is often neglected in the field of Sound Field Synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is significantly higher than the evanescent wavelengths.
 
 %
 \subsection{The angular spectrum representation}
 \label{Sec:thoery:angular_Spectrum}
 
-It could be seen that any source-free sound field may be expressed in terms of a double inverse Fourier transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
+Based on the foregoing any source-free sound field may be expressed in terms of a double inverse Fourier transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
-The meaning of the spectral weighting components $\tilde{P}(k_x,k_z,\omega)$ is obtained by expressing the pressure by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} at the infinite plane $y=0$: it is revealed, the \emph{angular spectrum}, or \emph{plane wave expansion coefficients} $\tilde{P}(k_x,k_z, \omega)$ is given as the corresponding forward Fourier transform of the pressure distribution at $y=0$.
+By expressing the pressure by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} at the infinite plane $y=0$ it is revealed that the \emph{angular spectrum} $\tilde{P}(k_x,k_z, \omega)$ is given as the corresponding forward Fourier transform of the pressure distribution at $y=0$.
 %: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
 In the followings, the domain characterized by $k_x$, $k_z$ is termed the \emph{wavenumber domain}.
 
-Equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} thus relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. 
+As a consequence, equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. 
 In the wavenumber domain the relation reads as
 \begin{equation}
 \mathcal{F}_x\mathcal{F}_z \left\{ P(\vx,\omega) \right\} = \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \te^{-\ti k_y y},
 \label{Eq:Theory:Wave_field_extrapolation}
 \end{equation}
-with $k_y$ given by \eqref{eq:theory:k_y_definition}.
+with $k_y$ given by \eqref{eq:theory:k_y_definition}, .
 Since the propagation of a single plane wave component is determined merely by the phase change between the planes of investigation, therefore generally speaking the following equation holds:
 \begin{equation}
 \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }.
@@ -345,13 +346,13 @@ which is the Fourier transform differentiation theorem for wavefield extrapolati
 
 \vspace{3mm}
 These statements lead to two important formulations:
-equation \eqref{Eq:Theory:Wave_field_extrapolation_2} written in the spatial domain yields
+equation \eqref{Eq:Theory:Wave_field_extrapolation_2} written in the spatial domain by means of a double inverse Fourier transform yields
 \begin{equation}
 P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }  \te^{- \ti \left( k_x x  + k_z z \right) }
 \td k_x\td k_z.
 \label{Eq:Theory:Pressure_propagated}
 \end{equation}
-By expressing $\tilde{P}(k_x,y_0,k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ---i.e. $y$---derivative at $y = y_0$ calculated by applying the differentiation theorem one obtains
+By expressing $\tilde{P}(k_x,y_0,k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ($y$) derivative at $y = y_0$ calculated by applying the differentiation theorem one obtains
 \begin{equation}
 P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} 
 \underbrace{ \omega \rho_0 \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)}_{-\frac{1}{\ti} \frac{\partial}{\partial y} \tilde{P}(k_x,y_0,k_z,\omega) }
@@ -379,8 +380,8 @@ Formulation of the equations in the spatial domain results in 2D spatial convolu
 Similarly to the presented Cartesian-solution, the general solution of the free field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. 
 The required representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, relating the radiated sound at an arbitrary point to the sound field measured on a spherical or an infinite cylindrical surface.
 These solutions are of great importance when spherical or circular secondary source distributions are applied for sound field reconstruction. 
-Since the present thesis does not include the spectral solution of the reconstruction problem for these geometries, the presentation of the spherical and cylindrical solutions are omitted. 
-For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Ahrens2012}.
+Since the present thesis does not include the explicit solution for synthesis in these geometries, the presentation of the spherical and cylindrical solutions are omitted. 
+For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi2010, Ahrens2012}.
 %
 %
 %
