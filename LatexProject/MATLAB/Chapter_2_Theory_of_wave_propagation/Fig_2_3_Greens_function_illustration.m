@@ -76,9 +76,9 @@ ax2.ZTickLabel = ax2.ZTick/scale;
 ax2.XTick = k*(-1:1:1);
 ax2.YTick = k*(-1:1:1);
 tik_n2 = cell(7,1); 
-tik_n2{1} = '-1\omega/\it{c}';
+tik_n2{1} = '-\omega/\it{c}';
 tik_n2{2} = '0';
-tik_n2{3} = '1\omega/\it{c}';
+tik_n2{3} = '\omega/\it{c}';
 ax2.XTickLabel = tik_n2;
 ax2.YTickLabel = tik_n2;
 set(gca,'TickLabelInterpreter', 'tex');
@@ -87,6 +87,8 @@ ylabel('$k_y \rightarrow \mathrm{[rad/m]}$','Interpreter','latex','FontSize',fts
 zlabel('$|(\tilde{G}(k_x,k_y,0,\omega_0)|$','Interpreter','latex','FontSize',ftsize);
 
 set(gca,'FontName','Times New Roman');
+allAxesInFigure = findall(f,'type','axes');
+set(allAxesInFigure,'FontSize',ftsize);
 
 
 set(gcf,'PaperPositionMode','auto');
