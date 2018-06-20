@@ -139,7 +139,7 @@ This third term is not investigated in the present thesis.
 \label{Section:Theory:Boundary_conditions}
 
 %So far wave propagation in free field was considered, i.e. no boundaries were present.
-In order to obtain a particular solution of the wave equation the behaviour of waves, arriving at boundaries has to be known: the wave field must satisfy prescribed boundary conditions.
+In order to obtain a particular solution of the wave equation the behaviour of waves, arriving at boundaries has to be known: the wavefield must satisfy prescribed boundary conditions.
 The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition} with an enclosing surface/contour denoted by $\dO$.
 If the domain of interest is the exterior of the enclosing boundary while the sources are inside the volume---or it is the vibrating boundary surface itself---the problem to be solved is termed an \emph{exterior radiation problem}. 
 On the other hand, if the aim is to determine the sound field inside a source-free volume---or the reflected field of a sound source inside a cavity---an \emph{interior problem} must be solved.
@@ -188,7 +188,7 @@ Homogeneous Neumann boundary condition are
 \begin{equation}
 \frac{\partial P(\vx,\omega)}{\partial \mathbf{n}} = 0, \hspace{3mm} \forall \hspace{3mm}  \vx \in \dO,
 \end{equation}
-where $ \vn(\vx) $ is the interior or exterior normal vector of the boundary surface, and $\frac{\partial}{\partial \mathbf{n}} P(\vx,\omega) = \left< \vn(\vx) \cdot \Dx P(\vx,\omega) \right>$.
+where $ \vn(\vx) $ is either the interior or exterior normal vector of the boundary surface, and $\frac{\partial}{\partial \mathbf{n}} P(\vx,\omega) = \left< \vn(\vx) \cdot \Dx P(\vx,\omega) \right>$.
 These type of boundaries are termed \emph{sound hard}, or \emph{rigid} boundaries, with the boundary condition ensuring that no incident wave can mobilize the boundary surface.
 
 Inhomogeneous Neumann boundary conditions are given by
@@ -283,7 +283,7 @@ The terminology indicates that the surface of constant phase points are lying al
 In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. 
 Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$ and $y$ directions. 
 For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in exponential decay along the $y$-coordinate.
-In a source free region propagating and evanescent waves form a complete, orthonormal basis for the solution of the helmholtz equation.}
+In a source-free region propagating and evanescent waves form a complete, orthonormal basis for the solution of the helmholtz equation.}
 	\label{Fig:Theory:plane_wave}
 \end{figure}
 
@@ -306,7 +306,7 @@ These type of waves are termed \emph{evanescent waves}, opposed to \emph{propaga
  
 %
 Strong evanescent contribution is often the result of difference between the speed of sound in different materials: in solids the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
-As a consequence, in the exemplary case of a vibrating plate higher-order modes will not be radiated into the free-space, since the bending wave's wavelength on the surface may become shorter than the acoustic wavelength would be in air. 
+As a consequence, in the exemplary case of a vibrating plate higher-order modes will not be radiated into the free space, since the bending wave's wavelength on the surface may become shorter than the acoustic wavelength would be in air. 
 In these cases air above the surface acts as a hydrodynamic short-circuit.
 %An other example may be the radiation from a cold surface into a warmer half space with a continuous temperature profile, resulting in a continuous sound speed profile.
 %Due to the variation in the speed of sound the wavenumber components of a plane wave also alter continuously resulting in refraction phenomena.
@@ -372,7 +372,7 @@ Wave propagation is calculated by multiplying the measured spectra with an expon
 \tilde{P}(k_x,y,k_z,\omega) &= \tilde{P}(k_x,y_0,k_z,\omega) \, \tilde{G}_p(k_x,y-y_0,k_z,\omega) \\
                             &= \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \, \tilde{G}_v(k_x,y-y_0,k_z,\omega).
 \end{align}
-Wave propagation in source-free volumes therefore can be modeled by 2D linear filtering of the sound field, where the filter transfer characteristics are given by the corresponding propagator.
+Wave propagation in source-free volumes thus can be modeled by 2D linear filtering of the sound field measured along a plane, where the filter transfer characteristics are given by the corresponding propagator.
 Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed the Rayleigh I. and II. integrals, as it will be further discussed in the latter sections.
 
 %
@@ -430,7 +430,7 @@ p(\vx) = \int_{\Omega}  g(\vx-\vxo) s(\vxo) \td \Omega (\vxo).
 \end{equation}
 
 The Green's function is usually obtained by the eigenfunction expansion of the operator in a given geometry with specified boundary conditions. 
-Under free-space assumptions, where harmonic functions give a full orthogonal basis a straightforward method is to perform a Fourier transform to equation \eqref{Eq:Theory:Green_function_def} with $\vxo = 0$ with respect to space and time, yielding in $\vx \in \mathbb{R}^{3}$
+Under free space assumptions, where harmonic functions give a full orthogonal basis a straightforward method is to perform a Fourier transform to equation \eqref{Eq:Theory:Green_function_def} with $\vxo = 0$ with respect to space and time, yielding in $\vx \in \mathbb{R}^{3}$
 \begin{equation}
 \left(-(k_x^2 + k_y^2 + k_z^2) + \left(\frac{\omega}{c} \right)^2\right)\tilde{G}(\mathbf{k},\omega) = -1,
 \end{equation}
@@ -501,7 +501,7 @@ The conditional expressions ensure that evanescent waves are attenuated with inc
 	\put(2,2){(a)}
 	\put(50,2){(b)}
 	\end{overpic}
-	\caption{Different representations of the 3D free field Green's function in the angular frequency domain $G(x,y,z,\omega)$, with $\lambda = \frac{2\pi c}{\omega} = \frac{2 \pi}{k}$ (a) and in the semi-wavenumber domain (i.e. the angular spectrum) $\tilde{G}(k_x,k_y,z,\omega)$ (b) measured at $z=0$.}
+	\caption{Different representations of the 3D free field Green's function in the angular frequency domain $G(x,y,z,\omega)$, with $\lambda = \frac{2\pi c}{\omega} = \frac{2 \pi}{k}$ (a) and in the semi-wavenumber domain (i.e. the angular spectrum) $\tilde{G}(k_x,k_y,z,\omega)$ (b), measured at $z=0$.}
 	\label{Fig:Theory:Greens_function}
 \end{figure}
 %
@@ -538,7 +538,7 @@ From the general solution the case of point-like disturbances are of special int
 	\put(68,0){(c)}
 	\end{overpic}
 	\caption{Directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). 
-	In the figures the from the origin denotes the absolute value of the directivity into the given direction, with the sign indicated by the color of the surface. }
+	In the figures the distance from the origin denotes the absolute value of the directivity into the given direction, with the sign indicated by the color of the surface. }
 	\label{Fig:Theory:multipoles}
 \end{figure}
 \begin{itemize}
@@ -549,7 +549,7 @@ P_{\mathrm{m}}(\vx,\omega) = - \frac{\ti \omega \rho_0 \hat{Q}(\omega)}{4\pi} \f
 \end{equation}
 This is the field of an \emph{acoustic monopole}, which is defined as a pulsating sphere, with its radius decreased to infinitesimal while the total volume velocity held constant \cite{Howe2007}.
 $\hat{Q}(\omega)$ is often referred to as \emph{monopole strength}. 
-Monopoles constitute a good far-field approximation of sources in the velocity field, e.g. a dynamical loudspeaker.
+Monopoles constitute a good farfield approximation of sources in the velocity field, e.g. a dynamical loudspeaker.
 \item assuming a point-like force excitation, described by $\mathbf{F}(\vx,\omega) =  \mathbf{f} \hat{F}(\omega) \delta(\vx)$, where the unit vector $\mathbf{f}$ denotes the direction of the force the solution for the inhomogeneous wave equation is given by
 \begin{equation}
 P_{\mathrm{d}}(\vx,\omega) = -\hat{F}(\omega) \left< \mathbf{f} \cdot \Dx G(\vx,\omega) \right>.
@@ -569,7 +569,7 @@ Unlike monopoles, dipoles are directive sources, with the directivity characteri
 Dipoles give a good model for e.g. unbaffled loudspeakers, moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$ often termed the \emph{dipole axis}, and without any lateral radiation.
 %
 \end{itemize}
-The importance of monopoles and dipoles along with higher order \emph{multipoles} lies in the far-field approximation of the field of extended sources, where a complex radiation pattern may be expanded into series of weighted multipole fields, termed \emph{multipole expansion}.
+The importance of monopoles and dipoles along with higher order \emph{multipoles} lies in the farfield approximation of the field of extended sources, where a complex radiation pattern may be expanded into series of weighted multipole fields, termed \emph{multipole expansion}.
 Figure \ref{Fig:Theory:multipoles} presents the directivity pattern of multipoles up to the third order.
 All multipoles are solutions to the wave equation due to its linearity.
 
@@ -583,17 +583,17 @@ G_p(\vx,\omega) = -2 \frac{\partial}{\partial y} G(\vx,\omega) = 2 P_{\mathrm{d}
 \hspace{1mm} \rightarrow \hspace{1mm} 
 G_v(\vx,\omega) = 2 \ti \omega \rho_0 G(\vx,\omega) = -2P_{\mathrm{m}}(\vx,\omega),
 \end{align}
-i.e. the pressure and velocity propagators are given by dipoles and monopoles respectively.
+holds, i.e. the pressure and velocity propagators are given by the fields of dipoles and monopoles respectively.
 This finding will be further discussed in the section dealing with the Rayleigh integral formulation.
 
 \section{Boundary integral representation of sound fields}
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
 Any sound field obeying the homogeneous Helmholtz equation may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
-This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and sound field synthesis.
+This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and Sound Field Synthesis.
 
 In this section the integral formulation of interior problems in source-free volumes is introduced.
-The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the proper addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
+The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the appropriate addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
 \begin{figure}
 	\centering
 	\begin{overpic}[width = .65\columnwidth ]{Figures/Basic_acoustics/Kirchhoff-Helmholtz.png}
@@ -605,7 +605,7 @@ The effect of direct sources inside the enclosure may be straightforwardly inclu
 		\put(39,22){$\vni(\vxo)$}
 		\put(50,40){$\Oi$}
 		\put(80,5){$\Oe$}
-		\put(80,40.5){$\dO$}
+		\put(80,40){$\dO$}
 	\end{overpic}
 \caption{Geometry for the interior Kirchhoff-Helmholtz integral, representing the sound field inside an enclosure $\Oi$ generated by an exterior sound source in the form of a surface integral along $\dO$. For 2D problems the boundary degenerates to a closed contour, enclosing the area $\Oi$.}
 	\label{Fig:Theory:HIE_geometry}
@@ -613,21 +613,19 @@ The effect of direct sources inside the enclosure may be straightforwardly inclu
 
 Let $\Oi$ be an $n$-dimensional enclosure, bounded by the surface $\dO$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. 
 Refer to Figure \ref{Fig:Theory:HIE_geometry} for the geometry. 
-For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads (see \ref{App:Green_theorem} for the derivation)
+For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads
 \begin{multline}
-\int_{\Omega}
+\int_{\Oi}
 \left(  \Phi(\vxo) \nabla^2_{\vxo} \Psi(\vxo) - \Psi(\vxo) \nabla^2_{\vxo} \Phi(\vxo)   \right)   \td \Oi(\vxo)=  \\  =
 \oint_{\dO}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td \dO(\vxo),
 \label{Eq:Theory:Greens-theorem}
 \end{multline}
 with $\frac{\partial}{\partial \vni}$ denoting the inward normal derivative $\langle \vni(\vxo) \cdot \nabla_{\vxo} \Phi(\vxo) \rangle$.
-Let $\Phi$ be the pressure field inside the enclosure satisfying the homogeneous Helmholtz equation and let $\Psi$ be the Green's function located at $\vx$ \footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}---with its actual form depending on the problem dimensionality---
-, therefore equations
+Let $\Phi:P$ be the pressure field inside the enclosure and $\Psi:G$ be the Green's function located at $\vx$, satisfying\footnote{Although the continuity requirement is not fulfilled for the Green's function, with proper mathematical workaround the singularity at $\vx$ may be excluded from the enclosure \cite{Williams1999}.}
 \begin{equation}
-(\nabla^2 + k^2)P(\vxo,\omega) = 0, \hspace{10mm}
-(\nabla^2 + k^2)G(\vxo|\vx,\omega) = -\delta(\vxo - \vx)
+(\nabla_{\vxo}^2 + k^2)P(\vxo,\omega) = 0, \hspace{10mm}
+(\nabla_{\vxo}^2 + k^2)G(\vxo|\vx,\omega) = -\delta(\vxo - \vx).
 \end{equation}
-hold.
 Substituting into the Green's theorem leads to
 \begin{equation}
 \small
@@ -658,14 +656,14 @@ with \fscom{check if $\frac{\partial G(\vx-\vxo,\omega)}{\partial\vni}$ is deriv
 \end{cases}
 \end{equation*}
 The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
-The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left hand side is identically zero. 
-For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left hand side inside \cite{Williams1999}.
+The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left-hand side is identically zero. 
+For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left-hand side inside \cite{Williams1999}.
 In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
 This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
 \footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
 \vspace{3mm}
 
-A frequently used form of the KHIE---utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
+A frequently used form of the KHIE---obtained by utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{\dO}  \bigg(  
@@ -675,14 +673,14 @@ P(\vxo,\omega)  \underbrace{\frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}}_{
 \bigg)   \td \dO(\vxo),
 \label{Eq:Theory:Kirchhoff}
 \end{equation}
-where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, functioning as velocity and pressure propagators analogously to the angular spectrum approach.
-KHIE therefore consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field as the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
+where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, acting as velocity and pressure propagators similarly to the angular spectrum approach.
+KHIE therefore consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field of the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole point sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
 
-The interior KHIE represents the sound field inside the domain of interest and ensures zero pressure field outside, by utilizing a single and a doubler layer potential.
-In the aspect of sound field synthesis the presence of both single and double layer potentials is infeasible.
-By letting the sound field be non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials.
-This is achieved by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or imposing these boundary conditions on the sound field $ P(\vxo,\omega)$ itself in an equivalent scattering problem.
-In the following sections these approaches are applied for the simplification of the KHIE.
+The interior KHIE represents the sound field inside the domain of interest and ensures zero pressure outside, by utilizing both a single and a double layer potential\footnote{Loosely speaking the anti-phase side of the double layer cancels the field of the single layer outside the region of interest.}.
+In the aspect of Sound Field Synthesis the presence of both layers is infeasible.
+By letting the sound field to be non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only single or double layer potentials.
+This is achieved by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions, or imposing these boundary conditions on the sound field $P(\vx,\omega)$ itself in an equivalent scattering problem.
+In the followings these approaches are introduced for the simplification of the KHIE.
 %
 %
 
@@ -716,16 +714,16 @@ The figures demonstrate, how simple source formulation expresses the incident fi
 \end{figure}
 
 Assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$ in the geometry depicted in Figure \ref{Fig:Theory:HIE_geometry}, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, meaning that all sources are located within the enclosure. 
-The exterior wave field is the combination of radiating, or diverging waves. 
+The exterior wavefield is the combination of radiating, or diverging waves. 
 On the other hand assume an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega_i$, induced by a sound source located outside the volume of investigation.
-The interior field constructed by a set of incoming or converging waves also satisfies the homogeneous Helmholtz equation in the interior domain.
+The interior field, constructed by a set of incoming or converging waves, also satisfies the homogeneous Helmholtz equation in the interior domain.
 The two spatially disjunct problems are connected through the following boundary condition written onto the boundary surface
 \begin{equation}
 P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \in \dO.
 \end{equation}
 Both fields may be expressed in terms of an exterior and an interior KHIE respectively.
 For the exterior KHIE expressed in terms of the inward normals refer to \cite[eq. 8.30]{Williams1999}.
-By adding the exterior and interior KHIEs---due to the coupled boundary condition---terms, weighted by the pressure on the boundary vanish and the following integral expression is obtained \cite{Courant1962, Kellogg1967, Williams1999}
+By adding the exterior and interior KHIEs terms, weighted by the pressure on the boundary, will vanish due to the coupled boundary condition and the following integral expression is obtained \cite{Courant1962, Kellogg1967, Williams1999}
 \begin{equation}
 \oint_{\dO} 
 \left(
@@ -741,9 +739,8 @@ P_{\mathrm{i}}(\vx,\omega) 			& \hspace{1mm} \forall \hspace{5mm}   \vx \in \Oi.
 \end{cases}
 \label{Eq:Theory:Simple_source_HIE}
 \end{equation}
-The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be represented as a single layer potential.
-The \emph{single layer strength function} is given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
-The discontinuity in the pressure gradient is termed the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary $\dO$, while the gradient changes sign i.e. \emph{jumps}.
+The equation states that either the interior or the exterior sound field, satisfying the homogeneous Helmholtz equation may be represented as a single layer potential, with the \emph{single layer strength function} given in the integral \eqref{Eq:Theory:Simple_source_HIE} implicitly.
+The expression of this strength function, obtained as the amount of discontinuity in the pressure gradient is often termed the \emph{jump relation}, expressing the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary, while the gradient changes sign i.e. \emph{jumps}.
 
 \vspace{3mm}
 As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
