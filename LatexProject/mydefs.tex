@@ -34,6 +34,39 @@
                 \end{bmatrix}
         \fi
 }
+\definecolor{maincolor}{rgb}{0, 0.447, 0.741}
+
+\newcommand{\importanteq}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{equation}%
+   %\begin{changebar}%  
+   #2%
+   %\end{changebar}% 
+   \end{equation}    
+  }%
+  
+\newcommand{\importanteqnarray}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{eqnarray}
+   %\begin{changebar}%  
+   #2%
+   %\end{changebar}% 
+   \end{eqnarray}   
+  }%
 
 %%\setcounter{secnumdepth}{2}
 %  \renewcommand\not[1]{#1\xnot}

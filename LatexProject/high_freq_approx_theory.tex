@@ -1,13 +1,11 @@
-The boundary integral representations introduced in the previous section give the possibility for solving the sound field synthesis problem for special geometries, or at the expense of great computational complexity.
-In order to derive integral representations more suitable for general sound field synthesis, the application of approximate solutions are inevitable.
+The boundary integral representations introduced in the previous section give the possibility for controlling the the sound field inside enclosures. 
+However their direct application for Sound Field Synthesis is of great computational complexity for arbitrary geometries.
+In order to derive integral representations more suitable for general sound field reproduction, the application of approximate solutions are inevitable.
 This chapter presents several high frequency asymptotic approximations of sound fields and their integral representations.
 These approximations will be of crucial interest for finding the driving functions for general loudspeaker contours in the latter sections.
 
-%First the local wavenumber vector concept is introduced.
-%This concept describes the local propagation characteristics of sound fields, and provides a powerful tool for the interpretation of the stationary phase approximation, applied to either boundary or spectral integral representation of sound fields.
-
 The presented local/asymptotic description of wave fields is not unknown in the fields of acoustics: with minor modifications it is a massively used concept in ray tracing and geometrical optics/acoustics.
-However, its application for sound field synthesis problems has been unprecedented so far.
+However, its application for Sound Field Synthesis problems has been unprecedented so far.
 
 \section{Local attributes of sound fields}
 \subsection{The local wavenumber vector}
@@ -22,19 +20,17 @@ with a suppressed temporal dependency $\te^{\ti \omega t}$.
 The dynamics of wave propagation is described by the phase of the sound field.
 From ray-tracing/geometrical optics theory the following quantity is introduced \cite{Carozzi2004, Romer2005}:
 %
-\begin{equation}
+\importanteq{Local wavenumber vector}{
 \label{eq:local_wn_vec_def}
 \vk^P(\vx) = -\Dx \phi^P(\vx,\omega),
-\end{equation}
-%
-\fscom{give a note that this holds for the used time/space convention in the Fourier transforms}
-
-termed the \emph{local wavenumber vector} of sound field $P$, being obviously the generalization of the plane wave wavenumber vector introduced by equation \eqref{Eq:Theory:PW_wavenumber_vec}.
-For cartesian coordinates $\vk^P(\vx)=[k_x^P(\vx),\ k_y^P(\vx),\ k_z^P(\vx)]^{\mathrm{T}}$.
+}%
+termed the \emph{local wavenumber vector} of sound field $P$, being obviously the generalization of the plane wave wavenumber vector introduced by equation \eqref{Eq:Theory:PW_wavenumber_vec}\footnote{The negative sign ensures that the phase of the sound field decreases into the propagation direction, similarly to the plane wave case}.
+For cartesian coordinates the components of the local wanumber vetor are denoted as $\vk^P(\vx)=[k_x^P(\vx),\ k_y^P(\vx),\ k_z^P(\vx)]^{\mathrm{T}}$.
 In the followings the existence of the superscript distinguishes local properties from the global ones, i.e. local wavenumber components of spectral decomposition.
-The wavenumber vector, defined as the negative gradient of the phase function points in the direction of maximal phase advance, i.e.\ it is perpendicular to the wavefront in any position.
+The wavenumber vector, defined as the negative gradient of the phase function points into the direction of maximal phase advance, i.e.\ it is perpendicular to the wavefront in any position.
 For an isotropic medium, where the propagation speed is constant, the phase velocity and the group velocity coincide, and the wavenumber vector points in the direction of the wave's energy flow, thus in the local wave propagation direction \footnote{This statement holds exclusively for isotropic media.
 Although the wavenumber vector is always perpendicular to the wavefront, in anisotropic media the energy of a wave not necessarily travels along the path as the wavefront normals \cite{Pollard1977}.}.
+Note that the local wavenumber vector is frequency dependent, which dependency is suppressed for the sake of brevity.
 %
 \begin{figure}
 	\small
@@ -47,7 +43,7 @@ Although the wavenumber vector is always perpendicular to the wavefront, in anis
 	\end{overpic}
 	\caption{Illustration of the local wavenumber vector for a 2D acoustic point source (a,c) and a 2D plane wave (b,d).
 (a-b) show an arbitrarily chosen contour of constant phase (isochronous contour), along with the wavenumber vector on this contour.
-(c-d) show the local normalized $\hat{k}_x(x,y_0)$ component along the line $y_0 = 0.5 ~\mathrm{m}$.\fscom{0.5m line in fig a might be helpful}
+(c-d) show the $x$-component of the normalized local wavenumber vector ($\hat{k}_x(x,y_0)$), measured along the line $y_0 = 0.5 ~\mathrm{m}$.
 }
 	\label{Fig:HF_appr:local_wavenumber_vector}
 \end{figure}

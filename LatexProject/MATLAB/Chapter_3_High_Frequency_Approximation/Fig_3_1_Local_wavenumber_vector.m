@@ -30,7 +30,7 @@ ky_pw = k*sin(theta*pi/180)*ones(size(y0_pw));
 
 p_pw = exp(-1i*k*(cos(theta*pi/180)*X+sin(theta*pi/180)*Y));
 %%
-ftsize = 12.2;
+ftsize = 11/0.9;
 f = figure('Units','points','Position',[200,200,500,360]);
 
 set(f,'defaulttextinterpreter','latex')
@@ -43,7 +43,7 @@ caxis([-.1,.1]);
 hold on
 contour( x, y, real(p_ps),[0 0], '-k');
 plot(x0_ps,y0_ps,'--k')
-
+line([x(1),x(end)],[0.5 0.5],'LineStyle',':','Color','black')
 headWidth = 5;
 headLength = 5;
 LineLength = 0.025;
@@ -65,6 +65,7 @@ shading interp
 axis equal tight
 caxis([-1.5,1.5])
 hold on
+line([x(1),x(end)],[0.5 0.5],'LineStyle',':','Color','black')
 pcolor_ax =(gca);
 cRange = caxis;
 [C,~]= contour( x, y, real(p_pw),[0 0], '-k');
