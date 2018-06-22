@@ -238,8 +238,9 @@ Written e.g. for the $x$-variable:
 The solutions may be substituted back into equation \eqref{Eq:Theory:Seperated_variables}. 
 In order to include every possible solution the general solution for the free field homogeneous Helmholtz equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. 
 However, the variables are not independent. 
-For a fixed temporal frequency their relation is described by the dispersion relation, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}
+For a fixed temporal frequency their relation is described by the \emph{dispersion relation}, resulting from \eqref{Eq:Theory:Seperated_variables_expanded}
 \begin{equation}
+\label{Eq:Theory:dispersion_relation}
 k^2 = \left( \frac{\omega}{c} \right)^2 = k_x^2 + k_y^2 + k_z^2,
 \end{equation}
 connecting the temporal and spatial frequencies.
@@ -660,7 +661,7 @@ The interior KHIE describes the pressure field only inside the volume of investi
 For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left-hand side inside \cite{Williams1999}.
 In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
 This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
-\footnote{Actually, the KHIE may be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}}.
+\footnote{Actually, the KHIE can be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}.}.
 \vspace{3mm}
 
 A frequently used form of the KHIE---obtained by utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
@@ -831,7 +832,7 @@ with $\vx' = \posvec{3}{x}{2 y_0-y}{z}$  as illustrated in Figure \ref{Fig:Theor
 %
 
 Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariance of the Green's function yields the Rayleigh I and II integrals respectively \cite{Berkhout1984}:
-\importanteqnarray{\\ Rayleigh I. \\ and \\ Rayleigh II. \\ integrals \vspace{3mm}}{
+\importanteqnarray{ \vspace{6mm} Rayleigh I. and  Rayleigh II. integrals \vspace{6mm} }{
 P(\vx,\omega) =
 \int_{\dO_P}
 -2

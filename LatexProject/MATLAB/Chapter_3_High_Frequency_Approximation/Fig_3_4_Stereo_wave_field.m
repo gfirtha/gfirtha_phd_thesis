@@ -1,6 +1,7 @@
 clear
 close all
 addpath(genpath('../Files/arrow3'));
+addpath(genpath('../Files'));
 dx = 1e-2;
 x = (-2:dx:2)';
 y = (-1:dx:2.5)';
@@ -70,7 +71,7 @@ xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
 ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 plot(y(1:5:end)*0,y(1:5:end),'--k');
-
+draw_ssd( f, [x1;x2], -[cosd(120) sind(120);cosd(60) sind(60)], 6e-2 );
 % 
 x0 = 0*y;
 y0 = y;
