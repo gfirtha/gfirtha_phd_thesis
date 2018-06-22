@@ -24,7 +24,7 @@ From ray-tracing/geometrical optics theory the following quantity is introduced 
 \label{eq:local_wn_vec_def}
 \vk^P(\vx) = -\Dx \phi^P(\vx,\omega),
 }%
-termed the \emph{local wavenumber vector} of sound field $P$, being obviously the generalization of the plane wave wavenumber vector introduced by equation \eqref{Eq:Theory:PW_wavenumber_vec}\footnote{The negative sign ensures that the phase of the sound field decreases into the propagation direction, similarly to the plane wave case}.
+termed the \emph{local wavenumber vector} of sound field $P$, being obviously the generalization of the plane wave wavenumber vector introduced by equation \eqref{Eq:Theory:PW_wavenumber_vec}\footnote{The negative sign ensures that the phase of the sound field decreases into the propagation direction, similarly to the case of a plane wave}.
 Note that the local wavenumber vector is frequency dependent, which dependency is suppressed for the sake of brevity.
 In Cartesian coordinates the components of the local wavenumber vector are denoted as $\vk^P(\vx)=[k_x^P(\vx),\ k_y^P(\vx),\ k_z^P(\vx)]^{\mathrm{T}}$.
 In the followings the existence of the superscript distinguishes local properties from the global ones, i.e. local wavenumber components of spectral decomposition.
@@ -138,7 +138,7 @@ The \emph{mean curvature} of the wavefront---generally defined as the divergence
 %
 \importanteq{Mean wavefront curvature}{
 \overline{\kappa}^P(\vx) =
-\frac{\Dx \cdot \hat{\vk}^P(\vx)}{2} = - \frac{\Lx \phi^P(\vx,\omega)}{2 k} = - \frac{ \phi^{P''}_{xx}(\vx) + \phi^{P''}_{yy}(\vx) + \phi^{P''}_{zz}(\vx)}{2 k},
+\frac{\Dx \cdot \hat{\vk}^P(\vx)}{2} = - \frac{\Lx \phi^P(\vx,\omega)}{2 k} = - \frac{ \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2} \right) \phi^{P}(\vx,\omega)}{2 k},
 \label{eq:HF_appr:curvature}}
 with $k = \frac{\omega}{c}$ being the acoustic wavenumber.
 Employing the transport equation \eqref{eq:HF_appr:transport_eq} the divergence of the local wavenumber vector can be expressed as
@@ -391,7 +391,7 @@ This section introduces a basic tool of asymptotic analysis, the \emph{stationar
 The method is applied to evaluate complex integrals by considering the greatest contribution stemming from critical points in the integral path.
 In the following chapters the SPA allows to extract asymptotic, local solutions from the global ones for radiation and reproduction problems written in terms of either boundary or spectral integrals.
 
-For the sake of brevity the following notation convention is used hereinafter:
+For the sake of brevity the following notation convention is used hereinafter, as given also in the nomenclature:
 Given an $n$-dimensional function $f(\vx)$ with $\vx = \posvec{4}{x_1}{x_2}{...}{x_i}$, $i = 1,2,...,n$, the first and second partial derivatives with respect to the $i$-th and $j$-th coordinates $x_i$, $x_j$ evaluated at point $\vx^*$ are denoted as
 \begin{equation}
 \left. \frac{\partial}{\partial x_i} f(\vx) \right|_{\vx = \vx^*} = f'_{x_i}(\vx^*), \hspace{1cm}
@@ -400,52 +400,42 @@ Given an $n$-dimensional function $f(\vx)$ with $\vx = \posvec{4}{x_1}{x_2}{...}
 
 \subsection{The integral approximation}
 %
-Generally speaking the SPA yields approximate solutions of complex integrals of the form with $\vx \in \mathbb{R}^{n}$
+Generally speaking the SPA yields approximate solutions of complex integrals in the general polar form with $\vx \in \mathbb{R}^{n}$
 \begin{equation}
 \label{Eq:SPAintegral_1d_nd}
-I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} F(x) \, \te^{\ti \phi(x)} \, \td x,
+I_{1\mathrm{D}} = \int\limits_{-\infty}^{\infty} A(x) \, \te^{\ti \phi(x)} \, \td x,
 \hspace{20mm} 
-I_{n\mathrm{D}} = \int\limits_{\dO} F(\vx) \, \te^{\ti \phi(\vx)} \, \td \dO(\vx)
+I_{n\mathrm{D}} = \int\limits_{-\infty}^{\infty} A(\vx) \, \te^{\ti \phi(\vx)} \, \td \vx
 \end{equation}
-in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $F(\vx)$ is comparably slowly varying.
+in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $A(\vx)$ is comparably slowly varying.
 
+\paragraph{One-dimensional SPA:}
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
-More informally the method relies on the second order truncated Taylor series of the exponent around $x^*$, where $\phi'_x(x^*) = 0$ and $\phi''_{xx}(x^*) \neq 0$, with $\phi'_x(x)$ denoting the derivative with respect to $x$:
+More informally the method relies on the second order truncated Taylor series of the exponent around the \emph{stationary point} $x^*$, satisfying 
+\begin{equation}
+\phi'_x(x^*) = 0, \hspace{1cm} \text{and} \hspace{1cm} \phi''_{xx}(x^*) \neq 0.
+\end{equation}
+Around the stationary point the Taylor series reads as
 \begin{equation}
 \phi(x) \approx \phi(x^*) + \frac{1}{2}\phi''_{xx}(x^*)(x-x^*)^2.
 \end{equation}
-Point $x^*$ is termed the \emph{stationary point}.
 %
-Supposing that $F(x)$ is a slowly varying smooth function compared to $\phi(x)$, it is assumed that where the phase varies, i.e.\ $\phi'_x(x) \neq 0$, the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral comes from the immediate surroundings of the stationary point.
-Moreover in the proximity of the stationary point $F(x)$ can be regarded as constant with the value $F(x^*)$.
+Supposing that the amplitude $A(x)$ is a slowly varying smooth function compared to $\phi(x)$, it is assumed that where the phase varies (i.e.\ $\phi'_x(x) \neq 0$), the integral of rapid oscillation cancels out, thus the greatest contribution to the total integral comes from the immediate surroundings of the stationary point.
+Moreover in the proximity of the stationary point $A(x)$ can be regarded as constant with the value $A(x^*)$.
 %
 With these considerations the integral becomes
 \begin{align}
-I_{1D} \approx F(x^*)\,\te^{+\ti\phi(x^*)} 
+I_{1D} \approx A(x^*)\,\te^{+\ti\phi(x^*)} 
 \int\limits_{-\infty}^{\infty} \te^{+\ti \frac{1}{2}\phi''_{xx}(x^*)(x-x^*)^2} \, \td x.
 \end{align}
 The remaining integral can be evaluated analytically, and the SPA of \eqref{Eq:SPAintegral_1d_nd} becomes \cite[Ch.\ 2.8]{Blenstein1975}
-\begin{equation}
+\importanteq{1D stationary phase approximation}{
 \label{Eq:SPAResult}
 I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''_{xx}(x^*) |}} F(x^*) \, \te^{+\ti \phi(x^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''_{xx}(x^*) \right)}.
-\end{equation}
+}
 
+\paragraph{Multidimensional SPA:}
 Similarly, in higher dimensions the stationary point $\vx^*$, more precisely a \emph{simple stationary point} is defined as
-%\begin{align}
-%\label{Eq:ndim_stat_point}
-%\begin{split}
-%\left.
-%\Dx \phi(\vx)\right|_{\vx = \vx^*} &= 0,
-%\\ \vspace{1.5mm} \\
-%\det H(\vx^*) \neq 0,
-%\hspace{5mm} 
-%H_{ij}(\vx^*) &= \left. \left[
-%\frac{\partial^2 \phi(\vx)}{\partial x_i \partial x_j} 
-%\right] \right|_{\vx = \vx^*},
-%\hspace{5mm}
-%i,j = 1,2,...,n,
-%\end{split}
-%\end{align}
 \begin{equation}
 \label{Eq:ndim_stat_point}
 \left.
@@ -453,21 +443,21 @@ Similarly, in higher dimensions the stationary point $\vx^*$, more precisely a \
 \end{equation}
 where 
 \begin{equation}
-\det H(\vx^*) \neq 0,
+\det \mH(\vx^*) \neq 0,
 \hspace{5mm} 
-H_{ij}(\vx^*) = \left. \left[
+\mH_{ij}(\vx^*) = \left. \left[
 \frac{\partial^2 \phi(\vx)}{\partial x_i \partial x_j} 
 \right] \right|_{\vx = \vx^*},
 \hspace{5mm}
 i,j = 1,2,...,n
 \end{equation}
-holds, with $H$ being the Hessian matrix of the phase function.
+holds, with $\mH$ being the Hessian matrix of the phase function.
 The multidimensional formula for the integral value reads as
-\begin{equation}
+\importanteq{$n$-dimensional SPA}{
 \label{Eq:SPAResult_nd}
-I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det H(\vx^*)|}} F(\vx^*) \te^{\ti \phi(\vx^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( H(\vx^*) \right)},
-\end{equation}
-where $\mathrm{sgn}\left( H(\vx^*) \right)$ is the signature of the Hessian: the number of positive eigenvalues minus the number of negative eigenvalues \cite{Bleistein2000}.
+I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det \mH(\vx^*)|}} F(\vx^*) \te^{\ti \phi(\vx^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( \mH(\vx^*) \right)},
+}
+where $\mathrm{sgn}\left( \mH(\vx^*) \right)$ is the signature of the Hessian: the number of positive eigenvalues minus the number of negative eigenvalues \cite{Bleistein2000}.
 
 In the followings the physical interpretation of the SPA is discussed when applied to boundary and spectral integrals of sound fields and simple examples are given for its application.
 The conclusions of the presented examples will be further utilized in the following chapters.
