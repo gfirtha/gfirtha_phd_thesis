@@ -74,7 +74,7 @@ Applying a decoding strategy that takes the actual reproduction loudspeaker char
 
 \paragraph{Sound field synthesis:}
 An important property of spherical harmonic decomposition of a given sound field around a fixed point is that increasing the decomposition order increases the area/volume at which the sound field is represented correctly, overcoming the sweet spot limitation of stereophony.
-This fact adumbrates the motivation behind physically based sound field reproduction methods, commonly referred to as \emph{Sound Field Synthesis techniques}, or \emph{holophony}: once a the physical properties of a desired sound field is reproduced over an extended listening area, it is inherently ensured that the listener perceives the desired perceptual properties \cite{Spors2013:Survey}.
+This fact adumbrates the motivation behind physically based sound field reproduction methods, commonly referred to as \emph{sound field synthesis techniques}, or \emph{holophony}: once the physical properties of a desired sound field is reproduced over an extended listening area, it is inherently ensured that the listener perceives the desired perceptual properties \cite{Spors2013:Survey}.
 Obviously, controlling the sound field over an extended region requires numerous loudspeakers, positioned on the boundary of the control region.
 Hence, these techniques are often referred to as \emph{massive multichannel sound reproduction methods} \cite{Spors2013:Survey, Zhang2017}.
 
@@ -88,11 +88,11 @@ Hence, these techniques are often referred to as \emph{massive multichannel soun
 	\put(45,7){loudspeaker array}
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.3\textwidth}
-    \caption{The general geometry for Sound Field Synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object, or primary source of sound inside a control region, bounded by a densely spaced loudspeaker ensemble.}
+    \caption{The general geometry for sound field synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object, or primary source of sound inside a control region, bounded by a densely spaced loudspeaker ensemble.}
 \label{fig:introduction:sfs_aim}  \end{minipage}
 \end{figure}
 
-Generally speaking, the Sound Field Synthesis problem is an inverse problem: the synthesized sound field is described analytically in the form of an integral/summation of the individual loudspeakers' sound field, used for reproduction \cite{Ahrens2010phd, Ahrens2012, fazi2008surround, Fazi2010}.
+Generally speaking, the sound field synthesis problem is an inverse problem: the synthesized sound field is described analytically in the form of an integral/summation of the individual loudspeakers' sound field, used for reproduction \cite{Ahrens2010phd, Ahrens2012, fazi2008surround, Fazi2010}.
 In order to derive analytical loudspeaker signals this integral formulation has to be solved in an inverse manner for any target virtual sound field.
 The solution is available explicitly only in special geometries: for a spherical and circular arrangement of loudspeakers the direct solution is proven to coincide with NFC-HOA \cite{Daniel2003, fazi2008surround, Fazi2010, poletti2005three, 943347, Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2011:icassp}, while for a theoretical infinite planar or linear distribution of loudspeakers the solution is known as the \emph{Spectral Division Method (SDM)} \cite{Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2012}.
 NFC-HOA and SDM are therefore commonly referred to as the \emph{explicit solution} for the sound field synthesis problem.
@@ -168,8 +168,8 @@ Furthermore, the exact connection between traditional and the latter \emph{revis
 \vspace{3mm}
 The present dissertation revisits the theoretical basics of Wave Field Synthesis.
 First, several high frequency acoustic concepts are introduced---e.g the local wavenumber vector and the local wavefront curvature---being beneficial for the deeper understanding of the results, concerning WFS.
-By using these concepts brief and physically illustrative loudspeakers driving functions are derived.
-These driving functions allow the reproduction of arbitrary two, or three-dimensional sound fields applying an arbitrary shaped ensemble of loudspeakers with the amplitude of the synthesized field optimized along an arbitrary reference curve.
+By using these concepts brief and physically illustrative loudspeakers driving signals are derived.
+These driving signals allow the reproduction of arbitrary two, or three-dimensional sound fields applying an arbitrary shaped ensemble of loudspeakers with the amplitude of the synthesized field optimized along an arbitrary reference curve.
 Hence, the presented theoretical framework includes previous WFS approaches as special cases.
 
 The introduced high frequency concepts are well-known in the field of high frequency acoustics and ray acoustics.
@@ -187,7 +187,7 @@ In the present work the physically correct loudspeaker driving signals are prese
 
 With highlighting the related publications by the author, the thesis is structured as follows
 \begin{itemize}
-\item Chapter \ref{sec:general_wave_theory} gives an overview on basic acoustic concepts, required for dealing with the general Sound Field Synthesis problem.
+\item Chapter \ref{sec:general_wave_theory} gives an overview on basic acoustic concepts, required for dealing with the general sound field synthesis problem.
 Different descriptions of sound fields are discussed, including spectral integral and boundary integral representations.
 %
 \item Chapter \ref{sec:high_freq_approx} introduces important high frequency concepts---the local wavenumber  vector local wavefront curvature and the high frequency gradient approximation---which are later applied in order to explain results, concerning the \emph{stationary phase approximation (SPA)} of integrals.
@@ -195,16 +195,16 @@ The SPA is of central importance in the aspect of the present thesis: loosely sp
 The application of the SPA to the different integral representations is discussed via examples.
 Some of the results in these examples---describing wave dynamics by investigating the sound field's phase function and its derivatives---are well-known in the field of ray acoustics, however the present thesis introduces a novel approach for their derivation, so far unknown in the related literature.
 %
-\item Chapter \ref{sec:sound_field_synthesis} deals with the solution of the general Sound Field Synthesis problem.
+\item Chapter \ref{sec:sound_field_synthesis} deals with the solution of the general sound field synthesis problem.
 By applying the SPA to the boundary integral representation of wave fields	 a unified Wave Field Synthesis framework is introduced, capable of the synthtesis of an arbitrary sound field applying arbitrary shaped loudspeaker ensembles, with optimizing the synthesis on a pre-defined reference curve \cite{Firtha2016, schultz2017wave}.
 The application of the presented concepts are illustrated with examples, highlighting how previous WFS approaches are included inherently in the present framework.
 By applying asymptotic approximation to the Spectral Division Method a novel SFS method is introduced, ensuring wavefront matching along a control curve requiring merely the virtual field measured at these control points \cite{Firtha2017:daga}.
-Finally, it is highlighted, that the proposed method is equivalent with WFS, indicating the general relation between the implicit and the explicit SFS methods \cite{Firtha2018:WFS_vs_SDM}.
+It is highlighted, that the proposed method is equivalent with WFS, indicating the general relation between the implicit and the explicit SFS methods \cite{Firtha2018:WFS_vs_SDM}.
 Finally, the effect of the discrete secondary source source distribution (instead of the theoretical continuous one) is discussed, and a novel antialiasing strategy is introduced \cite{Firtha2018_daga_a}.
 %
 \item As a detailed, complex example for the above theoretical results, in Chapter \ref{sec:moving_source_synthesis} the reproduction of moving virtual sources is investigated.
 By adapting the unified WFS theory to the analytical description of sources under motion, driving signals are presented for an arbitrary contour of loudspeakers \cite{Firtha2015:daga, firtha2016wave, doi:10.1121/1.4996126}.
 Besides Wave Field synthesis, the explicit solution is also presented, serving as a reference solution \cite{Firtha2014:daga, Firtha2014:isma}.
-Finally, several practical aspects of synthesis are discussed, evolving at the practical application of the presented driving functions, e.g. numerical calculation of the presented analytical driving functions and the effects of the applied loudspeaker geometry \cite{Firtha2018_daga_a}.
+Finally, several practical aspects of synthesis are discussed, evolving at the practical application of the presented driving signals, e.g. numerical calculation of the presented analytical driving signals and the effects of the applied loudspeaker geometry \cite{Firtha2018_daga_moving_source}.
 For this latter question the explicit solution---for which WFS constitutes a high-frequency approximation similarly to the case of stationary sound scenes \cite{firtha2015sound}---is utilized to the analytical investigation of the evolving artifacts \cite{firtha2016:daga}.
 \end{itemize}

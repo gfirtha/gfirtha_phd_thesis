@@ -1,12 +1,12 @@
 	%\section{The problem formulation}
 \begin{figure}[b!]
 	\centering
-	\begin{overpic}[width = .8\columnwidth]{Figures/SFS_theory/general_sfs.png}
+	\begin{overpic}[width = .8\columnwidth ]{Figures/SFS_theory/general_sfs.png}
 	\small
 	\put(0,26){virtual source}
 	\put(44.5,0.5){$\mathbf{0}$}
 	\put(71,31){$\vx$}
-	\put(71,31){\fscom{label unit inward n}}
+	\put(39,22){$\vni(\vxo)$}
 	\put(43,15){$\vxo$}
 	\begin{turn}{27}
 	\put(57,-3){$|\vx - \vxo|$}
@@ -18,23 +18,24 @@
 	\label{Fig:Theory:general_sfs_geometry}
 \end{figure}
 
-In the followings the general sound field synthesis (SFS) problem is formulated. 
+In the followings the general Sound Field Synthesis (SFS) problem is formulated. 
 Consider a source-free volume $\Omega \subset \mathbb{R}^3$, bounded by a continuous set of acoustic sources forming the boundary surface $\dO$.
 The enclosing source ensemble is termed the \emph{secondary source distribution (SSD)}.
 %Obviously, in the aspect of practical applications only 3D problems are of importance ($n=3$).%, however for the sake of computational simplicity several simulations 
 The general geometry is depicted in Figure \ref{Fig:Theory:general_sfs_geometry}.
 For the sake of simplicity it is assumed that the boundary is acoustically transparent and the secondary sources are acoustic point sources described by the free field Green's function. 
-Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
+%Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the followings.
 Since dynamic loudspeakers can be modeled as 3D monopoles in the low-frequency region, this choice of SSD elements is reasonable. 
 
-With these assumptions the synthesized pressure at any receiver position $\vx \in \Omega$ is given by the superposition of the fields of individual SSD elements, written as a single layer potential \cite{Ahrens2012,Ahrens2010phd,Wierstorf2014,Schultz2014:Comparing_approaches}:
+With these assumptions the synthesized pressure at any receiver position $\vx \in \Omega$ is given by the superposition of the fields of individual SSD elements, written as a single layer potential \cite{Ahrens2010phd,Ahrens2012,Wierstorf2014,Schultz2014:Comparing_approaches}:
 \begin{equation}
-P(\vx,\omega) = \oint_{\dO} D(\vxo,\omega) G(\vx - \vxo , \omega ) \td \dO ( \vxo ).
+P(\vx,\omega) = \oint_{\dO} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td \dO ( \vxo ),
 \label{Eq:Theory:3D_SFS}
 \end{equation}
+with $G(\vx,\omega)$ denoting the 3D free field Green's function.
 The weighting factor $D(\vxo,\omega)$ is termed the \emph{driving function} for the given SSD. 
 The sound field synthesis problem can be formulated as the following:
-Given a \emph{target sound field} or the sound field of a \emph{virtual source} $P(\vx,\omega)$, the aim is to solve the integral equation for $D(\vxo,\omega)$, so that the superposition of the SSD's sound field---the \emph{synthesized field}---equals to the target sound field. \fscom{these definitions appear somewhere before, I'd suggest to define them earlier and reclaim them here.}
+Given a \emph{target sound field} or the sound field of a \emph{virtual source} $P(\vx,\omega)$, the aim is to solve the above integral equation for $D(\vxo,\omega)$, so that the superposition of the SSD's sound field---the \emph{synthesized field}---equals to the target sound field. %\fscom{these definitions appear somewhere before, I'd suggest to define them earlier and reclaim them here.}
 The problem is therefore an inverse problem with a unique solution for general enclosures.
 
 Comparing the general SFS formulation \eqref{Eq:Theory:3D_SFS} with the Kirchhoff-Helmholtz integral \eqref{Eq:Theory:Kirchhoff-Helmholtz} it becomes clear that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure.
@@ -1151,7 +1152,7 @@ In the foregoing only stead-state analysis of wave fields was discussed, however
 As discussed already, the 2.5D WFS driving functions apply a half-differentiation to the input signal in order to compensate for the infinite tail (i.e. the half-integrator characteristics) of the secondary source response, emerging due to the geometry of the SSD.
 Compensation is therefore performed by each SSD element canceling out the fields of the adjacent secondary sources after the virtual wavefront is emitted.
 In case of a discrete SSD this cancellation can not be performed below the aliasing frequency, hence in the synthesized field the spherical wave fields of the individual SSD elements will be present.
-Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element----, following the intended virtual wavefront carrying the driving function of the individual SSD elements, high-pass filtered above the aliasing frequency. 
+Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element----, following the intended virtual wavefront carrying the driving function of the individual SSD elements, high-pass filtered above the aliasing frequency \cite{spors2009spatial}. 
 
 Note that in a given receiver position due to the short time interval between the arrival of the high-pass filtered echo wavefronts, aliasing is perceived rather as the coloration of the virtual sound field, than actual echoes/reverberation, while due to the precedence effects the localization of the the virtual field is not degraded \footnote{This is true only for the synthesis of non-focused fields.
 In case of reproducing e.g. a focused point source spatial aliasing appears as pre-echoes, arriving before the intended virtual wavefront \cite{Spors2009:FocusedSourceAliasing}}.

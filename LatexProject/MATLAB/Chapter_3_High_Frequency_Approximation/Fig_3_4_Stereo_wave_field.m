@@ -9,6 +9,7 @@ y = (-1:dx:2.5)';
 w = 0.8e3*2*pi;
 c = 343.1;
 k = w / c;
+lambda = 2*pi/k;
 
 R0 = 2.5;
 fi0 = 30;
@@ -56,22 +57,22 @@ pos = [ 0.035 0.15 0.6 .75
         0.71 0.14 0.28 .16];
 
 p1 = axes('Units','normalized','Position',pos(1,:));
-pcolor(x,y,real(field));
+pcolor(x/lambda,y/lambda,real(field));
 shading interp
 axis equal tight
 caxis(1*[-1,1]*1e-1);
 hold on
 pcolor_ax =(gca);
 cRange = caxis; 
-[C,~] = contour( x, y , real(field), '-k');
+[C,~] = contour( x/lambda, y/lambda , real(field), '-k');
 hLines = findobj(gca, 'type', 'line');
 set(hLines, 'LineWidth', 1);
 caxis(cRange); 
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x/\lambda \rightarrow$ []', 'FontSize', ftsize );
+ylabel( '$y/\lambda \rightarrow$ []', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-plot(y(1:5:end)*0,y(1:5:end),'--k');
-draw_ssd( f, [x1;x2], -[cosd(120) sind(120);cosd(60) sind(60)], 6e-2 );
+plot(y(1:5:end)*0,y(1:5:end)/lambda,'--k');
+draw_ssd( f, [x1;x2]/lambda, -[cosd(120) sind(120);cosd(60) sind(60)], 6e-2/lambda );
 % 
 x0 = 0*y;
 y0 = y;
@@ -89,52 +90,52 @@ for i = 1:15:length(kx0)
         ah = annotation('arrow',...
             'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
         set(ah,'parent',gca);
-        set(ah,'position',[x0(i) y0(i) LineLength*kxn0(i) LineLength*kyn0(i)]);
+        set(ah,'position',[x0(i) y0(i) LineLength*kxn0(i) LineLength*kyn0(i)]/lambda);
   %  end
 end
-xlim([x(1),x(end)]);
-ylim([y(1),y(end)]);
+xlim([x(1),x(end)]/lambda);
+ylim([y(1),y(end)]/lambda);
 xtp1 = p1.XTickLabel;
 
 p2 = axes('Units','normalized','Position',pos(2,:));
-plot(y,kx0/k,'LineWidth',1)
-xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+plot(y/lambda,kx0/k,'LineWidth',1)
+xlabel( '$y/\lambda \rightarrow$ []', 'FontSize', ftsize );
 ylabel( '$\hat{k_x}^P(0,y)$' , 'FontSize', ftsize );
-xlim([y(1),y(end)])
+xlim([y(1),y(end)]/lambda)
 grid on
 set(gca,'FontName','Times New Roman');
 set (gca,'Xdir','reverse')
 hold on
 yl = ylim;
-plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
+plot(x1(2)/lambda+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
 
 p3 = axes('Units','normalized','Position',pos(3,:));
-plot(y,-ky0/k,'LineWidth',1)
-xlabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+plot(y/lambda,-ky0/k,'LineWidth',1)
+xlabel( '$y/\lambda \rightarrow$ []', 'FontSize', ftsize );
 ylabel( '$\hat{k_y}^P(0,y)$' , 'FontSize', ftsize );
-xlim([y(1),y(end)])
+xlim([y(1),y(end)]/lambda)
 grid on
 set(gca,'FontName','Times New Roman');
 set (gca,'Xdir','reverse')
 hold on
 yl = ylim;
-plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
+plot(x1(2)/lambda+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
 
 p4 = axes('Units','normalized','Position',pos(4,:));
-plot(y,sqrt(kx0.^2+ky0.^2)/k,'LineWidth',1)
-xlabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+plot(y/lambda,sqrt(kx0.^2+ky0.^2)/k,'LineWidth',1)
+xlabel( '$y/\lambda \rightarrow [\mathrm{}]$' , 'FontSize', ftsize );
 ylabel( '$\left| \hat{\mathbf{k}}^P(0,y) \right|$', 'FontSize', ftsize );
-xlim([y(1),y(end)])
+xlim([y(1),y(end)]/lambda)
 grid on
 set(gca,'FontName','Times New Roman');
 set (gca,'Xdir','reverse')
 hold on
 yl = ylim;
-plot(x1(2)+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
+plot(x1(2)/lambda+0*linspace(yl(1),yl(2),20),linspace(yl(1),yl(2),20),'.k','MarkerSize',0.25)
 
+set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
-b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-set(p1,'XTickLabel',xtp1)
+set(allAxesInFigure,'FontSize',ftsize);
+
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/High_freq_approximations','stereophony' ) ,'-dpng')

@@ -29,61 +29,42 @@ f = figure('Units','points','Position',[200,200,500,220]);
 set(f,'defaulttextinterpreter','latex')
 
    
-pos = [ 0.057  0.2 0.425 .8
-        0.56  0.2 0.425 .8];
+pos = [ 0.06   0.2 0.42 .75
+        0.575  0.2 0.42 .75];
         
 scale = 20;
 q = 4;
 p1 = axes('Units','normalized','Position',pos(1,:));
-h0 = surf(y,y,scale*real(Gx));
+h0 = surf(x/lambda,y/lambda,scale*real(Gx));
 %set(gca, 'Units','normalized','Position',[ 0.06 0.11 0.37 .9 ]);
 shading interp
 hold on
-h1 =surf(x(1:q:end),y(1:q:end),scale*real(Gx(1:q:end,1:q:end)));
+h1 =surf(x(1:q:end)/lambda,y(1:q:end)/lambda,scale*real(Gx(1:q:end,1:q:end)));
 set(h1','edgecolor','k','facealpha',0,'linewidth',.1,'linestyle','-')
 axis equal tight
 caxis(scale*[-0.05,0.05]);
 zlim([-2,3])
-ax1 = gca;
-ax1.ZTickLabel = ax1.ZTick/scale;
-ax1.XTick = lambda*(-5:5:5);
-ax1.YTick = lambda*(-5:5:5);
 
 set(gca,'TickLabelInterpreter', 'tex');
-tik_n = cell(5,1); tik_n{1} = '-5 \lambda';tik_n{2} = '0'; tik_n{3} = '5 \lambda';
-ax1.XTickLabel = tik_n;
-ax1.YTickLabel = tik_n;
 
-xlabel('$x \rightarrow \mathrm{[m]}$','Interpreter','latex','FontSize',ftsize)
-ylabel('$y \rightarrow \mathrm{[m]}$','Interpreter','latex','FontSize',ftsize)
+xlabel('$x/\lambda \rightarrow []$','Interpreter','latex','FontSize',ftsize)
+ylabel('$y/\lambda \rightarrow []$','Interpreter','latex','FontSize',ftsize)
 zlabel('$\mathcal{R}\left(G(x,y,0,\omega_0)\right)$','Interpreter','latex','FontSize',ftsize)
 set(gca,'FontName','Times New Roman');
 
 q = 2;
-scale = 10;
 p2 = axes('Units','normalized','Position',pos(2,:));
-h =surf(kx,ky,scale*abs(Gkx));
-%set(gca, 'Units','normalized','Position',[ 0.528 0.11 0.47 .9 ]);
+h =surf(kx/k,ky/k,abs(Gkx));
 shading interp
 hold on
-h2 =surf(kx(1:q:end),ky(1:q:end),scale*abs(Gkx(1:q:end,1:q:end)));
+h2 =surf(kx(1:q:end)/k,ky(1:q:end)/k,abs(Gkx(1:q:end,1:q:end)));
 set(h2','edgecolor','k','facealpha',0,'linewidth',.01,'linestyle',':')
 axis equal
-caxis([0,scale*10e-1]);
-zlim([0,10])
-ax2 = gca;
-ax2.ZTickLabel = ax2.ZTick/scale;
-ax2.XTick = k*(-1:1:1);
-ax2.YTick = k*(-1:1:1);
-tik_n2 = cell(7,1); 
-tik_n2{1} = '-\omega/\it{c}';
-tik_n2{2} = '0';
-tik_n2{3} = '\omega/\it{c}';
-ax2.XTickLabel = tik_n2;
-ax2.YTickLabel = tik_n2;
+caxis([0,1]*10e-1);
+zlim([0,1])
 set(gca,'TickLabelInterpreter', 'tex');
-xlabel('$k_x \rightarrow \mathrm{[rad/m]}$','Interpreter','latex','FontSize',ftsize)
-ylabel('$k_y \rightarrow \mathrm{[rad/m]}$','Interpreter','latex','FontSize',ftsize)
+xlabel('$k_x/k \rightarrow []$','Interpreter','latex','FontSize',ftsize)
+ylabel('$k_y/k \rightarrow []$','Interpreter','latex','FontSize',ftsize)
 zlabel('$|(\tilde{G}(k_x,k_y,0,\omega_0)|$','Interpreter','latex','FontSize',ftsize);
 
 set(gca,'FontName','Times New Roman');

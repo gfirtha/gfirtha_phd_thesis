@@ -66,6 +66,23 @@
    \end{eqnarray}%
   }%
 
+\newcommand{\importantalign}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{align}%
+   %\begin{changebar}%  
+   #2%
+   %\end{changebar}% 
+   \end{align}    
+  }%
+
+
 %%\setcounter{secnumdepth}{2}
 %  \renewcommand\not[1]{#1\xnot}
 %  \renewcommand{\notin}{\not\in}

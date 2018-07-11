@@ -4,6 +4,7 @@ close all
 c = 343.1;
 w = 2*pi*1e3;
 k = w/c;
+lambda = 2*pi/k;
 
 L = 2;
 dx = 0.01;
@@ -119,7 +120,6 @@ set(ah2,'position',[-1.5, y(1)-ol, 0, y(end)-y(1)+ol*2]);
 xlim([x(1)-ol,x(end)+ol]);
 ylim([y(1)-ol,y(end)+ol]);
 
-
 q = 15;
 for i = rem(ind,q):q:length(x)
         ah = annotation('arrow',...
@@ -131,51 +131,40 @@ for i = rem(ind,q):q:length(x)
         end
 end
 line([x(1),x(end)],[0,0],'Color','black','LineStyle','-','LineWidth',2)
-
 plot(xs(1),xs(2),'.k','MarkerSize',15)
 plot(x0(1),x0(2),'.k','MarkerSize',15)
-
-
 set(gca,'box','off')
 color = get(fig,'Color');
-
 set(gca,'XColor',color,'YColor',color,'TickDir','out');
 
 p3 = axes('Units','normalized','Position',pos(3,:));
-
-p3_ = plot( x, nkx );
-
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+p3_ = plot( x/lambda, nkx,'LineWidth',1);
+xl = [x(1) x(end)]/lambda;
+yl = ylim;
+xlabel( '$x/\lambda \rightarrow []$' , 'FontSize', ftsize );
 ylabel( '$\hat{k}_{x}^P(x,0,0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
-
-a = get(gca,'XTickLabel');
-set(gca,'XTickLabel',a,'fontsize',ftsize);
 hold on
-plot(x(ind),nkx(ind),'ko','MarkerSize',3,'MarkerFaceColor','black')
-%
-xl = xlim;
-yl = ylim;
-line([xl(1),x(ind)],[nkx(ind),nkx(ind)],'Color','black','LineStyle','--');
-line([x(ind),x(ind)],[yl(1),nkx(ind)],'Color','black','LineStyle','--');
+plot(x(ind)/lambda,nkx(ind),'ko','MarkerSize',3,'MarkerFaceColor','black')
+line([xl(1),x(ind)/lambda],[nkx(ind),nkx(ind)],'Color','black','LineStyle','--');
+line([x(ind),x(ind)]/lambda,[yl(1),nkx(ind)],'Color','black','LineStyle','--');
+xlim(xl);
 
 p4 = axes('Units','normalized','Position',pos(4,:));
-plot(kx0/k,abs(Pps_spec));
-xlabel( '$k_x/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$\tilde{P}(k_x,0,0)$' , 'FontSize', ftsize );
+plot(kx0/k,abs(Pps_spec),'LineWidth',1);
+xlabel( '$k_x/k \rightarrow []$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+ylabel( '$|\tilde{P}(k_x,0,0)|$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
-%  
 hold on
 Pkx0 = -1i/4*besselh(0,2,-1i*sqrt(kx.^2-k^2)*abs(xs(2)));
 plot(kx/k,abs( Pkx0 ), 'ko','MarkerSize',3,'MarkerFaceColor','black')
 line([kx/k,kx/k],[0,abs(Pkx0)],'Color','black','LineStyle','--');
 
 xlim(1.2*[-1,1])
-a = get(gca,'XTickLabel');
-set(gca,'XTickLabel',a,'fontsize',ftsize)
- 
-set(p3,'XTickLabel', a)
+allAxesInFigure = findall(fig,'type','axes');
+set(allAxesInFigure,'FontSize',ftsize);
+
 set(gcf,'PaperPositionMode','auto');
 print( '-r300', fullfile( '../..','Figures/High_freq_approximations','fourier_stat_point' ) ,'-dpng')

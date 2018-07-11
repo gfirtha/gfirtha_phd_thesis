@@ -43,7 +43,7 @@ Although the wavenumber vector is always perpendicular to the wavefront, in anis
 	\end{overpic}
 	\caption{Illustration of the local wavenumber vector for a 2D acoustic point source (a,c) and a 2D plane wave (b,d).
 (a-b) show an arbitrarily chosen contour of constant phase (isochronous contour), along with the wavenumber vector on this contour.
-(c-d) show the $x$-component of the normalized local wavenumber vector ($\hat{k}_x(x,y_0)$), measured along the line $y_0 = 0.5 ~\mathrm{m}$.
+(c-d) show the $x$-component of the normalized local wavenumber vector ($\hat{k}_x(x,y_0)$), measured along the horizontal dashed black line.
 }
 	\label{Fig:HF_appr:local_wavenumber_vector}
 \end{figure}
@@ -409,9 +409,8 @@ I_{n\mathrm{D}} = \int\limits_{-\infty}^{\infty} A(\vx) \, \te^{\ti \phi(\vx)} \
 \end{equation}
 in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $A(\vx)$ is comparably slowly varying.
 
-\paragraph{One-dimensional SPA:}
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
-More informally the method relies on the second order truncated Taylor series of the exponent around the \emph{stationary point} $x^*$, satisfying 
+More informally the method relies on the second order truncated Taylor series of the exponent around the \emph{stationary point} $x^*$, defined as the point in the integration path satisfying 
 \begin{equation}
 \phi'_x(x^*) = 0, \hspace{1cm} \text{and} \hspace{1cm} \phi''_{xx}(x^*) \neq 0.
 \end{equation}
@@ -434,8 +433,7 @@ The remaining integral can be evaluated analytically, and the SPA of \eqref{Eq:S
 I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''_{xx}(x^*) |}} F(x^*) \, \te^{+\ti \phi(x^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''_{xx}(x^*) \right)}.
 }
 
-\paragraph{Multidimensional SPA:}
-Similarly, in higher dimensions the stationary point $\vx^*$, more precisely a \emph{simple stationary point} is defined as
+Similarly, in higher dimensions a \emph{simple stationary point} is defined as
 \begin{equation}
 \label{Eq:ndim_stat_point}
 \left.
@@ -453,7 +451,7 @@ i,j = 1,2,...,n
 \end{equation}
 holds, with $\mH$ being the Hessian matrix of the phase function.
 The multidimensional formula for the integral value reads as
-\importanteq{$n$-dimensional SPA}{
+\importanteq{Multidimensional SPA}{
 \label{Eq:SPAResult_nd}
 I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det \mH(\vx^*)|}} F(\vx^*) \te^{\ti \phi(\vx^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( \mH(\vx^*) \right)},
 }
@@ -467,9 +465,9 @@ The conclusions of the presented examples will be further utilized in the follow
 First the physical interpretation of the stationary position is discussed for the case when the SPA is applied for boundary integrals, for the sake of simplicity through the example of the Rayleigh I integral.
 %
 
-Assume that the Rayleigh integral describes an arbitrary sound field at $y>y_0$ in terms of the boundary integral along the plane $\vxo = \posvec{3}{x_0}{y = y_0}{z_0}$ according to \eqref{Eq:Theory:RayleighI}.
-It is supposed that all sources of sound are located behind the Rayleigh plane in the half space $y<y_0$ generating a non-converging wavefront.
-Since for the application of the SPA high frequency conditions are standard prerequisites, therefore the high frequency gradient approximation \eqref{eq:HF_approx:gradient_appr} can be applied, resulting in the high frequency Rayleigh integral
+Assume that the Rayleigh integral describes an arbitrary sound field at $y>y_0$ in terms of a boundary integral along the plane $\vxo = \posvec{3}{x_0}{y = y_0}{z_0}$ according to \eqref{Eq:Theory:RayleighI}.
+It is supposed that all sources of sound are located behind the Rayleigh plane in the half space $y<y_0$, generating a non-converging wavefront.
+Since for the application of the SPA high frequency conditions are standard prerequisites, therefore the high frequency gradient approximation \eqref{eq:HF_approx:gradient_appr} may be applied, resulting in the high frequency Rayleigh integral
 \begin{equation}
 \label{eq:HF_approx:HighF_Rayleigh}
 P(\vx,\omega) = 2 \iint_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo,\omega) G(\vx-\vxo,\omega) \td x_0 \td z_0.
@@ -477,11 +475,10 @@ P(\vx,\omega) = 2 \iint_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo,\omega) G(\vx-
 The Rayleigh integral is to be evaluated applying the SPA at a given receiver position $\vx$.
 The involved functions written in polar form read
 \begin{equation}
-P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \phi^{P'}_y(\vxo,\omega) A^P(\vxo,\omega ) A^G(\vx-\vxo,\omega) \te^{\ti \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) - \frac{\pi}{4} \right)} \td x_0 \td z_0.
+P(\vx,\omega) = -2 \iint_{-\infty}^{\infty} \phi^{P'}_{y_0}(\vxo,\omega) A^P(\vxo,\omega ) A^G(\vx-\vxo,\omega) \te^{\ti \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) - \frac{\pi}{4} \right)} \td x_0 \td z_0.
 \end{equation}
-\fscom{wondering about an earlier version that missed the $\ti$ in the phase shift and thus had $+ \frac{\pi}{4}$, thanks for correcting!}
 According to \eqref{Eq:ndim_stat_point} the stationary position for the integral is found where the phase gradient vanishes.
-Exploiting that the constant phase shift $-\frac{\pi}{4}$ vanishes due to differentiation and applying the chain rule, the stationary position $\vxo^*(\vx)$ for a given receiver position $\vx$ is found, where
+Exploiting that the constant phase shift $-\frac{\pi}{4}$ vanishes due to differentiation, the stationary position $\vxo^*(\vx)$ for a given receiver position $\vx$ is found, where
 \begin{equation}
 \left.
 \begin{bmatrix} \frac{\partial}{\partial x_0} \\[.7em] \frac{\partial}{\partial z_0} \\[0.5em]  \end{bmatrix}
@@ -494,9 +491,9 @@ Exploiting that the constant phase shift $-\frac{\pi}{4}$ vanishes due to differ
 \right|_{\vxo=\vxo^*(\vx)}
 \end{equation}
 is satisfied.
-Applying the chain rule, by the definition \eqref{eq:local_wn_vec_def} the derivatives describe the corresponding components of the local wavenumber vector.
+By the definition \eqref{eq:local_wn_vec_def} the derivatives describe the corresponding components of the local wavenumber vector.
 Since two components completely determine the local wavenumber vector, therefore in the stationary position
-\begin{align}
+\importantalign{Stationary position of boundary integrals}{
 k^P_x(\vxo^*(\vx)) 
 &= 
 k^G_x(\vx-\vxo^*(\vx))
@@ -506,9 +503,9 @@ k^P_z(\vxo^*(\vx))
 k^G_z(\vx-\vxo^*(\vx))
 \\ \nonumber
 \vk^P(\vxo^*(\vx)) &= \vk^G(\vx-\vxo^*(\vx))= - \vk^G(\vxo^*(\vx)-\vx)
-\end{align}
-holds. \fscom{now with all the signs hopefully correct :-) it resolves perfectly.}
-In the right hand side the reciprocity of the Green's function was exploited.
+}%\end{align}
+holds. 
+In the right hand side the chain rule and the reciprocity of the Green's function was exploited.
 %
 \begin{figure}
 \small
@@ -525,7 +522,7 @@ In the right hand side the reciprocity of the Green's function was exploited.
 	\begin{minipage}[c]{0.4\textwidth} \hspace{2mm}
     \caption{
        2D Geometry for the physical interpretation of the stationary position for the Rayleigh integral.
-       The stationary position is found along the integral surface/line where the local propagation direction---and the local wavenumber vector--- of the described wave field and the spherical field of a point source positioned at $\vx$ coincide.
+       The stationary position is found along the integral surface/contour where the local propagation direction---and the local wavenumber vector---of the described wave field and the spherical field of a point source positioned at $\vx$ coincide.
        Equivalently, it means that the local propagation direction of the described field at $\vxo^*(\vx)$ equals with that of the Green's function positioned at $\vxo^*(\vx)$, measured at the receiver position $\vx$.
        } 
        \label{Fig:HF_appr:rayleigh_stat_point}
@@ -541,26 +538,29 @@ In other words, since the Rayleigh integral describes an arbitrary sound field a
 This interpretation is illustrated in Figure \ref{Fig:HF_appr:rayleigh_stat_point} with the example of a 2D point source described by the 2D Rayleigh integral.
 In the 2D case $k_z^P(\vx) = k_z^G(\vx-\vxo) \equiv 0$ and the stationary point is found where $k_x^P(\vxo^*(\vx)) = k_x^G(\vx-\vxo^*(\vx))$ holds.
 For the case of a point source at $\vxs$ the stationary position is found at the intersection of vector $\vx-\vxs$ and the integration path.
-In a 3D example, if the primary field is a spherical one, the stationary point is found at the intersection of the Rayleigh plane and the vector pointing from the source into the evaluation position. \fscom{maybe it is worth here---as also done in the referencing WFS IEEE---to mention that Delft WFS knew that already however differently derived?}
+In a 3D example, if the primary field is a spherical one, the stationary point is found at the intersection of the Rayleigh plane and the vector pointing from the source into the evaluation position.
 
 \subsection*{Application example \#1: Asymptotic evaluation of the Rayleigh integral}
 \label{Sec:HF:RayleighSPA}
 As an application example for the stationary phase approximation the evaluation of the Rayleigh integral around the stationary point is investigated in further details.
+As a result it is described, how the properties of wavefronts change over propagation.
 
 The stationary point was found on the Rayleigh plane, where the local propagation direction of the primary sound field coincides (with a negative sign) with the spherical wavefront of the Green's function positioned at the receiver point. 
 In order to evaluate integral \eqref{eq:HF_approx:HighF_Rayleigh} around its stationary position according to \eqref{Eq:SPAResult_nd} (with $n=2$), the signature and the determinant of the Hessian in the stationary point is required.
 In the present geometry the Hessian is given by the expression
 \begin{equation}
-H(\vxo) =
+\mH^P(\vxo) =
 \begin{bmatrix} 
 \frac{\partial^2}{\partial x_0^2} & \frac{\partial^2}{\partial x_0 \partial z_0} \\[.7em]
 \frac{\partial^2}{\partial x_0 \partial z_0} & \frac{\partial^2}{\partial z_0^2}\\[0.5em] \end{bmatrix} 
 \left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega)  \right).
+\label{eq:HF_appr:Hessian}
 \end{equation}
-Since in the stationary position the primary wavefront and the Green's function wavefront are tangential, and because of the spherical/umbilical nature of the latter one in the stationary point the eigenvectors of their Hessians can be chosen to coincide, and their curvatures (eigenvalues) are additive.
-Thus, the Hessian of the sum of the phase functions can be expressed in terms of the principal curvatures of the primary sound field $\kappa_1^P, \kappa_2^P$ and the Green's function $\kappa_1^G, \kappa_2^G$ as
+In the stationary position the primary wavefront and the Green's function wavefront are tangential.
+Due to the spherical nature of the latter one, in the stationary point the eigenvectors of their Hessians can be chosen to coincide, and their principal curvatures (eigenvalues) are additive.
+Thus, the resultant Hessian \eqref{eq:HF_appr:Hessian} can be expressed in terms of the principal curvatures of the primary sound field $\kappa_1^P, \kappa_2^P$ and the Green's function $\kappa_1^G, \kappa_2^G$ as
 \begin{equation}
-H(\vxo^*(\vx)) = -k
+\mH^P(\vxo^*(\vx)) = -k
 \mathbf{V}
 \begin{bmatrix} 
 \kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx)) & 0 \\[.3em]
@@ -571,16 +571,17 @@ with $\mathbf{V} = \begin{bmatrix}
 v_{1 x} & v_{2 x} \\[.1em]
 v_{1 z} & v_{2 z}\\[.3em] \end{bmatrix}$ being the $x,z$-components of the principal directions corresponding to $\kappa_1$ and $\kappa_2$ as shown in Figure \ref{Fig:HF_appr:local_wave_curvature}.
 For a more detailed investigation see \ref{App:Hessian}.
-Due to its multiplicative property, the determinant of the Hessian reads as
+By exploiting its multiplicity property, the determinant of the Hessian reads as
 \begin{multline}
 \label{Eq:HF_approx:H_det_Rayleigh}
 \small
-\mathrm{det} H(\vxo^*(\vx)) = \\ k^2
+\mathrm{det} \mH^P(\vxo^*(\vx)) = 
 \left(\kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx))\right)
 \left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)
-\underbrace{\left( v_{1 x}v_{2 z}-v_{2 x}v_{1 z} \right)^2}_{\hat{k}_y^P(\vxo^*(\vx))^2},
+\cdot \\ \cdot
+k^2 \underbrace{\left( v_{1 x}v_{2 z}-v_{2 x}v_{1 z} \right)^2}_{\hat{k}_y^P(\vxo^*(\vx))^2},
 \end{multline}
-where the underbraced part is---by the definition of the cross product---the $y$-coordinate of a vector being perpendicular to $\mathbf{v}_1$ and $\mathbf{v}_2$, i.e. of the normalized local wavenumber vector.
+where the underbraced part is the $y$-coordinate of a vector being perpendicular to $\mathbf{v}_1$ and $\mathbf{v}_2$, i.e. of the normalized local wavenumber vector.
 
 By taking into consideration that for a divergent field both curvatures of the wavefront are positive and the signature of the Hessian equals (-2), substitution into \eqref{Eq:SPAResult_nd} yields the SPA of the Rayleigh integral, reading
 \begin{equation}
@@ -591,7 +592,7 @@ P(\vx,\omega) = 4\pi \frac{P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega)}
 \sqrt{\left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)}
 }.
 \end{equation}
-Expressing the curvature correction factor in terms of the principal radii and substituting the exact formulation of the 3D Green's function with exploiting that it's principal radii are simply the distance from the source position $\rho_1^G(\vx-\vxo^*(\vx)) = \rho_2^G(\vx-\vxo^*(\vx)) = |\vx-\vxo^*(\vx)|$ the asymptotic Rayleigh integral reads as
+Expressing the curvature correction factor in terms of the principal radii and substituting the exact formulation of the 3D Green's function with the principal radii given in Table \ref{tab:HF_appr:local_prop} the asymptotic Rayleigh integral reads as
 \begin{equation}
 \label{eq:HF_approx:ray_propagation_a}
 \small
@@ -599,37 +600,41 @@ P(\vx,\omega) =
 \sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \rho_2^P(\vxo^*(\vx)) }{ \left(\rho_1^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)| \right) \left(\rho_2^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|\right) } }
 \te^{-\ti k |\vx-\vxo^*(\vx)| } P(\vxo^*(\vx),\omega) .
 \end{equation}
-Finally, by applying that according to \eqref{eq:app:propagated_radii} the principal radii increase proportional with the Euclidean distance along the direction of the local propagation direction $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$, the asymptotic formula takes the form
-\begin{equation}
+Finally by exploiting that according to \eqref{eq:app:propagated_radii} the principal radii increase proportional with the Euclidean distance along the local propagation direction, i.e. $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$ holds, the asymptotic formula takes the form
+\importanteq{Asymptotic Rayleigh integral}{
 \label{eq:HF_approx:ray_propagation}
 P(\vx,\omega) =
-\sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \cdot \rho_2^P(\vxo^*(\vx)) }{ \rho^P_1(\vx) \cdot \rho^P_2(\vx) } }
-\te^{-\ti \omega \frac{|\vx-\vxo^*(\vx)| }{c} } P(\vxo^*(\vx),\omega),
-\end{equation}
+\underbrace{\sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \cdot \rho_2^P(\vxo^*(\vx)) }{ \rho^P_1(\vx) \cdot \rho^P_2(\vx) } }}_
+{\substack{\text{amplitude change} \\ \text{over propagation}} }
+\underbrace{\te^{-\ti \omega \frac{|\vx-\vxo^*(\vx)| }{c} }}_ 
+{\substack{\text{phase change} \\ \text{over propagation}} }
+P(\vxo^*(\vx),\omega),
+}
 where $\rho^P_1 \cdot \rho^P_2$ is the reciprocal of the Gaussian curvature of the wavefront.
 Thus, in a ray-tracing manner the wave field is approximated locally by its value at the stationary position: 
 the numerator of the amplitude factor approximates the pressure field amplitude in the source position, attenuated by the denominator--describing the attenuation factor for the source-to-receiver distance---, while a simple phase shift term corresponds to the propagation time delay.
-The equation reflects the fact, that the intensity of a 3D wave field is proportional to the Gaussian curvature of the wavefront, being a well-known fact in the field of optics \cite[Sec. 3.1]{Born1970}, \cite[Sec. 1.3]{Bouche1997}.
+The equation reflects the fact, that \emph{the intensity of a 3D wave field is proportional to the Gaussian curvature of the wavefront}, being a well-known fact in the field of optics \cite[Sec. 3.1]{Born1970}, \cite[Sec. 1.3]{Bouche1997}.
+Similarly, a 2D wavefront's amplitude attenuates proportionally to the only non-zero curvature, given by $\sim \sqrt{\rho^P}$, which fact can be deduced from the SPA of the 2D Rayleigh integral.
 
 Note that since points $\vx$ and $\vxo^*(\vx)$ are related by the local wavenumber vector, therefore equation \eqref{eq:HF_approx:ray_propagation_a} generally describes the relation of field variables along the direction of the local wavenumber vector, providing the amplitude and phase change along the path of propagation.
-Without the loss of generality thus along the propagation path the pressure field can be approximated as
+Departing from the Rayleigh plane concept, as a more general statement, any propagating pressure field may be approximated along the propagation path as
 \begin{equation}
 \small
 P(\vx+\td x \cdot \hat{\vk}^P(\vx),\omega) =
 \sqrt{ \frac{ \rho_1^P(\vx) \rho_2^P(\vx) }{ \left(\rho_1^P(\vx) + \td x \right) \left(\rho_2^P(\vx) + \td x\right) } }
-\te^{-\ti \omega \frac{\td x}{c} } P(\vx,\omega).
+\te^{-\ti \omega \frac{\td x}{c} } P(\vx,\omega)
 \end{equation}
-From the above equation the relative amplitude change can be expressed---by applying the L'Hospital's rule---, reading as
-\begin{equation}
-\small
+as long as high frequency/farfield assumptions hold\footnote{From the above equation the relative amplitude change can be expressed by applying the L'Hospital's rule, reading as
+%\begin{equation}
+$\small
 \frac{\left< \hat{\vk}^P(\vx) \cdot \Dx A^P(\vx,\omega) \right>}{A^P(\vx,\omega)} = \lim_{\td x \rightarrow 0} 
 \frac{\sqrt{ \frac{ \rho_1^P(\vx) \rho_2^P(\vx) }{ \left(\rho_1^P(\vx) + \td x \right) \left(\rho_2^P(\vx) + \td x\right) } }-1}{\td x}
 = 
 -\frac{1}{2}\frac{\rho_1^P(\vx) + \rho_2^P(\vx)}{\rho_1^P(\vx) \rho_2^P(\vx)} = -\overline{\kappa}^P(\vx),
-\end{equation}
-which result is in agreement with the definition of the mean curvature using the transport equation \eqref{eq:HF_appr:curvature}.
+$%\end{equation}
+which result is in agreement with the definition of the mean curvature using the transport equation \eqref{eq:HF_appr:curvature}.}.
 
-In the aspect of the present thesis the importance of these results lies in allowing the assignment of a physical interpretation to the correctional terms, present in the sound field synthesis driving functions as discussed in the following chapter.
+In the aspect of the current thesis the importance of these results lies in allowing the assignment of a physical interpretation to the correctional terms, present in the Sound Field Synthesis driving functions as discussed in the following chapter.
 
 \subsection*{Application example \#2: The Kirchhoff approximation}
 As a second application example for the SPA of boundary integrals an alternative derivation of the Kirchhoff-approximation is presented directly from the Kirchhoff-Helmholtz integral.
@@ -652,8 +657,8 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 \end{equation}
 %
 \begin{figure}
-	\centering
-	\begin{overpic}[width = 0.8\columnwidth]{Figures/High_freq_approximations/KHIE_stat_point.png}
+  \begin{minipage}[c]{0.775\textwidth}
+	\begin{overpic}[width = 1\columnwidth]{Figures/High_freq_approximations/KHIE_stat_point.png}
 	\small
 %	\put(13.5,36.5){$\vxs$}
 	\put(30,31.5){$\vxo^*(\vx)$}
@@ -662,26 +667,30 @@ P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 	\put(64,20){$\vk^G(\vx-\vxo^*(\vx))$}	
 	\put(41.5,27){$\vk^P(\vxo^*(\vx))$}
 	\end{overpic}
-\caption{2D Geometry for the illustration of the stationary position for the Kirchhoff-Helmholtz integral.}
+	\end{minipage}
+  \begin{minipage}[c]{0.18\textwidth}
+\caption{2D geometry for the illustration of the stationary position for the Kirchhoff-Helmholtz integral.
+}
 	\label{Fig:HF_appr:KH_approximation_HF}
+	\end{minipage}
 \end{figure}
 %
 Again, it can be assumed that for a given receiver position $\vx$ most part of the integral cancels out, and the field is dominated by one particular stationary point on the surface.
 Obviously, the stationary point is found on $\dO$ where the phase gradient vanishes, i.e. where the local wavenumber vector/local propagation direction of the described sound field and the Green's function positioned at $\vx$ coincide, satisfying $\vk^P(\vxo^*(\vx))= \vk^G(\vx-\vxo^*(\vx)) = -\vk^G(\vxo^*(\vx)-\vx)$.
 This interpretation is illustrated in Figure \ref{Fig:HF_appr:KH_approximation_HF} in case of a primary point source.
 
-As an approximation therefore the amplitude factor of the integral can be substituted by its value at the stationary point, i.e. with $k_{\mathrm{n}}^G(\vx-\vxo) = k_{\mathrm{n}}^P(\vxo)$.
+As an approximation the amplitude factor of the integral can be substituted by its value at the stationary point, i.e. with $k_{\mathrm{n}}^G(\vx-\vxo) = k_{\mathrm{n}}^P(\vxo)$.
 Furthermore, only that part of the integral path contributes to the total sound field that serves as a stationary point for any receiver position inside the enclosure,
 resulting in the windowing function \eqref{eq:theory:windowing_function} and the KHIE may be further simplified towards
-\begin{equation}
+\importanteq{Kirchhoff approximation}{
 P(\vx,\omega) = 
 \oint_{\dO} 
 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) 
 P(\vxo,\omega) G(\vx-\vxo,\omega)  \td \dO( \vxo).
 \label{Eq:HF_appr:Kirchhoff_approximation}
-\end{equation}
-\fscom{nice: this links perfectly to my PhD (2.33) when exchanging (1+cos) to 2*win and replacing velocity with pressure along SSD}
-This is obviously--since high frequency assumptions must hold---equivalent to the Kirchhoff-approximation \eqref{Eq:SFS_theory:Kirchhoff_appr}, derived by physically motivated considerations from the equivalent scattering interpretation of the simple source formulation.
+}
+%\fscom{nice: this links perfectly to my PhD (2.33) when exchanging (1+cos) to 2*win and replacing velocity with pressure along SSD}
+This is obviously equivalent to the Kirchhoff approximation \eqref{Eq:SFS_theory:Kirchhoff_appr}, derived by physically motivated considerations from the equivalent scattering interpretation of the simple source formulation.
 
 \subsection{Asymptotic approximation of spectral integrals}
 \label{Sec:SPA_for_Fourier}
@@ -698,37 +707,13 @@ P(\vx,\omega) = \frac{1}{(2\pi)^2} \iint_{-\infty}^{\infty} A^{\tilde{P}}(k_x,y,
 \label{eq:inverse_transform}
 \end{equation}
 with $\tilde{P}(k_x,y,k_z,\omega) = A^{\tilde{P}}(k_x,y,k_z,\omega)\te^{\ti \Phi^{\tilde{P}}(k_x,y,k_z,\omega)}$ with $A^{\tilde{P}}, \Phi^{\tilde{P}}\in\mathbb{R}$.
-The forward and inverse transforms describe projection and composition of the sound field $P$ to and from \emph{spectral plane waves}, whose specific propagation direction---i.e. the wavenumber vector ---is completely determined by $k_x$ and $k_z$ along with the acoustic wavenumber $k$ via the dispersion relation.
-
-\begin{figure}
-	\small
-	\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/High_freq_approximations/fourier_stat_point.png}
-	\small
-	\put(0,0){(a)}
-	\put(60,29){(b)}
-	\put(60,0){(c)}
-	\put(54,40){$x$}
-	\put(6.5,53){$y$}
-	\put(54,12.5){$x$}
-	\put(6.5,35){$y$}
-	\put(37,50.25){$\vk$}
-	\put(31,12.5){$x^*(\vk)$}
-	\put(86,35.25){$x^*(k_x = 0.5k)$}
-	\end{overpic}
-	\caption{Illustration of the stationary position for the SPA of the Fourier transform in case of a 3D point source with its one-dimensional Fourier transform evaluated along the $x$-axis. 
-Upper part of Figure (a) presents a spectral basis function (i.e. a horizontal plane wave) which is at this example chosen as $k_x = 0.5 k$. 
-For this spectral component the stationary phase point in the field of the point source is found, where the local propagation direction of the point source coincides with that of the plane wave---indicated by white arrow---. 
-Coincidence of local propagation directions is ensured by the assumption that in the plane of investigation $k_z^G(x,y,0) \equiv 0$, and the spectral plane wave is assumed to propagate with $k_z = 0$.
-The spectrum, shown in Figure (c) (as given analytically in Table \eqref{tab:theory:Greens_fun_representations}) will be dominated around $ k_x = 0.5k$ by this stationary position, denoted by $x^*(k_x)$ in Figure (b).\fscom{in an older version you gave the postion of xs in absolute metrics, here it is omitted. Maybe its helful to give position in relative wavelengths. Also give ticks and units in term so of relative wavelengths in the left xy-diagrams. Subtitles a)-d) is helpful.}}
-	\label{Fig:Theory:stat_pos_in_kx}
-\end{figure}
+The forward and inverse transforms describe projection and composition of the sound field $P$ to and from \emph{spectral plane waves}, whose specific propagation direction (i.e. the wavenumber vector) is completely determined by $k_x$ and $k_z$ along with the acoustic wavenumber $k$ via the dispersion relation.
 
 Supposing that the sound field fulfills the SPA requirements---i.e. high frequency assumptions---the forward transform \eqref{eq:forward_transform}
 may be evaluated asymptotically applying the stationary phase method \cite{Arnold1995, Tinkelman2005}.
 The stationary point $\vx^*(k_x,k_z)$ is found for a given $k_x$ and $k_z$, where the gradient of the exponent is zero.
 Assuming that the local dispersion relation holds, two local wavenumber components completely define the local wavenumber vector and the stationary position for the spectral integral is found where
-\begin{align}
+\importantalign{Stationary position of spectral integrals}{
 \left.
 \frac{\partial}{\partial x} \phi^P(\vx,\omega)
 \right|_{\vx=\vx^*(k_x,k_z)} + k_x &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_x^P(\vx^*(k_x,k_z)) = k_x, \\
@@ -736,16 +721,41 @@ Assuming that the local dispersion relation holds, two local wavenumber componen
 \right|_{\vx=\vx^*(k_x,k_z)} + k_z &= 0 \hspace{3mm} \rightarrow \hspace{3mm} k_z^P(\vx^*(k_x,k_z)) = k_z, \\
 \left.\Dx \phi^P(\vx,\omega)
 \right|_{\vx=\vx^*(\vk)} + \vk  &= 0 \hspace{3mm} \rightarrow \hspace{3mm} \vk^P(\vx^*(\vk)) = \vk.	
-\end{align}
+}
 is satisfied, with $\vk$ being the wavenumber vector of the spectral plane wave.
 
 This finding states that each point in the angular spectrum of a sound field is dominated by the parts of the space, where the local propagation direction coincides with the corresponding spectral plane wave's global propagation direction.
 The local wavenumber components therefore may be also defined alternatively as the stationary points of the spatial Fourier transform \eqref{eq:forward_transform} as a function of space \footnote{This definition if often termed \emph{Lagrange submanifolds}, playing a central role in phase space representation of sound fields \cite{Arnold1995, Tinkelman2005, Steinberg1993}.}.
-The interpretation of the asymptotic approximation of the Fourier transform is illustrated in Figure \ref{Fig:Theory:stat_pos_in_kx} for the transformation of a point source.
+The interpretation of the stationary position for the Fourier transform SPA is illustrated in Figure \ref{Fig:Theory:stat_pos_in_kx} through the exemplary transformation of a point source.
+
+\begin{figure}
+	\small
+	\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/High_freq_approximations/fourier_stat_point.png}
+	\small
+	\put(0,0){(c)}
+	\put(60,29){(b)}
+	\put(60,0){(d)}
+	\put(0,37){(a)}
+	\put(54,40){$x$}
+	\put(6.5,53){$y$}
+	\put(54,12.5){$x$}
+	\put(6.5,35){$y$}
+	\put(37,50.25){$\vk$}
+	\put(31,11 ){$x^*(\vk)$}
+	\put(86,35.25){$x^*(k_x = 0.5k)$}
+	\end{overpic}
+	\caption{Illustration of the stationary position for the SPA of the Fourier transform in case of a 3D point source with its one-dimensional Fourier transform evaluated along the $x$-axis. 
+Figure (a) presents a spectral basis function (i.e. a horizontal plane wave) which is at this example chosen as $k_x = 0.5 k$. 
+For this spectral component the stationary phase point in the field of the point source, shown in Figure (c) is found, where the local propagation direction of the point source coincides with that of the plane wave, indicated by white arrow.
+Coincidence of local propagation directions is ensured by the assumption that in the plane of investigation $k_z^G(x,y,0) \equiv 0$, and the spectral plane wave is assumed to propagate with $k_z = 0$.
+The spectrum, shown in Figure (d) (as given analytically in Table \eqref{tab:theory:Greens_fun_representations}) will be dominated around $k_x = 0.5k$ by this stationary position, denoted by $x^*(k_x)$ in Figure (b).}
+	\label{Fig:Theory:stat_pos_in_kx}
+\end{figure}
 
 The counterpart of this statement is that the greatest contribution to the inverse transform \eqref{eq:inverse_transform} is associated to those plane waves---the stationary phase of the inverse integral for given $\vx$---, whose wave number vector coincide with the local wavenumber components of the sound field at $\vx$.
 
-Note \fscom{that} here it is assumed, \fscom{that} in the region of investigation (along an infinite plane or line, depending on the transform dimensionality) the stationary phase position and thus each propagation direction is unique.
+So far it was assumed that in the region of investigation (along an infinite plane or line, depending on the transform dimensionality) the stationary phase position and thus each propagation direction is unique.
 This trivially does not hold for the case of e.g. a plane wave, or complex acoustic fields produced by multiple sources of sound.
 The SPA however can be extended for multiple stationary positions and the result of the approximation is obtained by summing the SPA contributions over the stationary positions \cite[p. 129]{Bleistein2000}.
 In the present treatise this limitation is not investigated further, since the results involving the SPA of the Fourier transform hold without any modification for a virtual plane wave as a limiting case. 	
@@ -753,9 +763,10 @@ In the present treatise this limitation is not investigated further, since the r
 \subsection*{Application example \#1: 1D spectrum of the Green's function}
 \label{sec:greens_function_spectrum}
 
-
 As a simple example the 1D Fourier transform of the 3D Green's function is investigated, with the transform taken along the $x$-dimension.
+As a result a frequently used high frequency asymptotic approximation of the Hankel function is obtained.
 For the sake of simplicity the point source is located in the origin.
+
 The exact solution for the problem is available analytically in Table \eqref{tab:theory:Greens_fun_representations}, given by the second order Hankel function in the propagation region:
 \begin{equation}
 \tilde{G}(k_x,y,z,\omega) = \frac{1}{4\pi} \int_{-\infty}^{\infty} \frac{\te^{-\ti k \sqrt{x^2 + y^2 + z^2}}}{\sqrt{x^2 + y^2 + z^2}} \te^{\ti k_x x} \td x = 
@@ -778,11 +789,11 @@ At the stationary point the phase of the integrand and its second derivative rea
 \phi^{G}(x^*(k_x)) = - \rho k_{\rho}, \hspace{1cm}
 \phi^{''G}_{xx}(x^*(k_x)) =  -k \frac{y^2+z^2}{\sqrt{ x^*(k_x)^2 +y^2+z^2 }^3} = - \frac{k_{\rho}^3}{k^2 \rho}.
 \end{equation}
-Substitution into the SPA \eqref{Eq:SPAResult} with $\sqrt{x^*(k_x)^2 + y^2 + z^2} = \rho \frac{k}{k_{\rho}}$ and taking the negative sign of the second derivative into account yields the asymptotic form of the 3D point source spectrum
-\begin{equation}
+Substitution into the SPA \eqref{Eq:SPAResult} with $\sqrt{x^*(k_x)^2 + y^2 + z^2} = \rho \frac{k}{k_{\rho}}$ and accounting for the negative sign of the second derivative  yields the asymptotic form of the 3D point source spectrum
+\importanteq{Field of a linear radiator}{
 \tilde{G}(k_x,y,z,\omega) = -\frac{\ti}{4} H_0^{(2)}\left( k_{\rho} \rho \right) \approx \frac{1}{\sqrt{8\pi \ti}} \frac{\te ^{-\ti \rho k_{\rho}}}{\sqrt{ \rho k_{\rho} }}.
 \label{Eq:25D_WFS:3D_Greens_asymp_spectrum}
-\end{equation}
+}
 This result is the Hankel function's well-known asymptotic expansion for large arguments \cite[10.17.6]{Olver:2010:NHMF}
 \begin{equation}
 H_0^{(2)}(z)\approx \sqrt{\frac{2 \ti}{\pi z}} \te^{-\ti z}.
@@ -809,33 +820,32 @@ H_0^{(2)}(z)\approx \sqrt{\frac{2 \ti}{\pi z}} \te^{-\ti z}.
 	\put(80.5,30){$\vk$}
 	\put(75,17.5){$\rho$}
 	\end{overpic}
-	\caption{Illustration for the interpretation of the Green's function's spectrum as the field of a line source with harmonic spatial distribution described by wavenumber $k_x$, evaluated at $x = 0$.
-	Such a source radiates a cylindrical symmetric sound field with the radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$ (being constant everywhere), so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies, as shown in Figure (a).
+	\caption{Interpretation of the Green's function's spectrum as the field of a line source with harmonic spatial distribution described by wavenumber $k_x$, evaluated at $x = 0$.
+	Such a source, shown in Figure (a), radiates a cylindrical symmetric sound field with the radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$, so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies.
 	In case $k_x=0$ this corresponds to the field of the 2D Green's function.
-	From simple geometrical considerations, and applying the  interpretation of SPA for boundary integrals the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} 
-	is found at $x^*(k_x) = \rho \frac{k_x}{k_{\rho}}$ as shown in (b).}
+	From simple geometrical considerations, and applying the interpretation of the SPA for boundary integrals the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} 
+	is found at $x^*(k_x) = \rho \frac{k_x}{k_{\rho}}$, as shown in Figure (b).}
 %	Based on this interpretation the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} can be found by :
 %	for a given wavenumber $k_x$ and for a given radial distance $\rho$ that part of the $x$-axis will be the stationary point from which the emerging wavefront at $\vx$ coincides with that of a plane wave propagation into the direction $\vk = \posvec{2}{k_x}{k_{\rho}}$.
 %	From simple geometric considerations it is found at $x^*(k_x) = r_0 \frac{k_x}{k_{\rho}}$.}
 	\label{Fig:Theory:greens_stat_pos}
 \end{figure}
 \vspace{3mm}
-In the case under investigation when the function to be transformed is the Green's function, \eqref{Eq:HF_approx:Greens_spectrum_defintion} can be interpreted as the sound field of an infinite line source with a harmonic spatial distribution, evaluated at $x = 0$.
+In the current case, when the function to be transformed is the Green's function, \eqref{Eq:HF_approx:Greens_spectrum_defintion} can be interpreted as the sound field of an infinite line source with a harmonic spatial distribution, evaluated at $x = 0$.
 Such a line source radiates attenuating conical wavefronts propagating radially away from the $x$-axis with the local wavenumber vector given by $\vk^P(\vx) = \posvec{2}{k_x}{k_\rho}$, as illustrated in Figure \ref{Fig:Theory:greens_stat_pos} (a).
-For this special case the stationary position defined by \eqref{eq:HF_approx:greens_spectrum_stat_point} gains a simple geometrical interpretation, shown in Figure \ref{Fig:Theory:greens_stat_pos} (b).
+The amplitude of the waves depends on the propagation direction: lateral waves (with small $k_{\rho}$) are extremely enhanced.
+%For this special case the stationary position defined by \eqref{eq:HF_approx:greens_spectrum_stat_point} gains a simple geometrical interpretation, shown in Figure \ref{Fig:Theory:greens_stat_pos} (b).
 
 The DC ($k_x = 0$) component of the spectrum of the 3D Green's function describes the sound field generated by an infinite line source along the $x$-axis, i.e. a 2D point source. 
 The high frequency approximation of the 2D Green's function---which therefore stems from the asymptotic approximation of \eqref{Eq:Wave_Theory:2D_Green} by the SPA \cite[p. 118]{Williams1999}---is thus given by
-\begin{equation}
+\importanteq{Approximate 2D Green's function}{
 G_{2\text{D}}(\vx,\omega) \approx \frac{1}{\sqrt{8\pi \ti}}\frac{\te^{-\ti k |\vx|}}{\sqrt{k |\vx|}} =  \sqrt{\frac{2 \pi |\vx|}{\ti k }}G_{3\text{D}}(\vx,\omega),
 \label{eq:HF_approx:2D_vs_3D_GF}
-\end{equation}
+}
 with $\vx = \posvec{2}{y}{z}$. 
-This result indicates that the 2D Green's function and the 3D Green's function's phase---and their local wavenumber vector---approximately equal in the high frequency region, with the 3D distances substituted with the 2D ones.
+This result indicates that the 2D Green's function and the 3D Green's function's phase---and therefore their local wavenumber vector---equal in the high frequency region, with the 3D distances substituted with the 2D ones.
 Opposed to a 3D source's flat frequency response, a 2D one exhibits a frequency response of $\sim 1/\sqrt{\ti \omega}$, corresponding for the infinite tail of a 2D field's impulse response.
-Furthermore---having only a single non-zero principal curvature---a 2D sound field attenuates according to $1/\sqrt{\rho^P}$ with $\rho^P$ being its principal radius. 
-This fact is also reflected by expressing \eqref{eq:HF_appr:curvature} for a 2D problem.
-
+%Furthermore, having only a single non-zero principal curvature, a 2D sound field attenuates according to $1/\sqrt{\rho^P}$ with $\rho^P$ being its principal radius. 
 
 \subsection*{Application example \#2: 2D spectrum of the Green's function}
 \label{Sec:HF_approx:1D_Greens}
@@ -845,14 +855,15 @@ The Fourier transform reads as
 \label{eq:HF_approx:2D_FFT}
 \tilde{G}(k_y,y,k_z,\omega) = \iint^{\infty}_{-\infty} G(x,y,z,\omega) \te^{\ti k_x x} \te^{\ti k_z z} \td x \td z.
 \end{equation}
-On a fixed $y = \text{const}$ plane the stationary point for the integral is found, where the local propagation direction of the spherical wavefront coincides with that of the spectral plane wave, described by $k_x, k_z$, i.e. where
+On a fixed $y = \text{const}$ plane the stationary point for the integral is found, where 
 \begin{align}
 \label{eq:HF_approx:2D_FFT_stat_pos}
 k_x^G(x^*(k_x),y,z^*(k_z)) &= k_x, \hspace{3mm} \rightarrow \hspace{3mm} k\frac{x^*(k_x)}{|\vx^*(k_x,k_z)|} = k_x \\
 k_z^G(x^*(k_x),y,z^*(k_z)) &= k_z, \hspace{3mm} \rightarrow \hspace{3mm} k\frac{z^*(k_z)}{|\vx^*(k_x,k_z)|} = k_z \\
 |\vk^G(\vx^*(k_x,k_z))| &= |\vk|,  \hspace{3mm} \rightarrow \hspace{3mm} k\frac{y}{|\vx^*(k_x,k_z)|} = k_y
 \end{align} 
-holds.
+holds, i.e where the local propagation direction of the spherical wavefront coincides with that of the spectral plane wave, described by $k_x, k_z$.
+
 From the same consideration as used in \ref{Sec:HF:RayleighSPA} the determinant of the phase function's Hessian is given in terms of the principal curvatures, known analytically for the Green's function.
 By definition, around the stationary position $k_y^G(\vx^*(k_x,k_z)) = k_y$ holds, and the determinant reads as
 \begin{equation}
@@ -863,17 +874,17 @@ Accounting for the positive curvatures (the signature of the Hessian equals (-2)
 \tilde{G}(k_y,y,k_z) = \frac{2\pi}{\sqrt{|\det H(\vx^*(k_x,k_z))|}} \frac{1}{4\pi} \frac{\te^{-\ti k |\vx^*(k_x,k_z)|}}{|\vx^*(k_x,k_z)|} \te^{\ti k_x x^*(k_x)} \te^{\ti k_z z^*(k_z)} \te^{-\ti \frac{\pi}{2}},
 \end{equation}
 Substituting the determinant and expressing the stationary positions by \eqref{eq:HF_approx:2D_FFT_stat_pos} leads finally to
-\begin{equation}
+\importanteq{Field of a planar radiator}{
 \tilde{G}(k_y,y,k_z) =\frac{1}{2} \frac{\te^{-\ti k_y y } }{\ti k_y} =
 \frac{1}{2} \frac{\te^{-\ti \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} y } }{ \ti \sqrt{\left(\frac{\omega}{c}\right)^2-k_x^2-k_z^2} }.
 \label{eq:HF_approx:Greens_2D_Spectrum}
-\end{equation}
+}
 Comparison with Table \eqref{tab:theory:Greens_fun_representations} reveals that in this special case the 2D SPA yields the exact spectrum of the Green's function in the propagation region.
 
-Similarly to the previous example the above equation describes the field of an infinite planar set of point sources with a harmonic spatial distribution, measured at $x = 0$, generating plane waves.
+Similarly to the previous example, the above equation describes the field of an infinite planar set of point sources with a harmonic spatial distribution, measured at $x = 0$, generating plane waves into the direction .
 Furthermore at $k_x = k_z = 0$ the spectrum yields the 1D Green's function
-\begin{equation}
+\importanteq{1D Green's function}{
 G_{1\text{D}}(y,\omega) = \frac{1}{2} \frac{\te^{-\ti k y } }{\ti k},
-\end{equation}
-describing the field of a vibrating infinite planar surface with the frequency response given by $\sim \frac{1}{\ti \omega}$ and the impulse response being a Heaviside step function.
+}
+describing the field of a vibrating infinite planar surface, with the frequency response given by $\sim \frac{1}{\ti \omega}$ and the impulse response being a Heaviside step function.
 The 1D Green's function therefore realizes the full integration of the source time history, while the 2D Green's function's impulse response can be interpreted as the half-integration of the source signal \cite{Deregowski1983, Wang2009, Wang2016, Schultz2013:IIR_prefilters}.
