@@ -74,10 +74,10 @@ D(\vxo,\omega) = - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni},
 \label{Eq:Theory:2D_3D_WFS_driv_fun}
 \end{equation}
 or making use of the high frequency gradient approximation as
-\begin{equation}
+\importanteq{3D WFS driving function}{
 D(\vxo,\omega) = 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) P(\vxo,\omega)
 \label{Eq:Theory:2D_3D_WFS_driv_fun_2}
-\end{equation}
+}
 with $k_{\mathrm{n}}^P(\vxo)$ being the normal component of the target field's local wavenumber vector taken on the SSD and $w(\vxo)$ being the window function, as introduced in the previous chapter:
 \begin{equation}
 w(\vxo) = \begin{cases}
@@ -88,17 +88,20 @@ w(\vxo) = \begin{cases}
 In the context of WFS the windowing is termed \emph{secondary source selection} \cite{nicol19993d, Spors2007:DAGA:SS_selection_criterion, Spors2007}, selecting the \emph{active secondary sources} contributing to the synthesized field.
 
 The driving function \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} is a common generalization of the 3D WFS driving function given by \cite[Eq. 20.]{Zotter2013:uniqueness} specifically for a virtual point source.
-Both formulations are valid in the high frequency region for convex SSDs within the validity of the Kirchhoff approximation: in the far-field of the virtual source distribution generating the virtual sound field---i.e. where the local plane wave approximation of the virtual field holds.
+Both formulations are valid in the high frequency region within the validity of the Kirchhoff approximation: in the far-field of the virtual source distribution, i.e. where the local plane wave approximation of the virtual field holds.
 
-\vspace{3mm}
 In the special case of an infinite planar SSD surface located along the plane $y = y_0$, the Kirchhoff-Helmholtz integral degenerates to the Rayleigh I (Neumann) integral representing the field of any source distribution located at $y<y_0$ in terms of a single layer potential, as discussed in section \ref{Section:Theory:Rayleigh}.
 Therefore in this geometry the driving function \eqref{Eq:Theory:2D_3D_WFS_driv_fun} is capable of the perfect synthesis of an arbitrary virtual sound field in the listening half-space $y>y_0$ without any approximations involved.
 In this case no windowing is required, i.e. $w(\vxo) \equiv 1$ and the normal derivative is simply given by the $y$-derivative of the target/virtual sound field.
 
+\vspace{3mm}
 The following physical interpretation can be assigned to the 3D WFS driving function:
-As it was discussed in section \ref{Sec:HF_approx:1D_Greens} the frequency response of the 1D Green's function---representing an infinite planar distribution of 3D point sources---is proportional to $\sim \frac{1}{\ti k} = \frac{c}{\ti \omega}$ expressing an infinite impulse response of a step function, performing the integration of the source time history. 
-In case of a non-homogeneous, harmonic spatial distribution a directivity factor is also present, given by $\sim \frac{c}{\ti k_y$,  with $\vk^P$ being the normalized local wavenumber vector, indicating that a surface of point sources generates larger pressure field into lateral directions than into the normal direction (see \eqref{eq:HF_approx:Greens_2D_Spectrum} and \eqref{Eq:HF_approx:H_det_Rayleigh} for its local approximation).
-The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} and in the Rayleigh/Kirchhoff-Helmholtz integral may be therefore interpreted as a correction term, ensuring flat frequency response for the SSD surface by inverse filtering (taking the time derivative) of the excitation signal, and compensating for its directivity.
+As it was discussed in section \ref{Sec:HF_approx:1D_Greens}, the frequency response of the 1D Green's function---representing an infinite planar distribution of 3D point sources---is proportional to $\sim \frac{1}{\ti k} = \frac{c}{\ti \omega}$ expressing an infinite impulse response of a step function, performing the integration of the source time history. 
+In case of a non-homogeneous distribution a directivity factor is also present, given by $\frac{1}{\ti k_y}$ for a harmonic distribution as given by \eqref{eq:HF_approx:Greens_2D_Spectrum} and approximated locally by \eqref{Eq:HF_approx:H_det_Rayleigh}.
+This directivity factor of $\frac{1}{\ti k^P_y(\vxo)}$ indicates that a surface of point sources generates larger pressure field into lateral directions than into the normal direction.
+Within the validity of the Kirchhoff approximation this statement can be extended towards arbitrary SSD surfaces, radiating with an enhanced amplitude into locally lateral directions.
+
+The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} and in the Rayleigh/Kirchhoff-Helmholtz integral may be therefore interpreted as a correction term, ensuring flat frequency response for the SSD surface by inverse filtering (taking the time derivative) of the excitation signal, and compensating for the SSD directivity \emph{locally}.
 
 \subsection*{Application example: 3D synthesis of a virtual point source}
 
@@ -112,8 +115,8 @@ The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{3D synthesis of a 3D point source located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $\omega_0 = 2\pi \cdot 1.5 \mathrm{krad}/s$.
-    The SSD surface is chosen to be independent of the $z$-coordinate as illustrated in \ref{fig:SFS_theory:WFS_geometry}.
-	Obviously, instead of a vertically infinite SSD, for the numerical calculation the SSD was truncated along the vertical dimension by choosing parameters, so that the diffraction effects due the truncation are negligible in the simulation results.
+    The SSD surface is chosen to be independent of the $z$-coordinate as illustrated in figure \ref{fig:SFS_theory:WFS_geometry}.
+	For the numerical calculation the SSD was truncated along the vertical dimension by choosing parameters, so that diffraction effects due to the truncation are negligible in the simulation results.
     Figure (a) depicts the real part of the synthesized field and part (b) presents the absolute error of synthesis (the discrepancy between the synthesized and the target sound field) in a logarithmic scale measured in the horizontal plane, containing the virtual point source.
 	The active arc of the SSD is denoted by solid black line, and the inactive part with dotted by black line.
     }
@@ -121,35 +124,35 @@ The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2
 \end{figure}
 
 As a simple example the 3D WFS of a virtual point source is discussed.
-Assume a 3D point source located at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$. \fscom{ys<y0}
+Assume a 3D point source located behind the SSD at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ with $y_s < y_0$.
 Substituting the Green's function into \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} yields the point source specific 3D WFS driving function
 \begin{equation}
 \label{Eq:SFS_theory:3D_WFS_ps_driv_fun}
 D(\vxo,\omega) = w(\vxo)  \frac{\ti k }{2\pi} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|},
 \end{equation}
-equivalent to \cite[Eq. 20.]{Zotter2013:uniqueness} and \cite[Eq. 19.]{Spors2008:WFSrevisited}.
+being equivalent to \cite[Eq. 20.]{Zotter2013:uniqueness} and \cite[Eq. 19.]{Spors2008:WFSrevisited}.
 
-The result of synthesis is depicted in Figure \ref{fig:SFS_theory:3D_WFS_general} for the special case of an SSD surface, being invariant to translation along the $z$-axis, as illustrated by Figure \ref{fig:SFS_theory:WFS_geometry} in the following section.
-The driving functions ensure amplitude correct synthesis within the validity of the Kirchhoff-approximation:
+The result of synthesis is depicted in Figure \ref{fig:SFS_theory:3D_WFS_general} for the special case of an SSD surface, being invariant to translation along the $z$-axis, as illustrated by figure \ref{fig:SFS_theory:WFS_geometry} in the following section.
+The driving function ensures amplitude correct synthesis within the validity of the Kirchhoff-approximation:
 amplitude errors arise 
 \begin{itemize}
 \item in the proximity of SSD elements with large local curvature of the SSD surface, due to the local failure of the tangent plane approximation
-\item in the proximity of SSD elements where the normal component of the local wavenumber vector is small---i.e. parts of the SSD, nearly parallel to the local virtual field propagation direction--- since at these positions the high frequency gradient approximation fails, with also the lack of diffractional waves causing amplitude errors.
+\item in the proximity of SSD elements where the normal component of the local wavenumber vector is small---i.e. at parts of the SSD that are nearly parallel to the local virtual field propagation direction--- since at these positions the high frequency gradient approximation fails, with also the lack of diffractional waves causing amplitude errors.
 \item at space regimes for which the above described SSD elements serve as stationary positions as discussed in section \ref{Sec:HS_approx:SPA_for_Rayleigh}.
 \end{itemize}
 
-Driving function \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} expresses the loudspeaker driving signals for a virtual point source radiating at a single frequency component.
-Assuming a wideband source excitation with the time history given by $s(t)$ and its frequency content $S(\omega)$ the time domain WFS driving functions are given by the inverse temporal Fourier transform of \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} weighted by the excitation spectrum.
+The driving function \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} expresses the loudspeaker driving signal for a virtual point source radiating at a single frequency component.
+Assuming a wideband source excitation with the time history given by $s(t)$ and its frequency content being $S(\omega)$ the time domain WFS driving functions are given by the inverse temporal Fourier transform of \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} weighted by the excitation spectrum:
 \begin{equation}
-d(\vxo,t) = \frac{w(\vxo)}{2\pi} \int_{\infty}^{\infty} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{\ti \omega }{2\pi c} S(\omega) \frac{\te^{ \ti \omega ( t - \frac{|\vxo-\vxs|}{c} ) }}{|\vxo-\vxs|} 
+d(\vxo,t) = \frac{w(\vxo)}{2\pi} \int_{-\infty}^{\infty} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{\ti \omega }{2\pi c} S(\omega) \frac{\te^{ \ti \omega ( t - \frac{|\vxo-\vxs|}{c} ) }}{|\vxo-\vxs|} 
 \td \omega.
 \end{equation}
-By realizing that $\ti \omega S(\omega)$ describes the temporal derivative of the source time history and exploiting the Fourier transform shift theorem, the time domain 3D WFS driving functions are obtained for a virtual point source as
+By realizing that $\ti \omega \, S(\omega)$ describes the temporal derivative of the source time history and exploiting the Fourier transform shift theorem, the time domain 3D WFS driving function for a virtual point source is obtained as
 \begin{equation}
 \label{Eq:SFS_theory:3D_WFS_ps_driv_fun_td}
-d(\vxo,t) = \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{w(\vxo)}{2\pi c} \frac{s'_t(t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|},
+d(\vxo,t) = \frac{w(\vxo)}{2\pi c} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{s'_t(t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|},
 \end{equation}
-where differentiation with respect to time compensates for the effects of surface integrating the Green's function, as discussed above.
+where differentiation with respect to time compensates for the SSD frequency response, as discussed above.
 
 \subsection{The 2.5D Kirchhoff approximation}
 
