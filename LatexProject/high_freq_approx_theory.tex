@@ -549,7 +549,7 @@ The stationary point was found on the Rayleigh plane, where the local propagatio
 In order to evaluate integral \eqref{eq:HF_approx:HighF_Rayleigh} around its stationary position according to \eqref{Eq:SPAResult_nd} (with $n=2$), the signature and the determinant of the Hessian in the stationary point is required.
 In the present geometry the Hessian is given by the expression
 \begin{equation}
-\mH^P(\vxo) =
+\mH^{P+G}(\vxo) =
 \begin{bmatrix} 
 \frac{\partial^2}{\partial x_0^2} & \frac{\partial^2}{\partial x_0 \partial z_0} \\[.7em]
 \frac{\partial^2}{\partial x_0 \partial z_0} & \frac{\partial^2}{\partial z_0^2}\\[0.5em] \end{bmatrix} 
@@ -560,7 +560,7 @@ In the stationary position the primary wavefront and the Green's function wavefr
 Due to the spherical nature of the latter one, in the stationary point the eigenvectors of their Hessians can be chosen to coincide, and their principal curvatures (eigenvalues) are additive.
 Thus, the resultant Hessian \eqref{eq:HF_appr:Hessian} can be expressed in terms of the principal curvatures of the primary sound field $\kappa_1^P, \kappa_2^P$ and the Green's function $\kappa_1^G, \kappa_2^G$ as
 \begin{equation}
-\mH^P(\vxo^*(\vx)) = -k
+\mH^{P+G}(\vxo^*(\vx)) = -k
 \mathbf{V}
 \begin{bmatrix} 
 \kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx)) & 0 \\[.3em]
@@ -575,7 +575,7 @@ By exploiting its multiplicity property, the determinant of the Hessian reads as
 \begin{multline}
 \label{Eq:HF_approx:H_det_Rayleigh}
 \small
-\mathrm{det} \mH^P(\vxo^*(\vx)) = 
+\mathrm{det} \mH^{P+G}(\vxo^*(\vx)) = 
 \left(\kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx))\right)
 \left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)
 \cdot \\ \cdot

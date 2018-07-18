@@ -50,6 +50,20 @@
    \end{equation}    
   }%
   
+\newcommand{\importantmline}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{multline}  
+   #2
+   \end{multline}    
+}%
+  
 \newcommand{\importanteqnarray}[2]{
    {\color{maincolor} \textit{
    {\footnotesize   

@@ -79,6 +79,7 @@ shading interp
 hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
+plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
 xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
@@ -90,11 +91,12 @@ set(gca,'FontName','Times New Roman');
 p2 = axes('Units','normalized','Position',pos(2,:));
 pcolor(x,y,20*log10(abs(field_ref - field_synth)));
 axis equal tight
-caxis([-52 ,-20]);
+caxis([-52 ,-20])
 shading interp
 hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
+plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
 xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
 ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
@@ -107,4 +109,4 @@ allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','3D_WFS_general' ) ,'-dpng')
+%print( fullfile( '../..','Figures/SFS_theory','3D_WFS_general' ) ,'-dpng')

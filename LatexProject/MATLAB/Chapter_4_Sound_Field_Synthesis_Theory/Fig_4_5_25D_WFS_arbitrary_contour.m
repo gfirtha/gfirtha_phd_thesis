@@ -119,6 +119,7 @@ shading interp
 hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(:,1), x_ssd(:,2), 0*x_ssd(:,1), 'Color', 'black','LineStyle','-','LineWidth',2);
+plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
 reference_curve_ = [x_ref(~mask) y_ref(~mask)];
 [~,i] = max(sqrt(sum(diff(reference_curve_,2).^2,2)));
@@ -141,6 +142,7 @@ shading interp
 hold on
 line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
 line(x_ssd(:,1), x_ssd(:,2), 0*x_ssd(:,1), 'Color', 'black','LineStyle','-','LineWidth',2);
+plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
 
 line(reference_curve_(:,1), reference_curve_(:,2), 0*reference_curve_(:,1), 'Color', 'white','LineStyle',':','LineWidth',1);
