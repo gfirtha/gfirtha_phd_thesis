@@ -409,7 +409,7 @@ The following two examples are presented in order to demonstrate the analytical 
 %These former approaches include traditional WFS, which optimizes the synthesis of a point source to a reference line as discussed via the following example \cite{Berkhout1993:Acoustic_control_by_WFS,  Start1997:phd, Verheijen1997:phd}, and revisited WFS formulation, which applies a target field independent constant referencing function without taking the virtual source dimensionality mismatch into consideration \cite{Spors2008:WFSrevisited}.
 %The further analysis of the latter approach is not included in the present thesis, a thorough discussion of the topic can be found in \cite{Firtha2016}.
 
-\subsection*{Application example: Synthesis of a 3D point source applying a linear SSD}
+\subsection*{Application example #1: Synthesis of a 3D point source applying a linear SSD}
 
 As a first example assume an infinite linear SSD located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The reference contour is set to be an infinite line parallel to the SSD, located at $\vxref = \posvec{3}{x_0}{y_{\mathrm{ref}}}{0}$.
@@ -487,9 +487,9 @@ h(t) = \frac{\delta(t)}{\sqrt{\pi t}} - \frac{1}{2} \frac{\theta(t)}{t^{3/2}},
 where $\theta(t)$ is the Heaviside step function.
 Practical implementation of this prefilter is discussed in details in \cite{Schultz2013:IIR_prefilters} applying IIR filters, while in \cite[Sec. 2.5]{Schultz2016} the ideal FIR filter coefficients are given analytically.
 
-\subsection*{Application example: Synthesis of a plane wave applying a circular SSD}
+\subsection*{Application example #2: Synthesis of a plane wave applying a circular SSD}
 
-As a second example the synthesis of a plane wave applying a circular SSD with the radius of $R_{\mathrm{SSD}}$ is presented.
+As a second example the synthesis of a plane wave applying a circular SSD, centered at the origin with the radius of $R_{\mathrm{SSD}}$ is presented.
 The synthesis is referenced to a concentric circle inside the SSD with the radius of $R_{\mathrm{ref}}$.
 For this geometry the explicit driving functions are also available \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR}, which are however not discussed in details in the present thesis.
 
@@ -506,7 +506,7 @@ By exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and ta
 \label{eq:SFS_theory:pw_circ_ref}
 \end{equation}
 with $\hat{k}^P_r(\vxo)$ denoting the radial component of the normalized wavenumber vector.
-Applying the reference distance to the general 2.5D WFS driving functions \eqref{Eq:SFS_theory:25D_WFS_driv_fun} allows the synthesis of an arbitrary sound field referenced on a reference circle inside the SSD.
+Applying this reference distance in the general 2.5D WFS driving functions \eqref{Eq:SFS_theory:25D_WFS_driv_fun} allows the synthesis of an arbitrary sound field referenced on a reference circle inside the SSD.
 
 Assume the special case of a virtual 2D plane wave, propagating parallel to the synthesis plane described by the wavenumber vector $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}}}{k_y^{\mathrm{PW}}}{0}$.
 For a 2D sound field invariant along the vertical dimension the vertical curvature is zero ($\phi^{''P}_{zz}(\vxo) = 0$) and the referencing function is the reference distance itself.
@@ -518,7 +518,7 @@ D(\vxo, \omega) = -w(\vxo)
 \ti k_r^{\mathrm{PW}}(\vxo) 	\te^{-\ti \left< \vk^{\mathrm{PW}} \cdot \vxo \right> },
 \end{equation}
 with the reference distance given by \eqref{eq:SFS_theory:pw_circ_ref} in order to optimize the synthesis onto the reference circle.
-For the application of these driving functions a simple example is depicted in Figure \ref{fig:SFS_theory:25D_WFS_circular_ssd} for the synthesis of a harmonic plane wave.
+As an application of this driving function a simple example is depicted in Figure \ref{fig:SFS_theory:25D_WFS_circular_ssd} for the synthesis of a harmonic plane wave.
 
 \begin{figure}
 \centering
@@ -527,35 +527,37 @@ For the application of these driving functions a simple example is depicted in F
 	\put(48,1){(b)}
 	\end{overpic}   
     \caption{2.5D synthesis of a 2D plane wave with the angular frequency $\omega_0 = 2\pi \cdot 1 \mathrm{krad}/s$ propagating into the direction $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}} }{0}{0}$.
-    The SSD is a circular one, with the radius $R_{\mathrm{SSD}} = 2~\mathrm{m}$.
-    The reference curve is a circle with the radius $R_{\mathrm{ref}} = 1.5~\mathrm{m}$.
+    The SSD is a circular one, with the radius of $R_{\mathrm{SSD}} = 2~\mathrm{m}$.
+    The reference curve is a circle with the radius of $R_{\mathrm{ref}} = 1.5~\mathrm{m}$.
     Figure (a) depicts the real part of the synthesized field, (b) shows the error of synthesis.
     }
 \label{fig:SFS_theory:25D_WFS_circular_ssd}  
 \end{figure}
 
-In order to find the driving signal for the synthesis of a plane wave carrying a broadband excitation time history $s(t)$, \eqref{eq:SFS_theory:WFS_plane_wave} is inverse Fourier transformed weighted by the excitation spectrum
+In order to find the driving signal for the synthesis of a plane wave carrying a broadband excitation time history $s(t)$, \eqref{eq:SFS_theory:WFS_plane_wave} is inverse Fourier transformed weighted by the excitation spectrum, resulting in
 \begin{equation}
 d(\vxo, t) = -w(\vxo) 
 \sqrt{\frac{8 \pi }{c	}|\vxref(\vxo)-\vxo|}  \,
 \hat{k}_r^{\mathrm{PW}}(\vxo)  h(t) \ast_t s( t - \frac{1}{c}\left< \hat{\vk}^{\mathrm{PW}} \cdot \vxo \right>),
 \end{equation}
-where $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$ is the SSD compensation filter, performing a half-derivation on the time history and $\hat{\vk}^{\mathrm{PW}} = \posvec{3}{\hat{k^{\mathrm{PW}}_x}}{k^{\mathrm{PW}}_y}{0}$ being a unit vector pointing into the plane wave propagation direction.
+where $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$ is the SSD compensation filter, performing half-derivation on the time history and $\hat{\vk}^{\mathrm{PW}} = \posvec{3}{\hat{k^{\mathrm{PW}}_x}}{k^{\mathrm{PW}}_y}{0}$ being a unit vector pointing into the plane wave propagation direction.
 
 \section{Explicit solution: Spectral Division Method}
 
 The explicit solution for the general sound field synthesis problem aims at the direct solution of the inverse problems, described by integral equations \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}.
 
 Generally speaking the explicit methodology utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function \cite{Ahrens2012,MorseFeshbach1953}.
-Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on a control surface, that form a complete basis of the solution.
-The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero.
-Otherwise the problem is termed \emph{ill-conditioned}.
+Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on a control surface, that form a complete basis of the required solution.
+The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero (otherwise the problem is termed \emph{ill-conditioned}).
 Finally the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
 The method is often referred to as \emph{mode-matching} solutions, since the eigenfunctions of a given geometry are termed the \emph{modes}.
-This solution is unique for general enclosures and also for the---strictly speaking---non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively \fscom{compact operator degenerates then to continouis eigenvalue domain insetad of countable eigenvalues} \footnote{In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure due to resonance phenomena. \fscom{maybe its worth to add: full KHI is unique, single layer can be made unique with CHIEF points like BEM}}.
+This solution is unique for general enclosures
+%\footnote{In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure due to resonance phenomena. \fscom{maybe its worth to add: full KHI is unique, single layer can be made unique with CHIEF points like BEM}}
+and also for the (strictly speaking) non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010} respectively.
+In the latter case the compact operator degenerates to the continuous eigenvalue domain instead of countable eigenvalues as presented in the followings.
 
 The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
-For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS,Schultz2014:Comparing_approaches} and \cite{Koyama2014} for the cylindrical solution \fscom{maybe it also worth to cite Koyama's PhD thesis here}.
+For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS,Schultz2014:Comparing_approaches} and \cite{Koyama2014, Koyama2014:phd} for the cylindrical solution.
 In the present thesis only the planar and linear geometries are investigated in details.
 However, under the validity of the tangent plane approximation---i.e. under high-frequency assumptions with small SSD curvatures---the SSD surface/contour can be considered locally planar/linear and the spatial form of the explicit driving functions are valid for arbitrary shaped SSDs.
 
@@ -572,7 +574,7 @@ However, under the validity of the tangent plane approximation---i.e. under high
 
 \subsection{3D Spectral Division Method}
 
-Assume an infinite planar SSD along---for the sake of simplicity---the $y = 0$ plane, degenerated from the geometry introduced for the Rayleigh integrals in the previous chapter, shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
+Assume an infinite planar SSD located at $\vxo = \posvec{3}{x_0}{0}{z_0}$, degenerated from the geometry introduced for the Rayleigh integrals in the previous chapter, shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 The half-space of synthesis is chosen to be at $y>0$, therefore all the virtual sources are assumed to be located at $y<0$.
 The synthesized field in this geometry is given by a Fredholm-integral of the first kind 
 \begin{equation}
@@ -587,22 +589,23 @@ Applying the convolution theorem to the angular spectrum representation the conv
 \tilde{P}(k_x,y,k_z, \omega) = \tilde{D}(k_x,k_z, \omega) \cdot \tilde{G}(k_x,y,k_z, \omega).
 \end{equation}
 %
-The expansion coefficients are therefore obtained by a comparison of spectral coefficients and the driving function takes the form:
+The expansion coefficients are therefore obtained by a comparison of spectral coefficients and the driving function in the wavenumber and the spatial domain takes the form:
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega) = \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} = 
 \frac{\mathcal{F}\left\{ P(\vx,\omega) \right\} }
 {  \mathcal{F}\left\{ G(\vx,\omega) \right\} },
 \label{Eq:Theory:Dkxkz}
 \end{equation}
-\begin{equation}
-D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \tilde{D}(k_x,k_z, \omega) \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+\importanteq{3D SDM driving fun.}{
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z,
 \label{Eq:Theory:Dkx_inverse_Fourier}
-\end{equation}
+}
+respectively.
 Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear}.
 
 Substituting the $k_x-k_z$ representation of the 3D Green's function given by \eqref{eq:HF_approx:Greens_2D_Spectrum} the driving function \eqref{Eq:Theory:Dkx_inverse_Fourier} reads as
 \begin{equation}
-D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \te^{ -\ti k_y  | y |  } } \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \te^{ -\ti k_y  y  } } \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
 \end{equation}
 with $k_y$ defined by \eqref{eq:theory:k_y_definition}.	
 Expressing the target field spectrum by extrapolating from the plane $y = 0$ according to \eqref{Eq:Theory:Wave_field_extrapolation}---i.e. as 
@@ -616,7 +619,6 @@ The driving function in the wavenumber domain therefore reads as
 \label{Eq:Theory:Planar_explicit_driv_fun}
 \end{equation}
 for which it was exploited that according to \eqref{eq:Theory:Fourier_diff} multiplication by $\ti k_y$ represents differentiation along the $y$-dimension.
-
 Straightforwardly, the explicit expression of the driving function in the spatial domain is obtained by the corresponding inverse Fourier transform according to \eqref{Eq:Theory:Dkx_inverse_Fourier}:
 \begin{equation}
 D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0}.
@@ -634,11 +636,11 @@ As long the problem is well-conditioned---i.e. the spectrum of the transfer func
 If the SSD elements are 3D point sources the following physical interpretation can be assigned to the explicit solution for: 
 as it was stated in section \ref{Sec:HF_approx:1D_Greens} a planar distribution of point sources with a harmonic spatial distribution described by $k_x, k_z$ radiate plane waves with the same wavenumber components and a wavenumber/direction dependent amplitude factor $\frac{1}{2 \ti k_y}$ (c.f. \eqref{eq:HF_approx:Greens_2D_Spectrum}, degenerating at $k_x = k_z = 0$ to the 1D Green's function).
 The driving function \eqref{Eq:Theory:Planar_explicit_driv_fun} thus compensates the planar SSD's response for the synthesis of a single plane wave component.
-Finally, the explicit driving function for an arbitrary virtual field is found as the sum of the individual plane wave driving functions weighted by the virtual field wavenumber content.
+Finally, the explicit driving function for an arbitrary virtual field is found as the sum of the individual plane wave driving functions weighted by the virtual field' plane wave expansion coefficients.
 
 
 \subsection*{Application example: Synthesis of a 3D point source using a planar SSD}
-\fscom{well done, I've tried it for the Acta 2014 article, but could not go any further, have to check your solution in detail. However, it might be worth that this issue from the acta in the appendix is solved here!}
+%\fscom{well done, I've tried it for the Acta 2014 article, but could not go any further, have to check your solution in detail. However, it might be worth that this issue from the acta in the appendix is solved here!}
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/Planar_SDM.png}
@@ -654,16 +656,16 @@ The figures depict the real part of the synthesized field (a) and the deviation 
 	\label{Fig:Theory:monopole_synthesis_by_planar_SDM}
 \end{figure}
 
-The application of the planar explicit solution is presented via the synthesis of a 3D virtual point source at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ behind the SSD plane, located at $\vxo = \posvec{3}{x_0}{0}{z_0}$.
+The application of the planar explicit solution is presented via the synthesis of a 3D virtual point source positioned at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ behind the SSD plane, located at $\vxo = \posvec{3}{x_0}{0}{z_0}$.
 The wavenumber domain representation of the driving function is obtained by substituting the angular spectrum of a 3D point source into \eqref{Eq:Theory:Dkxkz} with applying the Fourier transform shift theorem
 \begin{equation}
-\tilde{D}(k_x,k_z,\omega) =  \frac{-\frac{\ti}{2} \frac{ \te^{-\ti k_y | y - y_s|} }{ k_y} \te^{\ti (k_x x_s +k_z z_s)} }{-\frac{\ti}{2} \te^{-\ti k_y | y |} / k_y   } = \te^{-\ti k_y |y_s|}\te^{\ti (k_x x_s +k_z z_s)}.
+\tilde{D}(k_x,k_z,\omega) =  \frac{-\frac{\ti}{2} \frac{ \te^{-\ti k_y ( y - y_s )} }{ k_y} \te^{\ti (k_x x_s +k_z z_s)} }{-\frac{\ti}{2} \te^{-\ti k_y  y } / k_y   } = \te^{-\ti k_y y_s}\te^{\ti (k_x x_s +k_z z_s)}.
 \label{Eq:Theory:Monopole_SDM_planar_driv_fun}
 \end{equation}
 The double inverse Fourier transform can be carried out analytically by taking the $y$-derivative of the Weyl's integral representation of the Green's function (See \cite{Lalor1969} or \cite[(2.65)]{Williams1999}):
 \begin{equation}
 \frac{\partial}{\partial y} G(\vxo - \vxs,\omega ) = 
-\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} -\frac{1}{2} \te^{ -\ti k_y  | y - y_s |  }
+\frac{1}{4\pi^2} \iint_{-\infty}^{\infty} -\frac{1}{2} \te^{ -\ti k_y  ( y - y_s ) }
 \te^{\ti (k_x x_s + k_z z_s)} \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z,
 \label{Eq:Theory:Weyls_derivative}
 \end{equation}
@@ -675,7 +677,7 @@ which is in agreement with equation \eqref{Eq:Theory:Planar_explicit_driv_fun_sp
 
 The result of synthesizing the steady state field of a point source is illustrated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM}. 
 In the target half space $y>0$ perfect synthesis is achieved, as it is indicated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b), depicting the discrepancy between the synthesized and the target sound field. 
-Obviously, the figure also presents the result of 3D WFS of a spherical wave without applying the high frequency gradient approximation.
+Obviously, the figure also presents the result of 3D planar WFS of a spherical wave without applying the high frequency gradient approximation.
 
 
 \subsection{2.5D Spectral Division Method}
