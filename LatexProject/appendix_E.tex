@@ -15,14 +15,14 @@ h(t_0,t-t_0) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \
 \end{align}
 Applying the above formulations the non-stationary convolution can be cast into the form
 \begin{equation}
-g(t) = \frac{1}{2\pi^2} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 f(t_0) \td t_0,
+g(t) = \frac{1}{2\pi} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 f(t_0) \td t_0,
 \end{equation}
 \begin{equation}
 g(t) = \frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1  F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0,
 \end{equation}
 Taking the Fourier transform of the latter expression:
 \begin{equation}
-G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0 \te^{-\ti \omega t} \td t,
+G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0 \te^{-\ti \omega t} \td t.
 \end{equation}
 Reversing the order of integration and rearrangement results in
 \begin{equation}
