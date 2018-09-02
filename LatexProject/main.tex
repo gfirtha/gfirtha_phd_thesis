@@ -1,97 +1,139 @@
-\documentclass[12pt,a4paper]{report}
-%
-\usepackage{layouts}
-\usepackage{amsmath}
-\usepackage{a4wide}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{xcolor}
-\usepackage{listings}
-\usepackage{graphicx,overpic,subfigure}
-\usepackage{tikz}
-\usetikzlibrary{positioning,arrows}
-\usepackage{booktabs} 			% Nice tables
-\usepackage{csquotes}			% Quotation
-\usepackage{multirow} 			% Multirow cells in tables
-\usepackage{rotating}
-\usepackage{pdflscape}
-\usepackage[small,bf]{caption}
-\usepackage{ae,aecompl}
-\usepackage{url}
-\usepackage[american]{babel}
-\usepackage{hyperref}
-\usepackage{nomencl}
-\usepackage[toc,page]{appendix}
-\usepackage{amssymb}
-\usepackage{steinmetz}
-\usepackage{palatino}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{footnote}
-\usepackage{multicol}
-\usepackage[export]{adjustbox}
-\usepackage{caption}
-\usepackage{placeins}
-%\usepackage{subcaption}
- \usepackage{mathtools}
-\usepackage{sidecap}
-\usepackage{transparent}
+	\documentclass[%
+	paper=A4,					% paper size
+	twoside=true,				% onesite or twoside printing
+	openright,					% doublepage cleaning ends up right side
+	chapterprefix=true,			% prefix for chapter marks
+	11pt,						% font size
+	headings=normal,			% size of headings
+	bibliography=totoc,			% include bib in toc
+	listof=totoc,				% include listof entries in toc
+	titlepage=on,				% own page for each title page
+	captions=tableabove,		% display table captions above the float env
+	draft=false,				% value for draft version
+]{scrreprt}
 
-\newcommand{\fscom}[2][red]{\textcolor{#1}{#2}} %Schultz comment
+\usepackage[utf8]{inputenc}		% defines file's character encoding
+\usepackage[english]{babel} % babel system, adjust the language of the content
+\usepackage[					% clean thesis style
+	figuresep=colon,%
+	sansserif=false,%
+	hangfigurecaption=true,%
+	hangsection=true,%
+	hangsubsection=true,%
+	colorize=full,%
+	colortheme=bluemagenta,%
+	bibsys=bibtex,%
+	bibfile=dissertation,%
+	bibstyle=alphabetic%
+]{fg_thesis}
 
-\makesavenoteenv{tabular}
+\newcommand{\thesisTitle}{A Unified Wave Field Synthesis Framework \\
+\large with Application for Moving Virtual Sources}
+\newcommand{\thesisName}{Gergely Firtha}
+\newcommand{\thesisSubject}{PhD Thesis}
+\newcommand{\thesisDate}{\today}
+\newcommand{\thesisVersion}{My First Draft}
+
+\newcommand{\thesisFirstSupervisor}{Peter Fiala}
+
+\newcommand{\thesisUniversity}{\protect{Budapest University of Technology and Economics}}
+\newcommand{\thesisUniversityDepartment}{Department of Networked Systems and Services}
+\newcommand{\thesisUniversityGroup}{Laboratory of Acoustics and Studio Technologies}
+\newcommand{\thesisUniversityCity}{Budapest}
+\newcommand{\thesisUniversityStreetAddress}{Magyar Tudosok korutja 2.}
+\newcommand{\thesisUniversityPostalCode}{1117}
+
+\newcommand{\fscom}[2][red]{\textcolor{#1}{#2}} %Schultz comment 
+\hypersetup{					% setup the hyperref-package options
+	pdftitle={\thesisTitle},	% 	- title (PDF meta)
+	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
+	pdfauthor={\thesisName},	% 	- author (PDF meta)
+	plainpages=false,			% 	-
+	colorlinks=false,			% 	- colorize links?
+	pdfborder={0 0 0},			% 	-
+	breaklinks=true,			% 	- allow line break inside links
+	bookmarksnumbered=true,		%
+	bookmarksopen=true			%
+}
+\usepackage{everyshi}
+
+
+\makenomenclature
+\begin{document}
+\EveryShipout{%
+  \ifthenelse{\isodd{\value{page}}}%
+    {\global\marginparsep=20pt}% Next page is even
+    {\global\marginparsep=5pt}% Next page is odd
+}
+
 \input{mydefs}
 
-\title{A Unified Wave Field Synthesis Framework \\
-		\large \fscom{with Special Focus on Moving Virtual Sources}}
-\date{\today \\
-Budapest University of Technology and Economics, \\ Dept. of Networked Systems and Services, \\ Laboratory of Acoustics and Studio Technologies}
-\author{Gergely Firtha}
-\makenomenclature
+\pagenumbering{roman}			% roman page numbing (invisible for empty page style)
+\pagestyle{empty}				% no header or footers
+\input{titlepage}		% INCLUDE: all titlepages
+\cleardoublepage
 
-\begin{document}
-\pagenumbering{roman}
+\input{acknowledgement}
 
-\maketitle
-\tableofcontents
+\cleardoublepage
+
+\pagestyle{plain}				% display just page numbers
+\setcounter{tocdepth}{2}		% define depth of toc
+\tableofcontents				% display table of contents
+\cleardoublepage
+\pagenumbering{arabic}			% arabic page numbering
+\setcounter{page}{1}			% set page counter
+\pagestyle{maincontentstyle} 	% fancy header and footer
 \input{nomenclature}
+%
 
-%
-%\chapter{Introduction}
-%
-\chapter{Theory of Wave Propagation and Radiation Problems}
+\chapter{Introduction}
 \pagenumbering{arabic}
+\label{sec:introduction}
+\input{introduction}
+
+\chapter{Theory of wave propagation and radiation problems}
 \label{sec:general_wave_theory}
-\fscom{sections/subsec large headings?}
 \input{general_wave_theory}
-%
-%
-%
+
 \chapter{High frequency approximation of wave fields and radiation problems}
 \label{sec:high_freq_approx}
 \input{high_freq_approx_theory}
-%
-%
-%
-\chapter{Theory of Sound Field Synthesis}
+
+\chapter{Theory of sound field synthesis}
 \label{sec:sound_field_synthesis}
 \input{sound_field_synthesis}
 %
+%\chapter{Synthesis of moving sound sources}
+%\label{sec:moving_source_synthesis}
+%\input{moving_source_synthesis}
 %
-
-\begin{appendices}
-\chapter{Appendix A}
-\input{appendix_A}
+%\chapter{Conclusion}
+%\label{sec:conclusion}
+%\input{conclusion}
+%
+%\begin{appendices}
+%\chapter{Appendix A}
+%\input{appendix_A}
 \chapter{Appendix B}
 \input{appendix_B}
 \chapter{Appendix C}
-\input{appendix_C}
-\chapter{Appendix D}
-\input{appendix_D}
-\end{appendices}
+\input{appendix_C}	
+%\chapter{Appendix D}
+%\input{appendix_D}
+%\chapter{Appendix E}
+%\input{appendix_E}
+%\chapter{Appendix F}
+%\input{appendix_F}
+%\end{appendices} 
 
+\cleardoublepage
+{%
+\setstretch{1.1}
+\renewcommand{\bibfont}{\normalfont\small}
+\setlength{\biblabelsep}{0pt}
+\setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+\printbibliography} 
 
-\bibliographystyle{plain}
-\bibliography{dissertation}
 
 \end{document}

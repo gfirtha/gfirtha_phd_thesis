@@ -1,6 +1,7 @@
-pdflatex main
+pdflatex main.tex REM -interaction=batchmode
 bibtex main
-makeindex main.nlo -s nomencl.ist -o main.nl
-pdflatex main.tex
-pdflatex main.tex
+REM makeindex main.nlo -s nomencl.ist -o main.nl
+makeindex -s nomencl.ist -t main.nlg -o main.nls main.nlo
+pdflatex main_.tex -interaction=batchmode
+pdflatex main.tex -interaction=batchmode
 sumatrapdf main.pdf

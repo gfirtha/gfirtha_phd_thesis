@@ -1,131 +1,110 @@
-\section{Derivation of Green's theorem}
-\label{App:Green_theorem}
+\section{Definition and properties of Fourier transform and the Dirac delta}
+\label{App:Fourier_def}
 
-The Gauss, or divergence theorem states, that if a vector space, described by vector-vector function $\mathbf{u}(\vx)$ is non-singular and differentiable over a bounded region $\Omega$, with a boundary denoted by $\partial \Omega$, then the integral of the divergence of the vector-space over the whole region equals to the total flux, measured on the boundary surface (refer to figure \ref{Fig:Theory:bounday_condition} for the problem geometry):
+\paragraph{Temporal Fourier transform:}\mbox{} \\
+Given a four dimensional function $f(\vx,t)$, depending on both time and the spatial position.
+The forward and inverse temporal Fourier transform is defined as 
 \begin{equation}
-\int_{\Omega} \nabla \cdot \mathbf{u}(\vx) \td \Omega = \int_{\partial \Omega} \langle \mathbf{u}(\vx),  \mathbf{n}_{\mathrm{o}} \rangle \td \partial\Omega,
-\end{equation}
-where $\mathbf{n}_{\mathrm{o}} $ is the outward-pointing unit normal vector on the boundary.
-
-Let's express the arbitrary vector-vector function $\mathbf{u}(\vx)$ as the combination of two twice continuously differentiable vector-scalar functions:
-\begin{equation}
-\mathbf{u}(\vx) = \Phi(\vx)\nabla \Psi(\vx) - \nabla \Phi(\vx) \Psi(\vx).
-\end{equation}
-Using the chain rule the divergence of these terms are obtained as
-\begin{equation}
-\nabla \cdot ( \Phi(\vx)\nabla \Psi(\vx) ) = \nabla \Phi(\vx)\cdot \nabla \Psi(\vx) + \Phi(\vx) \nabla^2 \Psi(\vx)
+\label{eq:temporal_fourier_transform_def}
+F(\vx,\omega) = \mathcal{F}_t \left\{ f(\vx,t) \right\} = \int\limits_ {-\infty}^{\infty} f(\vx,t) \te^{-\ti \omega t} \td t,
 \end{equation}
 \begin{equation}
-\nabla \cdot( \nabla \Phi(\vx) \Psi(\vx) ) = \nabla \Phi(\vx) \cdot  \nabla  \Psi(\vx) +  \nabla ^2 \Phi(\vx) \Psi(\vx),
+\label{eq:temporal_inverse_fourier_transform_def}
+f(\vx,t) = \mathcal{F}_{\omega}^{-1} \left\{ F(\vx,\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} F(\vx,\omega) \te^{ \ti \omega t} \td \omega.
 \end{equation}
-thus
-\begin{equation}
-\int_{\Omega} \left\{ \Phi(\vx) \nabla^2 \Psi(\vx) - \nabla^2 \Phi(\vx) \Psi(\vx) \right\} \td \Omega = \int_{\partial \Omega} \langle
- \Phi(\vx) \nabla \Psi(\vx) - \nabla \Phi(\vx) \Psi(\vx) , \mathbf{n}_{\mathrm{o}} \rangle
- \td \partial\Omega.
-\end{equation}
-
-By replacing the outward-pointing normal vector with the inward normal: $\mathbf{n}_{\mathrm{i}} = -\mathbf{n}_{\mathrm{o}}$, and denoting the normal derivative on the surface by $\frac{\partial}{\partial n}$ we obtain the  \emph{Green's theorem}:
-\begin{equation}
-\int_{\Omega} \left\{ \Phi(\vx) \nabla^2 \Psi(\vx) - \nabla^2 \Phi(\vx) \Psi(\vx) \right\} \td \Omega = \int_{\partial \Omega}
-\frac{\partial \Phi(\vx)}{\partial n} \Psi(\vx)  - \Phi(\vx) \frac{\partial \Psi(\vx)}{\partial n}
- \td \partial\Omega.
-\label{Eq:App:Green_theorem}
-\end{equation}
-
-%\section{Direct solution of the inhomogeneous wave equation for 3D SFS}
+Note that capital letter indicates that the function is taken in the angular frequency domain.
 %
-%Let's assume a distribution of point sources at $y = 0$, with assuming Neumann boudary conditions for $p(\vx,t)$ given by: $\frac{\partial}{\partial y} p(\vx, t)|_{y = 0} = 0$. The time domain inhomogeneous wave equation for this scenario is given by
-%\begin{equation}
-%\nabla^2 p(\vx,t) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} p(\vx,t) = - d(x,z,t)\delta(y).
-%\end{equation}
-%Let's take the Fourier-transform of both sides wrt time and $x,y$:
-%\begin{equation}
-%\left( \left( \frac{\omega}{c}  \right)^2 -  k_x^2 - k_z^2 \right) \tilde{P}(k_x,y,k_z,\omega) + \frac{\partial^2}{\partial y^2}  \tilde{P}(k_x,y,k_z,\omega) = - \tilde{D}(k_x,k_z,\omega)\delta(y).
-%\end{equation}
-%Let's evaluate the definite integral of both sides of the equation from $-\infty$ to 0. The equation becomes
-%\begin{equation}
-%\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y + \frac{\partial}{\partial y}  \left. \tilde{P}(k_x,y,k_z,\omega)\right|_{y = 0} = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
-%\end{equation}
-%Due to the prescribed boundary conditions the derivative on $y=0$ vanishes
-%\begin{equation}
-%\left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 + k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y  = -\frac{1}{2}\tilde{D}(k_x,k_z,\omega).
-%\end{equation}
-%and the driving function spectrum reads
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%= -2 \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 \right) \int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y .
-%\label{App:3D_driving_function_a}
-%\end{equation}
-%The equation states that by letting the normal derivative of the synthesized sound field vanish on the SSD the target pressure field can be synthesized perfectly by the driving function given by \eqref{App:3D_driving_function}.
-%
-%Assuming that the target sound field $P(\vx,\omega)$ satisfies the homogeneous wave equation in the $y<0$ region from equation
-%\eqref{Eq:Theory:Wave_field_extrapolation} the target angular spectrum of the sound field may be written for arbitrary $y$ as
-%\begin{equation}
-%\tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega)\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y }.
-%\end{equation}
-%Integrating both sides from $-\infty$ to $0$ wrt. $y$ 
-%\begin{equation}
-%\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = \tilde{P}(k_x,0,k_z,\omega) \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } y } \td y.
-%\end{equation}
-%It is known, that
-%\begin{equation}
-%\int_{-\infty}^{0}\te^{a x} = \frac{1}{-a}, \hspace{3mm} (\mathcal{R}(a)<0),
-%\end{equation}
-%thus
-%\begin{equation}
-%\int_{-\infty}^{0} \tilde{P}(k_x,y,k_z,\omega) \td y = 
-%\frac{\tilde{P}(k_x,0,k_z,\omega) }{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 } }.
-%\end{equation}
-%Substituting back to equation \eqref{App:3D_driving_function_a} the angular spectrum of the driving function reads
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%=  2 \ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2 }
-%\tilde{P}(k_x,0,k_z,\omega) .
-%\label{App:3D_driving_function}
-%\end{equation}
-%Comparison with equation \eqref{Eq:Theory:Planar_explicit_driv_fun} reveals that the same driving function is obtained as the result stemming from the single layer potential integral.
+\paragraph{Spatial Fourier transforms:}\mbox{} \\
+Following the convention, given in e.g. \cite{Ahrens2012} the spatial Fourier transform is defined as follows:
+\begin{itemize}
+\item in one dimension:
+\begin{equation}
+\label{eq:spatial_fourier_transform_def}
+\hat{F}(k_x,y,z,\omega) = \mathcal{F}_x \left\{ F(\vx,\omega) \right\} = \int_ {-\infty}^{\infty} F(\vx,\omega) \, \te^{\ti k_x x} \, \td x,
+\end{equation}
+\begin{equation}
+\label{eq:spatial_inverse_fourier_transform_def}
+F(\vx,\omega) = \mathcal{F}_{k_x}^{-1} \left\{ \hat{F}(k_x,y,z,\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} \hat{F}(k_x,y,z,\omega) \, \te^{ -\ti k_x x} \td k_x,
+\end{equation}
+\item in two dimensions:
+\begin{equation}
+\label{eq:spatial_fourier_transform_def_2d}
+\hat{F}(k_x,y,k_z,\omega) = \iint_ {-\infty}^{\infty} F(\vx,\omega) \te^{\ti \left( k_x x + k_z z \right) } \td x \, \td z,
+\end{equation}
+\begin{equation}
+\label{eq:spatial_inverse_fourier_transform_def_2d}
+F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^2} \iint_ {-\infty}^{\infty} \hat{F}(k_x,y,k_z,\omega) \, \te^{ -\ti \left( k_x x + k_z z \right)} \td k_x \, \td k_z,
+\end{equation}
+\item in three dimensions:
+\begin{equation}
+\label{eq:spatial_fourier_transform_def_3d}
+\hat{F}(\vk,\omega)= \iiint_ {-\infty}^{\infty} F(\vx,\omega) \te^{ \ti \left< \vk \cdot \vx \right>} \td x \,\td y\,\td z,
+\end{equation}
+\begin{equation}
+\label{eq:spatial_inverse_fourier_transform_def_3d}
+F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^3} \iiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ -\ti \left< \vk \cdot \vx \right>} \td k_x \, \td k_y \, \td k_z.
+\end{equation}
+\end{itemize}
+Hence, hat over the function symbol indicates that the function is taken in the wavenumber domain.
+Note that the exponent of the spatial Fourier transform is taken with a reversed sign, compared to the temporal transform.
+Writing an arbitrary function in the form of a spatio-temporal inverse Fourier transform
+\begin{equation}
+f(\vx,t) = \frac{1}{\left( 2\pi \right)^4} \iiiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ \ti \left( \omega t - \left< \vk \cdot \vx \right> \right)} \td k_x \, \td k_y \, \td k_z
+\end{equation}
+basically describes the expansion of an arbitrary function into the linear combination of plane waves, propagating to direction $\vk$.
+The reversed sign therefore ensures that this simple physical interpretation can be assigned to the Fourier transform.
 
-%
-%\paragraph{Planar driving functions for a virtual point source \\}
-%Now let's assume a virtual point source, located at $\mathbf{x}_s = [ 0,\ y_s,\ 0]^{\mathrm{T}}$. 
-%For sake of simplicity only propagating waves (i.e. $k_x^2 + k_z^2 < \left( \frac{\omega}{c} \right)^2$) are considered.
-%Using the definition of the Green's function in the wavenumber space the field of the point source is described by 
-%\begin{multline}
-%\tilde{P}(k_x,y,k_z,\omega ) = \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y - y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }} 
-%= \frac{\ti}{2}\frac{\te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }|y|} \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - ( k_x^2 + k_z^2 ) }|y_s|}}{\sqrt{ \left( \frac{\omega}{c} \right)^2 -  k_x^2 - k_z^2  }} 
-%,
-%\end{multline}
-%thus the driving function reads
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%= -\ti \sqrt{ \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2  } \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} 
-% \int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y|}  \td y .
-%\end{equation}
-%Due to the symmetry to the $y = 0$ plane 
-%\begin{equation}
-%\int_{-\infty}^{0} \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
-%\int_{0}^{\infty}  \te^{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2  }|y|}  \td y = 
-%\frac{1}{-\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }}.
-%\end{equation}
-%And the driving function is given in the spectral domain as
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%= \te^{\ti \sqrt{ \left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2 }|y_s|} .
-%\end{equation}
-%
-%\paragraph{Planar driving functions for a virtual plane wave \\} 
-%As a following example consider a plane wave, whose spectrum is given by
-%\begin{equation}
-%\tilde{P}(k_x,k_z,\omega) = 4\pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \te^{-\ti k_{y0} |y|}.
-%\end{equation}
-%by denoting $k_{y0} =\sqrt{\left( \frac{\omega}{c}  \right)^2 - \left( k_{x_0}^2 + k_{z_0}^2 \right) } $ The driving function will read
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%= - 8 \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) \left( \left( \frac{\omega}{c}  \right)^2 - k_x^2 - k_z^2   \right) \int_{-\infty}^{0} \te^{-\ti k_{y0} |y|} \td y .
-%\end{equation}
-%Again, by carrying out the integration and exploiting the sifting property of the Dirac-delta function:
-%\begin{equation}
-%\tilde{D}(k_x,k_z,\omega)
-%= 8 \ti \pi^2 \delta(k_x- k_{x0}) \delta( k_z - k_{z0}) k_{y0} .
-%\end{equation}
+\paragraph{Fourier transform properties:}\mbox{} \\
+Several important properties of the Fourier transform, applied frequently in the present thesis are the following.
+\begin{itemize}
+\item Shift theorem:
+\begin{equation}
+\int_{-\infty}^{\infty} f(x-x_0) \te^{\ti k_x x} \td x = \mathcal{F}_x \left\{ f(x-x_0) \right\} = \hat{F}(k_x) \te^{\ti k_x x_0}.
+\end{equation}
+In case of temporal Fourier transform the right side is with reversed exponent.
+\item Convolution theorem:
+\begin{equation}
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x-x_0) g(x_0) \td x_0 \, \te^{\ti k_x x} \td x = \mathcal{F}_x \left\{ f(x) \ast_x g(x) \right\} = \hat{F}(k_x) \cdot \hat{G}(k_x).
+\end{equation}
+\item Differentiation property:
+\begin{equation}
+\int_{-\infty}^{\infty} \frac{\partial}{\partial x} f(x) \te^{\ti k_x x} = \mathcal{F}_x \left\{ \frac{\partial}{\partial x} f(x) \right\} = 
+-\ti k_x \hat{F}(k_x).
+\end{equation}
+In case of temporal Fourier transform the right side is with reversed sign.
+\item Scaling property:
+\begin{equation}
+\int_{-\infty}^{\infty} f(a x) \te^{\ti k_x x} = \mathcal{F}_x \left\{ f( a x) \right\} = 
+\frac{1}{|a|}\hat{F}(\frac{k_x}{a}).
+\end{equation}
+In case of temporal Fourier transform the right side is with reversed sign.
+\end{itemize}
+
+\paragraph{Properties of Dirac delta:}\mbox{} \\
+A frequently used distribution used in modeling acoustic phenomena is the Dirac delta, defined as a generalized function
+\begin{equation}
+\delta(x) = 
+\begin{cases}
+\infty, & \hspace{1mm} x = 0\\
+0, & \hspace{1mm}  x \neq 0
+\end{cases},
+\hspace{1cm}
+\text{with}
+\hspace{2cm}
+\int_{-\infty}^{\infty} \delta(x) \td x = 1.
+\end{equation}
+Several important properties of the Fourier transform, applied frequently in the present thesis are the following.
+\begin{itemize}
+\item Inverse Fourier transform:
+\begin{equation}
+\delta(x-x_0) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \te^{-\ti k_x (x-x_0)} \td k_x =  \mathcal{F}_{k_x} \left\{ \delta( x-x_0 ) \right\}.
+\end{equation}
+\item Sifting property:
+\begin{equation}
+\int_{-\infty}^{\infty} \delta(x-x_0) f(x) \td x = f(x_0).
+\end{equation}
+\item Generalized sifting property:
+\begin{equation}
+\int_{-\infty}^{\infty} f(x) \delta(g(x)) \td x = \sum_{i} \frac{f(x_i)}{\left| \frac{\partial}{\partial x} g(x) \right|_{x = x_i}}, \hspace{5mm} \text{where} \hspace{5mm} g(x_i) = 0.
+\end{equation} 
+\end{itemize}

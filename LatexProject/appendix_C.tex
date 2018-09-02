@@ -18,6 +18,7 @@ Applying Euler's formula the phase function of the resultant field becomes
 \frac{A_2}{r_1}\cos \left( \frac{\omega}{c}|\vx-\vx_2| \right)  
 }.
 \end{equation}
+
 The local wavenumber vector, i.e. the gradient of the expression can be calculated by using that
 \begin{equation}
 \left( \arctan \frac{f}{g} \right)' = \frac{f'g - f g'}{f^2+g^2},
@@ -47,17 +48,17 @@ A^P(\vx,\omega) = \sqrt{ A_1^2 r_2^2 + A_2^2 r_1^2 + 2 A_1 A_2 r_1 r_2 \cos\left
 \end{equation}
 
 These complex expression along with the amplitude factor describes the interference pattern of the point source pair over the whole listening area: 
-due to destructive interference the amplitude factor vanishes over the zeros of $A^P(\vx,\omega)$.
+due to destructive interference the denominator of the phase gradient vanishes over the zeros of $A^P(\vx,\omega)$.
 At these positions the phase changes rapidly resulting in infinitely large local wavenumber vector lengths.
 
 From the aspect of stereophonic application only the stereo axis is of interest, where $r_1 = r_2$ holds.
-Due to the symmetry of the geometry along that axis $\frac{\partial}{\partial x} r_1 = - \frac{\partial}{\partial x} r_2$, $\frac{\partial}{\partial y} r_1 = \frac{\partial}{\partial y} r_2$ and $\frac{\partial}{\partial z} r_1 = \frac{\partial}{\partial z} r_2$ holds, and the derivatives of the phase function is given as
+Due to the symmetry of the geometry along that axis $\frac{\partial}{\partial x} r_1 = - \frac{\partial}{\partial x} r_2$, $\frac{\partial}{\partial y} r_1 = \frac{\partial}{\partial y} r_2$ and $\frac{\partial}{\partial z} r_1 = \frac{\partial}{\partial z} r_2$ holds, and the derivatives of the phase function are given as
 \begin{align}
 -\phi^{P'}_x &= k r_x' \frac{ A_1  - A_2 
  }{ A_1 + A_2} \\
 -\phi^{P'}_y &= k r_y'.
 \end{align}
-and the amplitude factor reads as
+while the amplitude factor reads
 \begin{equation}
 A^P(0,y,z,\omega) = \frac{A_1 +  A_2}{r}.
 \label{Eq:AppB:stereo_amplitude}

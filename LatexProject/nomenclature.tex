@@ -1,28 +1,35 @@
+\nomenclature[01]{$\vx$}{Position vector in Descartes coordinates: $\vx = \posvec{3}{x}{y}{z}$}
+%
+\nomenclature[02]{$\vv$}{General 3D vector in Descartes coordinates: $\vv = \posvec{3}{v_x}{v_y}{v_z}$}
+%
+\nomenclature[03]{$\lvert \vv \rvert$}{Length, or $l^2$ norm of vector: $\lvert \vv \rvert = \sqrt{\sum_i v_i^2}$}
+%
+\nomenclature[04]{$\hat{\vv}$}{Normalized vector, with unit length pointing into the direction of $\vv$: $\hat{\vv} = \frac{\vv}{\lvert \vv \rvert}$.}
+%
+\nomenclature[05]{$\left< \mathbf{u} \cdot \vv \right>$}{Inner product of vectors $\mathbf{u}$ and $\vv$: $\left< \mathbf{u} \cdot \vv \right>= \sum_i u_i \cdot v_i =\mathbf{u}^{\mathrm{T}} \vv$}
+%
+\nomenclature[07]{$\vn$}{Normal vector of a surface, or contour}
+%
+\nomenclature[08]{$\frac{\partial}{\partial x_i}$}{Partial derivative of a function with respect variable $x_i$}
+%
+\nomenclature[09]{$\frac{\td}{\td x_i}$}{Total derivative of a function with respect argument $x_i$}
+%
+\nomenclature[10]{$\Dx$}{Gradient operator. In Descartes-coordinates: $\Dx f = \frac{\partial f}{\partial x} \mathbf{e}_x + \frac{\partial f}{\partial y} \cdot \mathbf{e}_y + \frac{\partial f}{\partial z} \cdot \mathbf{e}_z$, with $\mathbf{e}_{x,y,z}$ being unit vectors into $x,y,z$ directions}
+%
+\nomenclature[11]{$\Dx \cdot$}{Divergence operator. In Descartes-coordinates: $\Dx \cdot f =  \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y} + \frac{\partial f}{\partial z}$}
+%
+\nomenclature[12]{$\Lx$}{Laplacian operator. 
+In Descartes-coordinates: $\Lx f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} +  \frac{\partial^2 f}{\partial z^2}$}%
+%
+\nomenclature[13]{$\frac{\partial}{\partial \vv}$}{Directional derivative of a function into the direction of vector $\vv$: $\frac{\partial}{\partial \vv} f = \left< \Dx f \cdot \vv \right>$}
+%
+\nomenclature[14]{$f'_{x_i}(\vxo)$}{Shorthand for the partial derivative of function $f(\vx)$ with respect to variable $x_i$, taken at the evaluation point $\vxo$: $f'_{x_i}(\vxo)= \frac{\partial}{\partial x_i} f(\vx) \bigg \rvert_{\vx = \vxo}$}
+%
+\nomenclature[15]{$f''_{x_i,x_j}(\vxo)$}{Shorthand for the second partial derivative of function $f(\vx)$ with respect to variables $x_i$, $x_j$, taken at the evaluation point $\vxo$: $f''_{x_i,x_j}(\vxo)= \frac{\partial^2}{\partial x_i \partial x_j} f(\vx) \bigg \rvert_{\vx = \vxo}$}
+%
+\nomenclature[16]{$\mathcal{F}_x\left\{\right\}$}{Fourier transform of a function with respect to variable $x$}
+%
+\nomenclature[17]{$\mathcal{F}^{-1}_{k_x}\left\{\right\}$}{Inverse Fourier transform of a function with respect to variable $k_x$}
+%
+\nomenclature[18]{$\ast_x$}{Convolution of functions w.r.t. variable $x$: $f \ast_x g = \int_{-\infty}^{\infty} f(x-x_0) g(x_0) \td x_0$.}
 \printnomenclature
-%
-\vspace{1cm}
-\paragraph{Temporal Fourier transforms:}
-The forward and inverse temporal Fourier transform is defined as 
-\begin{equation}
-\label{eq:temporal_fourier_transform_def}
-F(\omega) = \mathcal{F}_t \left\{ f(t) \right\} = \int\limits_ {-\infty}^{\infty} f(t) \te^{-\ti \omega t} \td t,
-\end{equation}
-\begin{equation}
-\label{eq:temporal_inverse_fourier_transform_def}
-f(t) = \mathcal{F}_{\omega}^{-1} \left\{ F(\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} F(\omega) \te^{ \ti \omega t} \td \omega.
-\end{equation}
-%
-\paragraph{Spatial Fourier transforms:}
-Following the convention as given in e.g. \cite{Williams1999} the spatial Fourier transformed is defined with reversed exponential for the sake of a consequent physical interpretation, when applied for planar or outgoing spherical waves:
-\begin{equation}
-\label{eq:spatial_fourier_transform_def}
-F(k_x) = \mathcal{F}_x \left\{ f(x) \right\} = \int_ {-\infty}^{\infty} f(x) \te^{\ti k_x x} \td x,
-\end{equation}
-\begin{equation}
-\label{eq:spatial_inverse_fourier_transform_def}
-f(x) = \mathcal{F}_{k_x}^{-1} \left\{ F(k_x) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} F(k_x) \te^{ -\ti k_x x} \td k_x,
-\end{equation}
-
-
-%
-%\paragraph{Spatio-temporal Fourier transforms:}

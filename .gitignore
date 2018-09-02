@@ -8,3 +8,7 @@
 *.out
 *.gz
 *.toc
+main.pdf
+main_formated-blx.bib
+main_formated.pdf
+main_formated.run.xml

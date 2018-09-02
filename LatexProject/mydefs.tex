@@ -34,6 +34,66 @@
                 \end{bmatrix}
         \fi
 }
+\definecolor{maincolor}{rgb}{0, 0.447, 0.741}
+
+\newcommand{\importanteq}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{equation}  
+   #2
+   \end{equation}    
+  }%
+  
+\newcommand{\importantmline}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{multline}  
+   #2
+   \end{multline}    
+}%
+  
+\newcommand{\importanteqnarray}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{eqnarray}%
+   #2%
+   \end{eqnarray}%
+  }%
+
+\newcommand{\importantalign}[2]{
+   {\color{maincolor} \textit{
+   {\footnotesize   
+  \marginnote{ \setlength\arrayrulewidth{1pt} 
+  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]
+  %\marginpar{#1}
+   } } }
+   \begin{align}%
+   %\begin{changebar}%  
+   #2%
+   %\end{changebar}% 
+   \end{align}    
+  }%
+
 
 %%\setcounter{secnumdepth}{2}
 %  \renewcommand\not[1]{#1\xnot}
@@ -71,6 +131,7 @@
 \newcommand{\Lx}{\nabla^2_{\!\!\vx}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\vvs}{\mathbf{v}_{\mathrm{s}}}
+\newcommand{\mH}{\mathbf{H}}
 
 \newcommand{\Kv}{\kappa_\mathrm{v}}
 \newcommand{\Kh}{\kappa_\mathrm{h}}
