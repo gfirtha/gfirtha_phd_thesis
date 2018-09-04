@@ -32,7 +32,7 @@ g' & = A_1 r'_1 \frac{-k r_1 \sin \left( k r_1 \right) - \cos \left(  k r_1 \rig
 A_2 r'_2 \frac{-k r_2 \sin \left(k r_2 \right) - \cos \left( k r_2\right) }{r_2^2},
 \end{align}
 denoting $r_1 = |\vx-\vx_1|$ and $r_2 = |\vx-\vx_2|$ and $k = \frac{\omega}{c}$.
-By expressing the gradient with several simplifications one obtains
+Several simplifications lead to the gradient
 \begin{equation}
 \phi^{P'} = \frac{
 k \left(
@@ -40,14 +40,14 @@ r_1' A_1^2 r_2^2 + r_2' A_2^2 r_1^2 + A_1 A_2 r_1 r_2 (r_1'+r_2') \cos\left( k \
 \right) 
 -A_1 A_2 (r_1' r_2 - r_2' r_1) \sin \left( k \Delta r \right)
  }
- {r_1^2 r_2^2 {A^{P}}^2(\vx,\omega)},
+ {r_1^2 r_2^2 {A^{P}}(\vx,\omega)^2},
 \end{equation}
-with $\Delta r = r_1 - r_2$ and where $A^P(\vx,\omega)$ is the amplitude of the resulting field omitting the normalizing factor $1/4\pi$.
+with $\Delta r = r_1 - r_2$ and where $A^P(\vx,\omega)$ is the amplitude of the resulting field omitting the normalizing factor $1/4\pi$
 \begin{equation}
-A^P(\vx,\omega) = \sqrt{ A_1^2 r_2^2 + A_2^2 r_1^2 + 2 A_1 A_2 r_1 r_2 \cos\left( k \Delta r \right) } / r_1 r_2.
+A^P(\vx,\omega) = \frac{\sqrt{ A_1^2 r_2^2 + A_2^2 r_1^2 + 2 A_1 A_2 r_1 r_2 \cos\left( k \Delta r \right) } } {r_1 r_2}.
 \end{equation}
 
-These complex expression along with the amplitude factor describes the interference pattern of the point source pair over the whole listening area: 
+These expressions describe the interference pattern of the point source pair over the whole listening area: 
 due to destructive interference the denominator of the phase gradient vanishes over the zeros of $A^P(\vx,\omega)$.
 At these positions the phase changes rapidly resulting in infinitely large local wavenumber vector lengths.
 
@@ -56,9 +56,9 @@ Due to the symmetry of the geometry along that axis $\frac{\partial}{\partial x}
 \begin{align}
 -\phi^{P'}_x &= k r_x' \frac{ A_1  - A_2 
  }{ A_1 + A_2} \\
--\phi^{P'}_y &= k r_y'.
+-\phi^{P'}_y &= k r_y',
 \end{align}
-while the amplitude factor reads
+and the amplitude factor reads
 \begin{equation}
 A^P(0,y,z,\omega) = \frac{A_1 +  A_2}{r}.
 \label{Eq:AppB:stereo_amplitude}

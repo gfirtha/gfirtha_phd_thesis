@@ -15,7 +15,7 @@ f(\vx,t) = \mathcal{F}_{\omega}^{-1} \left\{ F(\vx,\omega) \right\} = \frac{1}{2
 Note that capital letter indicates that the function is taken in the angular frequency domain.
 %
 \paragraph{Spatial Fourier transforms:}\mbox{} \\
-Following the convention, given in e.g. \cite{Ahrens2012} the spatial Fourier transform is defined as follows:
+Following the convention, given in e.g. \cite{Ahrens2012} the spatial Fourier transform is defined as follows:\fscom{check mathcal / hat / tilde}
 \begin{itemize}
 \item in one dimension:
 \begin{equation}
@@ -49,7 +49,7 @@ Hence, hat over the function symbol indicates that the function is taken in the 
 Note that the exponent of the spatial Fourier transform is taken with a reversed sign, compared to the temporal transform.
 Writing an arbitrary function in the form of a spatio-temporal inverse Fourier transform
 \begin{equation}
-f(\vx,t) = \frac{1}{\left( 2\pi \right)^4} \iiiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ \ti \left( \omega t - \left< \vk \cdot \vx \right> \right)} \td k_x \, \td k_y \, \td k_z
+f(\vx,t) = \frac{1}{\left( 2\pi \right)^4} \iiiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ \ti \left( \omega t - \left< \vk \cdot \vx \right> \right)} \td k_x \, \td k_y \, \td k_z \td \omega
 \end{equation}
 basically describes the expansion of an arbitrary function into the linear combination of plane waves, propagating to direction $\vk$.
 The reversed sign therefore ensures that this simple physical interpretation can be assigned to the Fourier transform.
@@ -64,7 +64,7 @@ Several important properties of the Fourier transform, applied frequently in the
 In case of temporal Fourier transform the right side is with reversed exponent.
 \item Convolution theorem:
 \begin{equation}
-\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x-x_0) g(x_0) \td x_0 \, \te^{\ti k_x x} \td x = \mathcal{F}_x \left\{ f(x) \ast_x g(x) \right\} = \hat{F}(k_x) \cdot \hat{G}(k_x).
+\int_{-\infty}^{\infty} f(x-x_0) g(x_0) \td x_0 \, \te^{\ti k_x x} \td x = \mathcal{F}_x \left\{ f(x) \ast_x g(x) \right\} = \hat{F}(k_x) \cdot \hat{G}(k_x).
 \end{equation}
 \item Differentiation property:
 \begin{equation}
