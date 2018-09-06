@@ -1,101 +1,161 @@
-\section{Farfield approximation of planar radiators}
-\label{App:Planar_radiators}
+\section{Asymptotic approximation of the explicit driving functions}
+\label{App:SDM_SPA}
 
-\begin{figure}[b!]
+\paragraph{Asymptotic spectral driving functions:}
+The derivation starts from the 2.5D explicit driving function in the wavenumber domain given by \eqref{Eq:SFS_Theory:LinearSDM_spectral},
+\begin{equation}
+\tilde{D}(k_x,y,0,\omega) = \frac{\tilde{P}(k_x,y,0, \omega)}{\tilde{G}(k_x,y,0, \omega)},
+\end{equation}
+ensuring perfect synthesis along a line with fixed $y$-coordinate.
+In the followings for the sake of brevity and transparency $\omega$ and $z$ dependencies are suppressed, the latter since the driving functions are defined at $z=0$.
+By definition the wavenumber content of the involved quantities are obtained via a forward Fourier transform, with the involved sound fields expressed by their polar form
+\begin{align} 
+\tilde{P}(k_x,y) = \int\limits_{-\infty}^{\infty} A^P(x,y) \, \te^{\ti \phi^P(x,y)} \, \te^{\ti k_x x} \td x, \\
+\tilde{G}(k_x,y) = \int\limits_{-\infty}^{\infty} A^G(x,y) \, \te^{\ti \phi^G(x,y)} \, \te^{\ti k_x x} \td x.
+\end{align}
+The involved spectra can be approximated by using the SPA:
+under high frequency assumptions the Fourier integrals may be approximated by evaluation around their stationary point $x^*_P(k_x)$ and $x^*_G(k_x)$ where their phase derivatives vanish. 
+The stationary positions are defined as
+\begin{align}	
+\label{eq:xP_xG_in_spatial_domain}
+\left. \frac{\partial}{\partial x} \left(  \phi^P(x,y) + k_x x \right )\right|_{x = x^*_P(k_x)} = 0
+\hspace{3mm} &\rightarrow \hspace{3mm}
+k_x^P(x^*_P(k_x),y) = k_x \nonumber
+\\ 
+\left. \frac{\partial}{\partial x} \left( \phi^G(x,y) + k_x x \right )\right|_{x = x^*_G(k_x)} = 0
+\hspace{3mm} &\rightarrow \hspace{3mm}
+k_x^G(x^*_G(k_x),y) = k_x.
+\end{align}
+Since it is assumed that $k_z^P(x,y) = k_z^G(x,y) = k_z = 0$ holds in the plane of investigation, therefore the stationary positions are found along a given $y$, where the local propagation direction of the virtual field and the Green's function matches to that of a plane wave, defined by $k_x$.
+The properties of the involved wave fields at these positions will dominate the corresponding Fourier integrals.
+Hence, the forward transform defines two particular positions in the space, linked together via the actual spectral wavenumber.
+
+Having defined the stationary positions, the forward Fourier transforms can be evaluated by the SPA. 
+With accounting for the negative second phase-derivatives---since both the virtual sound field and the Green's function are diverging---their spectra can be approximated as \cite[Ch. 5]{Tracy2014}
+\begin{align}
+\tilde{P}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiPxx(x^*_P(k_x),y)|}} A^P(x^*_P(k_x),y) \, \te^{\ti \phi^P(x^*_P(k_x),y)} \, \te^{\ti k_x \cdot x^*_P(k_x)},\\
+\tilde{G}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiGxx(x^*_G(k_x),y)|}} A^G(x^*_G(k_x),y) \, \te^{\ti \phi^G(x^*_G(k_x),y)} \, \te^{\ti k_x \cdot x^*_G(k_x)},
+\end{align}
+and the asymptotic approximation of the explicit driving function on a given spectral component yields
+\importanteq{Asymptotic spectral driving function}{
+\label{eq:hfapproxspectra}
+\tilde{D}(k_x,y)
+\approx  
+\sqrt{\frac{\phiGxx(x^*_G(k_x),y)}{\phiPxx(x^*_P(k_x),y)}}
+\, \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
+\, \te^{\ti k_x  \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
+}
+Hence, the spectrum can be be expressed by evaluating the target pressure and the Green's function at evaluation points, where the local propagation direction of the involved fields coincides with that of the actual spectral plane wave.
+
+
+\paragraph{SPA of the inverse Fourier transform:}
+In order to express the driving function in the spatial domain the inverse Fourier transform of the asymptotic spectrum \eqref{eq:hfapproxspectra}, reading
+%
+\begin{equation}
+\label{Eq:inverse_transform_def}
+D(x_0,y)
+=  \frac{1}{2\pi} \int\limits_{-\infty}^{\infty}
+\sqrt{\frac{\phiGxx(x^*_G(k_x),y)}{\phiPxx(x^*_P(k_x),y)}} 
+\frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
+\,\te^{\ti k_x \left( x^*_P(k_x) - x^*_G(k_x)\right)}
+\,\te^{-\ti k_x x_0} \td k_x
+\end{equation}
+is approximated by the stationary phase method, with the phase function under investigation given by
+\begin{equation}
+\label{Eq:inverse_transform_phase_function}
+{\Phi}(k_x) = \phi^P(x^*_P(k_x),y) -  \phi^G(x^*_G(k_x),y) +  k_x \, x^*_P(k_x) - k_x\, x^*_G(k_x) -  k_x x_0.
+\end{equation}
+%
+As it was discussed in section \ref{Sec:SPA_for_Fourier}, in the spatial inverse Fourier transform of an arbitrary wave field spectrum $\tilde{P}$ each wavenumber component $k_x$ will dominate one spatial position $x_0$, where the actual wavenumber component $k_x(x_0)$ coincides with the local wavenumber of the sound field $k_x^P(x_0)$.
+For the present case this wavenumber is found as the stationary phase wavenumber $k_x^*(x_0)$ of the integral \eqref{Eq:inverse_transform_def} \cite{Tracy2014}.
+
+The derivative of the spectral phase function \eqref{Eq:inverse_transform_phase_function} can be evaluated by applying the chain rule, resulting in
+\begin{multline}
+\label{eq:spectral_phase_first_derivative}
+\frac{\partial}{\partial k_x}\Phi(k_x) =  
+  x^{*'}_{P,k_x}(k_x) \underbrace{ \left( \phi^{P'}_x(x^*_P(k_x),y)  + k_x \right)}_{ = 0} - \\	
+- x^{*'}_{G,k_x}(k_x) \underbrace{ \left( \phi^{G'}_x(x^*_G(k_x),y)  + k_x \right) }_{ = 0} 
++x^*_P(k_x)- x^*_G(k_x) -  x_0,
+\end{multline}
+where $x^{*'}_{k_x}(k_x)$ is the rate of change of the forward transform stationary positions with respect to the change of the spectral wavenumber.
+The bracketed terms cancel out due to the definition of the stationary points for the forward transform \eqref{eq:xP_xG_in_spatial_domain}.
+The stationary wavenumber $k_x^*(x_0)$ is then found where
+\begin{equation}
+\label{eq:xP_xG_in_spectral_domain}
+\left. \frac{\partial}{\partial k_x}\Phi(k_x) \right|_{k_x=k_x^*(x_0)} = x^*_P(k_x^*(x_0))- x^*_G(k_x^*(x_0)) -  x_0 = 0
+\end{equation}
+holds.
+This definition relates the evaluation points $x^*_P$ and $x^*_G$ directly to the actual SSD coordinate $x_0$, therefore the dependency on the intermediate stationary wavenumber $k_x^*$ may be omitted (i.e., $x^*_P(k_x^*(x_0)) \rightarrow x^*_P(x_0)$ and $x^*_G(k_x^*(x_0)) \rightarrow x^*_G(x_0)$ may be written). 
+
+\begin{figure}[t!]
 \small
-  \begin{minipage}[c]{0.64\textwidth}
-	\begin{overpic}[width = .85\columnwidth]{Figures/Appendices/planar_radiator.png}
+  \begin{minipage}[c]{0.54\textwidth}
+%  \hspace{1cm}
 	\small
-	\put(-1,46){$x$}
-	\put(93,44){$y$}
-	\put(43,100){$z$}
-	\put(89,74){$\vx$}
-	\put(34.5,43.5){$\partial \Omega_p$}
-	\put(37.75,53.25){$\theta$}
-	\put(49,53.75){$\phi$}
-	\end{overpic}   \end{minipage}\hfill	
-	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synth\fscom{missing title}}
-\label{fig:App:Planar_radiator}   \end{minipage}
+%	\centering
+%	\hspace{-30mm}
+	\begin{overpic}[width = \textwidth ]{Figures/Appendices/explicit_sol_stationary_point.png}
+	\put(96,30){$x$}
+	\put(15,80){$y$}
+	\put(60,29.5){$x_0$}
+	\put(51,72){\parbox{6.5em}{$\vk^P(x_P^*,y) = \vk^G(x_P^*-x_0,y)$}}
+	\put(75,29.5){$x_P^*(x_0)$}
+	\end{overpic}  \end{minipage}\hfill
+	\begin{minipage}[c]{0.4\textwidth}
+    \caption{
+       Illustration of the evaluation position $x_P^*(x_0)$ (and $x_G^*(x_0)$) as the function of $x_0$. 
+	   For a given SSD position $x_0$ the stationary position is found on a given reference line $y = \text{const}$, where the virtual field propagation direction coincides with that of the Green's function, translated into $x_0$.
+	   Furthermore, at $x_P^*(x_0)$ the local principle radii of the Green's function positioned at $y=0$, is always smaller, than that of a field, generated by a source distribution at $y<0$, i.e. that of the virtual field.} 
+       \label{fig:SFS_theroy:explicit_sol_stationary_points}
+  \end{minipage}
 \end{figure}
 
-Assume an infinite, rigid surface, located along the $y=0$ plane.
-Over the surface only a small extent $\partial \Omega_p$ moves/vibrates with a pre-defined normal velocity profile $V_y(x,0,z,\omega)$, while in remaining parts of the plane the surface velocity is identically zero.
-This geometry is termed as a baffled radiator, whose radiated field at an arbitrary receiver position $\vx = \posvec{3}{x}{y>0}{z}$ is given by the Rayleigh I integral \cite{Eq:Theory:RayleighI}\fscom{check label} written in terms of the normal velocity
-\begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) G(\vx-\vxo,\omega  ) \, \td x_0 \, \td z_0,
-\end{equation}
-with the surface point being $\vx_0 = \posvec{3}{x_0}{0}{z_0}$.
+The definitions for the forward and inverse transform stationary points completely define the evaluation points $x^*_P$, $x^*_G$ for a given SSD position $x_0$ independently of the spectral wavenumber:
+combining \eqref{eq:xP_xG_in_spatial_domain} with \eqref{eq:xP_xG_in_spectral_domain}, for an arbitrary position $x_0$ the evaluation points along a fixed $y$ are found, where
+%
+\importanteq{2.5D SDM evaluation position}{
+\label{Eq:stationary_evaluation_points_app}
+k_{x}^P(x^*_P(x_0),y) = k_{x}^G(x^*_P(x_0) - x_0,y)
+}
+is satisfied.
 
-Let $\vx_{\mathrm{c}}$ be the geometric center of the radiator, and approximate the Green's function by it's local plane wave approximation around this center, as introduced by \eqref{Eq:HF_approx:plane_wave_approximation}. 
-The asymptotic approximation of the Green's function reads as
-\begin{equation}
-G(\vx-\vxo,\omega ) \approx G(\vx - \vx_{\mathrm{c}},\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>}.
-\end{equation}
-After substitution into the Rayleigh integral the Green's function can be collected from the integral
-\begin{equation}
-P(\vx,\omega) = G(\vx - \vx_{\mathrm{c}},\omega) \iint_{-\infty}^{\infty} 2 \ti \omega \rho_0 V_y(\vxo,\omega) \te^{-\ti  \left< \vk^G(\vx-\vx_{\mathrm{c}}) \cdot \left( \vxo - \vx_{\mathrm{c}} \right) \right>} \, \td x_0 \, \td z_0,
-\end{equation}
-For the sake of simplicity the center of the radiator is chosen to be the origin ($\vx_{\mathrm{c}} = \posvec{3}{0}{0}{0}$).
-By expanding the inner product the integral simplifies to
-\begin{equation}
-P(\vx,\omega) = 2 \ti \omega \rho_0 G(\vx ,\omega) 
-\iint_{-\infty}^{\infty} V_{y}(\vxo,\omega) \te^{-\ti \left( k_x^G(\vx) \cdot x_0 + k_z^G(\vx) \cdot z_0 \right)} \, \td x_0 \, \td z_0.
-\end{equation}
-The right side is a double Fourier integral of the surface velocity distribution, multiplied by the field of a point source at the center of the radiator, hence the radiated field can be written as
-\begin{equation}
-P(\vx,\omega) = 2 \ti \omega \rho_0 \cdot \tilde{V}_{y}(k_x^G(\vx),0,k_z^G(\vx),\omega) \cdot G(\vx,\omega) 
-\end{equation}
-Hence, the planar radiator can be modeled in its far-field as a directive point source, and once the 2D spectrum of the velocity distribution is known, the directivity characteristics can be obtained by evaluating the spectrum at the local wavenumber vector of the point source at the given receiver point.
+This result states that for a given SSD coordinate $x_0$ the evaluation point $x^*_P$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
+This principle is depicted in Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points}.
+%
 
-The local wavenumber vector of the point source in Descartes and spherical coordinates are given as
+Having found the stationary position for \eqref{Eq:inverse_transform_def} one still needs the phase function's second derivative and its sign around the stationary position in order to apply the SPA.
+The second derivative is obtained by a further differentiation of \eqref{eq:spectral_phase_first_derivative} with respect to $k_x$
+\begin{multline}
+\smallsize
+\frac{\partial^2}{\partial k_x^2}\Phi(k_x) = \\
+  x^{*''}_{P,k_x k_x}(k_x) \cdot \underbrace{ \left( \phi^{P'}_x(x^*_P(k_x),y)  + k_x \right)}_{ = 0} + 
+  x^{*'}_{P,k_x}(k_x) \cdot  \left( x^{*'}_{P,k_x}(k_x) \, \phi^{P''}_{xx}(x^*_P(k_x),y)  +2  \right)  -\\
+  x^{*''}_{G,k_x k_x}(k_x) \cdot  \underbrace{ \left( \phi^{G'}_x(x^*_G(k_x),y)  + k_x \right) }_{ = 0} 
+- x^{*'}_{G,k_x}(k_x) \cdot \left( x^{*'}_{G,k_x}(k_x) \,  \phi^{G''}_{xx}(x^*_G(k_x),y)  + 2\right).
+\end{multline}
+The required rate of change of the stationary positions $x^{*'}_{P,k_x}(k_x)$ and $x^{*'}_{G,k_x}(k_x)$ can be obtained by differentiating their definition \eqref{eq:xP_xG_in_spatial_domain} with respect to $k_x$, yielding
 \begin{equation}
-\vk^G(\vx) = 
-k \cdot \begin{bmatrix} \frac{x}{|\vx|}  \\[.7em] \frac{y}{|\vx|} \\[.7em] \frac{z}{|\vx|}\\[0.5em]  \end{bmatrix}
-=
-k \cdot \begin{bmatrix} \sin \phi \cos \theta \\[.7em] \cos \phi  \\[.7em]  \sin \phi \sin \theta \\[0.5em]  \end{bmatrix},
-\label{Eq:App:ps_k_vec}
+x^{*'}_{P,k_x}(k_x) = -\frac{1}{\phi^{P''}_{xx}(x^*_P(k_x),y)}, \hspace{5mm} x^{*'}_{G,k_x}(k_x) = -\frac{1}{\phi^{G''}_{xx}(x^*_G(k_x),y)}.
 \end{equation}
-with the spherical angles shown in Figure \ref{fig:App:Planar_radiator} and the spherical form of the planar radiator's field reads as
+Thus the required second derivative is given by
 \begin{equation}
-P(r,\phi,\theta,\omega) = 
-2 \ti \omega \rho_0 \cdot \underbrace{\tilde{V}_{y}(k \sin \phi \cos \theta ,0,k \sin \phi \sin \theta ,\omega) }_{\Theta(\phi,\theta,\omega)}
-\cdot G(r,\phi,\theta,\omega) 
-\label{Eq:App:directive_monopole}
+\label{eq:SFS_theory:second_Derivative_2}
+\small
+\frac{\partial^2}{\partial k_x^2}\Phi(k_x) = 
+\frac{\phi^{P''}_{xx}(x^*_P(k_x),y) - \phi^{G''}_{xx}(x^*_G(k_x),y)}{\phi^{P''}_{xx}(x^*_P(k_x),y) \cdot \phi^{G''}_{xx}(x^*_G(k_x),y)} =
+\frac{\Rh^P(x^*_P(k_x),y) - \Rh^G(x^*_G(k_x),y) }{k \, \hat{k}^{P 2}_y(x^*_P(k_x),y)}
+,
 \end{equation}
-where $\Theta(\phi,\theta,\omega)$ is termed the directivity function.
+with $\Rh^P$ and $\Rh^G$ being the horizontal principal radii of the target field and the Green's function, expressed by applying \eqref{Eq:App:Hessian_inplane}.
+Obviously, for any source distribution behind the SSD its horizontal principal radius is larger at position $y>0$, than that of the stationary secondary point source and the sign of \eqref{eq:SFS_theory:second_Derivative_2} is positive. 
 
-\vspace{3mm}
-As a simple example, dynamic loudspeakers are often modeled as baffled circular pistons, whose velocity distribution is given as
+These results now may be substituted back into the SPA \eqref{Eq:SPAResult} of the inverse transform \eqref{Eq:inverse_transform_def}.
+For the sake of brevity in the following the evaluation point is denoted by $x^*_P \rightarrow x^*$. 
+Denoting the stationary position by $\vxref(\vxo) = \posvec{3}{x^*(x_0)}{y}{0}$ the resulting driving function is formulated as
 \begin{equation}
-V_y(x,0,z,\omega) =
-\begin{cases}
-V_0  \hspace{5mm} \text{if} \hspace{3mm} x^2+z^2 \leq r_0^2\\ 
-0 \hspace{10mm} \text{everywhere else},
-\end{cases}
-\end{equation} 
-with $r_0$ being the radius of the piston.
-Hence, each point over the rigid piston's surface moves in-phase, which is a fair approximation for loudspeakers at frequencies, at which the modal behaviour of the membrane is negligible \footnote{At high frequencies mode shapes of a circular membrane can be expanded into a Fourier-Bessel series, from which the directivity function can be directly expressed. 
-The present result is the zeroth order term of this expansion \cite{Williams1999}.}.
-The 2D Fourier transform of this unit circular disk with radius $r_0$ is given as
-\begin{equation}
-\tilde{V_y}(k_x,0,k_z,\omega) = 2 \frac{J_1\left( r_0 \sqrt{k_x^2+k_z^2} \right)}{r_0 \sqrt{k_x^2+k_z^2}},
+D(x_0,\omega) \approx 
+\sqrt{\frac{ \left| \phiGxx(\vxref(\vxo)-\vxo,\omega )\right|^2}{\left| \phiPxx(\vxref(\vxo),\omega) - \phiGxx(\vxref(\vxo)-\vxo,\omega)\right|}}
+\sqrt{\frac{\ti}{2\pi}} 
+\frac{P(\vxref(\vxo),\omega)}{G(\vxref(\vxo)-\vxo,\omega)},
 \end{equation}
-with $J_1(\cdot)$ being the first order Bessel function. 
-The field generated by the circular piston is given as
-\begin{equation}
-P(r,\phi,\theta,\omega) = 
-2 \ti \omega \rho_0 \cdot \underbrace{2
-\frac{J_1\left( k r_0 \sin \phi \right)}{k r_0 \sin \phi}
-}_{\Theta(\phi,\omega)}
-G(r,\phi,\theta,\omega).
-\label{Eq:App_Circ_piston}
-\end{equation}
-
-In the aspect of sound field synthesis the directivity function in the horizontal plane, containing the directive point source (i.e. at $\theta=0$) is of special interest.
-In this plane the directivity  is given as
-\begin{equation}
-\Theta(\phi,\omega) = \tilde{V}_{y}(k_x^G(\vx),0,k_z^G(\vx) \equiv 0 ,\omega) = \mathcal{F}_x\left\{ \int_{-\infty}^{\infty} V_y(x,0,z,\omega) \td z \right\}_{k_x = k \sin \phi},
-\end{equation}
-hence a horizontal ,,strength function'' may be defined as $\int_{-\infty}^{\infty} V_y(x,0,z,\omega) \td z$, which characterizes the directivtiy in the horizontal plane.
-This fact has been exploited in order to design spatial low-pass filters in previous studies \cite{Verheijen1997}.
+where $k_x^P(\vxref(\vxo)) = k_x^G(\vxref(\vxo)-\vxo)$ holds.

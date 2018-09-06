@@ -1,5 +1,6 @@
 clear
 close all
+addpath(genpath('../Files'));
 
 dx = 1e-2;
 w = 2*pi*1e3;
@@ -39,7 +40,7 @@ fill([x(1), x(end),x(end),x(1)],[0,0,y(end),y(end)],[1 1 1]*1,'EdgeColor','none'
 plot(xs(1),xs(2),'.k','MarkerSize',20)
 plot(xr(1),xr(2),'.k','MarkerSize',20)
 plot(x0(1),x0(2),'.k','MarkerSize',20)
-plot(xr(1),0,'.k','MarkerSize',20)
+%plot(xr(1),0,'.k','MarkerSize',20)
 
 pcolor_ax =(gca);
 cRange = caxis;
@@ -54,7 +55,7 @@ line([xs(1),xr(1)],[xs(2),xr(2)],'Color','black','LineStyle','--')
 line([x(1),x(end)],[0,0],'Color','black','LineStyle','-','LineWidth',2)
 line([x(1),x(end)],[xr(2),xr(2)],'Color','black','LineStyle','--','LineWidth',1)
 
-line([xr(1),xr(1)],[0,xr(2)],'Color','black','LineStyle',':','LineWidth',1)
+%line([xr(1),xr(1)],[0,xr(2)],'Color','black','LineStyle',':','LineWidth',1)
 
 
 headWidth = 5*1.5;
@@ -86,6 +87,10 @@ set(ah4,'parent',gca);
 set(ah4,'position',[xr(1), xr(2), LineLength*kxn_g, LineLength*kyn_g]);    
 %text(x(end)+0.15,-.1,'$x$',  'Interpreter', 'LaTex' , 'FontSize', ftsize)
 %text(x_ax-0.17,y(end)+0.15,'$y$',  'Interpreter', 'LaTex' , 'FontSize', ftsize)
+
+x_ssd = x(1:12:end);
+N_ssd = repmat([0 1],length(x_ssd),1);
+draw_ssd( fig , [x_ssd 0*x_ssd] - N_ssd*0.03 , N_ssd, 0.035 );
 
 set(gca,'box','off')
 color = get(fig,'Color');
