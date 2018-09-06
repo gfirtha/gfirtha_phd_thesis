@@ -583,24 +583,31 @@ k^2 \underbrace{\left( v_{1 x}v_{2 z}-v_{2 x}v_{1 z} \right)^2}_{\hat{k}_y^P(\vx
 \end{multline}
 where the underbraced part is the $y$-coordinate of a vector being perpendicular to $\mathbf{v}_1$ and $\mathbf{v}_2$, i.e. of the normalized local wavenumber vector.
 \fscom{how do you obtain $k^2$, it should be indeed $k^2$ such that \eqref{eq:HF_approx:asymptotic_rayleigh} works and units are valid, but from where this stems. Also check consistency $k$ vs. $k^2$ in the Hessian Matrix Appendix.}
-By taking into consideration that for a divergent field both curvatures of the wavefront are positive and the signature of the Hessian equals (-2), substitution into \eqref{Eq:SPAResult_nd} yields the SPA of the Rayleigh integral, reading
-\begin{equation}
+By taking into consideration that for a divergent field both curvatures of the wavefront are positive and the signature of the Hessian equals (-2), substitution into \eqref{Eq:SPAResult_nd} yields the asymptotic Rayleigh integral, reading
+\footnotesize
+\begin{align}
 \label{eq:HF_approx:asymptotic_rayleigh}
-P(\vx,\omega) = 4\pi \frac{P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega)}
+P(\vx,\omega) &= 4\pi \frac{P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega)}
 {
 \sqrt{\left(\kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx))\right)}
-\sqrt{\left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)}
-}.
-\end{equation}
-Expressing the curvature correction factor in terms of the principal radii and substituting the exact formulation of the 3D Green's function with the principal radii given in Table \ref{tab:HF_appr:local_prop} the asymptotic Rayleigh integral reads as
-\begin{equation}
-\label{eq:HF_approx:ray_propagation_a}
-\small
-P(\vx,\omega) =
-\sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \rho_2^P(\vxo^*(\vx)) }{ \left(\rho_1^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)| \right) \left(\rho_2^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|\right) } }
-\te^{-\ti k |\vx-\vxo^*(\vx)| } P(\vxo^*(\vx),\omega) .
-\end{equation}
-Finally by exploiting that according to \eqref{eq:app:propagated_radii} the principal radii increase proportional with the Euclidean distance along the local propagation direction, i.e. $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$ holds, the asymptotic formula takes the form
+\sqrt{\left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)}}, \nonumber \\
+P(\vx,\omega) &= 4\pi
+\sqrt{\frac{\rho_1^P(\vxo^*(\vx)) \cdot \rho_1^G(\vx-\vxo^*(\vx))}{\rho_1^P(\vxo^*(\vx)) + \rho_1^G(\vx-\vxo^*(\vx))}}
+\sqrt{\frac{\rho_2^P(\vxo^*(\vx)) \cdot \rho_2^G(\vx-\vxo^*(\vx))}{\rho_2^P(\vxo^*(\vx)) + \rho_2^G(\vx-\vxo^*(\vx))}}
+P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega),
+\end{align}
+\normalsize
+written both in terms of the principal curvatures and radii.
+
+Substituting the exact formulation of the 3D Green's function %with the principal radii given in Table \ref{tab:HF_appr:local_prop} the asymptotic Rayleigh integral reads as
+%\begin{equation}
+%\label{eq:HF_approx:ray_propagation_a}
+%\small
+%P(\vx,\omega) =
+%\sqrt{ \frac{ \rho_1^P(\vxo^*(\vx)) \rho_2^P(\vxo^*(\vx)) }{ \left(\rho_1^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)| \right) \left(\rho_2^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|\right) } }
+%\te^{-\ti k |\vx-\vxo^*(\vx)| } P(\vxo^*(\vx),\omega) .
+%\end{equation}
+and by exploiting that according to \eqref{eq:app:propagated_radii} the principal radii increase proportional with the Euclidean distance along the local propagation direction, i.e. $\rho_i^P(\vx) = \rho_i^P(\vxo^*(\vx)) + |\vx-\vxo^*(\vx)|$ holds, the asymptotic formula takes the form
 \importanteq{Asymptotic Rayleigh integral}{
 \label{eq:HF_approx:ray_propagation}
 P(\vx,\omega) =
@@ -616,7 +623,7 @@ the numerator of the amplitude factor approximates the pressure field amplitude 
 The equation reflects the fact, that \emph{the intensity of a 3D wave field is proportional to the Gaussian curvature of the wavefront}, being a well-known fact in the field of optics \cite[Sec. 3.1]{Born1970}, \cite[Sec. 1.3]{Bouche1997}.
 Similarly, a 2D wavefront's amplitude attenuates proportionally to the only non-zero curvature, given by $\sim \sqrt{\rho^P}$, which fact can be deduced from the SPA of the 2D Rayleigh integral.
 
-Note that since points $\vx$ and $\vxo^*(\vx)$ are related by the local wavenumber vector, therefore equation \eqref{eq:HF_approx:ray_propagation_a} generally describes the relation of field variables along the direction of the local wavenumber vector, providing the amplitude and phase change along the path of propagation.
+Note that since points $\vx$ and $\vxo^*(\vx)$ are related by the local wavenumber vector, therefore equation \eqref{eq:HF_approx:ray_propagation} generally describes the relation of field variables along the direction of the local wavenumber vector, providing the amplitude and phase change along the path of propagation.
 Departing from the Rayleigh plane concept, as a more general statement, any propagating pressure field may be approximated along the propagation path as
 \begin{equation}
 \small

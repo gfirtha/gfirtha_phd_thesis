@@ -945,44 +945,37 @@ The explicit SFS driving function, given by \eqref{eq:SFS_theory:spatial_sdm_2} 
 By applying the findings presented in section \ref{Sec:HF:RayleighSPA}, for the special case of a linear SSD the required quantities can be expressed in terms of the the virtual field properties, measured on the SSD. 
 The obtained formulation allows the comparison of the implicit and explicit solutions.
 
-In order to express the driving functions merely in terms of the involved quantities measured along the SSD, all the principal radii, the local wavenumber vector and the pressure of the target field has to be defined along the $y=0$ line.
-For the principal radii this connection is given by \eqref{eq:app:propagated_radii}:
-\begin{equation}
-\label{Eq:principal_radii_addition}
-\Rh^P(\vx)=  \Rh^P(\vxo^*(\vx)) + \Rh^G(\vx-\vxo^*(\vx)),
-\end{equation}
-stating that the principal radii of an arbitrary field increase linearly along the path of propagation.
-Furthermore, assuming isotropic medium, the propagation direction---and the local wavenumber vector---does not change along the propagation path, and $\vk^P(\vxref(\vxo)) = \vk^P(\vxo)$ holds.
-With further manipulation the driving function results in
-\begin{equation}
-\label{eq:SFS_theory:spatial_sdm_3}
-D(x_0,\omega) =
-\small
-\sqrt{\frac{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo) }}
-\sqrt{\frac{1}{2\pi \ti k}} 
-\frac{\ti k_y^{P}(\vxo) \, P(\vxref(\vxo),\omega)}{G(\vxref(\vxo)-\vxo,\omega)}.
-\end{equation} %FS: ok
+In order to express the driving functions merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure of the target field has to be defined along the $y=0$ line.
+For the local wavenumber vector this relationship can be simply established: Assuming isotropic medium, the propagation direction---and the local wavenumber vector---does not change along the propagation path, thus $\vk^P(\vxref(\vxo)) = \vk^P(\vxo)$ holds.
 
-The relation between $P(\vxref(\vxo))$ and $P(\vxo)$---i.e. the target field measured at an arbitrary reference position and measured along the SSD---can be established by the asymptotic evaluation of the Rayleigh integral, as it was discussed in details in section \ref{Sec:HF:RayleighSPA}, given for a general wave field by \eqref{eq:HF_approx:asymptotic_rayleigh}.
-In the present case the principal curvatures are given by the horizontal and vertical curvature components.
-Specializing the formulation for the present problem geometry, expressing in terms of the principal radii yields
-\begin{equation}
-\label{Eq:Asymptotic_Rayleigh_integral}
-\footnotesize
-P(\vx,\omega) = 4\pi
-\sqrt{\frac{\Rh^P(\vxo^*(\vx)) \cdot \Rh^G(\vx-\vxo^*(\vx))}{\Rh^P(\vxo^*(\vx)) + \Rh^G(\vx-\vxo^*(\vx))}}
-\sqrt{\frac{\Rv^P(\vxo^*(\vx)) \cdot \Rv^G(\vx-\vxo^*(\vx))}{\Rv^P(\vxo^*(\vx)) + \Rv^G(\vx-\vxo^*(\vx))}}
-P(\vxo^*(\vx),\omega) G(\vx-\vxo^*(\vx),\omega)
-,
-\end{equation} %FS: ok
-where positions $\vx$ and $\vxo^*(\vx)$ are related through the implicit relation
+The change of the principal radii over the propagation path is given by \eqref{eq:app:propagated_radii}, stating that the principal radii of an arbitrary field increase linearly along the path of propagation..
+The relation between the target field, measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, given for a general wave field by \eqref{eq:HF_approx:asymptotic_rayleigh}.
+However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through the implicit relation
 \begin{equation}
 \label{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point}
 \vk^P(\vxo^*(\vx)) = \vk^G( \vx - \vxo^*(\vx)).
 \end{equation}
+Comparing this definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed that they describe stationary point pairs.
+Hence, without the loss of generality both the principal radii and the pressure field, measured on the reference curve can be formulated with choosing the SSD position $\vxo$ as an independent variable, resulting in
+\begin{equation}
+\label{Eq:principal_radii_addition}
+\Rh^P(\vxref(\vxo)) = \Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo),
+\end{equation}
+and
+\small
+\begin{multline}
+\label{Eq:Asymptotic_Rayleigh_integral}
+P(\vxref(\vxo),\omega) = 
+4\pi
+\sqrt{\frac{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo}} \cdot \\ \cdot
+\sqrt{\frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vxo)-\vxo)}{\Rv^P(\vxo) + \Rv^G(\vxref(\vxo)-\vxo)}}
+P(\vxo,\omega) G(\vxref(\vxo)-\vxo,\omega)
+,
+\end{multline} %FS: ok
+\normalsize
+where positions $\vxref$ and $\vxo$ are related through \eqref{Eq:stationary_evaluation_points} and where it was exploited that the principal radii are given by the vertical and horizontal radii components in the present geometry.
 
-Comparing the definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed that they describe stationary point pairs.
-\fscom{Therefore,} without the loss of generality the target pressure $P(\vxref(\vxo),\omega)$ can be formulated by the asymptotic Rayleigh integral \eqref{Eq:Asymptotic_Rayleigh_integral} with choosing the SSD position $\vxo$ as an independent variable, \fscom{therefore} \eqref{eq:SFS_theory:spatial_sdm_3} can be expressed as \fscom{a hint might be helpful: $\frac{P(\vxref(\vxo),\omega)}{G(\vxref(\vxo)-\vxo,\omega)}$ in D vs. rearranging $P(\vx,\omega) / G(\vx-\vxo^*(\vx),\omega)$ in P}
+With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} and after simplification the driving function takes the form
 \begin{equation}
 D(x_0,\omega) =
 \small
@@ -1000,7 +993,6 @@ D(x_0,\omega) =
 \ti k_y^{P}(\vxo)
 P(\vxo,\omega).
 \end{equation}
-
 Comparison with \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2} and \eqref{Eq:SFS_theory:25D_WFS_driv_fun} reveals that the asymptotic SDM driving functions exactly coincide the 2.5D WFS driving function when applied for a linear---and within the validity of the Kirchhoff approximation for an arbitrary shaped---SSD.
 It is therefore verified that under high frequency assumptions WFS is the asymptotic and local approximation of the global explicit solution.
 
