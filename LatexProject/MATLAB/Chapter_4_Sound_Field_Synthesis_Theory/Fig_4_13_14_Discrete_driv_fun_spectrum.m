@@ -51,9 +51,6 @@ pos = [ 0.06   0.17  0.38   .75
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end),w(1:q:end)/(2*pi)/1e3,20*log10(abs(Dkx(1:q:end,1:q:end))))
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(fig,'type','axes');
-b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 xlabel('$k_x \rightarrow$ [rad/m]')
 ylabel('$f \rightarrow$ [kHz]')
 shading interp
@@ -68,15 +65,13 @@ shading interp
 caxis([-30,10])
 axis tight
 set(gca,'FontName','Times New Roman');
-allAxesInFigure = findall(fig,'type','axes');
-b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 xlabel('$k_x \rightarrow$ [rad/m]')
 ylabel('$f \rightarrow$ [kHz]')
+
+
 col = colorbar;
 title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
 %text(kxs-3,0.2,'$k_{x,s}$','FontSize',ftsize)
-
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/SFS_theory','Aliased_spectrum' ) ,'-dpng')
 

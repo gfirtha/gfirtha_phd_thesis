@@ -927,6 +927,8 @@ D(x_0) =-y_s
 \begin{figure}
 \centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/25D_spatial_SDM_linear_SSD.png}
+	\put(0, 0){(a)}
+	\put(45,0){(b)}
 	\end{overpic}   
     \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $\omega_0 =~2\pi \cdot 1 \mathrm{krad}/s$.
 	The synthesis is referenced on a circle around the virtual source, with a radius of $R_{\mathrm{ref}} = 4~\mathrm{m}$.
@@ -948,7 +950,7 @@ The obtained formulation allows the comparison of the implicit and explicit solu
 In order to express the driving functions merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure of the target field has to be defined along the $y=0$ line.
 For the local wavenumber vector this relationship can be simply established: Assuming isotropic medium, the propagation direction---and the local wavenumber vector---does not change along the propagation path, thus $\vk^P(\vxref(\vxo)) = \vk^P(\vxo)$ holds.
 
-The change of the principal radii over the propagation path is given by \eqref{eq:app:propagated_radii}, stating that the principal radii of an arbitrary field increase linearly along the path of propagation..
+The change of the principal radii over the propagation path is given by \eqref{eq:app:propagated_radii}, stating that the principal radii of an arbitrary field increase linearly along the path of propagation.
 The relation between the target field, measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, given for a general wave field by \eqref{eq:HF_approx:asymptotic_rayleigh}.
 However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through the implicit relation
 \begin{equation}
@@ -1001,7 +1003,7 @@ On the other hand the explicit driving function \eqref{eq:SFS_theory:spatial_sdm
 
 \section{Synthesis applying discrete secondary source distribution}
 \label{Sec:Aliasing}
-\fscom{the findings in this section are very good, text deserves critical review, shorter sentences, more clear statements, I corrected some major issues}
+%\fscom{the findings in this section are very good, text deserves critical review, shorter sentences, more clear statements, I corrected some major issues}
 
 Throughout this thesis synthesis applying the continuous distribution of secondary sources has been discussed so far.
 In practical applications the SSD is realized by a densely spaced loudspeaker ensemble with the source elements positioned at discrete locations.
@@ -1020,18 +1022,20 @@ However, spatial aliasing gains a simple physical interpretation when time domai
 As discussed already, the 2.5D WFS driving functions apply a half-differentiation to the input signal in order to compensate for the infinite tail (i.e. the half-integrator characteristics) of the secondary source response, emerging due to the geometry of the SSD.
 Compensation is therefore performed by each SSD element canceling out the fields of the adjacent secondary sources after the virtual wavefront is emitted.
 In case of a discrete SSD this cancellation can not be performed below the aliasing frequency, hence in the synthesized field the spherical wave fields of the individual SSD elements will be present.
-Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element----, following the intended virtual wavefront carrying the driving function of the individual SSD elements, high-pass filtered above the aliasing frequency \cite{spors2009spatial}. 
+Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element---, following the intended virtual wavefront carrying the driving function of the individual SSD elements, high-pass filtered above the aliasing frequency \cite{spors2009spatial}. 
 
-Note that in a given receiver position due to the short time interval between the arrival of the high-pass filtered echo wavefronts, aliasing is perceived rather as the coloration of the virtual sound field, than actual echoes/reverberation, while due to the precedence effects the localization of the virtual field is not degraded \footnote{This is true only for the synthesis of non-focused fields.
-In case of reproducing e.g. a focused point source spatial aliasing appears as pre-echoes, arriving before the intended virtual wavefront \cite{Spors2009:FocusedSourceAliasing}}.
-A detailed investigation of the perception of spatial aliasing in WFS can be found in \fpcom{reference missing}.
+Note that in a given receiver position due to the short time interval between the arrival of the high-pass filtered echo wavefronts, aliasing is perceived rather as the coloration of the virtual sound field, than actual echoes/reverberation, while due to the precedence effect the localization of the virtual field is not degraded \footnote{This is true only for the synthesis of non-focused fields.
+In case of reproducing e.g. a focused point source spatial aliasing appears as pre-echoes, arriving before the intended virtual wavefront \cite{Spors2009:FocusedSourceAliasing}.}.
+A detailed investigation of the perception of spatial aliasing in WFS can be found in \cite{8371275}.
 In the followings only an objective description of the above phenomena is presented.
 
 \begin{figure}
 \centering
-	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/Spatial_alising.png}
+	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/Spatial_alising.png}
+	\put(0, 0){(a)}
+	\put(50,0){(b)}
 	\end{overpic}   
-    \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $\omega_0 =~2\pi \cdot 2 \mathrm{krad}/s$ (a), or emitting an impulse, bandlimited to $15~\mathrm{kHz}$.\fscom{indicate time instant}
+    \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $\omega_0 =~2\pi \cdot 2~\mathrm{krad}/s$ (a), or emitting an impulse, bandlimited to $15~\mathrm{kHz}$ measured at $t_0 = 10~\mathrm{ms}$ (b).
     The synthesis is referenced on a reference line with $\yref = 1.5~\mathrm{m}$.
 	Synthesis is performed using a linear SSD with the secondary source spacing set to $\Delta x = 10~\mathrm{cm}$.}
 \label{fig:SFS_theory:Spatial_alising}  
@@ -1041,17 +1045,16 @@ In a recent publication it was shown that by applying the unified WFS framework 
 As an alternative, the following derivation approaches the problem by utilizing the spectral description of the synthesized field applying a discretized SSD, as introduced in \cite{Ahrens2012}.
 
 Assume the synthesis of an arbitrary sound field by applying a linear SSD, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
-The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral}, respectively, in case of a continuous SSD.
-Discretization of the SSD can be mathematically modeled by sampling of the driving function with a sampling distance being the actual loudspeaker spacing $\Delta x$:
+The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral} respectively, in case of a continuous SSD.
+Discretization of the SSD can be mathematically modeled by the sampling of the driving function with a sampling distance being the actual loudspeaker spacing $\Delta x$:
 \begin{equation}
 D^{\mathrm{S}}(x,\omega) = \sum_{\eta = -\infty}^{\infty} D(x,\omega) \cdot \delta \left(x - \eta \Delta x \right).
 \end{equation}
 Since each secondary source is represented by a Dirac delta, hence in this model the SSD consists of a discrete set of 3D point sources.
 Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself \cite{Girod2001}, and applying the sifting property of the Dirac delta, the wavenumber content of the sampled driving function reads as
 \begin{equation}
-\tilde{D}^{\mathrm{S}}(k_x,\omega) = \fscom{\frac{1}{\Delta x}} \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right).
+\tilde{D}^{\mathrm{S}}(k_x,\omega) = \frac{1}{\Delta x} \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right).
 \end{equation}
-\fscom{$\frac{1}{\Delta x}$ makes the signal processing model consistent}
 % Add: extended secondary sources
 \begin{figure}
 \centering
@@ -1082,7 +1085,7 @@ Above the aliasing frequency---with it's value obtained from $\frac{\omega_a }{c
 
 The wavenumber content of the synthesized field, applying a discrete SSD can be written as
 \begin{equation}
-\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega) = \fscom{\frac{1}{\Delta x}}
+\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega) = \frac{1}{\Delta x}
 \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega).
 \label{Eq:SFS_theory:Aliased_field_sp}
 \end{equation}
