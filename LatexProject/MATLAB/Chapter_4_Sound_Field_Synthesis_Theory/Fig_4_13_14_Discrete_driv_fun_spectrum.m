@@ -39,6 +39,7 @@ G02 = 1/(4*pi)*exp(-1i*W/c.*R2)./R2;
 Gkx2 = fftshift(fft(G02,[],2),2)*dx;
 %%
 kxs = 2*pi/dx_res;
+f_a = c*pi/dx_res/(2*pi);
 q = 12;
 ftsize = 14.3;
 fig = figure('Units','points','Position',[200,200,730,280]);
@@ -59,15 +60,18 @@ caxis([-30,10])
 p2 = axes('Units','normalized','Position',pos(2,:));
 pcolor(kx(1:q:end),w(1:q:end)/(2*pi)/1e3,20*log10(abs(Dkxs(1:q:end,1:q:end))))
 hold on
-line([0,w(end)/c],[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--')
+line([0,w(end)/c] ,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--')
 line([0,-w(end)/c],[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--')
+%line([kx(1),kx(end)],[f_a,f_a]/1e3,'Color','black','LineStyle','.-')
 shading interp
 caxis([-30,10])
 axis tight
 set(gca,'FontName','Times New Roman');
+allAxesInFigure = findall(fig,'type','axes');
+set(allAxesInFigure,'FontSize',ftsize);
+
 xlabel('$k_x \rightarrow$ [rad/m]')
 ylabel('$f \rightarrow$ [kHz]')
-
 
 col = colorbar;
 title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);

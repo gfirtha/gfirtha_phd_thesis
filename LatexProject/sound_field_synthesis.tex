@@ -79,6 +79,7 @@ D(\vxo,\omega) = 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) P(\vxo,\omega)
 }
 with $k_{\mathrm{n}}^P(\vxo)$ being the normal component of the target field's local wavenumber vector taken on the SSD and $w(\vxo)$ being the window function, as introduced in the previous chapter:
 \begin{equation}
+\label{Eq:Theory:SSD_selection}
 w(\vxo) = \begin{cases}
                         1, \hspace{3mm} \forall \hspace{3mm} \langle \mathbf{k}^P(\vxo) \cdot \mathbf{n}_{\text{in}}(\vxo) \rangle > 0 \\
                         0  \hspace{3mm} \text{elsewhere}.
@@ -415,7 +416,7 @@ The following two examples are presented in order to demonstrate the analytical 
 
 As a first example assume an infinite linear SSD located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The reference contour is set to be an infinite line parallel to the SSD, located at $\vxref = \posvec{3}{x_0}{y_{\mathrm{ref}}}{0}$.
-This geometry has a distinctive role in the field of sound field synthesis, being the arrangement for which traditional WFS was first formulated \cite{Berkhout1988, Berkhout1993:Acoustic_control_by_WFS,  Start1997:phd, Verheijen1997:phd}.
+This geometry has a distinctive role in the field of sound field synthesis, being the arrangement for which traditional WFS was first formulated \cite{Berkhout1988, Berkhout1993:Acoustic_control_by_WFS, Start1997:phd, Verheijen1997:phd}.
 In this arrangement the driving functions may be derived from the vertical SPA of the Neumann Rayleigh integral, which describes a sound field precisely in terms of a planar single layer potential.
 Therefore application of a linear SSD involves the least approximations, avoiding errors present in the Kirchhoff approximation.
 Furthermore, choosing a reference line parallel to the SSD ensures the existence of a unique reference position for each SSD element, therefore amplitude correct synthesis may be ensured over the entire reference line.
@@ -479,7 +480,7 @@ d(\vxo, t) =  -
 \sqrt{\frac{1}{2\pi c}}
 \sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
 }
-where $s^{\nshortmid}_t( t ) = h(t) \ast_t s( t  )$, with $\ast_t$ denoting convolution in the time domain.
+where $s^{\nshortmid}_t( t ) = h(t) \ast_t s( t )$, with $\ast_t$ denoting convolution in the time domain.
 The source time history is pre-equalized with a filter, exhibiting the frequency response of $H(\omega) = \sqrt{\ti \omega}$ being a half-differentiator. 
 The filter compensates the frequency response of a 2D SSD contour as the part of the secondary source compensation factor, as discussed above, and is therefore always the part of the 2.5D diving function for an arbitrary target sound field and for an arbitrary SSD shape.
 The impulse response of the SSD compensation filter can be expressed by differentiating the half-integrator's impulse response as given in \cite{Deregowski1983}
@@ -1070,18 +1071,17 @@ Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself
 	\end{turn}
 	\end{overpic}   
     \caption{Illustration of the discretization process of the linear WFS driving function. 
-	Figure (a) shows the spectrum of the theoretically continuous driving function $D(x,\omega)$, figure (b) shows the spectrum of the discretized driving function $D^{\mathrm{S}}(x,\omega)$ with the baseband spectrum repeating on the multiples of the sampling wavenumber.
-    The secondary source distance is set to $\Delta x = 10~\mathrm{cm}$, corresponding to the sampling wavenumber $k_{x,s} \approx 63~\mathrm{rad/m}$ and resulting in an aliasing frequency $\omega_a \approx 2\pi \cdot 1.7~\mathrm{rad/s}$. \fscom{1.7 kHz, xtick labels not correct}}
+	Figure (a) shows the spectrum of the theoretically continuous driving function $\tilde{D}(k_x,\omega)$, Figure (b) shows the spectrum of the discretized driving function $\tilde{D}^{\mathrm{S}}(k_x,\omega)$ with the baseband spectrum repeating on the multiples of the sampling wavenumber.
+    The secondary source distance is set to $\Delta x = 10~\mathrm{cm}$, corresponding to the sampling wavenumber $k_{x,s} \approx 63~\mathrm{rad/m}$ and resulting in an aliasing frequency $\omega_a \approx 2\pi \cdot 1.7~\mathrm{krad/s}$.}
 \label{fig:SFS_theory:Aliased_spectrum}  
 \end{figure}
 Thus, as the result of discretization the driving function spectrum is obtained as the infinite sum of the original spectrum, repeating on the multiples of the sampling wavenumber $k_{x,s} = \frac{2\pi}{\Delta x}$.
 Mathematically, spatial aliasing originates from the overlapping of the repetitive spectra.
 
-The discretization process of the driving functions is illustrated in the $k_x-\omega$ domain in Figure \ref{fig:SFS_theory:Aliased_spectrum} via the example of discretizing the driving function for a virtual point source, given by \eqref{eq:SFS_theory:WFS_point_source}.
-From simple geometrical considerations it can be deduced that below a given angular frequency---the spatial aliasing frequency---no spectral overlapping occurs between the propagation regions.
-
-Since WFS theory assumes high-frequency/far-field condition, neglecting the evanescent components is feasible\footnote{A more detailed analysis on the aliasing occurring in the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband}. 
-Above the aliasing frequency---with it's value obtained from $\frac{\omega_a }{c} = \frac{k_{x,s}}{2}= \frac{\pi}{\Delta x}$---high wavenumber components ($k_x>k_{x,s}/2$) of translated spectra overlap into the propagation region of the baseband driving function spectrum.
+The discretization process of the driving function is illustrated in the $k_x-\omega$ domain in Figure \ref{fig:SFS_theory:Aliased_spectrum} via the example of discretizing the driving function for a virtual point source, given by \eqref{eq:SFS_theory:WFS_point_source}.
+From simple geometrical considerations it can be deduced that below a given angular frequency---the spatial aliasing frequency, obtained from $\frac{\omega_a }{c} = \frac{k_{x,s}}{2}= \frac{\pi}{\Delta x}$---no spectral overlapping occurs between the propagation regions.
+Since WFS theory assumes high-frequency/far-field conditions, neglecting the evanescent components is feasible\footnote{A more detailed analysis on the aliasing occurring in the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband}. 
+Above the aliasing frequency high wavenumber components ($|k_x|>k_{x,s}/2$) of translated spectra overlap into the propagation region of the baseband driving function spectrum.
 
 The wavenumber content of the synthesized field, applying a discrete SSD can be written as
 \begin{equation}
@@ -1089,8 +1089,8 @@ The wavenumber content of the synthesized field, applying a discrete SSD can be 
 \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega).
 \label{Eq:SFS_theory:Aliased_field_sp}
 \end{equation}
-with the reproduction process illustrated by Figure \ref{fig:SFS_theory:Aliased_repr_field} with the involved quantities measured along the reference line.
-As it can be seen in \ref{fig:SFS_theory:Aliased_repr_field} (b) the transfer function from the SSD to the reference line, i.e. the Green's function acts as a spatial low pass filter (with analogy to signal processing acting as a reconstruction filter), restricting the reproduced field on a given angular frequency to $|k_x| < \omega/c$, i.e. to the propagation region.
+The reproduction process is illustrated by Figure \ref{fig:SFS_theory:Aliased_repr_field} with the involved quantities measured along an arbitrary reference line, $y \gg 0$.
+As it is demonstrated in \ref{fig:SFS_theory:Aliased_repr_field} (b) the transfer function from the SSD to the reference line, i.e. the Green's function acts as a spatial low pass filter (with analogy to signal processing acting as a reconstruction filter), restricting the reproduced field on a given angular frequency to $|k_x| < \omega/c$, i.e. to the propagation region.
 Note that again, nearfield investigation, where the spectrum of the Green's function would exhibit a high evanescent contribution is out of the scope of the present thesis.
 
 \begin{figure}
@@ -1109,14 +1109,14 @@ Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) reflects the fact that aliasi
 This additive error manifests in additive wavefronts superimposed on to the non-aliased ideal wavefront (described by the $\eta = 0$ component in \eqref{Eq:SFS_theory:Aliased_field_sp}) in the time-domain.
 
 As discussed earlier, components in the spectrum of the synthesized field correspond to synthesized attenuating plane waves oscillating at the angular frequency $\omega$ and propagating into the direction described by $k_x$ in the plane of synthesis.
-Hence figure \ref{fig:SFS_theory:Aliased_repr_field} (c) suggests that arbitrary directed plane waves with the angular frequency below the aliasing frequency can be synthesized with a discretized SSD.
+Hence Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) suggests that arbitrary directed plane waves with the angular frequency below the aliasing frequency can be synthesized with a discretized SSD.
 Above the aliasing frequency lateral waves cannot be synthesized without the presence of aliasing plane wave components, propagating into the opposite direction (with reversed $k_x$ value).
 Finally, above twice the aliasing frequency even plane waves propagating perpendicular to the SSD can not be synthesized without aliasing.
 
 \subsection{Avoiding spectral overlapping}
 
-A straightforward way to avoid spectral overlapping is to spatially bandlimit the driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = k_{x,s}/2$ before discretization, i.e. by eliminating plane wave components that would cause spatial aliasing in the synthesis.
-This requires the application of a spatial low-pass filter that's implementation is however straightforward only for the present, linear SSD case.
+A straightforward way to avoid spectral overlapping is to spatially bandlimit the driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = k_{x,s}/2$ before discretization, i.e. by eliminating plane wave components that would cause spatial aliasing.
+This requires the application of a spatial low-pass filter that's implementation is straightforward only for the present, linear SSD case.
 A detailed investigation on the direct spatial pre-filtering of the linear SFS driving function can be found in \cite{Firtha2012:isma, Ahrens2012} \footnote{There it is discussed that pre-filtering the SFS driving functions is equivalent with extending the virtual source distribution according the impulse response of the spatial filter impulse response.}.
 However, applying the local wavenumber vector concept and exploiting the general asymptotic equivalence of the SDM and WFS, a more simple, general anti-aliasing strategy may be introduced, as given in the following.
 
@@ -1139,26 +1139,26 @@ D(x_0,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}
 	\put(51.5,38){(b)}
 	\put(27.5,0){(c)}
 	\end{overpic}   
-    \caption{Illustration of the ideal anti-aliasing filtering of the WFS driving functions for a virtual point source in the setup, used for \ref{fig:SFS_theory:Aliased_spectrum}.
+    \caption{Illustration of the ideal anti-aliasing filtering of the WFS driving functions for a virtual point source in the setup, used for Figure \ref{fig:SFS_theory:Aliased_spectrum}.
     Figure (a) shows the spatially band-limited driving function spectrum, low-pass filtered with the low-pass filtering performed in spatial domain used the introduced approach.
     Figure (b) shows the spectrum of the discretized driving function containing non-overlapping spectral repetition.
-    Figure (c) shows spectrum of the synthesized field, measured along the reference line.\fscom{colorbars?}}
+    Figure (c) shows spectrum of the synthesized field, measured along the reference line.}
 \label{fig:SFS_theory:AntiAliased_spectrum}  
 \end{figure}
 
 This finding may be generalized towards the application of an arbitrary shaped SSD, within the validity of the Kirchhoff approximation.
 In this general scenario the SSD is assumed to be locally linear, and the role of $k_x^P$ is taken over by the tangential component of the local wavenumber vector.
 Hence, the ideal anti-aliasing condition for a general SFS problem is formulated as
-\begin{equation}
+\importanteq{Symmetric anti-aliasing condition}{
 D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo)|},
 \label{Eq:SFS_theory:general_cutoff_freq_v0}
-\end{equation}
+}
 where $\hat{k}_t^P$ is the normalized local wavenumber vector component, tangential with the SSD.
 
-This formulation can be interpreted as a frequency dependent secondary source selection criterion (hence basically the window function in the general WFS driving function is made frequency dependent).
-Direct application of an ideal low-pass filter, given by \eqref{Eq:SFS_theory:general_cutoff_freq_v0} would result in truncation effects emerging from the muted and unmuted transition of the SSD, due to the discontinuity of the driving function.
-Mathematically this is modeled as the multiplication of the driving function with a window function, resulting in a ringing effect in the wavenumber domain.
-Hence, in practical applications antialiasing should be performed by an appropriate low-pass filter design with the cut-off frequency given above.
+The above formulation can be interpreted as a frequency dependent secondary source selection criterion: basically the window function in the general WFS driving function \eqref{Eq:Theory:SSD_selection} became frequency dependent.
+The application of an ideal low-pass filter, given directly by \eqref{Eq:SFS_theory:general_cutoff_freq_v0} would result in truncation effects emerging from the muted and unmuted transition of the SSD, due to the discontinuity of the driving function \cite{Start1997:phd}.
+%Mathematically this is modeled as the multiplication of the driving function with a window function, resulting in a ringing effect in the wavenumber domain.
+Hence, in practical applications antialiasing should be performed by an appropriately smooth low-pass filter design with the cut-off frequency given by \eqref{Eq:SFS_theory:general_cutoff_freq_v0}.
 
 \begin{figure}  
 \small
@@ -1169,97 +1169,100 @@ Hence, in practical applications antialiasing should be performed by an appropri
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$.
+    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
     Figure (a) shows the effect of the discrete SSD, resulting in aliasing echoes following the intended wavefront.
     Figure (b) shows the result of spatial anti-aliasing filtering.
     As a result antialiased synthesis may be achieved behind the virtual wavefront into the particular direction, denoted by dashed arrow.
     The arrow originates at the SSD element with no angular bandwidth limitation, i.e. performing full-band synthesis.
-    This full-band SSD element is found, where the local propagation direction of the virtual field coincides with the SSD normal (i.e. the tangential local wavenumber component is zero).\fscom{is it helpful to also indicate the reference line? check tick labels}}
+    This full-band SSD element is found, where the local propagation direction of the virtual field coincides with the SSD normal (i.e. the tangential local wavenumber component is zero).}
 \label{fig:SFS_theory:AntiAliased_synthesis}   \end{minipage}
 \end{figure}
 
 In the following the locations of antialiased synthesis is investigated.
-Although spectral overlapping can be avoided by the presented strategy, due to the non-directive nature of the 3D secondary point sources, lateral aliasing waves are present in the synthesized wave field.
+Although spectral overlapping can be avoided by the presented strategy, due to the non-directive nature of the 3D secondary point sources, lateral aliasing waves are present in the synthesized wave field, emerging from the partial reproduction of the mirror spectra.
+Investigating Figure \ref{fig:SFS_theory:AntiAliased_spectrum} (c) suggests that at a given angular frequency $\omega$ with a given SSD element at $\vxo$ antialiased synthesis can be performed into directions for which $|k^P_t(\vxo)| < k_{t,\mathrm{Nyq}}$ holds.
+Above the Nyquist wavenumber, components of the mirror spectra are reproduced as well, present as lateral waves in the synthesized field. 
 It is restated here that one particular SSD element at $\vxo$ dominates the synthesized field along the local propagation direction of the synthesized field, hence along a straight line through the SSD element into the direction of the virtual field's local wavenumber vector.
-Investigating figure \ref{fig:SFS_theory:AntiAliased_spectrum} then suggests that at a given angular frequency $\omega$ with a given SSD element at $\vxo$ antialiased synthesis can be performed into directions for which $|k^P_t(\vxo)| < \frac{\pi}{\Delta x} \frac{c}{\omega}$ holds.
-Above this wavenumber, components of the mirror spectra are reproduced as well, present as lateral waves in the synthesized field. 
 This means that antialiased synthesis can be achieved along a beam, centered around the normal vector of the SSD element, where $|k^P_t(\vxo)| = 0$ holds locally, and the opening angle of the beam decreases with frequency.
-At high frequencies therefore antialiased, full band synthesis can be only achieved with that SSD element, where $|k^P_t(\vxo)| = 0$ holds locally, and the positions of full band synthesis in the reproduced field will be that, dominated by the full-band SSD element.
+At high frequencies therefore antialiased, full band synthesis can be only achieved with that SSD element, where $|k^P_t(\vxo)| = 0$ holds locally, and the positions of full band, antialiased synthesis in the reproduced field will be that, dominated by the full-band SSD element.
 
 Figure \ref{fig:SFS_theory:AntiAliased_synthesis} illustrates the effect of the presented antialiasing strategy.
-It is verified that into  the direction dominated by the SSD element at $\vxo$, where $k^P_t(\vxo) = 0$ holds, aliasing components can be almost entirely eliminated behind the virtual wavefront, and still into this particular direction full-band synthesis can be achieved.
-Into other directions lateral aliasing components are present, and the synthesized virtual wavefront is bandlimited.
+It is verified that into the direction dominated by the SSD element at $\vxo$, where $k^P_t(\vxo) = 0$ holds, aliasing components can be almost entirely eliminated behind the virtual wavefront, and still into this particular direction full-band synthesis can be achieved.
+Into other directions lateral aliasing components are present and the synthesized virtual wavefront is bandlimited.
 
-\begin{figure}  
+\begin{figure}
 \small
   \begin{minipage}[c]{0.64\textwidth}
-	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/AntiAliased_spectrum_asymm.png}
+	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/AntiAliased_spectrum_asymm.png}
 	\small
 	\put(2,1){(a)}
+	\put(54.5,13.5){$k^P_{x,0}$}
 	\end{overpic}   	
 	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/Steered_antialias_synth.png}
 	\small
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill	
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$.
+    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
 	Figure (a) shows the sampled driving function spectrum with asymmetric bandwidth limitation.
 	Figure (b) presents the synthesized field.
-	The synthesis is performed by optimizing spatial anti-aliasing into the direction, indicated by dashed arrow in figure (b).
-	The corresponding center wavenumber is indicated by dotted line in figure (a).	
-	\fscom{how is the base band of the spectrum obtained? by changing the reference line? or only due to the anti alias filter?}
+	The synthesis is performed by optimizing spatial anti-aliasing into the direction, indicated by dashed arrow in Figure (b) by simple bandlimitation of the driving function in the angular frequency domain, according to \eqref{Eq:SFS_theory:general_cutoff_freq}.
+	The corresponding center wavenumber is indicated by dotted line in Figure (a).	
     }
 \label{fig:SFS_theory:AntiAliased_synthesis_asymm}   \end{minipage}
 \end{figure}
 \vspace{3mm}
 So far only symmetrical antialiasing filtering was discussed.
-However, overlapping of the spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber (below the Nyquist wavenumber) to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in figure \ref{fig:SFS_theory:AntiAliased_synthesis_asymm} (a).
-The center wavenumber $k^P_{t,c}$ defines the direction into which full-band, antialiased synthesis can be achieved: the SSD element, with $k^P_t(\vxo) = k^P_{t,c}$ performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
+However, overlapping of the mirror spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber (below the Nyquist wavenumber) to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in Figure \ref{fig:SFS_theory:AntiAliased_synthesis_asymm} (a).
+The center wavenumber $k^P_{t,0}$ defines the direction into which full-band, antialiased synthesis can be achieved: the SSD element, with $k^P_t(\vxo) = k^P_{t,0}$ performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
 Asymmetric anti-aliasing filtering can be performed by the angular low-pass filtering of the driving functions according to
-\begin{equation}
-D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo) - \hat{k}^P_{t,c}|}.
-\label{Eq:SFS_theory:general_cutoff_freq} \fscom{label is used twice?}
-\end{equation}
-
-The result of asymmetric anti-aliasing filtering is presented in figure \ref{fig:SFS_theory:AntiAliased_synthesis_asymm} (b), illustrating how anti-aliased synthesis may be optimized into an arbitrary direction.
-This local increase of synthesis accuracy is \fscom{usually} referred to as \emph{Local Wave Field Synthesis (LWFS)}, being the subject of extensive study in the recent years. \fscom{give references}
-Local increase of accuracy is \fscom{usually} achieved by some spatial bandwidth limitation strategy applied to the driving functions,\fscom{usually} performed in simple SSD geometries (e.g. linear, circular SSDs).
+\importanteq{Asymmetric anti-aliasing condition}{
+D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo) - \hat{k}^P_{t,0}|}.
+\label{Eq:SFS_theory:general_cutoff_freq} 
+}
+The result of asymmetric anti-aliasing filtering is presented in Figure \ref{fig:SFS_theory:AntiAliased_synthesis_asymm} (b), illustrating how anti-aliased synthesis may be optimized into an arbitrary direction.
+This local increase of synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years. \cite{ahrens2010local, 5946329, spors2011local, Winter2016-TASL, Hahn17:EUSIPCO, Hahn16:AES, Winter15:EURONOISE, Winter15:AES}
+Local increase of accuracy is usually achieved by some spatial bandwidth limitation strategy applied to the driving functions, performed in simple SSD geometries (e.g. linear, circular SSDs).
 The above derivation hence gives an asymptotic approximation of these spatial bandwidth limitation techniques, valid for an arbitrary SSD contour.
 
 \subsection{Avoiding the reproduction of mirror spectra}
 
 As presented in the foregoing, even besides ideal anti-aliasing filtering (spatial bandlimition) of the driving functions, lateral aliasing components following the virtual wavefront will still be present.
-Mathematically, these aliasing artifacts originate from the reproduction of the adjacent mirror spectra components above the Nyquist wavenumber, as illustrated in figure \ref{fig:SFS_theory:AntiAliased_spectrum} (c).
-Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber \footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass antialiasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
-Hence the spectrum of the filtered driving function would be a romboid shape in figure \ref{fig:SFS_theory:AntiAliased_spectrum}  (a), entirely bandlimited to $\omega = \frac{k_{x,s}}{c}$.
+Mathematically, these aliasing artifacts originate from the reproduction of the adjacent mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:AntiAliased_spectrum} (c).
+Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber\footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass antialiasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
+Hence the spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:AntiAliased_spectrum} (a), entirely bandlimited to $\omega = \frac{k_{x,s}}{c}$.
 This strategy is equivalent with the solution, given in \cite{Winter2018:GeometricModel}.}.
-This requirement is fulfilled by directive secondary sources, radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers: hence directive secondary sources act as reproduction filters.
+This requirement is fulfilled by directive secondary sources, radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
+In a signal processing analogy, directive secondary sources therefore act as reproduction filters.
 
 Physically, source directivity stems from the physical extension of radiating surfaces due to the constructive and destructive interference of waves, originating from different positions on the surface.
 At high frequencies and in the far-field (compared to the physical extension) baffled vibrating surfaces can be modeled as directive point sources.
 In fact, this can be proven by using the local wavenumber concept as presented in Appendix \ref{App:Planar_radiators}.
-The optimal shape of extended secondary sources in the aspect of suppressing the mirror spectra has been studied in the related literature.
+The optimal shape of extended secondary sources in the aspect of suppressing the mirror spectra has been studied in the related literature \cite{Verheijen1997:phd}.
 Here the optimal SSD directivity is discussed within the context of the unified WFS framework.
 
-The far-field approximation of an extended radiator with a directive point source is given by \eqref{Eq:App:directive_monopole}.
+The far-field approximation of an extended radiator as a directive point source is given by \eqref{Eq:App:directive_monopole}.
 The field of a directive point source at the horizontal plane, containing the source (i.e. at $\theta = 0$) is given by
 \begin{equation}
 G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \cdot
 G(\vx-\vxo,\omega),
 \end{equation}
-with the directivity function given by $\Theta(\cdot)$ and with $\phi$ being the polar angle, measured from the main direction of the source, in case of modeling baffled sources given by the source-surface normal: $\cos \phi = \frac{\left< \vx-\vxo \cdot \vn(\vxo) \right>}{|\vx-\vxo|}$.
+with the directivity function given by $\Theta(\cdot)$. 
+Here $\phi$ denotes the polar angle, measured from the main direction of the source, in case of modeling baffled sources given by the source-surface normal: $\cos \phi = \frac{\left< \vx-\vxo \cdot \vn(\vxo) \right>}{|\vx-\vxo|}$.
 
+First the wavenumber domain representation of a theoretical directive point source is investigated.
 The transfer function of a directive point source at the origin, measured along a fixed $y$ reads as 
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \cdot
 G(\vx,\omega) \, \te^{\ti k_x x} \td x.
 \end{equation}
-In order to evaluate this integral with the SPA it is assumed that the directivity function is real-valued.
+As an approximation, the amplitude factor of the integral is approximated around its stationary point.
+For the sake of  simplicity it is assumed that the directivity function is real-valued.
 Since in case of baffled radiators the directivity function is the 2D Fourier transform of the surface normal velocity distribution, the directivity is real-valued, if the radiator is symmetrical both to the $x$- and $z$-axes (i.e. its is even function).
 This holds for simple geometries, e.g. for a circular piston, which model is applied frequently for modeling a dynamic loudspeaker.
 
 Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is simply found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
-Around the stationary point the directivity function is approximated by its value at the stationary point and the integral simplifies to
+Around the stationary point the directivity function is approximated by its stationary value and the integral simplifies to
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \cdot \int_{-\infty}^{\infty} 
 G(\vx,\omega) \, \te^{\ti k_x x} \td x =
@@ -1267,8 +1270,7 @@ G(\vx,\omega) \, \te^{\ti k_x x} \td x =
 \tilde{G}(k_x,y,\omega),
 \end{equation}
 thus in the wavenumber domain the directivity function acts as a simple spatial filter transfer function.
-\fscom{actually you don't really need this treatment, the signal processing model (see Start's and my diss) directly gives you the multplication of the post filter and green's function spectrum. I'd state this and cite and then move on with the following. Also: when performing a SPA on the integral, why only $\Theta$ pulling out of the integral and treating Greens function not as approximation?}
-Since for the Green's function's local wavenumber vector $k_x^{G}(\vx) = k \sin \phi(\vx)$ holds (c.f. \eqref{Eq:App:ps_k_vec}), therefore as a final result the transfer function of a directive point source is given by
+Since for the Green's function's local wavenumber vector $k_x^{G}(\vx) = k \sin \phi(\vx) = k_x$ holds (c.f. \eqref{Eq:App:ps_k_vec}), therefore as a final result the transfer function of a directive point source is given by
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = 
 \Theta(\arcsin \frac{k_x}{k},\omega) \cdot 
@@ -1276,7 +1278,7 @@ Since for the Green's function's local wavenumber vector $k_x^{G}(\vx) = k \sin 
 \end{equation}
 while the spectrum of the synthesized field, applying a discrete secondary distribution of directive point sources becomes
 \begin{equation}
-\tilde{P}(k_x,y,\omega) = \tilde{D}^S(k_x,\omega) \Theta(\arcsin \frac{k_x}{k},\omega) \tilde{G}(k_x,y,\omega).
+\tilde{P}(k_x,y,\omega) = \tilde{D}^S(k_x,\omega) \cdot \Theta(\arcsin \frac{k_x}{k},\omega) \cdot \tilde{G}(k_x,y,\omega).
 \end{equation}
 This allows one to derive the directivity characteristics of an ideal spatial low-pass secondary source, which suppresses lateral waves above the Nyquist wavenumber, hence avoiding the reproduction of mirror spectra.
 The transfer function of the ideal antialiasing SSD is given as
@@ -1284,15 +1286,15 @@ The transfer function of the ideal antialiasing SSD is given as
 \Theta(\arcsin \frac{k_x}{k},\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} k_x \geq \frac{\pi}{\Delta x}
 \end{equation}
 which can be formulated in the angular domain as
-\begin{equation}
+\importanteq{Ideal anti-aliasing SSD directivity}{
 \Theta(\phi,\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} \sin \phi \geq \frac{\pi}{\Delta x} \frac{c}{\omega}.
-\end{equation}
+}
 The theoretical, ideal secondary sources therefore would only radiate within a beam with a unit amplitude, so that the width of the beam decreases at increasing frequency.
-By applying such ideal secondary sources, aliasing could theoretically completely avoided, still ensuring full band, antialiased synthesis into one particular direction, as described above.
+By applying such ideal secondary sources, aliasing could be theoretically completely avoided, still ensuring full band, antialiased synthesis into one particular direction, as described above.
 Into other directions the synthesized wavefront is bandlimited (low-pass filtered).
 Obviously, unlike for the antialiasing filtering, the direction of perfect synthesis is fixed towards the main lobe of the applied secondary sources.
 
-The result of synthesis applying secondary sources with ideal directivity can be seen in figure \ref{fig:SFS_theory:AntiAliased_synthesis_ideal_synth}, depicting the theoretical best case scenario when applying a discrete SSD.
+The result of synthesis applying secondary sources with ideal directivity can be seen in Figure \ref{fig:SFS_theory:AntiAliased_synthesis_ideal_synth}, depicting the theoretical best case scenario when applying a discrete SSD.
 \begin{figure}  
 \small
   \begin{minipage}[c]{0.64\textwidth}
@@ -1318,10 +1320,10 @@ As a simple example, the directivity of a circular piston is given by \eqref{Eq:
 \begin{equation}
 \Theta(\arcsin \frac{k_x}{k},\omega) = 2\frac{J_1\left( r_0 k_x\right)}{r_0 k_x},
 \end{equation}
-\fscom{$J_1$ introduce}
+with $J_1(\cdot)$ being the first order Bessel function.
 The circular piston therefore acts as a spatial low-pass filter, with the $-3~\mathrm{dB}$ cut-off wavenumber being $k_{x,c} \approx \frac{2.22}{r_0}$, calculated numerically.
 Real-life dynamic loudspeakers with circular membranes are often modeled as circular pistons at frequencies, at which the modal behaviour of the diaphragm is not considerable.
 In a linear array the largest possible loudspeaker radius is the half of the loudspeaker spacing ($r_0 = \Delta x/2$), hence, the lowest achievable cut-off wavenumber is 
 $k_{x,c} = \frac{4.44}{\Delta x}$.
-This is still higher, than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array, spatial aliasing components will be slightly present in the reproduced field.
-\fscom{good points here, in essence this is what I treated little bit differently, but with same message and comparing to a line piston that exhibit sinc spectrum. Depending on the gaps between piston aliasing is differently strong.}
+This is still higher, than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array, spatial aliasing components will be slightly present in the reproduced field.
+%\fscom{good points here, in essence this is what I treated little bit differently, but with same message and comparing to a line piston that exhibit sinc spectrum. Depending on the gaps between piston aliasing is differently strong.}
