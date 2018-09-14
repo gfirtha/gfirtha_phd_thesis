@@ -36,18 +36,20 @@
 }
 \definecolor{maincolor}{rgb}{0, 0.447, 0.741}
 
+\renewcommand*{\raggedrightmarginnote}{\centering}
+\renewcommand*{\raggedleftmarginnote}{\centering}
 \newcommand{\importanteq}[2]{
    {\color{maincolor} \textit{
    {\footnotesize   
-  \marginnote{ \setlength\arrayrulewidth{1pt} 
-  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
-  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
-  }[0cm]
+  \marginnote{ \setlength\arrayrulewidth{1pt}
+  \ifthispageodd{\begin{tabular}{|p{1.7cm}} {\color{maincolor} #1 } \end{tabular}}
+  				{\begin{tabular}{p{1.7cm}|} {\color{maincolor} #1 } \end{tabular}}
+  }[0cm]%[-\baselineskip]%[0cm]
   %\marginpar{#1}
-   } } }
-   \begin{equation}  
+   } } } 
+  \begin{equation} 
    #2
-   \end{equation}    
+   \end{equation}
   }%
   
 \newcommand{\importantmline}[2]{

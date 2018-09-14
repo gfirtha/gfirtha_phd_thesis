@@ -15,34 +15,34 @@ f(\vx,t) = \mathcal{F}_{\omega}^{-1} \left\{ F(\vx,\omega) \right\} = \frac{1}{2
 Note that capital letter indicates that the function is taken in the angular frequency domain.
 %
 \paragraph{Spatial Fourier transforms:}\mbox{} \\
-Following the convention, given in e.g. \cite{Ahrens2012} the spatial Fourier transform is defined as follows:\fscom{check mathcal / hat / tilde}
+Following the convention, given in e.g. \cite{Ahrens2012} the spatial Fourier transform is defined as follows:
 \begin{itemize}
 \item in one dimension:
 \begin{equation}
 \label{eq:spatial_fourier_transform_def}
-\hat{F}(k_x,y,z,\omega) = \mathcal{F}_x \left\{ F(\vx,\omega) \right\} = \int_ {-\infty}^{\infty} F(\vx,\omega) \, \te^{\ti k_x x} \, \td x,
+\tilde{F}(k_x,y,z,\omega) = \mathcal{F}_x \left\{ F(\vx,\omega) \right\} = \int_ {-\infty}^{\infty} F(\vx,\omega) \, \te^{\ti k_x x} \, \td x,
 \end{equation}
 \begin{equation}
 \label{eq:spatial_inverse_fourier_transform_def}
-F(\vx,\omega) = \mathcal{F}_{k_x}^{-1} \left\{ \hat{F}(k_x,y,z,\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} \hat{F}(k_x,y,z,\omega) \, \te^{ -\ti k_x x} \td k_x,
+F(\vx,\omega) = \mathcal{F}_{k_x}^{-1} \left\{ \hat{F}(k_x,y,z,\omega) \right\} = \frac{1}{2\pi} \int_ {-\infty}^{\infty} \tilde{F}(k_x,y,z,\omega) \, \te^{ -\ti k_x x} \td k_x,
 \end{equation}
 \item in two dimensions:
 \begin{equation}
 \label{eq:spatial_fourier_transform_def_2d}
-\hat{F}(k_x,y,k_z,\omega) = \iint_ {-\infty}^{\infty} F(\vx,\omega) \te^{\ti \left( k_x x + k_z z \right) } \td x \, \td z,
+\tilde{F}(k_x,y,k_z,\omega) = \iint_ {-\infty}^{\infty} F(\vx,\omega) \te^{\ti \left( k_x x + k_z z \right) } \td x \, \td z,
 \end{equation}
 \begin{equation}
 \label{eq:spatial_inverse_fourier_transform_def_2d}
-F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^2} \iint_ {-\infty}^{\infty} \hat{F}(k_x,y,k_z,\omega) \, \te^{ -\ti \left( k_x x + k_z z \right)} \td k_x \, \td k_z,
+F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^2} \iint_ {-\infty}^{\infty} \tilde{F}(k_x,y,k_z,\omega) \, \te^{ -\ti \left( k_x x + k_z z \right)} \td k_x \, \td k_z,
 \end{equation}
 \item in three dimensions:
 \begin{equation}
 \label{eq:spatial_fourier_transform_def_3d}
-\hat{F}(\vk,\omega)= \iiint_ {-\infty}^{\infty} F(\vx,\omega) \te^{ \ti \left< \vk \cdot \vx \right>} \td x \,\td y\,\td z,
+\tilde{F}(\vk,\omega)= \iiint_ {-\infty}^{\infty} F(\vx,\omega) \te^{ \ti \left< \vk \cdot \vx \right>} \td x \,\td y\,\td z,
 \end{equation}
 \begin{equation}
 \label{eq:spatial_inverse_fourier_transform_def_3d}
-F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^3} \iiint_{-\infty}^{\infty} \hat{F}(\vk,\omega) \te^{ -\ti \left< \vk \cdot \vx \right>} \td k_x \, \td k_y \, \td k_z.
+F(\vx,\omega) = \frac{1}{\left( 2\pi \right)^3} \iiint_{-\infty}^{\infty} \tilde{F}(\vk,\omega) \te^{ -\ti \left< \vk \cdot \vx \right>} \td k_x \, \td k_y \, \td k_z.
 \end{equation}
 \end{itemize}
 Hence, hat over the function symbol indicates that the function is taken in the wavenumber domain.
@@ -81,7 +81,7 @@ In case of temporal Fourier transform the right side is with reversed sign.
 \end{itemize}
 
 \paragraph{Properties of Dirac delta:}\mbox{} \\
-A frequently used distribution used in modeling acoustic phenomena is the Dirac delta, defined as a generalized function
+The Dirac delta is a generalized function (or distribution) applied frequently in modeling acoustic phenomena, defined as
 \begin{equation}
 \delta(x) = 
 \begin{cases}
@@ -93,11 +93,15 @@ A frequently used distribution used in modeling acoustic phenomena is the Dirac 
 \hspace{2cm}
 \int_{-\infty}^{\infty} \delta(x) \td x = 1.
 \end{equation}
-Several important properties of the Fourier transform, applied frequently in the present thesis are the following.
+Several important properties of the Dirac delta, applied frequently in the present thesis are the following.
 \begin{itemize}
+\item Forward Fourier transform:
+\begin{equation}
+\mathcal{F}_x \left\{\delta(x-x_0)\right\} = \int_{-\infty}^{\infty} \delta(x-x_0) \te^{\ti k_x x} \td x =   \te^{\ti k_x x_0}.
+\end{equation}
 \item Inverse Fourier transform:
 \begin{equation}
-\delta(x-x_0) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \te^{-\ti k_x (x-x_0)} \td k_x =  \mathcal{F}_{k_x} \left\{ \delta( x-x_0 ) \right\}.
+\delta(x-x_0) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \te^{-\ti k_x (x-x_0)} \td k_x =  \mathcal{F}^{-1}_{k_x} \left\{ \te^{\ti k_x x_0} \right\}.
 \end{equation}
 \item Sifting property:
 \begin{equation}

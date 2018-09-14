@@ -55,7 +55,6 @@ zlabel('$z$','FontSize',ftsize);
 set(gca,'FontName','Times New Roman');
 set(gca,'XTickLabel','','YTickLabel','','ZTickLabel','');
 caxis([-1,1])
-
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 set(allAxesInFigure,'FontSize',ftsize);

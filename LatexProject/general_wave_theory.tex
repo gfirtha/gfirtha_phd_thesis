@@ -13,13 +13,13 @@ In the aspect of the present thesis it is appropriate to restrict the investigat
 
 The domain of investigation $\Omega \in \mathbb{R}^n$ where sound waves propagate is termed \emph{sound field} hereinafter.
 Within this thesis usually 3 dimensional problems are investigated ($n = 3$).
-The acoustical properties of the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $P_0 \approx 10^5~\mathrm{Pa}$\fscom{small / large letters for distinction between function p and its Fourier transforms, I'd use $p_0$ since it is a constant}.
-The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $P_0$. 
+The acoustical properties of the sound field are described by \emph{dynamic field variables} in each point $\vx \in \Omega$, at each time instant $t$: the vector variable \emph{particle velocity} $\mathbf{v}(\vx,t)$ and the scalar \emph{instantaneous sound pressure} $p(\vx,t)$ superimposed onto the static pressure $p_0 \approx 10^5~\mathrm{Pa}$.
+The medium is quiescent, meaning that on average each particle is at rest with zero particle displacement (thus zero particle velocity) at the static pressure $p_0$. 
 The presence of sound waves causes incremental change in the instantaneous pressure and the particle velocity.
 
 In order to apply a linear model for sound propagation two assumptions are made.
 Since the traveling speed of thermal diffusion is small compared to the speed of sound, it is feasible to assume that heat exchange in the wave due to compression and expansion is negligible: the state changes are modeled as adiabatic.
-Furthermore the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state change characteristics can be linearized around $P_0$.
+Furthermore the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state change characteristics can be linearized around $p_0$.
 This later assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 
 First the homogeneous wave equation is presented, valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
@@ -40,20 +40,20 @@ In room temperature for the above given static pressure $\rho_0 = 1.18~\mathrm{k
 
 \item \emph{The gas law:} For adiabatic processes the change of state is governed by the relation
 \begin{equation}
-P V^{\gamma} = \mathrm{const},\fscom{introduce P and V}
+p \, V^{\gamma} = \mathrm{const},
 \label{Eq:Theory:Adiabatic_change}
 \end{equation}
-where $\gamma = C_P/C_V$ is the ratio of specific heats of the fluid with constant pressure and with constant volume.
+with $p$ and $V$ being the pressured and volume of the fluid respectively and where $\gamma = C_P/C_V$ is the ratio of specific heats of the fluid with constant pressure and with constant volume.
 For air it is given as $\gamma = 1.4$.
-Linearization of \eqref{Eq:Theory:Adiabatic_change} around the static state $P_0, V_0$ yields
+Linearization of \eqref{Eq:Theory:Adiabatic_change} around the static state $p_0, V_0$ yields
 \begin{equation}
-\td P = p(\vx,t) = -\gamma P_0 \frac{\td V}{V_0},
+\td p = p(\vx,t) = -\gamma \, p_0 \frac{\td V}{V_0},
 \end{equation}
 where $V_0$ is the undisturbed volume. 
 The relative change of volume $\td V / V_0$ may be expressed by the  \emph{divergence} of the particle displacement $\Dx \cdot \mathbf{u}(\vx,t)$. 
 Applying the definition of divergence and expressing the equation in terms of particle velocity yields
 \begin{equation}
-\frac{\partial}{\partial t} p(\vx,t) = -\gamma P_0 \, \Dx \cdot \mathbf{v}(\vx,t).
+\frac{\partial}{\partial t} p(\vx,t) = -\gamma \, p_0 \, \Dx \cdot \mathbf{v}(\vx,t).
 \label{Eq:Theory:continuity_eq}
 \end{equation}
 This \emph{continuity equation} states that the net flow of the fluid out of an infinitezimal volume results in decreased density and pressure inside the volume \cite{Arfken2005}.
@@ -66,7 +66,7 @@ By using the \emph{Laplace operator} $\Dx \cdot \Dx = \Lx$ the scalar linear hom
 \Lx p(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\vx,t) = 0,
 \label{Eq:Theory:Scalar_wave_equation}
 }
-where $c \equiv \sqrt{ \frac{\gamma P_0}{\rho_0} }$ is the speed of sound in the medium. 
+where $c \equiv \sqrt{ \frac{\gamma p_0}{\rho_0} }$ is the speed of sound in the medium. 
 For air in room temperature it is given as $c = 343.1 ~ \mathrm{m}/\mathrm{s}$.
 The instantaneous pressure may also be eliminated in a similar manner, resulting in the vector wave equation for each component of the particle velocity
 \begin{equation}
@@ -220,7 +220,7 @@ it is supposed that the solution of \eqref{Eq:Theory:Homog_Helmholtz} can be wri
 P(\vx,\omega) = W(\omega) X(x)Y(y)Z(z).
 \label{Eq:Theory:Seperated_variables}
 \end{equation}
-Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides by $\hat{P}(\omega) X(x)Y(y)Z(z)$ yields\fscom{what is $\hat{P}(\omega)$}
+Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides by $W(\omega) X(x)Y(y)Z(z)$ yields
 \begin{equation}
 \underbrace{\frac{\td^2 X(x)}{\td x^2}\frac{1}{X(x)}}_{-k_x^2} + 
 \underbrace{\frac{\td^2 Y(y)}{\td y^2}\frac{1}{Y(y)}}_{-k_y^2} + 
@@ -279,7 +279,7 @@ The terminology indicates that the surface of constant phase points are lying al
 	\put(2,1){(a)}
 	\put(52,1){(b)}
 	\end{overpic}
-\caption{\fscom{match the vector lengths the relative visualization w.r.t. to wavelength?} Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\lambda = \frac{2\pi}{k}$ being the acoustic wavelength of the plane wave. 
+\caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\lambda = \frac{2\pi}{k}$ being the acoustic wavelength of the plane wave. 
 In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. 
 Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$ and $y$ directions. 
 For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in exponential decay into the $y$-direction.
@@ -320,7 +320,7 @@ The evanescent contribution is of central importance in the field of \emph{Nearf
 \label{Sec:thoery:angular_Spectrum}
 
 Based on the foregoing any source-free sound field may be expressed in terms of a double inverse Fourier transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
-This formulation is termed the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.\fscom{giving references from other fields (e.g. optics) might be useful, I used to cite Nieto-Vesperinas and Goodman Optics books for that.}
+This formulation is termed the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999, NietoVesp2006, Goodman2005} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 By expressing the pressure by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} at the infinite plane $y=0$ it is revealed that the \emph{angular spectrum} $\tilde{P}(k_x,k_z, \omega)$ is given as the corresponding forward Fourier transform of the pressure distribution at $y=0$.
 %: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
 In the following, the domain characterized by $k_x$, $k_z$ is termed the \emph{wavenumber domain}.
@@ -373,15 +373,15 @@ Wave propagation is calculated by multiplying the measured spectra with an expon
                             &= \tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega) \, \tilde{G}_v(k_x,y-y_0,k_z,\omega).
 \end{align}
 Wave propagation in source-free volumes thus can be modeled by 2D linear filtering of the sound field measured along a plane, where the filter transfer characteristics are given by the corresponding propagator.
-Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed the Rayleigh I. and II. integrals, as it will be further discussed in the following \fscom{or later} sections.
+Formulation of the equations in the spatial domain results in 2D spatial convolutions, termed the Rayleigh I. and II. integrals, as it will be further discussed in later sections.
 
 %
 \subsection{Solution in other geometries}
-Similarly to the presented Cartesian-solution, the general solution of the free field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. 
+Similarly to the presented Cartesian solution, the general solution of the free field homogeneous Helmholtz equation can be found for spherical and cylindrical coordinate systems. 
 The required representations are given in the form of an infinite series of spherical and cylindrical harmonics respectively, relating the radiated sound at an arbitrary point to the sound field measured on a spherical or an infinite cylindrical surface.
 These solutions are of great importance when spherical or circular secondary source distributions are applied for sound field reconstruction. 
 Since the present thesis does not include the explicit solution for synthesis in these geometries, the presentation of the spherical and cylindrical solutions are omitted. 
-For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi2010, Ahrens2012}. \fscom{PhD of Koyama could be cited here for dealing with cylindrical explicit solutions}
+For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi2010, Ahrens2012, Koyama2014:phd}.
 %
 %
 %
@@ -394,7 +394,6 @@ For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi201
 %
 %
 %
-\newpage
 \section{Solution of the inhomogeneous wave equation}
 
 \subsection{The Green's function}
@@ -537,7 +536,7 @@ From the general solution the case of point-like disturbances are of special int
 	\put(35,0){(b)}
 	\put(68,0){(c)}
 	\end{overpic}
-	\caption{\fscom{tick labels are missing, i.e. the numbers}Directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). 
+	\caption{Qualitative illustration of the directivity characteristics of a monopole (a), a dipole with the dipole axis being the $y$ axis (b) and a horizontal quadrupole constructed from two opposing dipoles in the horizontal plane (c). 
 	In the figures the distance from the origin denotes the absolute value of the directivity into the given direction, with the sign indicated by the color of the surface. }
 	\label{Fig:Theory:multipoles}
 \end{figure}
@@ -590,7 +589,7 @@ This finding will be further discussed in the section dealing with the Rayleigh 
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
 Any sound field obeying the homogeneous Helmholtz equation may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
-This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and Sound Field Synthesis.
+This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and sound field synthesis.
 
 In this section the integral formulation of interior problems in source-free volumes is introduced.
 The effect of direct sources inside the enclosure may be straightforwardly included in the following results by the appropriate addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
@@ -660,7 +659,7 @@ The equation states that the pressure field inside an enclosure is completely de
 The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left-hand side is identically zero. 
 For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left-hand side inside \cite{Williams1999}.
 In both cases the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
-This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and Sound Field Synthesis 
+This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and sound field synthesis 
 \footnote{Actually, the KHIE can be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}.}.
 \vspace{3mm}
 

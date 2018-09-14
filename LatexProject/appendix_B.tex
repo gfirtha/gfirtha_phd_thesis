@@ -6,7 +6,7 @@ Assume a wave field, described by the general polar form $P(\vx,\omega) = A^P(\v
 Supposing that the amplitude changes slowly compared to the phase function, the local dispersion relation $| \nabla \phi(\vx,\omega) |= \frac{\omega}{c} = k$ holds and the equation describing an arbitrary wavefront, i.e. $\phi^P(\vx,\omega) - C = 0$ is the \emph{normalform} of the given surface \cite{Hartmann1999, Hartmann2001}.
 The Hessian matrix of the function is given by the symmetric matrix
 \begin{equation}
-\mH^P =
+\mH^P(\vx) =
 \frac{\partial^2}{\partial x_i \partial x_j} \phi^P(\vx,\omega) 
 =
  \begin{bmatrix} 
@@ -23,11 +23,12 @@ The principal curvatures and radii are defined as the following:
 Consider all the planes containing the normal of the surface at the point of investigation, defined by the surface normal and vector $\mathbf{v}$, being the tangent of the surface.
 The curvature is defined as the quadratic form 
 \begin{equation}
-\kappa = \mathbf{v} H^P \mathbf{v}^{\mathrm{T}}. \fscom{\kappa = \mathbf{v}^{\mathrm{T}} \mH^P \mathbf{v} ?} 
+\kappa = \mathbf{v}^{\mathrm{T}} \mH^P \mathbf{v}.
 \label{Eq:App:curvature_def}
 \end{equation}
 The main curvatures are then defined as the minimum and maximum values of curvature, i.e. the reciprocal of the osculating circles' radii (the principal radii).
-The corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.\fscom{cf. figure \ref{Fig:HF_appr:local_wave_curvature}}
+The corresponding eigenvectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are the tangential, orthogonal unit vectors pointing into the direction of the maximal and minimal curvatures.
+For an illustration refer to Figure \ref{Fig:HF_appr:local_wave_curvature}.
 \end{itemize}
 Finally, as the general case the Hessian matrix of an arbitrary wavefront can be written in terms of the principal curvatures and the corresponding eigenvectors as
 \begin{equation}
@@ -52,9 +53,10 @@ Eigenvectors $\lambda_1$ and $\lambda_2$ may be arbitrary orthogonal vectors in 
 
 
 \vspace{3mm}
-In the present treatise when dealing with 2.5D problems it is a standard prerequisition, that in the plane of investigation ($z = 0$) all the involved wave fields propagate along the horizontal direction ($k_z(x,y,0) \equiv 0$), thus the Hessian of the phase function becomes
+In the present treatise when dealing with 2.5D problems it is a standard prerequisition, that in the plane of investigation ($z = 0$) all the involved wave fields propagate along the horizontal direction ($k_z(x,y,0) \equiv 0$). 
+In this special case the Hessian of the phase function becomes
 \begin{equation}
-\mH^P =  \begin{bmatrix} 
+\mH^P(\vx) =  \begin{bmatrix} 
 \phi^{P''}_{xx}(\vx,\omega) & \phi^{P''}_{xy}(\vx,\omega) & 0 \\[.7em]
 \phi^{P''}_{xy}(\vx,\omega) & \phi^{P''}_{yy}(\vx,\omega) & 0 \\[.7em]
 0 & 0 & \phi^{P''}_{zz}(\vx,\omega) \\[0.5em]    \end{bmatrix},
@@ -64,7 +66,7 @@ Furthermore, considering that the eigenvector with a zero eigenvalue is given by
 Applying \eqref{Eq:App:Hessian_w_curvature} the elements of the Hessian matrix can be expressed as
 \begin{equation}
 \label{Eq:App:Hessian_inplane}
-\mH^P = -k	 \begin{bmatrix} 
+\mH^P(\vx) = -k	 \begin{bmatrix} 
 \hat{k}_y^{P}(\vx)^2 \kappa_1^P(\vx) & \hat{k}_x^{P}(\vx)\hat{k}_y^{P}(\vx)\kappa_1^P(\vx) & 0 \\[.7em]
 \hat{k}_x^{P}(\vx)\hat{k}_y^{P}(\vx) \kappa_1^P(\vx) & \hat{k}_x^{P}(\vx)^2\kappa_1^P(\vx) & 0 \\[.7em]
 0 & 0 & \kappa_2^P(\vx) \\[0.5em]    \end{bmatrix}.
@@ -76,7 +78,7 @@ In the followings these properties will be discussed when the SPA is applied for
 
 \subsection{Hessian for the SPA applied for the Rayleigh-integral}
 
-Consider the Rayleigh-integral written on the plane $y = 0$, with the high-frequency gradient approximation applied:
+Consider the Rayleigh-integral written on the plane $y = 0$, with the high frequency gradient approximation applied:
 \begin{equation}
 P(\vx,\omega) = 2 \int_{-\infty}^{\infty} \ti k_y^P(\vxo) P(\vxo, \omega) G(\vx-\vxo,\omega) \td x_0  \td z_0.
 \end{equation}
@@ -91,13 +93,13 @@ Around the stationary point the phase function \eqref{eq:app:Rayleigh_stat_point
 \begin{equation}
 \phi^P(\vx,\omega) = \phi^P(\vxo^*(\vx),\omega) + \phi^G(\vx-\vxo^*(\vx),\omega).  %\\
 \end{equation}
-The 3x3 Hessian of the integrand's phase function is defined as
+The 3x3 Hessian of the integrand's phase function, for the sake of brevity by suppressing its space dependency is defined as
 \begin{equation}
 \label{eq:app:Hessian_for_Rayleigh}
 H_{kl} = H_{kl}^P+ H_{kl}^G = \frac{\partial^2}{\partial x_{0 k} \partial x_{0 l}}\left( \phi^P(\vxo,\omega) + \phi^G(\vx-\vxo,\omega) \right), \hspace{3mm} k,l = 1,2,3.
 \end{equation}
 The eigenvalues of $H_{kl}^P$ and $H_{kl}^G$ are the principal curvatures of the target field and the Green's function measured at the stationary position $\vxo^*(\vx)$.
-Since the principal directions for the Green's function's wavefront are not well-defined\fscom{what do you imply?}, they can be chosen to coincide with the principal directions of $H^P$.
+Since the principal directions for the Green's function's wavefront are arbitrary perpendicular unit vectors in the tangent plane, they can be chosen to coincide with the principal directions of $H^P$.
 Therefore at the stationary point the eigenvectors of $\mH^P$ and $\mH^G$ coincide and their eigenvalues are additive.
 The eigenvalues of the resultant matrix are therefore simply given as
 \begin{align}
@@ -108,7 +110,7 @@ The eigenvalues of the resultant matrix are therefore simply given as
 \end{align}
 \vspace{0.5mm}
 
-In the aspect of the followings it is important to investigate the local principal curvatures and the principal radii of the described wavefront of $P$ at the evaluation point $\vx$. 
+In the aspect of the present thesis it is important to investigate the local principal curvatures and the principal radii of the wavefront of $P$ at the evaluation point $\vx$, i.e. how these quantities change over the propagation from the Rayleigh plane. 
 The curvatures are defined as the eigenvalues (normalized by $-k$) of the Hessian 
 \begin{equation}
 H_{ij}^P = \frac{\partial^2}{\partial x_{i} \partial x_{j}} \phi^P ( \vx,\omega) = \frac{\partial^2}{\partial x_{i} \partial x_{j}}\left( \phi^P(\vxo^*(\vx),\omega) + \phi^G(\vx-\vxo^*(\vx),\omega) \right) 
@@ -145,7 +147,7 @@ By introducing the matrix $\Dx \vxo$ for the rate of change of the stationary po
 \begin{bmatrix} \frac{\partial \vxo^*(\vx)}{\partial x} \hspace{1mm} \bigg| & \hspace{-2.5mm}  \frac{\partial \vxo^*(\vx)}{ \partial y} \hspace{1mm} \bigg| & \hspace{-2.5mm} \frac{\partial \vxo^*(\vx)}{ \partial z} 
  \\[.3em] \end{bmatrix},
 \end{equation}
-the Hessian under consideration can be written in a matrix form as
+the Hessian under consideration can be written in a matrix form
 \begin{equation}
 \label{eq:app:Hpij}
 H_{ij}^P = (\Dx \vxo)^{\mathrm{T}}  H_{kl}^P (\Dx \vxo) + \left( \mathbf{I} - \Dx \vxo \right)^{\mathrm{T}} H^G_{kl} \left( \mathbf{I} - \Dx \vxo \right).
@@ -205,11 +207,11 @@ H_{ij}^P =
 \mathbf{V}^{\mathrm{T}}
 \end{equation}
 This result states, that if the Rayleigh integral describes a sound field at $\vx$, then the principal curvatures and radii of the field can be written in terms of that, measured on the Rayleigh boundary, as
-\begin{align}
+\importantalign{Curvature change over propagation}{
 \kappa^P(\vx) &= \frac{\kappa^P(\vxo^*(\vx)) \kappa^G(\vx-\vxo^*(\vx)) }{\kappa^P(\vxo^*(\vx)) + \kappa^G(\vx-\vxo^*(\vx)}, \nonumber \\
 \rho^P(\vx) &= \rho^P(\vxo^*(\vx)) + \rho^G(\vx-\vxo^*(\vx)). 
 \label{eq:app:propagated_radii}
-\end{align}
+}
 Furthermore, the corresponding eigenvectors, i.e the direction of the largest and smallest curvature on the wavefront does not change along the direction of propagation.
 
 \vspace{3mm}
@@ -241,29 +243,29 @@ The signature of the Hessian is therefore
 On the parts of the space where the curvature of wavefront $P$ is greater in magnitude than that of the Green's function the eigenvalues of the Hessian positive and it signature is 2.
 On other parts of the space the signature is -2.
 \end{itemize}
-In practice it means, that if the Rayleigh integral describes a sound field propagating toward a point, than the signature for an evaluation point between the Rayleigh plane and the focus point is given by 2, and in other parts of the space, where the waves already diverge after passing the focus point, the signature is -2.
+In practice it means, that if the Rayleigh integral describes a sound field propagating toward a point, then the signature for an evaluation point between the Rayleigh plane and the focus point is given by 2, and in other parts of the space, where the waves already diverge after passing the focus point, the signature is -2.
 
 The determinant of of the Hessian is given by
 \begin{equation}
-\mathrm{det} \mH  = -k \left( \kappa_1^P+\kappa_1^G \right) \left( \kappa_2^P+\kappa_2^G \right) \left( v_{2 x} v_{1_z} - v_{1 x} v_{2 z} \right)^2.
+\mathrm{det} \mH^P  = -k \left( \kappa_1^P+\kappa_1^G \right) \left( \kappa_2^P+\kappa_2^G \right) \left( v_{2 x} v_{1_z} - v_{1 x} v_{2 z} \right)^2.
 \end{equation}
 By the definition of cross product of vectors the term $\left( v_{2 x} v_{1_z} - v_{1 x} v_{2 z} \right)$ is the second coordinate of the vector, being perpendicular to $\mathbf{v}_1$ and $\mathbf{v}_2$, i.e. of the normalized local wavenumber vector:
 \begin{equation}
-\mathrm{det} \mH  = -k \left( \kappa_1^P(\vxo^*(\vx))+\kappa_1^G(\vx-\vxo^*(\vx)) \right) \left( \kappa_2^P(\vxo^*(\vx))+\kappa_2^G(\vx-\vxo^*(\vx)) \right) \hat{k}_y^P(\vxo^*(\vx))^2.
+\mathrm{det} \mH^P  = -k \left( \kappa_1^P(\vxo^*(\vx))+\kappa_1^G(\vx-\vxo^*(\vx)) \right) \left( \kappa_2^P(\vxo^*(\vx))+\kappa_2^G(\vx-\vxo^*(\vx)) \right) \hat{k}_y^P(\vxo^*(\vx))^2.
 \end{equation}
 Note, that the description above is not limited for the Rayleigh integral: if the Kirchhoff-Helmholtz integral is written onto a smooth convex surface with the surface's curvature being significantly smaller than the wavefront curvature, than the surface can be considered locally plane, and the above given description holds with the substitution $\hat{k}_y^P(\vxo^*(\vx)) \rightarrow \hat{k}_{\mathrm{n}}^P(\vxo^*(\vx))$ being the normal component of the local wavenumber vector.
 This statement is a consequence of the invariance of the determinant with respect to a linear transform.
 	
-Obviously, this formulation holds for evaluation of a 2D Fourier integral.
+The same formulation holds for evaluation of a 2D Fourier integral.
 In this case the determinant reads as
 \begin{equation}
-\mathrm{det} H  = -\frac{1}{k} \kappa_1^P(\vxo^*(k_x,k_z)) \kappa_2^P(\vxo^*(k_x,k_z	)) k_y^2.
+\mathrm{det} \mH^P  = -\frac{1}{k} \kappa_1^P(\vxo^*(k_x,k_z)) \kappa_2^P(\vxo^*(k_x,k_z	)) k_y^2.
 \end{equation}
 
 
 \paragraph{Evaluation of the Rayleigh integral along $z$-dimension:}
 In the special case of the derivation of the 2.5D Rayleigh integral only the integration along the $z$-dimension is approximated and the Hessian is simply given by $\phi''_{zz}(\vxo) =\phi^{P''}_{zz}(\vxo) + \phi^{G''}_{zz}(\vx-\vxo)$.
-Requiring, that in the horizontal plane of investigation $k_z(\vx) \equiv 0$ guarantees, that the second derivative is the principal curvature itself (see below), thus around the stationary position reads as
+Requiring, that in the horizontal plane of investigation $k_z(\vx) \equiv 0$ guarantees, that the second derivative is the principal curvature itself, thus around the stationary position reads as
 \begin{equation}
 \phi''_{zz}(\vxo) = -k \left( \kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx)) \right).
 \end{equation}
