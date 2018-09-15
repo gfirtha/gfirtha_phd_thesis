@@ -715,15 +715,15 @@ The synthesis of this type of focused moving sources is not investigated in the 
 
 \section{Explicit solution for the synthesis of moving sources}
 
-So far only the time domain and a mixed time-frequency domain representation of moving sources were discussed, applied directly for WFS of sources under motion.
-For the special case of sources under uniform motion the frequency domain and wavenumber domain representation of the radiated sound field can be expressed analytically, by applying the Fourier theorem for a non-stationary convolution.
+So far only the time domain and a mixed time-frequency domain representations of moving sources were discussed, applied directly for WFS of sources under motion.
+For the special case of sources under uniform motion the frequency domain and wavenumber domain representations of the radiated sound field can be expressed analytically, by applying the Fourier theorem for a non-stationary convolution.
 
 \subsection{Spectral representation  of moving sources}
 
-Assume a harmonic source moving along a straight trajectory parallel with the $x$-axis, with the source position time history $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$ with a wide-band excitation time history $s(t)$.
+Assume a harmonic source moving along a straight trajectory parallel with the $x$-axis (i.e. the source position time history is given by $\vxs(t) = \posvec{3}{x_s + v \cdot t}{0}{0}$), radiating with a wide-band excitation time history $s(t)$.
 According to \eqref{eq:moving_source:non_stat_convolution} the radiated field can be written in the form of a convolution with the kernel being the moving source Green's function
 \begin{equation}
-P_{\mathrm{m}}(\vx,t) = \int_{\tE} g_{\mathrm{m}}(x - x_s-v\cdot\tE ,y,z,t-\tE) s(\tE) \td \tE,
+p_{\mathrm{m}}(\vx,t) = \int_{\tE} g_{\mathrm{m}}(x - x_s-v\cdot\tE ,y,z,t-\tE) s(\tE) \td \tE,
 \end{equation}
 with $t_e$ being the emission time and $g_{\mathrm{m}}$ representing the retarded Green's function.
 Comparison with \eqref{Eq:App:Non_stat_conv_td} reveals that the radiated field is written in terms of a non-stationary convolution, for which the spectral representation is known, given by \eqref{Eq:App:Non_stat_conv_fd}.
@@ -735,24 +735,8 @@ P_{\mathrm{m}}(\mathbf{x},\omega) = \frac{1}{v}
 \te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)} \td \omega_0.
 \label{Eq:Moving_sources:Freq_domain_representation_wb_excit}
 \end{equation}
-Hence, the radiated field in the spectral domain is obtained by a non-stationary convolution as well.
-Since 'summation' is done over the frequency content of the source input signal $S(\omega_0)$, the non-stationary convolution kernel can be recognized as the frequency content of a moving source pass-by, radiating at a single frequency component $\omega_0$, given as
-\begin{equation}
-P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
-\frac{1}{v}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
-\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)},
-\label{Eq:Moving_sources:Freq_domain_representation}
-\end{equation}
-with the Green's function's wavenumber content given in Table \ref{tab:theory:Greens_fun_representations} as
-\begin{equation}
-\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega) = -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} y \right).
-\end{equation}
-The equation states that the frequency domain representation of a moving point source pass-by at a given receiver point is completely described by its 1D spatio temporal spectrum $\tilde{G}(k_x,y,z,\omega)$ with the substitution $k_x \rightarrow \frac{\omega-\omega_0}{v}$.
-In the present geometry the time history of the measured pass-by is invariant along the $x$-axis up to a constant time delay depending on the source velocity.
-This fact is represented by the fact that the above spectrum depends on the $x$-position only through an exponential term, representing a group delay of a factor $\frac{x-x_s}{v}$. 
-
-\begin{figure}
+%
+\begin{figure}[b!]
 \centering
 	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/moving_source_spectrum.png}
 	\put(0,1){(a)}
@@ -761,9 +745,38 @@ This fact is represented by the fact that the above spectrum depends on the $x$-
     \caption{The time history and spectrum of a moving source pass-by, moving on a trajectory $\vxs(t) = \posvec{3}{v\cdot t}{-2}{0}$ with $v = \frac{c}{2}$, measured at the origin.
     Both, the time history and spectrum are normalized by the source frequency.
     The spectrum is described by the Hankel function as given by \eqref{Eq:Moving_sources:Freq_domain_representation}.
-    The poles/singularities of the spectrum are the \emph{dominant frequencies} of the approaching ($t \rightarrow -\infty$) and the diverging ($t \rightarrow \infty$), given by \eqref{eq:HF_appr:moving_s_per_freq} as $\omega_d = \omega_0 \frac{1}{1 \pm M}$, with $M = \frac{v}{c}$ being the Mach number.\fscom{this figure is not referenced in text}
+    The poles/singularities of the spectrum are the \emph{dominant frequencies} of the approaching ($t \rightarrow -\infty$) and the diverging ($t \rightarrow \infty$), given by \eqref{eq:HF_appr:moving_s_per_freq} as $\omega_d = \omega_0 \frac{1}{1 \pm M}$, with $M = \frac{v}{c}$ being the Mach number.
     }
 \label{fig:Moving_sources:moving_source_field}  
+\end{figure}
+%
+Hence, the radiated field in the spectral domain is obtained by a non-stationary convolution as well.
+Since integration is performed over the frequency content of the source input signal $S(\omega_0)$, the weighting kernel can be recognized as the frequency content of a moving source pass-by, radiating at a single frequency component $\omega_0$.
+The field of a harmonic moving source is therefore given by
+\importanteq{Moving source spectrum}{
+P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
+\frac{1}{v}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
+\te^{-\ti \frac{\omega-\omega_0}{v} \left(x-x_s\right)},
+\label{Eq:Moving_sources:Freq_domain_representation}
+}
+with the Green's function's wavenumber content given in Table \ref{tab:theory:Greens_fun_representations} as
+\begin{equation}
+\tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega) = -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} y \right).
+\end{equation}
+The equation states that the frequency domain representation of a moving point source pass-by at a given receiver point is completely described by its 1D spatio temporal spectrum $\tilde{G}(k_x,y,z,\omega)$ with the substitution $k_x \rightarrow \frac{\omega-\omega_0}{v}$.
+This is the immediate consequence of the fact that in the present geometry the time history of the measured pass-by is invariant along the $x$-axis up to a constant time delay. 
+%
+The time history of a uniformly moving source pass-by and the corresponding angular spectrum is illustrated in Figure \ref{fig:Moving_sources:moving_source_field}.
+\begin{figure}
+\centering
+	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Moving_source_kxw.png}
+	\put(0,1){(a)}
+	\put(48,1){(b)}
+	\end{overpic}   
+    \caption{Spectrum of a stationary (a) and moving (b) harmonic source in the $k_x-\omega$ domain.
+    In the dynamic case the source is moving with a constant velocity, $v = \frac{c}{2}$.}
+\label{fig:Moving_sources:moving_source_kxw}  
 \end{figure}
 
 \vspace{3mm}
@@ -791,16 +804,6 @@ The spectral $k_x-\omega$ domain representation of a moving source field is depi
 In both cases the amplitude distribution of the spectra are described by the wavenumber content of the Green's function, $\tilde{G}(k_x,y,z,\omega)$.
 It is illustrated that bringing a sound source into uniform motion will result in the rotation of its spectrum around $k_x = 0$ and rescaling in order to fill the propagation region.
 The amount of rotation is given directly by the source velocity (the angle of rotation is $\frac{\pi}{2} \cdot \frac{v}{c}$).
-\begin{figure}
-\centering
-	\begin{overpic}[width = 1\columnwidth]{Figures/Moving_sources/Moving_source_kxw.png}
-	\put(0,1){(a)}
-	\put(48,1){(b)}
-	\end{overpic}   
-    \caption{Spectrum of a stationary (a) and moving (b) harmonic source in the $k_x-\omega$ domain.
-    In the dynamic case the source is moving with a constant velocity, $v = \frac{c}{2}$.}
-\label{fig:Moving_sources:moving_source_kxw}  
-\end{figure}
 
 The above spectral formulations can be extended for sources moving inclined to the $x$-axis, as given in Appendix \ref{App:Moving_source_representations}.
 These formulations may be applied for deriving implicit and explicit driving functions for virtual sources moving uniformly along arbitrary directed straight trajectories, as it is discussed in details in \cite{firtha2015sound}.
@@ -808,9 +811,9 @@ Since, however, the previous section presented a more general methodology for th
 
 \subsection{3D Spectral Division Method for moving sources}
 
-The spectral representations presented in the foregoing allows the derivation of explicit SFS driving functions for the synthesis of moving sources.
-The following driving functions are specialized to the case of sources under uniform motion, reproduced by planar and linear SSDs in contrary to WFS, allowing the reproduction of sources with arbitrary trajectory applying arbitrary SSDs, which can be extended for arbitrary secondary source contours within the validity of the Kirchhoff approximation.
-Still, the importance of the explicit solution is that they constitute a reference solution for the synthesis problem, and allow the spectral investigation of the artifacts stemming from the non ideal nature of practical SFS implementations.
+The spectral representations given in the foregoing allows the derivation of explicit SFS driving functions for the synthesis of moving sources.
+The following driving functions are specialized to the case of sources under uniform motion, reproduced by planar and linear SSDs in contrary to WFS, allowing the reproduction of moving sources in a general geometry.
+Still, the importance of the explicit solution is that it constitutes a reference solution for the synthesis problem, and allows the investigation of aliasing artifacts in the followings.
 
 Assuming an infinite planar distribution of secondary sources along the plane $\vxo = \posvec{3}{x_0}{0}{z_0}$, the explicit driving function in the $k_x-k_z$ domain is given by the angular spectrum representation of the field generated by a moving source \eqref{Eq:Moving_sources:MS_field_kx_kz} substituted into the general 3D explicit driving function \eqref{Eq:Theory:Planar_explicit_driv_fun}
 \begin{equation}
@@ -821,9 +824,9 @@ D(k_x,k_z,\omega) = \frac{2 \pi }{v} \frac{
  \delta(k_x - \frac{\omega-\omega_0}{v}),
 \end{equation}
 with $k_y = \sqrt{\left( \frac{\omega}{c} \right)^2 - k_x^2 - k_z^2}$.
-The spatial driving function is obtained from the double inverse Fourier transform of the wavenumber domain driving function, given by \eqref{Eq:Theory:Planar_explicit_driv_fun_spatial}.
+The spatial driving function is obtained from the double inverse Fourier transform of the wavenumber domain driving function.
 Integration along $k_x$ can be evaluated analytically, with the Dirac delta sifting out $k_x = \frac{\omega-\omega_0}{v}$.
-Hence, the spatial driving function takes the form
+Hence, in the spatial domain the driving function takes the form
 \begin{equation}
 D(x_0,z_0,\omega) = 
 \frac{1}{2\pi}
@@ -835,18 +838,15 @@ D(x_0,z_0,\omega) =
 \te^{-\ti k_z z_0}
 \td k_z.
 \end{equation}
-Substituting the explicit formula for the 3D Green's function's angular spectrum representation allows simplification by $\sqrt{\left( \frac{\omega}{c} \right)^2 - \left( \frac{\omega-\omega_0}{v}\right)^2 - k_z^2}$ and division of the exponentials, making the driving functions independent from the $y$-coordinate:
+Substituting the explicit formula for the 3D Green's function's angular spectrum representation, as given in Table \ref{tab:theory:Greens_fun_representations} allows simplification by $\sqrt{\left( \frac{\omega}{c} \right)^2 - \left( \frac{\omega-\omega_0}{v}\right)^2 - k_z^2}$ and division of the exponentials, making the driving functions independent from the $y$-coordinate.
 \begin{equation}
 D(x_0,z_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{v}
-\underbrace{\te^{-\ti \sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y_s|} }_{
-{\scriptscriptstyle
--\left. \frac{\partial}{\partial y} \frac{\te^{-\ti \sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y-y_s|}}{ \ti
-\sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2}} \right|_{y=0}}
-}
+\underbrace{\te^{-\ti \sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y_s|}}_
+{-2 \frac{\partial}{\partial y} \left. \frac{\te^{-\ti \sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2} |y-y_s|}}{-\ti \sqrt{\left( \frac{\omega}{c} \right)^2 -  \left(\frac{\omega-\omega_0}{v}\right)^2 - k_z^2}} \right|_{y=0} }
 \te^{-\ti k_z z_0} \td k_z
- \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) } .
+ \te^{-\ti \frac{\omega-\omega_0}{v} (x_0-x_s) }.
 \end{equation}
-The integrand can be recognized as a multiple of the $y$-derivative of the Green's function, taken on the SSD, \fscom{cf. link to Table of Greens Function spectra}
+The integrand can be recognized as a multiple of the $y$-derivative of the Green's function, taken on the SSD (cf. Table \ref{tab:theory:Greens_fun_representations}).
 
 \begin{figure}
 	\centering
