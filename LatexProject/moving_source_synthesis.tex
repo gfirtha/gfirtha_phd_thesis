@@ -781,23 +781,23 @@ The time history of a uniformly moving source pass-by and the corresponding angu
 
 \vspace{3mm}
 Due to the spatio-temporal invariance of the spectrum \eqref{Eq:Moving_sources:Freq_domain_representation} along the $x$-dimension, the spatial Fourier transform is straightforward, yielding
-\begin{equation}
+\importanteq{Moving source in $k_x-z$ domain}{
 \tilde{P}_{\mathrm{m}}(k_x,y,z,\omega,\omega_0) =
 \frac{2\pi}{v}
 \tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
 \te^{\ti \frac{\omega-\omega_0}{v} x_s}
  \delta(k_x - \frac{\omega-\omega_0}{v}).
 \label{Eq:Moving_sources:MS_field_kx_z}
-\end{equation}
+}
 The angular spectrum representation (i.e. $k_x-y-k_z$ representation) is given as
-\begin{equation}
+\importanteq{Moving source in $k_x-k_z$ domain}{
 \tilde{P}_{\mathrm{m}}(k_x,y,k_z,\omega,\omega_0) =
 \frac{2\pi}{v}
 \tilde{G}(\frac{\omega-\omega_0}{v}, y, k_z, \omega)
 \te^{\ti \frac{\omega-\omega_0}{v} x_s}
  \delta(k_x - \frac{\omega-\omega_0}{v}).
 \label{Eq:Moving_sources:MS_field_kx_kz}
-\end{equation}
+}
 Note that the representation does not pose any constraint on the actual form of the Green's function, the above equations theoretically describe the field of an arbitrary source under uniform motion.	
 
 The spectral $k_x-\omega$ domain representation of a moving source field is depicted in Figure \ref{fig:Moving_sources:moving_source_kxw} (b), allowing the comparison with  a stationary source.
@@ -870,12 +870,12 @@ D(x_0,z_0,\omega,\omega_0) = -\frac{2}{v}
 \end{equation}
 This formulation describes the $y$-derivative of the field of a moving point source.
 From the mixed time-frequency formulation this can be expressed as
-\begin{equation}
+\importanteq{3D SDM driv. fun.}{
 D(x_0,z_0,t,\omega_0) = 
 - \frac{1}{2\pi}
 \frac{y_s}{\Delta(\vxo,t_0)}\left( \frac{1-M^2}{\Delta(\vxo,t_0)} + \ti k_0 \right)
 \frac{\te^{\ti \omega_0\left( t_0 - \tau( \vxo,t_0 )\right)}}{\Delta(\vxo,t_0)},
-\end{equation}
+}
 with $\tau(\vxo,t_0)$ and $\Delta(\vxo,t_0)$ given by \eqref{fig:Moving_sources:tau_uniform} and \eqref{fig:Moving_sources:delta_uniform}, respectively.
 %
 
@@ -914,7 +914,7 @@ D(x_0,\omega,\omega_0) =
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
 \end{equation}
 Expressing $\tilde{G}(k_x,y,z=0,\omega)$ explicitly yield the final 2.5D SDM driving functions
-\begin{equation}
+\importanteq{2.5D SDM driving function}{
 D(x_0,\omega,\omega_0) = 
 \frac{1}{v}
 \frac{ 
@@ -923,7 +923,7 @@ H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\o
 H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2} |\yref| \right)
 }
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
-\end{equation}
+}
 For a moving source with wide-band excitation signal $s(t)$ the explicit driving function reads as
 \begin{equation}
 D(x_0,\omega) = 
@@ -959,13 +959,13 @@ It is verified that the explicit method theoretically ensures perfect synthesis 
 
 Assuming high frequency conditions the Hankel function can be approximated by its asymptotic expansion as given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
 Applying the formulation the spectral division can be carried out analytically, resulting in the approximate driving function
-\begin{equation}
+\importanteq{Approximate 2.5D SDM driv. fun.}{
 D(x_0,\omega,\omega_0) = 
 \frac{1}{v}
 \sqrt{\frac{\yref}{\yref- y_s}}
 \te^{-\ti \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2}|y_s|}
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
-\end{equation}
+}
 This formulation coincides with the implicit Wave Field Synthesis driving function for a moving source, derived entirely in the spectral domain: 
 the frequency domain representation of a moving source \eqref{Eq:Moving_sources:Freq_domain_representation} allows an alternative derivation of 2.5D WFS driving functions by applying the stationary phase approximation entirely in the frequency domain.
 The approach---described in details in \cite{firtha2015sound}---is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in Section \ref{Sec:Moving_source_WFS}.
@@ -975,7 +975,7 @@ The coincidence of the driving functions, however indicates that Wave Field Synt
 
 So far the theoretical foundations of physically correct synthesis of source movements were discussed.
 The practical implementation of the foregoing raises numerous questions.
-The definition of several quantities, present in the driving function and assumed to be a-priori known in the foregoing is not straightforward.
+The definition of several quantities, present in the driving function and assumed to be a-priori known is not straightforward.
 Furthermore, the choice of the SSD shape, the applied referencing scheme and the applied anti-aliasing strategy is crucial in the aspect of synthesizing dynamic sound scenes.
 The following final subsection presents several practical considerations and solutions for the challenges, arising for the special case of synthesizing a moving point source, following \cite{Firtha2018_daga_moving_source}.
 
@@ -1013,28 +1013,29 @@ u(t) = \int_{t_0}^{t} \frac{|\vvs(s)|}{\left| \td \mathbf{y}(u(s)) / \td u \righ
 with $t_0$ being a user-defined initial time.
 Note that for sources moving with constant velocity ($|\vvs(s)| = v$) the parametrization is referred to as reparametrization to arc-length.
 
-For an arbitrary trajectory and velocity profile the parametrization \eqref{Eq:pt} can only be evaluated numerically.
+For an arbitrary trajectory and velocity profile the parametrization \eqref{Eq:pt} can be evaluated only numerically.
 A detailed discussion on the frequently used numerical methods can be found in \cite{Parent2012}.
 As a simplest approach, the integral may be approximated numerically with the forward-Euler method, approximating the integral with the iteration scheme
-\begin{equation}
+\importanteq{Approximate source trajectory}{
 u_{i+1} = u_i + \td t \frac{|\vvs(u_i)|}{ | \td \mathbf{y}(u_i)/\td u | }, \hspace{10mm} i \geq 0,
-\end{equation}
+}
 where $\td t = \frac{1}{fs}$ is the sampling period of the source trajectory.
 Once the parametrization $u_i$ is found, the required source trajectory vector at the time instant $t_i$ can be obtained from $\vxs(t_i) = \mathbf{y}(u_i)$. 
 
 \subsection{Calculation of propagation time delay}
 	
-Having found the source trajectory the implementation of the driving functions would still require the solution of the quadratic equation \eqref{eq:tau} for each SSD element at each time instant, in order to find the propagation time delay between the moving source at the emission time $t-\tau$ and the SSD elements at the receiving time, which makes real-time implementation infeasible.
+Having found the source trajectory the implementation of the driving functions would still require the knowledge of the propagation time delay, i.e. the time it takes for the wavefront to travel from the source position at the emission time to the receiver position at the receiving time.
+This requires the solution of the quadratic equation \eqref{eq:tau} for each SSD element at each time instant, which makes real-time implementation infeasible.
 
 The computational complexity may be considerably decreased by implementing a further Euler iteration scheme, i.e. by approximating $\tau(\vx,t)$ by its first order Taylor series
 \begin{equation}
-\tau(\vx,t+\td t) \approx \tau(\vx,t) + \td t \frac{\td \tau(\vx,t)}{\td t},
+\tau(\vx,t+\td t) \approx \tau(\vx,t) + \td t \frac{\td \tau(\vx,t)}{\td t}.
 \end{equation}
-with the temporal derivative of $\tau$ obtained from the implicit derivation of its definition \eqref{eq:tau}, reading as
+The temporal derivative of $\tau$ can be obtained from the implicit derivation of its definition \eqref{eq:tau}, reading as
 \begin{equation}
 \frac{\td \tau(\vx,t)}{\td t} = \tau'(\vx,t) = \frac{-\frac{1}{c} \left< \vvs(t-\tau) \cdot ( \vx-\vxs(t-\tau) ) \right>}{| \vx - \vxs(t) |}.
 \end{equation}
-Hence the iteration scheme at the time instant $t_i$ reads as
+Hence the iteration scheme at the time instant $t_i$ becomes
 \begin{equation}
 \tau(\vx,t_i) = \tau(\vx,t_{i-1}) + \td t \cdot \tau'(\vx,t_{i-1}),
 \end{equation}
