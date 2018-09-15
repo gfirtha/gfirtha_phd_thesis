@@ -631,7 +631,7 @@ d(\vxo,t_0,\omega_0) = w(\vxo,t_0)
 \frac{ s^{\nshortmid}_t(t_0 - \tau( \vxo,t_0 )) }{\Delta(\vxo,t_0-\tau( \vxo, t_0 ))^{\frac{3}{2}}},
 \label{Eq:Moving_source:25D_WFS}
 }
-where the prefiltered input signal is given by $ s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with the pre-equalization filter's impulse response given by $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
+where the prefiltered input signal is given by $ s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with the pre-equalization filter's impulse response given by $h(t) = \mathcal{F}^{-1}_{\omega}\left\{ \sqrt{\ti \omega} \right\}$.
 Note that unlike for the stationary case, here the order of pre-filtering and delaying of the excitation signal is not interchangeable due to the time-dependent propagation time delay.
 
 The driving functions are capable of the synthesis of a source under motion, with an arbitrary source trajectory and velocity profile applying an arbitrary SSD contour, with ensuring optimized synthesis on an arbitrary shaped reference contour.
@@ -704,7 +704,7 @@ y_s
 \frac{s^{\nshortmid}_t(t_0 - \tau( \vxo,t_0 ))}{\Delta(\vxo,t_0)^{\frac{3}{2}}},
 \label{Eq:Moving_sources:25D_WFS_linear_ssd_td}
 \end{equation}
-where $s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with $h(t) = \mathcal{F}^{-1}_t\left\{ \sqrt{\ti \omega} \right\}$.
+where $s^{\nshortmid}_t(t) = h(t) \ast_{t} s(t)$, with $h(t) = \mathcal{F}^{-1}_{\omega}\left\{ \sqrt{\ti \omega} \right\}$.
 
 The result of synthesis is illustrated in Figure \ref{fig:Moving_sources:25D_WFS_linear_ssd}, verifying that the presented driving function optimizes the synthesis along the reference line.
 Comparison with \eqref{eq:SFS_theory:WFS_point_source} reveals that the moving source driving function formally coincides with the traditional WFS driving functions given for a stationary point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd} with the stationary distances, delays and amplitude factor changed for the corresponding dynamic variables.
@@ -889,17 +889,16 @@ As discussed in the foregoing, the application of a linear SSD allows the synthe
 the investigation is fixed to the plane of synthesis at $z=0$.
 
 As the simplest case the virtual source moves parallel to the SSD, with the source position given as $\vxs(t) = \posvec{3}{v\cdot t}{y_s}{0}$, with $y_s<0$, oscillating at $\omega_0$. 
-The SSD is a linear linear set of 3D point sources, located along $\vxo = \posvec{3}{x_0}{0}{0}$.
-The general 2.5D explicit driving function for a linear SSD allowing the synthesis of a sound field satisfying the homogeneous wave equation at $y>0$ is given by \eqref{Eq:SFS_Theory:LinearSDM_spectral}. 
-The required wavenumber content of the virtual field is given by \eqref{Eq:Moving_sources:MS_field_kx_z}.
-By applying this formulation the wavenumber domain driving functions are expressed as
+The SSD is a linear set of 3D point sources, located along $\vxo = \posvec{3}{x_0}{0}{0}$.
+The general 2.5D explicit driving function for a linear SSD is given by \eqref{Eq:SFS_Theory:LinearSDM_spectral}, with in the present case the required wavenumber content of the virtual field is given by \eqref{Eq:Moving_sources:MS_field_kx_z}.
+By applying this formulation the wavenumber domain driving function, optimizing the synthesis on a line, parallel with the SSD is expressed as
 \begin{equation}
 \tilde{D}(k_x,\omega,\omega_0) = 
 \frac{2\pi}{v}
 \frac{ 
 \tilde{G}(\frac{\omega-\omega_0}{v}, \yref-y_s, 0, \omega)
-}{\tilde{G}(k_x,\yref,0, \omega)}
- \delta(k_x - \frac{\omega-\omega_0}{v}) 
+}{\tilde{G}(k_x,\yref,0, \omega)} \,
+ \delta(k_x - \frac{\omega-\omega_0}{v}) \, 
 \te^{\ti \frac{\omega-\omega_0}{v} x_s},
 \label{Eq:Moving_source:kx_driv_fun}
 \end{equation}
@@ -956,7 +955,7 @@ The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (
 \end{figure}
 
 The result of synthesis applying the explicit driving function in case of a harmonic moving source is depicted in \eqref{Fig:Moving_sources:moving_synthesis_by_linear_SDM}.
-It is verified, that the explicit method theoretically ensures perfect synthesis along the reference line, therefore it may serve as a reference solution.
+It is verified that the explicit method theoretically ensures perfect synthesis along the reference line, therefore it may serve as a reference solution.
 
 Assuming high frequency conditions the Hankel function can be approximated by its asymptotic expansion as given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
 Applying the formulation the spectral division can be carried out analytically, resulting in the approximate driving function
@@ -967,7 +966,7 @@ D(x_0,\omega,\omega_0) =
 \te^{-\ti \sqrt{ \left(\frac{\omega}{c}\right)^2 - \left( \frac{\omega-\omega_0}{v} \right)^2}|y_s|}
 \te^{-\ti \frac{\omega-\omega_0}{v} (x_0 - x_s)}.
 \end{equation}
-This formulation coincides with the implicit Wave Field Synthesis driving functions for a moving source, derived entirely in the spectral domain: 
+This formulation coincides with the implicit Wave Field Synthesis driving function for a moving source, derived entirely in the spectral domain: 
 the frequency domain representation of a moving source \eqref{Eq:Moving_sources:Freq_domain_representation} allows an alternative derivation of 2.5D WFS driving functions by applying the stationary phase approximation entirely in the frequency domain.
 The approach---described in details in \cite{firtha2015sound}---is not discussed here further, since it is superseded by the time domain WFS formulation introduced in the foregoing in Section \ref{Sec:Moving_source_WFS}.
 The coincidence of the driving functions, however indicates that Wave Field Synthesis is a high-frequency/wavefront matching approximation of the explicit solution, proven for a general stationary sound field in the previous chapter.
