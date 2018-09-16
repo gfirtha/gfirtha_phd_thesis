@@ -1032,13 +1032,13 @@ The computational complexity may be considerably decreased by implementing a fur
 \tau(\vx,t+\td t) \approx \tau(\vx,t) + \td t \frac{\td \tau(\vx,t)}{\td t}.
 \end{equation}
 The temporal derivative of $\tau$ can be obtained from the implicit derivation of its definition \eqref{eq:tau}, reading as
-\begin{equation}
+\importanteq{$\tau$ derivative}{
 \frac{\td \tau(\vx,t)}{\td t} = \tau'(\vx,t) = \frac{-\frac{1}{c} \left< \vvs(t-\tau) \cdot ( \vx-\vxs(t-\tau) ) \right>}{| \vx - \vxs(t) |}.
-\end{equation}
+}
 Hence the iteration scheme at the time instant $t_i$ becomes
-\begin{equation}
+\importanteq{$\tau$ iteration scheme}{
 \tau(\vx,t_i) = \tau(\vx,t_{i-1}) + \td t \cdot \tau'(\vx,t_{i-1}),
-\end{equation}
+}
 with $\td t = \frac{1}{f_s}$ being the sampling period of the driving function \cite{doi:10.1121/1.4996126}.
 Obviously, when only numerically available, $\vxs(t-\tau)$ may be interpolated from the trajectory vector, from which the source velocity $\vvs(t-\tau)$ may be calculated by differentiating it numerically with respect to time.
 
@@ -1049,46 +1049,48 @@ As a result computational cost can be decreased, besides still ensuring numerica
 
 \subsubsection{Description of spatial aliasing}
 
-Finally the effects of the SSD discretization is discussed in case of synthesizing a moving source.
-Similarly to the stationary case as the result of discretization, above a certain frequency into lateral directions the resultant field of the SSD elements doesn't form a smooth wavefront, but the individual wavefronts of the secondary sources will be present in the synthesized field.
-As a result spatial aliasing waves are present in the synthesized field, manifesting in spherical waves of the individual SSD elements, following the intended virtual wavefront, high-pass filtered to the spatial aliasing frequency.
-The effects of the SSD discretization is illustrated in Figure \ref{fig:Moving_source:MS_spatial_alising}.
+In the followings the effects of the SSD discretization is discussed in case of synthesizing a moving source, extending the anti-aliasing strategy presented in Section \ref{Sec:Aliasing} to non-stationary sound fields.
 
-In section \ref{Sec:Aliasing} it was discussed that waves moving laterally to the SSD are most likely to alias: those SSD elements that have to synthesize lateral waves have the strongest contribution to the spatial aliasing artifacts.
-In these SSD positions the spatial aliasing frequency is the lowest.
+The effects of the SSD discretization is illustrated in Figure \ref{fig:Moving_source:MS_spatial_alising} in case of a moving source with a harmonic (a) and wideband (b) excitation signal.
+Similarly to the stationary case, above a certain frequency the resultant field of the SSD elements does not form a smooth wavefront, but the individual wavefronts of the secondary sources will be present in the synthesized field creating an interference pattern.
+In the time domain spatial aliasing manifests in spherical wavefronts of the individual SSD elements, following the intended virtual wavefront.
+These secondary waveefronts are high-pass filtered to the spatial aliasing frequency.
 
 In case of a moving point source the local perceived frequency is altered by the Doppler effect, having a strong influence on spatial aliasing artifacts.
-Those SSD positions, where the perceived frequency is locally increased (i.e. in front of the moving source) will more likely alias, while behind the virtual source aliasing waves are less emphasized.
-This can be examined in figure \ref{fig:Moving_source:MS_spatial_alising} (a), where in case of a moving harmonic source aliasing waves originate from in front of the moving source, radiating laterally backwards at the angular frequency of the local perceived frequency measured at the aliasing SSD element.
-This, however, means that aliasing waves arrive to a given receiver point with a frequency differing from the virtual source's local perceived frequency.
-In the time domain this means that aliasing wavefronts that arrive to a given receiver position after the virtual wavefront, suffer a different Doppler shift than the intended wavefront, as it is illustrated in figure \ref{fig:Moving_source:MS_spatial_alising} (b).
-Hence spatial aliasing artifacts are extremely enhanced, compared to the stationary case: while for the stationary case the only cause of the coloration of the synthesized field is aliasing, for the present dynamic case  undesired frequency components will be also present in the synthesized sound, that can be clearly audible in case of high virtual source velocities.
+Those SSD positions, where the perceived frequency is locally increased (i.e. in front of the moving source) contribute dominantly to aliasing, while behind the virtual source aliasing waves are less emphasized.
+This can be examined in Figure \ref{fig:Moving_source:MS_spatial_alising} (a), where in case of a moving harmonic source aliasing waves originate from in front of the moving source, radiating laterally backwards at the angular frequency of the local perceived frequency measured at the aliasing SSD element.
+This, however, means that aliasing waves arrive to a given receiver point with a frequency, differing from the virtual source's local perceived frequency.
+In the time domain this means that aliasing wavefronts arriving to a given receiver position following the virtual wavefront suffer a different Doppler shift than the intended wavefront.
+This is illustrated in Figure \ref{fig:Moving_source:MS_spatial_alising} (b).
+As a result spatial aliasing artifacts are extremely enhanced, compared to the stationary case: while for the stationary case aliasing results only in the coloration of the synthesized field, for the dynamic case undesired frequency components will be also present in the synthesized sound, that can be clearly audible in case of high virtual source velocities.
 
 \begin{figure}
 \centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/Moving_sources/Spatial_aliasing.png}
+	\put(0, 0){(a)}
+	\put(50,0){(b)}
 	\end{overpic}   
-    \caption{2.5D synthesis of a moving 3D point source located at $\vxs = \posvec{3}{v \cdot t + 1.5}{-2}{0}$, radiating at $\omega_0 =~2\pi \cdot 1 \mathrm{krad}/s$ (a), or emitting an impulse, bandlimited to $15~\mathrm{kHz}$ (b).
+    \caption{2.5D synthesis of a moving 3D point source located at $\vxs = \posvec{3}{v \cdot t + 1.5}{-2}{0}$ with $v = \frac{c}{2}$, radiating at $\omega_0 =~2\pi \cdot 1~\mathrm{krad}/s$ (a), or emitting an impulse, bandlimited to $15~\mathrm{kHz}$ (b).
     The screenshot is taken at $t=0$.
     The synthesis is referenced on a reference line with $\yref = 1.5~\mathrm{m}$.
-	Synthesis is performed using a linear SSD with the secondary source spacing set to $\Delta x = 10~\mathrm{cm}$.\fscom{what number is v}}
+	Synthesis is performed using a linear SSD with the secondary source spacing set to $\Delta x = 10~\mathrm{cm}$.}
 \label{fig:Moving_source:MS_spatial_alising}  
 \end{figure}
 \vspace{3mm}
-In the followings the analysis and mitigation of spatial aliasing artifacts are discussed.
+The following section discusses the analysis and mitigation of spatial aliasing artifacts are discussed.
 Again, it is exploited that WFS constitutes a high frequency approximation for the explicit solution, the latter allowing the analytical description of spatial aliasing.
-Hence, the effects of discretization is introduced via the example of synthesis applying a linear SSD (with a known explicit solution), which is generalized towards arbitrary SSDs in the following.
+Hence, the effects of discretization is introduced via the example of synthesis applying a linear SSD with a known explicit solution, which is generalized towards arbitrary SSDs in the following.
 
 Assume the synthesis of a moving source applying a discrete, linear SSD, located at $\vxo = \posvec{3}{x_0}{0}{0}$ with the loudspeaker spacing being $\Delta x$.
 The source moves uniformly along a straight trajectory, parallel to the SSD.
 Again, the effect of the SSD discretization can be described as the sampling of the ideal, continuous driving function, resulting in the repetition of the driving function spectra on the multiples of the sampling wavenumber. 
 According to \eqref{Eq:SFS_theory:Aliased_field_sp} the synthesized field reads as
 \begin{equation}
-\tilde{P}(k_x,y,z,\omega) = 
-\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega) \fscom{\frac{1}{\Delta x}},
+\tilde{P}(k_x,y,z,\omega) = \frac{1}{\Delta x}
+\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega),
 \label{Eq:Moving_source:Synth_field}
 \end{equation}
-where the driving function spectrum is given by \eqref{Eq:Moving_source:kx_driv_fun}\fscom{check label} for the special case of a harmonic source signal.
+where the driving function spectrum is given by \eqref{Eq:Moving_source:kx_driv_fun} for the special case of a harmonic source signal.
 For a wideband excitation the driving function is obtained as the spectral integral of the harmonic driving function, weighted by  the source excitation frequency content.
 \begin{figure}
 \centering
@@ -1121,7 +1123,7 @@ the mirror spectra are more likely to alias: in the current example in front of 
 
 Also it is clear from the spectral representation that aliasing components are present in the radiated wave field with a reversed $k_x$ sign, thus aliasing waves emerging from SSD elements in front of the moving virtual source will propagate backwards, opposed to the source motion direction.
 As a direct consequence in a fixed receiver position strong frequency distortion may occur, that has been reported and investigated in numerous previous studies \cite{Ahrens2012, Franck2007}.
-This is illustrated via the example of a harmonic source excitation in Figure \ref{fig:Moving_sources:Aliased_spectogram}, depicting the spectral representation of the synthesis scenario, presented in Figure \ref{fig:Moving_sources:Aliased_spectrum} (a).
+The phenomenon is illustrated via the example of a harmonic source excitation in Figure \ref{fig:Moving_sources:Aliased_spectogram}, depicting the spectral representation of the synthesis scenario, presented in Figure \ref{fig:Moving_sources:Aliased_spectrum} (a).
 As a result of the SSD discretization after the virtual source pass-by aliasing waves are present in a given receiver position, propagating laterally backwards, with the frequency determined by the measured frequency at the aliasing SSD positions.
 Hence, besides the ideal perceived frequency, after the virtual source pass-by an undesired frequency component is also present in the synthesized field.
 With increasing source frequency (or at larger SSD sampling distance) also higher order aliasing components are present in the radiated field, resulting in multiple undesired frequency components. 
@@ -1140,43 +1142,43 @@ Obviously, $\eta = 0$ yields the unaltered, ideal synthesized field without alia
 This formulation allows the analytical description of the undesired frequency components, stemming from the poles of the translated Green's function $\tilde{G}( \frac{\omega-\omega_0}{v} +  \eta \frac{2\pi}{\Delta x},y,z, \omega )$.
 As the poles are found where $|\frac{\omega-\omega_0}{v} +  \eta \frac{2\pi}{\Delta x}| = |\frac{v}{c}| = |M|$ holds, therefore the actual frequency of the aliasing waves before and after the virtual source pass-by is given by
 \begin{equation}
-\omega_{\mathrm{undesired}} = \frac{1}{1 \pm M} \left( \omega_0 + \eta \frac{2\pi v}{\Delta x} \right),
+\omega = \frac{1}{1 \pm M} \left( \omega_0 + \eta \frac{2\pi v}{\Delta x} \right),
 \end{equation}
 with for $\eta > 0$ taking the lower, for $\eta < 0$ taking the higher frequency into consideration.
 A more detailed treatise on these undesired frequency components can be found in \cite{firtha2016:daga}.
 
 \subsubsection{Avoiding spectral overlapping}
-The above description highlighted that spatial aliasing may result in clearly audible, serious artifacts due the different Doppler-shifts between the intended and aliasing wavefronts.
+The above description highlighted that spatial aliasing may result in clearly audible, serious artifacts due the different Doppler-shifts between the intended and the aliasing wavefronts.
 Hence, proper antialiasing strategy is crucial in the aspect of synthesizing moving sources.
 As a first step, the proper choice of the SSD shape is an important question: the strong contribution of undesired frequency components is the result of the theoretically infinite, linear SSD, with high contribution of lateral waves.
 In the aspect of avoiding aliasing a smooth, enclosing SSD shape should be chosen, at which the virtual wavefront arrives dominantly with a normal local propagation direction.
 The optimal choice, fulfilling this requirement (and due to further reasons, explained in the following) for an arbitrary source trajectory, is applying a circular SSD.
 
-In order to avoid further aliasing artifacts the same antialiasing filtering strategy may be applied, as given for a stationary virtual field in section \ref{Sec:Aliasing}.
-From investigating figure \ref{fig:Moving_sources:Aliased_spectrum} it is clear that by spatial bandlimiting the linear driving functions to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$ i.e. as long as 
+In order to avoid further aliasing artifacts the same anti-aliasing filtering strategy may be applied, as given for a stationary virtual field in Section \ref{Sec:Aliasing}.
+From investigating Figure \ref{fig:Moving_sources:Aliased_spectrum} it is clear that by spatial bandlimiting the linear driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$ i.e. as long as 
 \begin{equation}
 \tilde{D}(k_x,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm}  |k_x| > \frac{\pi}{\Delta x}
 \end{equation}
 holds, the spectral overlapping after discretization could be entirely avoided.
 Similarly to the stationary case---as a generalization towards time variant sound field---, the spectrum of the linear driving function at a given wavenumber component $k_x$ and at a given frequency $\omega$ is dominated by that part of the SSD, where $k_x^P(\vxo,t) = k_x$ and $\omega(\vxo,t) = \omega$ is satisfied, with $\omega(\vxo,t)$ being the perceived, Doppler shifted angular frequency.
-Since the two quantities are connected through \eqref{eq:Moving_source:local_wn_general}, in the spatial domain the antialiasing condition can be formulated as
+Since the two quantities are connected through \eqref{eq:Moving_source:local_wn_general}, in the spatial domain the anti-aliasing condition can be formulated as
 \begin{equation}
 D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm}  k_x^P(\vxo,t_0) = \frac{\omega(\vxo,t_0)}{c} \cdot |\hat{k}_x^P(\vxo,t_0)|  > \frac{\pi}{\Delta x},
 \end{equation}
 where $\hat{k}_x^P(\vxo,t_0)$ is the $x$-component of the normalized local wavenumber vector.
 Finally, within the validity of the Kirchhoff approximation an arbitrary smooth SSD can be considered locally linear.
-In this case the above antialiasing criterion holds, with the role of $k_x^P$ interchanged to the tangential wavenumber component $k_t^P$, resulting in 
+In this case the above anti-aliasing criterion holds, with the role of $k_x^P$ interchanged to the tangential wavenumber component $k_t^P$, resulting in 
 \begin{equation}
 D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo,t_0)|}.
 \end{equation}
 According to \eqref{eq:Moving_source:norm_local_wn_moving_source}, for a moving source the normalized local wavenumber vector is a unit vector pointing into the receiver position from the source position at the emission time.
-Denoting the tangent vector of the SSD elements by $\mathbf{t}(\vxo)$ this leads to the final antialiasing condition for a moving point source:
+Denoting the tangent vector of the SSD elements by $\mathbf{t}(\vxo)$ this leads to the final anti-aliasing condition for a moving point source:
 \begin{equation}
 D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi c}{\Delta x} \frac{|\vxo-\vxs(t_0-\tau(\vxo,t_0))|}
 {|\left< \vxo-\vxs(t_0-\tau(\vxo,t_0)) \cdot \mathbf{t}(\vxo) \right>|}.
 \label{Eq:Moving_source:Antialiasing_cutoff_freq}
 \end{equation}
-This means that antialiasing requires the implementation of a time varying low pass filter with the cut-off frequency given above.
+This means that anti-aliasing requires the implementation of a time variant low pass filter with the cut-off frequency given above.
 
 \begin{figure}
 	\centering
@@ -1188,25 +1190,28 @@ This means that antialiasing requires the implementation of a time varying low p
 \caption{Synthesis of a moving source on an arbitrary trajectory, applying a circular SSD, with the radius of $R_{\mathrm{SSD}} = 2~\mathrm{m}$, sampled at $\Delta x = 10~\mathrm{cm}$.
 	The source, traveling with a constant velocity of $|\mathbf{v}| = \frac{3}{4}c$.
     Figure (a) shows the effects of source discretization with clearly visible aliasing echoes with the strongest contribution emerging from front of the virtual source, where the local perceived frequency is increased by the Doppler effect.
-    Figure (b) shows the effect of ideal antialising filtering the driving functions by temporal lowpass filtering under the time-variant cut-off frequency \eqref{Eq:Moving_source:Antialiasing_cutoff_freq} in the Short-time Fourier Transform domain with properly chosen window and hop sizes.\fscom{note the different time instants and link them to the white dots?}}
+    Figure (b) shows the effect of ideal anti-aliasing filtering. 
+    Time variant low-pass filtering of the driving function below the instantaneous cut-off frequency \eqref{Eq:Moving_source:Antialiasing_cutoff_freq} is performed in the Short-time Fourier Transform domain with properly chosen window and hop sizes.
+    The white dots on the trajectory denote the source position at the time instant, when the impulses were emitted.}
 	\label{Fig:Moving_sources:antialiased_synth_moving_source}
 \end{figure}
 
-As in the stationary case, full-band synthesis is achieved only on those parts of the synthesized field, for which the stationary SSD element's normal vector coincides with the local propagation direction of the virtual field (Here the above cut-off frequency $\omega(\vxo,t_0) \equiv \infty$)\fscom{???}.
+As in the stationary case, full-band synthesis is achieved only on those parts of the synthesized field, for which the stationary SSD element's normal vector coincides with the local propagation direction of the virtual field.
+At that position the denominator in \ref{Eq:Moving_source:Antialiasing_cutoff_freq} is zero, and the cut-off frequency $\omega(\vxo,t_0) = \infty$.
 
 For the special case of a circular SSD the normal vector is always pointing towards the center of the array.
-Hence, due to the geometry at the center of the SSD the existence of a nearly full-band stationary SSD element is inherently ensured: in the center position nearly full-band antialiased synthesis may be achieved. 
+Hence, due to the geometry at the center of the SSD the existence of a nearly full-band stationary SSD element is inherently ensured.
 This is again an important advantage of applying circular loudspeaker arrays.
 Terminology nearly full-band synthesis refers to the fact that due to the discretization of the SSD, full-band synthesis is only possible when at the stationary SSD position an actual SSD element is located.
 In practice when the moving source is located between two actual SSD elements even at the center of the array the synthesized field is slightly bandlimited (depending on the distance of the virtual source from the SSD), which may cause audible artifacts if the source is close to the SSD.
 
-The result of the proposed antialiasing approach is illustrated in Figure \ref{Fig:Moving_sources:antialiased_synth_moving_source} by using a circular SSD.
-In the simulation the source is traveling along an arbitrary trajectory defined by a discrete set of points, with the trajectory and the propagation time delay calculated iteratively, as discussed in the previous subsections.
+The result of the proposed anti-aliasing approach with applying a circular SSD is illustrated in Figure \ref{Fig:Moving_sources:antialiased_synth_moving_source}.
+In the simulation the source is traveling along an arbitrary trajectory defined by a discrete set of points, with the trajectory and the propagation time delay calculated iteratively, as it was discussed in the previous subsections.
 The simulation results verify the nearly full-band synthesis in the center of the secondary array.
 
 \subsection{Choosing the referencing scheme}
 %A further advantage of circular SSDs is that analytical formulation is available for the referencing function in case of referencing the synthesis to a concentric reference circle inside the listening region.
-In practical applications the 2.5D WFS driving functions, given by \eqref{Eq:Moving_source:25D_WFS} are evaluated, requiring the definition of a reference position $\vxref(\vxo,t_0)$ for each SSD element at each time instant.
+In practical applications the evaluation of the 2.5D WFS driving functions, given by \eqref{Eq:Moving_source:25D_WFS} requires the definition of a reference position $\vxref(\vxo,t_0)$ for each SSD element at each time instant.
 In case of a moving source, for general referencing curves with arbitrary shaped SSDs this point is found at the intersection of a straight line---connecting the actual SSD element $\vxo$ with the corresponding source position at the emission time $\vxs(t_0-\tau(\vxo,t_0))$---and a polyline, defining the reference curve. 
 Obviously, the direct solution for the reference position is of great computational cost, making real-time applications infeasible, therefore geometries with analytical solutions are preferred.
 As a possible solution specific reference curve shapes may be used for which the analytical solution for the reference position is available.
@@ -1217,7 +1222,7 @@ Alternatively, as the simplest solution, synthesis may be optimized to a given r
 %In this case for a given virtual source position amplitude correct synthesis is ensured rather over a curve than merely at the reference position, as it is discussed in details in \cite{Firtha2016}. 
 %Due to the motion of the virtual point source the shape of this curve varies with time, however containing the reference position at an arbitrary time instant.
 %Therefore this solution ensures optimal synthesis at the reference point during the entire virtual source pass-by.
-Since ideal antialiasing can also be achieved only at a given listening position, this simple choice may be feasible in the aspect of practical implementation.
+Since ideal anti-aliasing can also be achieved only at a given listening position, this simple choice may be feasible in the aspect of practical implementation.
 
 Furthermore, amplitude correct synthesis may be achieved over those parts of the reference curve, for which a stationary SSD element can be found, depending on the virtual source position.
 As the simplest referencing strategy in case of a circular geometry, amplitude correct synthesis may be achieved at the center of the secondary array independently on the virtual source trajectory.

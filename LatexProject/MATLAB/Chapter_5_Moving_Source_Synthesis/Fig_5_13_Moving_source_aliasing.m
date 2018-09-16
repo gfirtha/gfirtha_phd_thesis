@@ -1,6 +1,12 @@
 % clear
 % close all
 %%
+
+
+c = 343.1;
+v = c/4*2;
+M = v / c;
+
 fs = 50e3;
 Lt =  0.3;
 t = (-Lt:1/fs:Lt);
@@ -14,7 +20,6 @@ L0 = 15;
 s = [zeros(floor(Nt/2-L0/2),1);hann(L0);zeros(floor(Nt/2-L0/2),1)];
 
 w0 = 2*pi*1000;
-c = 343.1;
 k = w0 / c;
 
 dx = 0.10;
@@ -31,8 +36,6 @@ x0 = (-10:dx:10)';
 y0 = zeros(size(x0));
 x0 = [ x0 y0 ];
 
-v = c/4*2;
-M = v / c;
 
 H = sqrt(1i*w/(2*pi*c));
 d_wfs = real(ifft(H.*fft(s)));
