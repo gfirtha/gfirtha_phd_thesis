@@ -1,13 +1,13 @@
-\section{Asymptotic approximation of the explicit driving functions}
+\section{Asymptotic approximation of the explicit driving function}
 \label{App:SDM_SPA}
 
-\paragraph{Asymptotic spectral driving functions:}
+\paragraph{Asymptotic spectral driving function:}
 The derivation starts from the 2.5D explicit driving function in the wavenumber domain given by \eqref{Eq:SFS_Theory:LinearSDM_spectral},
 \begin{equation}
 \tilde{D}(k_x,y,0,\omega) = \frac{\tilde{P}(k_x,y,0, \omega)}{\tilde{G}(k_x,y,0, \omega)},
 \end{equation}
 ensuring perfect synthesis along a line with fixed $y$-coordinate.
-In the followings for the sake of brevity and transparency $\omega$ and $z$ dependencies are suppressed, the latter since the driving functions are defined at $z=0$.
+In the followings for the sake of brevity and transparency $\omega$ and $z$ dependencies are suppressed, the latter since the driving function is defined at $z=0$.
 By definition the wavenumber content of the involved quantities are obtained via a forward Fourier transform, with the involved sound fields expressed by their polar form
 \begin{align} 
 \tilde{P}(k_x,y) = \int\limits_{-\infty}^{\infty} A^P(x,y) \, \te^{\ti \phi^P(x,y)} \, \te^{\ti k_x x} \td x, \\
@@ -27,7 +27,7 @@ k_x^P(x^*_P(k_x),y) = k_x \nonumber
 k_x^G(x^*_G(k_x),y) = k_x.
 \end{align}
 Since it is assumed that $k_z^P(x,y) = k_z^G(x,y) = k_z = 0$ holds in the plane of investigation, therefore the stationary positions are found along a given $y$, where the local propagation direction of the virtual field and the Green's function matches to that of a plane wave, defined by $k_x$.
-The properties of the involved wave fields at these positions will dominate the corresponding Fourier integrals.
+The properties of the involved wavefields at these positions will dominate the corresponding Fourier integrals.
 Hence, the forward transform defines two particular positions in the space, linked together via the actual spectral wavenumber.
 
 Having defined the stationary positions, the forward Fourier transforms can be evaluated by the SPA. 
@@ -66,7 +66,7 @@ is approximated by the stationary phase method, with the phase function under in
 {\Phi}(k_x) = \phi^P(x^*_P(k_x),y) -  \phi^G(x^*_G(k_x),y) +  k_x \, x^*_P(k_x) - k_x\, x^*_G(k_x) -  k_x x_0.
 \end{equation}
 %
-As it was discussed in section \ref{Sec:SPA_for_Fourier}, in the spatial inverse Fourier transform of an arbitrary wave field spectrum $\tilde{P}$ each wavenumber component $k_x$ will dominate one spatial position $x_0$, where the actual wavenumber component $k_x(x_0)$ coincides with the local wavenumber of the sound field $k_x^P(x_0)$.
+As it was discussed in Section \ref{Sec:SPA_for_Fourier}, in the spatial inverse Fourier transform of an arbitrary wavefield spectrum $\tilde{P}$ each wavenumber component $k_x$ will dominate one spatial position $x_0$, where the actual wavenumber component $k_x(x_0)$ coincides with the local wavenumber of the sound field $k_x^P(x_0)$.
 For the present case this wavenumber is found as the stationary phase wavenumber $k_x^*(x_0)$ of the integral \eqref{Eq:inverse_transform_def} \cite{Tracy2014}.
 
 The derivative of the spectral phase function \eqref{Eq:inverse_transform_phase_function} can be evaluated by applying the chain rule, resulting in
