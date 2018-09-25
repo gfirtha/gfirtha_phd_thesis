@@ -34,77 +34,50 @@
                 \end{bmatrix}
         \fi
 }
+
 \definecolor{maincolor}{rgb}{0, 0.447, 0.741}
 
-\renewcommand*{\raggedrightmarginnote}{\flushleft}
-\renewcommand*{\raggedleftmarginnote}{\flushright}
-%\newcommand{\importanteq}[2]{
-%   {\color{maincolor} \textit{
-%   {\footnotesize   
-%  \marginnote{ \setlength\arrayrulewidth{1pt}
-%  \ifthispageodd{\begin{tabular}{|p{1.7cm}} {\color{maincolor} #1 } \end{tabular}}
-%  				{\begin{tabular}{p{1.7cm}|} {\color{maincolor} #1 } \end{tabular}}
-%  }[0cm]%[-\baselineskip]%[0cm]
-%  %\marginpar{#1}
-%   } } } 
-%  \begin{equation} 
-%   #2
-%   \end{equation}
-%  }%
-  
-  
-\newcommand{\importanteq}[2]{
-  \begin{equation}
-  \marginnote{#1}
-  #2
-  \end{equation}
-  }%  
-  
+\newtcolorbox{oddnote}[1][]{
+    width=\marginparwidth,
+    left=2pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    empty,
+    notitle,
+    sharp corners,
+    borderline west={1pt}{0pt}{maincolor},
+    halign=left,
+    #1
+}
 
+\newtcolorbox{evennote}[1][]{
+    width=\marginparwidth,
+    left=0pt,
+    right=2pt,
+    top=0pt,
+    bottom=0pt,
+    empty,
+    notitle,
+    sharp corners,
+    borderline east={1pt}{0pt}{maincolor},
+    halign=right,
+    #1
+}
 
-\newcommand{\importantmline}[2]{
-   {\color{maincolor} \textit{
-   {\footnotesize   
-  \marginnote{ \setlength\arrayrulewidth{1pt} 
-  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
-  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
-  }[0cm]
-  %\marginpar{#1}
-   } } }
-   \begin{multline}  
-   #2
-   \end{multline}    
-}%
-  
-\newcommand{\importanteqnarray}[2]{
-   {\color{maincolor} \textit{
-   {\footnotesize   
-  \marginnote{ \setlength\arrayrulewidth{1pt} 
-  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
-  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
-  }[0cm]
-  %\marginpar{#1}
-   } } }
-   \begin{eqnarray}%
-   #2%
-   \end{eqnarray}%
-  }%
-
-\newcommand{\importantalign}[2]{
-   {\color{maincolor} \textit{
-   {\footnotesize   
-  \marginnote{ \setlength\arrayrulewidth{1pt} 
-  \ifthispageodd{\begin{tabular}{|m{1.75cm}} {\color{maincolor} #1 } \end{tabular}}
-  				{\begin{tabular}{m{1.75cm}|} {\color{maincolor} #1 } \end{tabular}}
-  }[0cm]
-  %\marginpar{#1}
-   } } }
-   \begin{align}%
-   %\begin{changebar}%  
-   #2%
-   %\end{changebar}% 
-   \end{align}    
-  }%
+\newcommand{\SideNote}[2][]{%
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,anchor=west] at ([xshift=0pt]current page marginpar area.west|-{pic cs:})
+{\ifthispageodd
+{\begin{oddnote}{\color{maincolor} \textit{ {\footnotesize \noindent#2 }}}\end{oddnote}}
+{\begin{evennote}{\color{maincolor} \textit{ {\footnotesize \noindent#2 }}}\end{evennote}}};
+    \end{tikzpicture}%
+}
+%%
+\newcommand{\importanteq}[2]{\begin{equation}\SideNote{#1} #2 \end{equation}}
+\newcommand{\importantalign}[2]{\begin{align}\SideNote{#1} #2 \end{align}}
+\newcommand{\importantmline}[2]{\begin{multline}\SideNote{#1} #2 \end{multline}}
+\newcommand{\importanteqnarray}[2]{\begin{eqnarray}\SideNote{#1} #2 \end{eqnarray}}
 
 
 %%\setcounter{secnumdepth}{2}

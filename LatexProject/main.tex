@@ -58,15 +58,14 @@
 }
 \usepackage{everyshi}
 \usepackage{mathtools}
-\usepackage{sidenotes}
 
 \makenomenclature
 \begin{document}
-\EveryShipout{%
-  \ifthenelse{\isodd{\value{page}}}%
-    {\global\marginparsep=20pt}% Next page is even
-    {\global\marginparsep=5pt}% Next page is odd
-}
+%\EveryShipout{%
+%  \ifthenelse{\isodd{\value{page}}}%
+%    {\global\marginparsep=20pt}% Next page is even
+%    {\global\marginparsep=5pt}% Next page is odd
+%}
 
 \input{mydefs}
 
@@ -97,7 +96,7 @@
 \chapter{Theory of wave propagation and radiation problems}
 \label{sec:general_wave_theory}
 \input{general_wave_theory}
-
+%%
 \chapter{High frequency approximation of wavefields and radiation problems}
 \label{sec:high_freq_approx}
 \input{high_freq_approx_theory}

@@ -96,7 +96,7 @@ being a vector of unit length (independent from frequency), pointing in the loca
 %
 The normalized wavenumber vector, i.e. the normalized phase change of wavefields is a basic concept in ray tracing, massively used for solving wave propagation problems in anisotropic media.
 In the field of ray tracing expression $\Gamma(\vx) = -\frac{\phi^P(\vx,\omega)}{k}$ is termed the \emph{eikonal}, that's gradient defines the local propagation direction of the wavefield: $\nabla \Gamma(\vx) = \vhk(\vx)$.
-In that context, the local dispersion relation in the form of \eqref{eq:HF_appr:eikonal_eq} is termed the \emph{eikonal equation} \cite{Kinsler2000, Pierce1991}, having to be solved for the eikonal often at space-variant sound speeds, yielding the phase change of the sound rays over the ray path.
+In that context, the local dispersion relation in the form of \eqref{eq:HF_appr:eikonal_eq} is termed the \emph{eikonal equation} \cite{Pierce1991, Kinsler2000}, having to be solved for the eikonal often at space-variant sound speeds, yielding the phase change of the sound rays over the ray path.
 The second basic ray tracing equation termed the \emph{transport equation} is given by \eqref{eq:HF_appr:transport_eq}, with its solution providing the intensity change of sound rays.
 
 \subsection{The local wavefront curvature}
@@ -108,7 +108,7 @@ Mathematically the local vergence of the wavefield may be described by the \emph
 
 The \emph{principal curvature} components $\kappa_1^P(\vx),\kappa_2^P(\vx)$ are defined geometrically as the reciprocal of the principal radii $\rho_1^P(\vx), \rho_2^P(\vx)$, being the maximal and minimal radii of osculating circles at a point on the wavefront, as illustrated in Figure \ref{Fig:HF_appr:local_wave_curvature}.
 Mathematically as long as the local dispersion relation holds, the principal curvatures are given by the two non-zero eigenvalues of the phase function's negative Hessian, normalized by $\omega/c$, as discussed in details in the Appendix \ref{App:Hessian} \cite{Hartmann1999, Hartmann2001}.
-A wavefield is then divergent when both principal curvatures are positive \cite{Arnold1986, Bleistein1984, HF_and_Pulse_Scattering1992}.
+A wavefield is then divergent when both principal curvatures are positive \cite{Bleistein1984, Arnold1986, HF_and_Pulse_Scattering1992}.
 
 \begin{figure} 
 	\small
@@ -285,7 +285,7 @@ Exploiting that $\tan \phi_0 = \frac{x_1}{y_1}$ leads to the formula
 \begin{equation}
 \frac{A_1 - A_2}{A_1 + A_2} = \frac{\tan \phi_p}{\tan \phi_0},
 \end{equation}
-which is identical to the well-known \emph{tangent law} of stereophony \cite{SpringerHandbookSpeech2008, Pulkki1997, Pulkki2001a, Pulkki2001:phd}, originally derived by applying different considerations \cite{Bennett1985}.
+which is identical to the well-known \emph{tangent law} of stereophony \cite{Pulkki1997, Pulkki2001a, Pulkki2001:phd, SpringerHandbookSpeech2008}, originally derived by applying different considerations \cite{Bennett1985}.
 The tangent law therefore ensures the matching of the local propagation directions of the target field and the reproduced wavefronts in the proximity of the listener's position, i.e. over the sweet spot.
 
 Obviously the tangent law expresses merely the relationship between $A_1$ and $A_2$, the exact value of the gain factors can be calculated by applying some type of normalizing strategy \cite{Moore1990}.
@@ -295,7 +295,7 @@ Alternatively it may be exploited that the amplitude of the resultant field on t
 \section{The Kirchhoff approximation}
 %
 The Kirchhoff approximation is an important high frequency asymptotic approximation of the Kirchhoff-Helmholtz integral.
-Based on the equivalent scattering interpretation, the simple source formulation may be simplified in the high frequency region using the \emph{Kirchhoff/Physical optics approximation}, applied frequently to estimate scattering from random surfaces \cite{Tsang2000, Voronich1999}.
+Based on the equivalent scattering interpretation, the simple source formulation may be simplified in the high frequency region using the \emph{Kirchhoff/Physical optics approximation}, applied frequently to estimate scattering from random surfaces \cite{Voronich1999, Tsang2000}.
 In order to estimate the scattered field---and its normal derivative on the scatterer surface---two approximations are applied:
 \begin{figure} 
 	\centering
@@ -372,7 +372,7 @@ In Figure (a) the illuminated/active part of the scatterer contour is denoted by
 Writing \eqref{Eq:SFS_theory:tangent_plane} in terms of the inward normal vector, with exploiting that the exterior sound field in the single source formulation is related to the scattered sound field according to $P_\mathrm{e}(\vx) = -P_{\mathrm{s}}(\vx)$ in the equivalent scattering interpretation and introducing the windowing function into the simple source formulation, one obtains the Kirchhoff approximation of the simple source formulation 
 %\fscom{how is this linked to the HF-BEM kernel in my PhD sec. 2.2.2? it is related as the approximation of 2.33 with assuming that cosfi = 1 
 %indicate that the derivative is the HF gradient already} answer: here no hf gradient is applied yet. 
-\importanteq{Kirchhoff approximation \vspace{1.7cm}}{
+\importanteq{Kirchhoff approximation}{
 \oint_{\dO} 
 - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni} 
 G(\vx-\vxo,\omega) 
@@ -415,7 +415,7 @@ I_{n\mathrm{D}} = \int\limits_{-\infty}^{\infty} A(\vx) \, \te^{\ti \phi(\vx)} \
 in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $A(\vx)$ is comparably slowly varying.
 
 \paragraph{1D SPA:} 
-For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Bleistein1984, Blenstein1975, Williams1999}.
+For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Blenstein1975, Bleistein1984, Williams1999}.
 More informally the method relies on the second order truncated Taylor series of the exponent around the \emph{stationary point} $x^*$, defined as the point in the integration path satisfying 
 \begin{equation}
 \phi'_x(x^*) = 0, \hspace{1cm} \text{and} \hspace{1cm} \phi''_{xx}(x^*) \neq 0.
@@ -458,7 +458,7 @@ i,j = 1,2,...,n
 \end{equation}
 holds, with $\mH$ being the Hessian matrix of the phase function.
 The multidimensional formula for the integral value reads as
-\importanteq{Multidimensional SPA}{
+\importanteq{Multi-dimensional SPA}{
 \label{Eq:SPAResult_nd}
 I_{nD} \approx \sqrt{\frac{(2\pi)^n}{|\det \mH(\vx^*)|}} F(\vx^*) \te^{\ti \phi(\vx^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left( \mH(\vx^*) \right)},
 }
@@ -582,7 +582,6 @@ For a more detailed investigation see Appendix \ref{App:Hessian}.
 The determinant of the Hessian reads as
 \begin{multline}
 \label{Eq:HF_approx:H_det_Rayleigh}
-\small
 \mathrm{det} \mH^{P+G}(\vxo^*(\vx)) = 
 \left(\kappa_1^P(\vxo^*(\vx)) + \kappa_1^G(\vx-\vxo^*(\vx))\right)
 \left(\kappa_2^P(\vxo^*(\vx)) + \kappa_2^G(\vx-\vxo^*(\vx))\right)
@@ -631,14 +630,13 @@ Similarly, a 2D wavefront's amplitude attenuates proportionally to the only non-
 Note that since points $\vx$ and $\vxo^*(\vx)$ are related by the local wavenumber vector, therefore equation \eqref{eq:HF_approx:ray_propagation} generally describes the relation of field variables along the direction of the local wavenumber vector, providing the amplitude and phase change along the path of propagation.
 Departing from the Rayleigh plane concept, as a more general statement, any propagating pressure field may be approximated along the propagation path as
 \begin{equation}
-\small
 P(\vx+\td x \cdot \hat{\vk}^P(\vx),\omega) =
 \sqrt{ \frac{ \rho_1^P(\vx) \rho_2^P(\vx) }{ \left(\rho_1^P(\vx) + \td x \right) \left(\rho_2^P(\vx) + \td x\right) } }
 \te^{-\ti \omega \frac{\td x}{c} } P(\vx,\omega)
 \end{equation}
 as long as high frequency/farfield assumptions hold\footnote{From the above equation the relative amplitude change can be expressed by applying the L'Hospital's rule, reading as
 %\begin{equation}
-$\small
+$
 \frac{\left< \hat{\vk}^P(\vx) \cdot \Dx A^P(\vx,\omega) \right>}{A^P(\vx,\omega)} = \lim_{\td x \rightarrow 0} 
 \frac{\sqrt{ \frac{ \rho_1^P(\vx) \rho_2^P(\vx) }{ \left(\rho_1^P(\vx) + \td x \right) \left(\rho_2^P(\vx) + \td x\right) } }-1}{\td x}
 = 
@@ -737,7 +735,7 @@ Assuming that the local dispersion relation holds, two local wavenumber componen
 is satisfied, with $\vk$ being the wavenumber vector of the spectral plane wave.
 
 This finding states that each point in the angular spectrum of a sound field is dominated by the parts of the space, where the local propagation direction coincides with the corresponding spectral plane wave's global propagation direction.
-The local wavenumber components therefore may be also defined alternatively as the stationary points of the spatial Fourier transform \eqref{eq:forward_transform} as a function of space \footnote{This definition if often termed \emph{Lagrange submanifolds}, playing a central role in phase space representation of sound fields \cite{Arnold1995, Tinkelman2005, Steinberg1993}.}.
+The local wavenumber components therefore may be also defined alternatively as the stationary points of the spatial Fourier transform \eqref{eq:forward_transform} as a function of space \footnote{This definition if often termed \emph{Lagrange submanifolds}, playing a central role in phase space representation of sound fields \cite{Steinberg1993, Arnold1995, Tinkelman2005}.}.
 The interpretation of the stationary position for the Fourier transform SPA is illustrated in Figure \ref{Fig:Theory:stat_pos_in_kx} through the exemplary transformation of a point source.
 
 \begin{figure}
@@ -902,4 +900,4 @@ G_{1\text{D}}(y,\omega) = \frac{1}{2} \frac{\te^{-\ti k y } }{\ti k},
 \label{eq:HF_approx:1D_Green}
 }
 describing the field of a vibrating infinite planar surface, with the frequency response given by $\sim \frac{1}{\ti \omega}$ and the impulse response being a Heaviside step function.
-The 1D Green's function therefore realizes the full integration of the source time history, while the 2D Green's function's impulse response can be interpreted as the half-integration of the source signal \cite{Deregowski1983, Wang2009, Wang2016, Schultz2013:IIR_prefilters}.
+The 1D Green's function therefore realizes the full integration of the source time history, while the 2D Green's function's impulse response can be interpreted as the half-integration of the source signal \cite{Deregowski1983, Wang2009, Schultz2013:IIR_prefilters, Wang2016}.

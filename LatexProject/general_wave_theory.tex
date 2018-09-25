@@ -23,7 +23,7 @@ Furthermore the alternation of the instantaneous sound pressure is small compare
 This later assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 
 First the homogeneous wave equation is presented, valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
-For a more detailed derivation refer to \cite{Beranek1993, Morse1968, Williams1999, Blackstock2000}.
+For a more detailed derivation refer to \cite{Morse1968, Beranek1993, Williams1999, Blackstock2000}.
 
 \subsection{The homogeneous wave equation}
 %
@@ -62,7 +62,7 @@ This \emph{continuity equation} states that the net flow of the fluid out of an 
 %
 Taking the time derivative of equation \eqref{Eq:Theory:continuity_eq} and the divergence of equation \eqref{Eq:Theory:Eulers_equation} the particle velocity may be eliminated. 
 By using the \emph{Laplace operator} $\Dx \cdot \Dx = \Lx$ the scalar linear homogeneous wave equation is obtained for the sound pressure
-\importanteq{ \vspace{3mm} Homogeneous wave Eq. \vspace{3mm}}{
+\importanteq{Homogeneous wave Eq.}{
 \Lx p(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} p(\vx,t) = 0,
 \label{Eq:Theory:Scalar_wave_equation}
 }
@@ -119,7 +119,6 @@ To involve more physical source excitation models additional force source terms 
 This results in the \emph{general inhomogeneous wave equations} \cite{Pierce1991, Kinsler2000, Howe2007}
 \begin{equation}
 \Lx p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = - \rho_0 \frac{\partial}{\partial t} q(\vx,t) + \Dx \cdot \mathbf{f}(\vx,t),
-\label{Eq:Theory:Inhomogene_wave_eq_time_domain}
 \end{equation}
 and
 \begin{equation}
@@ -154,7 +153,7 @@ The homogeneous Dirichlet boundary conditions are thus
 \begin{equation}
 P(\vx,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO.
 \end{equation}
-These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries, and are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Blackstock2000, Ziomek1995}.
+These types of boundaries are called \emph{sound-soft} or \emph{pressure release} boundaries, and are used to model e.g. the surface of the ocean for a wave propagating in the water \cite{Ziomek1995, Blackstock2000}.
 
 The inhomogeneous Dirichlet boundary condition assumes a specific pressure distribution on the boundary surface:
 \begin{equation}
@@ -320,7 +319,7 @@ The evanescent contribution is of central importance in the field of \emph{Nearf
 \label{Sec:thoery:angular_Spectrum}
 
 Based on the foregoing any source-free sound field may be expressed in terms of a double inverse Fourier transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
-This formulation is termed the \emph{angular spectrum representation} \cite{Ahrens2010phd, Ahrens2012, Williams1999, NietoVesp2006, Goodman2005} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
+This formulation is termed the \emph{angular spectrum representation} \cite{Williams1999, Goodman2005, NietoVesp2006, Ahrens2010phd, Ahrens2012} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 By expressing the pressure by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} at the infinite plane $y=0$ it is revealed that the \emph{angular spectrum} $\tilde{P}(k_x,k_z, \omega)$ is given as the corresponding forward Fourier transform of the pressure distribution at $y=0$.
 %: $\hat{P}(k_x,k_y, \omega) = \mathcal{F}_x\mathcal{F}_z \left\{  P(x,0,z,\omega) \right\}$.
 In the following, the domain characterized by $k_x$, $k_z$ is termed the \emph{wavenumber domain}.
@@ -348,9 +347,9 @@ which is the Fourier transform differentiation theorem for wavefield extrapolati
 These statements lead to two important formulations:
 equation \eqref{Eq:Theory:Wave_field_extrapolation_2} written in the spatial domain by means of a double inverse Fourier transform yields
 \importanteq{Wavefield extrapolation 1.}{
-P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }  \te^{- \ti \left( k_x x  + k_z z \right) }
-\td k_x\td k_z.
 \label{Eq:Theory:Pressure_propagated}
+P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,y_0,k_z,\omega) \te^{-\ti k_y ( y - y_0 ) }  \te^{- \ti \left( k_x x  + k_z z \right) }
+\td k_x \td k_z.
 }
 By expressing $\tilde{P}(k_x,y_0,k_z,\omega)$ in terms of the normal velocity $\tilde{V}_{\mathrm{n}}(k_x,y_0,k_z,\omega)$ using the Euler's equation  \eqref{Eq:Theory:Freq_Eulers_equation}, with the normal ($y$-) derivative at $y = y_0$ calculated by applying the differentiation theorem one obtains
 \importanteq{Wavefield extrapolation 2.}{
@@ -399,7 +398,7 @@ For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi201
 \subsection{The Green's function}
 %First the solution for \eqref{Eq:Theory:Inhomogene_wave_eq_time_domain} is introduced.
 A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. 
-The $n$-dimensional \emph{Green's function} is defined as the solution for the following equation \cite{Gumerov2004, Williams1999}
+The $n$-dimensional \emph{Green's function} is defined as the solution for the following equation \cite{Williams1999, Gumerov2004}
 \begin{equation}
 \nabla_\vx^2 g(\vx|\vxo,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} g(\vx|\vxo,t) = -\delta\left( \vx - \vxo \right)\delta\left( t \right),\label{Eq:Theory:Green_function_def}
 \end{equation}
@@ -452,7 +451,7 @@ The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_repres
 with two representations of the 3D Green's function are depicted in Figure \ref{Fig:Theory:Greens_function}.
 
 \begin{table}[h!]
-\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{Devaney2012, Duffy2001:Greens, Ahrens2010a, Ahrens2012, Gibson2008, DeSanto1992}.
+\caption{Free field acoustic Green's function representations ($\vxo = 0$) \cite{DeSanto1992, Duffy2001:Greens, Gibson2008, Ahrens2010a, Devaney2012, Ahrens2012}.
 $\theta\left( \right)$ denotes the Heaviside step function, $H_0^{(2)}\left( \right)$ is the zeroth order Hankel function of the second kind and $K_0
 \left( \right)$ is the modified Bessel function of the second kind \cite{Olver:2010:NHMF}.
 The conditional expressions ensure that evanescent waves are attenuated with increasing distance from the source. For the sake of brevity in the following Greens function is expressed only in the propagating region, however it should be kept in mind that evanescent wavenumber components are given as \eqref{eq:theory:k_y_definition}, resulting in the presented conditional expressions.
@@ -589,7 +588,7 @@ This finding will be further discussed in the section dealing with the Rayleigh 
 
 \subsection{The Kirchhoff-Helmholtz integral equation}
 Any sound field obeying the homogeneous Helmholtz equation may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
-This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Williams1999, Bai1992, Wu2010}, and sound field synthesis.
+This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Bai1992, Williams1999, Wu2010}, and sound field synthesis.
 
 In this section the integral formulation of interior problems in source-free volumes is introduced, describing the sound field, generated by a \emph{primary source} outside the volume of investigation.
 The effect of sources inside the enclosure may be straightforwardly included in the following results by the appropriate addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
@@ -725,7 +724,7 @@ P_{\mathrm{e}}(\vxo,\omega) = P_{\mathrm{i}}(\vxo,\omega), \hspace{15mm} \vxo \i
 Both fields may be expressed in terms of an exterior and an interior KHIE respectively.
 For the exterior KHIE expressed in terms of the inward normals refer to \cite[eq. 8.30]{Williams1999}.
 By adding the exterior and interior KHIEs terms, weighted by the pressure on the boundary, will vanish due to the coupled boundary condition and the following integral expression is obtained \cite{Courant1962, Kellogg1967, Williams1999}
-\importanteq{\vspace{1cm} Simple source formulation \vspace{1cm}}{
+\importantalign{Simple source formulation}{
 \oint_{\dO} 
 \left(
 \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
@@ -744,7 +743,7 @@ The equation states that either the interior or the exterior sound field, satisf
 The expression of this strength function, obtained as the amount of discontinuity in the pressure gradient is often termed the \emph{jump relation}, indicating the fact that the sound field generated by the single layer potential is continuous in pressure on the boundary, while the gradient changes sign i.e. \emph{jumps}.
 
 \vspace{3mm}
-As pointed out in \cite{Fazi2013:Equivalent_scattering, Fazi2010, Schultz2014:Comparing_approaches, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
+As pointed out in \cite{Schultz2014:Comparing_approaches, Fazi2010, Fazi2013:Equivalent_scattering, Zotter2013:uniqueness} the following physical interpretation can be assigned to the simple source formulation: 
 Suppose that the surface $\dO$ represents the boundary of a sound soft scattering object.
 In acoustic scattering problems it is assumed that an the \emph{incident sound field} $P(\vx,\omega)$ that is reflected by the scattering object, generating the \emph{scattered field} $P_{\mathrm{s}}(\vx,\omega)$ is known a priori.
 The field measured in the presence of the obstacle is termed the \emph{total field} $P_{\mathrm{t}}(\vx,\omega)$, given by the sum of the incident and scattered fields, so that the total field obeys homogeneous boundary conditions on the sound soft scatterer surface, i.e. $P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{.2cm} \vxo \in \dO$.
@@ -826,20 +825,19 @@ and the required Green's functions are given as
 G_N(\vxo,\omega) =  G(\vxo|\vx,\omega) + G(\vxo|\vx',\omega) \\
 G_D(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
 \end{eqnarray}
-
 with $\vx' = \posvec{3}{x}{2 y_0-y}{z}$  as illustrated in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 %
 
 Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariance of the Green's function yields the Rayleigh I and II (or Neumann and Dirichlet) integrals respectively \cite{Berkhout1984}:
-\importanteqnarray{ \vspace{6mm} Rayleigh I and  Rayleigh II integrals \vspace{6mm} }{
-P(\vx,\omega) =
+\importantalign{Rayleigh I and Rayleigh II integrals}{
+P(\vx,\omega) &=
 \int_{\dO_P}
 -2
 \left. \frac{\partial P(\vx,\omega)}{\partial y_0} \right|_{y_0 = 0}  \,
 G(\vx-\vxo,\omega) \td \dO_P ( \vxo)
 \label{Eq:Theory:RayleighI}
 \\
-P(\vx,\omega) =
+P(\vx,\omega) &=
 \int_{\dO_P}
 2 P(\vxo,\omega)  
 \left. \frac{\partial G(\vx-\vxo,\omega)}{\partial y_0} \right|_{y_0 = 0} \,
