@@ -332,8 +332,8 @@ Once the reference position is expressed for each SSD element, the driving funct
 %
 In order to gain a physical interpretation of the structure of the resulting driving function, the referencing function can be expressed in terms of the vertical principal radii of the virtual field and the Green's function, yielding
 \importanteq{Detailed 2.5D WFS driving function}{
-\small
 \label{Eq:SFS_theory:25D_WFS_driv_fun_ver_2}
+\scriptstyle
 D(\vxo, \omega) = 
 \underbrace{\sqrt{\frac{2\pi \Rv^G(\vxref(\vxo)-\vxo) }{\ti k}}}_{{\substack{\text{SSD}\\\text{compensation}}}}
 \underbrace{\sqrt{ \frac{\Rv^P(\vxo) }{\Rv^P(\vxo) +  \Rv^G(\vxref(\vxo)-\vxo) } }}_{{\substack{\text{virtual source}\\\text{compensation}}} 
@@ -553,7 +553,7 @@ where $h(t) = \mathcal{F}^{-1}_{\omega}\left\{ \sqrt{\ti \omega} \right\}$ is th
 
 The explicit solution for the general sound field synthesis problem aims at the direct solution of the inverse problems, described by integral equations \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}.
 
-Generally speaking the explicit methodology utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function \cite{Ahrens2012,MorseFeshbach1953}.
+Generally speaking the explicit methodology utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function \cite{MorseFeshbach1953, Ahrens2012}.
 Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on a control surface, that form a complete basis of the required solution.
 The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero (otherwise the problem is termed \emph{ill-conditioned}).
 Finally the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
@@ -564,7 +564,8 @@ and also for the (strictly speaking) non-enclosing planar case as shown in \cite
 In the latter case the compact operator degenerates to the continuous eigenvalue domain instead of countable eigenvalues as presented in the followings.
 
 The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
-For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2010phd,Zotter2009phd,Ahrens2012,Ahrens2009:circularSSD_mismatch,Ahrens2009:circular25D_SFR,Ahrens2008:Analytical_Circ_Spherical_SFS,Schultz2014:Comparing_approaches} and \cite{Koyama2014, Koyama2014:phd} for the cylindrical solution.
+For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. 
+For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR, Zotter2009phd, Ahrens2010phd, Ahrens2012, Schultz2014:Comparing_approaches} and \cite{Koyama2014, Koyama2014:phd} for the cylindrical solution.
 In the present thesis only the planar and linear geometries are investigated in details. %\fscom{arbitrary SSD are rather treated with Kirchhoff, SPA and HF approximations}
 %However, under the validity of the tangent plane approximation---i.e. under high frequency assumptions with small SSD curvatures---the SSD surface/contour can be considered locally planar/linear and the spatial form of the explicit driving functions are valid for arbitrary shaped SSDs.
 This 
@@ -591,7 +592,7 @@ P(\vx,\omega) = \iint_{-\infty}^{\infty} D(x_0,z_0,\omega) G(x-x_0,y,z-z_0, \ome
 describing a continuous convolution along the SSD plane.
 Here $G(x,y,z,\omega)$ denotes the sound field of a secondary source element placed at the origin and $\ast_{x,z}$ denotes convolution along the $x$ and $z$ dimensions.
 
-For this geometry the orthogonal basis is given by the continuous set of exponentials, and the decomposition of the involved quantities is given by a double Fourier transform \cite{Ahrens2012, Arfken2005,Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition as discussed in Section \ref{Sec:thoery:angular_Spectrum}.
+For this geometry the orthogonal basis is given by the continuous set of exponentials, and the decomposition of the involved quantities is given by a double Fourier transform \cite{Arfken2005, Ahrens2012, Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition as discussed in Section \ref{Sec:thoery:angular_Spectrum}.
 Applying the convolution theorem to the angular spectrum representation, the convolution transforms into a multiplication \cite{Girod2001}:
 \begin{equation}
 \tilde{P}(k_x,y,k_z, \omega) = \tilde{D}(k_x,k_z, \omega) \cdot \tilde{G}(k_x,y,k_z, \omega).
@@ -609,7 +610,7 @@ D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \frac{\tilde{P}(k_
 \label{Eq:Theory:Dkx_inverse_Fourier}
 }
 respectively.
-Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear}.
+Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear, Ahrens2012:Ambisonics_for_planar_linear}.
 
 Substituting the $k_x-k_z$ representation of the 3D Green's function given by \eqref{eq:HF_approx:Greens_2D_Spectrum} the driving function \eqref{Eq:Theory:Dkx_inverse_Fourier} reads as
 \begin{equation}
@@ -833,7 +834,7 @@ In the driving function $\vxref(\vxo) = \posvec{3}{x_{\mathrm{ref}}(x_0)}{y}{0}$
 \vk^P(\vxref(\vxo)) = \vk^G(\vxref(\vxo) - \vxo).
 }
 Hence, in the explicit driving function for a given SSD coordinate $x_0$ the reference point $\vxref$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
-For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points}.
+For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points_2}.
 
 \begin{figure}[t!]
 \small
@@ -855,7 +856,7 @@ For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_
 	   For a given SSD position $x_0$ the reference (stationary) position is found on a given reference line, where the virtual field propagation direction coincides with that of the SSD element under discussion.
 	   Under the validity of the Kirchhoff approximation this principle may be extended towards arbitrary SSD and reference contours. 
        } 
-       \label{fig:SFS_theroy:explicit_sol_stationary_points}
+       \label{fig:SFS_theroy:explicit_sol_stationary_points_2}
   \end{minipage}
 \end{figure}
 
@@ -985,7 +986,6 @@ where positions $\vxref$ and $\vxo$ are related through \eqref{Eq:stationary_eva
 With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} and after simplification the driving function takes the form
 \begin{equation}
 D(x_0,\omega) =
-\small
 2\sqrt{\frac{2\pi  \Rv^G(\vxref(\vxo)-\vxo)}{\ti k}} 
 \sqrt{\frac{\Rv^P(\vxo) }{\Rv^P(\vxo) + \Rv^G(\vxref(\vxo)-\vxo)}}
 \ti k_y^{P}(\vxo)
@@ -994,7 +994,6 @@ P(\vxo,\omega),
 or expressed in terms of the second phase derivatives 
 \begin{equation}
 D(x_0,\omega) =
-\small
 2\sqrt{\frac{2\pi }{\ti }} 
 \frac{ 1 }{\sqrt{|\phi^{P''}_{zz}(\vxo) + \phi^{G''}_{zz}(\vxref(\vxo)-\vxo)|}}
 \ti k_y^{P}(\vxo)
@@ -1225,7 +1224,7 @@ D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi
 \label{Eq:SFS_theory:general_cutoff_freq} 
 }
 The result of asymmetric anti-aliasing filtering is presented in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (b), illustrating how anti-aliased synthesis may be optimized into an arbitrary direction.
-This local increase of synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years. \cite{ahrens2010local, 5946329, spors2011local, Winter2016-TASL, Hahn17:EUSIPCO, Hahn16:AES, Winter15:EURONOISE, Winter15:AES}
+This local increase of synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years. \cite{ahrens2010local, 5946329, spors2011local, Winter15:EURONOISE, Winter15:AES, Hahn17:EUSIPCO, Hahn16:AES, Winter2016-TASL}
 Local increase of accuracy is usually achieved by some spatial bandwidth limitation strategy applied to the driving function, performed in simple SSD geometries (e.g. linear, circular SSDs).
 The above derivation hence gives an asymptotic approximation of these spatial bandwidth limitation techniques, valid for an arbitrary SSD contour.
 

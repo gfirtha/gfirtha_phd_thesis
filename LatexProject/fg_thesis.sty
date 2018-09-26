@@ -237,6 +237,11 @@
 \RequirePackage[rightbars]{changebar}
 \RequirePackage{scrextend}
 \RequirePackage{tabularx}
+\RequirePackage{empheq}
+
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{tikzpagenodes}
+\usetikzlibrary{tikzmark}
 
 \setlength{\parskip}{3pt} % 1ex plus 0.5ex minus 0.2ex}
 \setlength{\parindent}{0pt}
@@ -256,27 +261,52 @@
 		\captionsetup{format=plain,labelsep=quad,singlelinecheck=false}%
 %	}{}
 \fi
-%
+%%
 \RequirePackage[					% page layout modifications
 	paper=a4paper,					% 	- use A4 paper size
 	%scale={0.86,0.94},				% 	- total body size (h,v)
 	%scale={0.86,0.94},				% 	- total body size (h,v)
-	%nohead,							% 	- no header
+	%nohead,						% 	- no header
 	%includehead,					% 	- include footer space
 	%includefoot,					% 	- include footer space
 	includemp,						% 	- include side note space
 	bindingoffset=0.25cm,			% 	- binding correction
 	top=3.5cm,						% 	- total body: top margin
 	left=3.75cm,					% 	- total body: left margin (odd pages)
-	right=0.75cm,					% 	- total body: right margin (odd pages)
+	right=0.2cm,					% 	- total body: right margin (odd pages)
+%	inner=3.75cm,					% 	- total body: left margin (odd pages)
+%	outer=0.25cm,					% 	- total body: right margin (odd pages)
 	bottom=1.25cm,					% 	- total body: bottom margin
-	marginparwidth=1.75cm,			% 	- width for side note
-	marginparsep=2pt,				% 	- space between notes and body text (content)
+	marginparwidth=2.3cm,			% 	- width for side note
+	marginparsep=5pt,				% 	- space between notes and body text (content)
 	footskip=1cm,					% 	- footer skip size		
 	headsep=2cm,					% 	- footer skip size	
 	voffset=-1cm,					% 	- footer skip size	
 ]{geometry}
 %
+
+%\RequirePackage[					% page layout modifications
+%	paper=a4paper,					% 	- use A4 paper size
+%	%scale={0.86,0.94},				% 	- total body size (h,v)
+%	%scale={0.86,0.94},				% 	- total body size (h,v)
+%	%nohead,						% 	- no header
+%	%includehead,					% 	- include footer space
+%	%includefoot,					% 	- include footer space
+%	includemp,						% 	- include side note space
+%	bindingoffset=0.25cm,			% 	- binding correction
+%	top=3.5cm,						% 	- total body: top margin
+%	left=3.75cm,					% 	- total body: left margin (odd pages)
+%	right=0.75cm,					% 	- total body: right margin (odd pages)
+%%	inner=3.75cm,					% 	- total body: left margin (odd pages)
+%%	outer=0.25cm,					% 	- total body: right margin (odd pages)
+%	bottom=1.25cm,					% 	- total body: bottom margin
+%	marginparwidth=1.75cm,			% 	- width for side note
+%	marginparsep=2pt,				% 	- space between notes and body text (content)
+%	footskip=1cm,					% 	- footer skip size		
+%	headsep=2cm,					% 	- footer skip size	
+%	voffset=-1cm,					% 	- footer skip size	
+%]{geometry}
+
 \RequirePackage[					% use biblatex for bibliography
 	backend=\cthesis@bibsys,		% 	- use biber backend (bibtex replacement) or bibtex
 	bibencoding=utf8,				% 	- use auto file encode
