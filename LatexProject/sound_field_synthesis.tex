@@ -284,7 +284,7 @@ with the term $\dref(\vxo)$ denoting the \emph{referencing function}, defined as
 \end{align}
 where $\Kv^P$, $\Kv^G$ and $\Rv^P$,$\Rv^G$ are the vertical principal curvatures and radii of the involved sound fields, respectively.
 Position $\vxref(\vxo)$ is the \emph{reference position} for the SSD element at $\vxo$, for which receiver position $\vxo$ serves as a stationary phase point on the SSD, defined by
-\importanteq{WFS reference position}{
+\importanteq{2.5D WFS reference position}{
 \vk^P(\vxo) = \vk^G(\vxref(\vxo) - \vxo).
 \label{Eq:SFS_theory:WFS_General_Stat_pos}
 }
@@ -462,14 +462,14 @@ D(\vxo, \omega) =
 \label{fig:SFS_theory:25D_WFS_linear_ssd}  
 \end{figure}
 Finally, expressing the pressure field and the normalized local wavenumber vector of the virtual point source results in the virtual source-SSD shape-receiver shape specific driving function
-\importanteq{Linear WFS driv. fun. for a 3D point source}{
+\importanteq{Linear point source driv. fun.}{
 D(\vxo, \omega) =  -\frac{1}{4\pi}
 \sqrt{ \frac{8\pi}{\ti k} }
 \sqrt{ \frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } }
 \ti k y_s \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|^{\frac{3}{2}}}.
 \label{eq:SFS_theory:WFS_point_source}
 }
-This result is equivalent with the traditional WFS driving function of a point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd}, and furthermore identical to the farfield/high frequency approximated explicit solution presented in the next section \cite[(25)]{Spors10ahrens:analysis}, \cite[Ch. 2.3]{Schultz2016}. 
+This result is equivalent with the traditional WFS driving function of a point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd}, and furthermore identical to the farfield/high frequency approximated explicit solution presented in the next section \cite[(25)]{Spors2010:analysis_and_improvement}, \cite[Ch. 2.3]{Schultz2016}. 
 The result of synthesis is depicted in Figure \ref{fig:SFS_theory:25D_WFS_linear_ssd} confirming that by applying the derived driving function amplitude correct synthesis is ensured along the reference line.
 
 Taking the temporal inverse Fourier transform of the driving function weighted by $S(\omega)$ yields the temporal driving function for a virtual point source with the source time history of $s(t)$.
@@ -479,7 +479,7 @@ Taking the temporal inverse Fourier transform of the driving function weighted b
 %\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{\te^{\ti \omega ( t - \frac{|\vxo-\vxs|}{c} )}}{|\vxo-\vxs|^{\frac{3}{2}}} \td \omega.
 %\end{equation}
 Exploiting the shift theorem and the associativity of convolution yields the temporal driving function
-\importanteq{Temporal 2.5D point source driv. fun.}{
+\importanteq{Linear time domain point source driv. fun.}{
 d(\vxo, t) =  -
 \sqrt{\frac{1}{2\pi c}}
 \sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
@@ -873,9 +873,9 @@ Furthermore, within the validity of the Kirchhoff approximation the SSD does not
 In that case \eqref{eq:SFS_theory:spatial_sdm_2} has to be evaluated with $\hat{k}_y^{P}(\vxref(x_0)) \rightarrow \hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo))$, i.e. with the wavenumber component along the normal direction of the stationary SSD element.
 
 With the considerations above and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function can be cast into the final form
-\footnotesize
 \importantmline{Detailed 2.5D explicit driv. fun.}{
 \label{eq:SFS_theory:spatial_sdm_2}
+\scriptsize
 D(\vxo,\omega) =
 \underbrace{ \sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
 \underbrace{\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}
