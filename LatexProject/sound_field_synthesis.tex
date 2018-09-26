@@ -462,7 +462,7 @@ D(\vxo, \omega) =
 \label{fig:SFS_theory:25D_WFS_linear_ssd}  
 \end{figure}
 Finally, expressing the pressure field and the normalized local wavenumber vector of the virtual point source results in the virtual source-SSD shape-receiver shape specific driving function
-\importanteq{Linear point source driv. fun.}{
+\importanteq{Linear WFS point source driv. fun.}{
 D(\vxo, \omega) =  -\frac{1}{4\pi}
 \sqrt{ \frac{8\pi}{\ti k} }
 \sqrt{ \frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } }
@@ -725,7 +725,7 @@ Amplitude correct synthesis is ensured in this plane at a distance $\dref = \sqr
 
 For practical applications the plane of synthesis is chosen to be the horizontal plane $z=0$, requiring that for the virtual field $k_z(x,y,0) = 0$ holds.
 The driving function thus reads as
-\importanteq{2.5D SDM driving fun.}{
+\importanteq{2.5D SDM driving function}{
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \te^{-\ti k_x x_0} \td k_x.
 \label{Eq:Theory:Linear_SDM}
 }
@@ -761,7 +761,7 @@ Substituting the 1D spectra of the virtual and the secondary point sources along
 ,
 \end{equation}
 and the spatial inverse Fourier transform yields the spatial domain driving function, reading as
-\importanteq{Linear SDM driv. fun. for a 3D point source}{
+\importanteq{Linear SDM point source driv. fun.}{
 \label{Eq:Theory:SDM_point_source}
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
 \frac{  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  }
@@ -873,9 +873,9 @@ Furthermore, within the validity of the Kirchhoff approximation the SSD does not
 In that case \eqref{eq:SFS_theory:spatial_sdm_2} has to be evaluated with $\hat{k}_y^{P}(\vxref(x_0)) \rightarrow \hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo))$, i.e. with the wavenumber component along the normal direction of the stationary SSD element.
 
 With the considerations above and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function can be cast into the final form
+\footnotesize
 \importantmline{Detailed 2.5D explicit driv. fun.}{
 \label{eq:SFS_theory:spatial_sdm_2}
-\scriptsize
 D(\vxo,\omega) =
 \underbrace{ \sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
 \underbrace{\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}

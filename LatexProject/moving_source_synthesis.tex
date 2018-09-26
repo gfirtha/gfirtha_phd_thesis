@@ -347,7 +347,7 @@ Suppose that a point source is moving along an arbitrary trajectory $\vxs(t) = \
 Assuming a harmonic source excitation with the angular frequency being $\omega_0$ the driving function for the synthesis of the virtual source is obtained from \eqref{eq:moving_source:3D_wfs_driv_fun} by substituting the pressure field and the local wavenumber vector of a moving point source, given by \eqref{eq:harmonic_moving_source_field} and \eqref{eq:HF_appr:moving_s_loc_wn}, respectively.
 The resulting driving function reads as
 \importanteq{3D WFS driving function}{
-\textstyle
+\small
 D(\vxo,t_0,\omega_0) =  w(\vxo,t_0) 
 \frac{\ti k_0}{2\pi} \frac{\left< \vxo -\vxs(t_0-\tau(\vxo,t_0)) \cdot \vni(\vxo) \right>}{\Delta(\vxo,t_0-\tau(\vxo,t_0))}
 \frac{\te^{\ti \omega_0\left( t_0 - \tau( \vxo,t_0 )\right)}}{\Delta(\vxo,t_0-\tau( \vxo, t_0 ))},
@@ -750,7 +750,7 @@ P_{\mathrm{m}}(\mathbf{x},\omega) = \frac{1}{v}
 Hence, the radiated field in the spectral domain is obtained by a non-stationary convolution as well.
 Since integration is performed over the frequency content of the source input signal $S(\omega_0)$, the weighting kernel can be recognized as the frequency content of a moving source pass-by, radiating at a single frequency component $\omega_0$.
 The field of a harmonic moving source is therefore given by
-\importanteq{Moving source spectrum}{
+\importanteq{Moving source in $\vx-\omega$ domain}{
 P_{\mathrm{m}}(\mathbf{x},\omega,\omega_0) =
 \frac{1}{v}
 \tilde{G}(\frac{\omega-\omega_0}{v}, y, z, \omega)
@@ -1166,15 +1166,15 @@ where $\hat{k}_x^P(\vxo,t_0)$ is the $x$-component of the normalized local waven
 Finally, within the validity of the Kirchhoff approximation an arbitrary smooth SSD can be considered locally linear.
 In this case the above anti-aliasing criterion holds, with the role of $k_x^P$ interchanged to the tangential wavenumber component $k_t^P$, resulting in 
 \begin{equation}
-D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo,t_0)|}.
+D(\vxo,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo,t_0)|}.
 \end{equation}
 According to \eqref{eq:Moving_source:norm_local_wn_moving_source}, for a moving source the normalized local wavenumber vector is a unit vector pointing into the receiver position from the source position at the emission time.
 Denoting the tangent vector of the secondary sources by $\mathbf{t}(\vxo)$ this leads to the final anti-aliasing condition for a moving point source:
-\begin{equation}
-D(x_0,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi c}{\Delta x} \frac{|\vxo-\vxs(t_0-\tau(\vxo,t_0))|}
+\importanteq{Moving source anti-aliasing condition}{
+D(\vxo,\omega) = 0, \hspace{3mm} \text{for} \hspace{3mm} \omega(\vxo,t_0) > \frac{\pi c}{\Delta x} \frac{|\vxo-\vxs(t_0-\tau(\vxo,t_0))|}
 {|\left< \vxo-\vxs(t_0-\tau(\vxo,t_0)) \cdot \mathbf{t}(\vxo) \right>|}.
 \label{Eq:Moving_source:anti-aliasing_cutoff_freq}
-\end{equation}
+}
 This means that anti-aliasing requires the implementation of a time variant low-pass filter with the cut-off frequency given above.
 
 \begin{figure}
