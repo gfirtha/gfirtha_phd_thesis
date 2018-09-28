@@ -1,0 +1,176 @@
+\documentclass[10pt,twoside]{article}
+\usepackage[a5paper,inner=1.5cm,outer=2.0cm,top=2.0cm,bottom=2.5cm,pdftex]{geometry}
+\usepackage[utf8]{inputenc}						% UTF-8 encoding
+\usepackage[T1]{fontenc}
+\usepackage[magyar,american]{babel}
+\usepackage{palatino}							% Font
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} 							% Theorem customization
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{overpic}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[bf,small]{caption}
+\usepackage[backend=bibtex,hyperref=true,babel=hyphen,style=numeric-comp,isbn=false,sorting=none,defernumbers=true,maxnames=10,doi=false,url=false]{biblatex}
+\addbibresource{../LatexProject/dissertation.bib}
+
+
+\usepackage[pdftitle={A Unified Wave Field Synthesis Theory (Ph.D. Thesis Booklet)},%
+  pdfauthor={Gergely Firtha},% 
+%  colorlinks=true,% 
+%  urlcolor=blue,% 
+%  linkcolor=blue,% 
+%  citecolor=blue,% 
+%  filecolor=green,% 
+%  raiselinks=false,% 
+  hyperfootnotes=true]{hyperref}
+
+% Citation categories
+\DeclareBibliographyCategory{journal} 
+\DeclareBibliographyCategory{conference}
+\DeclareBibliographyCategory{tech}
+\DeclareBibliographyCategory{other}
+% Citation commands
+\newcommand*{\citeJ}[2][]{\addtocategory{journal}{#2}\cite[#1]{#2}}
+\newcommand*{\citeC}[2][]{\addtocategory{conference}{#2}\cite[#1]{#2}}
+\newcommand*{\citeO}[2][]{\addtocategory{other}{#2}\cite[#1]{#2}}
+\newcommand*{\citeT}[2][]{\addtocategory{tech}{#2}\cite[#1]{#2}}
+% No citation commands
+\newcommand*{\nociteJ}[1]{\addtocategory{journal}{#1}\nocite{#1}}
+\newcommand*{\nociteC}[1]{\addtocategory{conference}{#1}\nocite{#1}}
+\newcommand*{\nociteO}[1]{\addtocategory{other}{#1}\nocite{#1}}
+\newcommand*{\nociteT}[1]{\addtocategory{tech}{#1}\nocite{#1}}
+
+%\def \mylastname {Firtha}
+%\DeclareNameFormat{author}{%
+%\ifthenelse{\equal{#1}{\mylastname}}%
+%    {\underline{\ifblank{#4}{}{#4\space}#1}}%
+%    {\ifblank{#4}{}{#4\space}#1}%
+%\ifthenelse{\value{listcount}<\value{liststop}}%
+%    {\addcomma\space}
+%    {}}
+
+\renewcommand{\bibfont}{\normalfont\small}
+\newtheoremstyle{thesisgroupstyle}%
+	{1em}% 				% Space above
+	{0mm}% 				% Space below
+	{\slshape}%			% Font type of body
+	{0mm}%				% Indentation			
+	{\bfseries}%		% Font of title
+	{\newline}%			% Punctuation between head and body
+	{1em}%				% Space after theorem head
+	{}% 				% Manually specify head
+\theoremstyle{thesisgroupstyle}
+\newtheorem{thesisgroup}{Thesis group}
+\renewcommand{\thethesisgroup}{\Roman{thesisgroup}}
+\newtheorem{thesis}{Thesis}[thesisgroup]
+
+
+\newcommand{\theauthor}{Gergely Firtha}
+\newcommand{\authorprof}{M.Sc.E.E.}
+\author{\theauthor}
+\title{A Unified Wave Field Synthesis Theory\\[.5ex]with Application for Moving Virtual Sources}
+
+\begin{document}
+
+\newcommand{\schoolname}{Budapest University of Technology and Economics}
+\newcommand{\facultyname}{Faculty of Electrical Engineering and Informatics}
+\newcommand{\doctoralname}{Doctoral School of Electrical Engineering}
+\newcommand{\bookname}{Ph.D.\ Thesis Booklet}
+\newcommand{\authorname}{Author}
+\newcommand{\supervisorname}{Supervisor}
+\newcommand{\supervisor}{Péter Fiala, PhD.}
+\newcommand{\creationdate}{Budapest, 2018.}
+\def \deptlogo {logos/hit_logo_en.png}
+
+\selectlanguage{american}
+\nonfrenchspacing
+
+\input{cover}
+\thispagestyle{empty}
+\cleardoublepage
+\setcounter{page}{1}
+
+\section{Introduction}
+
+\subsection{Aim of sound field synthesis}
+%
+Spatial audio aims at the recreation of a sound scene containing sources of sound, termed as audio objects, in a sense that the human listener perceives the spatial characteristics of the desired acoustic environment.
+Sound field reproduction achieves this by driving an arrangement of fix positioned loudspeakers, so that the superposition of the sound waves emerging from the individual loudspeakers generate the impression of the desired virtual audio object, present in the sound scene.
+Sound field reproduction has been the subject of excessive study and development over the second half of the XX. century, starting with the work of Blumlein, who introduced the first two-loudspeaker system in 1931 and thereby created the basics of stereophony.
+Modern stereophonic systems include the well-known Dolby stereo, 5.1, 7.1 systems, the 22.2 system of the NHK or the currently state-of-the-art commercial spatial audio systems, the Dolby Atmos and the DTS-X.
+Generally speaking---independently from the number of the speakers applied---stereophony generates the desired spatial impression by the recreation of localization cues at the listener position.
+Correct sound localization therefore can be ensured only over a limited listening area, termed as the \emph{sweet spot}, being a central limitation of these techniques.
+
+Opposed to stereophony, the aim of sound field synthesis (SFS) is the reproduction of the physical properties of a desired sound field over an extended listening area. 
+By doing so, it is inherently ensured that the listener perceives the desired perceptual properties in an arbitrary position within the listening region.
+Obviously, controlling the sound field over an extended region requires numerous loudspeakers, positioned on the boundary of the control region.
+Hence, these techniques are often referred to as \emph{massive multichannel sound reproduction methods} \footfullcite{Spors2013:Survey}.
+The central question of SFS is the derivation of the loudspeaker driving signals, termed the \emph{driving function}, so that the resultant field of the loudspeaker arrangement coincides with the desired, \emph{virtual field}.
+The loudspeaker array applied for reproduction is termed as the \emph{secondary source distribution} in the followings.
+
+
+\begin{figure}  
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = 1\columnwidth ]{figs/sfs_aim.png}
+	\small
+	\put(60,30){listening region}
+	\put(0,45){\parbox{.5in}{virtual audio object}}
+	\put(45,7){loudspeaker array}
+	\end{overpic}   \end{minipage}\hfill
+	\begin{minipage}[c]{0.3\textwidth}
+    \caption{The general geometry for sound field synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object, or primary source of sound inside a control region, bounded by a densely spaced loudspeaker ensemble.}
+\label{fig:introduction:sfs_aim}  \end{minipage}
+\end{figure}
+
+
+
+Over the last several decades numerous SFS techniques emerged, approaching the problem both numerically and analytically.
+Analytical approaches include the direct solution of the involved integral formulations, termed as the explicit solution, and the most traditional SFS technique, deriving driving function based on the Huygens principle, termed as Wave Field Synthesis.
+
+\subsection{Wave Field Synthesis history}
+%
+The original theory of Wave Field Synthesis---often referred to as \emph{traditional WFS}---evolved from the works of Berkhout et al. at the Technical University of Delft utilizing concepts, well-known in the field of seismic migration.%, applied for sound field control.
+The basis of WFS theory were the Rayleigh integrals, the mathematical form of the Huygens' principle, representing a sound field as the sum of spherical waves emerging from an infinite plane.
+Berkhout applied the stationary phase method (SPA) to the Rayleigh integrals in order to arrive at loudspeaker driving signals for a linear array of loudspeakers instead of the practically infeasible planar array.
+The original formulation provided driving signals for loudspeakers with dipole characteristics \footfullcite{Berkhout1993:Acoustic_control_by_WFS}---soon extended for monopole loudspeakers as well \footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}---, reproducing the wavefront of a virtual spherical wave in the horizontal plane, containing the loudspeaker array.
+It was discussed that reducing the secondary source distribution from an enclosing surface to a more practical contour of loudspeakers, results that amplitude correct reproduction is restricted to a control curve in the plane of synthesis, termed here as the reference curve.
+For traditional WFS this reference curve was usually chosen to be a reference line, parallel with the loudspeaker arrangement \footfullcite{Start1997:phd}.
+Furthermore, the traditional approach considered exclusively virtual point sources as the virtual field model.
+
+Traditional WFS was also the subject of various research projects, most notably the CARROUSO project, aiming at the integration of the technique into the MPEG-4 standard. This endeavor was not realized eventually, but two "spin-off" companies of the project, the IOSONO and Sonic Emotion are still offering commercially available WFS systems nowadays.
+
+The latest milestone in Wave Field Synthesis theory were the works of Spors et al., generalizing WFS towards the synthesis of an arbitrary analytically available sound field, applying an arbitrary shaped loudspeaker contour \footfullcite{Spors2008:WFSrevisited}.
+The presented loudspeaker driving signals allowed the synthesis of general 2-dimensional sound fields, ensuring amplitude correct synthesis at a single reference point,
+allowing the reproduction of complex virtual sound scenes, e.g. the field, generated by a moving sound source \footfullcite{Ahrens2008moving}.
+The method however---since it derived driving signals from the 2D Rayleigh integral---failed to control the amplitude of general 3D sound fields.
+Furthermore, the exact connection between traditional and the latter \emph{revisited WFS} formulations has not been known so far.
+
+\subsection{Motivation of the present research}
+The present dissertation revisits the theoretical basics of Wave Field Synthesis.
+The motivation behind the present research was to give a unified theoretical framework for Wave Field Synthesis that allows the reproduction of an arbitrary analytically available virtual sound field, by applying an arbitrary secondary source contour, and optimizing the synthesis to an arbitrary reference curve.
+Hence, the presented framework contains the previous WFS approaches as special cases: choosing the virtual source to a point source, applying a linear SSD and referencing the synthesis to a line, parallel with the SSD returns the well-known traditional WFS driving function.
+Choosing the virtual source to be a general 2D sound field and referencing the synthesis to a single reference point results in the revisited WFS formulation.
+
+Besides the connection between traditional and revisited WFS, also the link between WFS and the direct, explicit solution has not been investigated in the related literature for the case of an arbitrary virtual sound field.
+For the special case of circular SSDs and specific virtual field models it has been shown that WFS constitutes a high frequency approximation for the explicit method \footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}.
+A further motivation of the present research was hence to establish this connection for arbitrary virtual sound fields and arbitrary SSDs and reference curves.
+
+As a complex application example for the presented framework the reproduction of moving virtual sources is investigated in details.
+The reproduction of moving sources has been the subject of studies since the early age of WFS theory, as an obvious need when dynamic sound scenes are to be synthesized.
+Early formulations attempted to synthesize the field of a moving point source by applying the traditional WFS driving signals with changing the virtual source position as the function of time.
+This approach however failed to properly recreate Doppler effect, leading to serious artifacts in the synthesized field.
+Ahrens et al. used the revisited WFS formulation in order to recreate the field of a moving source \footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}.
+However, due to physical constrains of revisited WFS theory, it failed to control the amplitude of the synthesized source.
+Hence, a further motivation for	
+
+
+\printbibliography[title={Journal papers}, category=journal, prefixnumbers={J}, heading=subbibliography,resetnumbers=true]
+\printbibliography[title={Conference papers}, category=conference, prefixnumbers={C}, heading=subbibliography, resetnumbers=true]
+\printbibliography[title={Other publications}, category=other, prefixnumbers={O}, heading=subbibliography, resetnumbers=true]
+
+\end{document}
