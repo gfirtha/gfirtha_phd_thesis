@@ -14,8 +14,20 @@
 \usepackage{multirow}
 \usepackage{xcolor}
 \usepackage[bf,small]{caption}
-\usepackage[backend=bibtex,hyperref=true,babel=hyphen,style=numeric-comp,isbn=false,sorting=none,defernumbers=true,maxnames=10,doi=false,url=false]{biblatex}
+\usepackage[backend=biber,
+			hyperref=true,
+			babel=hyphen,
+			style=numeric-comp,
+			isbn=false,
+			sorting=none,
+			defernumbers=true,
+			maxnames=10,
+			doi=false,
+			url=false,
+			useprefix=true,
+			]{biblatex}
 \addbibresource{../LatexProject/dissertation.bib}
+\addbibresource{booklet.bib}
 
 
 \usepackage[pdftitle={A Unified Wave Field Synthesis Theory (Ph.D. Thesis Booklet)},%
@@ -44,6 +56,11 @@
 \newcommand*{\nociteO}[1]{\addtocategory{other}{#1}\nocite{#1}}
 \newcommand*{\nociteT}[1]{\addtocategory{tech}{#1}\nocite{#1}}
 
+\nociteJ{firtha2015sound,firtha2016wave_booklet,Firtha2016_booklet,doi:10.1121/1.4996126_booklet,schultz2017wave_booklet,Firtha2018:WFS_vs_SDM_booklet}
+\nociteC{Firtha2012:isma_booklet,Firtha2013:daga_booklet,Firtha2013:internoise_booklet,Firtha2014:daga_booklet,Firtha2014:isma_booklet,
+Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha2018_daga_a_booklet,Firtha2018_daga_moving_source_booklet}
+
+
 %\def \mylastname {Firtha}
 %\DeclareNameFormat{author}{%
 %\ifthenelse{\equal{#1}{\mylastname}}%
@@ -52,8 +69,8 @@
 %\ifthenelse{\value{listcount}<\value{liststop}}%
 %    {\addcomma\space}
 %    {}}
-
 \renewcommand{\bibfont}{\normalfont\small}
+
 \newtheoremstyle{thesisgroupstyle}%
 	{1em}% 				% Space above
 	{5mm}% 				% Space below
@@ -91,6 +108,8 @@
 \author{\theauthor}
 \title{A Unified Wave Field Synthesis Theory\\[.5ex]with Application for Moving Virtual Sources}
 
+\assignrefcontextkeyws[labelprefix=J]{J}
+\assignrefcontextkeyws[labelprefix=C]{C}
 \begin{document}
 
 \newcommand{\schoolname}{Budapest University of Technology and Economics}
@@ -204,11 +223,10 @@ Throughout the thesis these simulations were performed by the simple summation o
 
 \clearpage	
 \section{Theses}
-%	\input{theorems.tex}
 
 \begin{thesisgroup}[Generalization of WFS theory]
 I introduced a unified WFS framework, allowing one to synthesize arbitrary sound fields with arbitrary shaped loudspeaker ensembles (secondary source distribution (SSD)), and to optimize the synthesis on an arbitrary reference curve. 
-The unified framework inherently contains the existing WFS approaches as special cases.
+The unified framework inherently contains the existing WFS approaches as special cases. \citeJ{Firtha2016_booklet}
 \begin{thesis}
 I established a physical interpretation of the stationary phase approximation (SPA) for the Rayleigh integral.
 By defining the local wavenumber vector of a time-harmonic sound field I showed that the SPA ensures wave front matching of the virtual field and the secondary sound fields at the receiver position.
@@ -218,7 +236,7 @@ I exploited the physical interpretation to derive WFS driving functions for an a
 \end{thesis}
 \begin{thesis}
 I derived an analytical expression for the general \emph{reference curve} that connects the points in the synthesis plane where the amplitude error is minimal.
-I critically revised existing WFS solutions by the analytical characterization of their reference curves.
+I critically revised existing WFS solutions by the analytical characterization of their reference curves. 
 \end{thesis}
 \begin{thesis}
 I introduced the \emph{referencing function}---an amplitude correction term in the driving functions---that controls the shape of the reference curve.
@@ -231,7 +249,7 @@ As a special case I showed that a linear SSD with a parallel reference line yiel
 Besides the implicit WFS technique---yielding the required driving functions as an implicit integral kernel in a reduced surface integral---explicit solutions exist, obtaining the driving functions as a spectral integral.
 For a linear SSD the explicit solution is termed as the \emph{Spectral Division Method (SDM)}.
 So far the connection of the implicit and explicit solutions has been investigated for several special target sound fields.
-Applying the SPA to the SDM driving functions I derived the spatial representation of the explicit driving functions, and I highlighted its general equivalence of the explicit and implicit solutions in the high-frequency region.
+Applying the SPA to the SDM driving functions I derived the spatial representation of the explicit driving functions, and I highlighted its general equivalence of the explicit and implicit solutions in the high-frequency region. \citeJ{Firtha2018:WFS_vs_SDM_booklet}
 \begin{thesis}
 SDM yields the linear driving functions in the form of an inverse spatial Fourier transform.
 Applying the SPA to the Fourier integral I gave the analytical SDM driving functions purely in the spatial domain.
@@ -240,6 +258,10 @@ Unlike WFS the new, so far unknown driving functions express the SSD driving sig
 I expressed the newly introduced driving functions in terms of the target field's gradient measured on the SSD.
 The obtained expressions can be directly compared with the unified WFS driving functions.
 I proved, that under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field.\end{thesis}
+\begin{thesis}
+Applying the equivalence of WFS and SDM and exploiting the spectral description of spatial aliasing components---emerging due to the application of a discrete SSD---I gave 
+a spatial description on \citeC{Firtha2018_daga_a_booklet}.
+\end{thesis}
 \end{thesisgroup}
 
 \begin{thesisgroup}[Wave Field Synthesis of moving point sources]
@@ -295,9 +317,15 @@ This requirement holds for any smooth enclosing SSD, which has been demonstrated
 \end{thesis}
 \end{thesisgroup}
 
+\clearpage
+\section*{Publications}
+\addcontentsline{toc}{sec}{Publications}
 
-\printbibliography[title={Journal papers}, category=journal, prefixnumbers={J}, heading=subbibliography,resetnumbers=true]
-\printbibliography[title={Conference papers}, category=conference, prefixnumbers={C}, heading=subbibliography, resetnumbers=true]
-\printbibliography[title={Other publications}, category=other, prefixnumbers={O}, heading=subbibliography, resetnumbers=true]
+\begin{refcontext}[labelprefix=J]
+\printbibliography[title={Journal papers}, keyword=J, heading=subbibliography] 
+\end{refcontext}
+\begin{refcontext}[labelprefix=C]
+\printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
+\end{refcontext}
 
 \end{document}
