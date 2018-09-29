@@ -56,16 +56,33 @@
 \renewcommand{\bibfont}{\normalfont\small}
 \newtheoremstyle{thesisgroupstyle}%
 	{1em}% 				% Space above
-	{0mm}% 				% Space below
+	{5mm}% 				% Space below
 	{\slshape}%			% Font type of body
 	{0mm}%				% Indentation			
 	{\bfseries}%		% Font of title
 	{\newline}%			% Punctuation between head and body
 	{1em}%				% Space after theorem head
 	{}% 				% Manually specify head
+
+\makeatother
 \theoremstyle{thesisgroupstyle}
 \newtheorem{thesisgroup}{Thesis group}
 \renewcommand{\thethesisgroup}{\Roman{thesisgroup}}
+
+\makeatletter
+\newtheoremstyle{indented}
+  {5pt}% space before
+  {5pt}% space after
+  {\addtolength{\@totalleftmargin}{3.5em}
+   \addtolength{\linewidth}{-3.5em}
+   \parshape 1 3.5em \linewidth}% body font
+  {}% indent
+  {\bfseries}% header font
+  {.}% punctuation
+  {.75em}% after theorem header
+  {}% header specification (empty for default)
+\makeatother
+\theoremstyle{indented}
 \newtheorem{thesis}{Thesis}[thesisgroup]
 
 
@@ -187,75 +204,97 @@ Throughout the thesis these simulations were performed by the simple summation o
 
 \clearpage	
 \section{Theses}
+%	\input{theorems.tex}
 
 \begin{thesisgroup}[Generalization of WFS theory]
 I introduced a unified WFS framework, allowing one to synthesize arbitrary sound fields with arbitrary shaped loudspeaker ensembles (secondary source distribution (SSD)), and to optimize the synthesis on an arbitrary reference curve. 
 The unified framework inherently contains the existing WFS approaches as special cases.
-\begin{enumerate}
-\item[] \vspace{-7mm}\begin{thesis}I established a physical interpretation of the stationary phase approximation (SPA) for the Rayleigh integral.
-By defining the local wavenumber vector of a time-harmonic sound field I showed that the SPA ensures wave front matching of the virtual field and the secondary sound fields at the receiver position.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}I exploited the physical interpretation to derive WFS driving functions for an arbitrary shaped SSD curve within the validity of the physical optics approximation of the Kirchhoff-Helmholtz integral.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}I derived an analytical expression for the general \emph{reference curve} that connects the points in the synthesis plane where the amplitude error is minimal.
-I critically revised existing WFS solutions by the analytical characterization of their reference curves.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}I introduced the \emph{referencing function}---an amplitude correction term in the driving functions---that controls the shape of the reference curve.
+\begin{thesis}
+I established a physical interpretation of the stationary phase approximation (SPA) for the Rayleigh integral.
+By defining the local wavenumber vector of a time-harmonic sound field I showed that the SPA ensures wave front matching of the virtual field and the secondary sound fields at the receiver position.
+\end{thesis}
+\begin{thesis}
+I exploited the physical interpretation to derive WFS driving functions for an arbitrary shaped SSD curve within the validity of the physical optics approximation of the Kirchhoff-Helmholtz integral.
+\end{thesis}
+\begin{thesis}
+I derived an analytical expression for the general \emph{reference curve} that connects the points in the synthesis plane where the amplitude error is minimal.
+I critically revised existing WFS solutions by the analytical characterization of their reference curves.
+\end{thesis}
+\begin{thesis}
+I introduced the \emph{referencing function}---an amplitude correction term in the driving functions---that controls the shape of the reference curve.
 I derived the referencing function for an arbitrary reference curve.
-As a special case I showed that a linear SSD with a parallel reference line yields the traditional WFS driving functions.\end{thesis}
-\end{enumerate}
+As a special case I showed that a linear SSD with a parallel reference line yields the traditional WFS driving functions.
+\end{thesis}
 \end{thesisgroup}
-
 
 \begin{thesisgroup}[Spatial explicit driving functions and WFS equivalence]
 Besides the implicit WFS technique---yielding the required driving functions as an implicit integral kernel in a reduced surface integral---explicit solutions exist, obtaining the driving functions as a spectral integral.
 For a linear SSD the explicit solution is termed as the \emph{Spectral Division Method (SDM)}.
 So far the connection of the implicit and explicit solutions has been investigated for several special target sound fields.
 Applying the SPA to the SDM driving functions I derived the spatial representation of the explicit driving functions, and I highlighted its general equivalence of the explicit and implicit solutions in the high-frequency region.
-\begin{enumerate}
-\item[] \vspace{-7mm}\begin{thesis}SDM yields the linear driving functions in the form of an inverse spatial Fourier transform.
+\begin{thesis}
+SDM yields the linear driving functions in the form of an inverse spatial Fourier transform.
 Applying the SPA to the Fourier integral I gave the analytical SDM driving functions purely in the spatial domain.
 Unlike WFS the new, so far unknown driving functions express the SSD driving signals in terms of the target sound field measured along an arbitrary reference curve.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}I expressed the newly introduced driving functions in terms of the target field's gradient measured on the SSD.
+\begin{thesis}
+I expressed the newly introduced driving functions in terms of the target field's gradient measured on the SSD.
 The obtained expressions can be directly compared with the unified WFS driving functions.
 I proved, that under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field.\end{thesis}
-\end{enumerate}
 \end{thesisgroup}
 
 \begin{thesisgroup}[Wave Field Synthesis of moving point sources]
 In the aspect of synthesizing dynamic sound scenes the synthesis of moving sources is of primary importance.
 I adapted the unified WFS framework to the synthesis of sound fields induced by moving point sources.
-\begin{enumerate}
-\item[] \vspace{-7mm}\begin{thesis}I adapted the unified 3D WFS theory to the field of a point source moving along an a-priory known trajectory, and defined driving functions for an arbitrary SSD surface.
+\begin{thesis}
+I adapted the unified 3D WFS theory to the field of a point source moving along an a-priory known trajectory, and defined driving functions for an arbitrary SSD surface.
 The solution takes the Doppler-effect inherently into account.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}For the case of a 3D moving source synthesized with a 2D SSD contour the compensation for the virtual source dimensionality mismatch is not straightforward.
+\begin{thesis}
+For the case of a 3D moving source synthesized with a 2D SSD contour the compensation for the virtual source dimensionality mismatch is not straightforward.
 I adapted the stationary phase method in order to derive the correct compensation factors in the referencing function. 
-Applying the obtained referencing function I derived 2.5D WFS driving functions for an arbitrary shaped SSD contour.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}I verified, that for the special case of a linear SSD and a parallel reference line the moving source driving functions coincide with the traditional stationary source WSF driving functions, with the stationary source position replaced with the source position at the emission time.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}The solution with an arbitrary source trajectory requires the a-priori determination of the propagation time delay---the time it takes for the wavefront emitted by the moving source to reach the receiver position---, which leads to the solution of a non-linear equation for each SSD element at each time instant.
+Applying the obtained referencing function I derived 2.5D WFS driving functions for an arbitrary shaped SSD contour.
+\end{thesis}
+\begin{thesis}
+I verified, that for the special case of a linear SSD and a parallel reference line the moving source driving functions coincide with the traditional stationary source WSF driving functions, with the stationary source position replaced with the source position at the emission time.
+\end{thesis}
+\begin{thesis}
+The solution with an arbitrary source trajectory requires the a-priori determination of the propagation time delay---the time it takes for the wavefront emitted by the moving source to reach the receiver position---, which leads to the solution of a non-linear equation for each SSD element at each time instant.
 I proposed an iterative scheme relying on the first order Taylor's approximation of the propagation time delay function.
-The proposed scheme requires the solution of the non-linear equation only at the time origin, and makes real time implementations feasible.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}For a uniformly moving source the propagation time delay can be expressed explicitly.
-I utilized this solution to give explicit WFS driving functions for sources in uniform motion.\end{thesis}
-\item[] \vspace{-7mm}\begin{thesis}For a uniformly moving source the frequency content of the radiated field may be expressed analytically.
-I adapted the SPA to this formulation in order to derive frequency domain 2.5D WFS driving functions for a linear SSD.\end{thesis}
-\end{enumerate}
+The proposed scheme requires the solution of the non-linear equation only at the time origin, and makes real time implementations feasible.
+\end{thesis}
+\begin{thesis}
+For a uniformly moving source the propagation time delay can be expressed explicitly.
+I utilized this solution to give explicit WFS driving functions for sources in uniform motion.
+\end{thesis}
+\begin{thesis}
+For a uniformly moving source the frequency content of the radiated field may be expressed analytically.
+I adapted the SPA to this formulation in order to derive frequency domain 2.5D WFS driving functions for a linear SSD.
+\end{thesis}
 \end{thesisgroup}
 
 \begin{thesisgroup}[Synthesis of moving sources in the wavenumber domain]
 For the case of a linear SSD and a parallel reference line the spatial Fourier-transform of the involved functions (i.e. the target field, the SSD's sound field and the driving function) may be defined.
 In the wavenumber domain the synthesis problem can be formulated as a spectral multiplication, and the driving functions are obtained via a spectral division, (hence the term \emph{Spectral Division Method (SDM)}).
 I gave analytical expressions for the required transforms for the case of uniformly moving virtual sources, resulting in the explicit reference solution.
-	\begin{enumerate}
-	\item[] \vspace{-7mm}\begin{thesis} I gave analytical expression for the wavenumber-frequency content of the sound field generated by a moving acoustic point source with an arbitrary inclined trajectory.
-	I verified that the analytic expression converges weakly to a Dirac-delta distribution for a sound source, moving along the direction of the Fourier-transform \end{thesis}
-	\item[] \vspace{-7mm}\begin{thesis} Based on the expression for the wavenumber-content I gave the SDM driving functions for the synthesis of a moving point source in the wavenumber domain.
-	For the special case of a source moving parallel to the secondary source distribution I derived analytical, closed form driving function in the spatial-frequency domain.\end{thesis}
-	\item[] \vspace{-7mm}\begin{thesis} For the case of a source moving parallel to the SSD I showed that the WFS solution is the high-frequency/farfield approximation of the SDM. An analog relation had already been known for a stationary point source in the related literature.\end{thesis}
-	\item[] \vspace{-7mm}\begin{thesis} Based on the wavenumber representation of the synthesis problem I presented an analytical treatment of the spatial aliasing artifacts emerging from the practically unavoidable discretization of the SSD.
-	By expressing the temporal-frequency representation of the additive aliasing components I identified two main artifacts in the synthesized field: \emph{Amplitude ringing}, due to the temporally varying interference pattern of the ideal field and the aliasing components, as well as \emph{Frequency ringing}, as undesired frequency components in the synthesized field.\end{thesis}
-	\item[] \vspace{-7mm}\begin{thesis} I connected the phenomena of frequency ringing with poles in the secondary sources wavenumber representation (hence the terminology \emph{ringing}), and I analytically expressed the ringing frequency components.
-	I showed that the artifact can be avoided by applying an SSD that does not exhibit poles on the receiver curve.
-	This requirement holds for any smooth enclosing SSD, which has been demonstrated for the case of a circular SSD via numerical simulations.\end{thesis}
-\end{enumerate} 
+\begin{thesis} 
+I gave analytical expression for the wavenumber-frequency content of the sound field generated by a moving acoustic point source with an arbitrary inclined trajectory.
+I verified that the analytic expression converges weakly to a Dirac-delta distribution for a sound source, moving along the direction of the Fourier-transform \end{thesis}
+\begin{thesis} 
+Based on the expression for the wavenumber-content I gave the SDM driving functions for the synthesis of a moving point source in the wavenumber domain.
+For the special case of a source moving parallel to the secondary source distribution I derived analytical, closed form driving function in the spatial-frequency domain.\end{thesis}
+\begin{thesis} 
+For the case of a source moving parallel to the SSD I showed that the WFS solution is the high-frequency/farfield approximation of the SDM. An analog relation had already been known for a stationary point source in the related literature.
+\end{thesis}
+\begin{thesis} 
+Based on the wavenumber representation of the synthesis problem I presented an analytical treatment of the spatial aliasing artifacts emerging from the practically unavoidable discretization of the SSD.
+By expressing the temporal-frequency representation of the additive aliasing components I identified two main artifacts in the synthesized field: \emph{Amplitude ringing}, due to the temporally varying interference pattern of the ideal field and the aliasing components, as well as \emph{Frequency ringing}, as undesired frequency components in the synthesized field.
+\end{thesis}
+\begin{thesis} 
+I connected the phenomena of frequency ringing with poles in the secondary sources wavenumber representation (hence the terminology \emph{ringing}), and I analytically expressed the ringing frequency components.
+I showed that the artifact can be avoided by applying an SSD that does not exhibit poles on the receiver curve.
+This requirement holds for any smooth enclosing SSD, which has been demonstrated for the case of a circular SSD via numerical simulations.
+\end{thesis}
 \end{thesisgroup}
+
 
 \printbibliography[title={Journal papers}, category=journal, prefixnumbers={J}, heading=subbibliography,resetnumbers=true]
 \printbibliography[title={Conference papers}, category=conference, prefixnumbers={C}, heading=subbibliography, resetnumbers=true]
