@@ -131,6 +131,7 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
 
 \assignrefcontextkeyws[labelprefix=J]{J}
 \assignrefcontextkeyws[labelprefix=C]{C}
+\assignrefcontextkeyws[labelprefix=O]{O}
 
 % Add underline for my author name
 \def \mylastname {Firtha}
@@ -148,7 +149,6 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
     \usebibmacro{name:underlined}%
     \usebibmacro{name:andothers}%
 }
-
 
 
 \begin{document}
@@ -519,6 +519,7 @@ By using my formulation spatial aliasing may be eliminated by simple low-pass fi
 \section*{Publications}
 \addcontentsline{toc}{sec}{Publications}
 
+\nocite{*}
 \begin{refcontext}[labelprefix=J]
 \printbibliography[title={Journal papers}, keyword=J, heading=subbibliography] 
 \end{refcontext}
@@ -526,7 +527,7 @@ By using my formulation spatial aliasing may be eliminated by simple low-pass fi
 \printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
 \end{refcontext}
 \begin{refcontext}[labelprefix=O]
-\printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
+\printbibliography[title={Other publications}, keyword=O, heading=subbibliography] 
 \end{refcontext}
 
 \end{document}
