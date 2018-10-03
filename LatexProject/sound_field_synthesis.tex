@@ -284,7 +284,7 @@ with the term $\dref(\vxo)$ denoting the \emph{referencing function}, defined as
 \end{align}
 where $\Kv^P$, $\Kv^G$ and $\Rv^P$,$\Rv^G$ are the vertical principal curvatures and radii of the involved sound fields, respectively.
 Position $\vxref(\vxo)$ is the \emph{reference position} for the SSD element at $\vxo$, for which receiver position $\vxo$ serves as a stationary phase point on the SSD, defined by
-\importanteq{WFS reference position}{
+\importanteq{2.5D WFS reference position}{
 \vk^P(\vxo) = \vk^G(\vxref(\vxo) - \vxo).
 \label{Eq:SFS_theory:WFS_General_Stat_pos}
 }
@@ -462,14 +462,14 @@ D(\vxo, \omega) =
 \label{fig:SFS_theory:25D_WFS_linear_ssd}  
 \end{figure}
 Finally, expressing the pressure field and the normalized local wavenumber vector of the virtual point source results in the virtual source-SSD shape-receiver shape specific driving function
-\importanteq{Linear WFS driv. fun. for a 3D point source}{
+\importanteq{Linear WFS point source driv. fun.}{
 D(\vxo, \omega) =  -\frac{1}{4\pi}
 \sqrt{ \frac{8\pi}{\ti k} }
 \sqrt{ \frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } }
 \ti k y_s \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|^{\frac{3}{2}}}.
 \label{eq:SFS_theory:WFS_point_source}
 }
-This result is equivalent with the traditional WFS driving function of a point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd}, and furthermore identical to the farfield/high frequency approximated explicit solution presented in the next section \cite[(25)]{Spors10ahrens:analysis}, \cite[Ch. 2.3]{Schultz2016}. 
+This result is equivalent with the traditional WFS driving function of a point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd}, and furthermore identical to the farfield/high frequency approximated explicit solution presented in the next section \cite[(25)]{Spors2010:analysis_and_improvement}, \cite[Ch. 2.3]{Schultz2016}. 
 The result of synthesis is depicted in Figure \ref{fig:SFS_theory:25D_WFS_linear_ssd} confirming that by applying the derived driving function amplitude correct synthesis is ensured along the reference line.
 
 Taking the temporal inverse Fourier transform of the driving function weighted by $S(\omega)$ yields the temporal driving function for a virtual point source with the source time history of $s(t)$.
@@ -479,7 +479,7 @@ Taking the temporal inverse Fourier transform of the driving function weighted b
 %\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{\te^{\ti \omega ( t - \frac{|\vxo-\vxs|}{c} )}}{|\vxo-\vxs|^{\frac{3}{2}}} \td \omega.
 %\end{equation}
 Exploiting the shift theorem and the associativity of convolution yields the temporal driving function
-\importanteq{Temporal 2.5D point source driv. fun.}{
+\importanteq{Linear time domain point source driv. fun.}{
 d(\vxo, t) =  -
 \sqrt{\frac{1}{2\pi c}}
 \sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
@@ -725,7 +725,7 @@ Amplitude correct synthesis is ensured in this plane at a distance $\dref = \sqr
 
 For practical applications the plane of synthesis is chosen to be the horizontal plane $z=0$, requiring that for the virtual field $k_z(x,y,0) = 0$ holds.
 The driving function thus reads as
-\importanteq{2.5D SDM driving fun.}{
+\importanteq{2.5D SDM driving function}{
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \te^{-\ti k_x x_0} \td k_x.
 \label{Eq:Theory:Linear_SDM}
 }
@@ -761,7 +761,7 @@ Substituting the 1D spectra of the virtual and the secondary point sources along
 ,
 \end{equation}
 and the spatial inverse Fourier transform yields the spatial domain driving function, reading as
-\importanteq{Linear SDM driv. fun. for a 3D point source}{
+\importanteq{Linear SDM point source driv. fun.}{
 \label{Eq:Theory:SDM_point_source}
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
 \frac{  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  }

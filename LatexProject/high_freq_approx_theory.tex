@@ -20,7 +20,7 @@ P(\vx,\omega) = A^P(\vx,\omega)\te^{\ti \phi^P(\vx,\omega)}.
 The dynamics of wave propagation is described by the phase of the sound field.
 From ray-tracing/geometrical optics theory the following quantity is introduced \cite{Carozzi2004, Romer2005}:
 %
-\importanteq{Local wavenumber vector}{
+\importanteq{Local waveno. vector}{
 \label{eq:local_wn_vec_def}
 \vk^P(\vx) = -\Dx \phi^P(\vx,\omega),
 }%
@@ -151,7 +151,7 @@ Employing the transport equation \eqref{eq:HF_appr:transport_eq} the divergence 
 hence the transport equation states that at an arbitrary point the relative amplitude change towards the wavefront's propagation direction is given by the mean curvature.
 This fact results in a formal definition for the vergence of the sound field in a mean sense: a field is divergent if its amplitude decreases in the local propagation direction and convergent if the intensity is focused towards the propagation direction.
 
-As a strict definition---since the mean and the principal curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1(\vx)^P+\kappa_2(\vx)^P \right)$---wavefields may be classified as
+As a strict definition---since the mean and the principal curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1^P(\vx)+\kappa_2^P(\vx) \right)$---wavefields may be classified as
 \begin{equation}
 \label{eq:HF_appr:curvature_cases}
 \kappa_1^P(\vx),\kappa_2^P(\vx),\overline{\kappa}^P(\vx) 
@@ -414,7 +414,7 @@ I_{n\mathrm{D}} = \int\limits_{-\infty}^{\infty} A(\vx) \, \te^{\ti \phi(\vx)} \
 \end{equation}
 in one and $n$ dimensions respectively, when $\te^{\ti \phi(\vx)}$ is highly oscillating and $A(\vx)$ is comparably slowly varying.
 
-\paragraph{1D SPA:} 
+%\paragraph{1D SPA:} 
 For the 1D case a rigorous derivation of the SPA based on integration by parts is given in \cite{Blenstein1975, Bleistein1984, Williams1999}.
 More informally the method relies on the second order truncated Taylor series of the exponent around the \emph{stationary point} $x^*$, defined as the point in the integration path satisfying 
 \begin{equation}
@@ -439,7 +439,7 @@ The remaining integral can be evaluated analytically, and the SPA of \eqref{Eq:S
 I_{1D} \approx \sqrt{\frac{2\pi}{| \phi''_{xx}(x^*) |}} F(x^*) \, \te^{+\ti \phi(x^*) + \ti \frac{\pi}{4}\,\mathrm{sgn}\left(  \phi''_{xx}(x^*) \right)}.
 }
 
-\paragraph{Multidimensional SPA:} 
+%\paragraph{Multidimensional SPA:} 
 Similarly, in higher dimensions a \emph{simple stationary point} is defined as
 \begin{equation}
 \label{Eq:ndim_stat_point}
