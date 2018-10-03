@@ -131,6 +131,7 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
 
 \assignrefcontextkeyws[labelprefix=J]{J}
 \assignrefcontextkeyws[labelprefix=C]{C}
+\assignrefcontextkeyws[labelprefix=O]{O}
 
 % Add underline for my author name
 \def \mylastname {Firtha}
@@ -148,7 +149,6 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
     \usebibmacro{name:underlined}%
     \usebibmacro{name:andothers}%
 }
-
 
 
 \begin{document}
@@ -505,8 +505,8 @@ For the case of a source moving parallel to the SSD I showed that the WFS soluti
 \end{thesis}
 \begin{thesis} 
 Based on the wavenumber representation of the synthesis problem I presented an analytical treatment of the spatial aliasing artifacts emerging from the practically unavoidable discretization of the SSD.
-By expressing the temporal-frequency representation of the additive aliasing components I identified two main artifacts in the synthesized field: \emph{Amplitude ringing}, due to the temporally varying interference pattern of the ideal field and the aliasing components, as well as \emph{Frequency ringing}, as undesired frequency components in the synthesized field \cite{firtha2016:daga_booklet}.
-I connected the phenomena of frequency ringing with poles in the secondary sources wavenumber representation (hence the terminology \emph{ringing}), and I analytically expressed the ringing frequency components.
+%By expressing the temporal-frequency representation of the additive aliasing components I identified two main artifacts in the synthesized field: \emph{Amplitude ringing}, due to the temporally varying interference pattern of the ideal field and the aliasing components, as well as \emph{Frequency ringing}, as undesired frequency components in the synthesized field \cite{firtha2016:daga_booklet}.
+I connected the phenomena of frequency distortion with poles in the secondary sources wavenumber representation, and I analytically expressed the ringing frequency components.
 I showed that the artifact can be avoided by applying an SSD that does not exhibit poles on the receiver curve.
 This requirement holds for any smooth enclosing SSD, which has been demonstrated for the case of a circular SSD via numerical simulations \cite{firtha2016:daga_booklet}.
 \end{thesis}
@@ -520,6 +520,7 @@ By using my formulation spatial aliasing may be eliminated by simple low-pass fi
 \section*{Publications}
 \addcontentsline{toc}{sec}{Publications}
 
+\nocite{*}
 \begin{refcontext}[labelprefix=J]
 \printbibliography[title={Journal papers}, keyword=J, heading=subbibliography] 
 \end{refcontext}
@@ -527,7 +528,7 @@ By using my formulation spatial aliasing may be eliminated by simple low-pass fi
 \printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
 \end{refcontext}
 \begin{refcontext}[labelprefix=O]
-\printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
+\printbibliography[title={Other publications}, keyword=O, heading=subbibliography] 
 \end{refcontext}
 
 \end{document}
