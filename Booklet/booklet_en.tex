@@ -209,7 +209,8 @@ Analytical approaches include the direct solution of the involved integral formu
 
 \subsection{Wave Field Synthesis history}
 %
-The original theory of Wave Field Synthesis---often referred to as \emph{traditional WFS}---evolved from the works of Berkhout et al. at the Technical University of Delft utilizing concepts, well-known in the field of seismic migration.%, applied for sound field control.
+The original theory of Wave Field Synthesis---often referred to as \emph{traditional WFS}---evolved from the works of Berkhout et al. at the Technical University of Delft utilizing concepts, well-known in the field of seismic migration.
+%, applied for sound field control.
 The basis of WFS theory were the Rayleigh integrals, the mathematical form of the Huygens' principle, representing a sound field as the sum of spherical waves emerging from an infinite plane.
 Berkhout applied the stationary phase method (SPA) to the Rayleigh integrals in order to arrive at loudspeaker driving signals for a linear array of loudspeakers instead of the practically infeasible planar array.
 The original formulation provided driving signals for loudspeakers with dipole characteristics \footfullcite{Berkhout1988}\textsuperscript{,}\footfullcite{Berkhout1993:Acoustic_control_by_WFS}---soon extended for monopole loudspeakers as well \footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}---, reproducing the wavefront of a virtual spherical wave in the horizontal plane, containing the loudspeaker array.
@@ -238,7 +239,7 @@ A further motivation of the present research was to establish this connection fo
 As a complex application example for the presented framework the reproduction of moving virtual sources was investigated in details.
 The reproduction of moving sources has been the subject of studies since the early age of WFS theory, as an obvious need when dynamic sound scenes are to be synthesized.
 Early formulations attempted to synthesize the field of a moving point source by applying the traditional WFS driving signals with changing the virtual source position as the function of time.
-This approach however failed to properly recreate Doppler effect, leading to serious artifacts in the synthesized field.
+This approach, however, failed to properly recreate the Doppler effect, leading to serious artifacts in the synthesized field.
 Ahrens et al. used the revisited WFS formulation in order to recreate the field of a moving source \footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}.
 However, due to physical constrains of revisited WFS theory, it failed to control the amplitude of the synthesized source.
 Hence, a further research goal was to extend the presented framework to include the possibility of synthesizing dynamic sound scenes.
@@ -268,7 +269,7 @@ The scientific achievements behind the results presented in this section are sum
 \subsection{A unified Wave Field Synthesis framework}
 The general SFS geometry is depicted in Figure \ref{fig:introduction:sfs_aim}.
 The synthesized field can be given mathematically as a convolutional integral over the SSD contour, in which the weighting factor is the \emph{driving function} to be expressed and the kernel is the Green's function, describing the SSD elements' sound field.
-The general SFS problem is therefore and inverse problem.
+The general SFS problem is therefore an inverse problem.
 
 Wave Field Synthesis approaches the problem by finding an appropriate boundary integral representation of the virtual sound field, from which the required driving function can be extracted.
 This representation can be found by reducing a surface integral---describing an arbitrary 3D sound field---into a contour integral by a vertical stationary phase approximation.

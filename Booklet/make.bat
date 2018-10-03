@@ -1,5 +1,5 @@
-pdflatex booklet_en.tex REM -interaction=batchmode
+pdflatex booklet_en.tex
 biber booklet_en
-pdflatex booklet_en.tex -interaction=batchmode
-pdflatex booklet_en.tex -interaction=batchmode
-sumatrapdf booklet_en.pdf
+pdflatex booklet_en.tex
+pdflatex booklet_en.tex
+REM sumatrapdf booklet_en.pdf
