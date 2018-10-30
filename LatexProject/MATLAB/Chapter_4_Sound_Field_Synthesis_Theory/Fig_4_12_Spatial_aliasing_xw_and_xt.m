@@ -1,17 +1,18 @@
 clear
 close all
 %%
-fs = 44.1e3;
-Lt =  0.1;
+
+fs = 44.1e3;        % sampling frequency
+Lt =  0.1;          % Simulation time
 t = (-Lt:1/fs:Lt);
-Nt = length(t);
-w = fftshift( 2*pi*(-Nt/2:Nt/2-1)'/(Nt)*fs );
+Nt = length(t);     
+w = fftshift( 2*pi*(-Nt/2:Nt/2-1)'/(Nt)*fs ); % Frequency axis
 
-Nf = 10;
-fir = fir1(Nf,[10,10e3]/fs*2);
-s = filter(fir,1,[1; zeros(Nt-1,1)],[]);
+Nf = 10;                            % Filter order
+fir = fir1(Nf,[10,10e3]/fs*2);      % Filter definition
+s = filter(fir,1,[1; zeros(Nt-1,1)],[]);    % Input signal: bandlimited impulse
 
-w0 = 2*pi*2e3;
+w0 = 2*pi*2e3;              % Steady state frequency
 c = 343.1;
 k = w0 / c;
 
@@ -29,9 +30,9 @@ y0 = zeros(size(x0));
 x0 = [ x0 y0 ];
 
 R = sqrt((x0(:,1)-xs(1)).^2+(x0(:,2)-xs(2)).^2);
-H = sqrt(1i*w/(2*pi*c));
-d_wfs = real(fftshift(ifft(H.*fft(s))));
-Dxw = -1/(4*pi)*sqrt(8*pi/(1i*k))*sqrt(yref/(yref-xs(2)))*1i*k*xs(2)*exp(-1i*k*R)./R.^(3/2);
+H = sqrt(1i*w/(2*pi*c));                        % WFS filter frequency response
+d_wfs = real(fftshift(ifft(H.*fft(s))));        % WFS Filtered excitation
+Dxw = -1/(4*pi)*sqrt(8*pi/(1i*k))*sqrt(yref/(yref-xs(2)))*1i*k*xs(2)*exp(-1i*k*R)./R.^(3/2);    % WFS driving function
 %%
 aliased_field_freq_dom = zeros(size(X));
 aliased_field_time_dom = zeros(size(X));
