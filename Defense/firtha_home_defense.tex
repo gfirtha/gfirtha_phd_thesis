@@ -607,65 +607,102 @@ Result: spatial explicit driving functions for uniformly moving sources
 \begin{frame}
 \frametitle{Thesis group IV: SDM of moving sources}
 \begin{itemize}
-\item Explicit moving source driving function:
-\begin{itemize}
-\item Found for Harmonic sources moving uniformly along a linear SSD
+\item Importance of explicit driving functions:
+	\begin{itemize}
+	\item serve as reference solution
+	\item proven to be equivalent with WFS under high frequency assumptions
+	\\ \hspace{30mm} $\downarrow$ \hspace{10mm} \\
+	\item {\color{blue} allows discussion of aliasing artifacts in a unified manner}
+	\end{itemize}
+\item Aliasing for moving sources:
+	\begin{itemize}
+	\item aliasing artifacts are enhanced
+	\item frequency coloration is perceived: aliasing components suffer a different Doppler shift than the primary wavefront
+%	\item circular SSDs are found to be ideal for suppressing aliasing
+	\end{itemize}
+\end{itemize}
+\begin{center}\begin{figure} \includegraphics[scale=0.4]{figs/aliasing_artifact.png} \end{figure}\end{center}
 
-\item Proven to be equivalent with WFS under high frequency assumptions
-\item Utilization: anti-aliasing strategy for moving sources
-\end{itemize}
-\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group IV: SDM of moving sources}
 \small
+Avoiding spatial aliasing
+\only<1>{\begin{center}\begin{figure} \includegraphics[scale=0.4]{figs/antialiased_synth_moving_source.png} \end{figure}\end{center}}
+%\only<2>{
+%\includemedia[
+%  width=1\linewidth,
+%  height=0.425\linewidth, % 16:9
+%  addresource= vids/aliasing.mp4, 
+%  transparent,
+%  activate=pageopen,
+%  passcontext,
+%  flashvars={
+%  source= vids/aliasing.mp4
+%  &autoPlay=true % start playing on activation
+%  &loop=true
+%  }
+%]{}{VPlayer.swf} }
 \begin{itemize}
-\item Impulsive source, $v_0 = 200~\mathrm{m/s}$
-\item Circular SSD, $N=120$ ($\Delta x \approx 10~\mathrm{cm}$)
-\item Anti-aliasing (nonstationary) filtering: performed with high-resolution STFT 
+\vspace{-3mm}
+\item Anti-aliasing criterion: by time-varying filtering
+		\begin{equation*}
+		D(\vxo,\omega) = 0, \hspace{5mm} \omega(\vxo,t) \geq \frac{\pi}{\Delta x} \frac{c}{| \hat{k}^P_t(\vxo,t) |}
+		\end{equation*}
+\vspace{-2mm}
+\item Circular SSD: optimal in the aspect of aliasing and referencing the synthesis
 \end{itemize}
-\includemedia[
-  width=1\linewidth,
-  height=0.5091\linewidth, % 16:9
-  addresource= vids/aliasing.mp4, 
-  transparent,
-  activate=pageopen,
-  passcontext,
-  flashvars={
-  source= vids/aliasing.mp4
-  &autoPlay=true % start playing on activation
-  &loop=true
-  }
-]{}{VPlayer.swf} 
 \end{frame}
 
 \begin{frame}
-\frametitle{Thesis group III-IV: Synthesis of moving sources}
-In the aspect of synthesizing dynamic sound scenes the synthesis of moving sources is of primary importance. I adapted the unified WFS framework to the synthesis of sound fields induced by moving point sources.
+\frametitle{Thesis group III: Wave Field Synthesis of moving point sources}
+Thesis group summary:
+	\vspace{3mm}	
 	\begin{itemize}
-	\item 3D moving source WFS driving functions
-	\item Time-domain 2.5D WFS driving functions
-	\item Frequency-domain 2.5D WFS driving functions
+	\item 3D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal
+	\vspace{3mm}	
+	\item 2.5D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal, obtained by adapting the stationary phase approximation for time variant field
+	\vspace{3mm}	
+	\item Closed form 2.5D WFS driving functions for sources under uniform motion ($\leftrightarrow$ arbitrary case: propagation time delay must be expressed apriori)
+	\vspace{3mm}	
+	\item Frequency-domain 2.5D WFS driving functions for sources under uniform motion, derived directly in the frequency domain
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Synthesis of moving sources in the wavenumber domain}
-For the case of a linear SSD and a parallel reference line the spatial Fourier transform of the involved functions (i.e. the target field, the SSD’s sound
-field and the driving function) may be defined. In the wavenumber domain the synthesis problem can be formulated as a spectral multiplication,
-and the driving functions are obtained via a spectral division, (hence the term Spectral Division Method (SDM)). I gave analytical expressions
-for the required transforms for the case of uniformly moving virtual sources, resulting in the explicit reference solution.
+\frametitle{Thesis group IV: Synthesis of moving sources in the wavenumber domain}
+Thesis group summary:
+	\vspace{3mm}	
 	\begin{itemize}
-	\item 2.5D moving source SDM driving functions
-	\item Proof for WFS and SDM equivalence in the dynamic case
-	\item Description and avoidance strategy for spatial aliasing in moving source case
+	\item 2.5D SDM driving functions for sources in uniform motion
+	\vspace{3mm}	
+	\item Proof, for frequency-domain 2.5D WFS and 2.5 SDM driving functions coincide (similarly to the static case)
+	\vspace{3mm}	
+	\item Analytical treatment of spatial aliasing artifacts regarding frequency distortion artifacts and optimal SSD shape choice
+	\vspace{3mm}	
+	\item Extension of the novel anti-aliasing strategy for the case of moving sources
 	\end{itemize}
 \end{frame}
 
 \section{Summary}
 \begin{frame}
 \frametitle{Summary}
+\begin{itemize}
+\item Main results
+	\vspace{3mm}	
+	\begin{itemize}
+	\item Unified Wave Field Synthesis framework for arbitrary virtual fields and SSD shapes	\vspace{3mm}	
+	\item Spatial form of the explicit approach, proven to coincide with the unified WFS solution 	\vspace{3mm}	
+	\item 2.5D WFS and explicit driving function for sources, moving on arbitrary trajectories 	\vspace{3mm}	
+	\item Novel anti-aliasing strategy for both static and dynamic virtual fields
+	\end{itemize}
+\item Outlook
+	\begin{itemize}
+	\item Discussion of focused virtual sources	\vspace{3mm}	
+	\item Efficient implementation of the results
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
