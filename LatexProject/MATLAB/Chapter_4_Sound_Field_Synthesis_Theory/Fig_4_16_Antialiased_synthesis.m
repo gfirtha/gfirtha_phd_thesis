@@ -117,7 +117,7 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 p2 = axes('Units','normalized','Position',pos(2,:));
-pcolor(x,y,real(field_synth_aa));
+pcolor(x,y,real(field_synth_aarp));
 axis equal tight
 caxis([-1 1] * 2e-2);
 shading interp
@@ -150,4 +150,4 @@ allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(gcf,'PaperPositionMode','auto');
-print( '-r300',fullfile( '../..','Figures/SFS_theory','Antialiased_synth' ) ,'-dpng')
+%print( '-r300',fullfile( '../..','Figures/SFS_theory','Antialiased_synth' ) ,'-dpng')

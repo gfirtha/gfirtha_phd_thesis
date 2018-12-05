@@ -1,0 +1,155 @@
+%%% BEAMER SETTINGS
+% The overall color of the presentations
+\definecolor{hitcolor}{RGB}{170, 0, 0}
+\definecolor{hitdkgray}{RGB}{128, 128, 128}
+\definecolor{hitltgray}{RGB}{230, 230, 230}	
+\definecolor{email}{rgb}{0,0,0.6}	
+\definecolor{hittitlefgcolor}{rgb}{1.0, 1.0, 1.0}
+\definecolor{linkcolor}{rgb}{0.0,0.0,0.5}
+
+\newcommand{\insertemail}{\href{mailto:\email}{\textcolor{email}{\texttt{\email}}}}
+
+\let\emph\textbf
+%\usetheme{Dresden}
+
+%\setbeamercolor{title}{fg=hittitlefgcolor,bg=hitcolor}
+\setbeamercolor{section in head/foot}{fg=hitcolor!80!black}
+
+\setbeamercolor{email}{fg=linkcolor}
+\setbeamercolor{titlelike}{fg=white,bg=hitcolor}
+\setbeamercolor{frametitle}{fg=white,bg=hitcolor}
+%\setbeamercolor{}
+\useoutertheme{infolines}
+\setbeamercolor{section in head/foot}{fg=white,bg=hitcolor!70!black}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=hitcolor!70!red}
+\setbeamercolor{author in head/foot}{fg=white,bg=hitdkgray!75!black}
+\setbeamercolor{institute in head/foot}{fg=white,bg=hitcolor!70!black}
+\setbeamercolor{date in head/foot}{fg=white,bg=hitcolor!70!red}
+\setbeamercolor{subtitle in head/foot}{fg=white,bg=hitcolor}
+
+\setbeamercolor{structure}{fg=hitcolor}
+
+\setbeamercolor{title}{fg=hitcolor,bg=white}
+\setbeamercolor{block title}{bg=hitcolor,fg=white}
+\setbeamercolor{block body}{fg=black,bg=hitltgray}
+\setbeamercolor{block title alerted}{fg=white,bg=hitcolor!70!red}
+\setbeamercolor{block body alerted}{fg=black,bg=hitcolor!30!white}
+%\setbeamercolor{block body example}{fg=blue,bg=white}
+
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{email}{size=\small,family=\ttfamily}
+\setbeamerfont{subtitle}{shape=\itshape,size=\small}
+
+\setbeamerfont{headline}{size=\scriptsize}
+
+%\usecolortheme{orchid}
+
+\useinnertheme{rectangles}
+\usefonttheme{professionalfonts}
+
+\setbeamersize{text margin left=20pt,text margin right=20pt}
+
+\beamertemplatenavigationsymbolsempty
+
+%%% TITLE PAGE
+\defbeamertemplate*{title page}{customized}[1][]
+{
+	\centering
+	\vfill
+	\begin{beamercolorbox}[wd=\textwidth,sep=1ex,center]{title}
+	{
+		\vfill
+		\usebeamerfont{title}
+		\inserttitle\par
+		\vspace{\stretch{1.5}}
+	}
+	\end{beamercolorbox}
+	\bigskip
+	{\usebeamerfont{author}\insertauthor\par}
+	\smallskip
+	{\usebeamerfont{email}\insertemail\par}
+	\bigskip
+	\begin{tabular}{cc}
+	\includegraphics[height=1.75cm]{logos/daga2016logo.png} &
+	{\usebeamerfont{date}\small\parbox[b][1.75cm][c]{5cm}{\centering \insertdate}}
+	\end{tabular}
+	\par
+	%\bigskip
+	\bigskip
+	{
+		{\includegraphics[height=0.75cm]{logos/bme1782_logo.pdf}}
+		\hspace{0.5cm}
+		{\includegraphics[height=0.75cm]{logos/hitlogo_2013_en.png}}
+		\hspace{0.5cm}
+		{\includegraphics[height=0.75cm]{logos/ibp_logo.png}}
+		\par
+	}
+
+}
+
+%%% HEADLINE
+\makeatletter
+\setbeamertemplate{headline}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex]{section in head/foot}%
+    %\hbox to .5\paperwidth{\hfil\insertsectionhead\hfil}
+	\hbox to .5\paperwidth{\insertsectionnavigationhorizontal{.5\paperwidth}{}{\hfill\hfill}}
+
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex]{subsection in head/foot}%
+    \hbox to .5\paperwidth{\hspace*{3ex}\insertsubsectionhead\hfil}
+  \end{beamercolorbox}%
+}
+\makeatother
+
+%%% FOOTER
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{author in head/foot}
+			\usebeamerfont{author in head/foot}\hspace*{3ex}\insertshortauthor
+			\hfill
+			\usebeamerfont{author in head/foot}\insertshorttitle\hspace*{3ex}\par
+	\end{beamercolorbox}}
+  \vskip0pt
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex]{institute in head/foot}%
+    \usebeamerfont{author in head/foot}\hspace*{3ex}\insertshortinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{subtitle in head/foot}%
+     \usebeamerfont{date in head/foot}\insertshortdate
+   \end{beamercolorbox}%
+   \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left]{date in head/foot}%
+    \hspace*{3ex}\usebeamerfont{date in head/foot}March 11th, 2014.\hspace*{\fill}
+    \makebox[1.75cm][r]{\insertframenumber{} / \inserttotalframenumber\par}\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+%%% HEADLINELESS STYLE
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+
+\setbeamerfont{tabbing}{%
+	size=\normalsize,
+	shape=\itshape,
+	parent=verse
+}
+\setbeamerfont{sloganauthor}{%
+	size=\normalsize,
+	shape=\itshape
+}
+\setbeamerfont{slogansource}{
+	size=\normalsize
+}
+
+%%% END OF BEAMER SETTINGS
