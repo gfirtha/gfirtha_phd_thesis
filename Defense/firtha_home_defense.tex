@@ -73,7 +73,39 @@ Laboratory of Acoustics and Studio Technics\\
 \section{Introduction} 
 \begin{frame}
 \frametitle{What is sound field synthesis (SFS)?}
-Why is SFS good
+\begin{columns}
+%
+\column{0.45\textwidth}
+\begin{figure}  
+ 	\begin{overpic}[width = 0.7\columnwidth ]{figs/stereo_a.png}
+	\small
+	\put(40.5,40.5){$\phi_p$}
+	\put(50,29){$\phi_0$}
+	\put(19,100){\parbox{.65in}{phantom source}}
+	\put(40,0){listener at sweet spot}	
+	\begin{turn}{90}
+ 	\put(50,-52){stereo axis}
+	\end{turn} 
+	\end{overpic}   
+\end{figure}
+%
+\column{0.55\textwidth}
+\begin{itemize}
+\item Aim of sound field reproduction: to create the impression of a desired audio scene
+\item Stereophony: reconstructs binaural cues
+	\begin{itemize}
+	\item Interaural time difference
+	\item Interaural level difference
+	\end{itemize}
+\item Consequence: correct sound localization only in the \emph{sweet spot}
+\end{itemize}
+\end{columns}
+\vspace{5mm}
+\begin{itemize}
+\item Aim of sound field synthesis: reconstruct physical properties of desired sound field over an extended region
+\\ \hspace{30mm} $\downarrow$ \\
+\item Perfect localization inherently ensured
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -91,7 +123,6 @@ Why is SFS good
 	\begin{overpic}[width = .7\columnwidth ]{figs/general_sfs.png} 
 	\small
 	\put(0,26){virtual source}
-	\put(44.5,0.5){$\mathbf{0}$}
 	\put(71,31){$\vx$}
 	\put(43,15){$\vxo$}
 	\begin{turn}{27}
@@ -104,8 +135,8 @@ Why is SFS good
 } 
 \only<1>{\begin{itemize}
 \small
-\item Goal: Physical reproduction of a target/\textbf{virtual} sound field over and extended region
-\item Densely spaced loudspeaker array: \textbf{secondary source distribution (SSD)}
+\item Goal: Physical reproduction of a target/\textbf{virtual} sound field over an extended region (horizontal plane)
+\item Densely spaced loudspeaker contour: \textbf{secondary source distribution (SSD)}
 \item Task: Find the optimal loudspeaker \textbf{driving functions}
 \end{itemize}}
 \only<2>{
@@ -116,7 +147,7 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 \end{equation*}
 \small
 	\begin{itemize}
-	\item $P(\vx,\omega)$: prescribed, target sound field
+	\item $P(\vx,\omega)$: prescribed target/virtual sound field
 	\item $G(\vx|\vxo,\omega)$: field of the secondary source elements
 	\item $D(\vxo,\omega)$: driving function to be found
 	\end{itemize}
@@ -128,7 +159,8 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 \begin{itemize}
 \item Explicit solution
 		\begin{itemize}
-		\item direct solution of the inverse problem \vspace{2mm}
+		\item direct solution of the inverse problem in the spectral domain \vspace{2mm} 
+		\item compact formula rarely available \vspace{2mm}
 		\item exists only for particular geometries:
 		\begin{itemize}
 			\vspace{2mm}
@@ -140,7 +172,8 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 	\vspace{5mm}
 	\item Implicit solution: \textbf{Wave Field Synthesis (WFS)}
 		\begin{itemize}
-		\item based on boundary integral representation of sound fields \vspace{2mm}
+		\item based on the Huygens principle \vspace{2mm}
+		\item relies on boundary integral representation of sound fields \vspace{2mm}
 		\item central topic of the present dissertation
 		\end{itemize}
 		\vspace{5mm}
