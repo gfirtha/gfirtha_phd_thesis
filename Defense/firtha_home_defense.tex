@@ -737,17 +737,18 @@ Result: spatial explicit driving functions for uniformly moving sources
 \begin{frame}
 \frametitle{Thesis group IV: SDM of moving sources}
 \begin{itemize}
-\item Importance of explicit driving functions:
+\item Importance of explicit driving function:
 	\begin{itemize}
-	\item serve as reference solution
+	\item serves as reference solution
 	\item proven to be equivalent with WFS under high frequency assumptions
 	\\ \hspace{30mm} $\downarrow$ \hspace{10mm} \\
 	\item {\color{blue} allows discussion of aliasing artifacts in a unified manner}
 	\end{itemize}
+	\vspace{2mm}
 \item Aliasing for moving sources:
 	\begin{itemize}
 	\item aliasing artifacts are enhanced
-	\item frequency coloration is perceived: aliasing components suffer a different Doppler shift than the primary wavefront
+	\item frequency distortion is perceived: aliasing components suffer a different Doppler shift than the primary wavefront
 %	\item circular SSDs are found to be ideal for suppressing aliasing
 	\end{itemize}
 \end{itemize}
@@ -774,15 +775,19 @@ Avoiding spatial aliasing
 %  &loop=true
 %  }
 %]{}{VPlayer.swf} }
-\begin{itemize}
 \vspace{-3mm}
+\begin{tcolorbox}
+\begin{itemize}
+\footnotesize
 \item Anti-aliasing criterion: by time-varying filtering
-		\begin{equation*}
+
+\vspace{-2mm}		\begin{equation*}
 		D(\vxo,\omega) = 0, \hspace{5mm} \omega(\vxo,t) \geq \frac{\pi}{\Delta x} \frac{c}{| \hat{k}^P_t(\vxo,t) |}
 		\end{equation*}
-\vspace{-2mm}
+\vspace{-5mm}
 \item Circular SSD: optimal in the aspect of aliasing and referencing the synthesis
 \end{itemize}
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
@@ -790,13 +795,13 @@ Avoiding spatial aliasing
 Thesis group summary:
 	\vspace{3mm}	
 	\begin{itemize}
-	\item 3D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal
+	\item 3D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal [J1, J3]
 	\vspace{3mm}	
-	\item 2.5D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal, obtained by adapting the stationary phase approximation for time variant field
+	\item 2.5D Wave Field Synthesis for moving sources on arbitrary trajectory and excitation signal, obtained by adapting the stationary phase approximation for time variant field [J3]
 	\vspace{3mm}	
-	\item Closed form 2.5D WFS driving functions for sources under uniform motion ($\leftrightarrow$ arbitrary case: propagation time delay must be expressed apriori)
+	\item Closed form 2.5D WFS driving functions for sources under uniform motion ($\leftrightarrow$ arbitrary case: propagation time delay must be expressed apriori) [J1]
 	\vspace{3mm}	
-	\item Frequency-domain 2.5D WFS driving functions for sources under uniform motion, derived directly in the frequency domain
+	\item Frequency-domain 2.5D WFS driving functions for sources under uniform motion, derived directly in the frequency domain [J6]
 	\end{itemize}
 \end{frame}
 
@@ -805,13 +810,13 @@ Thesis group summary:
 Thesis group summary:
 	\vspace{3mm}	
 	\begin{itemize}
-	\item 2.5D SDM driving functions for sources in uniform motion
+	\item 2.5D SDM driving functions for sources in uniform motion [J6]
 	\vspace{3mm}	
-	\item Proof, for frequency-domain 2.5D WFS and 2.5 SDM driving functions coincide (similarly to the static case)
+	\item Proof, for frequency-domain 2.5D WFS and 2.5 SDM driving functions coincide (similarly to the static case) [J6]
 	\vspace{3mm}	
-	\item Analytical treatment of spatial aliasing artifacts regarding frequency distortion artifacts and optimal SSD shape choice
+	\item Analytical treatment of spatial aliasing artifacts regarding frequency distortion artifacts and optimal SSD shape choice [C8]
 	\vspace{3mm}	
-	\item Extension of the novel anti-aliasing strategy for the case of moving sources
+	\item Extension of the novel anti-aliasing strategy for the case of moving sources [C11]
 	\end{itemize}
 \end{frame}
 
@@ -827,6 +832,7 @@ Thesis group summary:
 	\item 2.5D WFS and explicit driving function for sources, moving on arbitrary trajectories 	\vspace{3mm}	
 	\item Novel anti-aliasing strategy for both static and dynamic virtual fields
 	\end{itemize}
+	\vspace{3mm}
 \item Outlook
 	\begin{itemize}
 	\item Discussion of focused virtual sources	\vspace{3mm}	
@@ -835,12 +841,70 @@ Thesis group summary:
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Journal papers}
+\begin{itemize}
+\small 
+\item [[J1]] \underline{G. Firtha}, P. Fiala. ''Wave Field Synthesis of Moving Sources with Retarded Stationary Phase Approximation'' In: \textit{JAES} 63.12 (2016). IF: 0.774, C: 3
+\vspace{1mm}
+%
+\item [[J2]] \underline{G. Firtha}, P. Fiala, F. Schultz, S. Spors.“Improved Referencing Schemes for 2.5D Wave Field Synthesis Driving Functions.” In: \textit{IEEE/ACM TASLP} (2017). IF: 2.95, C: 3,
+pp. 1117–1127.
+\vspace{1mm}
+%
+\item [[J3]] \underline{G. Firtha}, P. Fiala. ''Wave Field Synthesis of moving sources with arbitrary trajectory and velocity profile'' In: \textit{JASA} (2017). IF: 1.572, C: 3
+\vspace{1mm}
+%
+\item [[J4]] \underline{G. Firtha}, P. Fiala, F. Schultz, S. Spors. ''On the General Relation of Wave Field Synthesis and Spectral Division Method for Linear Arrays'' In: \textit{IEEE/ACM TASLP} (2018). IF: 2.95
+\vspace{1mm}
+%
+\item [[J5]] F. Winter, F. Schultz, \underline{G. Firtha}, S. Spors. ''A Geometric Model for Prediction of Spatial Aliasing in 2.5D Sound Field Synthesis'' In: \textit{IEEE/ACM TASLP} (2019). IF: 2.95, Under revision.
+\vspace{1mm}
+%
+\item [[J6]] \underline{G. Firtha}, P. Fiala. ''Sound Field Synthesis of Uniformly Moving Virtual Monopoles'' In: \textit{JAES} (2015). IF:
+0.774, C: 5
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}
 \Huge{\centerline{Thank you for the attention!}}
 \end{frame}
 
+\begin{frame}
+\frametitle{Reviewer's questions}
+Maybe this is due to the specialty of this field, but I oftenmissed the comparison of the
+new method with previous ones from the literature, stating that the proposed method
+quantitatively outperforms the others in this and that senses. Even though the illustrative
+plots are nice, explicit comparative plots are hardly found. I can imagine plots
+showing reconstruction error in function of the position on the reference curve.
+\end{frame}
+
+\begin{frame}
+\frametitle{Reviewer's questions}
+I wonder how the 2.5D synthesis (as discussed in Sec. 4.1.3, and several times later on)
+performs in the case of multiple virtual point sources, especially when no point on the
+reference curve exists for which all point sources have a stationary SSD position. Is this
+a limitation? Can we say that the principle of superimposition cannot be applied in
+the usual way? I might have got lost in the details, but is it true that the explicit SDM
+solution does not have such limitation?
+\end{frame}
+
+\begin{frame}
+\frametitle{Reviewer's questions}
+Another naive question: the simultaneous presence of at least two point sources radiating
+at the same frequency, would give rise to interference phenomenon with exact
+2
+nulls in the target field. Would it be ameaningful way of evaluating a synthesismethod
+based on its capability to reconstruct such nulls (location and intensity)?
+\end{frame}
+
+\begin{frame}
+\frametitle{Reviewer's questions}
+I missed statements on the computational cost of themethods,with respect to practical
+requirements, e.g., real-time operation. Maybe this is of low importance, but if so, this
+has also to be stated in an engineering dissertation.
+\end{frame}
 %----------------------------------------------------------------------------------------
 
 \end{document}
