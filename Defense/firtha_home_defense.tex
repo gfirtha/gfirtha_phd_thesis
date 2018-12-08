@@ -11,6 +11,7 @@
 
 \definecolor{mblue}{rgb}{0.31, 0.44, 1} 
 \definecolor{UBCblue}{rgb}{0.41, 0.5, 0.75} % UBC Blue (primary)
+\definecolor{bgblue}{rgb}{0.54, 0.67, 0.99} % UBC Blue (primary)
 \setbeamercolor*{structure}{bg=UBCblue!20,fg=UBCblue}
 
 	%\setbeamercolor{title}{fg=hittitlefgcolor,bg=hitcolor}
@@ -34,12 +35,17 @@
 \usepackage{xcolor}
 \usepackage{pict2e}
 \usepackage{media9}
+\usepackage{tabularx}
+\tcbset{width=1\textwidth,boxrule=0pt,colback=bgblue,arc=0pt,auto outer arc,left=10pt,right=0pt,boxsep=0pt}
 
 \newcommand{\approxtext}[1]{\ensuremath{\stackrel{\text{#1}}{\approx}}}
+\renewcommand{\arraystretch}{1}
+
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
-\title[Wave Field Synthesis]{A Unified Wave Field Synthesis Framework
+\title[PhD defense]{A Unified Wave Field Synthesis Framework
 \\ \small with Application for Moving Virtual Sources
 \\ Home defense}
 
@@ -173,7 +179,7 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 	\item Implicit solution: \textbf{Wave Field Synthesis (WFS)}
 		\begin{itemize}
 		\item based on the Huygens principle \vspace{2mm}
-		\item relies on boundary integral representation of sound fields \vspace{2mm}
+		\item relies on boundary integral representation of sound fields, containing the required driving function \emph{implicitly}\vspace{2mm}
 		\item central topic of the present dissertation
 		\end{itemize}
 		\vspace{5mm}
@@ -202,7 +208,7 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 	\only<1>{
 	\vspace{-2mm} \small
 	\begin{equation*}
-	P(\vx,\omega) \approx \oint_{\dO} 2 \ti w(\vxo) k^P_n(\vxo) P(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td \dO ( \vxo ),
+	P(\vx,\omega) \approx \oint_{\dO} \underbrace{2 \ti w(\vxo) k^P_n(\vxo) P(\vxo,\omega)}_{\text{3D driv. func.}} \cdot \, G(\vx - \vxo , \omega ) \td \dO ( \vxo ),
 	\end{equation*}		
 	}
 	\item Goal: reduction of 3D Kirchhoff integral to a \textbf{contour integral}
@@ -225,20 +231,23 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 \column{0.55\textwidth}
 \begin{itemize}
 	\item 3D Kirchhoff integral
-	\vspace{2mm} \\ \hspace{10mm} $\downarrow$ \hspace{2mm} SPA \\ \vspace{2mm}  
-	\item 2.5D (contour) Kirchhoff integral, containing ,,2.5D WFS driving functions''
-	\item {\color{blue} SPA: stationary phase approximation of integrals around stationary points}
+	\vspace{2mm} \\ \hspace{5mm} $\downarrow$ \hspace{2mm} \footnotesize \underline{S}tationary \underline{P}hase \underline{A}pproximation \\ \vspace{2mm}  
+	\item 2.5D (contour) Kirchhoff integral, containing ,,2.5D'' WFS driving functions
+	\item {\color{blue} SPA: evaluation of integrals around \emph{stationary points}}
 \end{itemize}
 \end{columns}
 \vspace{5mm}
-\visible<2->{\item Result: WFS driving function, optimal for a single reference point}
+\visible<2->{
+\small
+\item Result: 2.5D Kirchhoff integral, containing WFS driving function, optimal for a single reference point
+\item 2.5D: 2D contour of 3D point sources, to synthesize a 3D field in a 2D listening plane}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
 \begin{itemize}
-\item Novel introduced concept: The local wavenumber vector
+\item Novel concept: The local wavenumber vector
 \begin{columns}
 %
 \column{0.4\textwidth}
@@ -269,11 +278,20 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
+\begin{columns}
+\column{0.45\textwidth}
+\small
 \begin{itemize}
-\item Further (horizontal) stationary phase approximation: continuous reference curve instead of reference point
+\item Problem: single reference point
+\item Second (horizontal) SPA of the 2.5D Kirchhoff integral: 
+\vspace{2mm} \\ \hspace{15mm} $\downarrow$ \hspace{2mm}
+\item Continuous reference curve in the listening region
+\end{itemize} 
+%
+\column{0.6\textwidth}
 \begin{figure}
 	\centering
-	\begin{overpic}[width = .6\columnwidth]{figs/WFS_ref_point.png}
+	\begin{overpic}[width = 1\columnwidth]{figs/WFS_ref_point.png}
 	\scriptsize
 	\put(31,32){$\vxo$}
 	\put(48,25){$\vxref	$}
@@ -282,65 +300,72 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 	\end{turn}
 	\end{overpic}
 \end{figure}
-\item Result: Unified WFS driving functions for
+\end{columns}
+\begin{tcolorbox}
+Result: Generalized/unified 2.5D WFS driving functions for
 \begin{itemize}
 \small
 \item arbitrary SSD shapes (convex)
 \item arbitrary 2D or 3D virtual fields (propagating along the plane of synthesis)
 \item arbitrary reference curve (convex): contour of amplitude and phase correct synthesis, \color{blue}{defined via the local wavenumber vector}
-\end{itemize} 
 \end{itemize}
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
 \begin{itemize}
-\item Example: synthesis of a virtual point source
-\vspace{5mm}
+\item Application example: synthesis of a virtual 3D point source
 \begin{figure}
-	\centering
-	\begin{overpic}[width = .9\columnwidth ]{figs/25D_WFS_general.png}
-	\footnotesize
-	\put(13,33){Synthesized field}
-	\put(58,33){Error of synthesis}
+\hspace{-10mm}
+%	\centering
+	\begin{overpic}[width = 1\columnwidth ]{figs/25D_WFS_general.png}
+	\scriptsize
+	\put(15,33){Synthesized field}
+	\put(62,33){Error of synthesis}
 	\end{overpic}
 \end{figure}
 \item Result:
 		\begin{itemize}
-		\item Phase: No phase error inside the listening region		
-		\item Amplitude: amplitude error is minimal over the reference curve
+		\item no phase error inside the listening region		
+		\item amplitude error is minimal over part of the reference curve (visible from the virtual source)
 		\end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
+
 \begin{itemize}
-\item Connection with previous approaches:
-	\vspace{3mm}
+\item Relation with previous approaches:
+\end{itemize}
+%
+\begin{table}
+\small
+\renewcommand*{\arraystretch}{1.5}
+\hspace{-5mm}
+\begin{tabular}{l | c | c | c  }
+ 		 			 & Traditional WFS  & Revisited WFS    & Unified WFS\\
+\hline \hline
+SSD shape 			 &  linear 		    &   arbitrary      & arbitrary  \\ 
+Virtual source model &  3D point source &  arbitrary 2D    & arbitrary  \\
+Reference curve 	 &  reference line  &  reference point & arbitrary
+\end{tabular}
+\end{table}
+%
+%	\begin{itemize}
+%	\item Unified WFS with linear SSD, 3D virtual point source and parallel reference line $\rightarrow$ Traditional WFS
+%	\item Unified WFS with 2D virtual field and single reference point $\rightarrow$ Revisited WFS
+%	\end{itemize}	
+	\vspace{5mm}
+\begin{tcolorbox}
 \begin{itemize}
-\item Unified WFS:
+\item Summary:
 	\begin{itemize}
-	\item arbitrary SSD shapes (convex)
-	\item arbitrary 2D or 3D virtual fields (propagating along the plane of synthesis)
-	\item arbitrary reference curve (convex): contour of amplitude and phase correct synthesis
-	\end{itemize}
-	\vspace{3mm}
-\item Traditional WFS (citation?): 
-	\begin{itemize}
-	\item linear SSD
-	\item virtual source: 3D point source
-	\item reference line, parallel with the SSD
+	\item previous approaches: special cases of unified WFS theory
 	\end{itemize}	
-	\vspace{3mm}
-\item Revisited WFS (citation): 
-	\begin{itemize}
-	\item arbitrary SSD shapes (convex)
-	\item arbitrary 2D virtual fields (propagating along the plane of synthesis)
-	\item single reference point
-	\end{itemize}
 \end{itemize}
-\end{itemize}
+\end{tcolorbox}	
 \end{frame}
 
 \begin{frame}
@@ -348,11 +373,11 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 Thesis group summary:
 	\vspace{3mm}
 	\begin{itemize}
-	\item Thesis I.1: Physical interpretation for the SPA of boundary integrals: wave front matching of the virtual field and the secondary sound fields
+	\item Thesis I.1: Physical interpretation for the SPA of boundary integrals: wave front matching of the virtual field and the secondary sound fields [J2]
 	\vspace{3mm}
-	\item Thesis I.2: WFS driving functions for arbitrary virtual fields and SSD shapes
+	\item Thesis I.2: WFS driving functions for arbitrary virtual fields and SSD shapes [J2]
 	\vspace{3mm}
-	\item Thesis I.3: Analytical expressions for the \emph{reference curve} and the \emph{referencing function}
+	\item Thesis I.3: Analytical expressions for the \emph{reference curve} and the \emph{referencing function} [J2]
 	\end{itemize}
 \end{frame}
 
@@ -413,8 +438,8 @@ Spectral Division Method (SDM) driving functions:
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,z, \omega) }{\tilde{G}(k_x,\yref,z, \omega)} \te^{-\ti k_x x_0} \td k_x
 \end{equation*}
 \begin{itemize}
-\item perfect synthesis on the reference line
 \item no approximations involved $\rightarrow$ serves as reference solution 
+\item perfect synthesis on the reference line
 \item no general spatial solution
 \end{itemize}
 \end{frame} 
@@ -430,9 +455,13 @@ D(x_0,\omega) \stackrel{\text{SPA}}{\approx}  \frac{1}{2\pi} \int_{-\infty}^{\in
 \item Assumptions: high frequency conditions
 \item Method: approximate involved spectral integrals with the SPA
 	\begin{itemize}
-	\item Step 1: SPA of forward spectra
-	\item Step 2: SPA of inverse spectra
+	\item step 1: SPA of forward spectra
+	\item step 2: SPA of inverse spectra
 	\end{itemize}
+\end{itemize}
+\vspace{5mm}
+\begin{tcolorbox}
+\begin{itemize}
 \item Result: explicit driving functions in the spatial domain for
 	\begin{itemize}
 	\item arbitrary virtual sources
@@ -440,6 +469,7 @@ D(x_0,\omega) \stackrel{\text{SPA}}{\approx}  \frac{1}{2\pi} \int_{-\infty}^{\in
 	\item arbitrary reference curve, defined via the local wavenumber vector
 	\end{itemize}
 \end{itemize}
+\end{tcolorbox}
 \end{frame} 
 
 \begin{frame}
@@ -447,13 +477,22 @@ D(x_0,\omega) \stackrel{\text{SPA}}{\approx}  \frac{1}{2\pi} \int_{-\infty}^{\in
 \begin{itemize}
 \item Example: synthesis of a virtual point source
 \begin{figure}
-	\begin{overpic}[width = 0.95\columnwidth ]{figs/sdm_circle_referencing_2.png}
+\hspace{-10mm}
+	\begin{overpic}[width = .95\columnwidth ]{figs/sdm_circle_referencing_2.png}
+	\scriptsize
+	\put(14,31){Synthesized field}
+	\put(64,31){Error of synthesis}
 	\end{overpic}
 \end{figure}
+\item Simulation setup
 	\begin{itemize}
 	\item SSD: linear
 	\item reference curve: circle around the virtual source
-	\item Result: amplitude correct synthesis over the reference circle
+	\end{itemize}
+\item Result
+	\begin{itemize}
+		\item no phase error inside the listening region		
+		\item amplitude error is minimal over part of the reference line
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -461,19 +500,32 @@ D(x_0,\omega) \stackrel{\text{SPA}}{\approx}  \frac{1}{2\pi} \int_{-\infty}^{\in
 
 \begin{frame}
 \frametitle{Thesis group II: Spatial explicit driving functions}
-Equivalence of the explicit and implicit solutions:
+Relation of the explicit and implicit solutions:
+ \vspace{3mm}
 \begin{itemize}
-\item Expressing spatial explicit driving functions in terms of the Rayleigh integral
+\item Goal: comparison of the spatial explicit and implicit driving functions
+\vspace{3mm}
+\item Method: expressing novel explicit driving functions in terms of the asymptotic Rayleigh integral
 \\ \hspace{4.5cm} $\downarrow$ \hspace{2cm} \\
-\item Explicit and unified WFS driving functions coincide in the high frequency region
-\item Consequence: {\color{blue} results concerning SDM can be applied for WFS for high frequencies in a unified manner}
-\item Example: explicit solution allows the description of spatial aliasing phenomena
+\end{itemize}
+\begin{tcolorbox}
+\begin{itemize}
+\item Result: explicit and unified WFS driving functions coincide in the high frequency region for general virtual fields
+ \vspace{3mm}
+\end{itemize}
+\end{tcolorbox}
+\begin{itemize}
+\item Consequence: {\color{blue} existing results, concerning SDM can be applied also for WFS in a unified manner}
+ \vspace{3mm}
+\item Example: spatial aliasing phenomena can be described analytically in the wavenumber domain (for SDM)
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group II: Spatial explicit driving functions}
-Avoiding spatial aliasing
+\begin{itemize}
+\item Aliasing: high-pass filtered echoes following the intended virtual wavefront due to SSD discretization
+\end{itemize}
 	\vspace{-3.5mm}	
 	\begin{figure}
 	\centering
@@ -482,23 +534,43 @@ Avoiding spatial aliasing
 	\end{figure} 
 	\vspace{-7mm}
 		\begin{itemize}
-		\item Aliasing: high-pass filtered echoes following the intended virtual wavefront due to SSD discretization
+		\item Avoiding spatial aliasing: by identifying source position of aliasing waves by applying SPA to the explicit driving functions
 		\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Thesis group II: Spatial explicit driving functions}
+\begin{itemize}
+\small
+\item Result:	
+\end{itemize}
+\vspace{-7mm}
 	\begin{figure}
-	\centering
 	\begin{overpic}[width = 0.65\columnwidth ]{figs/antialiased_synth_poster_2.png}
 	\end{overpic}
 	\end{figure} 
-	\vspace{-7mm}
+	\vspace{-5mm}
+\begin{tcolorbox}
 		\begin{itemize}
+\small
 		\item Anti-aliasing criterion in the spatial domain: with simple low-pass filtering 
 		\begin{equation*}
 		D(\vxo,\omega) = 0, \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{| \hat{k}^P_t(\vxo) |}
 		\end{equation*}
+		\end{itemize}
+\end{tcolorbox}
+
+\end{frame}  
+\begin{frame}
+\frametitle{Thesis group II: Spatial explicit driving functions}
+	\vspace{-3mm}
+	\begin{figure}
+	\begin{overpic}[width = 0.65\columnwidth ]{figs/antialiased_synth_poster_3.png}
+	\end{overpic}
+	\end{figure} 
+	\vspace{-6mm}
+		\begin{itemize}
+		\item Suppressing remaining aliasing components: with ideally directive loudspeakers
 		\end{itemize}
 \end{frame}  
 
@@ -507,9 +579,9 @@ Avoiding spatial aliasing
 Thesis group summary:
 	\vspace{3mm}
 	\begin{itemize}
-	\item Thesis II.1: Analytical SDM driving functions purely in the spatial domain, expressed in terms of the target sound field measured along an arbitrary reference curve	\vspace{3mm}
-	\item Thesis II.2: Under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field	\vspace{3mm}
-	\item Thesis II.3: Novel anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals
+	\item Thesis II.1: Analytical SDM driving functions merely in the spatial domain, expressed in terms of the target sound field measured along an arbitrary reference curve [J4]	\vspace{3mm}
+	\item Thesis II.2: Under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field [J4]	\vspace{3mm}
+	\item Thesis II.3: Novel anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals [C10]
 	\end{itemize}
 \end{frame}
 	
@@ -530,10 +602,13 @@ Thesis group summary:
 \frametitle{Thesis group III: WFS of moving sources}
 \begin{itemize}
 \item Complex application example: synthesis of moving sound sources
-\item Primary challenge: reconstruction of the Doppler effect
+\item Primary challenge: reconstruction of the Doppler effect \vspace{3mm}
 \item Field of a harmonic moving source:
 	\begin{figure} \centering \hspace{-10mm}
 	\begin{overpic}[width = 1\columnwidth ]{figs/moving_source_field.png}
+		\scriptsize
+	\put(8,44){Real part of moving source field}
+	\put(55.5,44){Amplitude of moving source field}
 	\end{overpic}
 	\end{figure} 
 \end{itemize}
@@ -543,8 +618,9 @@ Thesis group summary:
 \begin{frame}
 \frametitle{Thesis group III: WFS of moving sources}
 \begin{itemize}
-	\item 2.5D WFS driving functions: based on the 3D \textbf{time domain} Kirchhoff integral
-	\item Goal: reduction of 3D Kirchhoff integral to a \textbf{contour integral}
+\item 2.5D WFS driving functions: based on the 3D \textbf{time domain} Kirchhoff integral
+\item Goal: reduction of 3D Kirchhoff integral to a \textbf{contour integral}
+\end{itemize}
 \begin{columns}
 %
 \column{0.45\textwidth}
@@ -565,16 +641,19 @@ Thesis group summary:
 	\end{overpic}  
 \end{figure}
 \column{0.55\textwidth}
-\begin{itemize}
+	\begin{itemize}
 	\item 3D time domain 	Kirchhoff integral
 	\vspace{2mm} \\ \hspace{10mm} $\downarrow$ \hspace{2mm} SPA \\ \vspace{2mm}  
-	\item 2.5D (contour) Kirchhoff integral, containing for sources moving in-plane of interest
+	\item 2.5D (contour) Kirchhoff integral for sources moving in the plane of interest
 	\item Extension of local wavenumber vector for time-variant fields: simple interpretation for stationary position
-\end{itemize}
+	\end{itemize}
 \end{columns}
-\vspace{5mm}
-\item Result: WFS driving function for sources, moving on an arbitrary trajectory with arbitrary excitation
+\vspace{0mm}
+\begin{tcolorbox}
+\begin{itemize}
+\item Result: 2.5D WFS driving function for sources, moving on an arbitrary trajectory with arbitrary excitation signal
 \end{itemize}
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
@@ -589,12 +668,17 @@ Thesis group summary:
 \item Result:
 \begin{itemize}
 \small
-	\item Amplitude correct synthesis over visible part of the reference curve
-	\item Phase correct synthesis over the listening region
+	\item amplitude correct synthesis over visible part of the reference curve
+	\item phase correct synthesis over the listening region
 \end{itemize}
 \item For general trajectories: definition of emission time/propagation time delay is of challenge
+\end{itemize}
+\vspace{-1mm}
+\begin{tcolorbox}
+\begin{itemize}
 \item For uniform motion (e.g. above): closed form driving functions are derived
 \end{itemize}
+\end{tcolorbox}
 \end{frame}
 
 \section{Thesis group IV} 
@@ -737,6 +821,8 @@ Thesis group summary:
 	\end{itemize}
 \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}
 \Huge{\centerline{Thank you for the attention!}}
