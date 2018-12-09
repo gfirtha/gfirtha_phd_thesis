@@ -247,7 +247,7 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
 \begin{itemize}
-\item Novel concept: The local wavenumber vector
+\item Introduced concept: 	local wavenumber vector
 \begin{columns}
 %
 \column{0.4\textwidth}
@@ -357,7 +357,11 @@ Reference curve 	 &  reference line  &  reference point & arbitrary
 %	\item Unified WFS with linear SSD, 3D virtual point source and parallel reference line $\rightarrow$ Traditional WFS
 %	\item Unified WFS with 2D virtual field and single reference point $\rightarrow$ Revisited WFS
 %	\end{itemize}	
-	\vspace{5mm}
+	\vspace{2mm}
+	
+\begin{itemize}
+\item Example: Unified WFS for 3D virtual point source with linear SSD and linear reference curve: traditional WFS obtained
+\end{itemize}
 \begin{tcolorbox}
 \begin{itemize}
 \item Summary:
@@ -534,7 +538,7 @@ Relation of the explicit and implicit solutions:
 	\end{figure} 
 	\vspace{-7mm}
 		\begin{itemize}
-		\item Avoiding spatial aliasing: by identifying source position of aliasing waves by applying SPA to the explicit driving functions
+		\item Avoiding spatial aliasing: expressing local aliasing frequency on the SSD by applying SPA to the explicit driving functions
 		\end{itemize}
 \end{frame}
 
@@ -581,7 +585,7 @@ Thesis group summary:
 	\begin{itemize}
 	\item Thesis II.1: Analytical SDM driving functions merely in the spatial domain, expressed in terms of the target sound field measured along an arbitrary reference curve [J4]	\vspace{3mm}
 	\item Thesis II.2: Under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field [J4]	\vspace{3mm}
-	\item Thesis II.3: Novel anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals [C10]
+	\item Thesis II.3: Anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals [C10]
 	\end{itemize}
 \end{frame}
 	
@@ -761,20 +765,20 @@ Result: spatial explicit driving functions for uniformly moving sources
 \small
 Avoiding spatial aliasing
 \only<1>{\begin{center}\begin{figure} \includegraphics[scale=0.4]{figs/antialiased_synth_moving_source.png} \end{figure}\end{center}}
-%\only<2>{
-%\includemedia[
-%  width=1\linewidth,
-%  height=0.425\linewidth, % 16:9
-%  addresource= vids/aliasing.mp4, 
-%  transparent,
-%  activate=pageopen,
-%  passcontext,
-%  flashvars={
-%  source= vids/aliasing.mp4
-%  &autoPlay=true % start playing on activation
-%  &loop=true
-%  }
-%]{}{VPlayer.swf} }
+\only<2>{
+\includemedia[
+  width=1\linewidth,
+  height=0.425\linewidth, % 16:9
+  addresource= vids/aliasing.mp4, 
+  transparent,
+  activate=pageopen,
+  passcontext,
+  flashvars={
+  source= vids/aliasing.mp4
+  &autoPlay=true % start playing on activation
+  &loop=true
+  }
+]{}{VPlayer.swf} }
 \vspace{-3mm}
 \begin{tcolorbox}
 \begin{itemize}
