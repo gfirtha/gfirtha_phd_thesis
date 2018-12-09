@@ -883,7 +883,32 @@ pp. 1117–1127.
 \begin{frame}
 \frametitle{Reviewer's questions}
 2. I wonder how the 2.5D synthesis (as discussed in Sec. 4.1.3, and several times later on) performs in the case of multiple virtual point sources, especially when no point on the reference curve exists for which all point sources have a stationary SSD position. Is this a limitation? Can we say that the principle of superimposition cannot be applied in the usual way? I might have got lost in the details, but is it true that the explicit SDM solution does not have such limitation?
-\\ \vspace{2mm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Reviewer's questions}
+\begin{itemize}
+\item Driving functions are additive
+\item Positions of amplitude correct synthesis: depends on reference curve \emph{and virtual source model}
+\item No intersection of visible parts of the reference curves $\rightarrow$ no amplitude correct position
+\end{itemize}
+\only<1-3>{Synthesis of two plane waves:}
+\only<4>{Synthesis of two point sources:}
+\begin{figure}
+\only<1>{\begin{overpic}[scale = .35]{figs/pw_1.png}
+\end{overpic}}
+\only<2>{\begin{overpic}[scale = .35]{figs/pw_2.png}
+\end{overpic}}
+\only<3>{\begin{overpic}[scale = .25]{figs/two_pw.png}
+\end{overpic}}
+\only<4>{\begin{overpic}[scale = .5]{figs/two_ps.png}
+\end{overpic}}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Reviewer's questions}
 3. The simultaneous presence of at least two point sources radiating at the same frequency, would give rise to interference phenomenon with exact nulls in the target field. Would it be a meaningful way of evaluating a synthesis method based on its capability to reconstruct such nulls (location and intensity)?
 \end{frame}
 
