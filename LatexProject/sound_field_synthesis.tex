@@ -247,7 +247,7 @@ The 2.5D Kirchhoff integral implicitly contains the 2.5D WFS driving function fo
 %Comparing the expression for the synthesized field \eqref{Eq:Theory:25D_SFS} with \eqref{Eq:SFS_thery:25_KI} implicates that the required driving functions can be extracted from the 2.5D Kirchhoff integral.
 The resulting driving function is, however, still dependent on the listener position through the argument of $\phi^{G''}_{zz}(\vx-\vxo,\omega)$, which dependency may be avoided by fixing the listener position.
 This strategy would only allow the synthesis of the virtual field, optimized to a single, fixed receiver position termed the \emph{reference point}, while in other points in the listening plane amplitude errors would be present.
-In the following it is presented how the driving function can be further manipulated in order to ensure correct synthesis along an arbitrary receiver curve termed the \emph{reference curve} within the validity of the stationary phase approximation resulting in what was termed \emph{unified 2.5D WFS theory} \cite{Firtha2016}.
+In the following it is presented how the driving function can be further manipulated in order to ensure correct synthesis along an arbitrary receiver curve termed the \emph{reference curve} within the validity of the stationary phase approximation resulting in what was termed \emph{generalized 2.5D WFS theory} \cite{Firtha2016}.
 
 
 As it was stated in Section \ref{Sec:HS_approx:SPA_for_Rayleigh} for any receiver position $\vx$ the Kirchhoff integral is dominated by that stationary contour element $\vxo^*(\vx)$, from which the emerging spherical wavefronts locally coincide with the target field wavefront, i.e. where $\vk^P(\vxo^*(\vx)) = \vk^G(\vx - \vxo^*(\vx))$ is satisfied.
@@ -267,7 +267,7 @@ where $\vxo^*(\vx)$ is defined by the implicit relation above.
 The statement can be expressed by reversing causality, forming the main idea of 2.5D WFS theory: 
 every point $\vxo$ on the secondary distribution contributes to the total sound field at the set of positions $\vx(\vxo)$ where the local propagation direction of a point source positioned at $\vxo$ coincides with that of the target field, i.e. where their local wavenumber vectors coincide.
 Hence $\vx$ and $\vxo$ are \emph{stationary point pairs}, mutually determining each other.
-By reversing the causality choosing $\vxo$ as an independent parameter the driving function can be extracted from \eqref{Eq:SFS_theory:25D_KI_appr} resulting in the \emph{unified 2.5D WFS driving function}
+By reversing the causality choosing $\vxo$ as an independent parameter the driving function can be extracted from \eqref{Eq:SFS_theory:25D_KI_appr} resulting in the \emph{generalized 2.5D WFS driving function}
 \importanteq{2.5D WFS driving function}{
 D(\vxo, \omega) = w(\vxo) 
 \sqrt{\frac{8\pi}{\ti k}}\sqrt{\dref(\vxo)}
@@ -1045,7 +1045,7 @@ In the followings only an objective description of the above phenomena is presen
 \label{fig:SFS_theory:Spatial_alising}  
 \end{figure}
 
-In a recent publication it was shown that by applying the unified WFS framework introduced in the present thesis, spatial aliasing artifacts can be directly described in the spatial domain \cite{Winter2018:GeometricModel}.
+In a recent publication it was shown that by applying the generalized WFS framework introduced in the present thesis, spatial aliasing artifacts can be directly described in the spatial domain \cite{Winter2018:GeometricModel}.
 As an alternative, the following derivation approaches the problem by utilizing the spectral description of the synthesized field applying a discretized SSD, as introduced in \cite{Ahrens2012}.
 
 Assume the synthesis of an arbitrary sound field by applying a linear SSD, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
@@ -1083,7 +1083,7 @@ Mathematically, spatial aliasing originates from the overlapping of the repetiti
 
 The discretization process of the driving function is illustrated in the $k_x-\omega$ domain in Figure \ref{fig:SFS_theory:Aliased_spectrum} via the example of discretizing the driving function for a virtual point source, given by \eqref{eq:SFS_theory:WFS_point_source}.
 From simple geometrical considerations it can be deduced that below a given angular frequency---the spatial aliasing frequency, obtained from $\frac{\omega_a }{c} = \frac{k_{x,s}}{2}= \frac{\pi}{\Delta x}$---no spectral overlapping occurs between the propagation regions.
-Since WFS theory assumes high frequency/farfield conditions, neglecting the evanescent components is feasible\footnote{A more detailed analysis on the aliasing occurring in the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband}. 
+Since WFS theory assumes high frequency/farfield conditions, neglecting the evanescent components is feasible.\footnote{A more detailed analysis on the aliasing occurring in the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband.} 
 Above the aliasing frequency high wavenumber components ($|k_x|>k_{x,s}/2$) of translated spectra overlap into the propagation region of the baseband driving function spectrum.
 
 The wavenumber content of the synthesized field, applying a discrete SSD can be written as
@@ -1120,7 +1120,7 @@ Finally, above twice the aliasing frequency even plane waves propagating perpend
 
 A straightforward way to avoid spectral overlapping is to spatially bandlimit the driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = k_{x,s}/2$ before discretization, i.e. by eliminating plane wave components that would cause spatial aliasing.
 This requires the application of a spatial low-pass filter that's implementation is straightforward only for the present, linear SSD case.
-A detailed investigation on the direct spatial pre-filtering of the linear SFS driving function can be found in \cite{Firtha2012:isma, Ahrens2012} \footnote{There it is discussed that pre-filtering the SFS driving function is equivalent with extending the virtual source distribution according the impulse response of the spatial filter impulse response.}.
+A detailed investigation on the direct spatial pre-filtering of the linear SFS driving function can be found in \cite{Firtha2012:isma, Ahrens2012}.\footnote{There it is discussed that pre-filtering the SFS driving function is equivalent with extending the virtual source distribution according the impulse response of the spatial filter impulse response.}
 However, applying the local wavenumber vector concept and exploiting the general asymptotic equivalence of the SDM and WFS, a more simple, general anti-aliasing strategy may be introduced, as given in the following.
 
 According to \eqref{eq:xP_xG_in_spatial_domain} a given wavenumber component $k_x$ in the SDM driving function is dominated by that particular position of the SSD, where the local propagation direction of the virtual wavefield coincides with that of the actual spectral plane wave, i.e. where $k_x^P(x_0) = k_x$ holds.
@@ -1232,9 +1232,9 @@ The above derivation hence gives an asymptotic approximation of these spatial ba
 
 As presented in the foregoing, even besides ideal anti-aliasing filtering (spatial bandlimition) of the driving function, lateral aliasing components following the virtual wavefront will still be present.
 Mathematically, these aliasing artifacts originate from the reproduction of the adjacent mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c).
-Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber\footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass anti-aliasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
+Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber.\footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass anti-aliasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
 Hence the spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (a), entirely bandlimited to $\omega = \frac{k_{x,s}}{c}$.
-This strategy is equivalent with the solution, given in \cite{Winter2018:GeometricModel}.}.
+This strategy is equivalent with the solution, given in \cite{Winter2018:GeometricModel}.}
 This requirement is fulfilled by directive secondary sources, radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
 In a signal processing analogy, directive secondary sources therefore act as reproduction filters.
 
@@ -1242,7 +1242,7 @@ Physically, source directivity stems from the physical extension of radiating su
 At high frequencies and in the farfield (compared to the physical extension) baffled vibrating surfaces can be modeled as directive point sources.
 In fact, this can be proven by using the local wavenumber concept as presented in Appendix \ref{App:Planar_radiators}.
 The optimal shape of extended secondary sources in the aspect of suppressing the mirror spectra has been studied in the related literature \cite{Verheijen1997:phd}.
-Here the optimal SSD directivity is discussed within the context of the unified WFS framework.
+Here the optimal SSD directivity is discussed within the context of the generalized WFS framework.
 
 The farfield approximation of an extended radiator as a directive point source is given by \eqref{Eq:App:directive_monopole}.
 The field of a directive point source at the horizontal plane, containing the source (i.e. at $\theta = 0$) is given by
