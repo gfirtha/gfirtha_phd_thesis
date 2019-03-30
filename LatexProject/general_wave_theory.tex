@@ -689,6 +689,7 @@ In the following these approaches are introduced for the simplification of the K
 %
 
 \subsection{The simple source formulation}
+\label{Sec:SimpleSourceFormulation}
 The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem, with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Copley1968}.
 %
 \begin{figure}[h!]
@@ -762,12 +763,12 @@ In the presented general 2D scenario the single layer weighting factors were cal
 \subsection{The Rayleigh integrals}
 \label{Section:Theory:Rayleigh}
 
-The Rayleigh integrals formulate a sound field based on the pressure field or the normal velocity measured along an infinite plane utilizing the Neumann or Dirichlet Green's functions.
+The \emph{Rayleigh integrals} formulate a sound field based on the pressure field or the normal velocity, measured along an infinite plane by utilizing the Neumann or Dirichlet Green's functions.
 
 In order to derive the Rayleigh integrals an interior problem is described by the KHIE written on a simply joint boundary, consisting of a disc $\dO_P$ and hemisphere $\dO_S$, as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
-With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here the \emph{Rayleigh plane}. 
-The plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$ and all the primary sources of sound are located at $y<0$.
-In this geometry the KHIE \eqref{Eq:Theory:Kirchhoff-Helmholtz} describing the field at $\vx = \posvec{3}{x}{y>0}{z}$ degenerates to
+With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here as the \emph{Rayleigh plane}. 
+The plane is located at $y=0$ with its normal given by $\vni = [0,\ 1,\ 0]^{\mathrm{T}}$, and all the primary sources of sound are located at $y<0$.
+In this geometry the KHIE \eqref{Eq:Theory:Kirchhoff-Helmholtz}, describing the field at $\vx = \posvec{3}{x}{y>0}{z}$ degenerates to
 \begin{multline}
 \label{Eq:Theory:Rayleigh_geometry}
 P(\vx,\omega) = \lim_{r\rightarrow \infty} \left( \int_{\dO_P} \td \dO_P + \int_{\dO_S} \td \dO_S \right) = \\
@@ -782,23 +783,25 @@ G(\vxo|\vx,\omega)
 Obviously, any homogeneous solution of the Helmholtz equation may be added to the Green's function, the inhomogeneous wave equation and the Kirchhoff-Helmholtz integral still holds.\footnote{This property can be exploited in order to solve the inhomogeneous wave equation in the presence of boundaries, by taking the reflected field into consideration.}
 In the following this fact is exploited in order to eliminate either the single or the double layer potential in \eqref{Eq:Theory:Rayleigh_geometry} by finding a proper additive term to the Green's function:
 \begin{itemize}
-\item The \emph{Neumann Green's function} eliminates the double layer potential by describing Neumann boundary conditions for the Green's function along the infinite plane:
+\item The \emph{Neumann Green's function} eliminates the double layer potential by finding a suitable additive term to the Green's function, so that the it satisfies homogeneous Neumann boundary conditions along the Rayleigh plane:
 \begin{equation}
-G_N(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_N(\vxo,\omega),
+G_{\mathrm{N}}(\vxo,\omega) = G(\vxo|\vx,\omega) + P_{\mathrm{N}}(\vxo,\omega),
 \end{equation}
 \begin{equation}
-\frac{\partial G_N(\vxo,\omega) }{\partial \vni} = \frac{\partial G_N(\vxo,\omega) }{\partial y_0} = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
+\frac{\partial G_{\mathrm{N}}(\vxo,\omega) }{\partial \vni} = \frac{\partial G_{\mathrm{N}}(\vxo,\omega) }{\partial y_0} = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
 \label{Eq:Theory:Neumann_Greenfun_def}
 \end{equation}
-\item The \emph{Dirichlet Green's function} eliminates the single layer potential by describing Dirichlet boundary conditions for the Green's function, given by
+\item The \emph{Dirichlet Green's function} eliminates the single layer potential by requiring Dirichlet boundary conditions for the Green's function, given by
 %
 \begin{equation}
-G_D(\vxo,\omega) = G(\vxo|\vx,\omega) + G'_D(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P.
+G_\mathrm{D}(\vxo,\omega) = G(\vxo|\vx,\omega) + P_{\mathrm{D}}(\vxo,\omega) = 0, \hspace{3mm} \forall \hspace{3mm} \vxo \in \dO_P,
 \label{Eq:Theory:Dirichlet_Greenfun_def}
 \end{equation}
 %
 \end{itemize}
-In the general case of an arbitrary shaped enclosing surface the Neumann and Dirichlet Green's functions are given by the scattered field of a point source positioned at $\vx$, reflected from a rigid or a sound soft boundary respectively.
+so that both $P_{\mathrm{N}}$ and $P_{\mathrm{D}}$ satisfy the inhomogeneous wave equation in $y > y_0$.
+
+In the general case of an arbitrary shaped enclosing surface the Neumann and Dirichlet Green's functions are given by the scattered field of a point source, positioned at $\vx$, reflected from a rigid or a sound soft boundary respectively.
 Their actual form therefore would depend on the evaluation point $\vx$.
 \begin{figure}
 \small
@@ -819,7 +822,7 @@ Their actual form therefore would depend on the evaluation point $\vx$.
 	\end{overpic} \end{minipage}\hfill
 	\begin{minipage}[c]{0.4\textwidth}
     \caption{
-Geometry for deriving the Rayleigh integrals. 
+Geometry for the derivation of the Rayleigh integrals. 
 The radius of the hemisphere $\dO_S$ is increased to infinity, therefore only the Rayleigh plane $\dO_P$ contributes to the radiated field at $y>y_0$.
 For this special geometry the required Neumann and Dirichlet Green's functions are given by the sum of a point source at the evaluation point $\vx$ and a point source, positioned at $\vx'$, obtained by mirroring $\vx$ to the Rayleigh plane.
     } \label{Fig:Theory:Rayleigh_geometry}
@@ -828,13 +831,13 @@ For this special geometry the required Neumann and Dirichlet Green's functions a
 In the present geometry the scattered field of a point source from a rigid or sound soft infinite plane can be easily obtained by mirroring the in-phase or anti-phase source to the scatterer plane,
 and the required Green's functions are given as
 \begin{eqnarray}
-G_N(\vxo,\omega) =  G(\vxo|\vx,\omega) + G(\vxo|\vx',\omega) \\
-G_D(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
+G_\mathrm{N}(\vxo,\omega) =  G(\vxo|\vx,\omega) + G(\vxo|\vx',\omega) \\
+G_\mathrm{D}(\vxo,\omega) = G(\vxo|\vx,\omega) - G(\vxo|\vx',\omega)
 \end{eqnarray}
 with $\vx' = \posvec{3}{x}{2 y_0-y}{z}$  as illustrated in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 %
 
-Substituting them into the integral \eqref{Eq:Theory:Rayleigh_geometry} with exploiting the symmetry and the translation invariance of the Green's function yields the Rayleigh I and II (or Neumann and Dirichlet) integrals respectively \cite{Berkhout1984}:
+Substitution of \eqref{Eq:Theory:Neumann_Greenfun_def} and \eqref{Eq:Theory:Dirichlet_Greenfun_def} into the integral \eqref{Eq:Theory:Rayleigh_geometry}, with exploiting the symmetry and the translation invariance of the Green's function yields the Rayleigh I and II (or Neumann and Dirichlet) integrals respectively \cite{Berkhout1984}:
 \importantalign{Rayleigh I and Rayleigh II integrals}{
 P(\vx,\omega) &=
 \int_{\dO_P}
@@ -854,11 +857,11 @@ Obviously, the Rayleigh integrals do not ensure a zero sound field behind the Ra
 In this region the Rayleigh I integral expresses the field of the primary source distribution, reflected from an infinite rigid plane, while the Rayleigh II integral gives that from a sound soft planar boundary according to the equivalent scattering interpretation.
 
 In the present thesis the Rayleigh I integral is of special importance, being a single layer potential.
-As well as forming the basis of traditional Wave Field Synthesis it is used extensively for the calculation of radiated field from finite radiators, mounted in infinite walls, e.g. the field of loudspeaker pistons as given in Appendix \ref{App:Planar_radiators}.
-The integral states that the radiated field from a rigid vibrating plane can be calculated by summing the field of point sources on the surface, driven by the normal velocity distribution, or mathematically speaking by convolving the Green's function with the velocity distribution over the infinite surface.
+Besides forming the basis of traditional Wave Field Synthesis, it is used extensively for the calculation of the radiated field of radiators, mounted in infinite walls, e.g. the field of loudspeaker pistons as given in Appendix \ref{App:Planar_radiators}.
+The integral states that the radiated field from a rigid vibrating plane can be calculated as the sum of the fields of point sources on the surface, driven by the normal velocity distribution, or mathematically speaking by convolving the Green's function with the velocity distribution over the infinite surface.
 
 \vspace{3mm}
-Besides the presented methodology, involving the Neumann and Dirichlet Greeen's function, the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
+Besides the presented methodology, based on the Neumann and Dirichlet Greeen's function, the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
 Another straightforward way to obtain the Rayleigh integrals stems from the direct inverse Fourier transform of the angular spectrum representations \eqref{Eq:Theory:Pressure_propagated} and \eqref{Eq:Theory:Velocity_propagated} by applying the Fourier transform convolution theorem and applying that the pressure and velocity propagators are given by the field of dipoles and monopoles, as it was stated in Section \ref{Section:Theory:Inhom_wave_eq_solution}.
 The fact that all the presented three approaches lead to the same solution stems from the uniqueness of the single layer problem for a planar boundary.
 However this can not be generalized towards arbitrary boundary shapes: the coincidence of the Dirichlet/Neumann and the free space Green's function holds only for the present, simple geometry. 
