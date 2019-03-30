@@ -1,4 +1,4 @@
-	\documentclass[%
+\documentclass[%
 	paper=A4,					% paper size
 	twoside=true,				% onesite or twoside printing
 	openright,					% doublepage cleaning ends up right side
@@ -34,9 +34,7 @@
 \newcommand{\thesisSubject}{PhD Dissertation}
 \newcommand{\thesisDate}{\today}
 \newcommand{\thesisVersion}{Final Version}
-
 \newcommand{\thesisFirstSupervisor}{P\'eter Fiala}
-
 \newcommand{\thesisUniversity}{\protect{Budapest University of Technology and Economics}}
 \newcommand{\thesisUniversityDepartment}{Department of Networked Systems and Services}
 \newcommand{\thesisUniversityGroup}{Laboratory of Acoustics and Studio Technologies}
@@ -64,11 +62,6 @@
 \makenomenclature
 \begin{document}
 \sloppy
-%\EveryShipout{%
-%  \ifthenelse{\isodd{\value{page}}}%
-%    {\global\marginparsep=20pt}% Next page is even
-%    {\global\marginparsep=5pt}% Next page is odd
-%}
 
 \input{mydefs}
 
@@ -91,14 +84,14 @@
 \input{nomenclature}
 %
 
-\chapter{Introduction}
-\pagenumbering{arabic}
+%\chapter{Introduction}
+%\pagenumbering{arabic}
 %\label{sec:introduction}
 %\input{introduction}
 %
-\chapter{Theory of wave propagation and radiation problems}
-\label{sec:general_wave_theory}
-\input{general_wave_theory}
+%\chapter{Theory of wave propagation and radiation problems}
+%\label{sec:general_wave_theory}
+%\input{general_wave_theory}
 %
 \chapter{High frequency approximation of wavefields and radiation problems}
 \label{sec:high_freq_approx}
@@ -116,11 +109,11 @@
 %\label{sec:conclusion}
 %\input{conclusion}
 
-%\begin{appendices}
+\begin{appendices}
 %\chapter{Appendix A}
 %\input{appendix_A}
-%\chapter{Appendix B}
-%\input{appendix_B}
+\chapter{Appendix B}
+\input{appendix_B}
 %\chapter{Appendix C}
 %\input{appendix_C}	
 %\chapter{Appendix D}
@@ -131,15 +124,14 @@
 %\input{appendix_F}
 %\chapter{Appendix G}
 %\input{appendix_G}
-%\end{appendices} 
+\end{appendices} 
 
 \cleardoublepage
-{%
+{
 \setstretch{1.1}
 \renewcommand{\bibfont}{\normalfont\small}
 \setlength{\biblabelsep}{0pt}
 \setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
 \printbibliography} 
-
 
 \end{document}

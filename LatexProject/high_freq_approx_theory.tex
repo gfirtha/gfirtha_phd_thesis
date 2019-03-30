@@ -159,7 +159,7 @@ Substitution into the transport equation \eqref{eq:HF_appr:transport_eq}, the di
 Hence, the transport equation states that at an arbitrary point the relative amplitude change towards the wavefront's propagation direction is given by the mean curvature.
 This fact allows a formal definition for the vergence of the sound field in a mean sense: a field is divergent, if its amplitude decreases into the local propagation direction and convergent, if the intensity is focused towards the propagation direction.
 
-As a strict definition,---since the mean and the principal curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1^P(\vx)+\kappa_2^P(\vx) \right)$---wavefields may be classified as
+As a strict definition---since the mean and the principal curvatures are related as $\overline{\kappa}^P(\vx)  = \frac{1}{2} \left( \kappa_1^P(\vx)+\kappa_2^P(\vx) \right)$---wavefields may be classified as
 \begin{equation}
 \label{eq:HF_appr:curvature_cases}
 \kappa_1^P(\vx),\kappa_2^P(\vx),\overline{\kappa}^P(\vx) 
@@ -352,7 +352,7 @@ Due to this latter restriction, the Kirchhoff approximation may be applied only 
 %
 \item As a second simplification, the \emph{tangent plane approximation} is applied on the illuminated region.
 It is supposed that there exists a local relation between the incident and the scattered field at each point on the surface.
-By assuming that the incident wave is reflected locally obeying the Snell's law \cite{Voronich2007}---its amplitude changes proportionally to the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal---, the following relations are yielded for a sound soft scatterer: \cite{Bleistein1984, Bleistein2000, Pike2002}
+By assuming that the incident wave is reflected locally obeying the Snell's law \cite{Voronich2007}---its amplitude changes proportionally to the local \emph{reflection index}, with the angle of incidence equaling the angle of reflection measured from the local normal---the following relations are yielded for a sound soft scatterer: \cite{Bleistein1984, Bleistein2000, Pike2002}
 \begin{equation}
 P_{\mathrm{s}}(\vxo,\omega) = -P(\vxo,\omega), \hspace{5mm} \frac{\partial}{\partial \vni} P_{\mathrm{s}}(\vxo,\omega) = -\frac{\partial}{\partial \vno} P(\vxo,\omega), \hspace{5mm} \vxo \in \dO,
 \label{Eq:SFS_theory:tangent_plane}
@@ -632,7 +632,7 @@ P(\vxo^*(\vx),\omega),
 }
 where $\rho^P_1 \cdot \rho^P_2$ is the reciprocal of the Gaussian curvature of the wavefront.
 Thus, in a ray tracing manner the wavefield is approximated locally, based on its value at the stationary position: 
-the numerator of the amplitude factor approximates the pressure field's amplitude in the source position, attenuated by the denominator--describing the attenuation factor for the source-to-receiver distance---, while the simple phase shift term corresponds to the propagation time delay.
+the numerator of the amplitude factor approximates the pressure field's amplitude in the source position, attenuated by the denominator--describing the attenuation factor for the source-to-receiver distance---while the simple phase shift term corresponds to the propagation time delay.
 The equation reflects the fact that \emph{the intensity of a 3D wavefield is proportional to the Gaussian curvature of the wavefront}, being a well-known fact in the field of optics \cite[Sec. 3.1]{Born1970}, \cite[Sec. 1.3]{Bouche1997}.
 Similarly, a 2D wavefront's amplitude attenuates proportionally to the only non-zero curvature, given by $\sim \sqrt{\rho^P}$, which fact can be deduced from the SPA of the 2D Rayleigh integral.
 
@@ -763,7 +763,7 @@ The interpretation of the stationary position for the Fourier transform SPA is i
 	\put(54,12.5){$x$}
 	\put(6.5,35){$y$}
 	\put(37,50.25){$\vk$}
-	\put(31,11 ){$x^*(\vk)$}
+	\put(31,12){$x^*(\vk)$}
 	\put(86,35.25){$x^*(k_x = 0.5k)$}
 	\end{overpic}
 	\caption{Illustration of the stationary position for the SPA of the Fourier transform in case of a 3D point source, with its one-dimensional Fourier transform evaluated along the $x$-axis. 
@@ -774,7 +774,7 @@ The spectrum, shown in Figure (d) (as given analytically in Table \eqref{tab:the
 	\label{Fig:Theory:stat_pos_in_kx}
 \end{figure}
 
-The counterpart of this statement is that the greatest contribution to the inverse transform \eqref{eq:inverse_transform} is associated to those plane waves---the stationary phase of the inverse integral for given a $\vx$---, whose wave number vector coincide with the local wavenumber components of the sound field at $\vx$.
+The counterpart of this statement is that the greatest contribution to the inverse transform \eqref{eq:inverse_transform} is associated to those plane waves---the stationary phase of the inverse integral for given a $\vx$---whose wave number vector coincide with the local wavenumber components of the sound field at $\vx$.
 
 So far, it has been assumed that in the region of investigation (along an infinite plane or line, depending on the transform dimensionality) the stationary phase position and thus each propagation direction is unique along the integral path/surface.
 This trivially does not hold for the case of e.g. a plane wave, or complex acoustic fields produced by multiple sources of sound.
@@ -835,17 +835,16 @@ H_0^{(2)}(z)\approx \sqrt{\frac{2 \ti}{\pi z}} \te^{-\ti z}.
 	%
 	\put(99,9){$x$}
 	\put(72,37){$y$}
-	\put(66,9){$x^*(k_x)$}
+	\put(66,8.5){$x^*(k_x)$}
 	\put(80,20.5){$k_x$}
 	\put(71.5,31.5){$k_{\rho}$}
 	\put(80.5,30){$\vk$}
 	\put(75,17.5){$\rho$}
 	\end{overpic}
-	\caption{Interpretation of the Green's function's spectrum as the field of a line source with harmonic spatial distribution described by wavenumber $k_x$, evaluated at $x = 0$.
-	Such a source, shown in Figure (a), radiates a cylindrical symmetric sound field with the radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$, so that $k = \sqrt{k_x^2+k_{\rho}^2}$ satisfies.
-	In case $k_x=0$ this corresponds to the field of the 2D Green's function.
-	From geometrical considerations, and applying the interpretation of the SPA for boundary integrals the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} 
-	is found at $x^*(k_x) = \rho \frac{k_x}{k_{\rho}}$, as shown in Figure (b).}
+	\caption{Interpretation of the Green's function's spectrum as the field of a line source, with harmonic spatial distribution, described by wavenumber $k_x$, evaluated at $x = 0$.
+	Such a source (shown in Figure (a)) radiates a cylindrical sound field, with the radial wavenumber $k_{\rho}$ and the longitudinal wavenumber $k_x$, so that $k = \sqrt{k_x^2+k_{\rho}^2}$ is satisfied.
+	In case of $k_x=0$, this corresponds to the field of the 2D Green's function.
+	From geometrical considerations, and applying the interpretation of the SPA for boundary integrals, the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} is found at $x^*(k_x) = \rho \frac{k_x}{k_{\rho}}$, as shown in Figure (b).}
 %	Based on this interpretation the stationary position for integral \eqref{Eq:HF_approx:Greens_spectrum_defintion} can be found by :
 %	for a given wavenumber $k_x$ and for a given radial distance $\rho$ that part of the $x$-axis will be the stationary point from which the emerging wavefront at $\vx$ coincides with that of a plane wave propagation into the direction $\vk = \posvec{2}{k_x}{k_{\rho}}$.
 %	From simple geometric considerations it is found at $x^*(k_x) = r_0 \frac{k_x}{k_{\rho}}$.}

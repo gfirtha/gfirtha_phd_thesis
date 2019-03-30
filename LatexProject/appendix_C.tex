@@ -1,7 +1,7 @@
 \section{Wavenumber vector of a point source pair}
 \label{App:stereophony}
 
-Given a point source pair positioned symmetrically to the $y$-axis $\vx_1 = \posvec{3}{x_1}{y_1}{0}$, $\vx_2 = \posvec{3}{-x_1}{y_1}{0}$ the radiated field reads
+Given a point source pair, positioned symmetrically to the $y$-axis $\vx_1 = \posvec{3}{x_1}{y_1}{0}$, $\vx_2 = \posvec{3}{-x_1}{y_1}{0}$, the radiated field reads as
 \begin{equation}
 P(\vx,\omega) = 
 \frac{A_1}{4\pi}\frac{\te^{-\ti \frac{\omega}{c}|\vx - \vx_1|} }{|\vx - \vx_1|} + 
@@ -11,19 +11,21 @@ with the amplitude factors denoted by $A_1$ and $A_2$.
 Applying Euler's formula the phase function of the resultant field becomes
 \begin{equation}
 -\phi^P(\vx,\omega) = \arctan \frac{ 
-\frac{A_1}{r_1}\sin \left( \frac{\omega}{c}|\vx-\vx_1| \right) +  
-\frac{A_1}{r_2}\sin \left( \frac{\omega}{c}|\vx-\vx_2| \right)  }
+\frac{A_1}{r_1}\sin \left( k r_1 \right) +  
+\frac{A_1}{r_2}\sin \left( k r_2 \right)  }
 {
-\frac{A_1}{r_1}\cos \left( \frac{\omega}{c}|\vx-\vx_1| \right) +
-\frac{A_2}{r_1}\cos \left( \frac{\omega}{c}|\vx-\vx_2| \right)  
-}.
+\frac{A_1}{r_1}\cos \left( k r_1 \right) +
+\frac{A_2}{r_1}\cos \left( k r_2 \right)  
+},
 \end{equation}
+with $r_1(\vx) = |\vx-\vx_1|$ and $r_2(\vx) = |\vx-\vx_2|$ and $k = \frac{\omega}{c}$.
+The arguments of the distance functions are suppressed, for the sake of brevity.
 
-The local wavenumber vector, i.e. the gradient of the expression can be calculated by using that
+The gradient of the expression, i.e. the local wavenumber vector, can be calculated by using that
 \begin{equation}
 \left( \arctan \frac{f}{g} \right)' = \frac{f'g - f g'}{f^2+g^2},
 \end{equation}
-with the derivatives given by
+with derivatives given here by
 \begin{align}
 f' & = A_1 r'_1 \frac{k r_1 \cos \left(k  r_1 \right) - \sin \left(  k r_1 \right) }{r_1^2} + 
 A_2 r'_2 \frac{k r_2 \cos \left(k r_2 \right) - \sin \left( k r_2 \right) }{r_2^2}
@@ -31,35 +33,55 @@ A_2 r'_2 \frac{k r_2 \cos \left(k r_2 \right) - \sin \left( k r_2 \right) }{r_2^
 g' & = A_1 r'_1 \frac{-k r_1 \sin \left( k r_1 \right) - \cos \left(  k r_1 \right) }{r_1^2} + 
 A_2 r'_2 \frac{-k r_2 \sin \left(k r_2 \right) - \cos \left( k r_2\right) }{r_2^2},
 \end{align}
-denoting $r_1 = |\vx-\vx_1|$ and $r_2 = |\vx-\vx_2|$ and $k = \frac{\omega}{c}$.
-Several simplifications lead to the gradient
-\begin{equation}
-\phi^{P'} = \frac{
+Note that for sake of transparency, $f'$ denotes the gradient operator, expressing both the $x$- and $y$-derivative of the phase field.
+Several simplifications lead to the gradient expression
+\begin{multline}
+-\Dx \phi^{P}(\vx) = \vk^P(\vx) =
+\\
+\frac{
 k \left(
 r_1' A_1^2 r_2^2 + r_2' A_2^2 r_1^2 + A_1 A_2 r_1 r_2 (r_1'+r_2') \cos\left( k \Delta r \right)
 \right) 
 -A_1 A_2 (r_1' r_2 - r_2' r_1) \sin \left( k \Delta r \right)
  }
  {r_1^2 r_2^2 {A^{P}}(\vx,\omega)^2},
-\end{equation}
-with $\Delta r = r_1 - r_2$ and where $A^P(\vx,\omega)$ is the amplitude of the resulting field omitting the normalizing factor $1/4\pi$
+\end{multline}
+with $\Delta r = r_1 - r_2$ and $A^P(\vx,\omega)$ denoting the amplitude of the resulting field, with omitting the normalizing factor $1/4\pi$ reading as
 \begin{equation}
 A^P(\vx,\omega) = \frac{\sqrt{ A_1^2 r_2^2 + A_2^2 r_1^2 + 2 A_1 A_2 r_1 r_2 \cos\left( k \Delta r \right) } } {r_1 r_2}.
 \end{equation}
 
-These expressions describe the interference pattern of the point source pair over the whole listening area: 
-due to destructive interference the denominator of the phase gradient vanishes over the zeros of $A^P(\vx,\omega)$.
-At these positions the phase changes rapidly resulting in infinitely large local wavenumber vector lengths.
+These expressions describe the interference pattern of the point source pair over the entire listening area.
+Note that the local wavenumber vector contains the amplitude of the field in its denominator.
+Due to destructive interference the amplitude of the field vanishes over particular spatial locations.
+At these positions the phase changes rapidly, resulting in the increasing of the local wavenumber vector length.
+%
+\begin{figure}
+\small
+  \begin{minipage}[c]{0.68\textwidth}
+	\begin{overpic}[width = .9\columnwidth]{Figures/Appendices/stereo_wn.png}
+	\end{overpic}   \end{minipage}\hfill	
+	\begin{minipage}[c]{0.3\textwidth}
+    \caption{The length of the local wavenumber vector of a stereo point source pair, normalized by $k = \frac{\omega}{c}$.
+    The point sources are positioned with a base angle of $\phi_0 = 30^\circ$, with their distances from the origin being $R_0 = 2.5~\mathrm{m}$.
+The gain factors $A_1, A_2$ were selected, so that the angle of the local wavenumber vector at the origin would equal to $\phi_p = 10^\circ$. }
+\label{fig:App:stereo_wn}   \end{minipage}
+\end{figure} 
+Also, between the two point sources the standing waves are present.
+The numerator of the local wavenumber vector expression vanishes at one particular position, where only a standing wave component is present.
+Around that position the length of the wavenumber vector decreases to zero.
+This phenomena can be investigated in Figure \ref{fig:App:stereo_wn}, depicting the normalized local wavenumber vector length, in a standard stereo setup.
 
-From the aspect of stereophonic application only the stereo axis is of interest, where $r_1 = r_2$ holds.
-Due to the symmetry of the geometry along that axis $\frac{\partial}{\partial x} r_1 = - \frac{\partial}{\partial x} r_2$, $\frac{\partial}{\partial y} r_1 = \frac{\partial}{\partial y} r_2$ and $\frac{\partial}{\partial z} r_1 = \frac{\partial}{\partial z} r_2$ holds, and the derivatives of the phase function are given as
+From the aspect of stereophonic applications, only the stereo axis is of interest, where $r_1 = r_2$ holds.
+Due to the symmetry of the geometry, here $\frac{\partial}{\partial x} r_1 = - \frac{\partial}{\partial x} r_2$, $\frac{\partial}{\partial y} r_1 = \frac{\partial}{\partial y} r_2$ and $\frac{\partial}{\partial z} r_1 = \frac{\partial}{\partial z} r_2$ hold. 
+finally, the derivatives of the phase function are given along $y = 0$ as
 \begin{align}
--\phi^{P'}_x &= k r_x' \frac{ A_1  - A_2 
+-\phi^{P'}_x(0,y,0,\omega) &= k r_x' \frac{ A_1  - A_2 
  }{ A_1 + A_2} \\
--\phi^{P'}_y &= k r_y',
+-\phi^{P'}_y(0,y,0,\omega) &= k r_y',
 \end{align}
 and the amplitude factor reads
 \begin{equation}
-A^P(0,y,z,\omega) = \frac{A_1 +  A_2}{r}.
+A^P(0,y,0,\omega) = \frac{A_1 +  A_2}{r}.
 \label{Eq:AppB:stereo_amplitude}
 \end{equation}

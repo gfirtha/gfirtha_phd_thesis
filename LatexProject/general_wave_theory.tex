@@ -195,7 +195,7 @@ Vibrating surfaces (e.g. mounted loudspeakers, or baffled pistons) are most ofte
 
 For radiation problems it is feasible to assume free field conditions, when only outgoing waves are present in the sound field. 
 This is ensured by the \emph{Sommerfeld radiation condition} that excludes the non-physical solutions of the wave equation emerging from infinity.
-Mathematically it can be formulated by implying boundary condition on $\dO_{\infty}$ with $r$ increased to infinity---as shown in Figure \ref{Fig:Theory:bounday_condition} \cite{Schot1992:Eighty_years, Williams1999}---, requiring
+Mathematically it can be formulated by implying boundary condition on $\dO_{\infty}$ with $r$ increased to infinity---as shown in Figure \ref{Fig:Theory:bounday_condition} \cite{Schot1992:Eighty_years, Williams1999}---requiring
 \begin{equation}
 \lim_{r \rightarrow \infty} r \left( \left. \frac{\partial}{\partial r}P(\vx,\omega)\right|_{\vx \in \dO_{\infty}} +\ti \frac{\omega}{c}P(\vx,\omega) \right) = 0, \hspace{3mm} \forall \hspace{3mm} \vx \in \dO_{\infty}
 \label{Eq:Theory:Sommerfeld_radiation_condition}
@@ -507,7 +507,7 @@ The conditional expressions ensure that evanescent waves are attenuated with inc
 \end{figure}
 %
 %\vspace{3mm}
-In 3-dimensions, the 2-dimensional Green's function represents the field of an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response---, thus the relation between the 3D and 2D Green's functions is given as
+In 3-dimensions, the 2-dimensional Green's function represents the field of an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response---thus the relation between the 3D and 2D Green's functions is given as
 \begin{equation}
 G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z = \left. \FT[z]{ G_{3D}(x,y,z,\omega) }\right|_{k_z = 0},
 \label{Eq:Wave_Theory:2D_Green}
@@ -667,7 +667,7 @@ In both cases, the approach is capable of dealing only with \emph{forward propag
 This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and sound field synthesis.\footnote{Actually, the KHIE can be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}.}
 \vspace{3mm}
 
-A frequently used form of the KHIE---obtained by utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---, is given as	
+A frequently used form of the KHIE---obtained by utilizing the Euler's equation \eqref{Eq:Theory:Freq_Eulers_equation} to express the normal derivative of the pressure in terms of the normal velocity on the surface---is given as	
 \begin{equation}
 \alpha P(\vx,\omega) = 
 \oint_{\dO}  \bigg(  
@@ -736,7 +736,7 @@ By adding the exterior and interior integrals, terms, containing the pressure ca
 \frac{\partial P_{\mathrm{e}}(\vxo,\omega)}{\partial \vni} - \frac{\partial P_{\mathrm{i}}(\vxo,\omega)}{\partial \vni} 
 \right)
 G(\vx-\vxo,\omega) 
-\td \dO ( \vxo)
+\, \td \dO ( \vxo)
 = 
 \begin{cases} 
 P_{\mathrm{e}}(\vx,\omega)           & \hspace{1mm} \forall \hspace{5mm}  \vx \in \Omega_e  	   \\
