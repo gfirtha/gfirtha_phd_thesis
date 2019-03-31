@@ -225,13 +225,7 @@ v_{1 z}^2 \left( \kappa_1^P+\kappa_1^G \right)+ v_{2 z}^2 \left( \kappa_2^P+\kap
 $}\end{equation}
 with $\mathbf{v}_1 = \posvec{3}{v_{1 x}}{v_{1 y}}{v_{1 z}}$, $\mathbf{v}_2 = \posvec{3}{v_{2 x}}{v_{2 y}}{v_{2 z}}$, $\kappa^P = \kappa^P(\vxo^*(\vx))$, $\kappa^G = \kappa^G(\vx-\vxo^*(\vx))$.
 
-The eigenvalues of this submatrix cannot be expressed in a general way, however the \emph{interlacing inequalities of principal submatrices}
-%In case of a hermitian matrix with the real eigenvalues in an increasing order, $\lambda_1, \lambda_2, ..., \lambda_n$, than for the $k-$th eigenvalue $\lambda'_k$ of its principal submatrix
-%\begin{equation}
-%\lambda_k \leq \lambda'_k \leq \lambda_{k+1}
-%\end{equation}
-%holds.
-ensures that they have the same sign as $\lambda_2$ and $\lambda_3$.
+The eigenvalues of this submatrix cannot be expressed in a general way, however the \emph{interlacing inequalities of principal submatrices} ensure that they have the same sign as $\lambda_2$ and $\lambda_3$.
 The signature of the Hessian is therefore 
 \begin{itemize}
 \item assuming a divergent sound field, the eigenvalues of the Hessian are negative (the curvatures are positive) and the signature is given by (-2).
@@ -247,10 +241,10 @@ The determinant of of the Hessian is given by
 \end{equation}
 By the definition of the cross product of vectors, the term $\left( v_{2 x} v_{1_z} - v_{1 x} v_{2 z} \right)$ is the second coordinate of the vector, being perpendicular to $\mathbf{v}_1$ and $\mathbf{v}_2$, i.e. of the normalized local wavenumber vector:
 \begin{equation}
-\resizebox{.95\hsize}{!}{$
+\resizebox{1\hsize}{!}{$
 \mathrm{det} \, \mH^P(\vxo^*(\vxref))  = -k \left( \kappa_1^P(\vxo^*(\vx))+\kappa_1^G(\vx-\vxo^*(\vx)) \right) \left( \kappa_2^P(\vxo^*(\vx))+\kappa_2^G(\vx-\vxo^*(\vx)) \right) \hat{k}_y^P(\vxo^*(\vx))^2. $}
 \end{equation}
-These findings are not limited for the Rayleigh integral: if the Kirchhoff-Helmholtz integral is written onto a smooth, convex surface with the surface's curvature being significantly smaller than the wavefront curvature, then the surface can be considered locally plane, and the above given description holds with the substitution $\hat{k}_y^P(\vxo^*(\vx)) \rightarrow \hat{k}_{\mathrm{n}}^P(\vxo^*(\vx))$, being the normal component of the local wavenumber vector.
+This finding is not limited to the Rayleigh integral: if the Kirchhoff-Helmholtz integral is written onto a smooth, convex surface with the surface's curvature being significantly smaller than the wavefront curvature, then the surface can be considered locally plane, and the above given description holds with the substitution $\hat{k}_y^P(\vxo^*(\vx)) \rightarrow \hat{k}_{\mathrm{n}}^P(\vxo^*(\vx))$, being the normal component of the local wavenumber vector.
 This statement is a consequence of the invariance of the determinant with respect to a linear transform.
 	
 The same formulation holds for the evaluation of a 2D Fourier integral.

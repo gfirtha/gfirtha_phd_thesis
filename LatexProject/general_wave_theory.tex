@@ -8,7 +8,7 @@ Various integral representations of sound fields are presented including spectra
 Sound is a mechanical disturbance propagating in an elastic fluid, causing an alternation in the fluid's density and pressure, as well as the displacement of the medium's particles.
 The propagation of the disturbance is described by the acoustic wave equation.
 
-Consider a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. 
+Assume a homogeneous, elastic fluid, modeled as an ideal gas with no viscosity. 
 In the aspect of the present thesis it is appropriate to restrict the investigation to sound propagation solely in air at room temperature.
 
 The domain of investigation $\Omega \in \mathbb{R}^n$ where sound waves propagate is termed \emph{sound field} hereinafter.
@@ -22,7 +22,7 @@ Since the traveling speed of thermal diffusion is small compared to the speed of
 Furthermore, the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state change characteristics can be linearized around $p_0$.
 This latter assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 
-First, the homogeneous wave equation is presented, valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
+First, the homogeneous wave equation is presented, being valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
 For a more detailed derivation refer to \cite{Morse1968, Beranek1993, Williams1999, Blackstock2000}.
 
 \subsection{The homogeneous wave equation}
@@ -99,11 +99,10 @@ By taking the Fourier transform of the wave equation \eqref{Eq:Theory:Scalar_wav
 where $k$ is the \emph{acoustic wavenumber}, which is related to the temporal frequency through the linear \emph{dispersion relation} $k = \frac{\omega}{c}$.
 %
 Equation \eqref{Eq:Theory:Homog_Helmholtz} must hold for every physically possible \emph{steady-state} wave form with a harmonic time-dependence of $\te^{\ti \omega t}$, within a source-free volume. 
-%In the aspect of the present thesis the time domain wave equation is rarely solved directly, therefore the general solution of the Helmholtz equation will be presented in the followings.
 
 \subsection{The inhomogeneous wave equation}
 %
-So far wave propagation in source-free volumes was investigated, without considering how these waves were generated.
+So far wave propagation in source-free volumes has been investigated, without considering how these waves were generated.
 A simple scalar disturbance of the pressure field may be included into the wave equation resulting in the time domain \emph{inhomogeneous wave equation}  
 \importanteq{Inhomogeneous wave eq.}{
 \Lx p(\vx,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2}p(\vx,t) = -s(\vx,t),
@@ -134,7 +133,7 @@ This third term is not investigated in the present thesis.
 \label{Section:Theory:Boundary_conditions}
 
 %So far wave propagation in free field was considered, i.e. no boundaries were present.
-In order to obtain a particular solution of the wave equation the behavior of waves, arriving at the boundaries of the volume under investigation has to be known: the wavefield must satisfy prescribed boundary conditions.
+In order to obtain a particular solution of the wave equation the behavior of waves arriving at the boundaries of the volume under investigation has to be known: the wavefield must satisfy prescribed boundary conditions.
 The general geometry is depicted in Figure \ref{Fig:Theory:bounday_condition} with an enclosing surface/contour denoted by $\dO$.
 If the domain of interest is the exterior of the enclosing boundary while the sources are inside the volume---or the source is the vibrating boundary surface itself---the problem to be solved is termed an \emph{exterior radiation problem}. 
 On the other hand, if the aim is to determine the sound field inside a source-free volume---or the reflected field of a sound source inside a cavity---an \emph{interior problem} must be solved.
@@ -252,7 +251,7 @@ P(\vx,\omega) = \frac{1}{(2\pi)^2}\iint_{-\infty}^{\infty} \tilde{P}(k_x,k_z, \o
 \label{Eq:Theory:Helmholtz_Inverse_Fourier}
 \end{equation}
 Constant $\frac{1}{(2\pi)^2}$ is introduced as a Fourier transform normalization term. 
-The general solution---describing the inverse spatial Fourier transform of $\tilde{P}(k_x,k_z, \omega) \, \te^{- \ti k_y y }$---therefore is obtained in the form of a spectral integral, similarly to the case of the temporal solution.
+The general solution---describing the inverse spatial Fourier transform of $\tilde{P}(k_x,k_z, \omega) \, \te^{- \ti k_y y }$---is therefore obtained in the form of a spectral integral, similarly to the case of the temporal solution.
 Obviously, the spectral coefficients $\tilde{P}(k_x,k_z, \omega)$ are obtained via a suitable forward Fourier transform, as explained in the next section.
 Finally, the general solution for the homogeneous wave equation is obtained in terms of an inverse temporal Fourier transform, given by
 \begin{equation}
@@ -282,8 +281,8 @@ The terminology indicates that the surface of constant phase points are lying al
 	\put(52,1){(b)}
 	\end{overpic}
 \caption{Illustration of a traveling plane wave (a) and an evanescent wave (b) with $\lambda = \frac{2\pi}{k}$ being the acoustic wavelength of the plane wave. 
-In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$. 
-Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$- and $y$-directions. 
+In the present case the plane wave travels along the $xy$-plane, with $k_z = 0$.
+Variables $k_x = k \cos \varphi, \hspace{2mm} k_y = k \sin \varphi$ give the wavenumber components along the $x$- and $y$-directions.
 For the case of the evanescent wave $k_x > \frac{\omega}{c}$, resulting in exponential decay along the $y$-direction.
 In a source-free region propagating and evanescent waves form a complete, orthonormal basis for the solution of the Helmholtz equation.}
 	\label{Fig:Theory:plane_wave}
@@ -307,9 +306,7 @@ in those cases when one wavelength component is shorter than the acoustic wavele
 These type of waves are termed \emph{evanescent waves}, opposed to \emph{propagating waves} for which all wavenumber components are real-valued.
  
 %
-A strong evanescent contribution is often the result of the difference between the speed of sound in different materials: %in solids, the propagation speed of flexural bending waves is proportional to the square root of their temporal frequency. 
-%As a consequence, 
-in the exemplary case of a vibrating plate higher-order modes will not be radiated into the free space, since the bending wave's wavelength on the surface may become shorter than the acoustic wavelength would be in air. 
+A strong evanescent contribution is often the result of the difference between the speed of sound in different materials: In the exemplary case of a vibrating plate higher-order modes will not be radiated into the free space, since the bending wave's wavelength on the surface may become shorter than the acoustic wavelength would be in air. 
 In these cases, the air above the surface acts as a hydrodynamic short-circuit.
 %An other example may be the radiation from a cold surface into a warmer half space with a continuous temperature profile, resulting in a continuous sound speed profile.
 %Due to the variation in the speed of sound the wavenumber components of a plane wave also alter continuously resulting in refraction phenomena.
@@ -317,18 +314,18 @@ In these cases, the air above the surface acts as a hydrodynamic short-circuit.
 
 %
 %The evanescent contribution is of central importance in the field of \emph{Nearfield Acoustic Holography},% when one needs a high-resolution image from the velocity distribution of the vibrating object's surface. However, 
-The evanescent contribution is often neglected in the field of sound field synthesis, when the listener is relatively far from the secondary loudspeaker array, and loudspeaker spacing is significantly higher than the evanescent wavelengths.
+The evanescent contribution is often neglected in the field of sound field synthesis, when the listener is relatively far from the secondary loudspeaker array and loudspeaker spacing is significantly higher than the evanescent wavelengths.
 
 %
 \subsection{The angular spectrum representation}
 \label{Sec:thoery:angular_Spectrum}
 
-Based on the foregoing, any source-free sound field may be expressed in terms of a double inverse Fourier transform, given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
+Based on the foregoing, any source-free sound field may be expressed in terms of a double inverse Fourier transform given by \eqref{Eq:Theory:Helmholtz_Inverse_Fourier}.
 This formulation is termed the \emph{angular spectrum representation} \cite{Williams1999, Goodman2005, NietoVesp2006, Ahrens2010phd, Ahrens2012} or the \emph{plane wave expansion} \cite{Spors2005} of the sound field.
 Substituting $y=0$ into equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} reveals that the \emph{angular spectrum} $\tilde{P}(k_x,k_z,\omega)$ is given as the corresponding forward Fourier transform of the pressure distribution along the infinite plane $y=0$.
 In the followings, the domain characterized by $k_x$, $k_z$ is termed the \emph{wavenumber domain}.
 
-As a consequence, equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane. 
+As a consequence, equation \eqref{Eq:Theory:Helmholtz_Inverse_Fourier} relates the pressure distribution of an arbitrary sound field measured on the plane $y=0$ to its pressure distribution on an arbitrary parallel plane.
 In the wavenumber domain the relation reads as
 \begin{equation}
 \FT[x,z]{ P(\vx,\omega) } = \tilde{P}(k_x,y,k_z,\omega) = \tilde{P}(k_x,0,k_z,\omega) \, \te^{-\ti k_y y},
@@ -364,7 +361,7 @@ P(\vx,\omega) = \frac{1}{4\pi^2}\iint_{-\infty}^{\infty} \,
 \label{Eq:Theory:Velocity_propagated}
 }
 These equations are of central importance in the field of Fourier acoustics. 
-They state that an arbitrary sound field is completely determined by either the pressure, or by the normal velocity component measured along an infinite plane. 
+They state that an arbitrary sound field is completely determined by either the pressure or by the normal velocity component measured along an infinite plane. 
 Wave propagation is calculated by multiplying the measured spectra with an exponential term, referred to as the \emph{pressure propagator} $\tilde{G}_p$ in \eqref{Eq:Theory:Pressure_propagated} and the \emph{velocity propagator} $\tilde{G}_v$ in \eqref{Eq:Theory:Velocity_propagated}:
 \begin{equation}
 \tilde{G}_p(k_x,y-y_0,k_z,\omega) = \te^{-\ti k_y ( y - y_0 ) } ,\ \hspace{1cm}
@@ -400,8 +397,7 @@ For a detailed investigation refer to \cite{Williams1999, Zotter2009phd, Fazi201
 \section{Solution of the inhomogeneous wave equation}
 
 \subsection{The Green's function}
-%First the solution for \eqref{Eq:Theory:Inhomogene_wave_eq_time_domain} is introduced.
-A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}. 
+A common way to obtain the solution for the inhomogeneous wave equation is using the \emph{Green's function}.
 The $n$-dimensional \emph{Green's function} is defined as the solution for the following equation \cite{Williams1999, Gumerov2004}
 \begin{equation}
 \nabla_\vx^2 g(\vx|\vxo,t) -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} g(\vx|\vxo,t) = -\delta\left( \vx - \vxo \right)\delta\left( t \right),\label{Eq:Theory:Green_function_def}
@@ -409,9 +405,9 @@ The $n$-dimensional \emph{Green's function} is defined as the solution for the f
 with $\vx, \vxo \in \mathbb{R}^{n}$ and $\delta()$ being the Dirac delta distribution. 
 The Green's function describes the sound field at $\vx$ due to an impulsive disturbance located at $\vxo$ at the time instant $t = 0$.
 The Green's function is often referred to as the \emph{spatio-temporal impulse response} of the domain of interest and its temporal Fourier transform $G(\vx|\vxo,\omega)$ as the \emph{spatio-temporal transfer function} of a point source at $\vxo$. 
-In the following free field conditions are assumed by invoking the Sommerfeld radiation condition. 
+In the followings, free field conditions are assumed by invoking the Sommerfeld radiation condition. 
 Under these assumptions, the \emph{free field Green's function} is translation invariant, denoted by $g(\vx-\vxo,t)$.
-Furthermore, in a stationary isotropic medium, the \emph{reciprocity principle} for the Green's function holds due to its symmetry \cite{Stakgold2011}
+Furthermore, in a stationary isotropic medium the \emph{reciprocity principle} for the Green's function holds due to its symmetry \cite{Stakgold2011}
 \begin{eqnarray}
 \label{Eq:Theory:Green_fun_reciprocity}
 g(\vxo|\vx,t) = g(\vx|\vxo,t) = g(\vx-\vxo,t), \\
@@ -431,7 +427,7 @@ p(\vx) = \int_{\Omega}  g(\vx-\vxo) \, s(\vxo) \, \td \Omega (\vxo).
 \end{equation}
 
 The Green's function is usually obtained by the eigenfunction expansion of the operator in a given geometry with specified boundary conditions. 
-Under free space assumptions, where harmonic functions give a full orthogonal basis a straightforward method is to perform a Fourier transform to equation \eqref{Eq:Theory:Green_function_def} with $\vxo = 0$ with respect to space and time, yielding in $\vx \in \mathbb{R}^{3}$
+Under free space assumptions, when harmonic functions give a full orthogonal basis a straightforward method is to perform a Fourier transform to equation \eqref{Eq:Theory:Green_function_def} with $\vxo = 0$ with respect to space and time, yielding in $\vx \in \mathbb{R}^{3}$
 \begin{equation}
 \left(-(k_x^2 + k_y^2 + k_z^2) + \left(\frac{\omega}{c} \right)^2\right)\tilde{G}(\mathbf{k},\omega) = -1,
 \end{equation}
@@ -548,7 +544,7 @@ From the general solution the case of point-like disturbances are of special int
 \begin{equation}
 P_{\mathrm{m}}(\vx,\omega) = - \frac{\ti \omega \rho_0 Q(\omega)}{4\pi} \frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
 \end{equation}
-This is the field of an \emph{acoustic monopole}, which is defined as a pulsating sphere, with its radius decreased to infinitesimal while the total volume velocity held constant \cite{Howe2007}.
+This is the field of an \emph{acoustic monopole}, which is defined as a pulsating sphere with its radius decreased to infinitesimal while the total volume velocity held constant \cite{Howe2007}.
 $Q(\omega)$ is often referred to as \emph{monopole strength}. 
 Monopoles constitute a good farfield approximation of sources in the velocity field, e.g. a dynamical loudspeaker mounted on a closed cabinet.
 %
@@ -596,7 +592,7 @@ This finding will be further discussed in Section \ref{Section:Theory:Rayleigh},
 Any sound field, obeying the homogeneous Helmholtz equation, may be written in the form of a surface integral above an enclosing surface, termed the \emph{Kirchhoff-Helmholtz integral equation}. 
 This integral formulation, solving the homogeneous wave equation with inhomogeneous boundary conditions, is of central importance in the field of acoustics, e.g. forming the backbone of the Boundary Element Method \cite{Kirkup2007, Marburg2008}, SVD-based Conformal Nearfield Acoustic Holography \cite{Bai1992, Williams1999, Wu2010}, and sound field synthesis.
 
-In this section the integral formulation of interior problems in source-free volumes is introduced, describing the sound field, generated by a \emph{primary source} outside the volume of investigation.
+In this section the integral formulation of interior problems in source-free volumes is introduced, describing the sound field generated by a \emph{primary source} outside the volume of investigation.
 The effect of sources inside the enclosure may be straightforwardly included to the following results by the appropriate addition of the solution of the inhomogeneous Helmholtz equation \cite{Spors2005}.
 \begin{figure}
 	\centering
@@ -615,7 +611,7 @@ The effect of sources inside the enclosure may be straightforwardly included to 
 	\label{Fig:Theory:HIE_geometry}
 \end{figure}
 
-Let $\Oi$ be an $n$-dimensional enclosure, bounded by the surface $\dO$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. 
+Let $\Oi$ be an $n$-dimensional enclosure bounded by the surface $\dO$ with arbitrary position vectors $\vxo, \vx \in \mathbb{R}^{\mathrm{n}}$. 
 Refer to Figure \ref{Fig:Theory:HIE_geometry} for the geometry. 
 For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads as
 \begin{multline}
@@ -663,7 +659,7 @@ with
 The equation states that the pressure field inside an enclosure is completely determined by the boundary conditions for the pressure and normal velocity on the boundary surface.
 The interior KHIE describes the pressure field only inside the volume of investigation, outside the volume the left-hand side is identically zero. 
 For exterior radiation problems the exterior KHIE can be derived in a similar manner, describing the pressure field outside the volume and ensuring zero left-hand side inside \cite{Williams1999}.
-In both cases, the approach is capable of dealing only with \emph{forward propagation problems} i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
+In both cases the approach is capable of dealing only with \emph{forward propagation problems}, i.e. capable to describe the effects of a source distribution based on the radiated field measured on a surface, but unable to describe the source properties from these data. 
 This latter scenario is called an acoustic \emph{inverse problem}, forming the basis of Acoustic Holography and sound field synthesis.\footnote{Actually, the KHIE can be made able to solve inverse problems, by replacing the forward propagating Green's function by the backward propagating Green's function \cite{Wapenaar1989}.}
 \vspace{3mm}
 
@@ -680,7 +676,7 @@ P(\vxo,\omega)  \underbrace{\frac{\partial G(\vx-\vxo,\omega)}{\partial \vni}}_{
 where the weighting factors containing the Green's function can be recognized as the fields of monopoles and dipoles, acting as velocity and pressure propagators similarly to the angular spectrum approach.
 KHIE therefore consists of two integral components, termed the \emph{single layer potential} and the \emph{double layer potential}: single layer potential describes the field of the weighted sum of a single layer of point sources, characterized by $ G(\vx|\vxo) $, while the double layer potential describes the field of an ensemble of dipole sources, described by $\frac{\partial G(\vx|\vxo,\omega)}{\partial \vni}$, realized by two anti-phase point sources: by a double layer.
 
-The interior KHIE represents the sound field inside the domain of interest and ensures zero pressure outside, by utilizing both a single and a double layer potential.\footnote{Loosely speaking, the anti-phase side of the double layer cancels the field of the single layer outside the region of interest.}
+The interior KHIE represents the sound field inside the domain of interest and ensures zero pressure outside by utilizing both a single and a double layer potential.\footnote{Loosely speaking, the anti-phase side of the double layer cancels the field of the single layer outside the region of interest.}
 In the aspect of sound field synthesis the presence of both layers is infeasible.
 By letting the sound field to be non-zero outside the enclosure it is possible to completely describe the sound field in the region of interest in terms of only a single or double layer potential.
 This is achieved by either modifying the Green's function in order to satisfy Dirichlet or Neumann boundary conditions or imposing these boundary conditions on the sound field $P(\vx,\omega)$ itself in an equivalent scattering problem.
@@ -690,7 +686,7 @@ In the following these approaches are introduced for the simplification of the K
 
 \subsection{The simple source formulation}
 \label{Sec:SimpleSourceFormulation}
-The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem, with prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Copley1968}.
+The simple source formulation is derived from the KHIE by the construction of a separate exterior and interior radiation problem by prescribing the same inhomogeneous Dirichlet boundary condition for both fields on the boundary surface $\dO$ \cite{Copley1968}.
 %
 \begin{figure}[h!]
 	\centering
@@ -719,7 +715,7 @@ The figures demonstrate, how simple source formulation expresses the incident fi
 	\label{Fig:Theory:simple_source_formulation}
 \end{figure}
 
-Consider an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$ in the geometry depicted in Figure \ref{Fig:Theory:HIE_geometry}, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, meaning that all sources are located within the enclosure. 
+Assume an exterior sound field $P_{\mathrm{e}}(\vx,\omega)$ in the geometry depicted in Figure \ref{Fig:Theory:HIE_geometry}, satisfying the homogeneous Helmholtz equation at $\vx \in \Oe$, meaning that all sources are located within the enclosure. 
 The exterior wavefield is the combination of radiating or diverging waves. 
 On the other hand consider an interior sound field $P_{\mathrm{i}}(\vx,\omega)$ inside the enclosure $\vx \in \Omega_i$, induced by a sound source located outside the volume of investigation.
 The interior field, constructed from a set of incoming or converging waves, also satisfies the homogeneous Helmholtz equation in the interior domain.
@@ -763,7 +759,7 @@ In the presented general 2D scenario the single layer weighting factors were cal
 \subsection{The Rayleigh integrals}
 \label{Section:Theory:Rayleigh}
 
-The \emph{Rayleigh integrals} formulate a sound field based on the pressure field or the normal velocity, measured along an infinite plane by utilizing the Neumann or Dirichlet Green's functions.
+The \emph{Rayleigh integrals} formulate a sound field based on the pressure field or the normal velocity, measured along an infinite plane, by utilizing the Neumann or Dirichlet Green's functions.
 
 In order to derive the Rayleigh integrals an interior problem is described by the KHIE written on a simply joint boundary, consisting of a disc $\dO_P$ and hemisphere $\dO_S$, as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
 With the radius of the hemisphere increased to infinity ($r \rightarrow \infty$) the Sommerfeld radiation condition is invoked and the contribution of the hemisphere vanishes: the radiated field is described by a surface integral written on an infinite plane, termed here as the \emph{Rayleigh plane}. 
@@ -781,7 +777,7 @@ G(\vxo|\vx,\omega)
 \right)   \td \dO_P ( \vxo).
 \end{multline}
 Obviously, any homogeneous solution of the Helmholtz equation may be added to the Green's function, the inhomogeneous wave equation and the Kirchhoff-Helmholtz integral still holds.\footnote{This property can be exploited in order to solve the inhomogeneous wave equation in the presence of boundaries, by taking the reflected field into consideration.}
-In the following this fact is exploited in order to eliminate either the single or the double layer potential in \eqref{Eq:Theory:Rayleigh_geometry} by finding a proper additive term to the Green's function:
+In the following, this fact is exploited in order to eliminate either the single or the double layer potential in \eqref{Eq:Theory:Rayleigh_geometry} by finding a proper additive term to the Green's function:
 \begin{itemize}
 \item The \emph{Neumann Green's function} eliminates the double layer potential by finding a suitable additive term to the Green's function, so that the it satisfies homogeneous Neumann boundary conditions along the Rayleigh plane:
 \begin{equation}
@@ -861,7 +857,7 @@ Besides forming the basis of traditional Wave Field Synthesis, it is used extens
 The integral states that the radiated field from a rigid vibrating plane can be calculated as the sum of the fields of point sources on the surface, driven by the normal velocity distribution, or mathematically speaking by convolving the Green's function with the velocity distribution over the infinite surface.
 
 \vspace{3mm}
-Besides the presented methodology, based on the Neumann and Dirichlet Greeen's function, the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
+Besides the presented methodology based on the Neumann and Dirichlet Greeen's function, the Rayleigh integral can be deduced directly using the equivalent scattering interpretation of the simple source approach: for a planar reflecting surface the reflected field can be obtained by mirroring the incident field to the scatterer, resulting in the same formulation.
 Another straightforward way to obtain the Rayleigh integrals stems from the direct inverse Fourier transform of the angular spectrum representations \eqref{Eq:Theory:Pressure_propagated} and \eqref{Eq:Theory:Velocity_propagated} by applying the Fourier transform convolution theorem and applying that the pressure and velocity propagators are given by the field of dipoles and monopoles, as it was stated in Section \ref{Section:Theory:Inhom_wave_eq_solution}.
 The fact that all the presented three approaches lead to the same solution stems from the uniqueness of the single layer problem for a planar boundary.
 However this can not be generalized towards arbitrary boundary shapes: the coincidence of the Dirichlet/Neumann and the free space Green's function holds only for the present, simple geometry. 

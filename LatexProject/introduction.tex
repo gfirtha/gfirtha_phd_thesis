@@ -5,8 +5,8 @@ Alternatively, \emph{binaural rendering} applies a headphone for the reproductio
 These cues are triggered by the head-related transfer function (HRTF) including the interaural time and level differences (ITD and ILD) due the anthropometry of the listener, dynamic cues due to the movement of the listener's head and several environment scattering cues, which all are combined by the human brain, generating the perceived spatial impression \cite{Blauert1983}.
 
 The present thesis considers only spatial audio by loudspeakers.
-In this case, the general aim is the derivation of loudspeaker driving signals from a given source excitation signal in a manner that the reproduced field exhibits prescribed spatial characteristics, e.g. a specific apparent direction of arrival, or a prescribed apparent source width.
-In the following first a short overview is given on the different sound field reproduction approaches, classified based on the basic goal of reproduction.
+In this case, the general aim is the derivation of loudspeaker driving signals from a given source excitation signal in a manner that the reproduced field exhibits prescribed spatial characteristics, e.g. a specific apparent direction of arrival or a prescribed apparent source width.
+In the following, first a short overview is given on the different sound field reproduction approaches, classified based on the basic goal of reproduction.
 
 \paragraph{Stereophony:}
 Sound field reproduction has been the subject of excessive study and development over the second half of the XX. century, starting with the work of Blumlein, who introduced the first two-loudspeaker system in 1931 (along with the related recording, transmission and playback methodology) and thereby creating the basics of \emph{stereophony} \cite{Blumlein1932, Alexander2000}.
@@ -16,10 +16,10 @@ While the first three systems ensured only 2D sound reproduction in the horizont
 
 Generally speaking---independently from the number of the speakers applied---stereophony generates the desired spatial impression by the recreation of some of the above localization cues at the listener position.
 %Although several stereo rendering techniques rely on physical basics, still stereophony aims at the perceptual recreation of sound fields.
-Correct localization therefore can be ensured only over a limited listening area, termed as the \emph{sweet spot}, being a central limitation of these techniques.
+Correct localization therefore can be ensured only over a limited listening area termed as the \emph{sweet spot}, being a central limitation of these techniques.
 Increasing the number of the loudspeakers allows only for a more precise reproduction of the target fields' spatial attributes (e.g. for a more accurate localization).
 
-The source of the stereophonic signals may be either a recording of the sound scene to be reproduced, captured by a suitable microphone array \cite{lipshitz1985stereo, williams1999microphone, wittek2017development}, or the signal of the audio objects present in the virtual sound scene, distributed among the loudspeakers applied for reproduction.
+The source of the stereophonic signals may be either a recording of the sound scene to be reproduced, captured by a suitable microphone array \cite{lipshitz1985stereo, williams1999microphone, wittek2017development} or the signal of the audio objects present in the virtual sound scene, distributed among the loudspeakers applied for reproduction.
 
 The latter approach requires an appropriate \emph{panning law}, describing how the individual loudspeaker signals are obtained from the object source signal, ensuring that in the reproduced field the given audio object is perceived by the listener with desired spatial characteristics (e.g. object position, apparent width, etc.) \cite{Pulkki2001a, Pulkki2001b}.
 Traditional stereophonic panning techniques included applying either interchannel intensity difference or time delay between the signals of the loudspeakers.
@@ -52,8 +52,8 @@ Ultimately both approaches control the apparent virtual audio object's position 
 \label{fig:introduction:stereo}
 \end{figure}
 
-Originally both the interchannel amplitude and time differences---required in order to ensure the desired spatial impression---were defined based on experimental data \cite{deBoer1940, Leakey1956, lipshitz1985stereo, Hugonnet1997, Rumsey2001}.	
-Later the physically motivated \emph{sine law} \cite{Bauer1961, Rabenstein2007} and the \emph{tangent law of panning}\cite{Bennett1985, Rabenstein2007} were introduced, based on an analytical model of the reproduced stereophonic field.
+Originally, both the interchannel amplitude and time differences---required in order to ensure the desired spatial impression---were defined based on experimental data \cite{deBoer1940, Leakey1956, lipshitz1985stereo, Hugonnet1997, Rumsey2001}.	
+Later, the physically motivated \emph{sine law} \cite{Bauer1961, Rabenstein2007} and the \emph{tangent law of panning}\cite{Bennett1985, Rabenstein2007} were introduced, based on an analytical model of the reproduced stereophonic field.
 The latter is discussed within the context of the introduced theoretical framework in the present thesis.
 Several basic intensity and time-based panning laws are depicted in Figure \ref{fig:introduction:stereo} (b).
 Amplitude panning was extended towards 3D spatial audio by \emph{Vector Base Amplitude Panning (VBAP)} introduced by Pulkki \cite{Pulkki1997}, allowing the positioning of phantom/virtual sources in the 3D space by distributing its excitation signal between loudspeaker triplets.\footnote{VBAP can be applied for loudspeaker pairs as well, in which case the formulation is equivalent with the tangent law of stereophony.}
@@ -76,7 +76,7 @@ Applying a decoding strategy that takes the actual reproduction loudspeaker char
 
 \paragraph{Sound field synthesis:}
 An important property of spherical harmonic decomposition of a given sound field around a fixed point is that increasing the decomposition order increases the area/volume at which the sound field is represented correctly.
-By driving a loudspeaker ensemble, that is capable of reproducing higher order harmonics the sweet spot limitation of stereophony could be overcome.
+By driving a loudspeaker ensemble that is capable of reproducing higher order harmonics the sweet spot limitation of stereophony could be overcome.
 This fact adumbrates the motivation behind physically based sound field reproduction methods, commonly referred to as \emph{sound field synthesis techniques} or \emph{holophony}: once the physical properties of a desired sound field are reproduced over an extended listening area, it is inherently ensured that the listener perceives the desired perceptual properties \cite{Spors2013:Survey}.
 Obviously, controlling the sound field over an extended region requires numerous loudspeakers, positioned on the boundary of the control region, as depicted in Figure \ref{fig:introduction:sfs_aim}.
 Hence, these techniques are often referred to as \emph{massive multichannel sound reproduction methods} \cite{Spors2013:Survey, Zhang2017}.
@@ -100,18 +100,18 @@ In order to derive analytical loudspeaker signals, this integral formulation has
 The solution is available explicitly only for special geometries: for a spherical and circular arrangement of loudspeakers the direct solution is proven to coincide with NFC-HOA \cite{943347, Daniel2003, poletti2005three, fazi2008surround, Ahrens2008:Analytical_Circ_Spherical_SFS, Fazi2010, Ahrens2011:icassp}, while for a theoretical infinite planar or linear distribution of loudspeakers the solution is known as the \emph{Spectral Division Method (SDM)} \cite{Fazi2010, Ahrens2010a, Ahrens2012:Ambisonics_for_planar_linear, Ahrens2012}.
 NFC-HOA and SDM are therefore commonly referred to as the \emph{explicit solutions} for the sound field synthesis problem.
 
-Besides NFC-HOA and SDM the most prominent, well-known sound field synthesis approach is Wave Field Synthesis, the main subject of the present dissertation.
+Besides NFC-HOA and SDM the most prominent, well-known sound field synthesis approach is Wave Field Synthesis, being the main subject of the present dissertation.
 Wave Field Synthesis (WFS) aims to recreate the desired sound field---or more precisely the desired wavefront---by putting the Huygens principle into practice: 
 each reproduction loudspeaker acts as the source of a secondary wavefront, so that the resultant field of the entire speaker arrangement coincides with that of a virtual sound source \cite{Berkhout1993:Acoustic_control_by_WFS, Verheijen1997:phd, Ahrens2012}.
 As WFS yields driving signals from the local behavior of the virtual sound field at the position of the loudspeakers it is often termed as a \emph{local solution} to the SFS problem.
 On the other hand, the explicit solutions compute the driving signal for a single loudspeaker from the global description of the virtual field, therefore NFC-HOA and SDM are termed as \emph{global solutions}.
-Furthermore, since WFS extracts the loudspeaker driving signals from an appropriate boundary integral representation of sound fields, containing the solution implicitly, WFS is referred to as an \emph{implicit solution}.
+Furthermore, since WFS extracts the loudspeaker driving signals from an appropriate boundary integral representation of sound fields containing the solution implicitly, WFS is referred to as an \emph{implicit solution}.
 
 \paragraph{Categorization of spatial audio techniques:}
 As a summary of the foregoing the above described spatial audio techniques may be categorized based on the representation of the virtual sound scene to be reproduced \cite{Spors2013:Survey}
 \begin{itemize}
 \item \emph{Channel-based representation} is the most widely used method up to nowadays, storing and transmitting directly the driving signals of the loudspeakers, used for reproduction.
-Traditional stereophonic methods, like Dolby stereo, 5.1 and 7.1 are commonly channel-based formats with the drawback of reproducing the desired spatial characteristics only by applying a predefined, often standardized loudspeaker layout.
+Traditional stereophonic methods, like Dolby stereo, 5.1 and 7.1, are commonly channel-based formats with the drawback of reproducing the desired spatial characteristics only by applying a predefined, often standardized loudspeaker layout.
 %
 \item \emph{Object-based representation} stores the desired virtual sound scene in terms of the virtual audio object properties: the time history of the individual auditory events along with their spatial characteristics as metadata (position, source width, etc.).
 Obviously, the decoding/reproduction stage requires the rendering of the loudspeaker driving signal for the actual loudspeaker layout, for which either VBAP, Wave Field Synthesis or simple stereophonic panning laws may be used.
@@ -128,7 +128,7 @@ the standard audio decoder is capable of decoding either channel-based, object-b
 Object-based rendering is performed by Vector-based Amplitude Panning, while transform-based representation is realized by a standardized Higher-Order Ambisonics encoder and decoder.
 
 Since several years Wave Field Synthesis based sound systems has been available commercially since the introduction of the IOSONO and Sonic Emotion systems, even though that no complete, generalized WFS theory has existed so far:
-previous WFS approaches have been dealing with the reproduction of specific sound object models applying specific loudspeaker geometries with restricted control regions.
+Previous WFS approaches have been dealing with the reproduction of specific sound object models applying specific loudspeaker geometries with restricted control regions.
 These limitations are overcome in the present thesis by presenting a generalized Wave Field Synthesis approach.
 In the following, first a brief overview of Wave Field Synthesis history is given, with highlighting the deficiencies of its theory that motivated the research, summarized in the present dissertation.
 
@@ -146,7 +146,7 @@ In the following, first a brief overview of Wave Field Synthesis history is give
 \end{figure}
 
 The Huygens principle states that each point on a primary wavefront at a given time instant acts as the source of spherical wavelets, and the sum of these secondary waves determine the form of the original wavefront at any subsequent time \cite{Huygens1690}.
-Hence if secondary sources of sound are present in the space covering a part of the primary wavefront, then the primary field can be reconstructed as the sum of the secondary wavefronts.
+Hence, if secondary sources of sound are present in the space covering a part of the primary wavefront, then the primary field can be reconstructed as the sum of the secondary wavefronts.
 The idea of synthesizing wavefronts with loudspeakers based on the Huygens principle in order to reconstruct wavefields over an extended listening area dates back to the 1930s, to the concept of the \emph{acoustic curtain} by Steinberg and Snow \cite{Steinberg1934}.
 They intuitively stated that an auditory scene could be recorded, transmitted and reproduced by recording the sound scene with a large, densely spaced microphone array and playing back with the same amount of loudspeakers located in the same arrangement as the microphones, at the reproduction venue.\footnote{In fact, Snow termed the acoustic curtain concept as an ideal stereophonic system \cite{7254953}.}
 The concept is illustrated in Figure \ref{Fig:intro:huygens_wfs}.
@@ -157,7 +157,7 @@ The basis of WFS theory were the Rayleigh integrals, the mathematical form of th
 Berkhout applied the stationary phase method (SPA) to the Rayleigh integrals in order to arrive at loudspeaker driving signals for a linear array of loudspeakers instead of the practically infeasible planar array.
 The original formulation provided driving signals for loudspeakers with dipole characteristics \cite{Berkhout1988, Berkhout1993:Acoustic_control_by_WFS}---soon extended for monopole loudspeakers as well \cite{doi:10.1121/1.404755, Vogel1993:phd, devries1994the, Start1997:phd, Verheijen1997:phd, deBrujin2004}---reproducing the wavefront of a virtual spherical wave in the horizontal plane, containing the loudspeaker array.
 It was discussed that the dimensionality reduction performed by the SPA restricts the amplitude correct reproduction to a control curve in the plane of synthesis, termed here as the reference curve \cite{sonke1998variable}.
-For traditional WFS this reference curve was usually chosen to be a reference line, parallel with the loudspeaker arrangement \cite{start1996application, Start1997:phd}.
+For traditional WFS, this reference curve was usually chosen to be a reference line, parallel with the loudspeaker arrangement \cite{start1996application, Start1997:phd}.
 The theoretical framework of traditional WFS has been extended towards various aspects, including the consideration of loudspeaker directivity \cite{devries1996sound, Firtha2012:isma}, application of curved arrays \cite{start1996application}, synthesis of extended and directive sources \cite{Corteel2007, Baalman2008:phd}, the perceptual aspects of synthesis \cite{Hulsebos2004:phd, wittek2004spatial, strauss2004generation, Corteel2006:phd, Wittek2007:phd}, stochastic loudspeaker and array properties \cite{Firtha2013:daga, Firtha2013:internoise}, or the inclusion of the reproduction room's effects to the WFS theory \cite{spors2003an, corteel2003listening, 1326755, buchner2004efficient, petrausch2005simulation}.
 Traditional WFS was also the subject of various research projects, most notably the CARROUSO project, aiming at the integration of the technique into the MPEG-4 standard \cite{sporer2001carrouso}. 
 This endeavor was not realized eventually, but two "spin-off" companies of the project, the IOSONO and Sonic Emotion are still offering commercially available WFS systems nowadays.
@@ -193,7 +193,7 @@ With highlighting the related publications by the author, the thesis is structur
 \item Chapter \ref{sec:general_wave_theory} gives an overview of basic acoustic concepts, required for dealing with the general sound field synthesis problem.
 Different descriptions of sound fields are discussed, including spectral integral and boundary integral representations.
 %
-\item Chapter \ref{sec:high_freq_approx} introduces important high frequency concepts---the local wavenumber vector, the local wavefront curvature and the high frequency gradient approximation---which are later applied in order to explain results, concerning the \emph{stationary phase approximation (SPA)} of integrals.
+\item Chapter \ref{sec:high_freq_approx} introduces important high frequency concepts---the local wavenumber vector, the local wavefront curvature and the high frequency gradient approximation---which are later applied in order to explain results concerning the \emph{stationary phase approximation (SPA)} of integrals.
 The SPA is of central importance in the aspect of the present thesis: loosely speaking, the present work discusses how integral representations can be manipulated by the SPA in order to extract the desired SFS driving signals from them.
 The application of the SPA to the different integral representations is discussed via examples.
 Some of the results in these examples---describing wave dynamics by investigating the sound field's phase function and its derivatives---are well-known in the field of ray acoustics, however, the present thesis introduces a novel approach for their derivation, so far unknown in the related literature.
