@@ -656,25 +656,25 @@ The result of synthesizing the steady-state field of a point source is illustrat
 In the target half space $y>0$ perfect synthesis is achieved, as it is indicated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b) depicting the discrepancy between the synthesized and the target sound field. 
 Obviously, the figure also presents the result of 3D planar WFS of a spherical wave without applying the high frequency gradient approximation.
 
-
 \subsection{2.5D Spectral Division Method}
 \label{Sec:25D_SDM}
 
-As the geometry for the derivation of the 2.5D explicit driving function assume an infinite linear distribution of secondary point sources, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+As the geometry for the derivation of the 2.5D explicit driving function assume, an infinite linear distribution of secondary point sources located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The synthesized field in this arrangement reads as
 \begin{equation}
-P(x,y,z,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) G(x-x_0,y,z,\omega) \td x_0.
+P(x,y,z,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) \, G(x-x_0,y,z,\omega) \, \td x_0.
 \label{Eq:SFS_Theory:linear_synth_field_spatial}
 \end{equation}
 Similarly to the planar case the basis functions for a linear SSD are given by exponentials:
-by realizing that the above equation is a convolution along the $x$-axis, the convolution can be transformed into a multiplication by means of a spatial forward Fourier transform
+By realizing that the above equation is a convolution along the $x$-axis, the convolution can be transformed into a multiplication by means of a spatial forward Fourier transform
 \begin{equation}
 \tilde{P}(k_x,y,z, \omega) = \tilde{D}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega).
 \label{Eq:SFS_Theory:linear_synth_field_spectral}
 \end{equation}
 The driving function spectrum is then obtained as a spectral ratio
 \begin{equation}
-\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = \frac{\mathcal{F}_x \left\{ P(\vx,\omega) \right\}}{\mathcal{F}_x \left\{ G(\vx,\omega) \right\}},
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = 
+\frac{\FT[x]{ P(\vx,\omega) }}{\FT[x]{ G(\vx,\omega) }},
 \label{Eq:SFS_Theory:LinearSDM_spectral}
 \end{equation}
 and the frequency domain driving function is obtained as the spatial inverse Fourier transform with respect to $k_x$
@@ -682,48 +682,48 @@ and the frequency domain driving function is obtained as the spatial inverse Fou
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,z, \omega) }{\tilde{G}(k_x,y,z, \omega)} \te^{-\ti k_x x_0} \td k_x.
 \label{Eq:Theory:LinearSDM1}
 \end{equation}
-Again, theoretically the transfer function may describe the field of an arbitrary sound source, as long as it does not exhibit zeros in order to keep the problem well-conditioned.
+Again, theoretically the secondary source transfer function may describe the field of an arbitrary sound source, as long as it does not exhibit zeros in order to keep the problem well-conditioned.
 
 \vspace{3mm}
-Unlike the planar case the present driving function depends on the listener position: Equation \eqref{Eq:Theory:LinearSDM1} may be solved only for positions on the surface of a cylinder with fixed radius $d = \sqrt{y^2 + z^2}$ \cite[p.~60.]{Ahrens2010phd}.
+Unlike the planar case the present driving function depends on the listener position: Equation \eqref{Eq:Theory:LinearSDM1} may be solved only for positions on the surface of a cylinder with a fixed radius of $d = \sqrt{y^2 + z^2}$ \cite[p.~60.]{Ahrens2010phd}.
 This is a direct consequence of the fact that the pressure of an arbitrary 3D sound field measured on the SSD does not determine completely the pressure on the reference line---and vice versa---.
-Furthermore, an infinite line source---i.e. the SSD---can only radiate wavefronts with cylindrical symmetry as it was discussed in details in \ref{sec:greens_function_spectrum}.
-Phase correct synthesis therefore can be achieved only in a plane containing the SSD in which the radial wavenumber of the synthesized field and the target field coincide. 
+Furthermore, an infinite line source---i.e. the SSD---can only radiate wavefronts with cylindrical symmetry as it was discussed in details in Section \ref{sec:greens_function_spectrum}.
+Phase correct synthesis, therefore, can be achieved only in a plane containing the SSD in which the radial wavenumber of the synthesized field and the target field coincide. 
 Amplitude correct synthesis is ensured in this plane at a distance $\dref = \sqrt{y^2 + z^2}$, for which the driving function is calculated.
 
 For practical applications the plane of synthesis is chosen to be the horizontal plane $z=0$, requiring that for the virtual field $k_z(x,y,0) = 0$ holds.
 The driving function thus reads as
 \importanteq{2.5D SDM driving function}{
-D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \te^{-\ti k_x x_0} \td k_x.
+D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \, \te^{-\ti k_x x_0} \, \td k_x.
 \label{Eq:Theory:Linear_SDM}
 }
 In this geometry amplitude correct synthesis is restricted to the \emph{reference line} by setting $y = \yref$.
 
-Similarly to the 3D case the following physical interpretation can be assigned to the 2.5D explicit solution:
+Similarly to the 3D case, the following physical interpretation can be assigned to the 2.5D explicit solution:
 Given an infinite distribution of point sources along the $x$-axis with a harmonic spatial distribution described by $k_x$, the radiated sound field is given by
 \begin{multline}
-\int_{-\infty}^{\infty} G(x - x_0,y,z) \te^{\ti k_x x_0} \td x_0 = \hat{G}(k_x,y,z,\omega) \te^{-\ti k_x x} = \\
+\int_{-\infty}^{\infty} G(x - x_0,y,z,\omega) \, \te^{\ti k_x x_0} \, \td x_0 = \tilde{G}(k_x,y,z,\omega) \, \te^{-\ti k_x x} = \\
 =  -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{\left( \frac{\omega}{c} \right)^2-k_x^2} \sqrt{y^2+z^2} \right)  \te^{-\ti k_x x},
 \end{multline}
-at $x=0$ resulting in the 2D Green's function as discussed in Section \ref{sec:greens_function_spectrum}.
-Such a source radiates cylindrical symmetric sound fields with conical wavefronts as depicted in Figure \eqref{Fig:Theory:greens_stat_pos} (a). 
-Along a fixed reference line at $z=0$ the SSD reproduces a harmonic spatial distribution $\te^{-\ti k_x x}$ attenuated approximately by $\frac{1}{\sqrt{k_y}|y_{\mathrm{ref}}|}$, corresponding to attenuating plane waves with $k_z=0$.
+at $x=0$ resulting in the 2D Green's function, as discussed in Section \ref{sec:greens_function_spectrum}.
+Such a source radiates cylindrical symmetric sound fields with cylindrical wavefronts as depicted in Figure \eqref{Fig:Theory:greens_stat_pos} (a). 
+Along a fixed reference line at $z=0$ the SSD reproduces a harmonic spatial distribution $\te^{-\ti k_x x}$, attenuated approximately by $\frac{1}{\sqrt{k_y}|y_{\mathrm{ref}}|}$, corresponding to attenuating plane waves with $k_z=0$.
 Therefore, the wavenumber domain driving function ensures the compensation of the linear SSD response for the synthesis of a single plane wave component propagating in the plane of synthesis.
-Obviously, for sound fields that can be expanded into the series of plane waves with $k_z=0$ the driving function is the weighted sum of the plane wave driving function, resulting in \eqref{Eq:Theory:Linear_SDM}.
+Obviously, for sound fields that can be expanded into the series of plane waves with $k_z=0$ the driving function is obtained as the weighted sum of the plane wave driving function, resulting in \eqref{Eq:Theory:Linear_SDM}.
 
 It is worth noting that the analytic Fourier transform coefficients of the target sound field are available only for limited simple virtual source models. 
-Even in these cases the inverse transform of the driving function can rarely be evaluated analytically, therefore numerical transforms are needed.
+Even in these cases the inverse transform of the driving function can rarely be evaluated analytically, therefore numerical transform is needed.
 For a practical and optimized implementation of the SDM for an arbitrary target sound field refer to \cite{ahrens2013a:efficientSDM}.
 
 \subsection*{Application example: Synthesis of a 3D point source using a linear SSD}
 
-As an example for the 2.5D SDM the reproduction of a 3D point source is presented.
+As an example for the 2.5D SDM, the reproduction of a 3D point source is presented.
 The virtual source is located at $\vxs = \posvec{3}{x_s}{y_s}{0}$, with $y_s<0$. 
-The SSD is a linear set of 3D point sources, located along $\vxo = \posvec{3}{x_0}{0}{0}$.
+The SSD is a linear set of 3D point sources located along $\vxo = \posvec{3}{x_0}{0}{0}$.
 The explicit driving function for a linear SSD is given by \eqref{Eq:Theory:Linear_SDM}. 
 Substituting the 1D spectra of the virtual and the secondary point sources along with applying the Fourier shift theorem the driving function is given in the propagation region as
 \begin{equation}
-\hat{D}(k_x,\omega) = 
+\tilde{D}(k_x,\omega) = 
 \frac{ -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  \te^{\ti k_x x_s} }
      { -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref| \right)  }
 ,
@@ -734,9 +734,9 @@ and the spatial inverse Fourier transform yields the spatial domain driving func
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
 \frac{  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  }
      {  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref|       \right)  }
-\te^{- \ti k_x (x_0 - x_s)}
-\td k_x.}
-The synthesized field using this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
+\, \te^{- \ti k_x (x_0 - x_s)}
+\, \td k_x.}
+The synthesized field applying this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
 As it can be seen from Figure (b) displaying the discrepancy between the synthesized field and the target field, application of the explicit driving function ensures perfect synthesis on the reference line. 
 In other points amplitude errors are present.
 
@@ -755,7 +755,7 @@ The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (
 	\label{Fig:Theory:monopole_synthesis_by_linear_SDM}
 \end{figure}
 %
-As discussed in \cite{Spors10ahrens:analysis} the derived driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
+As discussed in \cite{Spors2010:analysis_and_improvement} the derived driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
 The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the farfield of the SSD in front of the virtual source, where $k_y \gg k_x$ dominates the inverse transform.
 Applying the Hankel function's approximation the inverse transform can be carried out analytically, resulting in
 \begin{equation}
