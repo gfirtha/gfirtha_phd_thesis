@@ -755,15 +755,15 @@ The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (
 	\label{Fig:Theory:monopole_synthesis_by_linear_SDM}
 \end{figure}
 %
-As discussed in \cite{Spors2010:analysis_and_improvement} the derived driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
-The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the farfield of the SSD in front of the virtual source, where $k_y \gg k_x$ dominates the inverse transform.
-Applying the Hankel function's approximation the inverse transform can be carried out analytically, resulting in
+As discussed in \cite{Spors2010:analysis_and_improvement}, the driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
+The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the farfield of the SSD in front of the virtual source where $k_y \gg k_x$ dominates the inverse transform.
+By applying the Hankel function's approximation the inverse transform can be carried out analytically, resulting in
 \begin{equation}
 D(x_0,\omega) \approx \frac{1}{2} \sqrt{\frac{\yref}{\yref-y_s}} \ti \frac{\omega}{c} \frac{y_s}{|\vxo-\vxs|} H_1^{(2)}\left( \frac{\omega}{c} |\vxo-\vxs| \right).
 \end{equation}
 A further large-argument approximation of the first order Hankel function returns the 2.5D WFS driving function for a 3D point source referencing the synthesis on a reference line, given by \eqref{eq:SFS_theory:WFS_point_source}. 
 This indicates that the implicit solution constitutes a high frequency approximation for the explicit solution in case of a virtual point source.
-The equivalence of the SDM and 2.5D WFS referencing the synthesis of a virtual plane wave on a reference line was further discussed in \cite{Firtha2016, Schultz2016:DAGA,Schultz2016}.
+The equivalence of the SDM and 2.5D WFS with optimizing the synthesis of a virtual plane wave on a reference line was further discussed in \cite{Firtha2016, Schultz2016:DAGA,Schultz2016}.
 In the following the general relation of the explicit solution and 2.5D WFS is investigated.
 
 \subsection{Explicit solution in the spatial domain}
@@ -772,12 +772,12 @@ The determination of a single spectral coefficient for the explicit solution req
 The explicit solution is therefore often termed a \emph{global solution}.
 In contrary, the implicit solution requires the value of the local field variables only at the actual SSD position at which the driving function is to be expressed.
 The implicit solution is thus referred to as a \emph{local solution}.
-In the followings it is presented how the global solution can be approximated asymptotically by the application of the stationary phase method, resulting in an alternative local solution.
+In the following it is presented how the global solution can be approximated asymptotically by the application of the stationary phase method, resulting in an alternative local solution.
 
-As it was discussed in Section \ref{Sec:SPA_for_Fourier} the stationary phase approximation allows the evaluation of forward and inverse Fourier integrals around stationary positions in the spatial and spectral domain.
-The SPA therefore may be employed in order to give an approximate formulation for the 2.5D explicit driving function solely in the spatial domain.
+As discussed in Section \ref{Sec:SPA_for_Fourier} the stationary phase approximation allows the evaluation of forward and inverse Fourier integrals around stationary positions in the spatial and spectral domain.
+Therefore, it may be employed in order to give an approximate formulation for the 2.5D explicit driving function merely in the spatial domain.
 
-The complete derivation is presented in details in Appendix \ref{App:SDM_SPA}, here only the result of the approximation is discussed.
+The complete derivation is presented in details in Appendix \ref{App:SDM_SPA}. Here only the result of the approximation is discussed.
 The derivation consists of two main steps:
 \begin{enumerate}
 	%
@@ -788,7 +788,7 @@ The derivation consists of two main steps:
 	\item It is followed by the inverse Fourier transform of the asymptotic spectral driving function.
 	The evaluation of the inverse transform with the SPA relates the forward transform stationary positions to positions along the SSD.
 \end{enumerate}
-As the result of the derivation for a linear SSD located along $\vxo = \posvec{3}{x_0}{0}{0}$ the asymptotic SDM driving function, expressed entirely in the spatial domain reads as
+As the result of the derivation for a linear SSD located along $\vxo = \posvec{3}{x_0}{0}{0}$ the asymptotic SDM driving function, expressed merely in the spatial domain reads as
 \importanteq{2.5D explicit driv. fun.}{
 \label{eq:SFS_theory:spatial_sdm}
 D(x_0,\omega) \approx 
@@ -801,7 +801,7 @@ In the driving function $\vxref(\vxo) = \posvec{3}{x_{\mathrm{ref}}(x_0)}{y}{0}$
 \label{Eq:stationary_evaluation_points}
 \vk^P(\vxref(\vxo)) = \vk^G(\vxref(\vxo) - \vxo).
 }
-Hence, in the explicit driving function for a given SSD coordinate $x_0$ the reference point $\vxref$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
+Hence, in the explicit driving function for a given SSD coordinate $x_0$ the reference point $\vxref$ is found on the reference line where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
 For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points_2}.
 
 \begin{figure}[t!]
@@ -821,7 +821,7 @@ For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{
        Illustration of the stationary position $\vxref(x_0)$ for the evaluation of the spatial explicit driving function. 
-	   For a given SSD position $x_0$ the reference (stationary) position is found on a given reference line, where the virtual field propagation direction coincides with that of the SSD element under discussion.
+	   For a given SSD position $x_0$ the reference (stationary) position is found on a given reference line where the virtual field propagation direction coincides with that of the SSD element under discussion.
 	   Under the validity of the Kirchhoff approximation this principle may be extended towards arbitrary SSD and reference contours. 
        } 
        \label{fig:SFS_theroy:explicit_sol_stationary_points_2}
@@ -833,43 +833,36 @@ In this stationary position the driving function is obtained by the ratio of the
 Therefore the explicit, global solution can be approximated by local wavefront matching.
 
 One important fact is pointed out here: although having derived the above driving function in terms of a forward and an inverse spatial Fourier transform along a straight line, there is no restriction on the $y$-coordinate of the stationary point in \eqref{eq:SFS_theory:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent.
-This means that an arbitrary referencing curve may be defined as $\vxref(x_0)$, and the driving function can be calculated by finding the stationary positions 
-satisfying $k_x^P(\vxref(x_0)) = k_x^G(\vxref(x_0) - \vx_0)$ along this curve.
+Hence, an arbitrary referencing curve $\vxref(x_0)$ may be defined and the driving function can be evaluated, once the stationary positions satisfying $k_x^P(\vxref(x_0)) = k_x^G(\vxref(x_0) - \vx_0)$ are found along this curve.
 Evaluating the driving function in the stationary positions will result in amplitude correct synthesis along the reference curve. 
-This means that the presented driving function is equivalent to the 2.5D WFS driving function with the important difference that here the target field needs to be evaluated on the reference curve.
+%This means that the presented driving function is equivalent to the 2.5D WFS driving function with the important difference that here the target field needs to be evaluated on the reference curve.
 Furthermore, within the validity of the Kirchhoff approximation the SSD does not necessarily need to be linear: the spatial explicit driving function can be applied using an arbitrary shaped SSD contour.
 In that case \eqref{eq:SFS_theory:spatial_sdm_2} has to be evaluated with $\hat{k}_y^{P}(\vxref(x_0)) \rightarrow \hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo))$, i.e. with the wavenumber component along the normal direction of the stationary SSD element.
 
-With the considerations above and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function can be cast into the final form
-\footnotesize
+With these considerations and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function takes the final form
 \importantmline{Detailed 2.5D explicit driv. fun.}{
-\label{eq:SFS_theory:spatial_sdm_2}
-D(\vxo,\omega) =
-\underbrace{ \sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
-\underbrace{\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}
+\label{eq:SFS_theory:spatial_sdm_2} 
+\hspace{-3mm} D(\vxo,\omega) \! =
+\!\! \underbrace{ 
+\resizebox{0.23\hsize}{!}{$\sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} $}
+}_{{\substack{\text{SSD}\\\text{compensation}}}}
+\underbrace{
+\resizebox{0.32\hsize}{!}{$\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }} $}
+}_{{\substack{\text{virtual source}\\\text{compensation}}}
  \hspace{1mm} = \hspace{1mm} \sqrt{ \frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxo)}} } 
 \frac{\hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo)) P(\vxref(\vxo),\omega)}{G(\vxref(\vxo)-\vxo,\omega)},
 }
-\normalsize
 with $\vxo = \posvec{3}{x_0}{y_0}{0}$ and $\vxref(\vxo) = \posvec{3}{x_{\mathrm{ref}}(\vxo)}{y_{\mathrm{ref}}(\vxo)}{0}$ now denoting arbitrary SSD and reference contours.
-The formulation implies the fact that similarly to the implicit solution, the explicit driving function also requires the derivative of the target field, measured on the reference position.
-The driving function explicitly contains a virtual source compensation factor, compensating for the relative amplitude change of the virtual sound field between the SSD and the reference curve in terms of its horizontal principal radius.
-Furthermore, the transfer function of the SSD contour---or more specifically the stationary SSD element--- is compensated regarding both its frequency response being a half-integrator and its attenuation factor.
-%%\begin{equation}
-%%\small
-%%\sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} \frac{\hat{k}_y^{P}(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo,\omega)} = 
-%%2 \sqrt{\frac{2 \pi |\vxref(\vxo)-\vxo|}{\ti k}} \frac{\ti k_y^{G}(\vxref(\vxo)-\vxo)  }{\te^{-\ti k |\vxref(\vxo)-\vxo|}} 
-%%\end{equation} %FS:ok
-%
 
-%It should be noted that as an important difference from the 2.5D WFS driving functions, up to this point the above driving functions are independent from the problem dimensionality.
-%The same driving function holds for the exemplary case of a 2D SFS scenario, in which case the SSD compensation factor becomes independent from the reference position.
+The formulation implies the fact that similarly to the implicit solution, the explicit driving function also requires the derivative of the target field measured on the reference position.
+The driving function contains a virtual source compensation factor, compensating for the relative amplitude change of the virtual sound field between the SSD and the reference curve in terms of its horizontal principal radius.
+Furthermore, the transfer function of the SSD contour---or more specifically the stationary SSD elements---is compensated regarding both its frequency response, being a half-integrator, and its attenuation factor.
 
 \subsection*{Application example: Synthesis of a 3D point source using a linear SSD}
 
 In the following a simple example is presented in order to demonstrate the validity of the spatial SDM driving function for the synthesis of a virtual 3D point source.
 For the synthesis a linear secondary source distribution is applied, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
-The virtual source is positioned at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$ with $y_s < 0$, with the reference curve chosen to be a circle around the virtual point source with the radius of $R_{\mathrm{ref}}$.
+The virtual source is positioned at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$ with $y_s < 0$ and the reference curve chosen to be a circle around the virtual point source with the radius of $R_{\mathrm{ref}}$.
 Along with the equation describing the reference curve $\vxref(x_0) = \posvec{3}{x_{\mathrm{ref}}(x_0)}{y_{\mathrm{ref}}(x_0)}{0}$ the stationary points satisfy the following equations
 \begin{align}
 \vk^G(\vxref(\vxo)-\vxs) &= \vk^G(\vxref(\vxo)-\vxo), \\
@@ -880,9 +873,9 @@ The~solution for the equations is given by
 \label{Eq:SFS_theory:spatial_SDM_circle_ref_points}
 \vxref(\vxo) = \vxs + R_{\mathrm{ref}}\frac{\vxo-\vxs}{|\vxo-\vxs|}.
 \end{align}
-Substituting the spherical virtual field into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by simple distances from the point sources---yields the explicit driving function in the spatial domain for a virtual point source
+Substitution of the Green's function into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by Euclidean distances---yields the explicit driving function in the spatial domain for a virtual point source
 \begin{equation}
-D(x_0) =
+D(x_0,\omega) =
 \sqrt{\frac{|\vxref-\vxs|}{|\vxref-\vxs|-|\vxref-\vxo| }}
 \sqrt{\frac{\ti k}{2\pi |\vxref-\vxo|}} 
 \hat{k}_y^G(\vxref(\vxo)-\vxs)
@@ -891,7 +884,7 @@ D(x_0) =
 Finally, substituting the reference position coordinates along the reference circle \eqref{Eq:SFS_theory:spatial_SDM_circle_ref_points} specifies the driving function, optimizing the synthesis on the reference circle
 \begin{equation}
 \label{Eq:SFS_theory:linear_SSD_ref_circle}
-D(x_0) =-y_s
+D(x_0,\omega) =-y_s
 \sqrt{\frac{R_{\mathrm{ref}}-|\vxo-\vxs|}{R_{\mathrm{ref}}}}
 \sqrt{\frac{\ti k }{2\pi}} 
 \frac{\te^{-\ti k |\vxo-\vxs|}}
@@ -912,27 +905,27 @@ D(x_0) =-y_s
 \end{figure}
 Investigating Figure \ref{fig:SFS_theory:25D_spatial_SDM_linear_ssd} verifies that the synthesis is optimized on the prescribed reference curve.
 
-Although having derived the above driving function from the pressure measured along the reference curve, \eqref{Eq:SFS_theory:linear_SSD_ref_circle} is already written merely in terms of the target field measured on the actual SSD element, equivalently to the WFS solution.
-In the followings this relation is generalized by expressing the explicit driving function for an arbitrary target sound field that is written in terms of pressure measured along the SSD, revealing the general connection between the implicit and explicit solutions.
+Although having derived the above driving function from the pressure measured along the reference curve, \eqref{Eq:SFS_theory:linear_SSD_ref_circle} is already written merely in terms of the target field measured at the secondary sources, equivalently to the WFS solution.
+In the following this relation is generalized by expressing the explicit driving function for an arbitrary target sound field, written in terms of the pressure measured along the SSD, revealing the general relation of the implicit and explicit solutions.
 
 \section{Relation of implicit and explicit solutions}
 
-The explicit SFS driving function, given by \eqref{eq:SFS_theory:spatial_sdm_2} requires the knowledge of the virtual sound field, measured along the reference curve.
-By applying the findings presented in Section \ref{Sec:HF:RayleighSPA}, for the special case of a linear SSD the required quantities can be expressed in terms of the the virtual field properties, measured on the SSD. 
-The obtained formulation allows the comparison of the implicit and explicit solutions.
+The explicit SFS driving function, given by \eqref{eq:SFS_theory:spatial_sdm_2}, requires the knowledge of the virtual sound field measured along the reference curve.
+The findings presented in Section \ref{Sec:HF:RayleighSPA} established an asymptotical connection between the target field measured along the SSD and along the reference curve.
+Expressing the explicit driving function with this formulation allows the comparison of the implicit and explicit solutions.
 
-In order to express the driving function merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure of the target field has to be defined along the $y=0$ line.
+In order to express the driving function merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure has to be defined along $y=0$.
 For the local wavenumber vector this relationship can be simply established: Assuming isotropic medium, the propagation direction---and the local wavenumber vector---does not change along the propagation path, thus $\vk^P(\vxref(\vxo)) = \vk^P(\vxo)$ holds.
 
 The change of the principal radii over the propagation path is given by \eqref{eq:app:propagated_radii}, stating that the principal radii of an arbitrary field increase linearly along the path of propagation.
-The relation between the target field, measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, given for a general wavefield by \eqref{eq:HF_approx:asymptotic_rayleigh}.
-However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through the implicit relation
+The relation between the target field measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, as given for a general wavefield by \eqref{eq:HF_approx:asymptotic_rayleigh}.
+However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through
 \begin{equation}
 \label{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point}
 \vk^P(\vxo^*(\vx)) = \vk^G( \vx - \vxo^*(\vx)).
 \end{equation}
 Comparing this definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed that they describe stationary point pairs.
-Hence, without the loss of generality both the principal radii and the pressure field, measured on the reference curve can be formulated with choosing the SSD position $\vxo$ as an independent variable, resulting in
+Hence, without the loss of generality both the principal radii and the pressure field measured on the reference curve can be formulated with choosing the SSD position $\vxo$ as an independent variable, resulting in
 \begin{equation}
 \label{Eq:principal_radii_addition}
 \Rh^P(\vxref(\vxo)) = \Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo),
@@ -951,7 +944,7 @@ P(\vxo,\omega) G(\vxref(\vxo)-\vxo,\omega)
 \normalsize
 where positions $\vxref$ and $\vxo$ are related through \eqref{Eq:stationary_evaluation_points} and where it was exploited that the principal radii are given by the vertical and horizontal radii components in the present geometry.
 
-With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} and after simplification the driving function takes the form
+With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} the driving function takes the form
 \begin{equation}
 D(x_0,\omega) =
 2\sqrt{\frac{2\pi  \Rv^G(\vxref(\vxo)-\vxo)}{\ti k}} 
@@ -968,14 +961,13 @@ D(x_0,\omega) =
 P(\vxo,\omega).
 \end{equation}
 Comparison with \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2} and \eqref{Eq:SFS_theory:25D_WFS_driv_fun} reveals that the asymptotic SDM driving function exactly coincides the 2.5D WFS driving function when applied for a linear---and within the validity of the Kirchhoff approximation for an arbitrary shaped---SSD.
-It is therefore verified that under high frequency assumptions WFS is the asymptotic and local approximation of the global explicit solution.
+It is therefore verified that under high frequency assumptions WFS is the asymptotic, local approximation of the global explicit solution.
 
-An important difference is however that the WFS driving function was obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
+An important difference is, however, that the WFS driving function was obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
 On the other hand the explicit driving function \eqref{eq:SFS_theory:spatial_sdm} inherently contains the horizontal SPA and the reference curve concept.
 
 \section{Synthesis applying discrete secondary source distribution}
 \label{Sec:Aliasing}
-%\fscom{the findings in this section are very good, text deserves critical review, shorter sentences, more clear statements, I corrected some major issues}
 
 Throughout this thesis synthesis applying the continuous distribution of secondary sources has been discussed so far.
 In practical applications the SSD is realized by a densely spaced loudspeaker ensemble with the source elements positioned at discrete locations.
