@@ -88,7 +88,7 @@ kn0 = 0;
 [ field_synth_aa ] = get_synthesized_field( t,s, Amp,xs,'on' ,loudspeaker_type, 'off', Dref,kn,r0, xrec0, x_ssd, N_ssd, X,Y,kv,kv0 );
 %
 %%
-ftsize = 13.75;
+ftsize = 12.37;
 f = figure('Units','points','Position',[200,200,360,260]);
 set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.12  0.8 .85 ];

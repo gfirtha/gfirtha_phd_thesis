@@ -44,7 +44,7 @@ Gkx = fftshift(fft(A.*G0,[],2),2)*dx;
 Pkx = Gkx.*Dkxs;
 %%
 q = 10;
-ftsize = 14.3;
+ftsize = 12.37;
 fig = figure('Units','points','Position',[200,200,360,200]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))

@@ -486,7 +486,7 @@ Again, the system of equations describing the reference distance for each SSD el
 \end{align}
 %Expressing the reference distance leads to a second order equation.
 The reference distance can be obtained by expressing the absolute value of \eqref{Eq:SFS_theory:ref_curve_circ}. 
-Exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and $\left< \hat{\vk}^P(\vxo) \cdot \vxo \right> = R_{\mathrm{SSD}}\hat{k}^P_{\mathrm{r}}$ yields the reference distance
+Exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and $\left< \hat{\vk}^P(\vxo) \cdot \vxo \right> = R_{\mathrm{SSD}} \, \hat{k}^P_{\mathrm{r}}$ yields the reference distance
 \begin{equation}
 |\vxref(\vxo)-\vxo| = - R_{\mathrm{SSD}} \left( \hat{k}^P_{\mathrm{r}}(\vxo) \pm \sqrt{ \hat{k}^P_{\mathrm{r}}(\vxo)^2 + \left( \frac{R_{\mathrm{ref}}}{R_{\mathrm{SSD}}} \right)^2 - 1 } \right),
 \label{eq:SFS_theory:pw_circ_ref}
@@ -500,8 +500,8 @@ The driving function for the synthesis of a 2D plane wave is then given as
 \begin{equation}
 \label{eq:SFS_theory:WFS_plane_wave}
 D(\vxo, \omega) = -w(\vxo) 
-\sqrt{\frac{8\pi}{\ti k}}\sqrt{|\vxref(\vxo)-\vxo|}
-\ti k_r^{\mathrm{PW}}(\vxo) 	\te^{-\ti \left< \vk^{\mathrm{PW}} \cdot \vxo \right> },
+\sqrt{\frac{8\pi}{\ti k}}\sqrt{|\vxref(\vxo)-\vxo|} \,
+\ti k_{\mathrm{r}}^{\mathrm{PW}}(\vxo) \, \te^{-\ti \left< \vk^{\mathrm{PW}} \cdot \vxo \right> },
 \end{equation}
 with the reference distance given by \eqref{eq:SFS_theory:pw_circ_ref}.
 As an application of this driving function a simple example is depicted in Figure \ref{fig:SFS_theory:25D_WFS_circular_ssd} for the synthesis of a harmonic plane wave.
@@ -524,13 +524,13 @@ In order to find the driving signal for the synthesis of a plane wave carrying a
 \begin{equation}
 d(\vxo, t) = -w(\vxo) 
 \sqrt{\frac{8 \pi }{c	}|\vxref(\vxo)-\vxo|}  \,
-\hat{k}_r^{\mathrm{PW}}(\vxo)  h(t) \ast_t s( t - \frac{1}{c}\left< \hat{\vk}^{\mathrm{PW}} \cdot \vxo \right>),
+\hat{k}_{\mathrm{r}}^{\mathrm{PW}}(\vxo) \, h(t) \ast_t s( t - \frac{1}{c}\left< \hat{\vk}^{\mathrm{PW}} \cdot \vxo \right>),
 \end{equation}
 where $h(t) = \mathcal{F}^{-1}_{\omega}\left\{ \sqrt{\ti \omega} \right\}$ is the SSD compensation filter, performing half-derivation on the time history and $\hat{\vk}^{\mathrm{PW}} = \posvec{3}{\hat{k}^{\mathrm{PW}}_x}{\hat{k}^{\mathrm{PW}}_y}{0}$ is a unit vector pointing into the plane wave propagation direction.
 
 Note that for the special case when $R_{\mathrm{SSD}} \rightarrow 0$ the explicit driving function is also available \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR}, thus the presented driving function allows the comparison of the explicit and implicit methods.
 In this particular case the reference distance is simply given by $|\vxref(\vxo)-\vxo| = -R_{\mathrm{SSD}} \left( \cos \left( \varphi - \varphi_{\mathrm{PW}} \right) - \ti |\sin \left( \varphi - \varphi_{\mathrm{PW}} \right) | \right)$, with $\varphi$ and $\varphi_{\mathrm{PW}}$ being the polar angles of the SSD element positions and the plane wave wavenumber vector.
-The resulting driving function is an asymptotic approximation of the NFC-HOA method, ensuring perfect synthesis in the center of the SSD.
+The resulting driving function is an asymptotic approximation of the NFC-HOA method, ensuring amplitude correct synthesis in the center of the SSD.
 
 \section{Explicit solution: Spectral Division Method}
 
@@ -1183,7 +1183,7 @@ Into other directions lateral aliasing components are present and the synthesize
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill	
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
+    \caption{2.5D synthesis of a 3D point source located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
 	Figure (a) shows the sampled driving function spectrum with asymmetric bandwidth limitation.
 	Figure (b) presents the synthesized field.
 	The synthesis is performed by optimizing spatial anti-aliasing into the direction, indicated by dashed arrow in Figure (b) by simple bandlimitation of the driving function in the angular frequency domain, according to \eqref{Eq:SFS_theory:general_cutoff_freq}.
@@ -1192,80 +1192,81 @@ Into other directions lateral aliasing components are present and the synthesize
 \label{fig:SFS_theory:anti-aliased_synthesis_asymm}   \end{minipage}
 \end{figure}
 \vspace{3mm}
-So far only symmetrical anti-aliasing filtering was discussed.
-However, overlapping of the mirror spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber (below the Nyquist wavenumber) to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (a).
-The center wavenumber $k^P_{t,0}$ defines the direction into which full-band, anti-aliased synthesis can be achieved: the SSD element, with $k^P_t(\vxo) = k^P_{t,0}$ performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
+Besides the above symmetrical anti-aliasing filtering, overlapping of the mirror spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber $k^P_{t,0}$ to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (a).
+The center wavenumber defines the direction into which full-band, anti-aliased synthesis can be achieved: 
+The SSD element where $k^P_t(\vxo) = k^P_{t,0}$ holds performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
 Asymmetric anti-aliasing filtering can be performed by the angular low-pass filtering of the driving function according to
 \importanteq{Asymmetric anti-aliasing condition}{
 D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo) - \hat{k}^P_{t,0}|}.
 \label{Eq:SFS_theory:general_cutoff_freq} 
 }
 The result of asymmetric anti-aliasing filtering is presented in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (b), illustrating how anti-aliased synthesis may be optimized into an arbitrary direction.
-This local increase of synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years. \cite{ahrens2010local, 5946329, spors2011local, Winter15:EURONOISE, Winter15:AES, Hahn17:EUSIPCO, Hahn16:AES, Winter2016-TASL}
-Local increase of accuracy is usually achieved by some spatial bandwidth limitation strategy applied to the driving function, performed in simple SSD geometries (e.g. linear, circular SSDs).
+
+The local increase of the synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years \cite{ahrens2010local, 5946329, spors2011local, Winter15:EURONOISE, Winter15:AES, Hahn17:EUSIPCO, Hahn16:AES, Winter2016-TASL}.
+The local increase of accuracy is usually achieved by spatial bandwidth limitation of the driving function, performed in simple SSD geometries (e.g. linear, circular SSDs).
 The above derivation hence gives an asymptotic approximation of these spatial bandwidth limitation techniques, valid for an arbitrary SSD contour.
 
 \subsection{Avoiding the reproduction of mirror spectra}
 
-As presented in the foregoing, even besides ideal anti-aliasing filtering (spatial bandlimition) of the driving function, lateral aliasing components following the virtual wavefront will still be present.
-Mathematically, these aliasing artifacts originate from the reproduction of the adjacent mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c).
-Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber.\footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass anti-aliasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
-Hence the spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (a), entirely bandlimited to $\omega = \frac{k_{x,s}}{c}$.
-This strategy is equivalent with the solution, given in \cite{Winter2018:GeometricModel}.}
-This requirement is fulfilled by directive secondary sources, radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
-In a signal processing analogy, directive secondary sources therefore act as reproduction filters.
+As presented in the foregoing, even besides ideal anti-aliasing filtering of the driving function, lateral aliasing components following the virtual wavefront will still be present.
+Mathematically, these \emph{post-aliasing} artifacts originate from the reproduction of the mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c).
+The reproduction of mirror spectra can be only avoided by applying a secondary source distribution with the transfer function of a spatial low-pass filter with high attenuation above the Nyquist wavenumber.\footnote{In fact, the reproduction of the mirror spectra may be avoided by applying strict anti-aliasing filtering, by eliminating those spectral components which would be present as lateral mirror spectra after discretization. 
+The spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (a), bandlimited to $\omega = \frac{k_{x,s}}{c}$.
+This strategy is equivalent with the solution given in \cite{Winter2018:GeometricModel}.}
+This requirement is fulfilled by directive secondary sources radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
 
-Physically, source directivity stems from the physical extension of radiating surfaces due to the constructive and destructive interference of waves, originating from different positions on the surface.
-At high frequencies and in the farfield (compared to the physical extension) baffled vibrating surfaces can be modeled as directive point sources.
-In fact, this can be proven by using the local wavenumber concept as presented in Appendix \ref{App:Planar_radiators}.
+Physically, source directivity stems from the physical extension of radiating surfaces due to the constructive and destructive interference of waves originating from different positions on the surface.
+At high frequencies and in the farfield baffled vibrating surfaces can be modeled as directive point sources, as it is shown by using the local wavenumber concept in Appendix \ref{App:Planar_radiators}.
 The optimal shape of extended secondary sources in the aspect of suppressing the mirror spectra has been studied in the related literature \cite{Verheijen1997:phd}.
-Here the optimal SSD directivity is discussed within the context of the generalized WFS framework.
+Here, the optimal SSD directivity is discussed within the context of the generalized WFS framework.
 
 The farfield approximation of an extended radiator as a directive point source is given by \eqref{Eq:App:directive_monopole}.
-The field of a directive point source at the horizontal plane, containing the source (i.e. at $\theta = 0$) is given by
+At the horizontal plane containing the source (i.e. at $\theta = 0$) the field reads
 \begin{equation}
 G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \cdot
 G(\vx-\vxo,\omega),
 \end{equation}
 with the directivity function given by $\Theta(\cdot)$. 
-Here $\phi$ denotes the polar angle, measured from the main direction of the source, in case of modeling baffled sources given by the source-surface normal: $\cos \phi = \frac{\left< \vx-\vxo \cdot \vn(\vxo) \right>}{|\vx-\vxo|}$.
+Here, $\phi$ denotes the polar angle measured from the main direction of the source, in case of modeling baffled planar sources given in terms of the source-surface normal as $\cos \phi = \frac{\left< \vx-\vxo \, \cdot \, \vn(\vxo) \right>}{|\vx-\vxo|}$.
 
-First the wavenumber domain representation of a theoretical directive point source is investigated.
-The transfer function of a directive point source at the origin, measured along a fixed $y$ reads as 
+First, an asymptotical approximation of the wavenumber domain representation of such a directive point source is presented.
+The wavenumber content of a directive point source at the origin, measured along a fixed $y$ reads as 
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \cdot
-G(\vx,\omega) \, \te^{\ti k_x x} \td x.
+G(\vx,\omega) \, \te^{\ti k_x x} \, \td x.
 \end{equation}
-As an approximation, the amplitude factor of the integral is approximated around its stationary point.
-For the sake of  simplicity it is assumed that the directivity function is real-valued.
-Since in case of baffled radiators the directivity function is the 2D Fourier transform of the surface normal velocity distribution, the directivity is real-valued, if the radiator is symmetrical both to the $x$- and $z$-axes (i.e. its is even function).
+It is assumed that the directivity function is real-valued.
+In case of baffled radiators the directivity function is the 2D Fourier transform of the surface normal velocity distribution.
+Therefore, the directivity is real-valued, if the radiator is symmetrical both to the $x$- and $z$-axes.
 This holds for simple geometries, e.g. for a circular piston, which model is applied frequently for modeling a dynamic loudspeaker.
 
-Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is simply found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
+Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
 Around the stationary point the directivity function is approximated by its stationary value and the integral simplifies to
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \cdot \int_{-\infty}^{\infty} 
-G(\vx,\omega) \, \te^{\ti k_x x} \td x =
+G(\vx,\omega) \, \te^{\ti k_x x} \, \td x =
 \Theta(\phi(\vx^*(k_x)),\omega) \cdot 
 \tilde{G}(k_x,y,\omega),
 \end{equation}
-thus in the wavenumber domain the directivity function acts as a simple spatial filter transfer function.
-Since for the Green's function's local wavenumber vector $k_x^{G}(\vx) = k \sin \phi(\vx) = k_x$ holds (c.f. \eqref{Eq:App:ps_k_vec}), therefore as a final result the transfer function of a directive point source is given by
+thus, in the wavenumber domain the directivity function acts as a spatial filter transfer function.
+The Green's function's local wavenumber vector is given explicitly as $k_x^{G}(\vxref(\vxo)) = k \sin \phi(\vxref(\vxo)) = k_x$, i (c.f. \eqref{Eq:App:ps_k_vec}), with the right-hand side satisfying in the stationary position.
+Therefore, as a final result, the asymptotic approximation of the transfer function of a directive point source is given by
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = 
 \Theta(\arcsin \frac{k_x}{k},\omega) \cdot 
 \tilde{G}(k_x,y,\omega),
 \end{equation}
-while the spectrum of the synthesized field, applying a discrete secondary distribution of directive point sources becomes
+and the spectrum of the synthesized field by applying a discrete distribution of directive secondary point sources can be expressed as
 \begin{equation}
 \tilde{P}(k_x,y,\omega) = \tilde{D}^S(k_x,\omega) \cdot \Theta(\arcsin \frac{k_x}{k},\omega) \cdot \tilde{G}(k_x,y,\omega).
 \end{equation}
-This allows one to derive the directivity characteristics of an ideal spatial low-pass secondary source, which suppresses lateral waves above the Nyquist wavenumber, hence avoiding the reproduction of mirror spectra.
+
+This allows one to derive the directivity characteristics of an ideal spatial low-pass secondary source, which suppresses lateral waves above the Nyquist wavenumber and, therefore, avoiding the reproduction of mirror spectra.
 The transfer function of the ideal anti-aliasing SSD is given as
 \begin{equation}
-\Theta(\arcsin \frac{k_x}{k},\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} k_x \geq \frac{\pi}{\Delta x}
+\Theta(\arcsin \frac{k_x}{k},\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} k_x \geq \frac{\pi}{\Delta x},
 \end{equation}
-which can be formulated in the angular domain as
+which can be formulated in the temporal frequency domain as
 \importanteq{Ideal anti-aliasing SSD directivity}{
 \Theta(\phi,\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} \sin \phi \geq \frac{\pi}{\Delta x} \frac{c}{\omega}.
 }
@@ -1286,24 +1287,23 @@ which can be formulated in the angular domain as
     }
 \label{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}   \end{minipage}
 \end{figure}
-The theoretical, ideal secondary sources therefore would only radiate within a beam with a unit amplitude, so that the width of the beam decreases at increasing frequency.
-By applying such ideal secondary sources, aliasing could be theoretically completely avoided, still ensuring full band, anti-aliased synthesis into one particular direction, as described above.
-Into other directions the synthesized wavefront is bandlimited (low-pass filtered).
-Obviously, unlike for the anti-aliasing filtering, the direction of perfect synthesis is fixed towards the main lobe of the applied secondary sources.
+The theoretical, ideal secondary sources would only radiate within a beam with a unit amplitude and the width of the beam decreases at increasing frequency.
+By applying such ideal secondary sources, aliasing could be theoretically completely avoided, still, ensuring full band, anti-aliased synthesis into one particular direction.
+Into other directions, the synthesized wavefront is bandlimited (low-pass filtered).
+Obviously, the direction of perfect synthesis is fixed towards the main lobe of the applied secondary sources.
 
-The result of synthesis applying secondary sources with ideal directivity can be seen in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}, depicting the theoretical best case scenario when applying a discrete SSD.
+The result of synthesis applying secondary sources with ideal directivity can be seen in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}, depicting the theoretical best-case scenario when applying a discrete SSD.
 
 \vspace{3mm}
-Obviously, the above ,,ideally directed secondary sources" are not realizable, however the presented framework is useful for predicting the suppression
+Obviously, the above defined ideal directivity is not realizable, however, the presented framework is useful for predicting the suppression
 factor in the wavenumber region, once the directivity of the applied secondary sources is known.
 As a simple example, the directivity of a circular piston is given by \eqref{Eq:App_Circ_piston}, reading
 \begin{equation}
 \Theta(\arcsin \frac{k_x}{k},\omega) = 2\frac{J_1\left( r_0 k_x\right)}{r_0 k_x},
 \end{equation}
 with $J_1(\cdot)$ being the first order Bessel function.
-The circular piston therefore acts as a spatial low-pass filter, with the $-3~\mathrm{dB}$ cut-off wavenumber being $k_{x,c} \approx \frac{2.22}{r_0}$, calculated numerically.
+The circular piston, therefore, acts as a spatial low-pass filter, with the $-3~\mathrm{dB}$ cut-off wavenumber being $k_{x,c} \approx \frac{2.22}{r_0}$, calculated numerically.
 Real-life dynamic loudspeakers with circular membranes are often modeled as circular pistons at frequencies, at which the modal behaviour of the diaphragm is not considerable.
 In a linear array the largest possible loudspeaker radius is the half of the loudspeaker spacing ($r_0 = \Delta x/2$), hence, the lowest achievable cut-off wavenumber is 
 $k_{x,c} = \frac{4.44}{\Delta x}$.
-This is still higher, than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array, spatial aliasing components will be slightly present in the reproduced field.
-%\fscom{good points here, in essence this is what I treated little bit differently, but with same message and comparing to a line piston that exhibit sinc spectrum. Depending on the gaps between piston aliasing is differently strong.}
+This is still higher than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array spatial aliasing components will be slightly present in the reproduced field.

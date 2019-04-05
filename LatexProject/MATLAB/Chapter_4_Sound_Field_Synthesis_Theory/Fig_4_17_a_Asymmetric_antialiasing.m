@@ -38,7 +38,7 @@ Dkx(isnan(Dkx))=0;
 Dkxs(isnan(Dkxs))=0;
 %%
 q = 10;
-ftsize = 13;
+ftsize = 12.37;
 fig = figure('Units','points','Position',[200,200,360,200]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))

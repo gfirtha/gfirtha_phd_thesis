@@ -88,7 +88,7 @@ end
 %
 %%
 
-ftsize = 13.75;
+ftsize = 12.37;
 fig = figure('Units','points','Position',[200,200,360,470]);
 set(fig,'defaulttextinterpreter','latex')
 pos = [ 0.12   0.52  0.8 .525
@@ -117,7 +117,7 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 p2 = axes('Units','normalized','Position',pos(2,:));
-pcolor(x,y,real(field_synth_aarp));
+pcolor(x,y,real(field_synth_aa));
 axis equal tight
 caxis([-1 1] * 2e-2);
 shading interp
@@ -150,4 +150,4 @@ allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(gcf,'PaperPositionMode','auto');
-%print( '-r300',fullfile( '../..','Figures/SFS_theory','Antialiased_synth' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/SFS_theory','Antialiased_synth' ) ,'-dpng')
