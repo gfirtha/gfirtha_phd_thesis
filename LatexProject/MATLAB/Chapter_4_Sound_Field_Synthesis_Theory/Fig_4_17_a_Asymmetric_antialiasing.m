@@ -38,7 +38,7 @@ Dkx(isnan(Dkx))=0;
 Dkxs(isnan(Dkxs))=0;
 %%
 q = 10;
-ftsize = 14.3;
+ftsize = 13;
 fig = figure('Units','points','Position',[200,200,360,200]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
@@ -63,4 +63,4 @@ xlabel('$k_x/k_{x,s} \rightarrow$ []')
 ylabel('$f \rightarrow$ [kHz]')
 
 set(gcf,'PaperPositionMode','auto');
-%print( '-r300',fullfile( '../..','Figures/SFS_theory','AntiAliased_spectrum_asymm' ) ,'-dpng')
+print( '-r300',fullfile( '../..','Figures/SFS_theory','AntiAliased_spectrum_asymm' ) ,'-dpng')

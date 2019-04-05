@@ -41,7 +41,7 @@ Gkx2 = fftshift(fft(G02,[],2),2)*dx;
 kxs = 2*pi/dx_res;
 f_a = c*pi/dx_res/(2*pi);
 q = 12;
-ftsize = 14.3;
+ftsize = 16;
 fig = figure('Units','points','Position',[200,200,730,280]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
@@ -81,14 +81,14 @@ print( '-r300',fullfile( '../..','Figures/SFS_theory','Aliased_spectrum' ) ,'-dp
 
 %%
 q = 12;
-ftsize = 14.3;
+ftsize = 16;
 fig = figure('Units','points','Position',[200,200,730,540]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
-pos = [ 0.065   0.59   0.38  .389
-        0.59    0.59   0.38  .389
-        0.33    0.075  0.38  .389];
+pos = [ 0.065   0.6   0.38  .389
+        0.59    0.6   0.38  .389
+        0.33    0.085  0.38  .389];
  
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end)/kxs,w(1:q:end)/(2*pi)/1e3,20*log10(abs(Dkxs(1:q:end,1:q:end))))
