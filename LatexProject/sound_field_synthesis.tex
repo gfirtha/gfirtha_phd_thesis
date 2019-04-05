@@ -480,16 +480,18 @@ The synthesis is referenced to a concentric circle inside the SSD with the radiu
 Again, the system of equations describing the reference distance for each SSD element is given by
 \begin{align}
 \vxref(\vxo) &= \vxo + \hat{\vk}^P(\vxo) |\vxref(\vxo)-\vxo|,
+\label{Eq:SFS_theory:ref_curve_circ}
 \\
 |\vxref(\vxo)| &= R_{\mathrm{ref}}.
 \end{align}
-Expressing the reference distance leads to a second order equation.
-Exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ yields the reference distance
+%Expressing the reference distance leads to a second order equation.
+The reference distance can be obtained by expressing the absolute value of \eqref{Eq:SFS_theory:ref_curve_circ}. 
+Exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and $\left< \hat{\vk}^P(\vxo) \cdot \vxo \right> = R_{\mathrm{SSD}}\hat{k}^P_{\mathrm{r}}$ yields the reference distance
 \begin{equation}
-|\vxref(\vxo)-\vxo| = - R_{\mathrm{SSD}} \left( \hat{k}^P_r(\vxo) \pm \sqrt{ \hat{k}^P_r(\vxo)^2 + \left( \frac{R_{\mathrm{ref}}}{R_{\mathrm{SSD}}} \right)^2 - 1 } \right),
+|\vxref(\vxo)-\vxo| = - R_{\mathrm{SSD}} \left( \hat{k}^P_{\mathrm{r}}(\vxo) \pm \sqrt{ \hat{k}^P_{\mathrm{r}}(\vxo)^2 + \left( \frac{R_{\mathrm{ref}}}{R_{\mathrm{SSD}}} \right)^2 - 1 } \right),
 \label{eq:SFS_theory:pw_circ_ref}
 \end{equation}
-with $\hat{k}^P_r(\vxo)$ denoting the radial component of the normalized wavenumber vector and $\pm$ corresponds to the closer or the further arc of the reference circle to the actual SSD position, respectively.
+with $\hat{k}^P_{\mathrm{r}}(\vxo)$ denoting the radial component of the normalized wavenumber vector and $\pm$ corresponds to the closer or the further arc of the reference circle to the actual SSD position, respectively.
 Applying this reference distance in the general 2.5D WFS driving function \eqref{Eq:SFS_theory:25D_WFS_driv_fun} allows the synthesis of an arbitrary sound field referenced on a reference circle inside the SSD.
 
 Assume the special case of a virtual 2D plane wave, propagating parallel to the synthesis plane described by the wavenumber vector $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}}}{k_y^{\mathrm{PW}}}{0}$.
