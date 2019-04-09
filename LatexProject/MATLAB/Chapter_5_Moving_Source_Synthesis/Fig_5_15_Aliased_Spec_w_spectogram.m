@@ -75,7 +75,7 @@ f_= w_/(2*pi);
 
 kxs = 2*pi/dx_res;
 q = 2;
-ftsize = 14.3;
+ftsize = 16;
 fig = figure('Units','points','Position',[200,200,730,280]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
