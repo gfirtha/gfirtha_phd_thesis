@@ -1,5 +1,5 @@
-% clear
-% close all
+clear
+close all
 %%
 
 
@@ -58,13 +58,13 @@ for n = 1 : size(x0,1)
 end
 
 %%
-ftsize = 14.3;
-fig = figure('Units','points','Position',[200,200,650,230]);
-set(fig,'defaulttextinterpreter','latex')   
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,144]);
+set(fig,'defaulttextinterpreter','latex')
 
 pos = [ 0.06   0.125  0.41 .9
         0.57   0.125  0.41 .9];
-% 
+
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x_field,y_field,real(aliased_field_freq_dom));
 shading interp
@@ -73,10 +73,10 @@ caxis([-1,1]*5e-2)
 caxis([-.05,.05])
 hold on
 %plot( [ -3+dx 3-dx ],  [ 0 0 ], 'k', 'Linewidth', 2 )
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-plot(x0(:,1),x0(:,2),'ok','MarkerSize',2,'MarkerFaceColor','black')
+plot(x0(:,1),x0(:,2),'ok','MarkerSize',1.25,'MarkerFaceColor','black')
 xlim([x_field(1), x_field(end)])
 
 p2 = axes('Units','normalized','Position',pos(2,:));
@@ -85,10 +85,10 @@ shading interp
 axis equal tight
 caxis([-1,1]*2e-2)
 hold on
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
-plot(x0(:,1),x0(:,2),'ok','MarkerSize',2,'MarkerFaceColor','black')
+plot(x0(:,1),x0(:,2),'ok','MarkerSize',1.25,'MarkerFaceColor','black')
 xlim([x_field(1), x_field(end)])
 
 allAxesInFigure = findall(fig,'type','axes');

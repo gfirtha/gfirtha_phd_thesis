@@ -44,13 +44,13 @@ Pkx_stationary = fftshift( fft2( P_st.*Win ) , 2 );
 Pkx_moving     = fftshift( fft2( P_dy.*Win ) , 2 );
 %%
 q = 2;
-ftsize = 14.3;
-fig = figure('Units','points','Position',[200,200,730,280]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,156]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
-pos = [ 0.06   0.17  0.38   .75
-        0.53    0.17  0.465 .75];
+pos = [ 0.07   0.17  0.38   .75
+        0.55    0.17  0.465 .75];
 cax = [-50,50];
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end),w(1:q:end)/w0,20*log10(abs(Pkx_stationary(1:q:end,1:q:end))))
@@ -61,8 +61,8 @@ line([0,0],[0,w(end)]/w0,'Color','black','LineStyle',':')
 set(gca,'FontName','Times New Roman');
 % 
 
-xlabel('$k_x \rightarrow$ [rad/m]')
-ylabel('$f/f_0 \rightarrow$ []')
+xlabel('$k_x$ [rad/m]')
+ylabel('$f/f_0$ []')
 xlim([-70,70])
 shading interp
 caxis(cax)
@@ -78,11 +78,11 @@ shading interp
 caxis(cax)
 axis tight
 set(gca,'FontName','Times New Roman');
-xlabel('$k_x \rightarrow$ [rad/m]')
-ylabel('$f/f_0 \rightarrow$ []')
+xlabel('$k_x$ [rad/m]')
+ylabel('$f/f_0$ []')
 xlim([-70,70])
 col = colorbar;
-title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
+title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-1);
 
 allAxesInFigure = findall(fig,'type','axes');
 set(allAxesInFigure,'FontSize',ftsize);

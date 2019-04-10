@@ -34,12 +34,12 @@ xr = [xs_e0+R0*cos(fi), 0+R0*sin(fi)];
 kx = k*(xr(:,1)-xs_e0)./sqrt( ( xr(:,1) - xs -v*t ).^2 + xr(:,2).^2*(1-M^2) );
 ky = k*(xr(:,2)-ys_e )./sqrt( ( xr(:,1) - xs -v*t ).^2 + xr(:,2).^2*(1-M^2) );
 %%
-ftsize = 14.3;
-f = figure('Units','points','Position',[200,120,650,300]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,120,407,188]);
 set(f,'defaulttextinterpreter','latex')
 
 pos = [ 0.045 0.16 0.4 .76
-    0.55  0.085 .43 .9  ];
+        0.53  0.16 .48 .76  ];
 
 
 p1 = axes('Units','normalized','Position',pos(1,:));
@@ -49,8 +49,8 @@ axis equal tight
 hold on
 contour( x, y, real(p),[0 0],'LineWidth',0.5,'LineColor',[1 1 1]*0.4);
 caxis([-1,1]*.15);
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
@@ -63,7 +63,7 @@ ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);
 set(ah,'position',[xs 0 0.75 0]);
-plot(xs,0,'ok','MarkerSize',3,'MarkerFaceColor','black')
+plot(xs,0,'ok','MarkerSize',2,'MarkerFaceColor','black')
 
 p2 = axes('Units','normalized','Position',pos(2,:));
 pcolor(x,y,20*log10(abs(p)));
@@ -77,14 +77,14 @@ contour( x, y, real(p),[0 0],'LineWidth',0.5,'LineColor',[1 1 1]*0.4);
 
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);
 c = colorbar;
-title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize);
+title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-1);
 
 allAxesInFigure = findall(f,'type','axes');
 set(allAxesInFigure,'FontSize',ftsize);

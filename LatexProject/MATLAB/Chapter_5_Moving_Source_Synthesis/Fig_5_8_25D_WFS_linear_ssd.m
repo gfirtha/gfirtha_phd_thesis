@@ -43,21 +43,20 @@ Delta_0 = sqrt( (X-xs(1)-v*t).^2+ (Y-xs(2)).^2*(1-M^2) );
 Tau_0 = (M*(X-xs(1)-v*t) + Delta_0)/(c*(1-M^2));
 field_ref = 1/(4*pi)*exp(1i*omega*(t-Tau_0))./Delta_0;
 %%
-ftsize = 14.3;
-fig = figure('Units','points','Position',[200,200,650,230]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,144]);
 set(fig,'defaulttextinterpreter','latex')
 
-pos = [ 0.06    0.09 0.38 .9
-        0.53    0.09  0.465 .9];
-
+pos = [ 0.06    0.12  0.375   .84
+        0.53    0.12  0.485  .84];  
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x,y,real(field_synth));
 shading interp
 axis equal tight
 caxis([-1,1]*5e-2)
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
@@ -71,13 +70,13 @@ pcolor(x,y,20*log10( abs( field_ref - field_synth ) ));
 shading interp
 axis equal tight
 caxis([-73,-10])
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 set(allAxesInFigure,'FontSize',ftsize);
 col = colorbar;
-title(col,'[dB]', 'FontSize', ftsize);
+title(col,'[dB]', 'FontSize', ftsize-1);
 
 line([x(1);x(end)],[0;0], 'Color', 'black','LineStyle','-','LineWidth',1);
 line([x(1);x(end)],[0;0]+yref, 'Color', 'white','LineStyle','--','LineWidth',1);

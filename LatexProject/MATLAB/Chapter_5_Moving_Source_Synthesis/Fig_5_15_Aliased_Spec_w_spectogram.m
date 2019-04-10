@@ -75,8 +75,8 @@ f_= w_/(2*pi);
 
 kxs = 2*pi/dx_res;
 q = 2;
-ftsize = 16;
-fig = figure('Units','points','Position',[200,200,730,280]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,156]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
@@ -91,8 +91,8 @@ line([0,-w(end)/c/kxs],[0,w(end)/w0],'Color','black','LineStyle','--')
 line([0,0],[0,w(end)]/w0,'Color','black','LineStyle',':')
 line([kx(1),kx(end)]/kxs,[w0 w0]/w0,'Color','black','LineStyle',':')
 set(gca,'FontName','Times New Roman');
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f/f_0 \rightarrow$ []')
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f/f_0$')
 shading interp
 cax = [-130,-30]-20;
 caxis(cax)
@@ -109,8 +109,8 @@ hold on
 line([0,0],[0,w(end)]/w0,'Color','black','LineStyle',':')
 line([(t_(1)-T0),(t_(end)-T0)],[w0 w0]/w0,'Color','black','LineStyle',':')
 set(gca,'FontName','Times New Roman');
-xlabel('$t \rightarrow$ [s]')
-ylabel('$f/f_0 \rightarrow$ []')
+xlabel('$t$ [s]')
+ylabel('$f/f_0$ ')
 shading interp
 %cax = [-110,-75];
 caxis([0 1]*8e-5)

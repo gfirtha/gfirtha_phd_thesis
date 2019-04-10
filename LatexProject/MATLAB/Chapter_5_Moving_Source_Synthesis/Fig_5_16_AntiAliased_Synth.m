@@ -95,8 +95,8 @@ end
 [~,i] = min(abs(t-t0));
 V = (xs(i+1,:)-xs(i-1,:))*fs/2;
 
-ftsize = 20;
-f = figure('Units','points','Position',[200,100,850,370]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,100,407,177]);
 set(f,'defaulttextinterpreter','latex')
 
 fig_pos = [ 0.0   0.135  0.52 .85;
@@ -108,22 +108,22 @@ shading interp
 axis equal tight
 caxis([-1 1] * 1.5e-2);
 hold on
-plot(sp1, xs(:,1),xs(:,2),':w','LineWidth',2)
+plot(sp1, xs(:,1),xs(:,2),':w','LineWidth',1)
 xlim([x_field(1),x_field(end)])
 ylim([y_field(1),y_field(end)])
 %draw_ssd( sp1, x0(1:1:end,:), n0(1:1:end,:), 0.03 )
 
-plot( x0(:,1), x0(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
+plot( x0(:,1), x0(:,2), 'ok','MarkerSize',1, 'MarkerFaceColor','black')
 %plot(xs(1), xs(2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
-pos1 = plot( sp1, xs(i,1),xs(i,2),'ok','MarkerFaceColor','black');
-plot( sp1, xs(imp_pos(1:5),1),xs(imp_pos(1:5),2),'ok','MarkerFaceColor','white');
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+pos1 = plot( sp1, xs(i,1),xs(i,2),'ok','MarkerFaceColor','black','MarkerSize',3);
+plot( sp1, xs(imp_pos(1:5),1),xs(imp_pos(1:5),2),'ok','MarkerFaceColor','white','MarkerSize',3);
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 
 
 headWidth = 5;
@@ -141,25 +141,24 @@ shading interp
 axis equal tight
 caxis([-1 1] * 1.5e-2);
 hold on
-plot(sp2, xs(:,1),xs(:,2),':w','LineWidth',2)
-pos2 = plot( sp2, xs(i,1),xs(i,2),'ok','MarkerFaceColor','black');
-plot( sp2, xs(imp_pos(1:5),1),xs(imp_pos(1:5),2),'ok','MarkerFaceColor','white');
+plot(sp2, xs(:,1),xs(:,2),':w','LineWidth',1.25)
+pos2 = plot( sp2, xs(i,1),xs(i,2),'ok','MarkerFaceColor','black','MarkerSize',3);
+plot( sp2, xs(imp_pos(1:5),1),xs(imp_pos(1:5),2),'ok','MarkerFaceColor','white','MarkerSize',3);
 xlim([x_field(1),x_field(end)])
 ylim([y_field(1),y_field(end)])
 %draw_ssd( sp2, x0(1:1:end,:), n0(1:1:end,:), 0.03 )
-plot( x0(:,1), x0(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+plot( x0(:,1), x0(:,2), 'ok','MarkerSize',1, 'MarkerFaceColor','black')
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
-set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize-2);
+set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);
 set(ah,'position',[xs(i,1) xs(i,2) LineLength*V(1)/v LineLength*V(2)/v]);
 
-%%
 
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/Moving_sources','antialiased_synth_moving_source' ) ,'-dpng')
