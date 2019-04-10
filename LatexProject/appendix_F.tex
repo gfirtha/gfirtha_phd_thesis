@@ -3,26 +3,28 @@
 
 Assume the following non-stationary convolution
 \begin{equation}
-g(t) = \int_{-\infty}^{\infty} h(t_0,t-t_0) f(t_0) \td t_0,
+g(t) = \int_{-\infty}^{\infty} h(t_0,t-t_0) \, f(t_0) \, \td t_0,
 \label{Eq:App:Non_stat_conv_td}
 \end{equation}
 with $h(t_0,t-t_0)$ denoting the time-variant convolution kernel.
-Terms $f(t_0)$ and $h(t_0,t-t_0)$ can be expressed by means of the inverse transform of its spectrum given as
+Terms $f(t_0)$ and $h(t_0,t-t_0)$ can be expressed in terms of the inverse transform of their spectra, given as
 \begin{align}
-f(t_0) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0,
+f(t_0) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega_0) \, \te^{\ti \omega_0 t_0}\, \td \omega_0,
 \\
-h(t_0,t-t_0) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1.
+h(t_0,t-t_0) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} H(t_0,\omega_1) \, \te^{\ti \omega_1(t-t_0)} \, \td \omega_1.
 \end{align}
-Applying the above formulations the non-stationary convolution can be cast into the form
+Note that in case of applying the non-stationary convolution in order to calculate the field of a moving source as presented in Chapter \ref{sec:moving_source_synthesis}, $\omega_0$ represents the source frequency, while $\omega_1$ will turn out to represent the perceived angular frequency.
+
+By substituting the above formulations into \eqref{Eq:App:Non_stat_conv_td}, the non-stationary convolution can be rewritten into the form
 \begin{equation}
-g(t) = \frac{1}{2\pi} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 f(t_0) \td t_0,
+g(t) = \frac{1}{2\pi} \iint_{-\infty}^{\infty}  H(t_0,\omega_1) \, \te^{\ti \omega_1(t-t_0)} \, \td \omega_1 f(t_0) \td t_0,
 \end{equation}
 \begin{equation}
-g(t) = \frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1  F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0.
+g(t) = \frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty}  H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \, \td \omega_1  \, F(\omega_0) \, \te^{\ti \omega_0 t_0} \, \td \omega_0 \, \td t_0.
 \end{equation}
-Taking the Fourier transform of the latter expression:
+Taking the temporal forward Fourier transform of the latter expression yields
 \begin{equation}
-G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \te^{\ti \omega_0 t_0}\td \omega_0 \td t_0 \te^{-\ti \omega t} \td t.
+G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) \te^{\ti \omega_1(t-t_0)} \, \td \omega_1 \int_{-\infty}^{\infty} F(\omega_0) \, \te^{\ti \omega_0 t_0} \, \td \omega_0 \, \td t_0 \, \te^{-\ti \omega t} \, \td t.
 \end{equation}
 Reversing the order of integration and rearrangement results in
 \begin{equation}
@@ -30,17 +32,20 @@ G(\omega) =\frac{1}{(2\pi)^2} \iiint_{-\infty}^{\infty} H(t_0,\omega_1) F(\omega
 \underbrace{ \int_{-\infty}^{\infty}  \te^{-\ti (\omega-\omega_1) t}  \td t}_{2\pi \delta(\omega-\omega_1)}
  \, \td \omega_1 \,  \td \omega_0 \, \td t_0.
 \end{equation}
-Integration along $\omega_1$ sifts out $\omega_1 = \omega$:
+Integration with respect to $\omega_1$ sifts out $\omega_1 = \omega$:
 \begin{equation}
-G(\omega) =  \iint_{-\infty}^{\infty} H(t_0,\omega) F(\omega_0)  \te^{-\ti (\omega-\omega_0) t_0}   \td \omega_0 \, \td t_0.
+\label{Eq:App:Non_stat_conv_fd_1}
+G(\omega) =  \iint_{-\infty}^{\infty} H(t_0,\omega) F(\omega_0)  \, \te^{-\ti (\omega-\omega_0) t_0}  \, \td \omega_0 \, \td t_0.
 \end{equation}
-Finally it can be exploited that
+Finally, it is exploited that in \eqref{Eq:App:Non_stat_conv_fd_1} 
 \begin{equation}
-\tilde{H}(\omega-\omega_0) =  \int_{-\infty}^{\infty}  H(t_0,\omega)  \te^{-\ti (\omega-\omega_0) t_0}  \td t_0
+\tilde{H}(\omega-\omega_0,\omega) =  \int_{-\infty}^{\infty}  H(t_0,\omega) \, \te^{-\ti (\omega-\omega_0) t_0} \, \td t_0,
 \end{equation}
-holds, yielding the final result
+describes the 2D spectrum of the 2D impulse response, where $\tilde{H}(w_1,w_2) = \FT[t_1,t_2]{h(t_1,t_2)}$.
+Therefore, as a final result
 \begin{equation}
-G(\omega) =  \int_{-\infty}^{\infty} H(\omega - \omega_0,\omega) F(\omega_0)  \td \omega_0.
+G(\omega) =  \int_{-\infty}^{\infty} H(\omega - \omega_0,\omega) F(\omega_0)  \td \omega_0
 \label{Eq:App:Non_stat_conv_fd}
 \end{equation}
-Hence, a non-stationary convolution in the second variable of a time domain function yields a non-stationary convolution in the first variable of its spectral representation.
+is obtained.
+Hence, a non-stationary convolution with respect to the second variable of the time domain yields a non-stationary convolution in the first variable of its spectral representation.
