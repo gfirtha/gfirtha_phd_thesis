@@ -227,7 +227,7 @@ With these considerations, application of the SPA to \eqref{Eq:SFS_theory:Kirchh
 P(\vx,\omega) =
 \oint_{C}
 2 w(\vxo)
-\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vx-\vxo,\omega)|}} \cdot \\ \cdot
+\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vx-\vxo,\omega)|}} \cdot \\ 
 \underbrace{\ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega) }_{ \approx  -\frac{\partial P(\vxo,\omega)}{\partial \vn_{\mathrm{in}}}}
 G(\vx-\vxo,\omega) \, \td s(x_0,y_0), 
 \label{Eq:SFS_thery:25_KI}
@@ -249,8 +249,8 @@ As a consequence, the 2.5D Kirchhoff integral may be further approximated by exp
 P(\vx,\omega) = 
 \oint_{C}
 \! 2 w(\vxo) 
-\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo^*(\vx),\omega) +\phi^{G''}_{zz}(\vx-\vxo^*(\vx),\omega)|}}
-\cdot \\ \cdot
+\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo^*(\vx),\omega) + \phi^{G''}_{zz}(\vx-\vxo^*(\vx),\omega)|}}
+\cdot \\
 \ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega)
 G(\vx-\vxo,\omega) \, \td s(x_0,y_0),
 \label{Eq:SFS_theory:25D_KI_appr}
@@ -270,8 +270,8 @@ D(\vxo, \omega) = w(\vxo) \,
 with the term $\dref(\vxo)$ being a frequency independent gain factor, given by
 \begin{align}
 \label{Eq:SFS_theory:Referencing function}
-\dref(\vxo) &= \frac{k}{|\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vxref(\vxo)-\vxo,\omega)|} =\\
-		 	&= \frac{1}{\Kv^P(\vxo)+ \Kv^G(\vxref(\vxo)-\vxo)}  = \\
+\dref(\vxo) &= \frac{k}{|\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vxref(\vxo)-\vxo,\omega)|}\\
+		 	&= \frac{1}{\Kv^P(\vxo)+ \Kv^G(\vxref(\vxo)-\vxo)}  \\
 			&= \frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vxo)-\vxo)}{\Rv^P(\vxo)+ \Rv^G(\vxref(\vxo)-\vxo)} 
 ,
 \end{align}
@@ -552,13 +552,12 @@ In the present thesis only planar and linear geometries are investigated in deta
 
 \subsection{3D Spectral Division Method}
 
-Assume an infinite planar SSD located at $\vxo = \posvec{3}{x_0}{0}{z_0}$, degenerated from the geometry introduced for the Rayleigh integrals in the previous chapter as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
-The half-space of synthesis is chosen to be at $y>0$, therefore all the virtual sources are assumed to be located at $y<0$.
-The synthesized field in this geometry is given by a Fredholm integral of the first kind 
+Assume an infinite planar SSD located at $\vxo = \posvec{3}{x_0}{0}{z_0}$, degenerated from the geometry introduced for the Rayleigh integrals in Chapter \ref{sec:general_wave_theory} as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
+The half-space of the synthesis is chosen to be at $y>0$, therefore all the virtual sources are assumed to be located at $y<0$.
+The synthesized field in this geometry is given by a continuous convolution along the SSD plane 
 \begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} D(x_0,z_0,\omega) G(x-x_0,y,z-z_0, \omega) \td x_0 \td z_0 = D(x,z,\omega)\ast_{x,z} G(x,y,z,\omega),
+P(\vx,\omega) = \iint_{-\infty}^{\infty} D(x_0,z_0,\omega) G(x-x_0,y,z-z_0, \omega) \td x_0 \td z_0 = D(x,z,\omega)\ast_{x,z} G(x,y,z,\omega).
 \end{equation}
-describing a continuous convolution along the SSD plane.
 Here, $G(x,y,z,\omega)$ denotes the sound field of a secondary source element placed at the origin and $\ast_{x,z}$ denotes convolution along the $x-$ and $z$-dimensions.
 
 For this geometry the orthogonal basis is given by the continuous set of exponentials and the decomposition of the involved quantities is given by a double Fourier transform \cite{Arfken2005, Ahrens2012, Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition as discussed in Section \ref{Sec:thoery:angular_Spectrum}.
@@ -661,7 +660,7 @@ Obviously, the figure also presents the result of 3D planar WFS of a spherical w
 \subsection{2.5D Spectral Division Method}
 \label{Sec:25D_SDM}
 
-As the geometry for the derivation of the 2.5D explicit driving function assume, an infinite linear distribution of secondary point sources located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+As the geometry for the derivation of the 2.5D explicit driving function, assume an infinite linear distribution of secondary point sources located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The synthesized field in this arrangement reads as
 \begin{equation}
 P(x,y,z,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) \, G(x-x_0,y,z,\omega) \, \td x_0.
@@ -703,10 +702,10 @@ In this geometry amplitude correct synthesis is restricted to the \emph{referenc
 
 Similarly to the 3D case, the following physical interpretation can be assigned to the 2.5D explicit solution:
 Given an infinite distribution of point sources along the $x$-axis with a harmonic spatial distribution described by $k_x$, the radiated sound field is given by
-\begin{multline}
-\int_{-\infty}^{\infty} G(x - x_0,y,z,\omega) \, \te^{\ti k_x x_0} \, \td x_0 = \tilde{G}(k_x,y,z,\omega) \, \te^{-\ti k_x x} = \\
-=  -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{\left( \frac{\omega}{c} \right)^2-k_x^2} \sqrt{y^2+z^2} \right)  \te^{-\ti k_x x},
-\end{multline}
+\begin{align}
+\int_{-\infty}^{\infty} G(x - x_0,y,z,\omega) \, \te^{\ti k_x x_0} \, \td x_0 &= \tilde{G}(k_x,y,z,\omega) \, \te^{-\ti k_x x} \\
+&=  -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{\left( \frac{\omega}{c} \right)^2-k_x^2} \sqrt{y^2+z^2} \right)  \te^{-\ti k_x x},
+\end{align}
 at $x=0$ resulting in the 2D Green's function, as discussed in Section \ref{sec:greens_function_spectrum}.
 Such a source radiates cylindrical symmetric sound fields with cylindrical wavefronts as depicted in Figure \eqref{Fig:Theory:greens_stat_pos} (a). 
 Along a fixed reference line at $z=0$ the SSD reproduces a harmonic spatial distribution $\te^{-\ti k_x x}$, attenuated approximately by $\frac{1}{\sqrt{k_y}|y_{\mathrm{ref}}|}$, corresponding to attenuating plane waves with $k_z=0$.

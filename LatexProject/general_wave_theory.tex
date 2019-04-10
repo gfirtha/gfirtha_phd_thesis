@@ -22,14 +22,14 @@ Since the traveling speed of thermal diffusion is small compared to the speed of
 Furthermore, the alternation of the instantaneous sound pressure is small compared to the static pressure, so the non-linear adiabatic state change characteristics can be linearized around $p_0$.
 This latter assumption is fulfilled for pressure magnitudes below the threshold of pain of the human auditory system \cite{Gumerov2004, Ahrens2012}.
 
-First, the homogeneous wave equation is presented, being valid for a \emph{source-free domain}, describing merely the propagation characteristics of acoustic waves.
+First, the homogeneous wave equation is presented describing merely the propagation characteristics of acoustic waves in a \emph{source-free domain}.
 For a more detailed derivation refer to \cite{Morse1968, Beranek1993, Williams1999, Blackstock2000}.
 
 \subsection{The homogeneous wave equation}
 %
 The linear homogeneous wave equation may be derived by utilizing two fundamental physical principles.
 \begin{itemize}
-\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimally small volume of the fluid the connection between the particle velocity vector and the pressure field is established at each point at each time instant. 
+\item \emph{The equation of motion:} By applying Newton's second law for an infinitesimally small volume of the fluid, the connection between the particle velocity vector and the pressure field is established at each point at each time instant. 
 The resulting \emph{Euler's equation} states that the force acting on the volume due to variation in the spatial pressure distribution causes an acceleration of the volume:
 \begin{equation}
 \Dx p(\vx,t) = -\rho_0 \frac{\partial}{\partial t} \mathbf{v}(\vx,t),
@@ -72,7 +72,7 @@ The instantaneous pressure may also be eliminated in a similar manner, resulting
 \Lx \mathbf{v}(\vx,t) - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \mathbf{v}(\vx,t) = \mathbf{0},
 \label{Eq:Theory:Vector_wave_equation}
 \end{equation}
-being valid in curl-free media where $\Dx \left( \Dx \cdot \right) = \Lx$ holds.
+being valid in curl-free field where $\Dx \left( \Dx \cdot \mathbf{v}(\vx,t) \right) = \Lx \mathbf{v}(\vx,t)$ holds.
 %
 Besides the pressure and the velocity, acoustic fields are often described by the scalar \emph{velocity potential} $\varphi(\vx,t)$, for which the acoustic wave equation also holds, and which is related to the other field variables as 
 \begin{equation}
@@ -224,11 +224,11 @@ Substituting it into \eqref{Eq:Theory:Homog_Helmholtz} and dividing both sides b
 \label{Eq:Theory:Seperated_variables_expanded}
 \end{equation}
 Since each term contains a total derivative---being independent from any other variable---equality may hold only if each term is constant. 
-These constant are denoted by $k_x^2, \, k_y^2, \,k_z^2$. 
+These constants are denoted by $k_x^2, \, k_y^2, \,k_z^2$. 
 Consequently, each part of the equation leads to a simple eigenvalue problem, for which the eigenfunction solution is given by exponentials. 
 Written e.g. for the $x$-variable:
 \begin{equation}
-\frac{\partial^2 X(x)}{\partial x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
+\frac{\td^2 X(x)}{\td x^2} = -k_x^2 X(x) \hspace{5mm} \rightarrow \hspace{5mm} X(x) = A_1 \te^{-\ti k_x x} + A_2 \te^{\ti k_x x}.
 \end{equation}
 These solutions may be substituted back into equation \eqref{Eq:Theory:Seperated_variables}. 
 In order to include every possible solution the general solution for the free field homogeneous Helmholtz equation is yielded by summation over all possible values of $k_x-k_y-k_z$ weighted by arbitrary constants. 
@@ -446,7 +446,7 @@ and the solution in the spatio-temporal domain is yielded by the inverse Fourier
 p(\vx,t) =\frac{1}{(2\pi)^4} \iiiint^{\infty}_{-\infty} - \frac{\tilde{S}(\mathbf{k},\omega)}{\left( \frac{\omega}{c}\right)^2 -  k_x^2 - k_y^2 - k_z^2 } \te^{-\ti \left( \left< \vk \cdot \vx \right> - \omega t \right) } \, \td k_x \, \td k_y \, \td k_z \, \td \omega.
 \end{equation}
 The different representations of the free field Green's function may be obtained by the corresponding inverse Fourier transform of \eqref{Eq:Theory:3D_kxkykzw_Green}.
-The resulting formulas are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration.
+The resulting formulae are collected in Table\ \ref{tab:theory:Greens_fun_representations} by taking only the causal solutions into consideration.
 Two representations of the 3D Green's function are depicted in Figure \ref{Fig:Theory:Greens_function}.
 
 \begin{table}[h!]
@@ -503,7 +503,7 @@ The conditional expressions ensure that evanescent waves are attenuated with inc
 \end{figure}
 %
 %\vspace{3mm}
-In 3-dimensions, the 2-dimensional Green's function represents the field of an infinite line source along the $z$-axis, that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response---thus the relation between the 3D and 2D Green's functions is given as
+In 3-dimensions, the 2-dimensional Green's function represents the field of an infinite line source along the $z$-axis that can be described as a continuous linear distribution of 3D point sources---explaining the infinite tail of the 2D impulse response---thus, the relation between the 3D and 2D Green's functions is given as
 \begin{equation}
 G_{2\mathrm{D}}(x,y,\omega) = \int_{-\infty}^{\infty} G_{3D}(x,y,z,\omega) \td z = \left. \FT[z]{ G_{3D}(x,y,z,\omega) }\right|_{k_z = 0},
 \label{Eq:Wave_Theory:2D_Green}
@@ -549,7 +549,7 @@ $Q(\omega)$ is often referred to as \emph{monopole strength}.
 Monopoles constitute a good farfield approximation of sources in the velocity field, e.g. a dynamical loudspeaker mounted on a closed cabinet.
 %
 %
-\item assuming a point-like force excitation, described by $\mathbf{F}(\vx,\omega) =  \mathbf{f} F(\omega) \delta(\vx)$, where the unit vector $\mathbf{f}$ denotes the direction of the force, the solution for the inhomogeneous wave equation is given by
+\item assuming a point-like force excitation described by $\mathbf{F}(\vx,\omega) =  \mathbf{f} F(\omega) \delta(\vx)$ where the unit vector $\mathbf{f}$ denotes the direction of the force, the solution for the inhomogeneous wave equation is given by
 \begin{equation}
 P_{\mathrm{d}}(\vx,\omega) = -F(\omega) \left< \mathbf{f} \cdot \Dx G(\vx,\omega) \right>.
 \end{equation}
@@ -563,8 +563,8 @@ P_{\mathrm{d}}(\vx,\omega) =  \hat{F}(\omega)
 \frac{\te^{-\ti \frac{\omega}{c}|\vx-\vxo|}}{|\vx-\vxo|}.
 \end{equation}
 with $\cos \theta = \frac{\left<\mathbf{f} \cdot (\vx-\vxo) \right> } {|\vx-\vxo|}$.
-Unlike monopoles, dipoles are directive sources, with the directivity characteristics described by $\cos \theta$.
-Dipoles give a good model for e.g. unbaffled loudspeakers, moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$---often termed the \emph{dipole axis}---and without any lateral radiation.
+Unlike monopoles, dipoles are directive sources with the directivity characteristics described by $\cos \theta$.
+Dipoles give a good model for e.g. unbaffled loudspeakers moving freely in the fluid, radiating maximally into the direction of motion $\mathbf{f}$---often termed the \emph{dipole axis}---and without any lateral radiation.
 %
 %
 \end{itemize}
@@ -616,7 +616,7 @@ Refer to Figure \ref{Fig:Theory:HIE_geometry} for the geometry.
 For two continuous, differentiable scalar valued functions $\Phi(\vxo)$, $\Psi(\vxo)$ the Green's theorem reads as
 \begin{multline}
 \int_{\Oi}
-\left(  \Phi(\vxo) \nabla^2_{\vxo} \Psi(\vxo) - \Psi(\vxo) \nabla^2_{\vxo} \Phi(\vxo)   \right)   \td \Oi(\vxo)=  \\  =
+\left(  \Phi(\vxo) \nabla^2_{\vxo} \Psi(\vxo) - \Psi(\vxo) \nabla^2_{\vxo} \Phi(\vxo)   \right)   \td \Oi(\vxo)=  \\ 
 \oint_{\dO}  \left(  \Psi(\vxo) \frac{\partial \Phi(\vxo)}{\partial \vni}  - \Phi(\vxo) \frac{\partial \Psi(\vxo)}{\partial \vni}  \right)   \td \dO(\vxo),
 \label{Eq:Theory:Greens-theorem}
 \end{multline}
