@@ -58,12 +58,12 @@ y_pw2 = Rref*sin(fi((kn)<0));
 x_pw2 = [x_pw2(i+1:end,:);x_pw2(1:i,:)];
 y_pw2 = [y_pw2(i+1:end,:);y_pw2(1:i,:)];
 
-ftsize = 14.3;
-f = figure('Units','points','Position',[200,120,650,300]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,120,407,188]);
 set(f,'defaulttextinterpreter','latex')
 
 pos = [ 0.045 0.16 0.4 .76 
-        0.55  0.085 .43 .9  ];
+        0.52  0.16 .5 .76  ];
 
 
 p1 = axes('Units','normalized','Position',pos(1,:));
@@ -75,8 +75,8 @@ plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
 plot(x_pw2,y_pw2,':w','LineWidth',1)
 caxis([-1,1])
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
@@ -93,8 +93,8 @@ plot(x0,y0,'k','LineWidth',1)
 plot(x_pw,y_pw,'--w','LineWidth',1)
 plot(x_pw2,y_pw2,':w','LineWidth',1)
 caxis([-25,20])
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 %title('$20\mathrm{log}_{10}\left( P_{\mathrm{synth,pw}}(\mathbf{x},\omega)-P_{\mathrm{ref,pw}}(\mathbf{x},\omega) \right)$'...
 %                                                , 'Interpreter', 'LaTex' , 'FontSize', ftsize);
 set(gca,'FontName','Times New Roman');
@@ -108,4 +108,4 @@ c = colorbar;
 title(c,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize);
 
 set(gcf,'PaperPositionMode','auto');
-print( fullfile( '../..','Figures/SFS_theory','25D_WFS_circular_SSD' ) ,'-dpng')
+print(  '-r300', fullfile( '../..','Figures/SFS_theory','25D_WFS_circular_SSD' ) ,'-dpng')

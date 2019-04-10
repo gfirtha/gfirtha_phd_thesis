@@ -38,8 +38,8 @@ Dkx(isnan(Dkx))=0;
 Dkxs(isnan(Dkxs))=0;
 %%
 q = 10;
-ftsize = 12.37;
-fig = figure('Units','points','Position',[200,200,360,200]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,260,144]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
@@ -48,8 +48,8 @@ pos = [ 0.11   0.22  0.8   .75];
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end)/kxs,w(1:q:end)/(2*pi)/1e3,20*log10(abs(Dkxs(1:q:end,1:q:end))))
 hold on
-line([-1-kx0 -1-kx0]/2,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--','LineWidth',1.5)
-line([1-kx0 1-kx0]/2,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--','LineWidth',1.5)
+line([-1-kx0 -1-kx0]/2,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--','LineWidth',1)
+line([1-kx0 1-kx0]/2,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle','--','LineWidth',1)
 line(-[kx0 kx0]/2,[0,w(end)/(2*pi)/1e3],'Color','black','LineStyle',':','LineWidth',1)
 
 shading interp
@@ -59,8 +59,8 @@ set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]')
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]')
 
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/SFS_theory','AntiAliased_spectrum_asymm' ) ,'-dpng')

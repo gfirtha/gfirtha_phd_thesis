@@ -88,8 +88,8 @@ kn0 = 0;
 [ field_synth_aa ] = get_synthesized_field( t,s, Amp,xs,'on' ,loudspeaker_type, 'off', Dref,kn,r0, xrec0, x_ssd, N_ssd, X,Y,kv,kv0 );
 %
 %%
-ftsize = 12.37;
-f = figure('Units','points','Position',[200,200,360,260]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,260,188]);
 set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.12  0.8 .85 ];
 
@@ -100,12 +100,12 @@ axis equal tight
 caxis([-1 1] * 2e-2);
 shading interp
 hold on
-line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
-line(x_ssd(:,1), x_ssd(:,2), 0*x_ssd(:,1), 'Color', 'black','LineStyle','-','LineWidth',2);
-plot(xs(1), xs(2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
+line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',1.25);
+line(x_ssd(:,1), x_ssd(:,2), 0*x_ssd(:,1), 'Color', 'black','LineStyle','-','LineWidth',1.25);
+plot(xs(1), xs(2), 'ok','MarkerSize',2, 'MarkerFaceColor','black')
 
 [~,ind] =min(abs(kv-kv0));
-plot(x_ssd(ind,1),x_ssd(ind,2),'.k','MarkerSize',20);
+plot(x_ssd(ind,1),x_ssd(ind,2),'.k','MarkerSize',12);
 LineLength = 0.65;headWidth = 5*1.5;
 headLength = 5*1.5;
 ah = annotation('arrow','headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth,'LineWidth',1,'Color','Black','LineStyle','--');
@@ -116,9 +116,9 @@ set(ah,'position',[x_ssd(ind,1),x_ssd(ind,2), LineLength*K(ind,1), LineLength*K(
 reference_curve_ = [x_ref(~mask) y_ref(~mask)];
 [~,i] = max(sqrt(sum(diff(reference_curve_,2).^2,2)));
 reference_curve_ = [reference_curve_(i+2:end,:);reference_curve_(1:i+1,:)];
-plot(x_ssd(:,1),x_ssd(:,2),'.k','MarkerSize',13);
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+plot(x_ssd(:,1),x_ssd(:,2),'.k','MarkerSize',9);
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(f,'type','axes');

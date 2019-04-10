@@ -23,18 +23,18 @@ y = x+3.1*lambda;
 field_prop = exp( 1i*( kx1*X + ky1*Y  ) );
 field_evan = exp( 1i*( kx2*X + ky2*Y  ) );
 %%
-ftsize = 11/0.9;
-f = figure('Units','points','Position',[200,200,500,230]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,407,170]);
 set(f,'defaulttextinterpreter','latex')
 set(gcf,'Units','normalized');
 
 subplot(1,2,1)
 p1 = pcolor(x/lambda,y/lambda,real(field_prop));
-set(gca, 'Units','normalized','Position',[ 0.09 0.11 0.37 .9 ]);
+set(gca, 'Units','normalized','Position',[ 0.09 0.15 0.37 .84 ]);
 caxis([-1.5,1.5])
 shading interp
-xlabel( '$x/\lambda \rightarrow$ []' , 'FontSize', ftsize );
-ylabel( '$y/\lambda \rightarrow$ []' , 'FontSize', ftsize );
+xlabel( '$x/\lambda$' , 'FontSize', ftsize );
+ylabel( '$y/\lambda$' , 'FontSize', ftsize );
 axis equal tight
 hold on
 contour( x/lambda, y/lambda, real(field_prop),[0 0], '-k');
@@ -73,11 +73,11 @@ set(gca,'FontName','Times New Roman');
 
 subplot(1,2,2)
 p2 = pcolor(x/lambda,y/lambda,real(field_evan));
-set(gca, 'Units','normalized','Position',[ 0.61 0.11 0.37 .9 ]);
+set(gca, 'Units','normalized','Position',[ 0.60 0.15 0.37 .84 ]);
 caxis(.5*[-1,1])
 shading interp
-xlabel( '$x/\lambda \rightarrow []$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
-ylabel( '$y/\lambda \rightarrow []$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$x/\lambda$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+ylabel( '$y/\lambda$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
 axis equal tight
 hold on
 pcolor_ax =(gca);

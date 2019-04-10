@@ -41,19 +41,19 @@ Gkx2 = fftshift(fft(G02,[],2),2)*dx;
 kxs = 2*pi/dx_res;
 f_a = c*pi/dx_res/(2*pi);
 q = 12;
-ftsize = 16;
-fig = figure('Units','points','Position',[200,200,730,280]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,156]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
 pos = [ 0.06   0.17  0.38   .75
-        0.53    0.17  0.465 .75];
+        0.53    0.17  0.485 .75];
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end),w(1:q:end)/(2*pi)/1e3,20*log10(abs(Dkx(1:q:end,1:q:end))))
 set(gca,'FontName','Times New Roman');
-xlabel('$k_x \rightarrow$ [rad/m]')
-ylabel('$f \rightarrow$ [kHz]')
+xlabel('$k_x$ [rad/m]')
+ylabel('$f$ [kHz]')
 shading interp
 caxis([-30,10])
 %
@@ -70,19 +70,19 @@ set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 set(allAxesInFigure,'FontSize',ftsize);
 
-xlabel('$k_x \rightarrow$ [rad/m]')
-ylabel('$f \rightarrow$ [kHz]')
+xlabel('$k_x$ [rad/m]')
+ylabel('$f$ [kHz]')
 
 col = colorbar;
-title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-2);
+title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-1);
 %text(kxs-3,0.2,'$k_{x,s}$','FontSize',ftsize)
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/SFS_theory','Aliased_spectrum' ) ,'-dpng')
 
 %%
 q = 12;
-ftsize = 16;
-fig = figure('Units','points','Position',[200,200,730,540]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,301]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
@@ -98,8 +98,8 @@ b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 shading interp
 caxis([-30,10])
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]')
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]')
 
 p2 = axes('Units','normalized','Position',pos(2,:));
 pcolor(kx(1:q:end)/kxs,w(1:q:end)/(2*pi)/1e3,20*log10(abs(Gkx(1:q:end,1:q:end))))
@@ -110,8 +110,8 @@ set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]');
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]');
 
 %
 p3 = axes('Units','normalized','Position',pos(3,:));
@@ -123,8 +123,8 @@ set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]');
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]');
 
 
 set(gcf,'PaperPositionMode','auto');

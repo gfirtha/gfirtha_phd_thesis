@@ -1037,7 +1037,7 @@ Assume the synthesis of an arbitrary sound field by applying a linear SSD locate
 The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral} respectively for the case of a continuous SSD.
 Discretization of the SSD can be modeled mathematically by the sampling of the driving function with the sampling distance $\Delta x$ being the actual loudspeaker spacing:
 \begin{equation}
-D^{\mathrm{S}}(x_0,\omega) = \sum_{\eta = -\infty}^{\infty} D(x_0,\omega) \delta \left(x - \eta \Delta x \right).
+D^{\mathrm{S}}(x_0,\omega) = \sum_{\eta = -\infty}^{\infty} D(x_0,\omega) \, \delta \left(x - \eta \Delta x \right).
 \end{equation}
 Hence, in this model the SSD consists of a discrete set of point sources, represented by a series of Dirac deltas.
 Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself \cite{Girod2001}, and applying the sifting property of the Dirac delta, the wavenumber content of the sampled driving function reads as

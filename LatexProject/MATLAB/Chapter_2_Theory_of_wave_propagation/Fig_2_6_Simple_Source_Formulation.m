@@ -38,8 +38,8 @@ qs_ext = Ls \ (Ms + .5 * I) * ps;
 
 pf = Lf * (qs_ext - qs_int);
 %%
-ftsize = 11;
-f = figure('Units','points','Position',[200,200,500,370]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,407,301]);
 set(f,'defaulttextinterpreter','latex')
 
 p1 = axes('Units','normalized','Position',[ 0.05 0.5 0.43 .6 ]);
@@ -49,8 +49,8 @@ plot_mesh(field, real(pf_ana));
 shading flat;
 plot_mesh(radiator);
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-1 1] * 0.5e-1);
 
@@ -61,8 +61,8 @@ plot_mesh(field, real(pf));
 shading flat;
 plot_mesh(radiator);
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-1 1] * 0.5e-1);
 
@@ -73,10 +73,14 @@ plot_mesh(field, real(pf_ana - pf));
 shading flat;
 plot_mesh(radiator);
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-1 1] * 0.5e-1);
+
+set(gca,'FontName','Times New Roman');
+allAxesInFigure = findall(f,'type','axes');
+set(allAxesInFigure,'FontSize',ftsize);
 
 set(gcf,'PaperPositionMode','auto');
 print( '-r300',fullfile( '../..','Figures/Basic_acoustics','simple_source_formulation' ) ,'-dpng')

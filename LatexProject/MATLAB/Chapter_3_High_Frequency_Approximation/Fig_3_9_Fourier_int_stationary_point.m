@@ -33,9 +33,9 @@ Nx = 5e3;
 kx0 = 2*pi*(-Nx/2:Nx/2-1)'/(Nx*dx);
 Pps_spec = -1i/4*besselh(0,2,-1i*sqrt(kx0.^2-k^2)*abs(xs(2)));
 %%
-fig = figure('Units','points','Position',[200,200,500,270]);
+fig = figure('Units','points','Position',[200,200,407,220]);
 set(fig,'defaulttextinterpreter','latex')
-ftsize = 11;
+ftsize = 9;
 
 pos = [0.01 0.34 .53  1 ;
        0.01 -0.165 .53 1 ;
@@ -141,7 +141,7 @@ p3 = axes('Units','normalized','Position',pos(3,:));
 p3_ = plot( x/lambda, nkx,'LineWidth',1);
 xl = [x(1) x(end)]/lambda;
 yl = ylim;
-xlabel( '$x/\lambda \rightarrow []$' , 'FontSize', ftsize );
+xlabel( '$x/\lambda$' , 'FontSize', ftsize );
 ylabel( '$\hat{k}_{x}^P(x,0,0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
@@ -153,7 +153,7 @@ xlim(xl);
 
 p4 = axes('Units','normalized','Position',pos(4,:));
 plot(kx0/k,abs(Pps_spec),'LineWidth',1);
-xlabel( '$k_x/k \rightarrow []$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
+xlabel( '$k_x/k$' , 'Interpreter', 'LaTex' , 'FontSize', ftsize );
 ylabel( '$|\tilde{P}(k_x,0,0)|$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on

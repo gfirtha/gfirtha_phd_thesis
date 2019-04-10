@@ -31,8 +31,8 @@ ky_pw = k*sin(theta*pi/180)*ones(size(y0_pw));
 
 p_pw = exp(-1i*k*(cos(theta*pi/180)*X+sin(theta*pi/180)*Y));
 %%
-ftsize = 11/0.9;
-f = figure('Units','points','Position',[200,200,500,360]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,407,293]);
 
 set(f,'defaulttextinterpreter','latex')
    
@@ -57,8 +57,8 @@ end
 xl = xlim;
 xlim([x(1),x(end)]/lambda);
 ylim([y(1),y(end)]/lambda);
-xlabel( '$x/\lambda \rightarrow$ []', 'FontSize', ftsize );
-ylabel( '$y/\lambda \rightarrow$ []', 'FontSize', ftsize );
+xlabel( '$x/\lambda$', 'FontSize', ftsize );
+ylabel( '$y/\lambda$', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 
 p2 = axes('Units','normalized','Position',[ 0.61 0.42 0.37 .6 ]);
@@ -86,13 +86,13 @@ end
 xlim([x(1),x(end)]/lambda);
 ylim([y(1),y(end)]/lambda);
 
-xlabel( '$x/\lambda \rightarrow$ []', 'FontSize', ftsize );
-ylabel( '$y/\lambda \rightarrow$ []', 'FontSize', ftsize );
+xlabel( '$x/\lambda$', 'FontSize', ftsize );
+ylabel( '$y/\lambda$', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 %
 p3 = axes('Units','normalized','Position',[ 0.08 0.1 0.37 .2 ]);
 plot(x/lambda,nkx_ps2,'LineWidth',1);
-xlabel( '$x/\lambda \rightarrow$ []'  , 'FontSize', ftsize );
+xlabel( '$x/\lambda$'  , 'FontSize', ftsize );
 ylabel( '$\hat{k_x}^P(x,y_0)$'   , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 xlim(xl);
@@ -100,7 +100,7 @@ grid on
 
 p4 = axes('Units','normalized','Position',[ 0.61 0.1 0.37 .2 ]);
 plot(x/lambda,cos(theta*pi/180)*ones(size(x)),'LineWidth',1);
-xlabel( '$x/\lambda \rightarrow$ []'  , 'FontSize', ftsize );
+xlabel( '$x/\lambda$'  , 'FontSize', ftsize );
 ylabel( '$\hat{k_x}^P(x,y_0)$' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 xlim(xl)

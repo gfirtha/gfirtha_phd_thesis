@@ -14,8 +14,8 @@ quadrupole = sin(2*Phi).*cos(El);
 [X2,Y2,Z2] = sph2cart(Phi, El ,abs(dipole));
 [X3,Y3,Z3] = sph2cart(Phi, El ,abs(quadrupole));
 %%
-ftsize = 11;
-f = figure('Units','points','Position',[200,200,500,180]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,407,147]);
 set(f,'defaulttextinterpreter','latex')
 
 pos = [ 0.0     0.15 0.33 .8 
