@@ -937,7 +937,7 @@ and
 \label{Eq:Asymptotic_Rayleigh_integral}
 P(\vxref(\vxo),\omega) = 
 4\pi
-\sqrt{\frac{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo}} \cdot \\ \cdot
+\sqrt{\frac{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo}} \cdot \\ 
 \sqrt{\frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vxo)-\vxo)}{\Rv^P(\vxo) + \Rv^G(\vxref(\vxo)-\vxo)}}
 P(\vxo,\omega) G(\vxref(\vxo)-\vxo,\omega)
 ,
@@ -1037,7 +1037,7 @@ Assume the synthesis of an arbitrary sound field by applying a linear SSD locate
 The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral} respectively for the case of a continuous SSD.
 Discretization of the SSD can be modeled mathematically by the sampling of the driving function with the sampling distance $\Delta x$ being the actual loudspeaker spacing:
 \begin{equation}
-D^{\mathrm{S}}(x_0,\omega) = \sum_{\eta = -\infty}^{\infty} D(x_0,\omega) \cdot \delta \left(x - \eta \Delta x \right).
+D^{\mathrm{S}}(x_0,\omega) = \sum_{\eta = -\infty}^{\infty} D(x_0,\omega) \delta \left(x - \eta \Delta x \right).
 \end{equation}
 Hence, in this model the SSD consists of a discrete set of point sources, represented by a series of Dirac deltas.
 Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself \cite{Girod2001}, and applying the sifting property of the Dirac delta, the wavenumber content of the sampled driving function reads as
@@ -1068,8 +1068,8 @@ Above the aliasing frequency high wavenumber components ($|k_x|>k_{x,s}/2$) of t
 
 The wavenumber content of the synthesized field by applying a discrete SSD can be written as
 \begin{equation}
-\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega) = \frac{1}{\Delta x}
-\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega).
+\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \, \tilde{G}(k_x,y,z, \omega) = \frac{1}{\Delta x}
+\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \, \tilde{G}(k_x,y,z, \omega).
 \label{Eq:SFS_theory:Aliased_field_sp}
 \end{equation}
 The reproduction process is illustrated by Figure \ref{fig:SFS_theory:Aliased_repr_field} with the involved quantities measured along an arbitrary reference line, $y \gg 0$.
@@ -1222,7 +1222,7 @@ Here, the optimal SSD directivity is discussed within the context of the general
 The farfield approximation of an extended radiator as a directive point source is given by \eqref{Eq:App:directive_monopole}.
 At the horizontal plane containing the source (i.e. at $\theta = 0$) the field reads
 \begin{equation}
-G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \cdot
+G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \,
 G(\vx-\vxo,\omega),
 \end{equation}
 with the directivity function given by $\Theta(\cdot)$. 
@@ -1231,7 +1231,7 @@ Here, $\phi$ denotes the polar angle measured from the main direction of the sou
 First, an asymptotical approximation of the wavenumber domain representation of such a directive point source is presented.
 The wavenumber content of a directive point source at the origin, measured along a fixed $y$ reads as 
 \begin{equation}
-\tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \cdot
+\tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \,
 G(\vx,\omega) \, \te^{\ti k_x x} \, \td x.
 \end{equation}
 It is assumed that the directivity function is real-valued.
@@ -1242,9 +1242,9 @@ This holds for simple geometries, e.g. for a circular piston, which model is app
 Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
 Around the stationary point the directivity function is approximated by its stationary value and the integral simplifies to
 \begin{equation}
-\tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \cdot \int_{-\infty}^{\infty} 
+\tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \, \int_{-\infty}^{\infty} 
 G(\vx,\omega) \, \te^{\ti k_x x} \, \td x =
-\Theta(\phi(\vx^*(k_x)),\omega) \cdot 
+\Theta(\phi(\vx^*(k_x)),\omega) \,
 \tilde{G}(k_x,y,\omega),
 \end{equation}
 thus, in the wavenumber domain the directivity function acts as a spatial filter transfer function.
