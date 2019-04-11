@@ -46,7 +46,7 @@
 \newcommand{\vxref}{\mathbf{x}_{\mathrm{ref}}}
 \newcommand{\vk}{\mathbf{k}} 
 
-\usepackage[pdftitle={A Unified Wave Field Synthesis Theory (Ph.D. Thesis Booklet)},%
+\usepackage[pdftitle={A Generalized Wave Field Synthesis Theory (Ph.D. Thesis Booklet)},%
   pdfauthor={Gergely Firtha},% 
 %  colorlinks=true,% 
 %  urlcolor=blue,% 
@@ -124,7 +124,7 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
 \newcommand{\theauthor}{Gergely Firtha}
 \newcommand{\authorprof}{M.Sc.E.E.}
 \author{\theauthor}
-\title{A Unified Wave Field Synthesis Theory\\[.5ex]with Application for Moving Virtual Sources}
+\title{A Generalized Wave Field Synthesis Theory\\[.5ex] \large with Application for Moving Virtual Sources}
 
 \assignrefcontextkeyws[labelprefix=J]{J}
 \assignrefcontextkeyws[labelprefix=C]{C}
@@ -159,6 +159,7 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
 \newcommand{\supervisor}{Péter Fiala, PhD.}
 \newcommand{\creationdate}{Budapest, 2018.}
 \def \deptlogo {logos/hit_logo_en.png}
+\def \lablogo {logos/last_logo_eng.png}
 
 \selectlanguage{american}
 \nonfrenchspacing
@@ -173,17 +174,17 @@ Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha20
 \subsection{Aim of sound field synthesis}
 %
 Spatial audio aims at the recreation of a sound scene containing sources of sound, termed as audio objects, in a sense that the human listener perceives the spatial characteristics of the desired acoustic environment.
-Sound field reproduction achieves this by driving an arrangement of fix positioned loudspeakers, so that the superposition of the sound waves emerging from the individual loudspeakers generate the impression of the desired virtual audio object, present in the sound scene.
+Sound field reproduction achieves this by driving an arrangement of fix positioned loudspeakers so that the superposition of the sound waves emerging from the individual loudspeakers generate the impression of the desired virtual audio object present in the sound scene.
 Sound field reproduction has been the subject of excessive study and development over the second half of the XX. century, starting with the work of Blumlein, who introduced the first two-loudspeaker system in 1931 and thereby created the basics of stereophony.
 Modern stereophonic systems include the well-known Dolby stereo, 5.1, 7.1 systems, the 22.2 system of the NHK or the currently state-of-the-art commercial spatial audio systems, the Dolby Atmos and the DTS-X.
 Generally speaking---independently from the number of the speakers applied---stereophony generates the desired spatial impression by the recreation of localization cues at the listener position.
-Correct sound localization therefore can be ensured only over a limited listening area, termed as the \emph{sweet spot}, being a central limitation of these techniques.
+Correct sound localization, therefore, can be ensured only over a limited listening area termed as the \emph{sweet spot}, being a central limitation of these techniques.
 
 Opposed to stereophony, the aim of sound field synthesis (SFS) is the reproduction of the physical properties of a desired sound field over an extended listening area. 
 Once its is achieved, it is inherently ensured that the listener perceives the desired perceptual properties in an arbitrary position within the listening region.
 Obviously, controlling the sound field over an extended region requires numerous loudspeakers, positioned on the boundary of the control region.
-Hence, these techniques are often referred to as \emph{massive multichannel sound reproduction methods} \footfullcite{Spors2013:Survey}.
-The central question of SFS is the derivation of the loudspeaker driving signals, termed the \emph{driving function}, so that the resultant field of the loudspeaker arrangement coincides with the desired, \emph{virtual field}.
+Hence, these techniques are often referred to as \emph{massive multichannel sound reproduction methods}.\footfullcite{Spors2013:Survey}
+The central question of SFS is the derivation of the loudspeaker driving signals, termed the \emph{driving function}, so that the resultant field of the loudspeaker arrangement coincides with the desired \emph{virtual field}.
 The loudspeaker array applied for reproduction is termed as the \emph{secondary source distribution} in the followings.
 The general geometry is depicted in Figure \ref{fig:introduction:sfs_aim}.
 
@@ -197,64 +198,64 @@ The general geometry is depicted in Figure \ref{fig:introduction:sfs_aim}.
 	\put(45,7){secondary source distribution}
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.3\textwidth}
-    \caption{The general geometry for sound field synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object, or primary source of sound inside a control region, bounded by a densely spaced loudspeaker ensemble.}
+    \caption{The general geometry for sound field synthesis: the goal of synthesis is to reproduce the physical properties of a virtual sound object or primary source of sound inside a control region bounded by a densely spaced loudspeaker ensemble.}
 \label{fig:introduction:sfs_aim}  \end{minipage}
 \end{figure}
 
 Over the last several decades numerous SFS techniques emerged, approaching the problem both numerically and analytically.
-Analytical approaches include the direct solution of the involved integral formulations, termed as the explicit solution, and the most traditional SFS technique, deriving driving function based on the Huygens principle, termed as Wave Field Synthesis.
+Analytical approaches include the direct solution of the involved integral formulations termed as the explicit solution, and the most traditional SFS technique deriving driving function based on the Huygens principle, termed as Wave Field Synthesis.
 
 \subsection{Wave Field Synthesis history}
 %
-The original theory of Wave Field Synthesis---often referred to as \emph{traditional WFS}---evolved from the works of Berkhout et al. at the Technical University of Delft utilizing concepts, well-known in the field of seismic migration.
+The original theory of Wave Field Synthesis---often referred to as \emph{traditional WFS}---evolved from the works of Berkhout et al. at the Technical University of Delft by utilizing concepts well-known in the field of seismic migration.
 %, applied for sound field control.
 The basis of WFS theory were the Rayleigh integrals, the mathematical form of the Huygens' principle, representing a sound field as the sum of spherical waves emerging from an infinite plane.
-Berkhout applied the stationary phase method (SPA) to the Rayleigh integrals in order to arrive at loudspeaker driving signals for a linear array of loudspeakers instead of the practically infeasible planar array.
-The original formulation provided driving signals for loudspeakers with dipole characteristics \footfullcite{Berkhout1988}\textsuperscript{,}\footfullcite{Berkhout1993:Acoustic_control_by_WFS}---soon extended for monopole loudspeakers as well \footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}---, reproducing the wavefront of a virtual spherical wave in the horizontal plane, containing the loudspeaker array.
-It was discussed that reducing the secondary source distribution from an enclosing surface to a more practical contour of loudspeakers, results that amplitude correct reproduction is restricted to a control curve in the plane of synthesis, termed here as the reference curve.
-For traditional WFS this reference curve was usually chosen to be a reference line, parallel with the loudspeaker arrangement \footfullcite{Start1997:phd}.
+Berkhout applied the stationary phase approximation (SPA) to the Rayleigh integrals in order to arrive at loudspeaker driving signals for a linear array of loudspeakers instead of the practically infeasible planar array.
+The original formulation provided driving signals for loudspeakers with dipole characteristics \footfullcite{Berkhout1988}\textsuperscript{,}\footfullcite{Berkhout1993:Acoustic_control_by_WFS}---soon extended for monopole loudspeakers as well \footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}---reproducing the wavefront of a virtual spherical wave in the horizontal plane containing the loudspeaker array.
+It was discussed that reducing the secondary source distribution from an enclosing surface to a more practical contour of loudspeakers results that amplitude correct reproduction is restricted to a control curve in the plane of synthesis, termed here as the reference curve.
+For traditional WFS this reference curve was usually chosen to be a reference line parallel with the loudspeaker arrangement.\footfullcite{Start1997:phd}
 Furthermore, the traditional approach considered exclusively virtual point sources as the virtual field model.
 
 Traditional WFS was also the subject of various research projects, most notably the CARROUSO project, aiming at the integration of the technique into the MPEG-4 standard. This endeavor was not realized eventually, but two "spin-off" companies of the project, the IOSONO and Sonic Emotion are still offering commercially available WFS systems nowadays.
 
-The latest milestone in Wave Field Synthesis theory were the works of Spors et al., generalizing WFS towards the synthesis of an arbitrary analytically available sound field, applying an arbitrary shaped loudspeaker contour \footfullcite{Spors2008:WFSrevisited}.
-The presented loudspeaker driving signals allowed the synthesis of general 2-dimensional sound fields, ensuring amplitude correct synthesis at a single reference point,
-allowing the reproduction of complex virtual sound scenes, e.g. the field, generated by a moving sound source \footfullcite{Ahrens2008moving}.
-The method, however,---since it derived driving signals from the 2D Rayleigh integral---failed to control the amplitude of general 3D sound fields.
-Furthermore, the exact connection between traditional and the latter \emph{revisited WFS} formulations has not been known so far.
+The latest milestone in Wave Field Synthesis theory were the works of Spors et al., generalizing WFS towards the synthesis of an arbitrary analytically available sound field by applying an arbitrary shaped loudspeaker contour.\footfullcite{Spors2008:WFSrevisited}
+The presented loudspeaker driving signals allowed the synthesis of general 2-dimensional sound fields, ensuring amplitude correct synthesis at a single reference point.
+The approach allows the reproduction of complex virtual sound scenes, e.g. the field generated by a moving sound source.\footfullcite{Ahrens2008moving}
+The method, however---since it derived driving signals from the 2D Rayleigh integral---failed to control the amplitude of general 3D sound fields.
+Furthermore, the exact connection between the traditional and the latter \emph{revisited WFS} formulations has not been known so far.
 
 \subsection{Motivation of the present research}
 The present dissertation revisits the theoretical basics of Wave Field Synthesis.
-The motivation behind the research was to give a unified theoretical framework for WFS that allows the reproduction of an arbitrary analytically available virtual sound field, by applying an arbitrary secondary source contour, and optimizing the synthesis to an arbitrary reference curve.
-Hence, the presented framework contains the previous WFS approaches as special cases: choosing the virtual source to a point source, applying a linear SSD and referencing the synthesis to a line, parallel with the SSD returns the well-known traditional WFS driving function.
+The motivation behind the research was to give a generalized theoretical framework for WFS that allows the reproduction of an arbitrary analytically available virtual sound field by applying an arbitrary secondary source contour and optimizing the synthesis to an arbitrary reference curve.
+Hence, the presented framework includes the previous WFS approaches as special cases: choosing the virtual source to a point source, applying a linear SSD and referencing the synthesis to a line, parallel with the SSD returns the well-known traditional WFS driving function.
 Choosing the virtual source to be a general 2D sound field and referencing the synthesis to a single reference point results in the revisited WFS formulation.
 
-Besides the connection between traditional and revisited WFS, also the exact link between WFS and the direct, explicit solution has not been investigated in the related literature for general arbitrary virtual sound fields.
-For the special case of circular SSDs and specific virtual field models it has been shown that WFS constitutes a high frequency approximation for the explicit method \footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}.
+Besides the connection between traditional and revisited WFS, also the exact link between WFS and the direct, explicit solution has not been investigated in the related literature for general virtual sound fields.
+For the special case of circular SSDs and specific virtual field models it has been shown that WFS constitutes a high frequency approximation for the explicit method.\footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}	
 A further motivation of the present research was to establish this connection for arbitrary virtual field models and arbitrary SSD and reference contours.
 
-As a complex application example for the presented framework the reproduction of moving virtual sources was investigated in details.
-The reproduction of moving sources has been the subject of studies since the early age of WFS theory, as an obvious need when dynamic sound scenes are to be synthesized.
+As a complex application example for the presented framework, the reproduction of moving virtual sources was investigated in details.
+The reproduction of moving sources has been the subject of studies since the early age of WFS theory as an obvious need when dynamic sound scenes are to be synthesized.
 Early formulations attempted to synthesize the field of a moving point source by applying the traditional WFS driving signals with changing the virtual source position as the function of time.
 This approach, however, failed to properly recreate the Doppler effect, leading to serious artifacts in the synthesized field.
-Ahrens et al. used the revisited WFS formulation in order to recreate the field of a moving source \footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}.
+Ahrens et al. used the revisited WFS formulation in order to recreate the field of a moving source.\footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}
 However, due to physical constrains of revisited WFS theory, it failed to control the amplitude of the synthesized source.
-Hence, a further research goal was to extend the presented framework to include the possibility of synthesizing dynamic sound scenes.
+Hence, a further research goal was to extend the presented framework to include the synthesis of dynamic sound scenes.
 
 \section{Methodology}
 
-This section briefly summarizes the methodology and analysis tools, applied throughout the thesis.
+This section briefly summarizes the methodology and analysis tools applied throughout the thesis.
 
-The derivation of novel, unified Wave Field Synthesis and spatial domain explicit driving functions (that allows the comparison with WFS) requires the asymptotic evaluation of convolutional and spectral integrals.
-First, I introduced local wavefield properties ---the local wavenumber vector and local wavefront curvature---, later serving as powerful tools in order to give a meaningful physical interpretation for the results, concerning integral approximations.
+The derivation of novel, generalized Wave Field Synthesis and spatial domain explicit driving functions (allowing the comparison with WFS) requires the asymptotic evaluation of convolutional and spectral integrals.
+First, I introduced local wavefield properties---the local wavenumber vector and the local wavefront curvature---later serving as powerful tools in order to give a meaningful physical interpretation for the results concerning integral approximations.
 These quantities were well-known in the field of ray acoustics and high frequency acoustics, but have not been introduced in the context of sound field synthesis so far.
 
-The central mathematical method, forming the backbone of the present thesis is the \emph{stationary phase approximation} (SPA). 
+The central mathematical method, forming the backbone of the present thesis, is the \emph{stationary phase approximation} (SPA). 
 The method is applied frequently in asymptotical analysis in order to approximate integrals around their critical points, termed as the \emph{stationary point}.
-Loosely speaking the main topic of the present dissertation is the discussion, how the SPA can be applied 
+Loosely speaking, the main topic of the present dissertation is the discussion how the SPA can be applied 
 \begin{itemize}
 \item to boundary integral representations of the virtual sound field, allowing the extraction of WFS driving function 
-\item to spectral integral representations, to derive novel, spatial domain explicit driving functions and to connect spectral coefficients to particular positions in space.
+\item to spectral integral representations, in order to derive novel, spatial domain explicit driving functions and to connect spectral coefficients to particular positions in space.
 \end{itemize}
 The validity of the analytical results were verified via the numerical simulation of the synthesized field.
 Throughout the thesis these simulations were performed by the simple summation of the analytically available field of the individual SSD elements (given by the Green's function), weighted by the driving function and assuming free field conditions.
@@ -263,17 +264,17 @@ Throughout the thesis these simulations were performed by the simple summation o
 This section briefly presents the most important results discussed in the thesis. 
 The scientific achievements behind the results presented in this section are summarized as theses in Section \ref{sec:theses}.
 
-\subsection{A unified Wave Field Synthesis framework}
+\subsection{A generalized Wave Field Synthesis framework}
 The general SFS geometry is depicted in Figure \ref{fig:introduction:sfs_aim}.
-The synthesized field can be given mathematically as a convolutional integral over the SSD contour, in which the weighting factor is the \emph{driving function} to be expressed and the kernel is the Green's function, describing the SSD elements' sound field.
-The general SFS problem is therefore an inverse problem.
+The synthesized field can be given mathematically as a convolutional integral over the SSD contour in which the weighting factor is the \emph{driving function} to be expressed and the kernel is the Green's function describing the SSD elements' sound field.
+The general SFS problem is, therefore, an inverse problem.
 
 Wave Field Synthesis approaches the problem by finding an appropriate boundary integral representation of the virtual sound field, from which the required driving function can be extracted.
-This representation can be found by reducing a surface integral---describing an arbitrary 3D sound field---into a contour integral by a vertical stationary phase approximation.
+This representation can be found by reducing the surface integral describing an arbitrary 3D sound field into a contour integral by a vertical stationary phase approximation.
 
 Traditional WFS started out from the Rayleigh integral, which, however, inherently restricted the SSD to be a linear one.
-A suitable choice for the boundary integral representation is the Kirchhoff approximation, representing arbitrary two, or three dimensional sound fields in terms of a single layer potential assuming high frequency conditions.
-During my research I reduced the Kirchhoff approximation of an arbitrary 3D sound field by the SPA into a contour integral, similarly to the revisited WFS formulation.
+A suitable choice for the boundary integral representation is the Kirchhoff approximation, representing arbitrary two- or three-dimensional sound fields in terms of a single layer potential under high frequency conditions.
+I reduced the Kirchhoff approximation of an arbitrary 3D sound field by the SPA into a contour integral.
 
 \begin{figure}[t!]
 \small
@@ -286,9 +287,9 @@ During my research I reduced the Kirchhoff approximation of an arbitrary 3D soun
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $f_0 = 1.5~\mathrm{kHz}$.
     Figure (a) depicts the real part of the synthesized field, (b) presents the absolute error of synthesis in a logarithmic scale.
-	The active arc of the SSD is denoted by solid black line, and the inactive part with dotted by black line.
+	The active arc of the SSD is denoted by solid black line and the inactive part with dotted by black line.
 	The reference position on the reference curve for each active SSD element is evaluated numerically.
-	Obviously in the present geometry there exist secondary sources, for which no unique reference position can be found.
+	Obviously, in the present geometry there exist secondary sources for which no unique reference position can be found.
 	}
 \label{fig:SFS_theory:25D_WFS_generals}   \end{minipage}
 \end{figure}  
@@ -296,16 +297,15 @@ During my research I reduced the Kirchhoff approximation of an arbitrary 3D soun
 The dimensionality reduction restricts the amplitude correct synthesis to a single receiver position, termed as the \emph{reference position}.
 Revisited WFS allowed the synthesis of 2D virtual fields, ensuring amplitude correct synthesis only in this reference position.
 I showed that by a further, horizontal application of the SPA a unique reference position can be assigned to each infinitesimal SSD element.
-By applying the local wavenumber concept---being a vector, pointing into the local propagation direction of the sound field---a simple analytical formulation can be given for these reference positions for each secondary source.
+By applying the local wavenumber concept---being a vector pointing into the local propagation direction of the sound field---a simple analytical formulation can be given for these reference positions for each secondary source.
 I showed that the direction at which the reference position lies from the actual SSD element is determined by the local wavenumber vector of the virtual sound field.
-The distance between the SSD element and its referernce position, however, can be manipulated, by applying a simple frequency independent correction term, which I referred to as the \emph{referencing function}.
-
+The distance between the SSD element and its reference position, however, can be manipulated by applying a simple frequency independent correction term.
 The set of all SSD elements reference position forms the \emph{reference curve}.
-By prescribing a desired reference curve, the corresponding referencing function can be derived analytically and a virtual source-SSD shape-reference curve shape specific driving function can be expressed, that ensures an approximately amplitude correct synthesis over the reference curve \cite{Firtha2016_booklet}.
+By prescribing a desired reference curve, the corresponding amplitude correction factor can be derived analytically and a virtual source-SSD shape-reference curve specific driving function can be expressed that ensures approximately amplitude correct synthesis over the reference curve.\cite{Firtha2016_booklet}
 
-As an example the synthesis of a 3D point source applying an arbitrary SSD contour is presented in Figure \ref{fig:SFS_theory:25D_WFS_generals}.
+As an example, the synthesis of a 3D point source applying an arbitrary SSD contour is presented in Figure.\ref{fig:SFS_theory:25D_WFS_generals}
 The reference curve is chosen to be a concentric contour inside the SSD.
-As Figure (b) verifies, depicting the error of synthesis, inside the entire listening region phase correct synthesis is achieved, while amplitude correct synthesis is ensured over that part of the reference curve to which an active SSD element can be found.
+As Figure (b) depicting the error of synthesis verifies, inside the entire listening region phase correct synthesis is achieved, while amplitude correct synthesis is ensured over that part of the reference curve to which an active SSD element can be found.
 
 \subsection{Explicit solution in the spatial domain}
 The explicit solution for the general sound field synthesis problem aims at the direct solution of the inverse problem by transforming the convolutional integral, describing the synthesized field to the spectral (wavenumber) domain.

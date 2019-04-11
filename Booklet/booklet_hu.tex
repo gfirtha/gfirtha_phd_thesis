@@ -1,0 +1,337 @@
+	\documentclass[10pt,twoside]{article}
+\usepackage[a5paper,inner=1.5cm,outer=2.0cm,top=2.0cm,bottom=2.5cm,pdftex]{geometry}
+\usepackage[utf8]{inputenc}						% UTF-8 encoding
+\usepackage[T1]{fontenc}
+\usepackage[magyar,american]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,
+			hyperref=true,
+			autolang=hyphen,
+			style=numeric-comp,
+			isbn=false,
+			sorting=none,
+			defernumbers=true,
+			maxnames=10,
+			doi=false,
+			url=false,
+			useprefix=true,
+			]{biblatex}
+\usepackage{palatino}							% Font
+\usepackage{amsmath, amssymb, amsthm} 							% Theorem customization
+\usepackage{graphicx,subfigure,overpic}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[bf,small]{caption}
+\addbibresource{../LatexProject/dissertation.bib}
+\addbibresource{booklet.bib}
+
+\newcount\posveccount
+\newcommand*\posvec[1]{
+        \global\posveccount#1
+        [
+        \posvecnext
+}
+\def\posvecnext#1{
+        #1
+        \global\advance\posveccount-1
+        \ifnum\posveccount>0
+                ,\
+                \expandafter\posvecnext
+        \else
+                ]^{\mathrm{T}}
+        \fi
+} 
+\newcommand{\vxs}{\mathbf{x}_{\mathrm{s}}}
+\newcommand{\vxref}{\mathbf{x}_{\mathrm{ref}}}
+\newcommand{\vk}{\mathbf{k}} 
+
+\usepackage[pdftitle={A hangtérszintézis elmélet általánosítása (Tézisfüzet)},%
+  pdfauthor={Firtha Gergely},% 
+%  colorlinks=true,% 
+%  urlcolor=blue,% 
+%  linkcolor=blue,% 
+%  citecolor=blue,% 
+%  filecolor=green,% 
+%  raiselinks=false,% 
+  hyperfootnotes=true]{hyperref}
+
+% Citation categories
+\DeclareBibliographyCategory{journal} 
+\DeclareBibliographyCategory{conference}
+\DeclareBibliographyCategory{tech}
+\DeclareBibliographyCategory{other}
+% Citation commands
+\newcommand*{\citeJ}[2][]{\addtocategory{journal}{#2}\cite[#1]{#2}}
+\newcommand*{\citeC}[2][]{\addtocategory{conference}{#2}\cite[#1]{#2}}
+\newcommand*{\citeO}[2][]{\addtocategory{other}{#2}\cite[#1]{#2}}
+\newcommand*{\citeT}[2][]{\addtocategory{tech}{#2}\cite[#1]{#2}}
+% No citation commands
+\newcommand*{\nociteJ}[1]{\addtocategory{journal}{#1}\nocite{#1}}
+\newcommand*{\nociteC}[1]{\addtocategory{conference}{#1}\nocite{#1}}
+\newcommand*{\nociteO}[1]{\addtocategory{other}{#1}\nocite{#1}}
+\newcommand*{\nociteT}[1]{\addtocategory{tech}{#1}\nocite{#1}}
+
+\nociteJ{firtha2015sound,firtha2016wave_booklet,Firtha2016_booklet,doi:10.1121/1.4996126_booklet,schultz2017wave_booklet,Firtha2018:WFS_vs_SDM_booklet}
+\nociteC{Firtha2012:isma_booklet,Firtha2013:daga_booklet,Firtha2013:internoise_booklet,Firtha2014:daga_booklet,Firtha2014:isma_booklet,
+Firtha2015:daga_booklet,firtha2016:daga_booklet,Firtha2017:daga_booklet,Firtha2018_daga_a_booklet,Firtha2018_daga_moving_source_booklet}
+
+\renewcommand{\bibfont}{\normalfont\small}
+\renewcommand*{\mkbibnamegiven}[1]{%
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+
+
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+
+\newtheoremstyle{thesisgroupstyle}%
+	{1em}% 				% Space above
+	{5mm}% 				% Space below
+	{\slshape}%			% Font type of body
+	{0mm}%				% Indentation			
+	{\bfseries}%		% Font of title
+	{\newline}%			% Punctuation between head and body
+	{1em}%				% Space after theorem head
+	{}% 				% Manually specify head
+
+\makeatother
+\theoremstyle{thesisgroupstyle}
+\newtheorem{thesisgroup}{Thesis group}
+\renewcommand{\thethesisgroup}{\Roman{thesisgroup}}
+
+\makeatletter
+\newtheoremstyle{indented}
+  {5pt}% space before
+  {5pt}% space after
+  {\addtolength{\@totalleftmargin}{3.5em}
+   \addtolength{\linewidth}{-3.5em}
+   \parshape 1 3.5em \linewidth}% body font
+  {}% indent
+  {\bfseries}% header font
+  {.}% punctuation
+  {.75em}% after theorem header
+  {}% header specification (empty for default)
+\makeatother
+\theoremstyle{indented}
+\newtheorem{thesis}{Thesis}[thesisgroup]
+
+
+\newcommand{\theauthor}{Firtha Gergey}
+\newcommand{\authorprof}{M.Sc.E.E.}
+\author{\theauthor}
+\title{A hangtérszintézis elméletének általánosítása\\[.5ex] \large  és alkalmazása mozgó források szintézisére}
+
+\assignrefcontextkeyws[labelprefix=J]{J}
+\assignrefcontextkeyws[labelprefix=C]{C}
+\assignrefcontextkeyws[labelprefix=O]{O}
+
+% Add underline for my author name
+\def \mylastname {Firtha}
+\newbibmacro{name:underlined}{%
+    \ifthenelse{\equal{\namepartfamily}{\mylastname}}%
+{\underline{\ifblank{\namepartgiven}{}{\namepartgiven\space}\namepartfamily}}%
+{\ifblank{\namepartfamily}{}{\namepartgiven\space}\namepartfamily}%
+    \ifthenelse{\value{listcount}<\value{liststop}}%
+    {\addcomma\space}%
+    {}%
+}
+
+\DeclareNameFormat{author}{%
+    \nameparts{#1}% split the name data, will not be necessary in future versions
+    \usebibmacro{name:underlined}%
+    \usebibmacro{name:andothers}%
+}
+
+
+\begin{document}
+\sloppy
+\newcommand{\schoolname}{Budapesti Műszaki és Gazdaságtudományi Egyetem}
+\newcommand{\facultyname}{Villamosmérnöki és Informatikai Kar}
+\newcommand{\doctoralname}{Villamosmérnöki Tudományok Doktori Iskola}
+\newcommand{\bookname}{PhD tézisfüzet}
+\newcommand{\authorname}{Author}
+\newcommand{\supervisorname}{Konzulens:}
+\newcommand{\supervisor}{Dr. Fiala Péter}
+\newcommand{\creationdate}{Budapest, 2018.}
+\def \deptlogo {logos/hit_logo_en.png}
+\def \lablogo {logos/last_logo_eng.png}
+
+\selectlanguage{magyar}
+\nonfrenchspacing
+
+\input{cover}
+\thispagestyle{empty}
+\cleardoublepage
+\setcounter{page}{1}
+
+\section{Bevezetés}
+
+\subsection{A fizikai hullámtérszintézis célja}
+%
+A térhangzású technikák alapvető célja egy virtuális akusztikai környezet előállítása úgy, hogy a térben elhelyezett audio objektumokat a hallgató a kívánt térbeli jellemzőkkel (pl. virtuális hangforrás pozíciója, szélessége) érzékeli.
+A hangtér-reprodukció ezt egy fix elhelyezésű hangszórósokaság megfelelő vezérlésével éri el azáltal, hogy a hangszórók által keltett hullámok szuperpozíciója a hallgató számára a kívánt akusztikai környezet hatását kelti.
+Ezzel szemben a binauralizációs módszerek a térhangzást fejhallgatók jelének megfelelő szűrésével érik el.
+
+A mai hangtér-reprodukciós, illetve térhangzású technikák kiinduló pontja a Blumlein által 1931-ben bevezetett kéthangszórós rendszer volt, lefektetve ezzel	 a sztereofónia alapjait.
+A sztereofónia manapság is a legelterjedtebb reprodukciós módszer, olyan hangrendszereknek képezi az alapját, mint a Dolby 5.1, 7.1, az NHK vállalat 22.2 rendszere, vagy épp a jelenleg state-of-the-art kereskedelemben is kapható térhatású rendszereknek, a Dolby Atmosnak és a DTS-X-nek.
+Általánosan véve---függetlenül a hangrendszerben alkalmazott hangszórók számától---a sztereofónia célja pusztán a térérzetet befolyásoló tényezők (pl. füljelek közötti késleltetés, illetve amplitúdókülönbség) visszaállítása a hallgató pozíciójában.
+Ebből kifolyólag azonban a tökéletes térhangzás csak a tér egyetlen pontjának szűk környezetében biztosítható, ez az ún. \emph{sweet spot}.
+A fenti megszorítás a sztereofón technikák fontos közös hátrányának tekinthető.
+
+A sztereofóniával ellentétben a fizikai hangtér-reprodukció (sound field synthesis, SFS) célja egy tetszőleges célhangtér fizikai jellemzőinek visszaállítása egy kiterjedt megfigyelési területen.
+Amennyiben ezt sikerül elérni, a hallgató a megfigyelési terület tetszőleges pontján eleve a kívánt akusztikai érzeti jellemzőket érzékeli.
+Természetesen egy hullámtér kiterjedt területen való befolyásolása bonyolult feladat, elméletileg a megfigyelési terület hangszórókkal való körbezárását igényeli.
+A fizikai hangtér-reprodukció alapfeladata ezek után az egyes hangszórók vezérlőjelének, vagy \emph{vezérlő függvényének} meghatározása úgy, hogy a teljes hangszórósokaság eredő hangtere megegyezzen az előírt \emph{virtuális térrel}.
+A hangszórósokaság elnevezése a továbbiakban a \emph{másodlagos forráseloszlás (secondary source distribution, SSD)}.
+A reprodukció általános elrendezése a \ref{fig:introduction:sfs_aim} ábrán látható.
+
+\begin{figure}  
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = 1\columnwidth ]{figs/sfs_aim.png}
+	\small
+	\put(58,30){megfigyelési terület}
+	\put(0,45){\parbox{.5in}{virtuális forrás}}
+	\put(45,7){másodlagos forráseloszlás}
+	\end{overpic}   \end{minipage}\hfill
+	\begin{minipage}[c]{0.3\textwidth}
+    \caption{Általános hangtérszintézis elrendezés: a szintézis célja egy tetszőleges virtuális forráseloszlás terének előállítása a megfigyelési terület határán elhelyzetett hangszórósokaság megfelelő vezérlésével.}
+\label{fig:introduction:sfs_aim}  \end{minipage}
+\end{figure}
+
+Az elmúlt néhány évtized során számos hangtérszintézis technika megjelent, mind numerikus, mind analitikus megoldásokat kínálva a problémára.
+Az analitikus módszerek két fő csoportra oszthatók: a szintézisproblémát leíró integrálegyenletek közvetlen megoldására szolgáló explicit, illetve a Huygens elven alapuló ún. implicit módszerekre.
+Az utóbbi, implicit módszer, elterjedt nevén a hangtérszintézis (a következőekben Wave Field Synthesis, WFS) a jelen disszertáció fő témája.
+
+\subsection{A hangtérszintézis története}
+%
+A hangtérszintézis elméleti alapjai a Delfti Műszaki Egyetemről származnak. 
+Itt elsőként ültette át az A.J. Berkhout által vezetett kutatócsoport a szeizmikus hullámelmélet addigra már jól ismert alapkoncepcióit hangszóró- és mikrofonsorokra.
+Az ezáltal bevezetett \emph{tradicionális hangtérszintézis} elméletének alapja a Huygens-elv matematikai formájának tekinthető Rayleigh-integrál, amely integrál egy tetszőleges hangteret egy felületi integrál formájában ad meg.
+Az integrál magában tartalmazza egy síkmentén elhelyezett hangszórósokaság vezérlőfüggvényét.
+Ahhoz, hogy meghatározzák a gyakorlatban is megvalósítható vonalmenti hangszórósorok vezérlőjeleit a Rayleigh-integrált az ún. \emph{stacionárius fázis módszerével} egy kontúrintegrállá redukálták, amely implicite tartalmazza a keresett vezérlőfüggvényeket.
+
+A technika korai megfogalmazása dipól tulajdonságokkal rendelkező hangszórósorokra szolgáltatott vezérlőjeleket,\footfullcite{Berkhout1988}\textsuperscript{,}\footfullcite{Berkhout1993:Acoustic_control_by_WFS} amelyet rövidesen a dinamikus hangszórókat jobban modellező másodlagos monopólusokra is kiterjesztettek.\footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}
+A technikával lehetővé vált virtuális 3D pontforrások hullámfrontjának fizikai visszaállítása a hangszórósort és a megfigyelőt tartalmazó horizontális síkban, a \emph{szintézis síkjában}.
+Jól ismert volt az a tény is, hogy az ideálisan sík hangszóróeloszlás hangszórósorrá való redukálása azt eredményezi, hogy az amplitúdió-helyes szintézis még a szintézis síkjában is csak egy megadott görbe mentén, a \emph{referenciagörbén} valósítható meg.
+A tradicionális elméletben ezt a görbét a hangszórósorral párhuzamos \emph{referenciavonalnak} választották meg.\footfullcite{Start1997:phd}
+
+Már a korai hangtérszintézis elmélet is számos K+F projektnek szolgált alapul. 
+Ezek közül a legkiemelkedőbb a nemzetközi CARROUSO projekt volt, amelynek célja a hangtérszintézis elméletének az abban az időben bevetetett MPEG-4 szabványba való integrálása volt.
+Ez a törekvés végül nem valósult meg, azonban a projektnek több spin-off cége, így az IOSONO (ma már Barco) és a Sonic Emotion, jelenleg is gyárt és telepít egyéni tervezésű hangtérszintézis rendszereket.
+
+A hangtérszintézis elméletének legutóbbi mérföldköve Spors és Ahrens munkájához köthető, akik a klasszikus WFS elméletet újragondolva általánosították azt tetszőleges virtuális tér és hangszórókontúrok felé.\footfullcite{Spors2008:WFSrevisited}
+Az így kapott vezérlőfüggvényekkel egy tetszőleges vertikális irányban invariáns 2D hangtér visszaállítása visszaállíthatóvá vált, az amplitúdóhelyes szintézist a megfigyelői tér egy pontjára, a \emph{referenciapontra} korlátozva.
+Ez az általánosítás már lehetővé tette összetettebb hangterek szintézisét is, így pl. egy mozgó forrásét,\footfullcite{Ahrens2008moving} azonban néhány kiindulási feltételezésből származóan (a levezetés a 2D Rayleigh integrálból indult) még a referenciapontban is amplitúdóhibákhoz vezetett 3D virtuális tér reprodukciója esetén.
+Ezen felül a két bemutatott módszer pontos kapcsolata sem volt a korábbiakban tisztázva.
+
+\subsection{A kutatás célja}
+
+A jelen disszertáció a kiindulási alapoktól kezdve felülvizsgálja a hangtérszintézis elméleti alapjait. 
+A kutatás célja az elmélet teljes általánosítása volt, amely lehetővé teszi egy tetszőleges virtuális tér reprodukcióját tetszőleges hangszórókontúr alkalmazásával és az amplitúdó-helyes szintézis szabadon választott referenciagörbére való optimalizálásával.
+Az így kapott elméleti keretrendszer speciális esetekként magában tartalmazza a korábbiakban bemutatott módszereket: 
+Egy virtuális pontforrás egyenes hangszórósorral való szintézise egyenesre megválasztott referenciagörbével közvetlenül a tradicionális hangtérszintézis eredményére vezet.
+Hasonlóan, egy 2D virtuális teret egy referenciapontban előállítva a Spors által bemutatott vezérlőfüggvényeket kapjuk. 
+
+További kérdéseket vet fel az implicit hangtérszintézis technika és az explicit megoldások kapcsolata is, amelyet eddig a vonatkozó irodalomban csak speciális virtuális forrás-hangszórókontúr geometriákra vizsgáltak:
+Egy köralakú másodlagos forráseloszlás esetén bizonyos virtuális terekre már belátták, hogy a hangtérszintéis az explicit, direkt megoldás nagy-frekvenciás közelítésének tekinthető.\footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}
+A kutatás további célja ennek a kapcsolatnak az általánosítása volt tetszőleges virtuális térre és hangszóró-, illetve referenciakontúrokra.
+
+A bemutatott eredmények egy összetett alkalmazási példájaként a mozgó források terének szintézise is bemutatásra került.
+A mozgó hangforrások által keltett hullámok reprodukciójának kérdéses már szinte a hangtérszintézis bevezetésével egy időben megjelent, mint természetes igény, ha időben változó hangterek szintézise a cél.
+A korai megoldások a tradicionális vezérlőfüggvényekkel próbálták megoldani a feladatot, a virtuális forrás pozíciójának idővariánssá tételével.
+Ez az egyszerű megoldás azonban nem képes a Doppler hatást megfelelőn visszaállítani és így hallható torzulásokhoz vezet a szintetizált térben.
+Ahrens az általuk létrehozott újragondolt elméletet terjesztette ki mozgó forrásokra is.\footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}
+A módszer alapvetően működőképes volt, azonban a technika alapvető korlátai miatt a visszaállított tér amplitúdóját a referenciapontban sem lehetett kontrollálni.
+Épp ezért, a kutatás további célja a bemutatott elméleti keretrendszer kiterjesztése volt dinamikus, idővariáns virtuális terekre.
+
+\section{Módszer}
+
+A következő fejezetben a disszertációban gyakran alkalmazott módszerek és analízis eszközök kerülnek rövid bemutatásra.
+
+Az általánosított hangtérszintézis elmélet, valamint az explicit megoldás tértartománybeli alakja (amely a későbbiekben összehasonlíthatóvá teszi az explicit módszert a hangtérszintézissel) a különböző perem- és spektrális integrálok aszimptotikus közelítésén alapszik.
+Munkám során bevezettem a hangterek lokális tulajdonságait leíró mennyiségeket, így a lokális hullámszámvektort és a hullámfront görbületet, amelyek a későbbiekben nagyban elősegítették a fenti integrálközelítések fizikai interpretációját és megértését.
+Ezen lokális tulajdonságok ismert mennyiségek a nagyfrekvenciás akusztika, illetve sugárakusztika területein, de ez idáig nem kerültek bevezetésre a hangtér-reprodukció területén.
+
+A disszertáció központi matematikai módszere az ún. \emph{stacionárius fázis módszere (stationary phase approximation, SPA)}.
+Az eljárás komplex értékű függvények integráljának közelítő kiértékelésére szolgál az integrálás útjában található krtikus pontok, az \emph{stacionárius pontok} körül.
+Gyakorlatilag a disszertáció ezen közelítés alkalmazásáról szól, azt 
+\begin{itemize}
+\item a virtuális teret leíró peremintegrálokra alkalmazva, amely segítségével a peremintegrálból a vezérlőfüggvények kiolvashatók.
+\item különböző hangterek és a vezérlőfüggvények Fourier integráljára alkalmazva, amely alapján meghatározhatóak az itt bevezetett tértartománybeli vezérlőfüggvények, valamint az itt bemutatott átlapolódásgátló szűrési módszer.
+\end{itemize}
+
+Az analitikus eredmények a szintetizált tér numerikus szimulációjának segítségével kerültek validációra.
+Ezek a szimulációk egyszerűen az egyes hangszóróelemek analitikusan rendelkezésre álló (a Green-függvény alapján) tereinek a vezérlőfüggvénnyel súlyozott összegeként kerültek kiértékelésre. 
+
+\section{Eredmények}
+
+A következő fejezet a disszertáció legfontosabb eredményeit foglalja röviden össze.
+Az új tudományos eredmények a következő fejezetben kerülnek részletes felsorolásra.
+
+\subsection{Az általánosított hangtérszintézis elmélet}
+
+Az következőekben alkalmazott geometria a \ref{fig:introduction:sfs_aim} ábrán látható.
+Matematikailag a szintetizált hangteret a hangszóró-vezérlőfüggvény és az egyes hangszóróelemek terét leíró Green-függvény a másodlagos forráseloszlás fölött vett konvolúciójaként írhatjuk fel.
+A vezérlőfüggvények meghatározása tehát egy dekonvolúciós, inverz probléma.
+
+A hangtérszintézis alapötlete a virtuális, reprodukálandó hangtér egy olyan peremintegrál formájában történő előállítása, amely peremintegrál implicite tartalmazza a keresett vezérlőfüggvényeket.
+Mivel általánosan egy 3D hangtér egy zárt felületi integrál formájában adható meg, az alapvető feladat ezen felületi integrál kontúrintegrállá redukálása.
+Ez a horizontális síkba való redukálás egy vertikális irányú stacionárius fázis közelítéssel valósítható meg.
+
+A tradicionális elmélet kiinduló pontja a Rayleigh-integrál volt, amely azonban a másodlagos forráseloszlást eleve egyenes vonalra korlátozta.
+Nagyfrekvenciás feltételezéssel élve megfelelő választás a virtuális tér Kirchhoff közelítéssel való reprezentációja, amely egy tetszőleges 3D hangteret egy a Green-függvénnyel vett konvolúciós felületi integrálként ír le.
+A Kirchhoff közelítés stacionárius fázisú kiértékelésével a felületi integrált kontúrintegrállá redukáltam, amely már magában tartalmazza a keresett vezérlőfüggvényeket.
+%
+\begin{figure}[t!]
+\small
+  \begin{minipage}[c]{0.64\textwidth}
+	\begin{overpic}[width = 1\columnwidth ]{figs/25D_WFS_general.png}
+	\small
+	\put(2,53){(a)}
+	\put(2,1){(b)}
+	\end{overpic}   \end{minipage}\hfill
+	\begin{minipage}[c]{0.35\textwidth}
+    \caption{3D pontforrás szintézise állandósult állapotban. A virtuális forrás pozíciója $\vxs = \posvec{3}{0.4}{2.5}{0}$, gerjesztőjele harmonikus jel $f_0 = 1.5~\mathrm{kHz}$ frekvenciával.
+	Az ábra (a) része a szintetizált tér valós részét, (b) része a célhangtértől vett amplitúdóhibát ábrázolja logaritmikus skálán.
+	Az aktív másodlagos forrásokat folytonos, az inaktív forrásokat szaggatott fekete vonal jelzi.
+	Az egyes másodlagos források referenciapozíciója a referenciagörbén jelen példában numerikusan van számítva.
+%	Obviously, in the present geometry there exist secondary sources for which no unique reference position can be found.
+	}
+\label{fig:SFS_theory:25D_WFS_generals}   \end{minipage}
+\end{figure}  
+
+Ez a dimenzió-csökkentési eljárás azonban az amplitúdóhelyes szintézis helyét egyetlen megfigyelési pontra, az ún. \emph{referenciapontra} korlátozza.
+Az Spors féle hangtérszintézis elmélet ebben a referenciapontban tette lehetővé 2D virtuális terek szintézisét.
+Disszertációmban bemutatom, hogy a egy további, horizontális síkban történő aszimptotikus közelítés alkalmazásával minden egyes másodlagos forráselemhez (hangszóróhoz) saját referenciapont rendelhető.
+Ennek a forráselemenkénti referenciapontnak a helye analitikusan meghatározható az újonnan bevetett lokális hullámszámvektor segítségével, amely vektor definíciószerűen adott pontban a hullám lokális terjedési irányába mutat.
+Rámutattam, hogy az egyes forráselemek referenciapontjának a forráselemtől vett irányát a virtuális tér lokális hullámszámvektora határozza meg, míg a forráselemtől vett távolság egy frekvenciafüggetlen erősítési tényező segítségével tetszőlegesen befolyásolható.
+Teoretikus, folytonos másodlagos forráseloszlást feltételezve a referenciapontok összessége is folytonos görbét, ún. \emph{referenciagörbét} alkot.
+Amennyiben a kívánt referenciagörbe alakja analitikusan ismert, a frekvenciafüggetlen erősítési tényező meghatározható, ami az amplitúdóhelyes szintézist erre a görbére valósítja meg.
+Ez alapján tetszőleges virtuális forrás-másodlagos forráseloszlás-referenciagörbe specifikus vezérlőfüggvények vezethetők be.\cite{Firtha2016_booklet}
+
+Egyszerű példaként a \ref{fig:SFS_theory:25D_WFS_generals} ábra egy 3D pontforrás általános alakú másodlagos forráseloszlással történő szintézisét mutatja be.
+A referenciagörbe egy koncentrikus kontúr a megfigyelési területen belül.
+Az ábra (b) része alátámasztja, hogy a vezérlőfüggvényekkel a teljes megfigyelési területen fázishelyes szintézis érhető el (azaz a hullámfront alakja helyesen visszaállítható), míg az amplitúdóhelyes szintézis a referenciagörbe azon részére korlátozódik, amelyre rálátni az adott virtuális forráspozícióból.
+
+\clearpage
+\section*{Publications}
+\addcontentsline{toc}{sec}{Publications}
+
+\nocite{*}
+\begin{refcontext}[labelprefix=J]
+\printbibliography[title={Journal papers}, keyword=J, heading=subbibliography] 
+\end{refcontext}
+\begin{refcontext}[labelprefix=C]
+\printbibliography[title={Conference papers}, keyword=C, heading=subbibliography] 
+\end{refcontext}
+\begin{refcontext}[labelprefix=O]
+\printbibliography[title={Other publications}, keyword=O, heading=subbibliography] 
+\end{refcontext}
+
+\end{document}
