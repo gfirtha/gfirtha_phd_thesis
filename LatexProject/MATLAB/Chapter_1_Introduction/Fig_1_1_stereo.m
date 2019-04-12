@@ -57,7 +57,7 @@ plot(linspace(0,T_deboer(end),30), spline(T_deboer, DeBoer_T,linspace(0,T_deboer
 %xlim([0,20])    
 ylim([0,30])
 grid on
-xlabel( 'Interchannel time difference$ [\mathrm{ms}]$' , 'FontSize', ftsize );
+xlabel( 'Interchannel time difference $[\mathrm{ms}]$' , 'FontSize', ftsize );
 ylabel( '\parbox{.65in}{Phantom direction}$\phi_p$ [$^{\circ}$]' , 'FontSize', ftsize );
 legend('Leakey','de Boer','Location','SouthEast')
 set(gca,'FontName','Times New Roman');
