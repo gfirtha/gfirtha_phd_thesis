@@ -178,17 +178,17 @@ A hangtér-reprodukció ezt egy fix elhelyezésű hangszórósokaság megfelelő
 Ezzel szemben a binauralizációs módszerek a térhangzást fejhallgatók jelének megfelelő szűrésével érik el.
 
 A mai hangtér-reprodukciós rendszerek kiindulópontja a Blumlein által 1931-ben bevezetett kéthangszórós rendszer volt, bevezetve ezzel a sztereofónia alapjait.
-A sztereofónia manapság is a legelterjedtebb reprodukciós módszer, olyan hangrendszereknek képezi a működési elvét, mint a Dolby 5.1, 7.1, az NHK 22.2 rendszere, vagy épp a jelenleg state-of-the-art kereskedelemben is kapható térhatású rendszerek, a Dolby Atmosnak és a DTS-X-nek.
+A sztereofónia manapság is a legelterjedtebb reprodukciós módszer, olyan hangrendszereknek képezi a működési elvét, mint a Dolby 5.1, 7.1, az NHK 22.2 rendszere, vagy épp a jelenleg state-of-the-art kereskedelemben is kapható térhatású rendszerek, a Dolby Atmosnak és a DTS-X.
 Általánosan véve---függetlenül a hangrendszerben alkalmazott hangszórók számától---a sztereofónia célja pusztán a térérzetet befolyásoló tényezők (pl. füljelek közötti késleltetés, illetve amplitúdókülönbség) visszaállítása a hallgató pozíciójában.
 Ebből kifolyólag azonban a tökéletes térhangzás csak a tér egyetlen pontjában és szűk környezetében biztosítható, ez az ún. \emph{sweet spot}.
-A fenti megszorítás a sztereofón technikák fontos közös hátrányának tekinthető.
+A fenti megszorítás a sztereofon technikák fontos közös hátrányának tekinthető.
 
 A sztereofóniával ellentétben a fizikai hangtér-reprodukció (sound field synthesis) célja egy tetszőleges célhangtér fizikai jellemzőinek visszaállítása egy kiterjedt megfigyelési területen.
 Amennyiben ezt sikerül elérni, a hallgató a megfigyelési terület tetszőleges pontján eleve a kívánt akusztikai érzeti jellemzőket érzékeli.
 Természetesen egy hullámtér kiterjedt területen való szabályozása bonyolult feladat, a megfigyelési terület hangszórókkal való körbezárását igényeli.
 A fizikai hangtér-reprodukció alapfeladata ezek után az egyes hangszórók vezérlőjelének, vagy \emph{vezérlő függvényének} meghatározása úgy, hogy a teljes hangszórósokaság eredő hangtere megegyezzen az előírt \emph{virtuális térrel}.
 A hangszórósokaság elnevezése a továbbiakban a \emph{másodlagos forráseloszlás (secondary source distribution)}.
-A hangtér-reprodukció általános elrendezése a \ref{fig:introduction:sfs_aim}. ábrán látható.
+A hangtér-reprodukció általános elrendezése \azr{fig:introduction:sfs_aim}. ábrán látható.
 
 \begin{figure}  
 \small
@@ -212,7 +212,7 @@ Az utóbbi, implicit módszer, elterjedt nevén a \emph{hangtérszintézis (Wave
 %
 A hangtérszintézis elméleti alapjai a Delfti Műszaki Egyetemről származnak, ahol elsőként ültették át a szeizmikus hullámtan alapkoncepcióit a hangszóró- és mikrofonsorok elméletébe.
 A bevezetett \emph{tradicionális hangtérszintézis} elméletének alapja a Huygens-elv matematikai formájának tekinthető Rayleigh-integrál, amely integrál egy tetszőleges hangteret egy felületi integrál formájában ad meg.
-Az integrál magában tartalmazza egy síkmentén elhelyezett hangszórósokaság vezérlőfüggvényét.
+Az integrál magában tartalmazza egy sík mentén elhelyezett hangszórósokaság vezérlőfüggvényét.
 A gyakorlatban is megvalósítható vonalmenti hangszórósorok vezérlőjelének meghatározásához a Rayleigh-integrált az ún. \emph{stacionárius fázis módszerével} egy kontúrintegrállá redukálták, amely implicite tartalmazza a keresett vezérlőfüggvényeket.
 
 A technika korai megfogalmazása dipól tulajdonságokkal rendelkező hangszórósorokhoz szolgáltatott vezérlőjeleket,\footfullcite{Berkhout1988}\textsuperscript{,}\footfullcite{Berkhout1993:Acoustic_control_by_WFS} amelyet rövidesen a dinamikus hangszórókat jobban modellező másodlagos monopólusokra is kiterjesztettek.\footfullcite{doi:10.1121/1.404755}\textsuperscript{,}\footfullcite{Start1997:phd}\textsuperscript{,}\footfullcite{Verheijen1997:phd}
@@ -234,39 +234,38 @@ Ezen felül a két bemutatott módszer pontos kapcsolata sem volt a korábbiakba
 A jelen disszertáció a kiindulási alapoktól felülvizsgálja a hangtérszintézis elméletét. 
 A kutatás célja az elmélet teljes általánosítása volt, amely lehetővé teszi egy tetszőleges virtuális tér reprodukcióját tetszőleges hangszórókontúr alkalmazásával és az amplitúdóhelyes szintézis szabadon választott referenciagörbére való optimalizálásával.
 Az így kapott elméleti keretrendszer speciális esetekként magában tartalmazza a korábbiakban bemutatott módszereket: 
-Egy virtuális pontforrás egyenes hangszórósorral való szintézise egyenes referenciavonallal közvetlenül a tradicionális hangtérszintézis eredményére vezet.
+Egy virtuális pontforrás egyenes hangszórósorral és egyenes referenciavonallal való szintézise közvetlenül a tradicionális hangtérszintézis eredményére vezet.
 Hasonlóan, egy 2D virtuális teret egy referenciapontban reprodukálva a Spors által bemutatott vezérlőfüggvényeket kapjuk. 
 
 További kérdéseket vet fel az implicit hangtérszintézis és az explicit megoldások kapcsolata is, amelyet eddig a vonatkozó irodalomban csak speciális virtuális forrás-hangszórókontúr esetekre vizsgáltak:
-Kör és egyenes másodlagos forráseloszlás geometriák esetén bizonyos virtuális terekre megmutatható, hogy a hangtérszintéis az explicit, direkt megoldás nagy-frekvenciás közelítésének tekinthető.\footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}
+Kör és egyenes másodlagos forráseloszlás geometriák esetén bizonyos virtuális terekre megmutatható, hogy a hangtérszintéis az explicit, direkt megoldás nagyfrekvenciás közelítésének tekinthető.\footfullcite{Ahrens2012}\textsuperscript{,}\footfullcite{Spors2010:analysis_and_improvement}
 A kutatás további célja ennek a kapcsolatnak az általánosítása volt tetszőleges virtuális térre és hangszóró-, illetve referenciakontúrokra.
 
 A bemutatott eredmények egy összetett alkalmazási példájaként mozgó források szintézise is bemutatásra kerül.
-A mozgó hangforrások által keltett hullámok reprodukciójának kérdése már szinte a hangtérszintézis bevezetésével egy időben megjelent, mint természetes igény, ha időben dinamikusan változó akusztikai környezetek előállítása a cél.
+A mozgó hangforrások által keltett hullámok reprodukciójának kérdése már szinte a hangtérszintézis bevezetésével egyidőben természetes igényként jelent meg.
 A korai megoldások a tradicionális vezérlőfüggvények alapján próbálták megoldani a feladatot, a virtuális forrás pozíciójának idővariáns változtatásával.
-Ez az egyszerű megoldás azonban nem képes a Doppler-hatást megfelelőn visszaállítani és így hallható torzulásokhoz vezet a szintetizált térben.
+Ez az egyszerű megoldás azonban nem képes a Doppler-hatást megfelelően visszaállítani, és így hallható torzulásokhoz vezet a szintetizált térben.
 Ahrens az újragondolt hangtérszintézis elméletet terjesztette ki mozgó forrásokra is.\footfullcite{Ahrens2008moving}\textsuperscript{,}\footfullcite{Ahrens2008moving_b}
 A módszer alapvetően működőképes volt, azonban a technika alapvető korlátai miatt a visszaállított tér amplitúdóját a referenciapontban sem lehetett kontrollálni.
 Épp ezért, a kutatás további célja a bemutatott elméleti keretrendszer kiterjesztése volt dinamikus, idővariáns virtuális terekre.
 
 \section{Módszer}
 
-A következő fejezetben a disszertációban gyakran alkalmazott módszerek és analízis eszközök kerülnek rövid bemutatásra.
+A következő fejezetben a disszertációban gyakran alkalmazott módszerek és analíziseszközök kerülnek rövid bemutatásra.
 
 Az általánosított hangtérszintézis elmélet, valamint az explicit megoldás tértartománybeli alakja (amely a későbbiekben összehasonlíthatóvá teszi az explicit módszert a hangtérszintézissel) a különböző perem- és spektrális integrálok aszimptotikus közelítésén alapszik.
-Munkám során bevezettem a hangterek lokális tulajdonságait leíró mennyiségeket, így a lokális hullámszámvektort és a hullámfront görbületet, amelyek a későbbiekben nagyban elősegítették a fenti integrálközelítések fizikai interpretációját és megértését.
+Munkám során bevezettem a hangterek lokális tulajdonságait leíró mennyiségeket, így a lokális hullámszámvektort és a hullámfrontgörbületet, amelyek a későbbiekben nagyban elősegítették a fenti integrálközelítések fizikai interpretációját és megértését.
 Ezen lokális tulajdonságok ismert mennyiségek a nagyfrekvenciás akusztika, illetve sugárakusztika területein, de ez idáig nem kerültek bevezetésre a hangtér-reprodukció területén.
 
 A disszertáció központi matematikai módszere az ún. \emph{stacionárius fázis módszere (stationary phase approximation, SPA)}.
 Az eljárás komplex értékű függvények integráljának közelítő kiértékelésére szolgál az integrálás útjában található krtikus pontok, az ún. \emph{stacionárius pontok} körül.
 Gyakorlatilag a disszertáció ezen közelítés alkalmazásáról szól, azt 
 \begin{itemize}
-\item a virtuális teret leíró peremintegrálokra alkalmazva, amely segítségével a peremintegrálból a vezérlőfüggvények kiolvashatók.
+\item a virtuális teret leíró peremintegrálokra alkalmazva, amely segítségével a peremintegrálból a vezérlőfüggvények kiolvashatók,
 \item különböző hangterek és a vezérlőfüggvények Fourier integráljára alkalmazva, amely alapján meghatározhatóak az itt bevezetett tértartománybeli vezérlőfüggvények, valamint az itt bemutatott átlapolódásgátló szűrési módszer.
 \end{itemize}
 
-Az analitikus eredmények a szintetizált tér numerikus szimulációja alapján kerültek validációra.
-Ezek a szimulációk egyszerűen az egyes hangszóróelemek analitikusan rendelkezésre álló (a Green-függvény alapján) tereinek a vezérlőfüggvénnyel súlyozott összegeként kerültek kiértékelésre. 
+Az analitikus eredmények validálása a szintetizált tér numerikus szimulációjával történik, mely az egyes hangszóróelemek analitikusan rendelkezésre álló (a Green-függvény alapján) tereinek a vezérlőfüggvénnyel súlyozott összegeként állítható elő. 
 
 \section{Eredmények}
 
@@ -306,7 +305,7 @@ A Kirchhoff-közelítés stacionárius fázisú kiértékelésével a felületi 
 \label{fig:SFS_theory:25D_WFS_generals}   \end{minipage}
 \end{figure}  
 
-Ez a dimenzió-csökkentési eljárás azonban az amplitúdóhelyes szintézis helyét egyetlen megfigyelési pontra, az ún. \emph{referenciapontra} korlátozza.
+Ez a dimenziócsökkentési eljárás azonban az amplitúdóhelyes szintézis helyét egyetlen megfigyelési pontra, az ún. \emph{referenciapontra} korlátozza.
 A Spors-féle hangtérszintézis elmélet ebben a referenciapontban tette lehetővé 2D virtuális terek szintézisét.
 Disszertációmban bemutatom, hogy egy további, a horizontális síkban történő aszimptotikus közelítés alkalmazásával minden egyes másodlagos forráselemhez (hangszóróhoz) saját referenciapont rendelhető.
 Ennek a forráselemenkénti referenciapontnak a helye analitikusan meghatározható az újonnan bevetett lokális hullámszámvektor segítségével, amely vektor definíciószerűen adott pontban a hullám lokális terjedési irányába mutat.
@@ -315,14 +314,14 @@ Teoretikus, folytonos másodlagos forráseloszlást feltételezve a referenciapo
 Amennyiben a kívánt referenciagörbe alakja analitikusan ismert, meghatározható az a frekvenciafüggetlen erősítési tényező, ami az amplitúdóhelyes szintézist erre a görbére valósítja meg.
 Ez alapján tetszőleges virtuális forrás-másodlagos forráseloszlás-referenciagörbe specifikus vezérlőfüggvények vezethetők be.\cite{Firtha2016_booklet}
 
-Egyszerű példaként a \ref{fig:SFS_theory:25D_WFS_generals} ábra egy 3D pontforrás általános alakú másodlagos forráseloszlással történő szintézisét mutatja be.
+Egyszerű példaként \azr{fig:SFS_theory:25D_WFS_generals}.\ ábra egy 3D pontforrás általános alakú másodlagos forráseloszlással történő szintézisét mutatja be.
 A referenciagörbe egy koncentrikus kontúr a megfigyelési területen belül.
 Az ábra (b) része alátámasztja, hogy a vezérlőfüggvényekkel a teljes megfigyelési területen fázishelyes szintézis érhető el (azaz a hullámfront alakja helyesen visszaállítható), míg az amplitúdóhelyes szintézis a referenciagörbe azon részére korlátozódik, amelyre rálátni az adott virtuális forráspozícióból.
 
 \subsection{A tértartománybeli explicit megoldás}
 
-Az \emph{explicit megoldás} célja a hangtér-reprodukciós inverz probléma közvetlen, direkt megoldása, a konvolúciós integrál spektrális tartományba való transzformációjával.
-A spektrális, vagy hullámszámtartományban a konvolúció szorzattá transzformálódik és így a vezérlőfüggvény spektruma a virtuális hangtér és a másodlagos források terének a referenciagörbén mért spektrumainak hányadosaként áll elő.
+Az \emph{explicit megoldás} célja a hangtér-reprodukciós inverz probléma közvetlen, direkt megoldása a konvolúciós integrál spektrális tartományba való transzformációjával.
+A spektrális vagy hullámszámtartományban a konvolúció szorzattá transzformálódik és így a vezérlőfüggvény spektruma a virtuális hangtér és a másodlagos források terének a referenciagörbén mért spektrumainak hányadosaként áll elő.
 A másodlagos forráseloszlást és a referenciagörbét és végtelen egyeneseknek választva a módszerhez szükséges transzformáció egy egyszerű térbeli Fourier transzformáció, és a technikát a \emph{spektrális osztás módszerének (Spectral Division Method, SDM)} nevezzük.
 Természetesen a vezérlőfüggvények közvetlenül alkalmazható tértartománybeli alakja egy térbeli inverz Fourier transzformáció formájában adott, amely transzformáció azonban általában nem végezhető el analitikusan.
 
@@ -330,7 +329,7 @@ A stacionárius fázis módszer alkalmazásával aszimptotikus, nagyfrekvenciás
 A Kirchhoff-közelítés érvényessége mellett ezek a vezérlőfüggvények tetszőleges konvex hangszórósokaságra érvényesek (azt lokálisan lineárisnak feltételezve).
 Fontos különbség a hangtérszintézishez képest, hogy az új explicit vezérlőfüggvény kiértékeléséhez a virtuális hangtér a referenciagörbén vett értékének az ismerete szükséges, míg a hangtérszintézis vezérlőfüggvények a virtuális tér a hangszórósoron mért jellemzői alapján számíthatók.
 
-A Rayleigh-integrál aszimptotikus kiértékelésének segítségével kifejeztem az új explicit vezérlőfüggvényeket a virtuális tér a másodlagos forráseloszláson vett értéke alapján, amely eredmény teljesen egybeesik a hangtérszintézis vezérlőfüggvényekkel.
+A Rayleigh-integrál aszimptotikus kiértékelésének segítségével kifejeztem az új explicit vezérlőfüggvényeket a virtuális tér a másodlagos forráseloszláson vett értéke alapján, amely eredmény egybeesik a hangtérszintézis vezérlőfüggvényekkel.
 Így tehát általánosan bizonyítottam, hogy a hangtérszintézis az explicit megoldás aszimptotikus, nagyfrekvenciás közelítését adja tetszőleges virtuális forrás, másodlagos forráseloszlás és referenciagörbe esetén \cite{Firtha2018:WFS_vs_SDM_booklet}.
 A két módszer aszimptotikus egyezése a vonatkozó irodalomban eddig csak speciális virtuális forrásmodellek és hangszóróeloszlások esetére volt belátva \cite{Schultz2019:HOA_vs_WFS_booklet}.
 
@@ -357,28 +356,28 @@ A két módszer aszimptotikus egyezése a vonatkozó irodalomban eddig csak spec
 A hangtérszintézis gyakorlati alkalmazása során az ideálisan folytonos másodlagos pontforráseloszlás helyett egymástól véges távolságra, diszkrét pozíciókban elhelyezett hangszórósokaságot alkalmazunk.
 Az idealizált fizikai modell megsértéséből fakadóan a szintetizált térben járulékos hatások, ún. \emph{térbeli átlapolódási jelenségek} jelennek meg.
 A jelenség az időtartományban az eredeti, virtuális hullámfrontot követő másodlagos, az egyes hangszóróelemekből származó gömbi hullámfrontok sorozataként jelentkezik.
-Ezek az átlapolódó ,,visszhangok'', amelyek az egyes hangszóró vezérlőfüggvények az \emph{átlapolódási frekvencia} feletti komponenseit tartalmazzák, a \ref{fig:SFS_theory:anti-aliased_synthesis}. (a) ábrán figyelhetők meg.
+Ezek az átlapolódó ,,visszhangok'', amelyek az egyes hangszóró vezérlőfüggvények az \emph{átlapolódási frekvencia} feletti komponenseit tartalmazzák, \azr{fig:SFS_theory:anti-aliased_synthesis}. (a) ábrán figyelhetők meg.
 
 Az explicit hangtér-reprodukciós megoldás nagy előnye, hogy a fenti átlapolódási jelenségek a spektrális tartományban egyszerűen modellezhetőek, amely modell a módszerek ekvivalenciája miatt alkalmazható a hangtérszintézisre is.
 Az explicit vezérlőfüggvények aszimptotikus vizsgálatával azonosítottam, mely másodlagos forráselemek járulnak hozzá a térbeli átlapolódáshoz egy adott frekvencián.
 Adott frekvencián ezeket a forrásokat elnémítva a térbeli átlapolódás elkerülhető, a megfigyelési terület csökkenése árán.
 Szélessávú gerjesztés esetén a fenti átlapolódásgátló szűrés a vezérlőfüggvények pozíciófüggő aluláteresztő szűrésével valósítható meg.
 Végeredményben tehát egyszerű aluláteresztő szűrő alapú átlapolódásgátló szűrési stratégiát vezettem be, ahol a szűrő vágási frekvenciája a virtuális hangtér lokális hullámszámvektorán keresztül analitikusan adott.
-A módszer alkalmazásával a megfigyelési terület egy kitüntetett iránya mentén átlapolódásmentes, teljessávú szintézis valósítható meg, ahogy az a \ref{fig:SFS_theory:anti-aliased_synthesis}. (b) ábra mutatja.
+A módszer alkalmazásával a megfigyelési terület egy kitüntetett iránya mentén átlapolódásmentes, széles sávú szintézis valósítható meg, ahogy az \azr{fig:SFS_theory:anti-aliased_synthesis}. (b) ábra mutatja.
 A tér többi irányában a virtuális hullámfront sávkorlátozott a szűrés miatt, valamint oldalirányba terjedő átlapolódó hullámfrontok maradnak jelen a térben, amelyek azonban már kizárólag irányított másodlagos forrásokkal nyomhatóak el.
 
 A bevezetett módszer alternatívájaként a probléma megközelíthető pusztán a tértartományban, szintén a lokális hullámszámvektor alkalmazásával.
-Ezt a megközelítés alkalmazza a \cite{8611109_booklet}-ban leírt módszer, amely folyóiratcikknek társszerzője vagyok.
+Ezt a megközelítést alkalmazza a \cite{8611109_booklet}-ban leírt módszer, amely folyóiratcikknek társszerzője vagyok.
 
 \subsection{Mozgó források szintézise}
 
-A bevezetett elméleti keretrendszer alkalmazására szolgáló összetett példaként megvizsgáltam a mozgó hangforrások keltett tér reprodukciójának lehetőségeit.
+A bevezetett elméleti keretrendszer alkalmazására szolgáló összetett példaként megvizsgáltam a mozgó hangforrások által keltett tér reprodukciójának lehetőségeit.
 Ebben az esetben az elsődleges feladat a \emph{Doppler-hatás} pontos visszaállítása, amely azonban eleve biztosítva van megfelelő analitikus forrásmodell alkalmazása esetén.
 
 Munkám során kiterjesztettem a lokális hullámszámvektor fogalmát idővariáns hangterekre is és a stacionárius fázisú módszerrel mozgó források szintézisére alkalmas hangtérszintézis vezérlőfüggvényt vezettem be.
 A vezérlőfüggvény lehetővé teszi egy tetszőleges (a megfigyelő síkjában) mozgó forrás szintézisét tetszőleges konvex másodlagos forráseloszlás alkalmazásával. 
 Az amplitúdóhelyes szintézis tetszőleges referenciagörbén megvalósítható \cite{firtha2016wave_booklet, doi:10.1121/1.4996126_booklet, Firtha2015:daga_booklet}.
-A módszer alkalmazását a \ref{fig:SFS_theory:25D_WFS_moving_source}. ábra szemlélteti egy egyenletesen mozgó harmonikus forrás szintézisének példáján keresztül.
+A módszer alkalmazását \azr{fig:SFS_theory:25D_WFS_moving_source}. ábra szemlélteti egy egyenletesen mozgó harmonikus forrás szintézisének példáján keresztül.
 Látható, hogy a vezérlőfüggvények a reprodukált tér amplitúdóját az előírt referenciagörbére optimalizálják. 
 
 \begin{figure}[t!]
@@ -427,14 +426,14 @@ Ennek eredményeképp a statikus esetben is fellépő \emph{hangszíneződésen}
 
 Harmonikus forrásgerjesztés esetén ez a frekvenciatorzítás új, nemkívánatos frekvenciakomponensekként jelenik meg, ahogy az már korábban is ismert volt a vonatkozó irodalomban.\footfullcite{Franck2007}
 A szintetizált tér spektrális vizsgálata alapján analitikus formulát adtam ezekre az átlapolódó frekvenciakomponensek frekvenciájára, és rámutattam, hogy a másodlagos forráseloszlás alakjának megfelelő megválasztásával a frekvenciatorzítás hatása jelentősen csökkenthető \cite{firtha2016:daga_booklet}.
-Az átlapolódás elkerülése szempontjából az optimális választás köralakú hangszórósokaság alkalmazása.
+Az átlapolódás elkerülése szempontjából az optimális választás kör alakú hangszórósokaság alkalmazása.
 
 Végezetül kiterjesztettem a korábban bevezetett átlapolódás elleni stratégiát mozgó források szintézisére is.
 A javasolt módszerrel az átlapolódás a hangszóró vezérlőfüggvények egyszerű aluláteresztő szűrésével megvalósítható.
 A szűrő idővariáns vágási frekvenciája analitikusan ismert, a mozgó forrás lokális hullámszámvektorának függvényében \cite{Firtha2018_daga_moving_source_booklet}.
-Hasonlóan a statikus esethez, az átlapolódásmentes, teljessávú szintézis csupán egy kitüntetett irányba valósítható meg.
+Hasonlóan a statikus esethez, az átlapolódásmentes, teljessávú szintézis csupán egy kitüntetett irányban valósítható meg.
 Kör alakú hangszóróeloszlás esetén ez mindig a radiális irány, így a hangszórótömb közepén tetszőleges időpillanatban tetszőleges forráspálya mellett optimális szintézis érhető el.
-Ezt az esetet szemlélteti a \ref{Fig:Moving_sources:anti-aliased_synth_moving_source}. ábra egy általános görbe pálya mentén mozgó impulzussorozat-gerjesztésű forrás szintézise esetén.
+Ezt az esetet szemlélteti \azr{Fig:Moving_sources:anti-aliased_synth_moving_source}. ábra egy általános görbe pálya mentén mozgó impulzussorozat-gerjesztésű forrás szintézise esetén.
 
 \clearpage	
 \section{Tézisek}
@@ -442,17 +441,17 @@ Ezt az esetet szemlélteti a \ref{Fig:Moving_sources:anti-aliased_synth_moving_s
 
 \begin{thesisgroup}[A hangtérszintézis elméletének általánosítása]
 Bevezettem egy általánosított hangtérszintézis elméletet, amely lehetővé teszi egy tetszőleges virtuális tér reprodukcióját tetszőleges alakú, konvex hangszóróeloszlás alkalmazásával és a szintézis amplitúdója tetszőleges alakú referenciagörbére optimalizálható.
-Az általánosított elmélet speciális esetekként magában tartalmazza  a korábbi hangtérszintézis módszereket \cite{Firtha2016_booklet}.
+Az általánosított elmélet speciális esetekként tartalmazza  a korábbi hangtérszintézis módszereket \cite{Firtha2016_booklet}.
 \begin{thesis}
 Szemléletes fizikai interpretációt adtam a peremintegrálok stacionárius fázisú közelítésének:
-Bevezettem a tetszőleges harmonikus hangtérre értelmezett lokális hullámszámvektort, amely felhasználásával megmutattam, hogy peremintegrál stacionárius fázis közelítése a megfigyelési pozícióban virtuális hangtér és a perem mentén elhelyezett másodlagos források terének hullámfront-illesztéseként értelmezhető.
+Bevezettem a tetszőleges harmonikus hangtérre értelmezett lokális hullámszámvektort, amely felhasználásával megmutattam, hogy a peremintegrál stacionárius fázis közelítése a megfigyelési pozícióban a virtuális hangtér és a perem mentén elhelyezett másodlagos források terének hullámfront-illesztéseként értelmezhető.
 \end{thesis}
 \begin{thesis}
 Hangtérszintézis vezérlőfüggvényeket vezettem be tetszőleges konvex másodlagos forráseloszlásra a fenti fizikai magyarázat alapján, nagyfrekvenciás feltételezések mellett.
 \end{thesis}
 \begin{thesis}
 Analitikus összefüggést adtam a referenciagörbe általános alakjára, amely görbe azon pontok összessége, amelyeken az szintézis amplitúdóhibája minimális.
-Bemutattam, hogyan befolyásolható ezen referenciagörbe alakja egy egyszerű, frekvenciafüggetlen amplitúdó tényezővel a vezérlőfüggvényben.
+Bemutattam, hogyan befolyásolható ezen referenciagörbe alakja a vezérlőfüggvény frekvenciafüggetlen amplitúdótényezőjével.
 Bemutattam, hogy a korábbi hangtérszintézis módszerek milyen speciális esetei az általánosított elméletnek virtuális forrás-másodlagos eloszlás-referenciagörbe szempontjából.
 \end{thesis}
 \end{thesisgroup}
@@ -466,8 +465,8 @@ Az explicit megoldás aszimptotikus közelítésével nagyfrekvenciás térbeli 
 Tértartománybeli explicit vezérlőfüggvényeket vezettem be a térbeli Fourier transzformáció stacionárius fázisú közelítésével.
 Az új vezérlőfüggvények kiértékeléséhez a virtuális hangtér jellemzőit az előírt referenciagörbén szükséges ismerni \cite{Firtha2017:daga_booklet}.\end{thesis}
 \begin{thesis}
-Bebizonyítottam, hogy nagyfrekvenciás feltételek mellett a explicit megoldás és a hangtérszintézis (azaz az implicit megoldás) aszimptotikusan megegyeznek tetszőleges virtuális hangtér esetére \cite{Firtha2018:WFS_vs_SDM_booklet}.
-A bizonyítás alapja a térbeli explicit vezérlőfüggvények kifejezése volt a virtuális forrás a másodlagos forráseloszláson mért jellemzői alapján.
+Bebizonyítottam, hogy nagyfrekvenciás feltételek mellett az explicit megoldás és a hangtérszintézis (azaz az implicit megoldás) aszimptotikusan megegyeznek tetszőleges virtuális hangtér esetére \cite{Firtha2018:WFS_vs_SDM_booklet}.
+A bizonyítás alapja a térbeli explicit vezérlőfüggvények kifejezése volt a virtuális forrás másodlagos forráseloszláson mért jellemzői alapján.
 \end{thesis}
 \begin{thesis}
 Egyszerű átlapolódásgátló stratégiát mutattam be a másodlagos forráseloszlás diszkretizálásából származó átlapolódó hullámfrontok csillapítása érdekében.
@@ -523,7 +522,7 @@ A javasolt módszerrel az átlapolódó hullámfrontok egyszerű idővariáns al
 \printbibliography[title={Folyóiratcikkek}, keyword=J, heading=subbibliography] 
 \end{refcontext}
 \begin{refcontext}[labelprefix=C]
-\printbibliography[title={Konferencia közlemények}, keyword=C, heading=subbibliography] 
+\printbibliography[title={Konferenciaközlemények}, keyword=C, heading=subbibliography] 
 \end{refcontext}
 \begin{refcontext}[labelprefix=O]
 \printbibliography[title={Egyéb publikációk}, keyword=O, heading=subbibliography] 
