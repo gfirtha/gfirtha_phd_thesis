@@ -62,7 +62,7 @@ set(gca,'FontName','Times New Roman');
 % 
 
 xlabel('$k_x$ [rad/m]')
-ylabel('$f/f_0$ []')
+ylabel('$f/f_0$')
 xlim([-70,70])
 shading interp
 caxis(cax)
@@ -79,7 +79,7 @@ caxis(cax)
 axis tight
 set(gca,'FontName','Times New Roman');
 xlabel('$k_x$ [rad/m]')
-ylabel('$f/f_0$ []')
+ylabel('$f/f_0$')
 xlim([-70,70])
 col = colorbar;
 title(col,'[dB]' , 'Interpreter', 'LaTex' , 'FontSize', ftsize-1);

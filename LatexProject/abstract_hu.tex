@@ -2,15 +2,15 @@ A hangtér-reprodukció célja egy tetszőleges virtuális akusztikai környezet
 A reprodukció alapfeladata ezen hangszóró-vezérlőfüggvények meghatározása úgy, hogy az egyes hangszóróelemekből származó hullámok összege megegyezzen az elérendő virtuális térrel.
 Két alapvető módszer létezik a probléma megoldására:
 Az explicit megoldás célja a szintetizált teret leíró integrálegyenlet közvetlen megoldása a vezérlőfüggvényre vonatkozóan, amely egy megfelelő spektrális dekompozícióval érhető el.
-Ezzel szemben az implicit megoldás, vagy elterjedtebb nevén a hangtérszintézis (Wave Field Synthesis) alapja a virtuális hangteret előírt peremfeltételek alapján leíró kontúrintegrál meghatározása, amely implicite magában tartalmazza a keresett vezérlőfüggvényeket.
+Ezzel szemben az implicit megoldás, vagy elterjedtebb nevén a hangtérszintézis (Wave Field Synthesis) alapja a virtuális hangteret peremfeltételek alapján leíró kontúrintegrál meghatározása, amely implicite magában tartalmazza a keresett vezérlőfüggvényeket.
 
 A jelen disszertáció a hangtérszintézis elméletét tárgyalja újra a kiindulási alapoktól kezdve a technika általánosításának érdekében.
-Fontos eredményként hangszóró-vezérlőfüggvényeket kerülnek bemutatásra, amelyek alkalmazásával egy tetszőleges virtuális hangtér előállítható szabadon választott másodlagos forráskontúrral és a szintézis tetszőleges referenciagörbére optimalizálható, amely görbe mentén amplitúdóhelyes szintézis érhető el.
+Fontos eredményként hangszóró-vezérlőfüggvényeket kerülnek bemutatásra, amelyek alkalmazásával egy tetszőleges virtuális hangtér előállítható szabadon választott másodlagos forráskontúrral és a szintézis tetszőleges referenciagörbére optimalizálható, amely görbe mentén amp\-li\-tú\-dó\-he\-lyes szintézis érhető el.
 
-Ezután az alapvetően a spektrális tartományban adott explicit megoldás nagyfrekvenciás tértartománybeli közelítése kerül bemutatásra, amely bizonyítottan megegyezik a bemutatott hangtérszintézis módszerrel. 
+Ezután az alapvetően a spektrális tartományban adott explicit megoldás nagyfrekvenciás, tértartománybeli közelítése kerül bemutatásra, amely megoldás a bemutatott hangtérszintézis módszerrel megegyező alakra hozható. 
 Ez tehát bizonyítja a két módszer nagyfrekvenciás, aszimptotikus ekvivalenciáját általános szintézis problémákra.
-A dolgozat ezen felül egy egyszerű aszimptotikus átlapolódásgátló-szűrési stratégiát mutat be, amely alapján a hangszórósor diszkrét jellege miatt jelenlévő másodlagos, átlapolódó hullámfrontok hatékonyan elnyomhatók.
+A dolgozat ezen felül egy egyszerű aszimptotikus átlapolódásgátló-szűrési stratégiát is bemutat, amely alapján a hangszórósor diszkrét jellege miatt jelenlévő másodlagos, térbeli-átlapolódó hullámfrontok hatékonyan elnyomhatók.
 
 Végezetül összetett példaként a leírtak alkalmazására a mozgó források által keltett hangterek szintézisének kérdései kerülnek tárgyalásra.
-A dolgozatban bemutatott módszerek mind egyszerűen kiterjeszthetőek mozgó források szintézisére:
-Mind hangtérszintézis, mind explicit vezérlőfüggvények bevezetésre kerülnek erre a dinamikus, idővariáns esetre is, az átlapolódásgátló-szűrési stratégia kiterjesztésével együtt.
+A dolgozatban bemutatott módszerek egyszerűen kiterjeszthetőek mozgó források szintézisére:
+hangtérszintézis és explicit vezérlőfüggvények kerülnek bevezetésre erre a dinamikus, idővariáns esetre is, az átlapolódásgátló-szűrési stratégia kiterjesztésével együtt.
