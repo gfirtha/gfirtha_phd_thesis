@@ -65,11 +65,11 @@ for n = 1 : length(Dx0)
 end
 close(wb)
 %%
-ftsize = 13.75;
-f = figure('Units','points','Position',[200,200,400,470]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,260,306]);
 set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.565  0.72 .45
-        0.1   0.035 0.85 .5];
+        0.1   0.035 0.89 .5];
     
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x,y,real(field_synth));
@@ -77,12 +77,12 @@ axis equal tight
 caxis([-1 1] * 5e-2);
 shading interp
 hold on
-line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
-line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
+line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',1.25);
+line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',1.25);
 plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 
 %
@@ -94,14 +94,14 @@ axis equal tight
 caxis([-52 ,-20])
 shading interp
 hold on
-line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
-line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',2);
+line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',1.25);
+line(x_ssd(w0(1:Nc),1), x_ssd(w0(1:Nc),2), 0*x_ssd(w0(1:Nc),1), 'Color', 'black','LineStyle','-','LineWidth',1.25);
 plot( xs(:,1), xs(:,2), 'ok','MarkerSize',3, 'MarkerFaceColor','black')
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 c = colorbar;
-title(c,'[dB]'  , 'FontSize', ftsize);
+title(c,'[dB]'  , 'FontSize', ftsize-1);
 set(gca,'FontName','Times New Roman');
 %
 %
@@ -109,4 +109,4 @@ allAxesInFigure = findall(f,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
 set(gcf,'PaperPositionMode','auto');
-%print( fullfile( '../..','Figures/SFS_theory','3D_WFS_general' ) ,'-dpng')
+print( '-r300',  fullfile( '../..','Figures/SFS_theory','3D_WFS_general' ) ,'-dpng')

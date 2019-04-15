@@ -34,8 +34,8 @@ xr = [xs_e0+R0*cos(fi), 0+R0*sin(fi)];
 kx = k*(xr(:,1)-xs_e0)./sqrt( ( xr(:,1) - xs -v*t ).^2 + xr(:,2).^2*(1-M^2) );
 ky = k*(xr(:,2)-ys_e )./sqrt( ( xr(:,1) - xs -v*t ).^2 + xr(:,2).^2*(1-M^2) );
 %%
-ftsize = 13;
-f = figure('Units','points','Position',[200,120,320,300]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,120,244,229]);
 set(f,'defaulttextinterpreter','latex')
 
 % pos = [ 0.1 0.16 0.86 .86 ];
@@ -49,8 +49,8 @@ axis equal tight
 hold on
 contour( x, y, real(p),[0 0],'-k');
 caxis([-1,1]*.15);
-xlabel( '$x \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 xlim([x(1),x(end)]);
 ylim([y(1),y(end)]);

@@ -107,6 +107,7 @@
 \newcommand{\vk}{\mathbf{k}}
 \newcommand{\vhk}{\hat{\mathbf{k}}}
 \newcommand{\kn}{k_\mathrm{n}}
+\newcommand{\kt}{k_\mathrm{t}}
 \newcommand{\Oi}{\Omega_{\mathrm{i}}}
 \newcommand{\Oe}{\Omega_{\mathrm{e}}}
 \newcommand{\dO}{\partial \Omega}
@@ -149,5 +150,40 @@
 \newcommand{\Tret}{{\scriptstyle \frac{|\vx-\vxo|}{c} }}
 \newcommand{\TretS}{{\scriptstyle \frac{|\vx-\vxo^*(\vx,t)|}{c} }}
 
+\newcommand{\FT}[2][]{
+\mathcal{F}_{#1} \left\{ #2 \right\}
+}
+\newcommand{\IFT}[2][]{
+\mathcal{F}^{-1}_{#1} \left\{ #2 \right\}
+}
 
 \renewcommand{\arraystretch}{1}
+
+\newtheoremstyle{thesisgroupstyle}%
+	{1em}% 				% Space above
+	{5mm}% 				% Space below
+	{\slshape}%			% Font type of body
+	{0mm}%				% Indentation			
+	{\bfseries}%		% Font of title
+	{\newline}%			% Punctuation between head and body
+	{1em}%				% Space after theorem head
+	{}% 				% Manually specify head
+\makeatother
+\theoremstyle{thesisgroupstyle}
+\newtheorem{thesisgroup}{Thesis group}
+\renewcommand{\thethesisgroup}{\Roman{thesisgroup}}
+\makeatletter
+\newtheoremstyle{indented}
+  {5pt}% space before
+  {5pt}% space after
+  {\addtolength{\@totalleftmargin}{3.5em}
+   \addtolength{\linewidth}{-3.5em}
+   \parshape 1 3.5em \linewidth}% body font
+  {}% indent
+  {\bfseries}% header font
+  {.}% punctuation
+  {.75em}% after theorem header
+  {}% header specification (empty for default)
+\makeatother
+\theoremstyle{indented}
+\newtheorem{thesis}{Thesis}[thesisgroup]

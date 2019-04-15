@@ -24,13 +24,13 @@ Gkx = -1i/2*exp(1i*(Kx*x0+Ky*y0)).*exp(-sqrt(-k^2 + (Kx.^2 + Ky.^2))*abs(z0))./ 
 [X,Y] = meshgrid(x,y);
 Gx = 1/(4*pi)*exp(-1i*k*sqrt((X-x0).^2+(Y-y0).^2 + z0.^2))./sqrt((X-x0).^2+(Y-y0).^2 + z0.^2);
 %%
-ftsize = 11;
-f = figure('Units','points','Position',[200,200,500,220]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,407,170]);
 set(f,'defaulttextinterpreter','latex')
 
    
-pos = [ 0.06   0.2 0.42 .75
-        0.575  0.2 0.42 .75];
+pos = [ 0.035   0.2 0.45 .75
+        0.575  0.2 0.45 .75];
         
 scale = 20;
 q = 4;
@@ -47,8 +47,8 @@ zlim([-2,3])
 
 set(gca,'TickLabelInterpreter', 'tex');
 
-xlabel('$x/\lambda \rightarrow []$','Interpreter','latex','FontSize',ftsize)
-ylabel('$y/\lambda \rightarrow []$','Interpreter','latex','FontSize',ftsize)
+xlabel('$x/\lambda$','Interpreter','latex','FontSize',ftsize)
+ylabel('$y/\lambda$','Interpreter','latex','FontSize',ftsize)
 zlabel('$\mathcal{R}\left(G(x,y,0,\omega_0)\right)$','Interpreter','latex','FontSize',ftsize)
 set(gca,'FontName','Times New Roman');
 
@@ -63,8 +63,8 @@ axis equal
 caxis([0,1]*10e-1);
 zlim([0,1])
 set(gca,'TickLabelInterpreter', 'tex');
-xlabel('$k_x/k \rightarrow []$','Interpreter','latex','FontSize',ftsize)
-ylabel('$k_y/k \rightarrow []$','Interpreter','latex','FontSize',ftsize)
+xlabel('$k_x/k$','Interpreter','latex','FontSize',ftsize)
+ylabel('$k_y/k$','Interpreter','latex','FontSize',ftsize)
 zlabel('$|(\tilde{G}(k_x,k_y,0,\omega_0)|$','Interpreter','latex','FontSize',ftsize);
 
 set(gca,'FontName','Times New Roman');

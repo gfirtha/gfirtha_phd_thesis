@@ -247,7 +247,7 @@ P(\vx,\omega) = \oint_{C} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td s ( \vxo
 \begin{frame}
 \frametitle{Thesis group I: Unified WFS theory}
 \begin{itemize}
-\item Novel concept: The local wavenumber vector
+\item Introduced concept: 	local wavenumber vector
 \begin{columns}
 %
 \column{0.4\textwidth}
@@ -321,8 +321,8 @@ Result: Generalized/unified 2.5D WFS driving functions for
 %	\centering
 	\begin{overpic}[width = 1\columnwidth ]{figs/25D_WFS_general.png}
 	\scriptsize
-	\put(15,33){Synthesized field}
-	\put(62,33){Error of synthesis}
+	\put(15,31){Synthesized field}
+	\put(62,31){Error of synthesis}
 	\end{overpic}
 \end{figure}
 \item Result:
@@ -357,7 +357,11 @@ Reference curve 	 &  reference line  &  reference point & arbitrary
 %	\item Unified WFS with linear SSD, 3D virtual point source and parallel reference line $\rightarrow$ Traditional WFS
 %	\item Unified WFS with 2D virtual field and single reference point $\rightarrow$ Revisited WFS
 %	\end{itemize}	
-	\vspace{5mm}
+	\vspace{2mm}
+	
+\begin{itemize}
+\item Example: Unified WFS for 3D virtual point source with linear SSD and linear reference curve: traditional WFS obtained
+\end{itemize}
 \begin{tcolorbox}
 \begin{itemize}
 \item Summary:
@@ -375,7 +379,7 @@ Thesis group summary:
 	\begin{itemize}
 	\item Thesis I.1: Physical interpretation for the SPA of boundary integrals: wave front matching of the virtual field and the secondary sound fields [J2]
 	\vspace{3mm}
-	\item Thesis I.2: WFS driving functions for arbitrary virtual fields and SSD shapes [J2]
+	\item Thesis I.2: 2.5D WFS driving functions for arbitrary virtual fields and SSD shapes [J2]
 	\vspace{3mm}
 	\item Thesis I.3: Analytical expressions for the \emph{reference curve} and the \emph{referencing function} [J2]
 	\end{itemize}
@@ -492,7 +496,7 @@ D(x_0,\omega) \stackrel{\text{SPA}}{\approx}  \frac{1}{2\pi} \int_{-\infty}^{\in
 \item Result
 	\begin{itemize}
 		\item no phase error inside the listening region		
-		\item amplitude error is minimal over part of the reference line
+		\item amplitude error is minimal over the reference circle
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -534,7 +538,7 @@ Relation of the explicit and implicit solutions:
 	\end{figure} 
 	\vspace{-7mm}
 		\begin{itemize}
-		\item Avoiding spatial aliasing: by identifying source position of aliasing waves by applying SPA to the explicit driving functions
+		\item Avoiding spatial aliasing: expressing local aliasing frequency on the SSD by applying SPA to the explicit driving functions
 		\end{itemize}
 \end{frame}
 
@@ -581,7 +585,7 @@ Thesis group summary:
 	\begin{itemize}
 	\item Thesis II.1: Analytical SDM driving functions merely in the spatial domain, expressed in terms of the target sound field measured along an arbitrary reference curve [J4]	\vspace{3mm}
 	\item Thesis II.2: Under high-frequency assumptions the explicit SDM and the implicit WFS driving functions are completely equivalent for an arbitrary target sound field [J4]	\vspace{3mm}
-	\item Thesis II.3: Novel anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals [C10]
+	\item Thesis II.3: Anti-aliasing criterion, that can be implemented in practice by simple low-pass filtering of the loudspeaker driving signals [C10]
 	\end{itemize}
 \end{frame}
 	
@@ -671,7 +675,7 @@ Thesis group summary:
 	\item amplitude correct synthesis over visible part of the reference curve
 	\item phase correct synthesis over the listening region
 \end{itemize}
-\item For general trajectories: definition of emission time/propagation time delay is of challenge
+\item For general trajectories: definition of emission time/propagation time delay is challenging
 \end{itemize}
 \vspace{-1mm}
 \begin{tcolorbox}
@@ -761,20 +765,20 @@ Result: spatial explicit driving functions for uniformly moving sources
 \small
 Avoiding spatial aliasing
 \only<1>{\begin{center}\begin{figure} \includegraphics[scale=0.4]{figs/antialiased_synth_moving_source.png} \end{figure}\end{center}}
-%\only<2>{
-%\includemedia[
-%  width=1\linewidth,
-%  height=0.425\linewidth, % 16:9
-%  addresource= vids/aliasing.mp4, 
-%  transparent,
-%  activate=pageopen,
-%  passcontext,
-%  flashvars={
-%  source= vids/aliasing.mp4
-%  &autoPlay=true % start playing on activation
-%  &loop=true
-%  }
-%]{}{VPlayer.swf} }
+\only<2>{
+\includemedia[
+  width=1\linewidth,
+  height=0.425\linewidth, % 16:9
+  addresource= vids/aliasing.mp4, 
+  transparent,
+  activate=pageopen,
+  passcontext,
+  flashvars={
+  source= vids/aliasing.mp4
+  &autoPlay=true % start playing on activation
+  &loop=true
+  }
+]{}{VPlayer.swf} }
 \vspace{-3mm}
 \begin{tcolorbox}
 \begin{itemize}
@@ -816,7 +820,7 @@ Thesis group summary:
 	\vspace{3mm}	
 	\item Analytical treatment of spatial aliasing artifacts regarding frequency distortion artifacts and optimal SSD shape choice [C8]
 	\vspace{3mm}	
-	\item Extension of the novel anti-aliasing strategy for the case of moving sources [C11]
+	\item Extension of the anti-aliasing strategy for the case of moving sources [C11]
 	\end{itemize}
 \end{frame}
 
@@ -830,7 +834,7 @@ Thesis group summary:
 	\item Unified Wave Field Synthesis framework for arbitrary virtual fields and SSD shapes	\vspace{3mm}	
 	\item Spatial form of the explicit approach, proven to coincide with the unified WFS solution 	\vspace{3mm}	
 	\item 2.5D WFS and explicit driving function for sources, moving on arbitrary trajectories 	\vspace{3mm}	
-	\item Novel anti-aliasing strategy for both static and dynamic virtual fields
+	\item Anti-aliasing strategy for both static and dynamic virtual fields
 	\end{itemize}
 	\vspace{3mm}
 \item Outlook
@@ -873,26 +877,44 @@ pp. 1117–1127.
 
 \begin{frame}
 \frametitle{Reviewer's questions}
-Maybe this is due to the specialty of this field, but I often missed the comparison of the new method with previous ones from the literature, stating that the proposed method quantitatively outperforms the others in this and that senses.
-Even though the illustrative plots are nice, explicit comparative plots are hardly found. I can imagine plots showing reconstruction error in function of the position on the reference curve.
+1. I often missed the comparison of the new method with previous ones from the literature, stating that the proposed method quantitatively outperforms the others in this and that senses. Even though the illustrative plots are nice, explicit comparative plots are hardly found. I can imagine plots showing reconstruction error in function of the position on the reference curve.
 \end{frame}
 
 \begin{frame}
 \frametitle{Reviewer's questions}
-I wonder how the 2.5D synthesis (as discussed in Sec. 4.1.3, and several times later on) performs in the case of multiple virtual point sources, especially when no point on the reference curve exists for which all point sources have a stationary SSD position.
-Is this a limitation? Can we say that the principle of superimposition cannot be applied in the usual way?
-I might have got lost in the details, but is it true that the explicit SDM solution does not have such limitation?
+2. I wonder how the 2.5D synthesis (as discussed in Sec. 4.1.3, and several times later on) performs in the case of multiple virtual point sources, especially when no point on the reference curve exists for which all point sources have a stationary SSD position. Is this a limitation? Can we say that the principle of superimposition cannot be applied in the usual way? I might have got lost in the details, but is it true that the explicit SDM solution does not have such limitation?
 \end{frame}
 
 \begin{frame}
 \frametitle{Reviewer's questions}
-Another naive question: the simultaneous presence of at least two point sources radiating at the same frequency, would give rise to interference phenomenon with exact 2 nulls in the target field.
-Would it be a meaningful way of evaluating a synthesis method based on its capability to reconstruct such nulls (location and intensity)?
+\begin{itemize}
+\item Driving functions are additive
+\item Positions of amplitude correct synthesis: depends on reference curve \emph{and virtual source model}
+\item No intersection of visible parts of the reference curves $\rightarrow$ no amplitude correct position
+\end{itemize}
+\only<1-3>{Synthesis of two plane waves:}
+\only<4>{Synthesis of two point sources:}
+\begin{figure}
+\only<1>{\begin{overpic}[scale = .35]{figs/pw_1.png}
+\end{overpic}}
+\only<2>{\begin{overpic}[scale = .35]{figs/pw_2.png}
+\end{overpic}}
+\only<3>{\begin{overpic}[scale = .25]{figs/two_pw.png}
+\end{overpic}}
+\only<4>{\begin{overpic}[scale = .5]{figs/two_ps.png}
+\end{overpic}}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Reviewer's questions}
+3. The simultaneous presence of at least two point sources radiating at the same frequency, would give rise to interference phenomenon with exact nulls in the target field. Would it be a meaningful way of evaluating a synthesis method based on its capability to reconstruct such nulls (location and intensity)?
 \end{frame}
 
 \begin{frame}
 \frametitle{Reviewer's questions}
-I missed statements on the computational cost of the methods, with respect to practical requirements, e.g., real-time operation. Maybe this is of low importance, but if so, this has also to be stated in an engineering dissertation.
+4. I missed statements on the computational cost of the methods,with respect to practical requirements, e.g., real-time operation. Maybe this is of low importance, but if so, this has also to be stated in an engineering dissertation.
 \end{frame}
 %----------------------------------------------------------------------------------------
 

@@ -1,4 +1,3 @@
-	%\section{The problem formulation}
 \begin{figure}[b!]
 	\centering
 	\begin{overpic}[width = .8\columnwidth ]{Figures/SFS_theory/general_sfs.png}
@@ -6,7 +5,7 @@
 	\put(0,26){virtual source}
 	\put(44.5,0.5){$\mathbf{0}$}
 	\put(71,31){$\vx$}
-	\put(39,22){$\vni(\vxo)$}
+	\put(39,21){$\vni$}
 	\put(43,15){$\vxo$}
 	\begin{turn}{27}
 	\put(57,-3){$|\vx - \vxo|$}
@@ -18,68 +17,65 @@
 	\label{Fig:Theory:general_sfs_geometry}
 \end{figure}
 
-In the following the general sound field synthesis (SFS) problem is formulated. 
-Consider a source-free volume $\Omega \subset \mathbb{R}^3$, bounded by a continuous set of acoustic sources forming the boundary surface $\dO$.
+In the following, the general sound field synthesis (SFS) problem is formulated. 
+Assume a source-free volume $\Omega \subset \mathbb{R}^3$ bounded by a continuous set of acoustic sources, forming the boundary surface $\dO$.
 The enclosing source ensemble is termed the \emph{secondary source distribution (SSD)}.
-%Obviously, in the aspect of practical applications only 3D problems are of importance ($n=3$).%, however for the sake of computational simplicity several simulations 
 The general geometry is depicted in Figure \ref{Fig:Theory:general_sfs_geometry}.
-For the sake of simplicity it is assumed that the boundary is acoustically transparent and the secondary sources are acoustic point sources described by the free field Green's function. 
-%Unless it is denoted otherwise, $G(\vx,\omega)$ refers to the 3D Green's function in the following.
+For the sake of simplicity it is assumed that the boundary is acoustically transparent and the secondary sources are acoustic point sources, described by the free field Green's function.
 Since closed-box, dynamic loudspeakers can be modeled as 3D monopoles in the low-frequency region, this choice of secondary sources is reasonable. 
 
-With these assumptions the synthesized pressure at any receiver position $\vx \in \Omega$ is given by the superposition of the fields of individual secondary sources, written as a single layer potential \cite{Ahrens2010phd,Ahrens2012,Wierstorf2014,Schultz2014:Comparing_approaches}
+With these assumptions, the synthesized pressure at any receiver position $\vx \in \Omega$ is given by the superposition of the fields of individual secondary sources, written as a single layer potential \cite{Ahrens2010phd,Ahrens2012,Wierstorf2014,Schultz2014:Comparing_approaches}
 \begin{equation}
 P(\vx,\omega) = \oint_{\dO} D(\vxo,\omega) \, G(\vx - \vxo , \omega ) \td \dO ( \vxo ),
 \label{Eq:Theory:3D_SFS}
 \end{equation}
 with $G(\vx,\omega)$ denoting the 3D free field Green's function.
 The weighting factor $D(\vxo,\omega)$, i.e. the loudspeaker driving signal is termed the \emph{driving function} for the given SSD. 
-The sound field synthesis problem can be formulated as the following:
-Given a \emph{target sound field} or the sound field of a \emph{virtual source} $P(\vx,\omega)$, the aim is to solve the above integral equation for $D(\vxo,\omega)$, so that the superposition of the SSD's sound field---the \emph{synthesized field}---equals to the target sound field. %\fscom{these definitions appear somewhere before, I'd suggest to define them earlier and reclaim them here.}
-The problem is therefore an inverse problem with unique solution for general enclosures \cite{Fazi2010}.
+The sound field synthesis problem can be formulated as follows:
+Given a \emph{target sound field} or the sound field of a \emph{virtual source} $P(\vx,\omega)$, the goal is to solve the above integral equation for $D(\vxo,\omega)$, so that the superposition of the SSD's sound field---the \emph{synthesized field}---equals to the target sound field.
+The problem is therefore an inverse problem, with unique solution for general enclosures \cite{Fazi2010}.
 
-Comparing the general SFS formulation \eqref{Eq:Theory:3D_SFS} with the Kirchhoff-Helmholtz integral \eqref{Eq:Theory:Kirchhoff-Helmholtz} it becomes obvious that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure.
-Practically, the dipole sources that would cancel the field of the monopoles outside the volume are excluded from the superposition.
-In the present thesis free field conditions are assumed: the exterior sound field satisfies the Sommerfeld radiation condition, thus the effects of the listening environment in practical applications (i.e. wall reflections) are not considered. 
+Comparing the general SFS formulation \eqref{Eq:Theory:3D_SFS} with the Kirchhoff-Helmholtz integral \eqref{Eq:Theory:Kirchhoff-Helmholtz}, it becomes obvious that SFS with a single layer SSD is not able to ensure identically zero sound field outside the enclosure.
+Practically, the dipole sources that would cancel the field of the monopoles outside the volume, are excluded from the superposition.
+In the present thesis free field conditions are assumed: the exterior sound field satisfies the Sommerfeld radiation condition, thus the effects of the listening environment, present in practical applications (i.e. wall reflections), are not considered. 
 For the inclusion of room effects to the SFS problem refer to \cite{Spors2005, app8010016}.
 
 \vspace{3mm}
-The above discussed general 3D SFS setup requires an enclosing surface of 3D point sources, making practical implementations hardly realizable.
-In practice it is often sufficient to restrict the reproduction to the $z=0$ plane, containing a 2D contour of secondary sources.
-This reproduction scenario is termed \emph{2.5D synthesis}, referring to the fact that although the problem dimensionality is reduced to $n=2$, still the 2D SSD contour consists of 3D point source elements.
-In this geometry the general 2.5D synthesis problem is formulated as
+The general 3D SFS setup, as discussed above, requires an enclosing surface of 3D point sources, making practical implementations hardly realizable.
+In practice it is often sufficient to restrict the reproduction to the $z=0$ plane containing a 2D contour of secondary sources.
+This reproduction scenario is termed \emph{2.5D synthesis}, referring to the fact that although the problem dimensionality is reduced to $n=2$, still, the 2D SSD contour consists of 3D point source elements.
+In this geometry, the general 2.5D synthesis problem is formulated as
 \begin{equation}
-P(\vx,\omega) = \oint_{C} D(x_0,y_0,0,\omega) G(x - x_0, y-y_0, 0 , \omega ) \, \td s( x_0, y_0 ),
+P(\vx,\omega) = \oint_{C} D(x_0,y_0,0,\omega) \, G(x - x_0, y-y_0, 0 , \omega ) \, \td s( x_0, y_0 ),
 \label{Eq:Theory:25D_SFS}
 \end{equation}
 where $C(x_0,y_0)$ is the SSD contour and $\td s$ is the infinitesimal arc length.
-Obviously, neither 2D nor 3D sound fields can be perfectly synthesized in this geometry due to dimensionality inconsistency between the target field and the SSD.
+Obviously, neither 2D nor 3D sound fields can be perfectly synthesized in this geometry, due to dimensionality inconsistency between the target field and the SSD.
 Overcoming the artifacts of this \emph{dimensionality mismatch} is the central question of practical sound field synthesis and is the main topic of the present chapter.
 
-In the followings this chapter presents the approaches to solve the 3D and 2.5D SFS problems including physically based implicit and particularly mathematical explicit solutions. 
+In the followings, this chapter presents approaches to solve the 3D and 2.5D SFS problems, including physically based implicit and particularly mathematical explicit solutions. 
 
 \section{Implicit solution: Wave Field Synthesis}
-% TODO: Implicit solution with HF approx -> local solution
 
 The implicit solution for the SFS problem aims at the derivation of a single layer potential representation of the target sound field, containing the required SSD driving function implicitly.
-In the following section it is discussed, how this appropriate surface, or more practically contour integral representation of an arbitrary 3D sound field may be expressed in the form of \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}, from which the driving function can be extracted.
+In this section it is discussed how these surface, or---more practically---contour integral representations of an arbitrary 3D sound field may be expressed in the form of \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}, from which the driving function can be extracted.
 
-%\fscom{begin new section with some info, not directly jump to next subsection}
 \subsection{3D Wave Field Synthesis}
 
-In case of a 3D SFS problem obtaining the implicit solution is straightforward, based on the boundary integral representations discussed in the previous chapters.
-Assume a general enclosing 3D SSD surface consisting of 3D point sources.
-Comparing the Kirchhoff approximation of the Kirchhoff-Helmholtz integral \eqref{Eq:SFS_theory:Kirchhoff_appr} or \eqref{Eq:HF_appr:Kirchhoff_approximation} with the general SFS equation \eqref{Eq:Theory:3D_SFS} reveals that the Kirchhoff approximation implicitly contains the driving function $D(\vxo,\omega)$ for a general enclosing SSD: 
+In case of a 3D SFS problem, obtaining the implicit solution is straightforward, based on the boundary integral representations discussed in the previous chapters.
+Assume a general enclosing 3D SSD surface, consisting of 3D point sources.
+Comparing the Kirchhoff approximation of the Kirchhoff-Helmholtz integral \eqref{Eq:SFS_theory:Kirchhoff_appr} or \eqref{Eq:HF_appr:Kirchhoff_approximation} with the general SFS equation \eqref{Eq:Theory:3D_SFS} reveals that the Kirchhoff approximation implicitly contains the driving function $D(\vxo,\omega)$ for a general enclosing SSD surface.
+The driving function is given by
 \begin{equation}
 D(\vxo,\omega) = - 2w(\vxo)\frac{\partial P(\vxo,\omega)}{\partial \vni}, 
 \label{Eq:Theory:2D_3D_WFS_driv_fun}
 \end{equation}
-or, making use of the high frequency gradient approximation, as
+or making use of the high frequency gradient approximation, as
 \importanteq{3D WFS driving function}{
 D(\vxo,\omega) = 2 w(\vxo) \ti k_{\mathrm{n}}^P(\vxo) P(\vxo,\omega)
 \label{Eq:Theory:2D_3D_WFS_driv_fun_2}
 }
-with $k_{\mathrm{n}}^P(\vxo)$ being the normal component of the target field's local wavenumber vector taken on the SSD and $w(\vxo)$ being the window function, as introduced in the previous chapter:
+with $k_{\mathrm{n}}^P(\vxo)$ being the normal component of the target field's local wavenumber vector along the SSD and $w(\vxo)$ being the window function, as introduced in the previous chapter:
 \begin{equation}
 \label{Eq:Theory:SSD_selection}
 w(\vxo) = \begin{cases}
@@ -87,23 +83,23 @@ w(\vxo) = \begin{cases}
                         0  \hspace{3mm} \text{elsewhere}.
                     \end{cases}
 \end{equation}
-In the context of WFS the windowing is termed \emph{secondary source selection} \cite{nicol19993d, Spors2007:DAGA:SS_selection_criterion, Spors2007}, selecting the \emph{active secondary sources} contributing to the synthesized field.
+In the context of WFS the windowing is termed as \emph{secondary source selection} \cite{nicol19993d, Spors2007:DAGA:SS_selection_criterion, Spors2007}, selecting the \emph{active secondary sources} contributing to the synthesized field.
 
 The driving function \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} is a common generalization of the 3D WFS driving function given by \cite[(20)]{Zotter2013:uniqueness} specifically for a virtual point source.
 Both formulations are valid in the high frequency region within the validity of the Kirchhoff approximation: in the farfield of the virtual source distribution, i.e. where the local plane wave approximation of the virtual field holds.
 
-In the special case of an infinite planar boundary surface, located along the plane $y = y_0$, the Kirchhoff-Helmholtz integral degenerates to the Rayleigh I (Neumann) integral representing the field of any source distribution located at $y<y_0$ in terms of a single layer potential, as discussed in Section \ref{Section:Theory:Rayleigh}.
-Therefore, in this geometry with a planar SSD the driving function \eqref{Eq:Theory:2D_3D_WFS_driv_fun} is capable of the perfect synthesis of an arbitrary virtual sound field in the listening half-space $y>y_0$ without any approximations involved.
-In this case no windowing is required, i.e. $w(\vxo) \equiv 1$ and the normal derivative is simply given by the $y$-derivative of the target/virtual sound field.
+In the special case of an infinite planar boundary surface, located along the plane $y = y_0$, the Kirchhoff-Helmholtz integral degenerates to the Rayleigh I (Neumann) integral, representing the field of any source distribution, located at $y<y_0$, in terms of a single layer potential, as discussed in Section \ref{Section:Theory:Rayleigh}.
+Therefore, in this geometry with a planar SSD, the driving function \eqref{Eq:Theory:2D_3D_WFS_driv_fun} is capable of the perfect synthesis of an arbitrary virtual sound field in the listening half-space $y>y_0$, without any approximations involved.
+In this case, no windowing is required, i.e. $w(\vxo) \equiv 1$, and the normal derivative is simply given by the $y$-derivative of the target/virtual sound field.
 
 \vspace{3mm}
 The following physical interpretation can be assigned to the 3D WFS driving function:
-As it was discussed in Section \ref{Sec:HF_approx:1D_Greens}, the frequency response of the 1D Green's function, given by \eqref{eq:HF_approx:1D_Green}---representing an infinite planar distribution of 3D point sources---is proportional to $\sim \frac{1}{\ti k} = \frac{c}{\ti \omega}$ expressing an infinite impulse response of a step function, performing the integration of the source time history. 
-In case of a non-homogeneous distribution a directivity factor is also present, given by $\frac{1}{\ti k_y}$ for a harmonic distribution as given by \eqref{eq:HF_approx:Greens_2D_Spectrum} and approximated locally by \eqref{Eq:HF_approx:H_det_Rayleigh}.
-This directivity factor of $\frac{1}{\ti k^P_y(\vxo)}$ indicates that a surface of point sources generates larger pressure field into lateral directions than into the normal direction.
-Within the validity of the Kirchhoff approximation this statement can be extended towards arbitrary SSD surfaces, radiating with an enhanced amplitude into locally lateral directions.
+As it was discussed in Section \ref{Sec:HF_approx:1D_Greens}, the frequency response of the 1D Green's function, given by \eqref{eq:HF_approx:1D_Green}---representing an infinite planar distribution of 3D point sources---is proportional to $\sim \frac{1}{\ti k} = \frac{c}{\ti \omega}$, expressing an infinite impulse response of a step function, performing the integration of the source time history. 
+In case of a non-homogeneous distribution, a directivity factor of $\frac{1}{\ti k_y}$ is also present as given by \eqref{eq:HF_approx:Greens_2D_Spectrum} and approximated locally by \eqref{Eq:HF_approx:H_det_Rayleigh}.
+This directivity factor of $\frac{1}{\ti k^P_y(\vxo)}$ indicates that a surface of point sources generates a larger pressure field into lateral directions than into the normal direction.
+Within the validity of the Kirchhoff approximation, this statement can be extended towards arbitrary SSD surfaces, radiating with an enhanced intensity into locally lateral directions.
 
-The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} and in the Rayleigh/Kirchhoff-Helmholtz integral may be therefore interpreted as a correction term, ensuring flat frequency response for the SSD surface by inverse filtering (taking the time derivative) of the excitation signal, and compensating for the SSD directive radiation characteristics locally.
+The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} (and in the Rayleigh/Kirchhoff-Helmholtz integral) may be, therefore, interpreted as a correction term ensuring flat frequency response for the SSD surface by inverse filtering (taking the time derivative) of the excitation signal and compensating for the SSD's directive radiation characteristics locally.
 
 \subsection*{Application example: 3D synthesis of a virtual point source}
 
@@ -116,40 +112,40 @@ The factor $\ti k_{\mathrm{n}}^P(\vxo)$ in \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{3D synthesis of a 3D point source located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $f_0 = 1.5~\mathrm{kHz}$.
-    The SSD surface is chosen to be independent of the $z$-coordinate as illustrated in Figure \ref{fig:SFS_theory:WFS_geometry}.
-	For the numerical calculation the SSD was truncated along the vertical dimension by choosing parameters, so that diffraction effects due to the truncation are negligible in the simulation results.
-    Figure (a) depicts the real part of the synthesized field and part (b) presents the absolute error of synthesis (the discrepancy between the synthesized and the target sound field) in a logarithmic scale measured in the horizontal plane, containing the virtual point source.
-	The active arc of the SSD is denoted by solid black line, and the inactive part with dotted by black line.
+    \caption{3D synthesis of a 3D point source ,located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $f_0 = 1.5~\mathrm{kHz}$.
+    The SSD surface is chosen to be independent of the $z$-coordinate, as illustrated in Figure \ref{fig:SFS_theory:WFS_geometry}.
+	For the numerical calculation, the SSD was truncated along the vertical dimension by choosing parameters, so that diffraction effects due to the truncation are negligible in the simulation results.
+    Figure (a) depicts the real part of the synthesized field and Figure (b) presents the absolute error of synthesis (the discrepancy between the synthesized and the target sound field) in a logarithmic scale, measured in the horizontal plane, containing the virtual point source.
+	The active arc of the SSD is denoted by solid black line and the inactive part with dotted by black line.
     }
 \label{fig:SFS_theory:3D_WFS_general}  \end{minipage}
 \end{figure}
 
-As a simple example the 3D WFS of a virtual point source is discussed.
-Assume a 3D point source located behind the SSD at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ with $y_s < y_0$.
+As a simple example, the 3D WFS of a virtual point source is discussed.
+Assume a 3D point source, located behind the SSD at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ with $y_s < y_0$.
 Substituting the Green's function into \eqref{Eq:Theory:2D_3D_WFS_driv_fun_2} yields the point source specific high frequency 3D WFS driving function
 \begin{equation}
 \label{Eq:SFS_theory:3D_WFS_ps_driv_fun}
-D(\vxo,\omega) = w(\vxo)  \frac{\ti k }{2\pi} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|},
+D(\vxo,\omega) = w(\vxo)  \frac{\ti k }{2\pi} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \, \frac{\te^{-\ti k |\vxo-\vxs|}}{|\vxo-\vxs|},
 \end{equation}
-being equivalent to \cite[Eq. 20.]{Zotter2013:uniqueness} and \cite[Eq. 19.]{Spors2008:WFSrevisited}.
+being equivalent with \cite[Eq. 20.]{Zotter2013:uniqueness} and \cite[Eq. 19.]{Spors2008:WFSrevisited}.
 
 The result of synthesis is depicted in Figure \ref{fig:SFS_theory:3D_WFS_general} for the special case of an SSD surface, being invariant to translation along the $z$-axis, as illustrated by Figure \ref{fig:SFS_theory:WFS_geometry} in the following section.
 The driving function ensures amplitude correct synthesis within the validity of the Kirchhoff approximation:
 amplitude errors arise 
 \begin{itemize}
-\item in the proximity of secondary sources with large local curvature of the SSD surface, due to the local failure of the tangent plane approximation
-\item in the proximity of secondary sources where the normal component of the local wavenumber vector is small---i.e. at parts of the SSD that are nearly parallel to the local virtual field propagation direction--- since at these positions the high frequency gradient approximation fails, with also the lack of diffracted waves causing amplitude errors.
-\item at space regimes for which the above described secondary sources serve as stationary positions as discussed in Section \ref{Sec:HS_approx:SPA_for_Rayleigh}.
+\item in the proximity of secondary sources where local curvature of the SSD surface is large, due to the local failure of the tangent plane approximation
+\item in the proximity of secondary sources where the normal component of the local wavenumber vector is small---i.e. at parts of the SSD that are nearly parallel to the virtual field's local propagation direction---since at these positions the high frequency gradient approximation fails, with also the lack of diffracted waves leading to amplitude errors.
+\item at space regimes for which the above described secondary sources serve as stationary positions, as discussed in Section \ref{Sec:HS_approx:SPA_for_Rayleigh}.
 \end{itemize}
 
 The driving function \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} expresses the loudspeaker driving signal for a virtual point source radiating at a single frequency component.
-Assuming a wideband source excitation with the time history given by $s(t)$ and its frequency content being $S(\omega)$ the time domain WFS driving function is given by the inverse temporal Fourier transform of \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun} weighted by the excitation spectrum:
+Assuming a wideband source excitation with the time history given by $s(t)$ and its frequency content being $S(\omega)$, the time domain WFS driving function is given by the inverse temporal Fourier transform of \eqref{Eq:SFS_theory:3D_WFS_ps_driv_fun}, weighted by the excitation spectrum:
 \begin{equation}
 d(\vxo,t) = \frac{w(\vxo)}{2\pi} \int_{-\infty}^{\infty} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{\ti \omega }{2\pi c} S(\omega) \frac{\te^{ \ti \omega ( t - \frac{|\vxo-\vxs|}{c} ) }}{|\vxo-\vxs|} 
-\td \omega.
+\, \td \omega.
 \end{equation}
-By realizing that $\ti \omega \, S(\omega)$ describes the temporal derivative of the source time history (being equivalent with filtering the source signal with a 6 dB/octave highpass filter) and exploiting the Fourier transform shift theorem, the time domain 3D WFS driving function for a virtual point source is obtained as
+By realizing that $\ti \omega \, S(\omega)$ describes the temporal derivative of the source time history (being equivalent with filtering the source signal with a 6 dB/octave highpass filter), and exploiting the Fourier transform shift theorem, the time domain 3D WFS driving function for a virtual point source is obtained as
 \begin{equation}
 \label{Eq:SFS_theory:3D_WFS_ps_driv_fun_td}
 d(\vxo,t) = \frac{w(\vxo)}{2\pi c} \frac{\left< \vxo-\vxs \cdot \vni(\vxo) \right> }{|\vxo-\vxs|} \frac{s'_t(t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|},
@@ -158,23 +154,23 @@ where differentiation with respect to time compensates for the SSD frequency res
 
 \subsection{The 2.5D Kirchhoff approximation}
 
-Before getting involved with the questions of 2.5D Wave Field Synthesis a further simplification of the Kirchhoff approximation is introduced.
+Before discussing the questions of 2.5D Wave Field Synthesis, a further simplification of the Kirchhoff approximation is introduced.
 This simplification reduces the 3D Kirchhoff integral into a 2D contour integral representing a 3D sound field as the superposition of 3D Green's functions.
-The approximation is therefore referred to as the \emph{2.5D Kirchhoff integral}, frequently occurring in the field of seismic migration and inversion problems.
+The approximation is, therefore, referred to as the \emph{2.5D Kirchhoff integral}, occurring frequently in the field of seismic migration and inversion problems.
 The dimensionality reduction is performed by applying the stationary phase approximation to the Kirchhoff integral along the vertical dimension.
 
 Assume a 3D interior radiation problem, with the sound field under consideration described by the Kirchhoff integral \eqref{Eq:HF_appr:Kirchhoff_approximation} written on a surface, being translation invariant along the $z$-axis.
 The problem geometry is depicted in Figure \ref{fig:SFS_theory:WFS_geometry}.
-In the following the receiver position is assumed to be at $z=0$ inside the enclosure at $\vx = \posvec{3}{x}{y}{0} \in \Omega$.
+In the following, the receiver position is assumed to be at $z=0$ inside the enclosure at $\vx = \posvec{3}{x}{y}{0} \in \Omega$.
 %
 \begin{figure}  
 \begin{minipage}[c]{0.6\textwidth}
   \hspace{0cm}
 	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/WFS_geometry.png}
 	\small
-	\put(82,51.5){$x$}
+	\put(82,52){$x$}
 	\put(91.5,33){$y$}
-	\put(95,65.5){$z$}
+	\put(95.5,66){$z$}
 	\put(48,35.5){$\vx$}
 	\put(63.5,42.5){$\vxo$}
 	\put(4,22.5){plane of interest}
@@ -200,8 +196,8 @@ P(\vxo,\omega) G(\vx-\vxo,\omega) \, \td z_0 \, \td s(x_0, y_0),
 \end{equation}
 with the integral variable $\td s$ being the infinitesimal arc length along the contour $C(x_0,y_0) = \dO(x_0,y_0,0)$.
 
-The integral along $z_0$ is approximated applying the stationary phase approximation.
-Application of the 1D SPA formulation \eqref{Eq:SPAResult} requires the definition of the stationary position and the sign of the integrand's phase function's second vertical derivative (i.e. the signature of the 1D Hessian) at the stationary position.
+The integral along $z_0$ is approximated by applying the stationary phase approximation.
+The application of the 1D SPA formulation \eqref{Eq:SPAResult} requires the definition of the stationary position and the sign of the phase function's second vertical derivative (i.e. the signature of the 1D Hessian) at the stationary point.
 
 \paragraph{Definition of the vertical stationary position:}
 The vertical stationary position in the geometry under investigation is straightforward:
@@ -210,76 +206,73 @@ Based on the foregoing this requirement can be formulated as
 \begin{equation}
 k_z^P(x_0,y_0,0) = k_z^G(x-x_0,y-y_0,0) = 0,
 \end{equation}
-stating the trivial fact that a sound field can be described by a 2.5 dimensional contour integral only in the plane, where all the sound sources are located, and which plane the emerging waves propagate parallel with.
+stating the trivial fact that a sound field can be described by a 2.5-dimensional contour integral only in the plane where all the sound sources are located, and which plane the emerging waves propagate parallel with.
 In the plane of investigation $k_z^P(x,y,0) \equiv 0$ holds for the field of 3D sources located at the plane of investigation and of 2D sources being invariant along the vertical dimension.
-Throughout the present thesis when dealing with 2.5D synthesis problems these types of virtual fields are considered exclusively.
+Throughout the present thesis when dealing with 2.5D synthesis problems, these types of virtual fields are considered exclusively.
 
 \paragraph{Definition of the Hessian's signature:}
 An important property of wavefields under consideration is that their vertical curvature---given by $\phi^{P''}_{zz}(x_0,y_0,0,\omega)$---is one of their principal curvatures itself, denoted by $\Kv^P$.
-Hence, as it is discussed in Appendix \ref{App:Hessian} in the stationary position ($z_0 = 0$) the principal curvatures are additive, and the second phase derivative is the negative sum of the principal curvatures of the target sound field and the Green's function:
+Hence, as it is discussed in Appendix \ref{App:Hessian}, in the stationary position ($z_0 = 0$) the principal curvatures are additive, and the second phase derivative is the negative sum of the principal curvatures of the target sound field and the Green's function:
 \begin{multline}
-\phi^{P + G''}_{zz}(x_0,y_0,0,\omega) = \phi^{P''}_{zz}(x_0,y_0,0,\omega) +\phi^{G''}_{zz}(x-x_0,y-y_0,0,\omega) = \\ = -k\left( \Kv^P(x_0,y_0,0) + \Kv^G(x-x_0,y-y_0,0) \right).
+\phi^{P \cdot G''}_{zz}(x_0,y_0,0,\omega) = \phi^{P''}_{zz}(x_0,y_0,0,\omega) +\phi^{G''}_{zz}(x-x_0,y-y_0,0,\omega) = \\ = -k\left( \Kv^P(x_0,y_0,0) + \Kv^G(x-x_0,y-y_0,0) \right).
 \label{Eq:SFS_theory:Curvatures_Addition}
 \end{multline}
 Note that here it was exploited that $\phi^{P''}_{zz} = \phi^{P''}_{z_0 z_0}$ and $\phi^{G''}_{zz} = \phi^{G''}_{z_0 z_0}$ holds.
-By definition, for an arbitrary diverging sound field (including the Green's function) the principal curvatures are positive and $\mathrm{sgn} \left( \phi^{P + G''}_{zz}(x_0,y_0,0,\omega) \right) = -1$ trivially holds.
-For a converging wavefront the signature of the resultant curvature depends on the receiver position: in regions of the receiver plane where sound field $P$ locally converges the resultant curvature is positive, while in regions where the sound field diverges, e.g. after passing a focal point the resultant curvature is negative.
+By definition, for an arbitrary diverging sound field (including the Green's function) the principal curvatures are positive and $\mathrm{sgn} \left( \phi^{P \cdot G''}_{zz}(x_0,y_0,0,\omega) \right) = -1$ trivially holds.
+For a converging wavefront the signature of the resultant curvature depends on the receiver position: In regions of the receiver plane where sound field $P$ locally converges the resultant curvature is positive, while in regions where the sound field diverges, e.g. after passing a focal point, the resultant curvature is negative.
 In the present thesis only locally diverging wavefields are discussed.
 
-With these considerations application of the SPA to \eqref{Eq:SFS_theory:Kirchhoff_spec_geom} results in the \emph{2.5D Kirchhoff integral} for diverging sound fields, reading as
+With these considerations, application of the SPA to \eqref{Eq:SFS_theory:Kirchhoff_spec_geom} results in the \emph{2.5D Kirchhoff integral} for diverging sound fields, reading as
 \importantmline{2.5D Kirchhoff integral}{
 P(\vx,\omega) =
 \oint_{C}
 2 w(\vxo)
-\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vx-\vxo,\omega)|}} \cdot \\ \cdot
+\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vx-\vxo,\omega)|}} \cdot \\ 
 \underbrace{\ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega) }_{ \approx  -\frac{\partial P(\vxo,\omega)}{\partial \vn_{\mathrm{in}}}}
-G(\vx-\vxo,\omega) \td s(x_0,y_0), 
+G(\vx-\vxo,\omega) \, \td s(x_0,y_0), 
 \label{Eq:SFS_thery:25_KI}
 }
-with both $\vx = \posvec{3}{x}{y}{0}$ and $\vxo = \posvec{3}{x_0}{y_0}{0}$ denoting in-plane positions in the following when 2.5D scenarios are considered.
-Again, in this formulation the coincidence of the second derivatives with respect to $z$ and $z_0$ of both $P$ and $G$ is exploited.
-% and \fscom{HF directional gradient}.
-%\fscom{it might be worth to discuss $\phi^{P''}_{zz}$ vs. $\phi^{P''}_{z_0z_0}$ to make calculus concise}
+with from now on both $\vx = \posvec{3}{x}{y}{0}$ and $\vxo = \posvec{3}{x_0}{y_0}{0}$ denoting in-plane positions when 2.5D scenarios are considered.
+%Again, in this formulation the coincidence of the second derivatives with respect to $z$ and $z_0$ of both $P$ and $G$ is exploited.
 
 \subsection{2.5D Wave Field Synthesis}
 
 The 2.5D Kirchhoff integral implicitly contains the 2.5D WFS driving function for a continuous contour of 3D point sources at the $z = 0$ plane.
-%Comparing the expression for the synthesized field \eqref{Eq:Theory:25D_SFS} with \eqref{Eq:SFS_thery:25_KI} implicates that the required driving functions can be extracted from the 2.5D Kirchhoff integral.
-The resulting driving function is, however, still dependent on the listener position through the argument of $\phi^{G''}_{zz}(\vx-\vxo,\omega)$, which dependency may be avoided by fixing the listener position.
-This strategy would only allow the synthesis of the virtual field, optimized to a single, fixed receiver position termed the \emph{reference point}, while in other points in the listening plane amplitude errors would be present.
-In the following it is presented how the driving function can be further manipulated in order to ensure correct synthesis along an arbitrary receiver curve termed the \emph{reference curve} within the validity of the stationary phase approximation resulting in what was termed \emph{unified 2.5D WFS theory} \cite{Firtha2016}.
+The resulting driving function is, however, still dependent on the listener position through the argument of $\phi^{G''}_{zz}(\vx-\vxo,\omega)$. 
+Evaluation of the driving function with a fixed $\vx$ value would only allow the synthesis of the virtual field optimized to a single, particular receiver position, termed the \emph{reference point}, while over other positions in the listening plane amplitude errors would be present.
+In the following it is presented how the driving function can be further manipulated within the validity of the stationary phase approximation in order to ensure amplitude correct synthesis along an arbitrary receiver curve, termed the \emph{reference curve}.  
+%resulting in what was termed \emph{generalized 2.5D WFS theory} \cite{Firtha2016}.
 
-
-As it was stated in Section \ref{Sec:HS_approx:SPA_for_Rayleigh} for any receiver position $\vx$ the Kirchhoff integral is dominated by that stationary contour element $\vxo^*(\vx)$, from which the emerging spherical wavefronts locally coincide with the target field wavefront, i.e. where $\vk^P(\vxo^*(\vx)) = \vk^G(\vx - \vxo^*(\vx))$ is satisfied.
+As it was stated in Section \ref{Sec:HS_approx:SPA_for_Rayleigh}, for any receiver position $\vx$ the Kirchhoff integral is dominated by that stationary contour element $\vxo^*(\vx)$, from which the emerging spherical wavefronts locally coincide with the target field wavefront, i.e. where $\vk^P(\vxo^*(\vx)) = \vk^G(\vx - \vxo^*(\vx))$ is satisfied.
 As a consequence, the 2.5D Kirchhoff integral may be further approximated by expressing the amplitude factor with its value at the stationary position as
 \begin{multline}
 P(\vx,\omega) = 
 \oint_{C}
 \! 2 w(\vxo) 
-\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo^*(\vx)) +\phi^{G''}_{zz}(\vx-\vxo^*(\vx))|}}
-\cdot \\ \cdot
+\sqrt{\frac{2 \pi}{\ti |\phi^{P''}_{zz}(\vxo^*(\vx),\omega) + \phi^{G''}_{zz}(\vx-\vxo^*(\vx),\omega)|}}
+\cdot \\
 \ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega)
-G(\vx-\vxo,\omega) \td s(x_0,y_0),
+G(\vx-\vxo,\omega) \, \td s(x_0,y_0),
 \label{Eq:SFS_theory:25D_KI_appr}
 \end{multline}
 where $\vxo^*(\vx)$ is defined by the implicit relation above.
 
 The statement can be expressed by reversing causality, forming the main idea of 2.5D WFS theory: 
-every point $\vxo$ on the secondary distribution contributes to the total sound field at the set of positions $\vx(\vxo)$ where the local propagation direction of a point source positioned at $\vxo$ coincides with that of the target field, i.e. where their local wavenumber vectors coincide.
-Hence $\vx$ and $\vxo$ are \emph{stationary point pairs}, mutually determining each other.
-By reversing the causality choosing $\vxo$ as an independent parameter the driving function can be extracted from \eqref{Eq:SFS_theory:25D_KI_appr} resulting in the \emph{unified 2.5D WFS driving function}
+Every point $\vxo$ along the secondary distribution dominates the total sound field at the set of positions $\vx(\vxo)$ where the local propagation direction of the point source positioned at $\vxo$ coincides with that of the target field, i.e. where their local wavenumber vectors coincide.
+Hence, $\vx$ and $\vxo$ are \emph{stationary point pairs}, mutually determining each other.
+By reversing the causality, choosing $\vxo$ as an independent parameter the driving function can be extracted from \eqref{Eq:SFS_theory:25D_KI_appr}, resulting in the \emph{generalized 2.5D WFS driving function}
 \importanteq{2.5D WFS driving function}{
-D(\vxo, \omega) = w(\vxo) 
-\sqrt{\frac{8\pi}{\ti k}}\sqrt{\dref(\vxo)}
-\ti k_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega),
+D(\vxo, \omega) = w(\vxo) \,
+\sqrt{\frac{8\pi}{\ti k}} \, \sqrt{\dref(\vxo)} \,
+\ti k_{\mathrm{n}}^P(\vxo)\, P(\vxo,\omega),
 \label{Eq:SFS_theory:25D_WFS_driv_fun}
 }
-with the term $\dref(\vxo)$ denoting the \emph{referencing function}, defined as
+with the term $\dref(\vxo)$ being a frequency independent gain factor, given by
 \begin{align}
 \label{Eq:SFS_theory:Referencing function}
-\dref(\vxo) &= \frac{k}{|\phi^{P''}_{zz}(\vxo) +\phi^{G''}_{zz}(\vxref(\vxo)-\vxo)|} =\\
-		 	&= \frac{1}{\Kv^P(\vxo)+ \Kv^G(\vxref(\vx)-\vxo)}  = \\
-			&= \frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vx)-\vxo)}{\Rv^P(\vxo)+ \Rv^G(\vxref(\vx)-\vxo)} 
+\dref(\vxo) &= \frac{k}{|\phi^{P''}_{zz}(\vxo,\omega) +\phi^{G''}_{zz}(\vxref(\vxo)-\vxo,\omega)|}\\
+		 	&= \frac{1}{\Kv^P(\vxo)+ \Kv^G(\vxref(\vxo)-\vxo)}  \\
+			&= \frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vxo)-\vxo)}{\Rv^P(\vxo)+ \Rv^G(\vxref(\vxo)-\vxo)} 
 ,
 \end{align}
 where $\Kv^P$, $\Kv^G$ and $\Rv^P$,$\Rv^G$ are the vertical principal curvatures and radii of the involved sound fields, respectively.
@@ -288,20 +281,23 @@ Position $\vxref(\vxo)$ is the \emph{reference position} for the SSD element at 
 \vk^P(\vxo) = \vk^G(\vxref(\vxo) - \vxo).
 \label{Eq:SFS_theory:WFS_General_Stat_pos}
 }
-By substituting the explicit expression for the Green's function's wavenumber ($\vk^G(\vx) = k\frac{\vx}{|\vx|}$) into \eqref{Eq:SFS_theory:WFS_General_Stat_pos} the set of positions for which a given $\vxo$ serves as stationary point reads as 
+By substituting the explicit expression for the Green's function's wavenumber ($\vk^G(\vx) = k\frac{\vx}{|\vx|}$) into \eqref{Eq:SFS_theory:WFS_General_Stat_pos}, the set of positions for which a given $\vxo$ serves as the stationary point reads as 
 \begin{align} 
 \vxref(\vxo) = \vxo + \hat{\vk}^P(\vxo) |\vxref(\vxo)-\vxo|,
 \label{Eq:SFS_theory:SSD_ref_positions}
 \end{align} 
 with $\hat{\vk}^P(\vxo)$ denoting the normalized local wavenumber vector, being the unit vector into the target field's local propagation direction.
 The equation describes straight lines passing through $\vxo$ into the direction of the local wavenumber vector of the target sound field $\vk^P(\vxo)$.
-Along this straight line inside the listening region the virtual field wavefront matches the actual SSD element's wavefront.
-Each SSD element therefore dominates the synthesized field towards the direction of the virtual field's local propagation direction measured at the SSD position, and a unique reference position can be defined for each SSD element along this path, where the target field's and the secondary source's wavefronts match in amplitude as well.
+Along this straight line the virtual wavefront matches the actual SSD element's wavefront inside the listening region.
+Therefore, each SSD element dominates the synthesized field towards the direction of the virtual field's local propagation direction measured at the SSD position.
+The actual reference position $\vxref(\vxo)$ can be freely/uniquely chosen along this line for a given SSD element at $\vxo$. 
+Within the validity of the SPA, driving function \eqref{Eq:SFS_theory:25D_WFS_driv_fun} ensures amplitude correct synthesis in the reference position.
 
-In practical applications the set of the reference positions for all secondary sources form a prescribed continuous \emph{reference curve} $C_{\mathrm{ref}}$, so that the reference position for an SSD element is found at the intersection of the straight line, described by \eqref{Eq:SFS_theory:SSD_ref_positions} and the reference curve.
-The reference curve must be a smooth convex curve inside the listening region, ensuring that each reference point has a unique stationary point pair.
+In practical applications, the set of the reference positions for all secondary sources form a prescribed continuous \emph{reference curve} $C_{\mathrm{ref}}$. 
+The reference position for a given SSD element is found at the intersection of the straight line described by \eqref{Eq:SFS_theory:SSD_ref_positions} and the reference curve.
+The reference curve must be a smooth convex curve inside the listening region, ensuring that each reference point has a unique stationary SSD element.
 Once the reference position $\vxref(\vxo) \in C_{\mathrm{ref}}$ is known for each SSD element the WFS driving function \eqref{Eq:SFS_theory:25D_WFS_driv_fun} can be evaluated.
-Referencing the WFS driving function is therefore done by prescribing a unique reference point for each SSD element with the aid of the SPA, so that the set of these reference points form the continuous reference curve.
+Referencing the WFS driving function is therefore achieved by prescribing a unique reference point for each SSD element based on the SPA, so that the set of these reference points form the continuous reference curve.
 The resulting driving function will result in amplitude correct synthesis over the reference curve within the validity of the integral formulation \eqref{Eq:SFS_theory:25D_KI_appr}.
 
 The location of the reference position for a given SSD element is illustrated in Figure \ref{fig:SFS_theory:WFS_ref_point} for the case of a virtual point source. 
@@ -310,7 +306,7 @@ Once the reference position is expressed for each SSD element, the driving funct
 %
 \begin{figure}
 	\centering
-	\begin{overpic}[width = .75\columnwidth]{Figures/SFS_theory/WFS_ref_point.png}
+	\begin{overpic}[width = .85\columnwidth]{Figures/SFS_theory/WFS_ref_point.png}
 	\small
 	\put(31,32){$\vxo$}
 	\put(48,25){$\vxref(\vxo)$}
@@ -323,14 +319,14 @@ Once the reference position is expressed for each SSD element, the driving funct
 	\end{overpic}
     \caption{
     Location of the reference position for an SSD element positioned at $\vxo$.
-    Due to the phase characteristics of the Green's function the reference position $\vxref(\vxo)$ for an arbitrary SSD element can be found at the intersection of the reference curve and the line emerging from $\vxo$ pointing into the local wavenumber vector of the virtual field $\vk^P(\vxo)$.
-	The location of the arbitrarily chosen reference curve is denoted by dashed black line with solid line indicating the positions, for which a stationary SSD position can be found.
+    Due to the phase characteristics of the Green's function, the reference position $\vxref(\vxo)$ for an arbitrary SSD element can be found at the intersection of the reference curve and the line emerging from $\vxo$ pointing into the local wavenumber vector of the virtual field $\vk^P(\vxo)$.
+	The location of the arbitrarily chosen reference curve is denoted by dashed black line with solid line indicating the positions for which a stationary SSD position can be found.
 	Amplitude correct synthesis may be only achieved along this part of the reference curve.
    }
 \label{fig:SFS_theory:WFS_ref_point}  
 \end{figure}
 %
-In order to gain a physical interpretation of the structure of the resulting driving function, the referencing function can be expressed in terms of the vertical principal radii of the virtual field and the Green's function, yielding
+In order to obtain a physical interpretation of the structure of the resulting driving function, it is expressed in terms of the vertical principal radii of the virtual field and the Green's function, yielding
 \importanteq{Detailed 2.5D WFS driving function}{
 \label{Eq:SFS_theory:25D_WFS_driv_fun_ver_2}
 \scriptstyle
@@ -344,9 +340,9 @@ D(\vxo, \omega) =
 Again, $\rho_v^P$ and $\rho_v^G$ denote the principal radii of the virtual field and the Green's function along the vertical direction, with the absolute value operation in \eqref{Eq:SFS_theory:Referencing function} omitted due to their positive sign for diverging virtual fields.
 The Green's function's principal radius is given simply as $\Rv^G(\vxref(\vxo)-\vxo) = |\vxref(\vxo)-\vxo|$ and the virtual field's principal radius $\Rv^P(\vxref(\vxo))$ is expressed by applying \eqref{eq:app:propagated_radii}.
 
-The terms in the driving function can be identified as compensation factors for the \emph{dimensionality mismatch}, emerging in the 2.5D Kirchhoff integral.
+The terms in the driving function can be identified as compensation factors for the \emph{dimensionality mismatch} emerging in the 2.5D Kirchhoff integral:
 Expressing the Kirchhoff approximation \eqref{Eq:SFS_theory:Kirchhoff_appr} for an entirely 2D problem, an arbitrary 2D sound field may be described in the area of investigation by a contour integral.
-The enclosing boundary can be interpreted as the continuous distribution of two dimensional secondary point sources described by the 2D Green's function, representing infinite vertical line sources in three dimensions.
+The enclosing boundary can be interpreted as the continuous distribution of two-dimensional secondary point sources described by the 2D Green's function, representing infinite vertical line sources in three dimensions.
 The 2D Green's function is weighted by the normal derivative of the sound field, taken on the SSD contour.
 %
 Application of the 2.5D WFS driving function aims to describe a 3D sound field in terms of a 2D contour integral with the kernel being the 3D Green's function,
@@ -356,8 +352,8 @@ The interpretation of the compensation factors in the driving function is then t
 \begin{itemize}
 \item Term $\sqrt{\frac{ 2\pi |\vxref(\vxo)-\vxo| }{ \ti k }}$ is the compensation factor for the \emph{secondary source dimensionality mismatch}.
 	Comparison with \eqref{eq:HF_approx:2D_vs_3D_GF} indicates that the compensation factor approximates the frequency response and attenuation factor of the 2D Green's function in terms of the 3D Green's function.
-	Obviously, the attenuation factors can be matched only at a particular distance from a given SSD element $\vxo$, chosen to be at the reference position $\vxref(\vxo)$.
-	On the other hand, the frequency response compensation term ensures the flat frequency response of the SSD: a 2D contour of point sources exhibits the frequency response of $\sim \frac{1}{\sqrt{\ti k}}$, which along with the normal derivative term would result in a transfer function of $\sim \sqrt{\ti k}$, that has to be compensated for.
+	Obviously, the attenuation factors can be matched only at a particular distance from a given SSD element, chosen to be at the reference position $\vxref(\vxo)$.
+	On the other hand, the frequency response compensation term ensures the flat frequency response of the SSD: a 2D contour of point sources exhibits the frequency response of $\sim \frac{1}{\sqrt{\ti k}}$, which along with the normal derivative term would result in a transfer function of $\sim \sqrt{\ti k}$ that has to be compensated for.
 %
 \item The virtual source compensation factor resolves the \emph{virtual source dimensionality mismatch}, correcting the virtual source attenuation factor from a 2D to a 3D one.
 It is assumed that the general relationship between a 2D and a 3D sound field, generated by the same planar source distribution at $z = 0$ reads as
@@ -366,23 +362,13 @@ P_{3\text{D}}(\vx,\omega) = \sqrt{\frac{\ti k}{2\pi}}
 \frac{P_{2\text{D}}(\vx,\omega)}{\sqrt{\Rv^P(\vx)}},
 \label{Eq:SFS_thory:2D_3D_relation}
 \end{equation}
-at $x = \posvec{3}{x}{y}{0}$.
+at $\vx = \posvec{3}{x}{y}{0}$.
 This is a straightforward generalization of \eqref{eq:HF_approx:2D_vs_3D_GF} towards general sound fields.
 Expressing a 2D sound field at $\vxref(\vxo)$ in terms of the 2D Kirchhoff integral and rewriting in terms of the corresponding 3D sound fields by applying \eqref{Eq:SFS_thory:2D_3D_relation} leads to the virtual source correction factor under discussion.
 A detailed explanation for the virtual source dimensionality compensation is given for the special case of a virtual point source in \cite{Voelk2012}.
 \end{itemize}
-Referencing the synthesis therefore can be interpreted physically as adjusting both attenuation correction factors for each SSD element to be amplitude correct on the reference curve, performed by prescribing a frequency independent curvature correction factor.
+Optimizing the amplitude of synthesis, therefore, can be interpreted physically as setting both the SSD and virtual source attenuation-correction factors for each SSD element to be amplitude correct on the reference curve by prescribing a frequency independent correction term.
 
-% TODO: TD WFS
-%In practical applications the driving functions are implemented in the temporal domain.
-%Taking the inverse Fourier transform of \eqref{Eq:SFS_theory:25D_WFS_driv_fun} yields the 2.5D WFS driving functions in the time domain, reading
-%\begin{equation}
-%d(\vxo, t) = w(\vxo) 
-%\sqrt{ 8\pi \dref(\vxo)}
-%\sqrt{\frac{\ti \omega}{c} }\hat{k}_{\mathrm{n}}^P(\vxo) 	P(\vxo,\omega),
-%\end{equation}
-
-%
 \begin{figure}  
 \small
   \begin{minipage}[c]{0.64\textwidth}
@@ -394,41 +380,34 @@ Referencing the synthesis therefore can be interpreted physically as adjusting b
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0.4}{2.5}{0}$, radiating at $f_0 = 1.5~\mathrm{kHz}$.
     Figure (a) depicts the real part of the synthesized field, (b) presents the absolute error of synthesis in a logarithmic scale.
-	The reference curve was defined by simple rescaling of the SSD contour, however, an arbitrary convex reference contour could be chosen.
-	The active arc of the SSD is denoted by solid black line, and the inactive part with dotted by black line.
+	The reference curve was defined by simply rescaling the SSD contour, however, an arbitrary convex reference contour could be chosen.
+	The active arc of the SSD is denoted by the solid, the inactive part with dotted by black line.
 	The reference position on the reference curve for each active SSD element is evaluated numerically.
-	Obviously in the present geometry there exist secondary sources, for which no unique reference position can be found.
-	In order to ensure smooth driving function and avoid truncation artifacts for these SSD positions the referencing function is extrapolated.
+	In the present geometry there exist secondary sources for which no unique reference position can be found.
+	In order to ensure a smooth driving function and avoid truncation artifacts for these SSD positions the amplitude correction term is extrapolated by nearest-neighbor.
     }
 \label{fig:SFS_theory:25D_WFS_generals}   \end{minipage}
 \end{figure}
 \vspace{3mm}
-The introduced driving function is capable of the synthesis of arbitrary sound fields applying arbitrary shaped convex SSDs, referencing the synthesis to an arbitrary reference curve. 
+The introduced driving function is capable of the synthesis of arbitrary sound fields applying arbitrary shaped convex SSDs, referencing the synthesis to an arbitrary, convex reference curve. 
 The result of such a general 2.5D WFS scenario is presented in Figure \ref{fig:SFS_theory:25D_WFS_generals}.
-As the image depicting the synthesis error indicates: on those part of the reference curve for which a stationary point pair can be found on the SSD amplitude correct synthesis is ensured, as the error exhibits a minimum.
+The image depicting the synthesis error verifies that on those part of the reference curve for which a stationary SSD element can be found amplitude correct synthesis is ensured, as the error exhibits a minimum.
 %
 
-If a parametrization of the SSD contour and the reference curve along with an analytical virtual source model is known, the referencing function can be expressed analytically, resulting in closed form driving function specific to the SSD and the referencing contour. 
-The following two examples are presented in order to demonstrate the analytical application of the presented driving function.
-
-% TODO: OUT TO INTRODUCTION (to the entire thesis or for this chapter)
-%The presented referencing approach not only allows the derivation of referencing functions for arbitrary SSD-reference curve geometries, but also the analysis of former WFS approaches in the aspect of the positions of amplitude correct synthesis.
-%These former approaches include traditional WFS, which optimizes the synthesis of a point source to a reference line as discussed via the following example \cite{Berkhout1993:Acoustic_control_by_WFS,  Start1997:phd, Verheijen1997:phd}, and revisited WFS formulation, which applies a target field independent constant referencing function without taking the virtual source dimensionality mismatch into consideration \cite{Spors2008:WFSrevisited}.
-%The further analysis of the latter approach is not included in the present thesis, a thorough discussion of the topic can be found in \cite{Firtha2016}.
+If a parametrization of the SSD contour and the reference curve along with an analytical virtual source model is known, the reference position can be expressed analytically, resulting in closed form driving function specific to the SSD and the referencing contour. 
+The following two examples demonstrate the analytical application of the presented, generalized driving function.
 
 \subsection*{Application example \#1: Synthesis of a 3D point source applying a linear SSD}
 
-As a first example assume an infinite linear SSD located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+As a first example, assume an infinite linear SSD located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The reference contour is set to be an infinite line parallel to the SSD, located at $\vxref = \posvec{3}{x_0}{y_{\mathrm{ref}}}{0}$.
 This geometry has a distinctive role in the field of sound field synthesis, being the arrangement for which traditional WFS was first formulated \cite{Berkhout1988, Berkhout1993:Acoustic_control_by_WFS, Start1997:phd, Verheijen1997:phd}.
 In this arrangement the driving function may be derived from the vertical SPA of the Neumann Rayleigh integral, which describes a sound field precisely in terms of a planar single layer potential.
-Therefore application of a linear SSD involves the least approximations, avoiding errors present in the Kirchhoff approximation.
-Furthermore, choosing a reference line parallel to the SSD ensures the existence of a unique reference position for each SSD element, therefore amplitude correct synthesis may be ensured over the entire reference line.
-Finally, explicit solution can be found directly for this special geometry as described in the following section.
+Therefore, application of a linear SSD involves the least approximations, avoiding errors present in the Kirchhoff approximation.
+Furthermore, choosing a reference line parallel to the SSD ensures the existence of unique reference position for each SSD element, therefore, amplitude correct synthesis may be ensured over the entire reference line.
+Finally, the explicit solution can be found directly for this special geometry as described in the following section.
 
-Generally speaking, the evaluation of the referencing function \eqref{Eq:SFS_theory:Referencing function} requires the definition of the Green's function's principal radius, centered at $\vxo$ and measured at the reference position.
-For the special case of the Green's function this is given by the simple Euclidean distance of the two points.
-Hence, the determination of the distance between the reference position and the corresponding secondary sources is required by solving equation \eqref{Eq:SFS_theory:WFS_General_Stat_pos} for $|\vxref(\vxo)-\vxo|$, termed the \emph{reference distance}.
+The evaluation of the amplitude correction factor \eqref{Eq:SFS_theory:Referencing function} requires the definition of the distance between the reference position and the corresponding secondary sources by solving equation \eqref{Eq:SFS_theory:WFS_General_Stat_pos} for $|\vxref(\vxo)-\vxo|$, termed the \emph{reference distance}.
 The terminology indicates that it denotes the distance measured from the individual secondary sources at which the synthesis is optimized.
 
 In the arrangement under discussion both $\vxo$ and $\vxref$ are lying along infinite parallel lines, with the $y$-coordinates of both curves fixed to constant, thus for the second coordinates of equation \eqref{Eq:SFS_theory:WFS_General_Stat_pos}
@@ -444,7 +423,7 @@ Substitution into \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2} yields the linear
 \begin{equation}
 D(\vxo, \omega) = 
 \sqrt{\frac{8\pi}{\ti k}}\sqrt{\Rv^P(\vxo)}\sqrt{ \frac{\yref}{\yref + \Rv^P(\vxo) \hat{k}_y^P(\vxo)}}
-\ti k_y^P(\vxo) P(\vxo,\omega).
+\, \ti k_y^P(\vxo) \, P(\vxo,\omega).
 \end{equation}
 
 \begin{figure}
@@ -470,7 +449,7 @@ D(\vxo, \omega) =  -\frac{1}{4\pi}
 \label{eq:SFS_theory:WFS_point_source}
 }
 This result is equivalent with the traditional WFS driving function of a point source \cite[(2.27)]{Verheijen1997:phd}, \cite[(3.16)\&(3.17)]{Start1997:phd}, and furthermore identical to the farfield/high frequency approximated explicit solution presented in the next section \cite[(25)]{Spors2010:analysis_and_improvement}, \cite[Ch. 2.3]{Schultz2016}. 
-The result of synthesis is depicted in Figure \ref{fig:SFS_theory:25D_WFS_linear_ssd} confirming that by applying the derived driving function amplitude correct synthesis is ensured along the reference line.
+The result of synthesis is depicted in Figure \ref{fig:SFS_theory:25D_WFS_linear_ssd}, confirming that by applying the derived driving function amplitude correct synthesis is ensured along the reference line.
 
 Taking the temporal inverse Fourier transform of the driving function weighted by $S(\omega)$ yields the temporal driving function for a virtual point source with the source time history of $s(t)$.
 %\begin{equation}
@@ -482,47 +461,47 @@ Exploiting the shift theorem and the associativity of convolution yields the tem
 \importanteq{Linear time domain point source driv. fun.}{
 d(\vxo, t) =  -
 \sqrt{\frac{1}{2\pi c}}
-\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } y_s \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
+\sqrt{\frac{y_{\mathrm{ref}}}{y_{\mathrm{ref}} -y_s } } \, y_s \, \frac{ s^{\nshortmid}_t( t - \frac{|\vxo-\vxs|}{c} )}{|\vxo-\vxs|^{\frac{3}{2}}},
 }
 where $s^{\nshortmid}_t( t ) = h(t) \ast_t s( t )$, with $\ast_t$ denoting convolution in the time domain.
-The source time history is pre-equalized with a filter, exhibiting the frequency response of $H(\omega) = \sqrt{\ti \omega}$ being a half-differentiator. 
-The filter compensates the frequency response of a 2D SSD contour as the part of the secondary source compensation factor, as discussed above, and is therefore always the part of the 2.5D diving function for an arbitrary target sound field and for an arbitrary SSD shape.
-The impulse response of the SSD compensation filter can be expressed by differentiating the half-integrator's impulse response as given in \cite{Deregowski1983}
+The source time history is pre-equalized with a filter, exhibiting the frequency response of $H(\omega) = \sqrt{\ti \omega}$, being a half-differentiator. 
+The filter compensates the frequency response of the 2D SSD contour as the part of the secondary source compensation factor and is therefore always present in the 2.5D diving function for an arbitrary target sound field and for an arbitrary SSD shape.
+The impulse response of the SSD compensation filter can be expressed by differentiating the half-integrator's impulse response, as given in \cite{Deregowski1983}
 \begin{equation}
 h(t) = \frac{\delta(t)}{\sqrt{\pi t}} - \frac{1}{2} \frac{\theta(t)}{t^{3/2}},
 \end{equation}
 where $\theta(t)$ is the Heaviside step function.
-Practical implementation of this prefilter is discussed in details in \cite{Schultz2013:IIR_prefilters} applying IIR filters, while in \cite[Sec. 2.5]{Schultz2016} the ideal FIR filter coefficients are given analytically.
+Practical implementation of this prefilter applying IIR filters is discussed in details in \cite{Schultz2013:IIR_prefilters}, while in \cite[Sec.s 2.5]{Schultz2016} the ideal FIR filter coefficients are given analytically.
 
 \subsection*{Application example \#2: Synthesis of a plane wave applying a circular SSD}
 
-As a second example the synthesis of a plane wave applying a circular SSD, centered at the origin with the radius of $R_{\mathrm{SSD}}$ is presented.
+As a second example, the synthesis of a plane wave applying a circular SSD centered at the origin with the radius of $R_{\mathrm{SSD}}$ is presented.
 The synthesis is referenced to a concentric circle inside the SSD with the radius of $R_{\mathrm{ref}}$.
-For this geometry the explicit driving function is also available \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR}, which are however not discussed in details in the present thesis.
-
 Again, the system of equations describing the reference distance for each SSD element is given by
 \begin{align}
 \vxref(\vxo) &= \vxo + \hat{\vk}^P(\vxo) |\vxref(\vxo)-\vxo|,
+\label{Eq:SFS_theory:ref_curve_circ}
 \\
 |\vxref(\vxo)| &= R_{\mathrm{ref}}.
 \end{align}
-Expressing the reference distance leads to a second order equation.
-By exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and taking only the smaller root into consideration---corresponding to the closer arc of the reference circle to the actual SSD position---yields the reference distance
+%Expressing the reference distance leads to a second order equation.
+The reference distance can be obtained by expressing the absolute value of \eqref{Eq:SFS_theory:ref_curve_circ}. 
+Exploiting that $|\vxo| = R_{\mathrm{SSD}}$, $|\hat{\vk}^P(\vxo)| = 1$ and $\left< \hat{\vk}^P(\vxo) \cdot \vxo \right> = R_{\mathrm{SSD}} \, \hat{k}^P_{\mathrm{r}}$ yields the reference distance
 \begin{equation}
-|\vxref(\vxo)-\vxo| = R_{\mathrm{SSD}} \left( \hat{k}^P_r(\vxo) + \sqrt{ \hat{k}^P_r(\vxo)^2 + \left( \frac{R_{\mathrm{ref}}}{R_{\mathrm{SSD}}} \right)^2 - 1 } \right),
+|\vxref(\vxo)-\vxo| = - R_{\mathrm{SSD}} \left( \hat{k}^P_{\mathrm{r}}(\vxo) \pm \sqrt{ \hat{k}^P_{\mathrm{r}}(\vxo)^2 + \left( \frac{R_{\mathrm{ref}}}{R_{\mathrm{SSD}}} \right)^2 - 1 } \right),
 \label{eq:SFS_theory:pw_circ_ref}
 \end{equation}
-with $\hat{k}^P_r(\vxo)$ denoting the radial component of the normalized wavenumber vector.
+with $\hat{k}^P_{\mathrm{r}}(\vxo)$ denoting the radial component of the normalized wavenumber vector and $\pm$ corresponds to the closer or the further arc of the reference circle to the actual SSD position, respectively.
 Applying this reference distance in the general 2.5D WFS driving function \eqref{Eq:SFS_theory:25D_WFS_driv_fun} allows the synthesis of an arbitrary sound field referenced on a reference circle inside the SSD.
 
 Assume the special case of a virtual 2D plane wave, propagating parallel to the synthesis plane described by the wavenumber vector $\vk^{\mathrm{PW}} = \posvec{3}{k_x^{\mathrm{PW}}}{k_y^{\mathrm{PW}}}{0}$.
 For a 2D sound field invariant along the vertical dimension the vertical wavefront curvature is zero ($\phi^{''P}_{zz}(\vxo) = 0$) and the referencing function is the reference distance itself.
-The driving function synthesizing a 2D plane wave is then given as
+The driving function for the synthesis of a 2D plane wave is then given as
 \begin{equation}
 \label{eq:SFS_theory:WFS_plane_wave}
 D(\vxo, \omega) = -w(\vxo) 
-\sqrt{\frac{8\pi}{\ti k}}\sqrt{|\vxref(\vxo)-\vxo|}
-\ti k_r^{\mathrm{PW}}(\vxo) 	\te^{-\ti \left< \vk^{\mathrm{PW}} \cdot \vxo \right> },
+\sqrt{\frac{8\pi}{\ti k}}\sqrt{|\vxref(\vxo)-\vxo|} \,
+\ti k_{\mathrm{r}}^{\mathrm{PW}}(\vxo) \, \te^{-\ti \left< \vk^{\mathrm{PW}} \cdot \vxo \right> },
 \end{equation}
 with the reference distance given by \eqref{eq:SFS_theory:pw_circ_ref}.
 As an application of this driving function a simple example is depicted in Figure \ref{fig:SFS_theory:25D_WFS_circular_ssd} for the synthesis of a harmonic plane wave.
@@ -545,76 +524,65 @@ In order to find the driving signal for the synthesis of a plane wave carrying a
 \begin{equation}
 d(\vxo, t) = -w(\vxo) 
 \sqrt{\frac{8 \pi }{c	}|\vxref(\vxo)-\vxo|}  \,
-\hat{k}_r^{\mathrm{PW}}(\vxo)  h(t) \ast_t s( t - \frac{1}{c}\left< \hat{\vk}^{\mathrm{PW}} \cdot \vxo \right>),
+\hat{k}_{\mathrm{r}}^{\mathrm{PW}}(\vxo) \, h(t) \ast_t s( t - \frac{1}{c}\left< \hat{\vk}^{\mathrm{PW}} \cdot \vxo \right>),
 \end{equation}
 where $h(t) = \mathcal{F}^{-1}_{\omega}\left\{ \sqrt{\ti \omega} \right\}$ is the SSD compensation filter, performing half-derivation on the time history and $\hat{\vk}^{\mathrm{PW}} = \posvec{3}{\hat{k}^{\mathrm{PW}}_x}{\hat{k}^{\mathrm{PW}}_y}{0}$ is a unit vector pointing into the plane wave propagation direction.
 
+Note that for the special case when $R_{\mathrm{SSD}} \rightarrow 0$ the explicit driving function is also available \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR}, thus the presented driving function allows the comparison of the explicit and implicit methods.
+In this particular case the reference distance is simply given by $|\vxref(\vxo)-\vxo| = -R_{\mathrm{SSD}} \left( \cos \left( \varphi - \varphi_{\mathrm{PW}} \right) - \ti |\sin \left( \varphi - \varphi_{\mathrm{PW}} \right) | \right)$, with $\varphi$ and $\varphi_{\mathrm{PW}}$ being the polar angles of the SSD element positions and the plane wave wavenumber vector.
+The resulting driving function is an asymptotic approximation of the NFC-HOA method, ensuring amplitude correct synthesis in the center of the SSD.
+
 \section{Explicit solution: Spectral Division Method}
 
-The explicit solution for the general sound field synthesis problem aims at the direct solution of the inverse problems, described by integral equations \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}.
+The \emph{explicit solution} for the general sound field synthesis problem aims at the direct solution of the inverse problems, described by integral equations \eqref{Eq:Theory:3D_SFS} and \eqref{Eq:Theory:25D_SFS}.
 
-Generally speaking the explicit methodology utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function \cite{MorseFeshbach1953, Ahrens2012}.
-Such an operator and the involved acoustic fields can by expanded into the series of orthogonal eigenfunctions of the wave equation on a control surface, that form a complete basis of the required solution.
+Generally speaking, the explicit methodology utilizes compact operator theory by exploiting that integral \eqref{Eq:Theory:3D_SFS} constitutes a compact Fredholm operator with the kernel being the Green's function \cite{MorseFeshbach1953, Ahrens2012}.
+Such an operator and the involved acoustic fields measured on a control surface can be expanded into the series of orthogonal eigenfunctions of the wave equation, forming a complete basis of the required solution.
 The inverse problem can be straightforwardly solved for the driving function expansion coefficients by a comparison of the corresponding eigenvalues, as long as none of the expansion coefficients of the operator kernel is zero (otherwise the problem is termed \emph{ill-conditioned}).
-Finally the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
-The method is often referred to as \emph{mode-matching} solutions, since the eigenfunctions of a given geometry are termed the \emph{modes}.
+Finally, the explicit analytical solution is found for the driving function as an infinite sum of the weighted basis functions.
+The method is often referred to as \emph{mode-matching} solution since the eigenfunctions of a given geometry are termed the \emph{modes}.
 This solution is unique for general enclosures
-%\footnote{In contrary sound field control utilizing the Kirchhoff-Helmholtz formulation would be non-unique on the eigenfrequencies of the enclosure due to resonance phenomena. \fscom{maybe its worth to add: full KHI is unique, single layer can be made unique with CHIEF points like BEM}}
-and also for the (strictly speaking) non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010}, respectively.
-In the latter case the compact operator degenerates to the continuous eigenvalue domain instead of countable eigenvalues as presented in the followings.
+and also for the (strictly speaking) non-enclosing planar case as shown in \cite{Zotter2013:uniqueness} and \cite{Fazi2010}.
+In the latter case the compact operator degenerates to the continuous eigenvalue domain instead of countable eigenvalues as it will be presented in the following.
 
-The determination of the appropriate eigenfunctions for a general geometry is a tough challenge.
+The determination of the required eigenfunctions for a general geometry is a tough challenge.
 For spherical and circular geometries spherical and circular harmonics form the demanded basis functions. 
-For a rigorous treatment for mode-matching SFS using spherical and circular SSDs see \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR, Zotter2009phd, Ahrens2010phd, Ahrens2012, Schultz2014:Comparing_approaches} and \cite{Koyama2014, Koyama2014:phd} for the cylindrical solution.
-In the present thesis only the planar and linear geometries are investigated in details. %\fscom{arbitrary SSD are rather treated with Kirchhoff, SPA and HF approximations}
-%However, under the validity of the tangent plane approximation---i.e. under high frequency assumptions with small SSD curvatures---the SSD surface/contour can be considered locally planar/linear and the spatial form of the explicit driving functions are valid for arbitrary shaped SSDs.
-This 
-
-%\begin{figure}
-%	\centering
-%	\begin{overpic}[width = .85\columnwidth]{Figures/SFS_theory/planar_linear_geometry.png}
-%	\footnotesize
-%	\put(0, 0){(a)}
-%	\put(45,0){(b)}
-%	\end{overpic}
-%\caption{Secondary source distribution geometry .}
-%	\label{Fig:Theory:planar_linear_geometry}
-%\end{figure}
+For a rigorous treatment for mode-matching approaches using spherical and circular SSDs refer to \cite{Ahrens2008:Analytical_Circ_Spherical_SFS, Ahrens2009:circularSSD_mismatch, Ahrens2009:circular25D_SFR, Zotter2009phd, Ahrens2010phd, Ahrens2012, Schultz2014:Comparing_approaches} and \cite{Koyama2014, Koyama2014:phd} for the cylindrical solution.
+In the present thesis only planar and linear geometries are investigated in details.
 
 \subsection{3D Spectral Division Method}
 
-Assume an infinite planar SSD located at $\vxo = \posvec{3}{x_0}{0}{z_0}$, degenerated from the geometry introduced for the Rayleigh integrals in the previous chapter, shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
-The half-space of synthesis is chosen to be at $y>0$, therefore all the virtual sources are assumed to be located at $y<0$.
-The synthesized field in this geometry is given by a Fredholm integral of the first kind 
+Assume an infinite planar SSD located at $\vxo = \posvec{3}{x_0}{0}{z_0}$, degenerated from the geometry introduced for the Rayleigh integrals in Chapter \ref{sec:general_wave_theory} as shown in Figure \ref{Fig:Theory:Rayleigh_geometry}.
+The half-space of the synthesis is chosen to be at $y>0$, therefore all the virtual sources are assumed to be located at $y<0$.
+The synthesized field in this geometry is given by a continuous convolution along the SSD plane 
 \begin{equation}
-P(\vx,\omega) = \iint_{-\infty}^{\infty} D(x_0,z_0,\omega) G(x-x_0,y,z-z_0, \omega) \td x_0 \td z_0 = D(x,z,\omega)\ast_{x,z} G(x,y,z,\omega),
+P(\vx,\omega) = \iint_{-\infty}^{\infty} D(x_0,z_0,\omega) G(x-x_0,y,z-z_0, \omega) \td x_0 \td z_0 = D(x,z,\omega)\ast_{x,z} G(x,y,z,\omega).
 \end{equation}
-describing a continuous convolution along the SSD plane.
-Here $G(x,y,z,\omega)$ denotes the sound field of a secondary source element placed at the origin and $\ast_{x,z}$ denotes convolution along the $x$ and $z$ dimensions.
+Here, $G(x,y,z,\omega)$ denotes the sound field of a secondary source element placed at the origin and $\ast_{x,z}$ denotes convolution along the $x-$ and $z$-dimensions.
 
-For this geometry the orthogonal basis is given by the continuous set of exponentials, and the decomposition of the involved quantities is given by a double Fourier transform \cite{Arfken2005, Ahrens2012, Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition as discussed in Section \ref{Sec:thoery:angular_Spectrum}.
-Applying the convolution theorem to the angular spectrum representation, the convolution transforms into a multiplication \cite{Girod2001}:
+For this geometry the orthogonal basis is given by the continuous set of exponentials and the decomposition of the involved quantities is given by a double Fourier transform \cite{Arfken2005, Ahrens2012, Schultz2014:Comparing_approaches}, with the physical interpretation of a plane wave decomposition as discussed in Section \ref{Sec:thoery:angular_Spectrum}.
+Applying the convolution theorem to the angular spectrum representation, the convolution is transformed into a multiplication \cite{Girod2001}:
 \begin{equation}
 \tilde{P}(k_x,y,k_z, \omega) = \tilde{D}(k_x,k_z, \omega) \cdot \tilde{G}(k_x,y,k_z, \omega).
 \end{equation}
 %
-The expansion coefficients are therefore obtained by a comparison of the spectral coefficients and the driving function in the wavenumber and the spatial domain takes the form:
+The expansion coefficients are, therefore, obtained by a comparison of the spectral coefficients and the driving function in the wavenumber and the spatial domain takes the form:
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega) = \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} = 
-\frac{\mathcal{F}\left\{ P(\vx,\omega) \right\} }
-{  \mathcal{F}\left\{ G(\vx,\omega) \right\} },
+\frac{\FT[x,z]{ P(\vx,\omega) } }
+{ \FT[x,z]{ G(\vx,\omega) } },
 \label{Eq:Theory:Dkxkz}
 \end{equation}
 \importanteq{3D SDM driving fun.}{
-D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z,
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \tilde{G}(k_x,y,k_z, \omega)} \te^{-\ti (k_x x_0 + k_z z_0)} \, \td k_x \, \td k_z,
 \label{Eq:Theory:Dkx_inverse_Fourier}
 }
 respectively.
-Since the driving function spectrum is yielded by a division in the spectral domain the approach is termed the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear, Ahrens2012:Ambisonics_for_planar_linear}.
+Since the driving function spectrum is obtained by a division in the spectral domain, the approach is termed the \emph{Spectral Division Method} \cite{Ahrens2010a, Ahrens2011:icassp, Ahrens2010:Ambisonics_w_planar_linear, Ahrens2012:Ambisonics_for_planar_linear}.
 
 Substituting the $k_x-k_z$ representation of the 3D Green's function given by \eqref{eq:HF_approx:Greens_2D_Spectrum} the driving function \eqref{Eq:Theory:Dkx_inverse_Fourier} reads as
 \begin{equation}
-D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \te^{ -\ti k_y  y  } } \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z.
+D(x_0,z_0,\omega) = \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} 2\ti k_y \frac{\tilde{P}(k_x,y,k_z, \omega)}{ \te^{ -\ti k_y  y  } } \te^{-\ti (k_x x_0 + k_z z_0)} \, \td k_x \, \td k_z.
 \end{equation}
 with $k_y$ defined by \eqref{eq:theory:k_y_definition}.	
 Expressing the target field spectrum by extrapolating from the plane $y = 0$ according to \eqref{Eq:Theory:Wave_field_extrapolation}---i.e. as 
@@ -624,10 +592,10 @@ $---
 the exponential pressure propagators cancel out and the driving function becomes independent from the $y$-coordinate. 
 The driving function in the wavenumber domain therefore reads as
 \begin{equation}
-\tilde{D}(k_x,k_z,\omega) = 2\ti k_y \tilde{P}(k_x,0,k_z,\omega) = -2 \left. \frac{\partial}{\partial y} \tilde{P}(k_x,y,k_z,\omega) \right|_{y = 0},
+\tilde{D}(k_x,k_z,\omega) = 2\ti k_y \tilde{P}(k_x,0,k_z,\omega) = -2 \left. \frac{\partial}{\partial y} \tilde{P}(k_x,y,k_z,\omega) \right|_{y = 0}.
 \label{Eq:Theory:Planar_explicit_driv_fun}
 \end{equation}
-for which it was exploited that according to \eqref{eq:Theory:Fourier_diff} multiplication by $\ti k_y$ represents differentiation along the $y$-dimension.
+Here it was exploited that based on \eqref{eq:Theory:Fourier_diff} multiplication by $\ti k_y$ represents differentiation along the $y$-dimension.
 Straightforwardly, the explicit expression of the driving function in the spatial domain is obtained by the corresponding inverse Fourier transform according to \eqref{Eq:Theory:Dkx_inverse_Fourier}:
 \begin{equation}
 D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_{y = 0}.
@@ -635,20 +603,20 @@ D(x_0,z_0,\omega) = -2 \left. \frac{\partial}{\partial y} P(\vx,\omega) \right|_
 \end{equation}
 The planar explicit driving function is thus equivalent to the implicit solution, in a planar geometry provided by the Rayleigh integral.
 The coincidence of the explicit and implicit driving functions is a consequence of the uniqueness of the problem in the present geometry.
-It is also indirectly proven that the wavefield extrapolation equations are the spectral domain representations of the Rayleigh integrals.
+Thereby it is also indirectly proven that the wavefield extrapolation equations are the spectral domain representations of the Rayleigh integrals.
 
-However, an important difference between the implicit and explicit solution exists: until \eqref{Eq:Theory:Dkx_inverse_Fourier} the present method does not pose any constraints on the actual form of the Green's function. 
-Theoretically an arbitrary transfer function may be assigned for the secondary sources. 
+However, an important difference between the implicit and explicit solution exists: 
+Until \eqref{Eq:Theory:Dkx_inverse_Fourier} the present method does not pose any constraints on the actual form of the Green's function. 
+Theoretically, an arbitrary transfer function may be assigned to the secondary sources.
 As long the spectrum of the transfer function does not exhibit zeros unique driving function may be derived applying the explicit methodology.
 
 If the secondary sources are 3D point sources the following physical interpretation can be assigned to the explicit solution: 
-as it was stated in Section \ref{Sec:HF_approx:1D_Greens} a planar distribution of point sources with a harmonic spatial distribution described by $k_x, k_z$ radiate plane waves with the same wavenumber components and a wavenumber/direction dependent amplitude factor $\frac{1}{2 \ti k_y}$ (c.f. \eqref{eq:HF_approx:Greens_2D_Spectrum}, degenerating at $k_x = k_z = 0$ to the 1D Green's function).
+As it was stated in Section \ref{Sec:HF_approx:1D_Greens} a planar distribution of point sources with a harmonic spatial distribution (described by $k_x, k_z$) radiate plane waves with the same wavenumber components and with a direction dependent intensity of $\frac{1}{2 \ti k_y}$ (c.f. \eqref{eq:HF_approx:Greens_2D_Spectrum}, degenerating at $k_x = k_z = 0$ to the 1D Green's function).
 The driving function \eqref{Eq:Theory:Planar_explicit_driv_fun} thus compensates the planar SSD's response for the synthesis of a single plane wave component.
-Finally, the explicit driving function for an arbitrary virtual field is found as the sum of the individual plane wave driving function weighted by the virtual field' plane wave expansion coefficients.
+Finally, the explicit driving function for an arbitrary virtual field is found as the sum of the individual plane wave driving functions weighted by the virtual field' plane wave expansion coefficients.
 
 
 \subsection*{Application example: Synthesis of a 3D point source using a planar SSD}
-%\fscom{well done, I've tried it for the Acta 2014 article, but could not go any further, have to check your solution in detail. However, it might be worth that this issue from the acta in the appendix is solved here!}
 \begin{figure}
 	\centering
 	\begin{overpic}[width = 1\columnwidth]{Figures/SFS_theory/Planar_SDM.png}
@@ -659,22 +627,23 @@ Finally, the explicit driving function for an arbitrary virtual field is found a
 \caption{
 Synthesis of a virtual point source using a planar SSD applying the SDM driving function.
 The SSD is located at $\vxo = [x_0,\ 0,\ z_0]^{\mathrm{T}}$ denoted by solid black line. 
-The virtual source is located at $\vxs = [0,\ -2,\ 0]^{\mathrm{T}}$ oscillating at $f_0 = 1 ~\mathrm{kHz}$.
+The virtual source is located at $\vxs = [0,\ -2,\ 0]^{\mathrm{T}}$, oscillating at $f_0 = 1 ~\mathrm{kHz}$.
 The figures depict the real part of the synthesized field (a) and the deviation from the target sound field (b) measured at $z=0$.}
 	\label{Fig:Theory:monopole_synthesis_by_planar_SDM}
 \end{figure}
 
-The application of the planar explicit solution is presented via the synthesis of a 3D virtual point source positioned at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$ behind the SSD plane, located at $\vxo = \posvec{3}{x_0}{0}{z_0}$.
+The application of the planar explicit solution is presented via the synthesis of a 3D virtual point source positioned behind the SSD at $\vxs = \posvec{3}{x_s}{y_s}{z_s}$
+The SSD is located at $\vxo = \posvec{3}{x_0}{0}{z_0}$ ($y_s < 0$).
 The wavenumber domain representation of the driving function is obtained by substituting the angular spectrum of a 3D point source into \eqref{Eq:Theory:Dkxkz} with applying the Fourier transform shift theorem\footnote{This is the corrected version of \cite[eq. (A11)]{Schultz2014:Comparing_approaches}.}
 \begin{equation}
 \tilde{D}(k_x,k_z,\omega) =  \frac{-\frac{\ti}{2} \frac{ \te^{-\ti k_y ( y - y_s )} }{ k_y} \te^{\ti (k_x x_s +k_z z_s)} }{-\frac{\ti}{2} \te^{-\ti k_y  y } / k_y   } = \te^{-\ti k_y y_s}\te^{\ti (k_x x_s +k_z z_s)}.
 \label{Eq:Theory:Monopole_SDM_planar_driv_fun}
 \end{equation}
-The double inverse Fourier transform can be carried out analytically by taking the $y$-derivative of the Weyl's integral representation of the Green's function (See \cite{Lalor1969} or \cite[(2.65)]{Williams1999}):
+The double inverse Fourier transform can be carried out analytically by taking the $y$-derivative of the Weyl's integral representation of the Green's function (being basically the angular spectrum representation of a point source, as presented in \cite{Lalor1969} or \cite[(2.65)]{Williams1999}):
 \begin{equation}
 \frac{\partial}{\partial y} G(\vxo - \vxs,\omega ) = 
 \frac{1}{4\pi^2} \iint_{-\infty}^{\infty} -\frac{1}{2} \te^{ -\ti k_y  ( y - y_s ) }
-\te^{\ti (k_x x_s + k_z z_s)} \te^{-\ti (k_x x_0 + k_z z_0)} \td k_x \td k_z
+\te^{\ti (k_x x_s + k_z z_s)} \, \te^{-\ti (k_x x_0 + k_z z_0)} \, \td k_x \, \td k_z
 .
 \label{Eq:Theory:Weyls_derivative}
 \end{equation}
@@ -685,28 +654,28 @@ D(x_0,z_0,\omega) = -2 \frac{\partial}{\partial y} \left. G(\vxo - \vxs,\omega )
 which is in agreement with equation \eqref{Eq:Theory:Planar_explicit_driv_fun_spatial}.
 
 The result of synthesizing the steady-state field of a point source is illustrated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM}. 
-In the target half space $y>0$ perfect synthesis is achieved, as it is indicated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b), depicting the discrepancy between the synthesized and the target sound field. 
+In the target half space $y>0$ perfect synthesis is achieved, as it is indicated in Figure \ref{Fig:Theory:monopole_synthesis_by_planar_SDM} (b) depicting the discrepancy between the synthesized and the target sound field. 
 Obviously, the figure also presents the result of 3D planar WFS of a spherical wave without applying the high frequency gradient approximation.
-
 
 \subsection{2.5D Spectral Division Method}
 \label{Sec:25D_SDM}
 
-As the geometry for the derivation of the 2.5D explicit driving function assume an infinite linear distribution of secondary point sources, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+As the geometry for the derivation of the 2.5D explicit driving function, assume an infinite linear distribution of secondary point sources located at $\vxo = \posvec{3}{x_0}{0}{0}$.
 The synthesized field in this arrangement reads as
 \begin{equation}
-P(x,y,z,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) G(x-x_0,y,z,\omega) \td x_0.
+P(x,y,z,\omega) = \int_{-\infty}^{\infty} D(x_0,\omega) \, G(x-x_0,y,z,\omega) \, \td x_0.
 \label{Eq:SFS_Theory:linear_synth_field_spatial}
 \end{equation}
 Similarly to the planar case the basis functions for a linear SSD are given by exponentials:
-by realizing that the above equation is a convolution along the $x$-axis, the convolution can be transformed into a multiplication by means of a spatial forward Fourier transform
+By realizing that the above equation is a convolution along the $x$-axis, the convolution can be transformed into a multiplication by means of a spatial forward Fourier transform
 \begin{equation}
 \tilde{P}(k_x,y,z, \omega) = \tilde{D}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega).
 \label{Eq:SFS_Theory:linear_synth_field_spectral}
 \end{equation}
 The driving function spectrum is then obtained as a spectral ratio
 \begin{equation}
-\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = \frac{\mathcal{F}_x \left\{ P(\vx,\omega) \right\}}{\mathcal{F}_x \left\{ G(\vx,\omega) \right\}},
+\tilde{D}(k_x,\omega) = \frac{\tilde{P}(k_x,y,z, \omega)}{\tilde{G}(k_x,y,z, \omega)} = 
+\frac{\FT[x]{ P(\vx,\omega) }}{\FT[x]{ G(\vx,\omega) }},
 \label{Eq:SFS_Theory:LinearSDM_spectral}
 \end{equation}
 and the frequency domain driving function is obtained as the spatial inverse Fourier transform with respect to $k_x$
@@ -714,48 +683,48 @@ and the frequency domain driving function is obtained as the spatial inverse Fou
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,y,z, \omega) }{\tilde{G}(k_x,y,z, \omega)} \te^{-\ti k_x x_0} \td k_x.
 \label{Eq:Theory:LinearSDM1}
 \end{equation}
-Again, theoretically the transfer function may describe the field of an arbitrary sound source, as long as it does not exhibit zeros in order to keep the problem well-conditioned.
+Again, theoretically the secondary source transfer function may describe the field of an arbitrary sound source, as long as it does not exhibit zeros in order to keep the problem well-conditioned.
 
 \vspace{3mm}
-Unlike the planar case the present driving function depends on the listener position: Equation \eqref{Eq:Theory:LinearSDM1} may be solved only for positions on the surface of a cylinder with fixed radius $d = \sqrt{y^2 + z^2}$ \cite[p.~60.]{Ahrens2010phd}.
+Unlike the planar case the present driving function depends on the listener position: Equation \eqref{Eq:Theory:LinearSDM1} may be solved only for positions on the surface of a cylinder with a fixed radius of $d = \sqrt{y^2 + z^2}$ \cite[p.~60.]{Ahrens2010phd}.
 This is a direct consequence of the fact that the pressure of an arbitrary 3D sound field measured on the SSD does not determine completely the pressure on the reference line---and vice versa---.
-Furthermore, an infinite line source---i.e. the SSD---can only radiate wavefronts with cylindrical symmetry as it was discussed in details in \ref{sec:greens_function_spectrum}.
-Phase correct synthesis therefore can be achieved only in a plane containing the SSD in which the radial wavenumber of the synthesized field and the target field coincide. 
+Furthermore, an infinite line source---i.e. the SSD---can only radiate wavefronts with cylindrical symmetry as it was discussed in details in Section \ref{sec:greens_function_spectrum}.
+Phase correct synthesis, therefore, can be achieved only in a plane containing the SSD in which the radial wavenumber of the synthesized field and the target field coincide. 
 Amplitude correct synthesis is ensured in this plane at a distance $\dref = \sqrt{y^2 + z^2}$, for which the driving function is calculated.
 
 For practical applications the plane of synthesis is chosen to be the horizontal plane $z=0$, requiring that for the virtual field $k_z(x,y,0) = 0$ holds.
 The driving function thus reads as
 \importanteq{2.5D SDM driving function}{
-D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \te^{-\ti k_x x_0} \td k_x.
+D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\tilde{P}(k_x,\yref,0, \omega) }{\tilde{G}(k_x,\yref,0, \omega)} \, \te^{-\ti k_x x_0} \, \td k_x.
 \label{Eq:Theory:Linear_SDM}
 }
 In this geometry amplitude correct synthesis is restricted to the \emph{reference line} by setting $y = \yref$.
 
-Similarly to the 3D case the following physical interpretation can be assigned to the 2.5D explicit solution:
+Similarly to the 3D case, the following physical interpretation can be assigned to the 2.5D explicit solution:
 Given an infinite distribution of point sources along the $x$-axis with a harmonic spatial distribution described by $k_x$, the radiated sound field is given by
-\begin{multline}
-\int_{-\infty}^{\infty} G(x - x_0,y,z) \te^{\ti k_x x_0} \td x_0 = \hat{G}(k_x,y,z,\omega) \te^{-\ti k_x x} = \\
-=  -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{\left( \frac{\omega}{c} \right)^2-k_x^2} \sqrt{y^2+z^2} \right)  \te^{-\ti k_x x},
-\end{multline}
-at $x=0$ resulting in the 2D Green's function as discussed in Section \ref{sec:greens_function_spectrum}.
-Such a source radiates cylindrical symmetric sound fields with conical wavefronts as depicted in Figure \eqref{Fig:Theory:greens_stat_pos} (a). 
-Along a fixed reference line at $z=0$ the SSD reproduces a harmonic spatial distribution $\te^{-\ti k_x x}$ attenuated approximately by $\frac{1}{\sqrt{k_y}|y_{\mathrm{ref}}|}$, corresponding to attenuating plane waves with $k_z=0$.
+\begin{align}
+\int_{-\infty}^{\infty} G(x - x_0,y,z,\omega) \, \te^{\ti k_x x_0} \, \td x_0 &= \tilde{G}(k_x,y,z,\omega) \, \te^{-\ti k_x x} \\
+&=  -\frac{\ti}{4} H_0^{(2)}\left( \sqrt{\left( \frac{\omega}{c} \right)^2-k_x^2} \sqrt{y^2+z^2} \right)  \te^{-\ti k_x x},
+\end{align}
+at $x=0$ resulting in the 2D Green's function, as discussed in Section \ref{sec:greens_function_spectrum}.
+Such a source radiates cylindrical symmetric sound fields with cylindrical wavefronts as depicted in Figure \eqref{Fig:Theory:greens_stat_pos} (a). 
+Along a fixed reference line at $z=0$ the SSD reproduces a harmonic spatial distribution $\te^{-\ti k_x x}$, attenuated approximately by $\frac{1}{\sqrt{k_y}|y_{\mathrm{ref}}|}$, corresponding to attenuating plane waves with $k_z=0$.
 Therefore, the wavenumber domain driving function ensures the compensation of the linear SSD response for the synthesis of a single plane wave component propagating in the plane of synthesis.
-Obviously, for sound fields that can be expanded into the series of plane waves with $k_z=0$ the driving function is the weighted sum of the plane wave driving function, resulting in \eqref{Eq:Theory:Linear_SDM}.
+Obviously, for sound fields that can be expanded into the series of plane waves with $k_z=0$ the driving function is obtained as the weighted sum of the plane wave driving function, resulting in \eqref{Eq:Theory:Linear_SDM}.
 
 It is worth noting that the analytic Fourier transform coefficients of the target sound field are available only for limited simple virtual source models. 
-Even in these cases the inverse transform of the driving function can rarely be evaluated analytically, therefore numerical transforms are needed.
+Even in these cases the inverse transform of the driving function can rarely be evaluated analytically, therefore numerical transform is needed.
 For a practical and optimized implementation of the SDM for an arbitrary target sound field refer to \cite{ahrens2013a:efficientSDM}.
 
 \subsection*{Application example: Synthesis of a 3D point source using a linear SSD}
 
-As an example for the 2.5D SDM the reproduction of a 3D point source is presented.
+As an example for the 2.5D SDM, the reproduction of a 3D point source is presented.
 The virtual source is located at $\vxs = \posvec{3}{x_s}{y_s}{0}$, with $y_s<0$. 
-The SSD is a linear set of 3D point sources, located along $\vxo = \posvec{3}{x_0}{0}{0}$.
+The SSD is a linear set of 3D point sources located along $\vxo = \posvec{3}{x_0}{0}{0}$.
 The explicit driving function for a linear SSD is given by \eqref{Eq:Theory:Linear_SDM}. 
 Substituting the 1D spectra of the virtual and the secondary point sources along with applying the Fourier shift theorem the driving function is given in the propagation region as
 \begin{equation}
-\hat{D}(k_x,\omega) = 
+\tilde{D}(k_x,\omega) = 
 \frac{ -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  \te^{\ti k_x x_s} }
      { -\frac{\ti}{4} H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref| \right)  }
 ,
@@ -766,9 +735,9 @@ and the spatial inverse Fourier transform yields the spatial domain driving func
 D(x_0,\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
 \frac{  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref - y_s| \right)  }
      {  H_0^{(2)} \left( \sqrt{ \left(\frac{\omega}{c}\right)^2 - k_x^2} |\yref|       \right)  }
-\te^{- \ti k_x (x_0 - x_s)}
-\td k_x.}
-The synthesized field using this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
+\, \te^{- \ti k_x (x_0 - x_s)}
+\, \td k_x.}
+The synthesized field applying this driving function is depicted in \ref{Fig:Theory:monopole_synthesis_by_linear_SDM} (a). 
 As it can be seen from Figure (b) displaying the discrepancy between the synthesized field and the target field, application of the explicit driving function ensures perfect synthesis on the reference line. 
 In other points amplitude errors are present.
 
@@ -787,15 +756,15 @@ The figure depicts the synthesized field at the synthesis plane ($z = 0$) with (
 	\label{Fig:Theory:monopole_synthesis_by_linear_SDM}
 \end{figure}
 %
-As discussed in \cite{Spors10ahrens:analysis} the derived driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
-The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the farfield of the SSD in front of the virtual source, where $k_y \gg k_x$ dominates the inverse transform.
-Applying the Hankel function's approximation the inverse transform can be carried out analytically, resulting in
+As discussed in \cite{Spors2010:analysis_and_improvement}, the driving function spectrum can be simplified by applying the large-argument/asymptotic approximation of the Hankel function, given by \eqref{Eq:HF_approx:Hankel_asymptotic_form}.
+The asymptotic form gives a fair approximation for \eqref{Eq:Theory:SDM_point_source} if $k_y |\yref| \gg 1$ holds, valid in the farfield of the SSD in front of the virtual source where $k_y \gg k_x$ dominates the inverse transform.
+By applying the Hankel function's approximation the inverse transform can be carried out analytically, resulting in
 \begin{equation}
 D(x_0,\omega) \approx \frac{1}{2} \sqrt{\frac{\yref}{\yref-y_s}} \ti \frac{\omega}{c} \frac{y_s}{|\vxo-\vxs|} H_1^{(2)}\left( \frac{\omega}{c} |\vxo-\vxs| \right).
 \end{equation}
 A further large-argument approximation of the first order Hankel function returns the 2.5D WFS driving function for a 3D point source referencing the synthesis on a reference line, given by \eqref{eq:SFS_theory:WFS_point_source}. 
 This indicates that the implicit solution constitutes a high frequency approximation for the explicit solution in case of a virtual point source.
-The equivalence of the SDM and 2.5D WFS referencing the synthesis of a virtual plane wave on a reference line was further discussed in \cite{Firtha2016, Schultz2016:DAGA,Schultz2016}.
+The equivalence of the SDM and 2.5D WFS with optimizing the synthesis of a virtual plane wave on a reference line was further discussed in \cite{Firtha2016, Schultz2016:DAGA,Schultz2016}.
 In the following the general relation of the explicit solution and 2.5D WFS is investigated.
 
 \subsection{Explicit solution in the spatial domain}
@@ -804,12 +773,12 @@ The determination of a single spectral coefficient for the explicit solution req
 The explicit solution is therefore often termed a \emph{global solution}.
 In contrary, the implicit solution requires the value of the local field variables only at the actual SSD position at which the driving function is to be expressed.
 The implicit solution is thus referred to as a \emph{local solution}.
-In the followings it is presented how the global solution can be approximated asymptotically by the application of the stationary phase method, resulting in an alternative local solution.
+In the following it is presented how the global solution can be approximated asymptotically by the application of the stationary phase method, resulting in an alternative local solution.
 
-As it was discussed in Section \ref{Sec:SPA_for_Fourier} the stationary phase approximation allows the evaluation of forward and inverse Fourier integrals around stationary positions in the spatial and spectral domain.
-The SPA therefore may be employed in order to give an approximate formulation for the 2.5D explicit driving function solely in the spatial domain.
+As discussed in Section \ref{Sec:SPA_for_Fourier} the stationary phase approximation allows the evaluation of forward and inverse Fourier integrals around stationary positions in the spatial and spectral domain.
+Therefore, it may be employed in order to give an approximate formulation for the 2.5D explicit driving function merely in the spatial domain.
 
-The complete derivation is presented in details in Appendix \ref{App:SDM_SPA}, here only the result of the approximation is discussed.
+The complete derivation is presented in details in Appendix \ref{App:SDM_SPA}. Here only the result of the approximation is discussed.
 The derivation consists of two main steps:
 \begin{enumerate}
 	%
@@ -820,7 +789,7 @@ The derivation consists of two main steps:
 	\item It is followed by the inverse Fourier transform of the asymptotic spectral driving function.
 	The evaluation of the inverse transform with the SPA relates the forward transform stationary positions to positions along the SSD.
 \end{enumerate}
-As the result of the derivation for a linear SSD located along $\vxo = \posvec{3}{x_0}{0}{0}$ the asymptotic SDM driving function, expressed entirely in the spatial domain reads as
+As the result of the derivation for a linear SSD located along $\vxo = \posvec{3}{x_0}{0}{0}$ the asymptotic SDM driving function, expressed merely in the spatial domain reads as
 \importanteq{2.5D explicit driv. fun.}{
 \label{eq:SFS_theory:spatial_sdm}
 D(x_0,\omega) \approx 
@@ -833,7 +802,7 @@ In the driving function $\vxref(\vxo) = \posvec{3}{x_{\mathrm{ref}}(x_0)}{y}{0}$
 \label{Eq:stationary_evaluation_points}
 \vk^P(\vxref(\vxo)) = \vk^G(\vxref(\vxo) - \vxo).
 }
-Hence, in the explicit driving function for a given SSD coordinate $x_0$ the reference point $\vxref$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
+Hence, in the explicit driving function for a given SSD coordinate $x_0$ the reference point $\vxref$ is found on the reference line where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
 For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points_2}.
 
 \begin{figure}[t!]
@@ -853,7 +822,7 @@ For an illustration refer to Figure \ref{fig:SFS_theroy:explicit_sol_stationary_
 	\begin{minipage}[c]{0.35\textwidth}
     \caption{
        Illustration of the stationary position $\vxref(x_0)$ for the evaluation of the spatial explicit driving function. 
-	   For a given SSD position $x_0$ the reference (stationary) position is found on a given reference line, where the virtual field propagation direction coincides with that of the SSD element under discussion.
+	   For a given SSD position $x_0$ the reference (stationary) position is found on a given reference line where the virtual field propagation direction coincides with that of the SSD element under discussion.
 	   Under the validity of the Kirchhoff approximation this principle may be extended towards arbitrary SSD and reference contours. 
        } 
        \label{fig:SFS_theroy:explicit_sol_stationary_points_2}
@@ -865,43 +834,36 @@ In this stationary position the driving function is obtained by the ratio of the
 Therefore the explicit, global solution can be approximated by local wavefront matching.
 
 One important fact is pointed out here: although having derived the above driving function in terms of a forward and an inverse spatial Fourier transform along a straight line, there is no restriction on the $y$-coordinate of the stationary point in \eqref{eq:SFS_theory:spatial_sdm} due to the local approximations involved: the $y$-coordinate might be $x_0$-dependent.
-This means that an arbitrary referencing curve may be defined as $\vxref(x_0)$, and the driving function can be calculated by finding the stationary positions 
-satisfying $k_x^P(\vxref(x_0)) = k_x^G(\vxref(x_0) - \vx_0)$ along this curve.
+Hence, an arbitrary referencing curve $\vxref(x_0)$ may be defined and the driving function can be evaluated, once the stationary positions satisfying $k_x^P(\vxref(x_0)) = k_x^G(\vxref(x_0) - \vx_0)$ are found along this curve.
 Evaluating the driving function in the stationary positions will result in amplitude correct synthesis along the reference curve. 
-This means that the presented driving function is equivalent to the 2.5D WFS driving function with the important difference that here the target field needs to be evaluated on the reference curve.
+%This means that the presented driving function is equivalent to the 2.5D WFS driving function with the important difference that here the target field needs to be evaluated on the reference curve.
 Furthermore, within the validity of the Kirchhoff approximation the SSD does not necessarily need to be linear: the spatial explicit driving function can be applied using an arbitrary shaped SSD contour.
 In that case \eqref{eq:SFS_theory:spatial_sdm_2} has to be evaluated with $\hat{k}_y^{P}(\vxref(x_0)) \rightarrow \hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo))$, i.e. with the wavenumber component along the normal direction of the stationary SSD element.
 
-With the considerations above and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function can be cast into the final form
-\footnotesize
+With these considerations and by expressing the second derivatives in terms of the principal radii according to \eqref{Eq:App:Hessian_inplane} the explicit driving function takes the final form
 \importantmline{Detailed 2.5D explicit driv. fun.}{
-\label{eq:SFS_theory:spatial_sdm_2}
-D(\vxo,\omega) =
-\underbrace{ \sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} }_{{\substack{\text{SSD}\\\text{compensation}}}}
-\underbrace{\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }}}_{{\substack{\text{virtual source}\\\text{compensation}}}
+\label{eq:SFS_theory:spatial_sdm_2} 
+\hspace{-3mm} D(\vxo,\omega) \! =
+\!\! \underbrace{ 
+\resizebox{0.23\hsize}{!}{$\sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} $}
+}_{{\substack{\text{SSD}\\\text{compensation}}}}
+\underbrace{
+\resizebox{0.32\hsize}{!}{$\sqrt{\frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxref(\vxo))-\Rh^G(\vxref(\vxo)-\vxo) }} $}
+}_{{\substack{\text{virtual source}\\\text{compensation}}}
  \hspace{1mm} = \hspace{1mm} \sqrt{ \frac{\Rh^P(\vxref(\vxo))}{\Rh^P(\vxo)}} } 
 \frac{\hat{k}_{\mathrm{n}}^{P}(\vxref(\vxo)) P(\vxref(\vxo),\omega)}{G(\vxref(\vxo)-\vxo,\omega)},
 }
-\normalsize
 with $\vxo = \posvec{3}{x_0}{y_0}{0}$ and $\vxref(\vxo) = \posvec{3}{x_{\mathrm{ref}}(\vxo)}{y_{\mathrm{ref}}(\vxo)}{0}$ now denoting arbitrary SSD and reference contours.
-The formulation implies the fact that similarly to the implicit solution, the explicit driving function also requires the derivative of the target field, measured on the reference position.
-The driving function explicitly contains a virtual source compensation factor, compensating for the relative amplitude change of the virtual sound field between the SSD and the reference curve in terms of its horizontal principal radius.
-Furthermore, the transfer function of the SSD contour---or more specifically the stationary SSD element--- is compensated regarding both its frequency response being a half-integrator and its attenuation factor.
-%%\begin{equation}
-%%\small
-%%\sqrt{\frac{\ti k}{2\pi \Rh^G(\vxref(\vxo)-\vxo)}} \frac{\hat{k}_y^{P}(\vxref(\vxo))}{G(\vxref(\vxo)-\vxo,\omega)} = 
-%%2 \sqrt{\frac{2 \pi |\vxref(\vxo)-\vxo|}{\ti k}} \frac{\ti k_y^{G}(\vxref(\vxo)-\vxo)  }{\te^{-\ti k |\vxref(\vxo)-\vxo|}} 
-%%\end{equation} %FS:ok
-%
 
-%It should be noted that as an important difference from the 2.5D WFS driving functions, up to this point the above driving functions are independent from the problem dimensionality.
-%The same driving function holds for the exemplary case of a 2D SFS scenario, in which case the SSD compensation factor becomes independent from the reference position.
+The formulation implies the fact that similarly to the implicit solution, the explicit driving function also requires the derivative of the target field measured on the reference position.
+The driving function contains a virtual source compensation factor, compensating for the relative amplitude change of the virtual sound field between the SSD and the reference curve in terms of its horizontal principal radius.
+Furthermore, the transfer function of the SSD contour---or more specifically the stationary SSD elements---is compensated regarding both its frequency response, being a half-integrator, and its attenuation factor.
 
 \subsection*{Application example: Synthesis of a 3D point source using a linear SSD}
 
 In the following a simple example is presented in order to demonstrate the validity of the spatial SDM driving function for the synthesis of a virtual 3D point source.
 For the synthesis a linear secondary source distribution is applied, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
-The virtual source is positioned at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$ with $y_s < 0$, with the reference curve chosen to be a circle around the virtual point source with the radius of $R_{\mathrm{ref}}$.
+The virtual source is positioned at $\vxs = [x_s,\ y_s,\ 0]^{\mathrm{T}}$ with $y_s < 0$ and the reference curve chosen to be a circle around the virtual point source with the radius of $R_{\mathrm{ref}}$.
 Along with the equation describing the reference curve $\vxref(x_0) = \posvec{3}{x_{\mathrm{ref}}(x_0)}{y_{\mathrm{ref}}(x_0)}{0}$ the stationary points satisfy the following equations
 \begin{align}
 \vk^G(\vxref(\vxo)-\vxs) &= \vk^G(\vxref(\vxo)-\vxo), \\
@@ -912,9 +874,9 @@ The~solution for the equations is given by
 \label{Eq:SFS_theory:spatial_SDM_circle_ref_points}
 \vxref(\vxo) = \vxs + R_{\mathrm{ref}}\frac{\vxo-\vxs}{|\vxo-\vxs|}.
 \end{align}
-Substituting the spherical virtual field into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by simple distances from the point sources---yields the explicit driving function in the spatial domain for a virtual point source
+Substitution of the Green's function into \eqref{eq:SFS_theory:spatial_sdm_2}---with the principal radii given by Euclidean distances---yields the explicit driving function in the spatial domain for a virtual point source
 \begin{equation}
-D(x_0) =
+D(x_0,\omega) =
 \sqrt{\frac{|\vxref-\vxs|}{|\vxref-\vxs|-|\vxref-\vxo| }}
 \sqrt{\frac{\ti k}{2\pi |\vxref-\vxo|}} 
 \hat{k}_y^G(\vxref(\vxo)-\vxs)
@@ -923,7 +885,7 @@ D(x_0) =
 Finally, substituting the reference position coordinates along the reference circle \eqref{Eq:SFS_theory:spatial_SDM_circle_ref_points} specifies the driving function, optimizing the synthesis on the reference circle
 \begin{equation}
 \label{Eq:SFS_theory:linear_SSD_ref_circle}
-D(x_0) =-y_s
+D(x_0,\omega) =-y_s
 \sqrt{\frac{R_{\mathrm{ref}}-|\vxo-\vxs|}{R_{\mathrm{ref}}}}
 \sqrt{\frac{\ti k }{2\pi}} 
 \frac{\te^{-\ti k |\vxo-\vxs|}}
@@ -944,27 +906,27 @@ D(x_0) =-y_s
 \end{figure}
 Investigating Figure \ref{fig:SFS_theory:25D_spatial_SDM_linear_ssd} verifies that the synthesis is optimized on the prescribed reference curve.
 
-Although having derived the above driving function from the pressure measured along the reference curve, \eqref{Eq:SFS_theory:linear_SSD_ref_circle} is already written merely in terms of the target field measured on the actual SSD element, equivalently to the WFS solution.
-In the followings this relation is generalized by expressing the explicit driving function for an arbitrary target sound field that is written in terms of pressure measured along the SSD, revealing the general connection between the implicit and explicit solutions.
+Although having derived the above driving function from the pressure measured along the reference curve, \eqref{Eq:SFS_theory:linear_SSD_ref_circle} is already written merely in terms of the target field measured at the secondary sources, equivalently to the WFS solution.
+In the following this relation is generalized by expressing the explicit driving function for an arbitrary target sound field, written in terms of the pressure measured along the SSD, revealing the general relation of the implicit and explicit solutions.
 
 \section{Relation of implicit and explicit solutions}
 
-The explicit SFS driving function, given by \eqref{eq:SFS_theory:spatial_sdm_2} requires the knowledge of the virtual sound field, measured along the reference curve.
-By applying the findings presented in Section \ref{Sec:HF:RayleighSPA}, for the special case of a linear SSD the required quantities can be expressed in terms of the the virtual field properties, measured on the SSD. 
-The obtained formulation allows the comparison of the implicit and explicit solutions.
+The explicit SFS driving function, given by \eqref{eq:SFS_theory:spatial_sdm_2}, requires the knowledge of the virtual sound field measured along the reference curve.
+The findings presented in Section \ref{Sec:HF:RayleighSPA} established an asymptotical connection between the target field measured along the SSD and along the reference curve.
+Expressing the explicit driving function with this formulation allows the comparison of the implicit and explicit solutions.
 
-In order to express the driving function merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure of the target field has to be defined along the $y=0$ line.
+In order to express the driving function merely in terms of the involved quantities measured along the SSD, all the local wavenumber vector, the principal radii and the pressure has to be defined along $y=0$.
 For the local wavenumber vector this relationship can be simply established: Assuming isotropic medium, the propagation direction---and the local wavenumber vector---does not change along the propagation path, thus $\vk^P(\vxref(\vxo)) = \vk^P(\vxo)$ holds.
 
 The change of the principal radii over the propagation path is given by \eqref{eq:app:propagated_radii}, stating that the principal radii of an arbitrary field increase linearly along the path of propagation.
-The relation between the target field, measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, given for a general wavefield by \eqref{eq:HF_approx:asymptotic_rayleigh}.
-However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through the implicit relation
+The relation between the target field measured at an arbitrary reference position and measured along the SSD can be established by the asymptotic evaluation of the Rayleigh integral, as given for a general wavefield by \eqref{eq:HF_approx:asymptotic_rayleigh}.
+However, both relations were only formulated for an independent receiver position $\vx$ in terms of a dependent SSD position $\vxo^*(\vx)$, related through
 \begin{equation}
 \label{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point}
 \vk^P(\vxo^*(\vx)) = \vk^G( \vx - \vxo^*(\vx)).
 \end{equation}
 Comparing this definition of the stationary points for the Rayleigh integral \eqref{Eq:SFS_theory:Rayleigh25D_horizontal_stat_point} and the stationary SDM evaluation points \eqref{Eq:stationary_evaluation_points}, it is revealed that they describe stationary point pairs.
-Hence, without the loss of generality both the principal radii and the pressure field, measured on the reference curve can be formulated with choosing the SSD position $\vxo$ as an independent variable, resulting in
+Hence, without the loss of generality both the principal radii and the pressure field measured on the reference curve can be formulated with choosing the SSD position $\vxo$ as an independent variable, resulting in
 \begin{equation}
 \label{Eq:principal_radii_addition}
 \Rh^P(\vxref(\vxo)) = \Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo),
@@ -975,7 +937,7 @@ and
 \label{Eq:Asymptotic_Rayleigh_integral}
 P(\vxref(\vxo),\omega) = 
 4\pi
-\sqrt{\frac{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo}} \cdot \\ \cdot
+\sqrt{\frac{\Rh^P(\vxo) \cdot \Rh^G(\vxref(\vxo)-\vxo)}{\Rh^P(\vxo) + \Rh^G(\vxref(\vxo)-\vxo}} \cdot \\ 
 \sqrt{\frac{\Rv^P(\vxo) \cdot \Rv^G(\vxref(\vxo)-\vxo)}{\Rv^P(\vxo) + \Rv^G(\vxref(\vxo)-\vxo)}}
 P(\vxo,\omega) G(\vxref(\vxo)-\vxo,\omega)
 ,
@@ -983,7 +945,7 @@ P(\vxo,\omega) G(\vxref(\vxo)-\vxo,\omega)
 \normalsize
 where positions $\vxref$ and $\vxo$ are related through \eqref{Eq:stationary_evaluation_points} and where it was exploited that the principal radii are given by the vertical and horizontal radii components in the present geometry.
 
-With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} and after simplification the driving function takes the form
+With substituting all these expressions into the spatial explicit driving function \eqref{eq:SFS_theory:spatial_sdm_2} the driving function takes the form
 \begin{equation}
 D(x_0,\omega) =
 2\sqrt{\frac{2\pi  \Rv^G(\vxref(\vxo)-\vxo)}{\ti k}} 
@@ -1000,38 +962,28 @@ D(x_0,\omega) =
 P(\vxo,\omega).
 \end{equation}
 Comparison with \eqref{Eq:SFS_theory:25D_WFS_driv_fun_ver_2} and \eqref{Eq:SFS_theory:25D_WFS_driv_fun} reveals that the asymptotic SDM driving function exactly coincides the 2.5D WFS driving function when applied for a linear---and within the validity of the Kirchhoff approximation for an arbitrary shaped---SSD.
-It is therefore verified that under high frequency assumptions WFS is the asymptotic and local approximation of the global explicit solution.
+It is therefore verified that under high frequency assumptions WFS is the asymptotic, local approximation of the global explicit solution.
 
-An important difference is however that the WFS driving function was obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
+An important difference is, however, that the WFS driving function was obtained from the 2.5D Neumann Rayleigh integral in an intuitive manner, by introducing the reference curve concept with interchanging the role of the receiver position and its stationary SSD position. 
 On the other hand the explicit driving function \eqref{eq:SFS_theory:spatial_sdm} inherently contains the horizontal SPA and the reference curve concept.
 
 \section{Synthesis applying discrete secondary source distribution}
 \label{Sec:Aliasing}
-%\fscom{the findings in this section are very good, text deserves critical review, shorter sentences, more clear statements, I corrected some major issues}
 
-Throughout this thesis synthesis applying the continuous distribution of secondary sources has been discussed so far.
-In practical applications the SSD is realized by a densely spaced loudspeaker ensemble with the source elements positioned at discrete locations.
+Throughout this dissertation synthesis applying the continuous distribution of secondary sources has been discussed so far.
+In practical applications, the SSD is realized by a densely spaced loudspeaker ensemble with the source elements positioned at discrete locations.
 The violation of the continuous SSD assumption leads to severe artifacts in the synthesized field, commonly referred to as \emph{spatial aliasing phenomena}.
 
 An advantage of the explicit solution is that it allows the analytical description of aliasing artifacts, which can be directly applied to the results of WFS as well, due to the presented asymptotic equivalence of the two methods.
-As a complex application example for the equivalence of the explicit and implicit solutions, this section discusses the analysis and mitigation of spatial aliasing in a unified manner.
+As an application example for the equivalence of the explicit and implicit solutions, this section discusses the analysis and mitigation of spatial aliasing.
 
 \subsection{Description of spatial aliasing}
 
-Physically, spatial aliasing can be interpreted as follows: in case of steady-state analysis above a certain temporal frequency---termed as the \emph{aliasing frequency}--- the field of the individual secondary sources no longer form a continuous virtual wavefront but rather the fields of the individual secondary sources create a complex interference pattern.
-The actual value of the aliasing frequency highly depends on the local propagation direction of the virtual wavefront: waves propagating laterally to the SSD are more likely to cause aliasing due to the rapid change of phase between adjacent secondary sources.
-
-In the foregoing only steady-state analysis of wavefields was discussed.
-However, spatial aliasing gains a simple physical interpretation when time domain analysis is considered.
-As discussed already, the 2.5D WFS driving function applies a half-differentiation to the input signal in order to compensate for the infinite tail (i.e. the half-integrator characteristics) of the secondary source response, emerging due to the geometry of the SSD.
-Compensation is therefore performed by each SSD element canceling out the fields of the adjacent secondary sources after the virtual wavefront is emitted.
-In case of a discrete SSD this cancellation can not be performed above the aliasing frequency, hence in the synthesized field the spherical wavefields of the individual secondary sources will be present.
-Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element---, following the intended virtual wavefront carrying the driving function of the individual secondary sources, high-pass filtered above the aliasing frequency \cite{spors2009spatial}. 
-
-Note that in a given receiver position due to the short time interval between the arrival of the high-pass filtered echo wavefronts, aliasing is perceived rather as the coloration of the virtual sound field, than actual echoes/reverberation, while due to the precedence effect the localization of the virtual field is not degraded \footnote{This is true only for the synthesis of non-focused fields.
-In case of reproducing e.g. a focused point source spatial aliasing appears as pre-echoes, arriving before the intended virtual wavefront \cite{Spors2009:FocusedSourceAliasing}.}.
-A detailed investigation of the perception of spatial aliasing in WFS can be found in \cite{8371275}.
-In the followings only an objective description of the above phenomena is presented.
+Physically, spatial aliasing can be interpreted as follows: 
+In case of steady-state analysis, above a certain temporal frequency---termed as the \emph{aliasing frequency}---the field of the individual secondary sources no longer form a continuous virtual wavefront but rather the fields of the individual secondary sources create a complex interference pattern.
+The aliased synthesis in case of a virtual harmonic point source is depicted in Figure \ref{fig:SFS_theory:Spatial_alising} (a).
+The actual value of the aliasing frequency highly depends on the local propagation direction of the virtual wavefront: 
+Waves propagating laterally to the SSD are more likely to cause aliasing due to the rapid change of phase between adjacent secondary sources.
 
 \begin{figure}
 \centering
@@ -1039,33 +991,35 @@ In the followings only an objective description of the above phenomena is presen
 	\put(0, 0){(a)}
 	\put(50,0){(b)}
 	\end{overpic}   
-    \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $f_0 =~2~\mathrm{kHz}$ (a), or emitting an impulse, bandlimited to $15~\mathrm{kHz}$ measured at $t_0 = 10~\mathrm{ms}$ (b).
-    The synthesis is referenced on a reference line with $\yref = 1.5~\mathrm{m}$.
-	Synthesis is performed using a linear SSD with the secondary source spacing set to $\Delta x = 10~\mathrm{cm}$.}
+    \caption{2.5D synthesis of a 3D point source located at $\vxs = \posvec{3}{0}{-2}{0}$, radiating at $f_0 =~2~\mathrm{kHz}$ (a), or emitting an impulse bandlimited to $15~\mathrm{kHz}$ measured at $t_0 = 10~\mathrm{ms}$ (b).
+	The synthesis is performed using a linear SSD with the secondary source spacing set to $\Delta x = 10~\mathrm{cm}$ with referencing the synthesis to a reference line with $\yref = 1.5~\mathrm{m}$.}
 \label{fig:SFS_theory:Spatial_alising}  
 \end{figure}
+%
+In the foregoing only steady-state analysis of wavefields was discussed.
+However, spatial aliasing gains a simple physical interpretation when time domain analysis is considered.
+As discussed already, the 2.5D WFS driving function applies a half-differentiation to the input signal in order to compensate for the infinite tail (i.e. the half-integrator characteristics) of the secondary source response, emerging due to the geometry of the SSD.
+Compensation is, therefore, performed by each SSD element canceling out the fields of the adjacent secondary sources after the virtual wavefront is emitted.
+In case of a discrete SSD, this cancellation can not be performed above the aliasing frequency, hence in the synthesized field the spherical wavefields of the individual secondary sources will be present.
+Spatial aliasing therefore manifests in a series of echoes---each produced by one individual secondary source element---following the intended virtual wavefront carrying the driving function time history of the individual secondary sources, high-pass filtered above the aliasing frequency \cite{spors2009spatial}. 
+The aliasing echoes are illustrated in Figure \ref{fig:SFS_theory:Spatial_alising} (b).
 
-In a recent publication it was shown that by applying the unified WFS framework introduced in the present thesis, spatial aliasing artifacts can be directly described in the spatial domain \cite{Winter2018:GeometricModel}.
-As an alternative, the following derivation approaches the problem by utilizing the spectral description of the synthesized field applying a discretized SSD, as introduced in \cite{Ahrens2012}.
+Note that in a given receiver position due to the short time interval between the arrival of the high-pass filtered echo wavefronts, aliasing is perceived rather as the coloration of the virtual sound field, than actual echoes/reverberation. 
+Due to the precedence effect the localization of the virtual field is only slightly degraded, along with an increase in the perceived virtual source width \cite{ahrens2017:daga}.\footnote{This is true only for the synthesis of non-focused fields.
+In case of reproducing e.g. a focused point source, spatial aliasing appears as pre-echoes, arriving before the intended virtual wavefront \cite{Spors2009:FocusedSourceAliasing}.}
+A detailed investigation of the perception of spatial aliasing in WFS can be found in \cite{8371275}.
+In the following, only an objective description of the phenomena is presented.
 
-Assume the synthesis of an arbitrary sound field by applying a linear SSD, located at $\vxo = \posvec{3}{x_0}{0}{0}$.
-The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral} respectively, in case of a continuous SSD.
-Discretization of the SSD can be mathematically modeled by the sampling of the driving function with a sampling distance being the actual loudspeaker spacing $\Delta x$:
-\begin{equation}
-D^{\mathrm{S}}(x,\omega) = \sum_{\eta = -\infty}^{\infty} D(x,\omega) \cdot \delta \left(x - \eta \Delta x \right).
-\end{equation}
-Since each secondary source is represented by a Dirac delta, hence in this model the SSD consists of a discrete set of 3D point sources.
-Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself \cite{Girod2001}, and applying the sifting property of the Dirac delta, the wavenumber content of the sampled driving function reads as
-\begin{equation}
-\tilde{D}^{\mathrm{S}}(k_x,\omega) = \frac{1}{\Delta x} \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right).
-\end{equation}
-% Add: extended secondary sources
+Recently it has been shown that by applying concepts introduced in the present thesis, spatial aliasing artifacts can be directly described in the spatial domain \cite{Winter2018:GeometricModel, 8611109}.
+As an alternative, the following derivation approaches the problem by formulating the discrete driving function and the synthesized field in the wavenumber domain, as it was described in \cite{Ahrens2012}.
+
 \begin{figure}
 \centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/Aliased_spectrum.png}
 	\put(0,0){(a)}	
 	\put(48,0){(b)}
-	\put(18,30){$\begin{matrix}
+	\footnotesize
+	\put(19,30){$\begin{matrix}
 				\text{propagation} \\ \text{region} \end{matrix}$	}
 	\put(7.2,10){$\begin{matrix}
 				\text{evanescent} \\ \text{region} \end{matrix}$	}
@@ -1074,27 +1028,30 @@ Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself
 	\end{turn}
 	\end{overpic}   
     \caption{Illustration of the discretization process of the linear WFS driving function. 
-	Figure (a) shows the spectrum of the theoretically continuous driving function $\tilde{D}(k_x,\omega)$, Figure (b) shows the spectrum of the discretized driving function $\tilde{D}^{\mathrm{S}}(k_x,\omega)$ with the baseband spectrum repeating on the multiples of the sampling wavenumber.
-    The secondary source distance is set to $\Delta x = 10~\mathrm{cm}$, corresponding to the sampling wavenumber $k_{x,s} \approx 63~\mathrm{rad/m}$ and resulting in an aliasing frequency $\omega_a \approx 2\pi \cdot 1.7~\mathrm{krad/s}$.}
+	Figure (a) shows the spectrum of the continuous driving function $\tilde{D}(k_x,\omega)$, Figure (b) shows the spectrum of the discretized driving function $\tilde{D}^{\mathrm{S}}(k_x,\omega)$.
+	The secondary source distance is set to $\Delta x = 10~\mathrm{cm}$, corresponding to the sampling wavenumber $k_{x,s} \approx 63~\mathrm{rad/m}$ and resulting in the aliasing frequency $\omega_a \approx 2\pi \cdot 1.7~\mathrm{krad/s}$.}
 \label{fig:SFS_theory:Aliased_spectrum}  
 \end{figure}
-Thus, as the result of discretization the driving function spectrum is obtained as the infinite sum of the original spectrum, repeating on the multiples of the sampling wavenumber $k_{x,s} = \frac{2\pi}{\Delta x}$.
+%
+Assume the synthesis of an arbitrary sound field by applying a linear SSD located at $\vxo = \posvec{3}{x_0}{0}{0}$.
+The synthesized field in the spatial and wavenumber domains is given by \eqref{Eq:SFS_Theory:linear_synth_field_spatial} and \eqref{Eq:SFS_Theory:linear_synth_field_spectral} respectively for the case of a continuous SSD.
+Discretization of the SSD can be modeled mathematically by the sampling of the driving function with the sampling distance $\Delta x$ being the actual loudspeaker spacing:
+\begin{equation}
+D^{\mathrm{S}}(x_0,\omega) = \sum_{\eta = -\infty}^{\infty} D(x_0,\omega) \, \delta \left(x - \eta \Delta x \right).
+\end{equation}
+Hence, in this model the SSD consists of a discrete set of point sources, represented by a series of Dirac deltas.
+Exploiting that the spectrum of a series of Dirac deltas is a pulse train itself \cite{Girod2001}, and applying the sifting property of the Dirac delta, the wavenumber content of the sampled driving function reads as
+\begin{equation}
+\tilde{D}^{\mathrm{S}}(k_x,\omega) = \frac{1}{\Delta x} \sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right).
+\end{equation}
+% Add: extended secondary sources
+Thus, as the result of discretization the spectrum of the sampled driving function is obtained as the infinite sum of the continuous spectrum, repeating on the multiples of the sampling wavenumber $k_{x,s} = \frac{2\pi}{\Delta x}$.
 Mathematically, spatial aliasing originates from the overlapping of the repetitive spectra.
 
-The discretization process of the driving function is illustrated in the $k_x-\omega$ domain in Figure \ref{fig:SFS_theory:Aliased_spectrum} via the example of discretizing the driving function for a virtual point source, given by \eqref{eq:SFS_theory:WFS_point_source}.
+The discretization process is illustrated in the $k_x-\omega$ domain in Figure \ref{fig:SFS_theory:Aliased_spectrum} via the example of the sampling of the driving function for a virtual point source, given by \eqref{eq:SFS_theory:WFS_point_source}.
 From simple geometrical considerations it can be deduced that below a given angular frequency---the spatial aliasing frequency, obtained from $\frac{\omega_a }{c} = \frac{k_{x,s}}{2}= \frac{\pi}{\Delta x}$---no spectral overlapping occurs between the propagation regions.
-Since WFS theory assumes high frequency/farfield conditions, neglecting the evanescent components is feasible\footnote{A more detailed analysis on the aliasing occurring in the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband}. 
-Above the aliasing frequency high wavenumber components ($|k_x|>k_{x,s}/2$) of translated spectra overlap into the propagation region of the baseband driving function spectrum.
-
-The wavenumber content of the synthesized field, applying a discrete SSD can be written as
-\begin{equation}
-\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \cdot \tilde{G}(k_x,y,z, \omega) = \frac{1}{\Delta x}
-\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \cdot \tilde{G}(k_x,y,z, \omega).
-\label{Eq:SFS_theory:Aliased_field_sp}
-\end{equation}
-The reproduction process is illustrated by Figure \ref{fig:SFS_theory:Aliased_repr_field} with the involved quantities measured along an arbitrary reference line, $y \gg 0$.
-As it is demonstrated in \ref{fig:SFS_theory:Aliased_repr_field} (b) the transfer function from the SSD to the reference line, i.e. the Green's function acts as a spatial low-pass filter (with analogy to signal processing acting as a reconstruction filter), restricting the reproduced field on a given angular frequency to $|k_x| < \omega/c$, i.e. to the propagation region.
-Note that again, nearfield investigation, where the spectrum of the Green's function would exhibit a high evanescent contribution is out of the scope of the present thesis.
+Since WFS theory assumes farfield conditions, neglecting the evanescent components is feasible.\footnote{A more detailed analysis on the aliasing occurring in case of the reproduction of virtual point sources is found in \cite{spors2009spatial}, where aliasing components are classified based on whether propagating/evanescent component overlaps into the propagating or evanescent region of the baseband.} 
+Above the aliasing frequency high wavenumber components ($|k_x|>k_{x,s}/2$) of the translated spectra overlap into the propagation region of the baseband driving function spectrum.
 
 \begin{figure}
 \centering
@@ -1108,33 +1065,52 @@ Note that again, nearfield investigation, where the spectrum of the Green's func
     Figure (b) shows the spectrum of the 3D Green's function and Figure (c) shows the spectrum of the synthesized field, both measured along the reference line.}
 \label{fig:SFS_theory:Aliased_repr_field}  
 \end{figure}
-Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) reflects the fact that aliasing components present in the synthesized field are described mathematically as additive, overlapping spectral components remaining in the propagation region of the baseband spectrum, described by \eqref{Eq:SFS_theory:Aliased_field_sp} with $|\eta|>0$.
-This additive error manifests in additive wavefronts superimposed on to the non-aliased ideal wavefront (described by the $\eta = 0$ component in \eqref{Eq:SFS_theory:Aliased_field_sp}) in the time-domain.
 
-As discussed earlier, components in the spectrum of the synthesized field correspond to synthesized attenuating plane waves oscillating at the angular frequency $\omega$ and propagating into the direction described by $k_x$ in the plane of synthesis.
-Hence Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) suggests that arbitrary directed plane waves with the angular frequency below the aliasing frequency can be synthesized with a discretized SSD.
+The wavenumber content of the synthesized field by applying a discrete SSD can be written as
+\begin{equation}
+\tilde{P}(k_x,y,z, \omega) = \tilde{D}^{\mathrm{S}}(k_x,\omega) \, \tilde{G}(k_x,y,z, \omega) = \frac{1}{\Delta x}
+\sum_{\eta = -\infty}^{\infty} \tilde{D}\left(k_x - \eta \frac{2\pi}{\Delta x},\omega \right)  \, \tilde{G}(k_x,y,z, \omega).
+\label{Eq:SFS_theory:Aliased_field_sp}
+\end{equation}
+The reproduction process is illustrated by Figure \ref{fig:SFS_theory:Aliased_repr_field} with the involved quantities measured along an arbitrary reference line, $y \gg 0$.
+As it is demonstrated in Figure \ref{fig:SFS_theory:Aliased_repr_field} (b), the transfer function from the SSD to the reference line---i.e. the Green's function---acts as a spatial low-pass filter, restricting the reproduced field on a given angular frequency to $|k_x| < \omega/c$, i.e. to the propagation region.
+Note that again, nearfield investigation where the spectrum of the Green's function would exhibit a high evanescent contribution is out of the scope of the present thesis.
+
+Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) reflects the fact that aliasing components present in the synthesized field are described mathematically as additive, overlapping spectral components in the propagation region of the baseband spectrum, described by \eqref{Eq:SFS_theory:Aliased_field_sp} with $|\eta|>0$.
+This additive error manifests in additive the wavefronts superimposed on the non-aliased ideal wavefront described by component $\eta = 0$ in \eqref{Eq:SFS_theory:Aliased_field_sp}.
+
+As discussed earlier, components in the spectrum of the synthesized field correspond to attenuating plane waves oscillating at the angular frequency $\omega$ and propagating into the direction described by $k_x$.
+Hence, Figure \ref{fig:SFS_theory:Aliased_repr_field} (c) suggests that an arbitrary plane wave with the angular frequency below the aliasing frequency can be synthesized with a discretized SSD.
 Above the aliasing frequency lateral waves cannot be synthesized without the presence of aliasing plane wave components, propagating into the opposite direction (with reversed $k_x$ value).
 Finally, above twice the aliasing frequency even plane waves propagating perpendicular to the SSD can not be synthesized without aliasing.
 
 \subsection{Avoiding spectral overlapping}
 
-A straightforward way to avoid spectral overlapping is to spatially bandlimit the driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = k_{x,s}/2$ before discretization, i.e. by eliminating plane wave components that would cause spatial aliasing.
-This requires the application of a spatial low-pass filter that's implementation is straightforward only for the present, linear SSD case.
-A detailed investigation on the direct spatial pre-filtering of the linear SFS driving function can be found in \cite{Firtha2012:isma, Ahrens2012} \footnote{There it is discussed that pre-filtering the SFS driving function is equivalent with extending the virtual source distribution according the impulse response of the spatial filter impulse response.}.
-However, applying the local wavenumber vector concept and exploiting the general asymptotic equivalence of the SDM and WFS, a more simple, general anti-aliasing strategy may be introduced, as given in the following.
+A straightforward way to avoid spectral overlapping is to spatially bandlimit the driving function to the Nyquist wavenumber $k_{x,\mathrm{Nyq}} = k_{x,s}/2$ before discretization by requiring
+\begin{equation}
+\tilde{D}(k_x,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} |k_x| \geq \frac{\pi}{\Delta x}.
+\label{Eq:SFS_theory:AA_in_kx}
+\end{equation}
+to be fulfilled, i.e. by eliminating plane wave components that would cause spatial aliasing.
+This can be achieved by applying a spatial low-pass filter to the driving function.
+In \cite{Firtha2012:isma, Ahrens2012} it is explained that the direct spatial pre-filtering of the linear SFS driving function is equivalent with extending either the secondary or the virtual source spatial distribution by the impulse response of the spatial filter.
+Therefore, spatial filtering inherently modifies the shape of the wavefront.
+By applying the local wavenumber vector concept a more simple, general anti-aliasing strategy may be introduced that can be implemented by simple temporal filtering of the driving function, as given in the following.
 
-According to \eqref{eq:xP_xG_in_spatial_domain} a given wavenumber component $k_x$ in the SDM driving function is dominated by that particular position of the SSD, where the local propagation direction of the virtual wavefield coincides with that of the actual spectral plane wave, i.e. where $k_x^P(x_0) = k_x$ holds.
+According to \eqref{eq:xP_xG_in_spatial_domain} a given wavenumber component $k_x$ in the SDM driving function spectrum is dominated by that particular position of the SSD where the local propagation direction of the virtual wavefield coincides with that of the actual spectral plane wave, i.e. where $k_x^P(x_0) = k_x$ holds.
+The same result can be deduced by locating the stationary position for the spatial Fourier transform integral of the WFS driving function in a linear SSD geometry.
 Hence, on a given angular frequency only those parts of the SSD will cause spectral overlapping, where the $x$-component of the virtual field's local wavenumber vector is above the Nyquist wavenumber, i.e. where
 \begin{equation}
-|k_x^P(x_0)| = \frac{\omega}{c} |\hat{k}_x^P(x_0)| > k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}
+|k_x^P(x_0)| = \frac{\omega}{c} |\hat{k}_x^P(x_0)| \geq k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}
 \end{equation}
 is satisfied.
 Therefore, within the validity of the SPA spatial aliasing components can be assigned to particular positions along the SSD.
-This formulation allows the elimination of the overlapping spectral components by simple temporal low-pass filtering the driving function, with the angular cut-off frequency given as
+This formulation allows the elimination of the overlapping spectral components by simple temporal low-pass filtering of the driving function with the angular cut-off frequency given as
 \begin{equation}
-D(x_0,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_x^P(x_0)|}.
+D(x_0,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_x^P(x_0)|},
 \label{Eq:SFS_theory:cutoff_freq}
 \end{equation}
+being obviously, the asymptotic approximation of \eqref{Eq:SFS_theory:AA_in_kx}.
 \begin{figure}
 \centering
 	\begin{overpic}[width = 1\columnwidth ]{Figures/SFS_theory/AntiAliased_spectrum.png}
@@ -1142,26 +1118,25 @@ D(x_0,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}
 	\put(51.5,38){(b)}
 	\put(27.5,0){(c)}
 	\end{overpic}   
-    \caption{Illustration of the ideal anti-aliasing filtering of the WFS driving function for a virtual point source in the setup, used for Figure \ref{fig:SFS_theory:Aliased_spectrum}.
-    Figure (a) shows the spatially band-limited driving function spectrum, low-pass filtered with the low-pass filtering performed in spatial domain used the introduced approach.
-    Figure (b) shows the spectrum of the discretized driving function containing non-overlapping spectral repetition.
-    Figure (c) shows spectrum of the synthesized field, measured along the reference line.}
+    \caption{Illustration of the anti-aliasing filtering of the WFS driving function for a virtual point source.
+    Figure (a) shows the spatially bandlimited driving function spectrum, low-pass filtered by applying \eqref{Eq:SFS_theory:general_cutoff_freq_v0}.
+    Figure (b) shows the spectrum of the discretized driving function with non-overlapping spectral repetition.
+    Figure (c) shows spectrum of the synthesized field measured along the reference line.}
 \label{fig:SFS_theory:anti-aliased_spectrum}  
 \end{figure}
-
-This finding may be generalized towards the application of an arbitrary shaped SSD, within the validity of the Kirchhoff approximation.
-In this general scenario the SSD is assumed to be locally linear, and the role of $k_x^P$ is taken over by the tangential component of the local wavenumber vector.
+%
+The strategy may be generalized towards the application of an arbitrary shaped SSD within the validity of the Kirchhoff approximation.
+In this general scenario the SSD is assumed to be locally linear with $k_x^P$ replaced by the component of the local wavenumber vector being tangential with the SSD $\kt^P(\vxo)$.
 Hence, the ideal anti-aliasing condition for a general SFS problem is formulated as
 \importanteq{Symmetric anti-aliasing condition}{
-D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo)|},
+D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_{\mathrm{t}}^P(\vxo)|}.
 \label{Eq:SFS_theory:general_cutoff_freq_v0}
 }
-where $\hat{k}_t^P$ is the normalized local wavenumber vector component, tangential with the SSD.
 
-The above formulation can be interpreted as a frequency dependent secondary source selection criterion: basically the window function in the general WFS driving function \eqref{Eq:Theory:SSD_selection} became frequency dependent.
-The application of an ideal low-pass filter, given directly by \eqref{Eq:SFS_theory:general_cutoff_freq_v0} would result in truncation effects emerging from the muted and unmuted transition of the SSD, due to the discontinuity of the driving function \cite{Start1997:phd}.
-%Mathematically this is modeled as the multiplication of the driving function with a window function, resulting in a ringing effect in the wavenumber domain.
-Hence, in practical applications anti-aliasing should be performed by an appropriately smooth low-pass filter design with the cut-off frequency given by \eqref{Eq:SFS_theory:general_cutoff_freq_v0}.
+The above formulation can be interpreted as a frequency dependent secondary source selection criterion: 
+The window function in the general WFS driving function \eqref{Eq:Theory:SSD_selection} became frequency dependent, narrowing with increasing angular frequency.
+The application of the ideal low-pass filter, as described by \eqref{Eq:SFS_theory:general_cutoff_freq_v0}, would result in truncation effects emerging from the muted and unmuted transition of the SSD due to the discontinuity of the driving function \cite{Start1997:phd}.
+Therefore, in practical applications anti-aliasing should be implemented by an appropriately smooth low-pass filter design with the cut-off frequency given by \eqref{Eq:SFS_theory:general_cutoff_freq_v0}.
 
 \begin{figure}  
 \small
@@ -1172,25 +1147,26 @@ Hence, in practical applications anti-aliasing should be performed by an appropr
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
+    \caption{2.5D synthesis of a 3D point source located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$ and emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
     Figure (a) shows the effect of the discrete SSD, resulting in aliasing echoes following the intended wavefront.
     Figure (b) shows the result of spatial anti-aliasing filtering.
-    As a result anti-aliased synthesis may be achieved behind the virtual wavefront into the particular direction, denoted by dashed arrow.
-    The arrow originates at the SSD element with no angular bandwidth limitation, i.e. performing full-band synthesis.
-    This full-band SSD element is found, where the local propagation direction of the virtual field coincides with the SSD normal (i.e. the tangential local wavenumber component is zero).}
+    As a result, anti-aliased synthesis may be achieved behind the virtual wavefront into the particular direction, denoted by dashed arrow.
+    The arrow originates at the SSD element with no temporal bandwidth limitation, i.e. performing full-band synthesis.
+    This full-band SSD element is found, where the local propagation direction of the virtual field coincides with the SSD normal (i.e. $\kt^P(\vxo) = 0$).}
 \label{fig:SFS_theory:anti-aliased_synthesis}   \end{minipage}
 \end{figure}
 
-In the following the locations of anti-aliased synthesis is investigated.
-Although spectral overlapping can be avoided by the presented strategy, due to the non-directive nature of the 3D secondary point sources, lateral aliasing waves are present in the synthesized wavefield, emerging from the partial reproduction of the mirror spectra.
-Investigating Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c) suggests that at a given angular frequency $\omega$ with a given SSD element at $\vxo$ anti-aliased synthesis can be performed into directions for which $|k^P_t(\vxo)| < k_{t,\mathrm{Nyq}}$ holds.
-Above the Nyquist wavenumber, components of the mirror spectra are reproduced as well, present as lateral waves in the synthesized field. 
-It is restated here that one particular SSD element at $\vxo$ dominates the synthesized field along the local propagation direction of the synthesized field, hence along a straight line through the SSD element into the direction of the virtual field's local wavenumber vector.
-This means that anti-aliased synthesis can be achieved along a beam, centered around the normal vector of the SSD element, where $|k^P_t(\vxo)| = 0$ holds locally, and the opening angle of the beam decreases with frequency.
-At high frequencies therefore anti-aliased, full band synthesis can be only achieved with that SSD element, where $|k^P_t(\vxo)| = 0$ holds locally, and the positions of full band, anti-aliased synthesis in the reproduced field will be that, dominated by the full-band SSD element.
+Now the location of anti-aliased synthesis is investigated.
+Although spectral overlapping can be avoided by the presented strategy, lateral aliasing waves are still present in the synthesized wavefield emerging from the partial reproduction of the mirror spectra:
+Investigating Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c) suggests that at a given angular frequency $\omega$ with a given SSD element at $\vxo$ anti-aliased synthesis can be performed into directions for which $|\kt^P(\vxo)| < \frac{k_{\mathrm{t},s}}{2} =\frac{\pi}{\Delta x}$ holds.
+Above the Nyquist wavenumber components of the mirror spectra are reproduced as well, manifesting in lateral waves in the synthesized field. 
+As it was already stated: one particular SSD element at dominates the synthesized field along a straight line, passing through the SSD element into the direction of the virtual field's local wavenumber vector.
+This means that anti-aliased synthesis can be achieved along a beam, with its center passing through the SSD element where $k^P_t(\vxo) = 0$ holds and the opening angle of the beam decreases with frequency.
+As an upper limit, full band synthesis ($\omega \rightarrow \infty$) can be only performed with the particular SSD element with $k^P_t(\vxo) = 0$ and full band, anti-aliased synthesis is achieved at those spatial locations for which it serves as a stationary SSD element.
 
 Figure \ref{fig:SFS_theory:anti-aliased_synthesis} illustrates the effect of the presented anti-aliasing strategy.
-It is verified that into the direction dominated by the SSD element at $\vxo$, where $k^P_t(\vxo) = 0$ holds, aliasing components can be almost entirely eliminated behind the virtual wavefront, and still into this particular direction full-band synthesis can be achieved.
+It is verified that into the direction dominated by the SSD element where the local propagation direction of the virtual field coincides with the SSD normal (i.e. the tangential wavenumber component vanishes) aliasing components can be almost totally suppressed behind the virtual wavefront.
+Into this particular direction full-band synthesis can be achieved.
 Into other directions lateral aliasing components are present and the synthesized virtual wavefront is bandlimited.
 
 \begin{figure}
@@ -1206,7 +1182,7 @@ Into other directions lateral aliasing components are present and the synthesize
 	\put(2,1){(b)}
 	\end{overpic}   \end{minipage}\hfill	
 	\begin{minipage}[c]{0.35\textwidth}
-    \caption{2.5D synthesis of a 3D point source, located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
+    \caption{2.5D synthesis of a 3D point source located in $\vxs = \posvec{3}{1.5}{3}{0}~\mathrm{m}$, emitting a bandlimited impulse, applying an arbitrary shaped discrete SSD with the secondary source spacing being $\Delta x = 10~\mathrm{cm}$, and with the snapshot taken at $t_0 \approx 6~\mathrm{ms}$.
 	Figure (a) shows the sampled driving function spectrum with asymmetric bandwidth limitation.
 	Figure (b) presents the synthesized field.
 	The synthesis is performed by optimizing spatial anti-aliasing into the direction, indicated by dashed arrow in Figure (b) by simple bandlimitation of the driving function in the angular frequency domain, according to \eqref{Eq:SFS_theory:general_cutoff_freq}.
@@ -1215,80 +1191,81 @@ Into other directions lateral aliasing components are present and the synthesize
 \label{fig:SFS_theory:anti-aliased_synthesis_asymm}   \end{minipage}
 \end{figure}
 \vspace{3mm}
-So far only symmetrical anti-aliasing filtering was discussed.
-However, overlapping of the mirror spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber (below the Nyquist wavenumber) to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (a).
-The center wavenumber $k^P_{t,0}$ defines the direction into which full-band, anti-aliased synthesis can be achieved: the SSD element, with $k^P_t(\vxo) = k^P_{t,0}$ performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
+Besides the above symmetrical anti-aliasing filtering, overlapping of the mirror spectra may be eliminated by bandlimiting the driving function wavenumber content around an arbitrary chosen center wavenumber $k^P_{t,0}$ to the bandwidth of $\frac{2\pi}{\Delta x}$, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (a).
+The center wavenumber defines the direction into which full-band, anti-aliased synthesis can be achieved: 
+The SSD element where $k^P_t(\vxo) = k^P_{t,0}$ holds performs full-band synthesis and dominates the synthesized field into the direction $\vk^P(\vxo)$.
 Asymmetric anti-aliasing filtering can be performed by the angular low-pass filtering of the driving function according to
 \importanteq{Asymmetric anti-aliasing condition}{
 D(\vxo,\omega) = 0, \hspace{5mm} \text{where} \hspace{5mm} \omega \geq \frac{\pi}{\Delta x} \frac{c}{|\hat{k}_t^P(\vxo) - \hat{k}^P_{t,0}|}.
 \label{Eq:SFS_theory:general_cutoff_freq} 
 }
 The result of asymmetric anti-aliasing filtering is presented in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_asymm} (b), illustrating how anti-aliased synthesis may be optimized into an arbitrary direction.
-This local increase of synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years. \cite{ahrens2010local, 5946329, spors2011local, Winter15:EURONOISE, Winter15:AES, Hahn17:EUSIPCO, Hahn16:AES, Winter2016-TASL}
-Local increase of accuracy is usually achieved by some spatial bandwidth limitation strategy applied to the driving function, performed in simple SSD geometries (e.g. linear, circular SSDs).
+
+The local increase of the synthesis accuracy is referred to as \emph{Local Wave Field Synthesis (LWFS)} in the related literature, being the subject of extensive study in the recent years \cite{ahrens2010local, 5946329, spors2011local, Winter15:EURONOISE, Winter15:AES, Hahn17:EUSIPCO, Hahn16:AES, Winter2016-TASL}.
+The local increase of accuracy is usually achieved by spatial bandwidth limitation of the driving function, performed in simple SSD geometries (e.g. linear, circular SSDs).
 The above derivation hence gives an asymptotic approximation of these spatial bandwidth limitation techniques, valid for an arbitrary SSD contour.
 
 \subsection{Avoiding the reproduction of mirror spectra}
 
-As presented in the foregoing, even besides ideal anti-aliasing filtering (spatial bandlimition) of the driving function, lateral aliasing components following the virtual wavefront will still be present.
-Mathematically, these aliasing artifacts originate from the reproduction of the adjacent mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c).
-Obviously, the reproduction of mirror spectra can be avoided only by applying a secondary source distribution with spatially low-pass filtered transfer function---instead of the simple 3D Green's function---with high attenuation factor above the Nyquist wavenumber\footnote{In fact, mirror spectrum reproduction may be avoided by applying more strict low-pass anti-aliasing, by also filtering out those components, which would be present as lateral mirror spectra after discretization. 
-Hence the spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (a), entirely bandlimited to $\omega = \frac{k_{x,s}}{c}$.
-This strategy is equivalent with the solution, given in \cite{Winter2018:GeometricModel}.}.
-This requirement is fulfilled by directive secondary sources, radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
-In a signal processing analogy, directive secondary sources therefore act as reproduction filters.
+As presented in the foregoing, even besides ideal anti-aliasing filtering of the driving function, lateral aliasing components following the virtual wavefront will still be present.
+Mathematically, these \emph{post-aliasing} artifacts originate from the reproduction of the mirror spectra components above the Nyquist wavenumber, as illustrated in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (c).
+The reproduction of mirror spectra can be only avoided by applying a secondary source distribution with the transfer function of a spatial low-pass filter with high attenuation above the Nyquist wavenumber.\footnote{In fact, the reproduction of the mirror spectra may be avoided by applying strict anti-aliasing filtering, by eliminating those spectral components which would be present as lateral mirror spectra after discretization. 
+The spectrum of the filtered driving function would be a romboid shape in Figure \ref{fig:SFS_theory:anti-aliased_spectrum} (a), bandlimited to $\omega = \frac{k_{x,s}}{c}$.
+This strategy is equivalent with the solution given in \cite{Winter2018:GeometricModel}.}
+This requirement is fulfilled by directive secondary sources radiating with low intensity into lateral directions, i.e. to large tangential wavenumbers.
 
-Physically, source directivity stems from the physical extension of radiating surfaces due to the constructive and destructive interference of waves, originating from different positions on the surface.
-At high frequencies and in the farfield (compared to the physical extension) baffled vibrating surfaces can be modeled as directive point sources.
-In fact, this can be proven by using the local wavenumber concept as presented in Appendix \ref{App:Planar_radiators}.
+Physically, source directivity stems from the physical extension of radiating surfaces due to the constructive and destructive interference of waves originating from different positions on the surface.
+At high frequencies and in the farfield baffled vibrating surfaces can be modeled as directive point sources, as it is shown by using the local wavenumber concept in Appendix \ref{App:Planar_radiators}.
 The optimal shape of extended secondary sources in the aspect of suppressing the mirror spectra has been studied in the related literature \cite{Verheijen1997:phd}.
-Here the optimal SSD directivity is discussed within the context of the unified WFS framework.
+Here, the optimal SSD directivity is discussed within the context of the generalized WFS framework.
 
 The farfield approximation of an extended radiator as a directive point source is given by \eqref{Eq:App:directive_monopole}.
-The field of a directive point source at the horizontal plane, containing the source (i.e. at $\theta = 0$) is given by
+At the horizontal plane containing the source (i.e. at $\theta = 0$) the field reads
 \begin{equation}
-G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \cdot
+G_{\Theta}(\vx-\vxo,\omega) = \Theta(\phi(\vx,\vxo),\omega) \,
 G(\vx-\vxo,\omega),
 \end{equation}
 with the directivity function given by $\Theta(\cdot)$. 
-Here $\phi$ denotes the polar angle, measured from the main direction of the source, in case of modeling baffled sources given by the source-surface normal: $\cos \phi = \frac{\left< \vx-\vxo \cdot \vn(\vxo) \right>}{|\vx-\vxo|}$.
+Here, $\phi$ denotes the polar angle measured from the main direction of the source, in case of modeling baffled planar sources given in terms of the source-surface normal as $\cos \phi = \frac{\left< \vx-\vxo \, \cdot \, \vn(\vxo) \right>}{|\vx-\vxo|}$.
 
-First the wavenumber domain representation of a theoretical directive point source is investigated.
-The transfer function of a directive point source at the origin, measured along a fixed $y$ reads as 
+First, an asymptotical approximation of the wavenumber domain representation of such a directive point source is presented.
+The wavenumber content of a directive point source at the origin, measured along a fixed $y$ reads as 
 \begin{equation}
-\tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \cdot
-G(\vx,\omega) \, \te^{\ti k_x x} \td x.
+\tilde{G}_{\Theta}(k_x,y,\omega) = \int_{-\infty}^{\infty} \Theta(\phi(\vx),\omega) \,
+G(\vx,\omega) \, \te^{\ti k_x x} \, \td x.
 \end{equation}
-As an approximation, the amplitude factor of the integral is approximated around its stationary point.
-For the sake of  simplicity it is assumed that the directivity function is real-valued.
-Since in case of baffled radiators the directivity function is the 2D Fourier transform of the surface normal velocity distribution, the directivity is real-valued, if the radiator is symmetrical both to the $x$- and $z$-axes (i.e. its is even function).
+It is assumed that the directivity function is real-valued.
+In case of baffled radiators the directivity function is the 2D Fourier transform of the surface normal velocity distribution.
+Therefore, the directivity is real-valued, if the radiator is symmetrical both to the $x$- and $z$-axes.
 This holds for simple geometries, e.g. for a circular piston, which model is applied frequently for modeling a dynamic loudspeaker.
 
-Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is simply found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
+Following \eqref{eq:xP_xG_in_spatial_domain}, by assuming a real-valued directivity the stationary point of the integral is found where $k_x^{G}(\vx^*(k_x),y) = k_x$ is satisfied.
 Around the stationary point the directivity function is approximated by its stationary value and the integral simplifies to
 \begin{equation}
-\tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \cdot \int_{-\infty}^{\infty} 
-G(\vx,\omega) \, \te^{\ti k_x x} \td x =
-\Theta(\phi(\vx^*(k_x)),\omega) \cdot 
+\tilde{G}_{\Theta}(k_x,y,\omega) = \Theta(\phi(\vx^*(k_x)),\omega) \, \int_{-\infty}^{\infty} 
+G(\vx,\omega) \, \te^{\ti k_x x} \, \td x =
+\Theta(\phi(\vx^*(k_x)),\omega) \,
 \tilde{G}(k_x,y,\omega),
 \end{equation}
-thus in the wavenumber domain the directivity function acts as a simple spatial filter transfer function.
-Since for the Green's function's local wavenumber vector $k_x^{G}(\vx) = k \sin \phi(\vx) = k_x$ holds (c.f. \eqref{Eq:App:ps_k_vec}), therefore as a final result the transfer function of a directive point source is given by
+thus, in the wavenumber domain the directivity function acts as a spatial filter transfer function.
+The Green's function's local wavenumber vector is given explicitly as $k_x^{G}(\vxref(\vxo)) = k \sin \phi(\vxref(\vxo)) = k_x$, i (c.f. \eqref{Eq:App:ps_k_vec}), with the right-hand side satisfying in the stationary position.
+Therefore, as a final result, the asymptotic approximation of the transfer function of a directive point source is given by
 \begin{equation}
 \tilde{G}_{\Theta}(k_x,y,\omega) = 
 \Theta(\arcsin \frac{k_x}{k},\omega) \cdot 
 \tilde{G}(k_x,y,\omega),
 \end{equation}
-while the spectrum of the synthesized field, applying a discrete secondary distribution of directive point sources becomes
+and the spectrum of the synthesized field by applying a discrete distribution of directive secondary point sources can be expressed as
 \begin{equation}
 \tilde{P}(k_x,y,\omega) = \tilde{D}^S(k_x,\omega) \cdot \Theta(\arcsin \frac{k_x}{k},\omega) \cdot \tilde{G}(k_x,y,\omega).
 \end{equation}
-This allows one to derive the directivity characteristics of an ideal spatial low-pass secondary source, which suppresses lateral waves above the Nyquist wavenumber, hence avoiding the reproduction of mirror spectra.
+
+This allows one to derive the directivity characteristics of an ideal spatial low-pass secondary source, which suppresses lateral waves above the Nyquist wavenumber and, therefore, avoiding the reproduction of mirror spectra.
 The transfer function of the ideal anti-aliasing SSD is given as
 \begin{equation}
-\Theta(\arcsin \frac{k_x}{k},\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} k_x \geq \frac{\pi}{\Delta x}
+\Theta(\arcsin \frac{k_x}{k},\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} k_x \geq \frac{\pi}{\Delta x},
 \end{equation}
-which can be formulated in the angular domain as
+which can be formulated in the temporal frequency domain as
 \importanteq{Ideal anti-aliasing SSD directivity}{
 \Theta(\phi,\omega) = 0, \hspace{5mm} \text{if} \hspace{5mm} \sin \phi \geq \frac{\pi}{\Delta x} \frac{c}{\omega}.
 }
@@ -1309,24 +1286,23 @@ which can be formulated in the angular domain as
     }
 \label{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}   \end{minipage}
 \end{figure}
-The theoretical, ideal secondary sources therefore would only radiate within a beam with a unit amplitude, so that the width of the beam decreases at increasing frequency.
-By applying such ideal secondary sources, aliasing could be theoretically completely avoided, still ensuring full band, anti-aliased synthesis into one particular direction, as described above.
-Into other directions the synthesized wavefront is bandlimited (low-pass filtered).
-Obviously, unlike for the anti-aliasing filtering, the direction of perfect synthesis is fixed towards the main lobe of the applied secondary sources.
+The theoretical, ideal secondary sources would only radiate within a beam with a unit amplitude and the width of the beam decreases at increasing frequency.
+By applying such ideal secondary sources, aliasing could be theoretically completely avoided, still, ensuring full band, anti-aliased synthesis into one particular direction.
+Into other directions, the synthesized wavefront is bandlimited (low-pass filtered).
+Obviously, the direction of perfect synthesis is fixed towards the main lobe of the applied secondary sources.
 
-The result of synthesis applying secondary sources with ideal directivity can be seen in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}, depicting the theoretical best case scenario when applying a discrete SSD.
+The result of synthesis applying secondary sources with ideal directivity can be seen in Figure \ref{fig:SFS_theory:anti-aliased_synthesis_ideal_synth}, depicting the theoretical best-case scenario when applying a discrete SSD.
 
 \vspace{3mm}
-Obviously, the above ,,ideally directed secondary sources" are not realizable, however the presented framework is useful for predicting the suppression
+Obviously, the above defined ideal directivity is not realizable, however, the presented framework is useful for predicting the suppression
 factor in the wavenumber region, once the directivity of the applied secondary sources is known.
 As a simple example, the directivity of a circular piston is given by \eqref{Eq:App_Circ_piston}, reading
 \begin{equation}
 \Theta(\arcsin \frac{k_x}{k},\omega) = 2\frac{J_1\left( r_0 k_x\right)}{r_0 k_x},
 \end{equation}
 with $J_1(\cdot)$ being the first order Bessel function.
-The circular piston therefore acts as a spatial low-pass filter, with the $-3~\mathrm{dB}$ cut-off wavenumber being $k_{x,c} \approx \frac{2.22}{r_0}$, calculated numerically.
+The circular piston, therefore, acts as a spatial low-pass filter, with the $-3~\mathrm{dB}$ cut-off wavenumber being $k_{x,c} \approx \frac{2.22}{r_0}$, calculated numerically.
 Real-life dynamic loudspeakers with circular membranes are often modeled as circular pistons at frequencies, at which the modal behaviour of the diaphragm is not considerable.
 In a linear array the largest possible loudspeaker radius is the half of the loudspeaker spacing ($r_0 = \Delta x/2$), hence, the lowest achievable cut-off wavenumber is 
 $k_{x,c} = \frac{4.44}{\Delta x}$.
-This is still higher, than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array, spatial aliasing components will be slightly present in the reproduced field.
-%\fscom{good points here, in essence this is what I treated little bit differently, but with same message and comparing to a line piston that exhibit sinc spectrum. Depending on the gaps between piston aliasing is differently strong.}
+This is still higher than the Nyquist wavenumber ($k_{x,\mathrm{Nyq}} = \frac{\pi}{\Delta x}$), meaning that even with the closest physically possible loudspeaker spacing in case of an in-line loudspeaker array spatial aliasing components will be slightly present in the reproduced field.

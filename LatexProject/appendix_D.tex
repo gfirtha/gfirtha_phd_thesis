@@ -6,15 +6,15 @@ The derivation starts from the 2.5D explicit driving function in the wavenumber 
 \begin{equation}
 \tilde{D}(k_x,y,0,\omega) = \frac{\tilde{P}(k_x,y,0, \omega)}{\tilde{G}(k_x,y,0, \omega)},
 \end{equation}
-ensuring perfect synthesis along a line with fixed $y$-coordinate.
-In the followings for the sake of brevity and transparency $\omega$ and $z$ dependencies are suppressed, the latter since the driving function is defined at $z=0$.
-By definition the wavenumber content of the involved quantities are obtained via a forward Fourier transform, with the involved sound fields expressed by their polar form
+ensuring perfect synthesis along fixed line.
+In the following, for the sake of brevity and transparency $\omega$ and $z$ dependencies are suppressed, the latter since the driving function is defined at $z=0$.
+By definition, the wavenumber content of the involved quantities are obtained via a forward Fourier transform, with the involved sound fields expressed by their polar form reading as
 \begin{align} 
 \tilde{P}(k_x,y) = \int\limits_{-\infty}^{\infty} A^P(x,y) \, \te^{\ti \phi^P(x,y)} \, \te^{\ti k_x x} \td x, \\
 \tilde{G}(k_x,y) = \int\limits_{-\infty}^{\infty} A^G(x,y) \, \te^{\ti \phi^G(x,y)} \, \te^{\ti k_x x} \td x.
 \end{align}
-The involved spectra can be approximated by using the SPA:
-under high frequency assumptions the Fourier integrals may be approximated by evaluation around their stationary point $x^*_P(k_x)$ and $x^*_G(k_x)$ where their phase derivatives vanish. 
+The spectra can be approximated by using the SPA:
+Under high frequency assumptions the Fourier integrals may be approximated by evaluation around their stationary point $x^*_P(k_x)$ and $x^*_G(k_x)$ where their phase derivatives vanish. 
 The stationary positions are defined as
 \begin{align}	
 \label{eq:xP_xG_in_spatial_domain}
@@ -26,9 +26,9 @@ k_x^P(x^*_P(k_x),y) = k_x \nonumber
 \hspace{3mm} &\rightarrow \hspace{3mm}
 k_x^G(x^*_G(k_x),y) = k_x.
 \end{align}
-Since it is assumed that $k_z^P(x,y) = k_z^G(x,y) = k_z = 0$ holds in the plane of investigation, therefore the stationary positions are found along a given $y$, where the local propagation direction of the virtual field and the Green's function matches to that of a plane wave, defined by $k_x$.
+Since it is assumed that $k_z^P(x,y) = k_z^G(x,y) = k_z = 0$ holds in the plane of investigation, therefore, the stationary positions are found where the local propagation direction of the virtual field and the Green's function matches to that of a plane wave, defined by $k_x$.
 The properties of the involved wavefields at these positions will dominate the corresponding Fourier integrals.
-Hence, the forward transform defines two particular positions in the space, linked together via the actual spectral wavenumber.
+Hence, the forward transform defines two particular positions in the space, linked together via the common spectral wavenumber.
 
 Having defined the stationary positions, the forward Fourier transforms can be evaluated by the SPA. 
 With accounting for the negative second phase-derivatives---since both the virtual sound field and the Green's function are diverging---their spectra can be approximated as \cite[Ch. 5]{Tracy2014}
@@ -36,7 +36,7 @@ With accounting for the negative second phase-derivatives---since both the virtu
 \tilde{P}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiPxx(x^*_P(k_x),y)|}} A^P(x^*_P(k_x),y) \, \te^{\ti \phi^P(x^*_P(k_x),y)} \, \te^{\ti k_x \cdot x^*_P(k_x)},\\
 \tilde{G}(k_x,y) \approx& \sqrt{\frac{2\pi}{\ti \, |\phiGxx(x^*_G(k_x),y)|}} A^G(x^*_G(k_x),y) \, \te^{\ti \phi^G(x^*_G(k_x),y)} \, \te^{\ti k_x \cdot x^*_G(k_x)},
 \end{align}
-and the asymptotic approximation of the explicit driving function on a given spectral component yields
+and the asymptotic approximation of the explicit driving function on a given spectral component reads as
 \importanteq{Asymptotic spectral driving function}{
 \label{eq:hfapproxspectra}
 \tilde{D}(k_x,y)
@@ -45,7 +45,7 @@ and the asymptotic approximation of the explicit driving function on a given spe
 \, \frac{P(x^*_P(k_x),y)}{G(x^*_G(k_x),y)}
 \, \te^{\ti k_x  \left( x^*_P(k_x) - x^*_G(k_x)\right)}.
 }
-Hence, the spectrum can be be expressed by evaluating the target pressure and the Green's function at evaluation points, where the local propagation direction of the involved fields coincides with that of the actual spectral plane wave.
+Hence, the spectrum can be be expressed by evaluating the target pressure and the Green's function at evaluation points where the local propagation direction of the involved fields coincides with that of the actual spectral plane wave.
 
 
 \paragraph{SPA of the inverse Fourier transform:}
@@ -85,7 +85,7 @@ The stationary wavenumber $k_x^*(x_0)$ is then found where
 \left. \frac{\partial}{\partial k_x}\Phi(k_x) \right|_{k_x=k_x^*(x_0)} = x^*_P(k_x^*(x_0))- x^*_G(k_x^*(x_0)) -  x_0 = 0
 \end{equation}
 holds.
-This definition relates the evaluation points $x^*_P$ and $x^*_G$ directly to the actual SSD coordinate $x_0$, therefore the dependency on the intermediate stationary wavenumber $k_x^*$ may be omitted (i.e., $x^*_P(k_x^*(x_0)) \rightarrow x^*_P(x_0)$ and $x^*_G(k_x^*(x_0)) \rightarrow x^*_G(x_0)$ may be written). 
+This definition relates the evaluation points $x^*_P$ and $x^*_G$ directly to the actual SSD coordinate $x_0$, therefore, the dependency on the intermediate stationary wavenumber $k_x^*$ may be omitted (i.e., $x^*_P(k_x^*(x_0)) \rightarrow x^*_P(x_0)$ and $x^*_G(k_x^*(x_0)) \rightarrow x^*_G(x_0)$ may be written). 
 
 \begin{figure}[t!]
 \small
@@ -104,7 +104,7 @@ This definition relates the evaluation points $x^*_P$ and $x^*_G$ directly to th
 	\begin{minipage}[c]{0.4\textwidth}
     \caption{
        Illustration of the evaluation position $x_P^*(x_0)$ (and $x_G^*(x_0)$) as the function of $x_0$. 
-	   For a given SSD position $x_0$ the stationary position is found on a given reference line $y = \text{const}$, where the virtual field propagation direction coincides with that of the Green's function, translated into $x_0$.
+	   For a given SSD position $x_0$ the stationary position is found on a given reference line $y = \text{const}$ where the virtual field propagation direction coincides with that of the Green's function, translated into $x_0$.
 	   Furthermore, at $x_P^*(x_0)$ the local principle radii of the Green's function positioned at $y=0$, is always smaller, than that of a field, generated by a source distribution at $y<0$, i.e. that of the virtual field.} 
        \label{fig:SFS_theroy:explicit_sol_stationary_points}
   \end{minipage}
@@ -119,7 +119,7 @@ k_{x}^P(x^*_P(x_0),y) = k_{x}^G(x^*_P(x_0) - x_0,y)
 }
 is satisfied.
 
-This result states that for a given SSD coordinate $x_0$ the evaluation point $x^*_P$ is found on the reference line, where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
+This result states that for a given SSD coordinate $x_0$ the evaluation point $x^*_P$ is found on the reference line where the local propagation direction of the target field $P$ coincides with that of a point source positioned at $\posvec{3}{x_0}{0}{0}$. 
 This principle is depicted in Figure \ref{fig:SFS_theroy:explicit_sol_stationary_points}.
 %
 
@@ -146,7 +146,7 @@ Thus the required second derivative is given by
 ,
 \end{equation}
 with $\Rh^P$ and $\Rh^G$ being the horizontal principal radii of the target field and the Green's function, expressed by applying \eqref{Eq:App:Hessian_inplane}.
-Obviously, for any source distribution behind the SSD its horizontal principal radius is larger at position $y>0$, than that of the stationary secondary point source and the sign of \eqref{eq:SFS_theory:second_Derivative_2} is positive. 
+Obviously, for any source distribution behind the SSD its horizontal principal radius is larger at $y>0$ than that of the stationary secondary point source and the sign of \eqref{eq:SFS_theory:second_Derivative_2} is positive. 
 
 These results now may be substituted back into the SPA \eqref{Eq:SPAResult} of the inverse transform \eqref{Eq:inverse_transform_def}.
 For the sake of brevity in the following the evaluation point is denoted by $x^*_P \rightarrow x^*$. 

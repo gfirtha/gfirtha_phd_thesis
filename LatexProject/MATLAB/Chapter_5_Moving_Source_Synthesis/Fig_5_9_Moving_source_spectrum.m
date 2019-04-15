@@ -27,8 +27,8 @@ kx = ((w-w0)/v);
 Pm = 1/v*(-1i/2*besselh(0,2, -1i*sqrt( kx.^2 - k.^2 ).*sqrt((y-ys)^2+(z-zs).^2))).*exp(-1i*kx.*(x-xs));
 
 %%
-ftsize = 14.3;
-f = figure('Units','points','Position',[200,120,660,250]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,120,407,155]);
 set(f,'defaulttextinterpreter','latex')
 
 pos = [ 0.085  0.2 0.4 .72
@@ -37,16 +37,16 @@ pos = [ 0.085  0.2 0.4 .72
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 plot(t*f0,real(pt),'LineWidth',1);
-xlabel( '$t\cdot f_0 \rightarrow []$', 'FontSize', ftsize );
-ylabel( '$P_{\mathrm{m}}(\mathbf{0},t,\omega_0) \rightarrow$ [Pa]', 'FontSize', ftsize );
+xlabel( '$t\cdot f_0$', 'FontSize', ftsize );
+ylabel( '$P_{\mathrm{m}}(\mathbf{0},t,\omega_0)$ [Pa]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on 
 
 p2 = axes('Units','normalized','Position',pos(2,:));
 plot(w/(2*pi)/f0 ,20*log10(abs(Pm)),'LineWidth',1);
 ylim([-100,-30])
-xlabel( '$f/f_0 \rightarrow []$', 'FontSize', ftsize );
-ylabel( '$20\log_{10}|P_{\mathrm{m}}(\mathbf{0},\omega,\omega_0)| \rightarrow$ [dB]', 'FontSize', ftsize );
+xlabel( '$f/f_0$', 'FontSize', ftsize );
+ylabel( '$20\log_{10}|P_{\mathrm{m}}(\mathbf{0},\omega,\omega_0)|$ [dB]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 grid on
 

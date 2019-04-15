@@ -1,4 +1,4 @@
-	\documentclass[%
+\documentclass[%
 	paper=A4,					% paper size
 	twoside=true,				% onesite or twoside printing
 	openright,					% doublepage cleaning ends up right side
@@ -27,18 +27,18 @@
 	bibstyle=alphabetic%
 ]{fg_thesis}
 
-\newcommand{\thesisTitle}{A Unified Wave Field Synthesis Framework \\
+\newcommand{\thesisTitle}{A Generalized Wave Field Synthesis Framework \\
 \large with Application for Moving Virtual Sources}
+\newcommand{\thesisTitleSmall}{A Generalized Wave Field Synthesis Framework \\ with Application for Moving Virtual Sources}
 \newcommand{\thesisName}{Gergely Firtha}
-\newcommand{\thesisSubject}{PhD Thesis}
+\newcommand{\thesisSubject}{PhD Dissertation}
 \newcommand{\thesisDate}{\today}
-\newcommand{\thesisVersion}{My First Draft}
-
+\newcommand{\thesisVersion}{Final Version}
 \newcommand{\thesisFirstSupervisor}{P\'eter Fiala}
-
 \newcommand{\thesisUniversity}{\protect{Budapest University of Technology and Economics}}
 \newcommand{\thesisUniversityDepartment}{Department of Networked Systems and Services}
 \newcommand{\thesisUniversityGroup}{Laboratory of Acoustics and Studio Technologies}
+\newcommand{\thesisDoctoralSchool}{Doctoral School of Electrical Engineering}
 \newcommand{\thesisUniversityCity}{Budapest}
 \newcommand{\thesisUniversityStreetAddress}{Magyar Tud\'osok k\"or\'utja 2.}
 \newcommand{\thesisUniversityPostalCode}{1117}
@@ -56,16 +56,10 @@
 	bookmarksnumbered=true,		%
 	bookmarksopen=true			%
 }
-\usepackage{everyshi}
-\usepackage{mathtools}
 
 \makenomenclature
 \begin{document}
-%\EveryShipout{%
-%  \ifthenelse{\isodd{\value{page}}}%
-%    {\global\marginparsep=20pt}% Next page is even
-%    {\global\marginparsep=5pt}% Next page is odd
-%}
+\sloppy
 
 \input{mydefs}
 
@@ -74,7 +68,12 @@
 \input{titlepage}		% INCLUDE: all titlepages
 \cleardoublepage
 
-%\input{acknowledgement}
+\chapter*{Abstract}
+\input{abstract_en}
+\chapter*{Kivonat}
+\input{abstract_hu}
+\chapter*{Acknowledgements}
+\input{acknowledgement}
 
 \cleardoublepage
 
@@ -85,18 +84,18 @@
 \pagenumbering{arabic}			% arabic page numbering
 \setcounter{page}{1}			% set page counter
 \pagestyle{maincontentstyle} 	% fancy header and footer
+
 \input{nomenclature}
-%
 
 \chapter{Introduction}
 \pagenumbering{arabic}
 \label{sec:introduction}
 \input{introduction}
-%
+
 \chapter{Theory of wave propagation and radiation problems}
 \label{sec:general_wave_theory}
 \input{general_wave_theory}
-%%
+
 \chapter{High frequency approximation of wavefields and radiation problems}
 \label{sec:high_freq_approx}
 \input{high_freq_approx_theory}
@@ -112,6 +111,10 @@
 \chapter{Conclusion}
 \label{sec:conclusion}
 \input{conclusion}
+
+\chapter{Theses}
+\label{sec:theses}
+\input{theses}
 
 \begin{appendices}
 \chapter{Appendix A}
@@ -131,12 +134,11 @@
 \end{appendices} 
 
 \cleardoublepage
-{%
+{
 \setstretch{1.1}
 \renewcommand{\bibfont}{\normalfont\small}
 \setlength{\biblabelsep}{0pt}
 \setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
 \printbibliography} 
-
 
 \end{document}

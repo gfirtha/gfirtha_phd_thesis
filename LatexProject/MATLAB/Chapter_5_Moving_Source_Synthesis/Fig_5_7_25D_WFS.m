@@ -132,11 +132,12 @@ Kn = sum([ x_ssd(:,1)-xse x_ssd(:,2)-ys ].*n_ssd,2);
 win0 = (Kn>0);
 %%
 
-ftsize = 13.75;
-f = figure('Units','points','Position',[200,200,400,470]);
+ftsize = 9;
+f = figure('Units','points','Position',[200,200,260,306]);
 set(f,'defaulttextinterpreter','latex')
 pos = [ 0.1   0.565  0.72 .45
-    0.1   0.035 0.85 .5];
+        0.1   0.035 0.89 .5];
+    
 
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(x,y,real(field_synth));
@@ -144,22 +145,22 @@ axis equal tight
 caxis([-1 1] * 8e-2);
 shading interp
 hold on
-line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
-line(x_ssd(win0,1), x_ssd(win0,2), 0*x_ssd(win0,1), 'Color', 'black','LineStyle','-','LineWidth',2);
+line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',1.25);
+line(x_ssd(win0,1), x_ssd(win0,2), 0*x_ssd(win0,1), 'Color', 'black','LineStyle','-','LineWidth',1.25);
 plot( linspace(-3,3,100)*cosd(phi)+xs, linspace(-3,3,100)*sind(phi)+ys , ':w' , 'LineWidth',1)
 
 %line(reference_curve_(:,1), reference_curve_(:,2), 0*reference_curve_(:,1), 'Color', 'white','LineStyle',':','LineWidth',1);
 line(reference_curve(:,1), reference_curve(:,2), 0*reference_curve(:,1), 'Color', 'white','LineStyle',':','LineWidth',1);
 %contour( x, y, real(field_ref),[0 0],'LineWidth',0.5,'LineColor',[1 1 1]*1);
 %
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 
 headWidth = 5;
 headLength = 5;
 LineLength = 0.75;
-plot(xs,ys,'ok','MarkerSize',3,'MarkerFaceColor','black')
+plot(xs,ys,'ok','MarkerSize',2,'MarkerFaceColor','black')
 ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);
@@ -175,19 +176,19 @@ axis equal tight
 caxis([-50 ,-20]);
 shading interp
 hold on
-line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',2);
-line(x_ssd(win0,1), x_ssd(win0,2), 0*x_ssd(win0,1), 'Color', 'black','LineStyle','-','LineWidth',2);
+line(x_sec_contour, y_sec_contour, z_sec_contour, 'Color', 'black','LineStyle',':','LineWidth',1.25);
+line(x_ssd(win0,1), x_ssd(win0,2), 0*x_ssd(win0,1), 'Color', 'black','LineStyle','-','LineWidth',1.25);
 line(reference_curve(:,1), reference_curve(:,2), 0*reference_curve(:,1), 'Color', 'white','LineStyle',':','LineWidth',1);
 plot( linspace(-3,3,100)*cosd(phi)+xs, linspace(-3,3,100)*sind(phi)+ys , ':w' , 'LineWidth',1)
 
-xlabel( '$x \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
-ylabel( '$y \rightarrow [\mathrm{m}]$' , 'FontSize', ftsize );
+xlabel( '$x$ [m]' , 'FontSize', ftsize );
+ylabel( '$y$ [m]' , 'FontSize', ftsize );
 col = colorbar;
 title(col,'[dB]'  , 'FontSize', ftsize);
 set(gca,'FontName','Times New Roman');
 %
 %
-plot(xs,ys,'ok','MarkerSize',3,'MarkerFaceColor','black')
+plot(xs,ys,'ok','MarkerSize',2,'MarkerFaceColor','black')
 ah = annotation('arrow',...
     'headStyle','cback2','HeadLength',headLength,'HeadWidth',headWidth);
 set(ah,'parent',gca);

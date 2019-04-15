@@ -58,14 +58,16 @@ Gkx = fftshift(fft(G0,[],2),2)*dx;
 %%
 kxs = 2*pi/dx_res;
 q = 2;
-ftsize = 14.3;
-fig = figure('Units','points','Position',[200,200,730,540]);
+ftsize = 9;
+fig = figure('Units','points','Position',[200,200,407,301]);
 set(fig,'defaulttextinterpreter','latex')
 colormap(flipud(pink))
 
-pos = [ 0.065   0.59   0.38  .389
-        0.59    0.59   0.38  .389
-        0.33    0.075  0.38  .389];
+pos = [ 0.065   0.6   0.38  .389
+        0.59    0.6   0.38  .389
+        0.33    0.085  0.38  .389];
+ 
+ 
 p1 = axes('Units','normalized','Position',pos(1,:));
 pcolor(kx(1:q:end)/kxs,w(1:q/2:end)/(2*pi*1e3),20*log10(abs(Dkxs(1:q/2:end,1:q:end))))
 hold on
@@ -73,8 +75,8 @@ line([0,w(end)/c/kxs],[0,w(end)/(2*pi*1e3)],'Color','black','LineStyle','--')
 line([0,-w(end)/c/kxs],[0,w(end)/(2*pi*1e3)],'Color','black','LineStyle','--')
 %line([0,0],[0,w(end)/(2*pi*1e3)],'Color','black','LineStyle',':')
 set(gca,'FontName','Times New Roman');
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]');
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]');
 shading interp
 caxis([-50,30])
 axis tight
@@ -93,8 +95,8 @@ set(gca,'FontName','Times New Roman');
 allAxesInFigure = findall(fig,'type','axes');
 b = get(gca,'XTickLabel');
 set(allAxesInFigure,'XTickLabel',b,'FontSize',ftsize);
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]');
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]');
 %xlim([-70,70]/kxs)
 %ylim([0,5]);
 
@@ -109,8 +111,8 @@ cax = [-80,-5];
 caxis(cax)
 axis tight
 set(gca,'FontName','Times New Roman');
-xlabel('$k_x/k_{x,s} \rightarrow$ []')
-ylabel('$f \rightarrow$ [kHz]');
+xlabel('$k_x/k_{x,s}$')
+ylabel('$f$ [kHz]');
 %xlim([-70,70]/kxs)
 %ylim([0,5]);
 allAxesInFigure = findall(fig,'type','axes');

@@ -38,7 +38,9 @@ win = (vn<=0);
 
 pf = Lf * ( 2 * qs.*win);
 %%
-f = figure('Units','points','Position',[200,200,500,370]);
+f = figure('Units','points','Position',[200,200,407,305]);
+
+ftsize = 9;
 set(f,'defaulttextinterpreter','latex')
 
 p1 = axes('Units','normalized','Position',[ 0.05 0.5 0.43 .6 ]);
@@ -49,8 +51,8 @@ plot( x0(:,1),   x0(:,2), ':k','LineWidth',2);
 plot( x0(win,1), x0(win,2), 'k','LineWidth',2);
 plot( xs(:,1),   xs(:,2), 'ok','MarkerSize',2, 'MarkerFaceColor','black')
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-1 1] * 0.5e-1);
 
@@ -62,8 +64,8 @@ shading flat;
 plot_mesh(radiator);
 plot( xs(:,1), xs(:,2), 'ok','MarkerSize',2, 'MarkerFaceColor','black')
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-1 1] * 0.5e-1);
 
@@ -75,10 +77,16 @@ shading flat;
 plot_mesh(radiator);
 plot( xs(:,1), xs(:,2), 'ok','MarkerSize',2, 'MarkerFaceColor','black')
 axis equal tight;
-xlabel( '$x \rightarrow$ [m]', 'FontSize', ftsize );
-ylabel( '$y \rightarrow$ [m]', 'FontSize', ftsize );
+xlabel( '$x$ [m]', 'FontSize', ftsize );
+ylabel( '$y$ [m]', 'FontSize', ftsize );
 set(gca,'FontName','Times New Roman');
 caxis([-50,-20]);
+
+
+set(gca,'FontName','Times New Roman');
+allAxesInFigure = findall(f,'type','axes');
+set(allAxesInFigure,'FontSize',ftsize);
+
 c = colorbar;
 title(c,'[dB]' , 'FontSize', ftsize-1);
 set(gca,'FontName','Times New Roman');
