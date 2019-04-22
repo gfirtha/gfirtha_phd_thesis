@@ -982,7 +982,7 @@ The coincidence of the driving functions, however, indicates that Wave Field Syn
 
 So far the theoretical foundations of physically correct synthesis of source movements were discussed.
 The practical implementation of the foregoing raises numerous questions.
-Several quantities are present in the driving function that are assumed to be known a-priori, however, their definition is not straightforward.
+Several quantities are present in the driving function that are assumed to be known a-priori, however, their definition is not straightforward and is computationally expensive, making real-time applications impossible.
 Furthermore, the choice of the SSD shape, the applied referencing scheme and the applied anti-aliasing strategy is crucial in the aspect of synthesizing dynamic sound scenes.
 The following section presents several practical considerations and solutions for the challenges arising at the synthesis of a moving point source, as discussed in  \cite{Firtha2018_daga_moving_source}.
 
@@ -1043,7 +1043,7 @@ with $\td t = \frac{1}{f_s}$ being the sampling period of the driving function \
 Obviously, if the trajectory is available only numerically, $\vxs(t-\tau)$ may be interpolated from the trajectory vector from which the source velocity $\vvs(t-\tau)$ may be calculated by numerical differentiation with respect to time.
 
 It is important to note that the sampling frequency for the calculation of the source trajectory and propagation time delay may be chosen significantly lower than the actual driving signal sampling frequency.
-As a result, computational cost can be decreased, besides still ensuring numerical stability. 
+As a result, computational cost can be decreased, besides still ensuring numerical stability.
 
 \subsection{Effects of the SSD discretization}
 
